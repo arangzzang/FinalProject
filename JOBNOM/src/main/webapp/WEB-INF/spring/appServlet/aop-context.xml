@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+
+	<!-- 
+		aop설정하는 configuration
+		선언적 방식 aop설정하기
+		1. aop : config 태그이용
+			aop : aspect 태그 클래스를 등록
+				aop : pointcut  표현식
+				aop : before|after|around...표현식을 이용, 실행 될 메소드를 지정
+	 -->
+	<!-- aspect 등록 -->
+<!-- 	<bean id="loggerAspectBean" class="com.kh.spring.common.aop.LoggerAspect"/> 
+ 	<aop:config>
+ 		<aop:aspect ref="loggerAspectBean" id="loggerAspect"> 
+ 			<aop:pointcut expression="execution(* com.kh.spring..*(..))" id="pc"/>대상설정	:  전체범위	 
+			<aop:pointcut expression="execution(* com.kh.spring.demo.*Service.insert*(..))" id="pc"/>대상설정 : demo패키지의 모든클래스의 서비스의 인서트문만! 		 
+ 			<aop:pointcut expression="execution(* com.kh.spring.demo.*.insert*(..))" id="pc"/>대상설정 : demo패키지의 모든클래스의 인서트문		 
+ 			<aop:pointcut expression="execution(* com.kh.spring..insert*(..))" id="pc"/>대상설정 : 인서트구문만 / * : 아무거나 / .. : 전부의 의미		 
+			<aop:before method="loggerBefor" pointcut-ref="pc"/>내가 등록한 객체가 나옴  내가 어디서 등록한지 모르기때문에 pointcut을 참조하여 연결및 등록 
+ 		</aop:aspect>
+ 	</aop:config> -->
+	<!-- aop를 어노테이션방법으로 등록 -->
+	<aop:aspectj-autoproxy/>
+</beans>
