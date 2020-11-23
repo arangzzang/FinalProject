@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="member">
+	<resultMap type="m" id="m">
+		<result column="mem_no" property="memNo"/>
+		<result column="mem_email" property="memEmail"/>
+		<result column="mem_pw" property="memPw"/>
+		<result column="mem_manager_yn" property="memManagerYn"/>
+		<result column="mem_check" property="memCheck"/>
+		<result column="mem_membership" property="memMembership"/>
+		<result column="login_type" property="loginType"/>
+	</resultMap>
+	
+	<select id="memberLogin" parameterType="string" resultMap="m">
+		select* from member where mem_email=#{memEmail}
+	</select>
+</mapper>
