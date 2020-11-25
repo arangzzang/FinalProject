@@ -11,7 +11,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="${path }/resources/css/style.css"/>
 <script src="${path }/resources/js/jquery-3.5.1.min.js"></script>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -23,7 +22,7 @@
 <link rel="stylesheet" href="${path }/resources/css/footer.css"/>
 </head>
 <body>
-	<body>
+
    <div id="container">
       <header>
          <nav class="navbar navbar-expand-lg navbar-light headerContainerWrap"><!-- bg-light -->
@@ -83,12 +82,12 @@
                               <div class="modal-footer">
 	                              <div class="row">
 	                                 <div class="col-6 text-center" >
-	                                    <button type="submit" class="btn btn-primary" onclick="logincheck()">로그인</button>
+	                                    <button type="submit" class="btn btn-outline-success my-4 my-sm-0" onclick="logincheck()">로그인</button>
 	                                 </div>
 	                                 <div class="col-6 text-center" >
-	                                    <button type="submit" class="btn btn-primary" onclick="location.href='${path}/member/enrollMember'">회원가입</button>
+	                                    <button type="button" class="btn btn-outline-success my-4 my-sm-0" onclick="location.href='${path}/member/enrollMember'">회원가입</button>
 	                                 </div>
-	                                 <div class="col-12" style="padding-left: 250px;">
+	                                 <div class="col-md-7 offset-md-5">
 	                                    <span class="psw"><a href="#">이메일 찾기</a></span>/
 	                                    <span class="psw"><a href="#">비밀 번호 찾기</a></span>
 	                                 </div>
@@ -103,7 +102,7 @@
                <c:if test="${memberLogin!=null }">
                   <span><a href="#">${memberLogin.memEmail }</a>님,안녕하세요</span>
                   &nbsp;
-                  <button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="">로그아웃</button>
+                  <button class="btn btn-outline-success my-4 my-sm-0" type="button" onclick="location.replace('${path}/member/logout');">로그아웃</button>
                </c:if>
             </div>
          </nav>

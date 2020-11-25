@@ -13,4 +13,10 @@ public class MemberDaoImpl implements MemberDao {
 		return session.selectOne("member.memberLogin",memEmail);
 	}
 
+	@Override
+	public int enrollMember(Member m, SqlSession session) {
+		return session.insert("member.enrollMember", m);
+	}
+	
+
 }

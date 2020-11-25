@@ -18,5 +18,13 @@ public class MemberServiceImpl implements MemberService {
 	public Member memberLogin(String memEmail) {
 		return dao.memberLogin(memEmail,session);
 	}
+	@Override
+	public int enrollMember(Member m) {
+		
+		int result=dao.enrollMember(m,session);
+//		if(result > 0) dao.insertResume( session);
+		return result;
+	}
+	
 
 }

@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+body{
+      width: 100%;
+   }
+   section{
+      width: 80%;
+      box-sizing: border-box;
+      margin: 0 auto;
+   }
+   .container-sm{
+      width: 40%;
+   }
+   h1{
+      padding-bottom: 15px;
+   }
+   .enrollBtn{
+      padding: 10px;
+      width: 40%;
+      display: table;
+      margin: 15px auto;
+   }
+   /*  */
+   .job2, .option2{
+      display: none;
+   }
+   .enrollMain{
+      width: 60%;
+   }
+   .jumbotron{
+      padding: 10px 10px 10px;
+   }
+   .enrollMainH{
+      margin: 0 auto;
+   }
+   img{
+      width: 100px;
+      height: 100px;
+   }
+   .info{
+      margin: 30px auto;
+      width: 30%;
+      text-align: left;
+      display: flex;
+   }
