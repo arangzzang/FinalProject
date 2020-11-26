@@ -146,7 +146,7 @@
 		    <version>${org.springframework-version}</version>
 		</dependency>
 		
-		<!-- 비밀번호 암호화 스프리이큐리티 등록 -->
+		<!-- 비밀번호 암호화 스프링시큐리티 등록 -->
 		<dependency>
 		    <groupId>org.springframework.security</groupId>
 		    <artifactId>spring-security-core</artifactId>
