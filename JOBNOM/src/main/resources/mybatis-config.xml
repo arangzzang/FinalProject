@@ -2,6 +2,9 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd" >
 <configuration>
 	<typeAliases>
-		<typeAlias type="com.project.jobnom.member.model.vo.Member" alias="m"/>
+		<typeAlias type="com.project.jobnom.member.model.vo.Member" alias="mem"/>
+		<typeAlias type="com.project.jobnom.enterprice.model.vo.Enterprice" alias="ent"/>
+		<typeAlias type="com.project.jobnom.admin.model.vo.Admin" alias="admin"/>
+		<typeAlias type="com.project.jobnom.common.model.vo.Login" alias="login"/>
 	</typeAliases>
 </configuration>

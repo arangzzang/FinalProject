@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="common">
+	<resultMap type="login" id="log">
+		<result column="type" property="type"/>
+		<result column="mem_email" property="memEmail"/>
+		<result column="mem_pw" property="memPw"/>
+	</resultMap>
+
+	<select id="commonLogin" parameterType="map" resultMap="log">
+		SELECT * 
+		    FROM (
+			    SELECT TYPE AS TYPE, MEM_EMAIL,MEM_PW FROM MEMBER
+			    UNION ALL
+			    SELECT TYPE, ENT_EMAIL,ENT_PW FROM ENTERPRICE
+			    UNION ALL
+			    SELECT TYPE, ADMIN_EMAIL,ADMIN_PW FROM ADMIN
+		    )
+		    WHERE TYPE=#{type} and mem_email=#{email}
+	</select>
+	
+	
+</mapper>

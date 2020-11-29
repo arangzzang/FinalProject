@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="member">
-	<resultMap type="m" id="m"><!-- resultMap의 id값과 select문의 resultMap키값 연결 -->
+	<resultMap type="mem" id="memMap"><!-- resultMap의 id값과 select문의 resultMap키값 연결 -->
 		<result column="mem_no" property="memNo"/>
 		<result column="mem_email" property="memEmail"/>
 		<result column="mem_pw" property="memPw"/>
@@ -13,11 +13,11 @@
 		<result column="mem_category2" property="memCategory2"/>
 	</resultMap>
 	<!-- 로그인 -->
-	<select id="memberLogin" parameterType="string" resultMap="m">
+	<select id="memberLogin" parameterType="string" resultMap="memMap">
 		select* from member where mem_email=#{memEmail}
 	</select>
 	<!-- 회원가입(일반회원)  -->
-	<insert id="enrollMember" parameterType="m">
+	<insert id="enrollMember" parameterType="mem">
 		insert into member values (seq_mem_no.nextval,#{memEmail},#{memPw},default,#{memCheck},default,default,#{memCategory1},#{memCategory2})
 	</insert>
 </mapper>

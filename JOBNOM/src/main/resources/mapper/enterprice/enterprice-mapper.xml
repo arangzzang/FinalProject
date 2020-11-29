@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="enterprice">
+	<resultMap type="ent" id="entMap">
+		<result column="ent_no" property="entNo"/>
+		<result column="ent_email" property="entEmail"/>
+		<result column="ent_pw" property="entPw"/>
+		<result column="ent_name" property="entName"/>
+		<result column="ent_business_no" property="entBusinessNo"/>
+		<result column="ent_category" property="entCategory"/>
+		<result column="ent_logo" property="entLogo"/>
+		<result column="rep_name" property="repName"/>
+		<result column="rep_phone" property="repPhone"/>
+	</resultMap>
+
+	<select id="enterLogin" parameterType="string" resultMap="entMap">
+		select * from enterprice where ent_email = #{entEmail}
+	</select>
+
+</mapper>

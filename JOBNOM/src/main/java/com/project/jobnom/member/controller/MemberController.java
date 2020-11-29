@@ -23,35 +23,35 @@ public class MemberController {
 	@Autowired
 	BCryptPasswordEncoder pwEncoder;
 	//로그인
-	@RequestMapping("/member/memberLogin")
-	public String memberLogin (String memEmail, String memPw, Model m) {
-		
-		Member mem = service.memberLogin(memEmail);
-		System.out.println(mem);
-		String loc="";
-		
-		if(pwEncoder.matches(memPw, mem.getMemPw())) {
-			m.addAttribute("memberLogin",mem);
-			loc="redirect:/";
-		}else {
-			m.addAttribute("msg","로그인실패");
-			m.addAttribute("loc","/");
-			loc="common/msg";
-		}
-		return loc;
-	}
-	//로그아웃
-	@RequestMapping("/member/logout")
-	public String logout(HttpSession session, SessionStatus ss) {
-		
-		if(!ss.isComplete()) {
-			ss.setComplete();
-		}
-		if(session != null) {
-			session.invalidate();
-		}
-		return "redirect:/";
-	}
+//	@RequestMapping("/member/memberLogin")
+//	public String memberLogin (String memEmail, String memPw, Model m) {
+//		
+//		Member mem = service.memberLogin(memEmail);
+//		System.out.println(mem);
+//		String loc="";
+//		
+//		if(pwEncoder.matches(memPw, mem.getMemPw())) {
+//			m.addAttribute("memberLogin",mem);
+//			loc="redirect:/";
+//		}else {
+//			m.addAttribute("msg","로그인실패");
+//			m.addAttribute("loc","/");
+//			loc="common/msg";
+//		}
+//		return loc;
+//	}
+//	//로그아웃
+//	@RequestMapping("/member/logout")
+//	public String logout(HttpSession session, SessionStatus ss) {
+//		
+//		if(!ss.isComplete()) {
+//			ss.setComplete();
+//		}
+//		if(session != null) {
+//			session.invalidate();
+//		}
+//		return "redirect:/";
+//	}
 	//회원가입 페이지전환
 	@RequestMapping("/member/enrollMember")
 	public String enrollMember() {
