@@ -15,9 +15,10 @@ public class EnterpriceServiceImpl implements EnterpriceService {
 	@Autowired
 	SqlSession session;
 	
+	//기업회원가입
 	@Override
-	public Enterprice enterLogin(String entEmail) {
-		return dao.enterLogin(session, entEmail);
+	public int enrollEnter(Enterprice ent) {
+		return dao.enrollEnter(ent,session);
 	}
 
 }

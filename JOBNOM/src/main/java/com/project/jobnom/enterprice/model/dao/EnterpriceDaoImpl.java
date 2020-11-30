@@ -9,8 +9,10 @@ import com.project.jobnom.enterprice.model.vo.Enterprice;
 public class EnterpriceDaoImpl implements EnterpriceDao {
 
 	@Override
-	public Enterprice enterLogin(SqlSession session, String entEmail) {
-		return session.selectOne("enterprice.enterLogin", entEmail);
+	public int enrollEnter(Enterprice ent, SqlSession session) {
+		return session.insert("enterprice.enrollEnter",ent);
 	}
+
+	
 
 }

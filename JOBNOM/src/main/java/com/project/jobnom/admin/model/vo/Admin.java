@@ -12,4 +12,5 @@ public class Admin {
 	private int adminNo;
 	private String adminEmail;
 	private String adminPw;
+	private int type;// 1
 }

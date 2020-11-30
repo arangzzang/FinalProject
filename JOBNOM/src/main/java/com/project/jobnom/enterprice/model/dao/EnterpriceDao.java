@@ -6,5 +6,5 @@ import com.project.jobnom.enterprice.model.vo.Enterprice;
 
 public interface EnterpriceDao {
 
-	Enterprice enterLogin(SqlSession session, String entEmail);
+	int enrollEnter(Enterprice ent, SqlSession session);
 }

@@ -7,14 +7,27 @@
 		<result column="ent_pw" property="entPw"/>
 		<result column="ent_name" property="entName"/>
 		<result column="ent_business_no" property="entBusinessNo"/>
-		<result column="ent_category" property="entCategory"/>
 		<result column="ent_logo" property="entLogo"/>
+		<result column="ent_category1" property="entCategory1"/>
+		<result column="ent_category2" property="entCategory2"/>
 		<result column="rep_name" property="repName"/>
 		<result column="rep_phone" property="repPhone"/>
 	</resultMap>
 
-	<select id="enterLogin" parameterType="string" resultMap="entMap">
-		select * from enterprice where ent_email = #{entEmail}
-	</select>
+	<insert id="enrollEnter" parameterType="ent">
+		insert into enterprice values(
+									seq_ent_no.nextval,
+									#{entEmail},
+									#{entPw},
+									#{entName},
+									#{entBusinessNo},
+									#{entLogo},
+									#{entCategory1},
+									#{entCategory2},
+									#{repName},
+									#{repPhone},
+									default
+									)
+	</insert>
 
 </mapper>

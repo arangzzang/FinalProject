@@ -99,7 +99,10 @@
 	                                 <div class="valid-feedback">비밀번호 입력완료.</div>
 	                                 <div class="invalid-feedback">비밀번호를 입력해주세요.</div>
 	                              </div>
-	                              <input type="hidden" name="type" value="3">
+	                              <!-- 분기문처리해야됨...ㅠㅠㅠㅠㅠ -->
+<!-- 	                              <input type="hidden" name="type" value="1">qqq : 회원구분 관리자 -->
+	                              <input type="hidden" name="type" value="2"><!-- qqq : 회원구분 기업 -->
+<!-- 	                              <input type="hidden" name="type" value="3">qqq : 회원구분 회원 -->
 	                              <label>
 	                                 <input type="checkbox" checked="checked" name="remember">E_mail저장하기
 	                              </label>

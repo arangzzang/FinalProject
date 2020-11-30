@@ -14,10 +14,10 @@ public class Enterprice {
 	private String entPw;			//기업비밀번호
 	private String entName;			//기업 이름
 	private String entBusinessNo;	//사업자번호
-	private int categoryNo;			//카테고리 FK
 	private String entLogo;			//로고
 	private String entCategory1;	//1차산업군
 	private String entCategory2;	//2차 직무
 	private String repName;			//담당자이름
 	private String repPhone;		//담당자 번호
+	private int type;// 2
 }

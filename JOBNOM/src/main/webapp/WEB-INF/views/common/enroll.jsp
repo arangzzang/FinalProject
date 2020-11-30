@@ -80,6 +80,7 @@
                         <option>재직중</option>
                      </select>
                   </div>
+<!--                   <input type="hidden" name="type" value="3"> -->
                </div>
             </div>
             <div class="text-center enrollBtn">
@@ -90,56 +91,56 @@
    </div>
    <!-- 기업회원 -->
    <div class="container enrollMain ent_enroll">
-      <form action="${path }/member/enrollEnterEnd" class="needs-validation" novalidate>
+      <form action="${path }/enterprice/enrollEnterEnd" class="needs-validation" novalidate>
          <div class="jumbotron">
             <h1>기업 회원 가입</h1>
             <div class="row">
                <div class="col-sm-12">
 	               <div class="form-gruop">
 	                  <label for="ent_email">담당자이메일</label>
-	                  <input type="email" class="form-control" id="ent_email" placeholder="담당자 이메일을 입력해주세요." name="" required>
+	                  <input type="email" class="form-control" id="ent_email" placeholder="담당자 이메일을 입력해주세요." name="entEmail" required>
 	                  <div class="valid-feedback">이메일 입력완료.</div>
 	                  <div class="invalid-feedback">이메일을 입력해주세요.</div>
 	               </div>
                   <div class="form-gruop">
                      <label for="entPw">비밀번호</label>
-                     <input type="password" class="form-control" id="entPw" placeholder="비밀번호를 입력해주세요." name="" required>
+                     <input type="password" class="form-control" id="entPw" placeholder="비밀번호를 입력해주세요." name="entPw" required>
                      <div class="valid-feedback">비밀번호 입력완료.</div>
                      <div class="invalid-feedback">비밀번호를 입력해주세요.</div>
                   </div>
                   <div class="form-gruop">
                      <label for="entPw2">비밀번호확인</label>
-                     <input type="password" id="entPw2" class="form-control" placeholder="2차 비밀번호를 입력해주세요." name="" required>
+                     <input type="password" id="entPw2" class="form-control" placeholder="2차 비밀번호를 입력해주세요." name="entPw2" required>
                      <div class="valid-feedback">비밀번호 입력완료.</div>
                      <div class="invalid-feedback">비밀번호를 입력해주세요.</div>
                   </div>
                   <div class="form-gruop">
                      <label for="ent_name">기업이름</label>
-                     <input type="text" id="ent_name" class="form-control entName" placeholder="기업이름을 입력해주세요." name="" required>
+                     <input type="text" id="ent_name" class="form-control entName" placeholder="기업이름을 입력해주세요." name="entName" required>
                      <div class="valid-feedback">기업 이름 입력완료.</div>
                      <div class="invalid-feedback">기업 이름을 입력해주세요.</div>
                   </div>
                   <div class="form-gruop">
                      <label for="ent_CRN">사업자 등록번호</label>
-                     <input type="number" id="ent_CRN" class="form-control" placeholder="입력시'-'는 제외합니다." name="" required>
+                     <input type="number" id="ent_CRN" class="form-control" placeholder="입력시'-'는 제외합니다." name="entBusinessNo" required>
                      <div class="valid-feedback">비밀번호 입력완료.</div>
                      <div class="invalid-feedback">비밀번호를 입력해주세요.</div>
                   </div>
                   <div class="form-gruop">
                      <label for="rep_name">담당자 이름(실명)</label>
-                     <input type="text" id="rep_name" class="form-control" placeholder="실명을 기입해주세요." name="" required>
+                     <input type="text" id="rep_name" class="form-control" placeholder="실명을 기입해주세요." name="repName" required>
                      <div class="valid-feedback">이름 입력완료.</div>
                      <div class="invalid-feedback">이름을 입력해주세요.</div>
                   </div>
                   <div class="form-gruop">
                      <label for="rep_phone">담당자 번호</label>
-                     <input type="tel" id="rep_phone" class="form-control" placeholder="입력시'-'는 제외합니다." name="" required>
+                     <input type="tel" id="rep_phone" class="form-control" placeholder="입력시'-'는 제외합니다." name="repPhone" required>
                      <div class="valid-feedback">번호 입력완료.</div>
                      <div class="invalid-feedback">번호를 입력해주세요.</div>
                   </div>
                   <div class="form-gruop">
                      <label for="ent_catagory">1차 직업군</label>
-                     <select class="form-control ent_catagory" id="ent_catagory" name="">
+                     <select class="form-control ent_catagory" id="ent_catagory" name="entCategory1">
                         <option>기타</option>
                         <option>IT/웹/통신</option>
                         <option>은행/금융업</option>
@@ -151,16 +152,17 @@
                   </div>
                   <div class="form-gruop">
                      <label for="ent_catagory2">2차 직업군</label>
-                     <select class="form-control ent_catagory2" id="ent_catagory2" required>
+                     <select class="form-control ent_catagory2" id="ent_catagory2" name="entCategory2" required>
                         <option>기타</option>
                      </select>
                   </div>
                   
                   <label>기업 로고(선택)</label>
                   <div class="custom-file">
-                     <input type="file" class="custom-file-input" id="customFile">
+                     <input type="file" class="custom-file-input" id="customFile" name="entLogo">
                      <label class="custom-file-label" for="customFile">이쁜로고가 좋겠죠?</label>
                   </div>
+<!--                   <input type="hidden" name="type" value="2"> -->
                </div>
             </div>
             <div class="text-center enrollBtn">

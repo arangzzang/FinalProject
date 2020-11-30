@@ -17,4 +17,5 @@ public class Member {
 	private String memMembership;
 	private String memCategory1;
 	private String memCategory2;
+	private int type;// 3
 }
