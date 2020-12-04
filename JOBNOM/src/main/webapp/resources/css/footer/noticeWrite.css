@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+#content {
+        width: 960px;
+        margin: 107px auto;
+        min-height: 40px;
+    }
+    
+.form-control{
+	margin-top: 0px;
+    margin-bottom: 0px;
+    height: 303px;
+}    

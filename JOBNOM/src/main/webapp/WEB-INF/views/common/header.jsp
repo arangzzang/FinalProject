@@ -14,6 +14,7 @@
 <script src="${path }/resources/js/jquery-3.5.1.min.js"></script>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"><!--Font Awesome-->
 <!-- Popper JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <!-- Latest compiled JavaScript -->
@@ -40,7 +41,7 @@
                      <a class="menus" href="${path }/Hire/HireHome.do">채용</a><!-- nav-link -->
                   </li>
                   <li class="nav-item">
-                     <a class="menus" href="">기업</a><!-- nav-link -->
+                     <a class="menus" href="${path }/enterprice/companyList.do">기업</a><!-- nav-link -->
                   </li>
                </ul>
                <c:if test="${memberLogin==null }">
@@ -106,5 +107,23 @@
                </c:if>
             </div>
          </nav>
+          <!-- 검색창 시작 -->
+		  <div class="searchbar_section" id="searchbar_section">
+		    <div class="wrap">
+		        <form action="${path }/search/searchResult.do" id="search_form" method="post">
+		            <div class="schbar_green" >
+		                <div class="schbar">
+		                    <i class="fas fa-search"></i>
+		                    <label class="placeholder">
+		                        <span class="placeholder_txt"></span>
+		                        <input autocomplete=”off” type="text" class="input_search" id="search_bar_search_query" maxlength="201" name="query" placeholder="기업,채용공고를 검색해 보세요">
+		                    </label>
+		                    <button class="btn_schbar">검색</button>
+		                </div>
+		            </div>
+		        </form>
+		    </div>
+		</div>
+		<!-- 검색창 끝 -->
       </header>
 	
