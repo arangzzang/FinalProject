@@ -34,12 +34,13 @@
          <div class="jumbotron">
             <h1>회원 가입</h1>
             <div class="row">
-               <div class="col-sm-12">
+               <div class="col-sm-12 col-md-12">
   	               <div class="form-gruop">
 	                  <label for="mem_email">이메일</label>
-	                  <input type="email" class="form-control" id="mem_email" placeholder="이메일을 입력해주세요." name="memEmail" required>
+	                  <input type="email" class="form-control email" id="mem_email" placeholder="이메일을 입력해주세요." name="memEmail" required>
 	                  <div class="valid-feedback">이메일 입력완료.</div>
 	                  <div class="invalid-feedback">이메일을 입력해주세요.</div>
+	                  <input type="button" class="dupliBtnMember" value="이메일 중복확인">
 	               </div>
                   <div class="form-gruop">
                      <label for="memPw">비밀번호</label>
@@ -95,12 +96,13 @@
          <div class="jumbotron">
             <h1>기업 회원 가입</h1>
             <div class="row">
-               <div class="col-sm-12">
+               <div class="col-sm-12 col-md-12">
 	               <div class="form-gruop">
 	                  <label for="ent_email">담당자이메일</label>
-	                  <input type="email" class="form-control" id="ent_email" placeholder="담당자 이메일을 입력해주세요." name="entEmail" required>
+	                  <input type="email" class="form-control email" id="ent_email" placeholder="담당자 이메일을 입력해주세요." name="entEmail" required>
 	                  <div class="valid-feedback">이메일 입력완료.</div>
 	                  <div class="invalid-feedback">이메일을 입력해주세요.</div>
+	                  <button type="button" class="dupliBtn">이메일 중복확인</button>
 	               </div>
                   <div class="form-gruop">
                      <label for="entPw">비밀번호</label>
@@ -216,9 +218,12 @@
             opt.innerHTML = values[i];
             target.appendChild(opt);
          }  
-         console.log($("#mem_category1 option:selected").val());
-         console.log($("#mem_category2 option:selected").val());
-         
+         console.log($(".mem_catagory option:selected").index(""));
+         // console.log(typeof $(".mem_catagory option").val("#mem_catagory option:selected"));
+         var index = $("#mem_catagory option").index($("#mem_catagory option:selected"));
+         var select_val = $("#mem_catagory option:selected").val();
+         // alert('선택 인덱스 =' + index + ' 선택한 값 ' + select_val);
+         console.log($(".mem_category2").val());
       });
          //기업
          $(".ent_catagory").change(e=>{
@@ -249,6 +254,32 @@
          }
       });
    });
+   
+   //이메일 중복확인
+   $(function(){
+	   $(".dupliBtnMember").click(e=>{
+		   const dupli=document.getElementById("mem_email").value;
+		   $.ajax({
+			   url: "${path}/checkDuplicate/enrollCommon",
+			   data: {dupli:dupli},
+			   success:data=>{
+				   console.log(data);
+				   if(data != null){
+					   alert("사용할수 없는 emaiil입니다")
+				   }else{
+                  alert("사용할수 있는 emaiil입니다")
+               }
+			   }
+		   })
+	   });
+   });
+   
+//    $(".email").keyup(e=>{
+// 		  const userEmail=$(e.target).val().tirm();
+// 		  if(userEmail==""){
+// 			  return;
+// 		  }
+// 	   });
 </script>
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>

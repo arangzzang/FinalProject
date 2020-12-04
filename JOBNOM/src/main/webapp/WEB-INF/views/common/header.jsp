@@ -86,6 +86,9 @@
                         </div>
                         <div class="modal-body">
                            <form action="${path }/common/commonLogin" class="needs-validation" method="post" novalidate>
+<!--                               <input type="hidden" name="type" value="1" > qqq : 회원구분 관리자 -->
+<!--                               <input type="hidden" name="type" value="2">qqq : 회원구분 기업 -->
+<!--                               <input type="hidden" name="type" value="3">qqq : 회원구분 회원 -->
 	                           <div class="modal-body">
 	                              <div class="form-group">
 	                                 <label for="email">E_mail:</label>
@@ -99,10 +102,6 @@
 	                                 <div class="valid-feedback">비밀번호 입력완료.</div>
 	                                 <div class="invalid-feedback">비밀번호를 입력해주세요.</div>
 	                              </div>
-	                              <!-- 분기문처리해야됨...ㅠㅠㅠㅠㅠ -->
-<!-- 	                              <input type="hidden" name="type" value="1">qqq : 회원구분 관리자 -->
-	                              <input type="hidden" name="type" value="2"><!-- qqq : 회원구분 기업 -->
-<!-- 	                              <input type="hidden" name="type" value="3">qqq : 회원구분 회원 -->
 	                              <label>
 	                                 <input type="checkbox" checked="checked" name="remember">E_mail저장하기
 	                              </label>
@@ -127,16 +126,16 @@
                   </div>
                </div>
                </c:if>
-               <c:if test="${commonLogin != null }">
-                  <span><a href="${path }/member/myPage">${commonLogin.MEM_EMAIL}</a>님,안녕하세요</span>
+               <c:if test="${commonLogin != null && commonLogin.type == 3 }">
+                  <span><a href="${path }/member/myPage">${commonLogin.memEmail}</a></span>
                   &nbsp;
                   <button class="btn btn-outline-success my-4 my-sm-0" type="button" onclick="location.replace('${path}/member/logout');">로그아웃</button>
                </c:if>
-<%--                <c:if test="${enterLogin!=null }"> --%>
-<%--                   <span><a href="${path }/common/myPage">${enterLogin.entEmail }</a>님,안녕하세요</span> --%>
-<!--                   &nbsp; -->
-<%--                   <button class="btn btn-outline-success my-4 my-sm-0" type="button" onclick="location.replace('${path}/enterprice/logout');">로그아웃</button> --%>
-<%--                </c:if> --%>
+               <c:if test="${commonLogin !=null && commonLogin.type == 2 }">
+                  <span><a href="${path }/common/myPage">${commonLogin.memEmail}</a></span>
+                  &nbsp;
+                  <button class="btn btn-outline-success my-4 my-sm-0" type="button" onclick="location.replace('${path}/enterprice/logout');">로그아웃</button>
+               </c:if>
             </div>
          </nav>
       </header>

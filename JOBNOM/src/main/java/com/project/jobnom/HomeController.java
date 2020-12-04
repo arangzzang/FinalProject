@@ -32,8 +32,8 @@ public class HomeController {
 		String formattedDate = dateFormat.format(date);
 		
 		model.addAttribute("serverTime", formattedDate );
-		
-		return "index";
+//		"member/mypage/myProfile"
+		return "member/mypage/myProfile";
 	}
 	
 }

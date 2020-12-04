@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 public class Login {
 
 	private String type;
+	private int memNo;
 	private String memEmail;
 	private String memPw;
 	

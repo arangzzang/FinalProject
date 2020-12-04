@@ -1,5 +1,6 @@
 package com.project.jobnom.common.model.dao;
 
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -14,5 +15,11 @@ public class CommonDaoImpl implements CommonDao {
 	public Login commonLogin(SqlSession session, Map login) {
 		return session.selectOne("common.commonLogin", login );
 	}
+
+	@Override
+	public List<Login> checkDuplicateEmail(SqlSession session, String memEmail) {
+		return session.selectList("common.checkDuplicateEmail", memEmail);
+	}
+	
 
 }

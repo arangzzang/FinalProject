@@ -31,19 +31,16 @@
             </ul>
         </nav>
         <div class="row ">
-            <div class="t col-md-12 col-sm-12 text-left">첫번째 메뉴</div>
-            <p class="content">내용1</p>
-            <div class="t col-md-12 col-sm-12 text-left">두번째 메뉴</div>
-            <p class="content">내용2</p>
-            <div class="t col-md-12 col-sm-12 text-left">세번째 메뉴</div>
-            <p class="content">내용3</p>
-            <div class="t col-md-12 col-sm-12 text-left">네번째 메뉴</div>
-            <p class="content">내용4</p>
-            <div class="t col-md-12 col-sm-12 text-left">다섯번째 메뉴</div>
-            <p class="content">내용5</p>
+	        <c:forEach items="${fList }" var="f" >
+	            <div class="t col-md-12 col-sm-12 text-left">
+	            	<c:out value="${f.faqQuestion}"/>
+	            	<c:out value="${f.faqWritedate }"/>
+	            </div>
+	            <p class="content"><c:out value="${f.faqAnswer}"/></p>
+	        </c:forEach>
         </div>
         <div>
-            <button onclick="">글쓰기</button>
+            <button type="button" onclick="writeFaq();">글쓰기</button>
         </div>
     </div>
 
@@ -52,10 +49,6 @@
             border-bottom: 1px solid lightgray; ;
         }
         .t{
-            width:300px;
-            height:30px;
-            background-color:crimson;
-            color:white;
             text-align:center;
             cursor:pointer;
         }
@@ -70,6 +63,7 @@
     </style>
 
     <script>
+    	//태그 크릭시 슬라이드
         let flag=true;
         $(function(){
             $(".t").click(function(){
@@ -83,13 +77,17 @@
                 // }
             });
         });
-
+		//메뉴바 클릭시 css변화
         let menu=document.getElementsByClassName("footmenu");
         $(function (){
             $(menu).click(function(){
                 $(this).css("border-bottom","solid 1px green");
             });
         });
+        //글쓰기 버튼 클릭시 이동
+        function writeFaq(){
+        	location.href='${path}/welcome/writeFaq';
+        }
     </script>
 
 </section>

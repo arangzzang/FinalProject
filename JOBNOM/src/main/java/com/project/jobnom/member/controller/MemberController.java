@@ -40,18 +40,18 @@ public class MemberController {
 //		}
 //		return loc;
 //	}
-//	//로그아웃
-//	@RequestMapping("/member/logout")
-//	public String logout(HttpSession session, SessionStatus ss) {
-//		
-//		if(!ss.isComplete()) {
-//			ss.setComplete();
-//		}
-//		if(session != null) {
-//			session.invalidate();
-//		}
-//		return "redirect:/";
-//	}
+	//로그아웃
+	@RequestMapping("/member/logout")
+	public String logout(HttpSession session, SessionStatus ss) {
+		
+		if(!ss.isComplete()) {
+			ss.setComplete();
+		}
+		if(session != null) {
+			session.invalidate();
+		}
+		return "redirect:/";
+	}
 	//회원가입 페이지전환
 	@RequestMapping("/member/enrollMember")
 	public String enrollMember() {

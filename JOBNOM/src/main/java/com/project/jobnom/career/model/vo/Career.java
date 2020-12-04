@@ -1,4 +1,4 @@
-package com.project.jobnom.common.model.vo;
+package com.project.jobnom.career.model.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
