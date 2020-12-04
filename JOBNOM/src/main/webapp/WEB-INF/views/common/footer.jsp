@@ -11,8 +11,8 @@
                  <ul id="footMenu">
                      <li><a href="#" class="footerMenus">이용약관</a></li>|
                      <li><a href="#" class="footerMenus">개인정보처리방침</a></li>|
-                     <li><a href="#" class="footerMenus">공지사항</a></li>|
                      <li><a href="${path }/welcome/FAQ" class="footerMenus">FAQ</a></li>|
+                     <li><a href="${path }/footer/notice.do" class="footerMenus">공지사항</a></li>|
                      <li><a href="#" class="footerMenus">고객문의</a></li>
                  </ul>
                  <ul class="footicon">

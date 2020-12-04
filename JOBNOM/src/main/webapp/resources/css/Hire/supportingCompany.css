@@ -1,0 +1,244 @@
+a:hover{
+
+    color: green;
+  }
+  a{
+    text-decoration: none;
+    color:#000000;
+
+  }
+
+body{
+    width:  100%
+ }
+ /* 세션 고정값 */
+ section{
+     
+     width: 80%;
+     height:100%;
+     margin: 0 auto;
+     min-height: 100%;
+     box-sizing: border-box;
+     -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+ 
+ }
+
+img{
+    width: 100px;
+    height: 100px;
+}
+.job2, .option2{
+    display: none;
+}
+.container{
+    padding: 0;
+}
+/* 마이페이지 헤더회원정보 */
+.memberinfo{
+    background-color: #fff;
+    padding: 52px 26px 10px 0;
+    width: 100%;
+    margin: 0 auto;
+}
+.memberinfo-parent{
+    border-bottom: 1px #e5e6e9 solid;
+}
+/* 마이페이지 navbar */
+.MPheadmenu{
+    width: 70%;
+    margin: 0 auto;
+}
+.MPheadmenu-parent{
+    border-bottom: 1px #e5e6e9 solid;
+    background-color: #fff;
+}
+.navbtn{
+    background-color: white;
+    border: none;
+}
+.navbtn:hover{
+    font-weight: bold;
+    color: green;
+    border: none;
+}
+
+
+
+/*바디 전체부분*/
+.with{
+    width: 80%;
+    margin: 0 auto;
+}
+.withcon{
+    padding-left: 0;
+}
+*{
+    font-size: 13px;
+}
+/* 사이드바 */
+.sidebar{
+    background-color: #e5e6e9;
+}
+.sidebar-title{
+    padding: 10px 0 10px 10px;
+    border-bottom: 1px solid #e5e6e9;
+    font-weight: bold;
+    font-size: 18px;
+}
+.sidebtn{
+    border: none;
+    background-color: #e5e6e9;
+    padding-bottom: 10px;
+}
+.sidebtn:hover{
+    font-weight: bold;
+    color: green;
+}
+/*바디 메인*/
+.maininfo-parent{
+    background-color: #e5e6e9;
+}
+.maininfo{
+    padding: 56px 26px 56px 26px;
+    width: 80%;
+    margin: 0 auto;
+}
+.maincon{
+    margin: 0;
+}
+.form-gruop{
+    padding-bottom: 10px;
+}
+.with-parent{
+    margin-bottom: 100px;
+}
+.headbar{
+    padding-left: 10px;
+}
+
+
+/* ////////////////////////////////////////////////////// */
+
+.activity{
+    padding-top: 30px;
+    width: 100%;
+
+    height: 500px;
+    display: flex;
+}
+.activityList{
+    width: 25%;
+    border:solid;
+    height: 200px;
+    padding: 10px;
+    font-size: 18px;
+    font:bold;
+    margin-bottom:20px ;
+  
+}
+.activityListLine{
+	border-bottom: solid;
+	padding-top: 10px;
+}
+
+.activityListReview{
+    display: flex;
+     padding-top: 15px;
+    padding-left: 20px;
+ 
+}
+.activityListCom{
+    display: flex;
+     padding-top: 15px;
+    padding-left: 20px;
+}
+.activityCount1{
+    padding-left:130px ;
+    
+    }
+    .activityCount2{
+        padding-left:78px ;
+    }
+
+.supportingCompanyMain{
+    margin-left: 20px;
+    width: 70%;
+    height: 600px;
+}
+.supportingCompanyTitle{
+    padding: 20px;
+    font-size: 20px;
+    font:bold;
+
+}
+/* 입사지원 공고 상세 보기  */
+.myHyreSupportView{
+
+    width: 100%;
+    height: 400px;
+    font-size: 30px;
+    font: bold;
+
+
+}
+
+.myHyreSupportDetail{
+    margin:0 auto;
+    width: 100%;
+    height: 40px;
+    margin-top: 30px;
+    padding-top: 10px;
+    display: flex;
+    font-size: 13px;
+    background-color: rgb(209, 201, 201);
+
+
+}
+.myHyreSupportDetail1{
+    padding-left: 100px;
+}
+.myHyreSupportDetail2{
+    padding-left: 170px;
+}
+.myHyreSupportDetail3{
+    padding-left: 170px;
+}
+.myHyreSupportCount{
+    padding-top: 20px;
+    font-size: 17px;
+}
+
+.myHyreSupportListAll{
+    height: 80px;
+    padding-top: 20px;
+    font-size: 16px;
+    display: flex;
+    border-bottom: solid rgb(176, 174, 174);
+    
+    
+
+}
+.myHyreSupportList1{
+    margin-left:10px ;
+    padding-left: 10px;
+    width: 200px;
+    text-align: center;
+    padding-top: 5px;
+
+}
+.myHyreSupportList2{
+    padding-left: 10px;
+    text-align: center;
+    padding-top: 5px;
+    width: 300px;
+
+}
+
+.myHyreSupportList3{
+    padding-left: 10px;
+    text-align: center;
+    width: 300px;
+
+}
+
