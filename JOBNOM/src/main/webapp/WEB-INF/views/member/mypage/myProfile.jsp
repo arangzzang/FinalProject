@@ -81,9 +81,9 @@
 							<div class="col-md-6">
 								<span class="span1">성별</span>
 								<label for="memGender-M">남자</label>
-								<input type="checkbox" class="aaa" onclick="genderCheck(this);" id="memGender-M" >
+								<input type="checkbox" class="aaa" onclick="genderCheck(this);" aria-required="false" id="memGender-M" >
 								<label for="memGender-F">여자</label>
-								<input type="checkbox" class="aaa" onclick="genderCheck(this);" id="memGender-F" >
+								<input type="checkbox" class="aaa" onclick="genderCheck(this);" aria-required="false" id="memGender-F" >
 							</div>
 							<div class="col-md-6">
 								<span class="span1">출생연도</span>
@@ -95,7 +95,7 @@
 								<span class="span2">현재(관심)직종</span>
 								<div class="flex">
 									<select class="input1 mem_category col-md-6" id="mem_category" name="memCategory1" required>
-										<option value="none">기타</option>
+										<option value="">기타</option>
 										<option value="IT">IT</option>
 										<option value="금융/재무">금융/재무</option>
 										<option value="교육">교육</option>
@@ -114,17 +114,18 @@
 								<span class="line">
 									<label for="currial" class="span2">경력</label>
 									<select name="" id="currial" class="input1" required>
-										<option value="">0</option>
-										<option value="">1</option>
-										<option value="">2</option>
-										<option value="">3</option>
-										<option value="">4</option>
-										<option value="">5</option>
-										<option value="">6</option>
-										<option value="">7</option>
+										<option value="">선택해주세요</option>
+										<option value="0">0</option>
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+										<option value="6">6</option>
+										<option value="7">7</option>
 									</select>
-									<label for="comment">업무 및 스킬:</label>
-									<textarea class="form-control" rows="1" id="comment" placeholder="(예시) 영업기획, 디지털마케팅,UI디자인(업무와 관련된 자격증 및 기술명 포함)" required></textarea>
+									<label for="comment" class="span2">업무 및 스킬</label>
+									<textarea class="form-control inp" rows="1" id="comment" placeholder="(예시) 영업기획, 디지털마케팅,UI디자인(업무와 관련된 자격증 및 기술명 포함)" required></textarea>
 									
 									<!-- <ul>
 										<li><a href=""></a></li>
@@ -146,8 +147,8 @@
 						</div>
 						<div class="row">
 							<div class="col-12 col-md-12">
-								<label for="comment1">자기소개</label><br>
-								<textarea class="form-control" rows="5" id="comment1" placeholder="경력,경험위추의 자기소개를 작성해주세요. 관심분야, 앞으로의 목표등의 내용도 좋습니다"></textarea>
+								<label for="commented" class="span2">자기소개</label><br>
+								<textarea class="form-control inp" rows="5" id="commented" placeholder="경력,경험위추의 자기소개를 작성해주세요. 관심분야, 앞으로의 목표등의 내용도 좋습니다"></textarea>
 							</div>
 						</div>
 					</div>
@@ -155,14 +156,15 @@
 				<br>
 				<div class="profilebody"> 
 					<div class="container">
-						<div class="row">
-							<div class="col-12 col-md-12">
-								<span class="span2" style="padding-top: 10px;">학력사항</span>
+						<!-- 학력사항 -->
+						<div class="row edu">
+							<div class="col-12 col-md-12 nth">
+								<span class="span2 pd">학력사항</span>
 								<div id="element1">
 									<div class="col-4 col-md-4" id="element2">
 										<div class="dateelement">
-											<input type="date" class="dateinput" value="년/월">&nbsp;~&nbsp;
-											<input type="date" class="dateinput" data-placeholder="년/월">
+											<input type="date" class="dateinput" >&nbsp;~&nbsp;
+											<input type="date" class="dateinput" >
 										</div>
 										<label for="goal">졸업</label>
 										<input type="checkbox" id="goal">
@@ -172,8 +174,8 @@
 										<input type="checkbox" id="ing">
 									</div>
 									<div class=" col-8 col-md-8">
-										<div class="block">
-											<input type="text"name="" class="q" placeholder="학교명을 입력해주세요">
+										<div>
+											<input type="text" name="" class="col-md-12 inp" placeholder="학교명을 입력해주세요">
 											<!-- 
 											<div>
 												<ul>
@@ -186,12 +188,10 @@
 												</ul>
 											</div>  
 											-->
-											<input type="text" name="" class="w" placeholder="전공 및 학위">
-											<textarea name=""  cols="30" class="e" rows="10"></textarea>
+											<input type="text" name="" class="col-md-12 inp" placeholder="전공 및 학위">
+											<textarea name=""  cols="30" class="form-control col-md-12 inp" placeholder="학력사항 내용" rows="10"></textarea>
 										</div>
-										<div>
-											<button><i>휴지통아이콘</i></button>
-										</div>
+										<button class="float"><i>휴지통아이콘</i></button>
 									</div>
 								</div>
 								<div>
@@ -199,91 +199,105 @@
 								</div>
 							</div>
 						</div>
-						<div class="row">
+						<!-- 활동 및 수상내역 -->
+						<div class="row awa">
 							<div class="col-12 col-md-12">
-								<span>활동 및 수상내역</span>
-								<div class="col-4 col-md-4">
-									<input type="date" placeholder="년/월">&nbsp;~&nbsp;
-									<input type="date" placeholder="년/월">
-									<label for="prize">수상</label>
-									<input type="checkbox" id="prize">
-								</div>
-								<div class=" col-8 col-md-8">
-									<div>
-										<input type="text" placeholder="활동 및 수상 명을 입력해주세요">
-										<button><i>휴지통아이콘</i></button>
-										<textarea name="" cols="30" rows="10"></textarea>
+								<span class="span2" >활동 및 수상내역</span>
+								<div id="element1">
+									<div class="col-4 col-md-4">
+										<div class="dateelement">
+											<input type="date" class="dateinput inp" placeholder="년/월">&nbsp;~&nbsp;
+											<input type="date" class="dateinput inp" placeholder="년/월">
+										</div>
+										<label for="prize">수상</label>
+										<input type="checkbox" id="prize">
 									</div>
-									<div>
-										<button>활동/수상내역 추가</button>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-12 col-md-12">
-								<span>경력 사항</span>
-								<div class="col-4 col-md-4">
-									<input type="date" placeholder="년/월">&nbsp;~&nbsp;
-									<input type="date" placeholder="년/월">
-									<label for="Incumbent">재직중</label>
-									<input type="checkbox" id="Incumbent">
-									<label for="Leaves">퇴사</label>
-									<input type="checkbox" id="Leaves">
-								</div>
-								<div class=" col-8 col-md-8">
-									<div>
-										<input type="text" placeholder="기업명">
-										<button><i>휴지통아이콘</i></button>
-									</div>
-									<!-- <div>
-										<ul>
-											<li><a href=""></a></li>
-											<li><a href=""></a></li>
-											<li><a href=""></a></li>
-											<li><a href=""></a></li>
-											<li><a href=""></a></li>
-											<li><a href=""></a></li>
-										</ul> 
-									</div> -->
-									<div>
-										<input type="text" placeholder="부서">
-										<input type="text" placeholder="직책">
-									</div>
-									<div>
-										<input type="text" placeholder="직무">
-									</div>
-									<!-- <div>
-										<ul>
-											<li><a href=""></a></li>
-											<li><a href=""></a></li>
-											<li><a href=""></a></li>
-											<li><a href=""></a></li>
-											<li><a href=""></a></li>
-											<li><a href=""></a></li>
-										</ul> 
-									</div> -->
-									<textarea name="" cols="30" rows="10"></textarea>
-									<div>
-										<button>경력 추가</button>
+									<div class=" col-8 col-md-8">
+										<div>
+											<input type="text" class="col-md-12 inp" placeholder="활동 및 수상 명을 입력해주세요">
+											<textarea name="" class="form-control col-md-12 inp" cols="30" rows="10"></textarea>
+										</div>
+										<button class="float"><i>휴지통아이콘</i></button>
 									</div>
 								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-12 col-md-12">
-								<span>자격증 및 기타</span>
 								<div>
-									<input type="text" placeholder="항목(자격증,언어,스킬 등 자유롭게 기재)">
-									<button><i>휴지통아이콘</i></button>
-									<textarea name="" id="" cols="30" rows="10"></textarea>
-									<button>자격증 추가</button>
+									<button>활동/수상내역 추가</button>
 								</div>
 							</div>
 						</div>
-						<div class="row">
+						<!-- 경력사항 -->
+						<div class="row car">
 							<div class="col-12 col-md-12">
+								<span class="span2" >경력 사항</span>
+								<div id="element1">
+									<div class="col-4 col-md-4">
+										<div class="dateelement">
+											<input type="date" class="dateinput" placeholder="년/월">&nbsp;~&nbsp;
+											<input type="date" class="dateinput" placeholder="년/월">
+										</div>
+										<label for="Incumbent">재직중</label>
+										<input type="checkbox" id="Incumbent">
+										<label for="Leaves">퇴사</label>
+										<input type="checkbox" id="Leaves">
+									</div>
+									<div class=" col-8 col-md-8">
+										<input type="text" class="col-md-12 inp" placeholder="기업명">
+										<!-- <div>
+											<ul>
+												<li><a href=""></a></li>
+												<li><a href=""></a></li>
+												<li><a href=""></a></li>
+												<li><a href=""></a></li>
+												<li><a href=""></a></li>
+												<li><a href=""></a></li>
+											</ul> 
+										</div> -->
+										<div class="element1" style="display: flex;">
+											<input type="text" class="col-md-6 inp" placeholder="부서">
+											<input type="text" class="col-md-6 inp" placeholder="직책">
+										</div>
+										<input type="text" class="col-md-12 inp"  placeholder="직무">
+									<!-- <div>
+										<ul>
+											<li><a href=""></a></li>
+											<li><a href=""></a></li>
+											<li><a href=""></a></li>
+											<li><a href=""></a></li>
+											<li><a href=""></a></li>
+											<li><a href=""></a></li>
+										</ul> 
+									</div> -->
+										<textarea name="" class="form-control col-md-12 inp" placeholder="업무경험을 적어주세요" cols="30" rows="10"></textarea>
+										<button class="float"><i>휴지통아이콘</i></button>
+									</div>
+								</div>
+								<div>
+									<button>경력 추가</button>
+								</div>
+							</div>
+						</div>
+						<!-- 자격증 및 기타 -->
+						<div class="row cer">
+							<div class="col-md-12">
+								<span class="span2" >자격증 및 기타</span>
+								<div id="emt">
+									<input type="text" class="col-md-12 inp"  placeholder="항목(자격증,언어,스킬 등 자유롭게 기재)">
+									<textarea name="" class="form-control col-md-12 inp" placeholder="자세하게 입력해주세요" cols="30" rows="10"></textarea>
+									<button class="float"><i>휴지통아이콘</i></button>
+								</div>
+							</div>
+							<div>
+								<button>자격증 추가</button>
+							</div>
+						</div>
+						<!-- 공개 미공개 여부 -->
+						<div class="row pofol">
+							<span class="span2" >포트폴리오 파일 첨부 - 다운로드한 PDF에는 포트폴리오 파일이 제외됩니다.</span>
+							<div class="col-12 col-md-12 pd" id="emt">
 								<input type="file">
+							</div>
+							<div>
+								<button>파일 추가</button>
 							</div>
 						</div>
 						<div class="row">
@@ -341,7 +355,7 @@
 			else if (job1 == "마케팅") values = car4;
 			else if (job1 == "의약") values = car5;
 			else if (job1 == "서비스/고객지원") values = car6;
-			else if (job1 == "none") $(".mem_category2").hide();
+			else if (job1 == "") $(".mem_category2").hide();
 			
 			console.log(target.options.length)
 			target.options.length = 0;

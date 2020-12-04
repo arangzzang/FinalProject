@@ -33,7 +33,7 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 //		"member/mypage/myProfile"
-		return "index";
+		return "member/mypage/myProfile";
 	}
 	
 }

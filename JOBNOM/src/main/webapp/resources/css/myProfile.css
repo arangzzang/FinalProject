@@ -95,6 +95,14 @@
             outline: 0;
             width: 100%;
         }
+        .inp{
+            border: 0 !important;
+            outline: 0 !important;
+        }
+        #inp{
+            border: 0;
+            outline: 0;
+        }
         /* 성별, 출생연도 */
         .span1{
             border-bottom: 1px solid lightgray;
@@ -116,7 +124,7 @@
         .flex{
             display: flex;
         }
-        /* 학력사항 */
+        /* 필수를 제외한 항목 css */
         #element1{
             display: flex;
         }
@@ -132,8 +140,22 @@
             width: 100px;
         }
         .block{
-            /* display: table; */
-            margin: auto;
+            display: table-cell;
+        }
+        .float{
+            float: right;
+        }
+        .edu,.awa,.car,.cer,.pofol{
+            margin-bottom: 20px;
+        }
+        #element1:hover{
+            border: 1px solid lightblue;
+        }
+        #emt:hover{
+            border: 1px solid lightblue;
+        }
+        .pd{
+            padding-top: 10px;
         }
         
         /* 저장하기 버튼 */
