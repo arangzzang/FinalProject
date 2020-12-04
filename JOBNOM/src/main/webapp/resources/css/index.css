@@ -1,0 +1,384 @@
+@charset "UTF-8";
+
+    dl, ul, ol, menu, li {
+        list-style: none;
+    }
+    body{
+        width: 100%;
+    }
+    
+ 
+   
+
+
+    /* 메인 페이지 전체 css */
+    #contents_wrap_new {
+        padding-top: 60px;
+        border: 1px solid #e8e9eb;
+        background-color: #f3f3f4;
+       
+    }
+    #contents_wrap_new .contests {
+        position: relative;
+        width: 1060px;
+        border: 0 none;
+    }
+    /* 메인 페이지 가운데 정렬 ////////////////////////////////////////*/
+    .contents {
+        width: 960px;
+        margin: 107px auto;
+        min-height: 40px;
+    }
+    .top_ty1{
+        position: relative;
+        margin-bottom: 32px;
+    }
+    .top_ty1.title{
+        line-height: 40px;
+        font-size: 28px;
+        font-weight: 700;
+        display: block;
+    }
+    .top_title_area{
+    	margin-top: -52px;
+    	margin-bottom: 24px;
+    }
+    
+
+    /* 오늘의 추천 패널 ////////////////////////////////////////*/
+    .grid_masonry_layout {
+        display: block;
+        width: 1084px;
+        position: relative;
+        margin-left: -57px;
+        margin-right: -12px;
+    }
+    .swiper-wrapper {
+        height: 100%;
+        z-index: 1;
+        box-sizing: content-box;
+    }
+    .grid_masonry_layout .grid_item.mtp_w2 {
+        width: 722px;
+    }
+    .grid_masonry_layout .grid_item {
+        display: block;
+        height: 200px;
+        padding: 0 12px;
+        box-sizing: border-box;
+        background: transparent;
+        float: left;
+    }
+    .grid_masonry_layout .item-content {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+    .jply_grid_masonry_card {
+        position: relative;
+        overflow: hidden;
+        display: block;
+        width: 100%;
+        height: 100%;
+        min-height: 200px;
+        border-radius: 12px;
+        background-color: #fff;
+    }
+    a {
+        color: #333;
+        text-decoration: none;
+        cursor: pointer;
+        margin: 0;
+        padding: 0;
+    }
+    .jply_grid_masonry_card .img_thumb {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+    }
+    .jply_grid_masonry_card .img_thumb img {
+        width: 100%;
+        height: 100%;
+    }
+    .thumbs_img {
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+    .jply_grid_masonry_card .text_wrap {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: linear-gradient(to bottom, transparent, rgba(0,0,0,0.5));
+    }
+    .jply_grid_masonry_card .text_box {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 24px;
+        box-sizing: border-box;
+        color: #fff;
+    }
+    .jply_grid_masonry_card .sub_title {
+        overflow: hidden;
+        display: block;
+        width: 100%;
+        font-size: 13px;
+        line-height: 21px;
+        opacity: 0.7;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .mtp_w2 .jply_grid_masonry_card .title, .mtp_h2 .jply_grid_masonry_card .title {
+        max-height: 67.2px;
+        font-size: 24px;
+        line-height: 33.6px;
+    }
+    .grid_masonry_layout .grid_item.mtp_h2 {
+        height: 424px;
+    }
+    .mtp_h2 {
+        width: 361px; 
+        float: right;
+        margin-top: 0%;
+    }
+    .mtp_w3{
+        width: 361px; 
+        height: 424px;
+        margin-top: -206px;
+    }
+    .mtp_w4{
+        width: 361px; 
+        height: 424px;
+        margin-top: -206px;
+        margin-left: 359px;
+    }
+    /* 오늘의 추천 끝 //////////////////////////////////*/
+
+    /* 기업페이지 , 리뷰페이지 이동 div */
+    
+    .jply_con_panel {
+        position: relative;
+        display: block;
+        width: 100%;
+        margin-bottom: 60px;
+        box-sizing: border-box;
+        margin-top: -208px;
+    }
+    .grid_col {
+        position: relative;
+        width: calc(100% + 24px);
+        margin-left: -12px;
+        margin-right: -12px;
+        margin-bottom: -24px;
+    }
+    .grid_item.col_6 {
+        width: calc(100%/2);
+    }
+    .jp_content_banner_item {
+        overflow: hidden;
+        display: block;
+        width: 518px;
+        height: 120px;
+        text-align: center;
+    }
+    .jply_content_card {
+        position: relative;
+        border-radius: 12px;
+        background-color: #fff;
+    }
+    .jp_content_banner_item img {
+        width: 100%;
+        height: 100%;
+        vertical-align: top;
+    }
+
+    /*기업페이지 리뷰페이지 이동 끝  */
+    
+    /* 리뷰 */
+    .jbnd_top_ty1 {
+        position: relative;
+        margin-bottom: 32px;
+    }
+    .sub_title_g500 {
+        display: block;
+        font-size: 20px;
+        font-weight: normal;
+        line-height: 28px;
+        color: #686a6d;
+    }
+    .main_review_panel{
+        position: relative;
+        display: block;
+        width: 100%;
+        margin-bottom: 60px;
+        box-sizing: border-box;
+    }
+    .grid_col {
+        position: relative;
+        width: calc(100% + 24px);
+        margin-left: -12px;
+        margin-right: -12px;
+        margin-bottom: -24px;
+    }
+    .flex_row_wrap {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+    }
+    .grid_col .grid_item {
+        margin-bottom: 24px;
+        padding: 0 12px;
+    }
+    .company_unit {
+        position: relative;
+        display: flex;
+        width: 100%;
+        height: 32px;
+        padding-left: 40px;
+        box-sizing: border-box;
+        flex-direction: row;
+        align-items: center;
+    }
+    .company_unit .company_unit_link {
+        display: inline-flex;
+        text-decoration: none;
+        max-width: 100%;
+    }
+    .company_unit .company_unit_thumb {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    .company_unit_thumb {
+        position: relative;
+        width: 32px;
+        height: 32px;
+        border-radius: 4px;
+        background-color: #fff;
+        overflow: hidden;
+        box-sizing: border-box;
+    }
+    .company_unit_thumb img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        max-width: 100%;
+        max-height: 100%;
+        vertical-align: top;
+        transform: translate(-50%, -50%);
+    }
+    .company_unit_text {
+        overflow: hidden;
+        display: block;
+        font-size: 14px;
+        font-weight: bold;
+        line-height: 20px;
+        color: #323438;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+    .content_card_ty2 {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        width: 100%;
+        border-radius: 12px;
+        background-color: #fff;
+    }
+    .content_card_ty2 .content_box {
+        width: 100%;
+        padding: 32px;
+        box-sizing: border-box;
+    }
+    .content_card_ty2 .jp-quote {
+        display: inline-block;
+        height: 32px;
+        margin-bottom: 8px;
+        font-size: 32px;
+        color: #e5e6e9;
+    }
+    .company_star {
+        position: relative;
+        display: inline-block;
+        width: 96px;
+        height: 16px;
+        background: url(https://jpassets.jobplanet.co.kr/production/uploads/material/media/1026/ic_star_off.png) no-repeat 0 0;
+        background-size: 100% 100%;
+    }
+    .content_card_ty2 .title {
+        overflow: hidden;
+        max-height: 99px;
+        margin-bottom: 12px;
+        font-size: 24px;
+        font-weight: bold;
+        line-height: 33px;
+        color: #323438;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+    }
+    .content_card_ty2 .info {
+        vertical-align: middle;
+        display: inline-block;
+        height: 19px;
+        line-height: 1.4;
+        font-size: 15px;
+        color: #a4a6ad;
+    }
+    .content_card_ty2 .info {
+        vertical-align: middle;
+        display: inline-block;
+        height: 19px;
+        line-height: 1.4;
+        font-size: 15px;
+        color: #a4a6ad;
+    }
+    .company_star .company_star_average {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 16px;
+        background: url(https://jpassets.jobplanet.co.kr/production/uploads/material/media/1025/ic_star_on.png) no-repeat 0 0;
+        background-size: 96px 16px;
+        text-indent: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+    .button_group {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .comp_review{
+        background-color: #f3f3f4;
+        border-radius: 5px;
+        border: 1px solid #f3f3f4;
+        font-weight: bold;
+        color: #57595b;
+        display: inline-block;
+        box-sizing: border-box;
+        width: auto;
+        height: 48px;
+        min-width: 54px;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 13px;
+        padding-bottom: 13px;
+        text-align: center;
+        font-family: 'Roboto', 'Noto Sans Korean' !important;
+        font-size: 14px;
+        line-height: 21px;
+        -webkit-font-smoothing: antialiased;
+        vertical-align: top;
+    }
+
+    
+        

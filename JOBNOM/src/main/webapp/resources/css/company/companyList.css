@@ -1,0 +1,248 @@
+@charset "UTF-8";
+
+dl, ul, ol, menu, li {
+    list-style: none;
+}
+body{
+    width: 100%;
+}
+a {
+    color: #333;
+}
+.card_ty1 .gf_box2 dt> {
+    font-weight: bold;
+}
+section{
+ 
+    width: 80%;
+    box-sizing: border-box;
+    margin: 0 auto;
+
+}
+.mainContents {
+    position: relative;
+    width: 647px;
+    margin: 30px auto;
+    padding: 0 0 15px 0;
+    border: 1px black solid;
+}
+
+.article_ty2 {
+    overflow: hidden;
+    clear: both;
+}
+
+/* 카드 1 */
+.card_ty1 {
+    float: left;
+    width: 215px;
+    box-sizing: border-box;
+    border: 1px solid #e8e9eb;
+    border-right: none;
+    display: block;
+}
+.section_wrap2 .section_hd {
+    padding: 19px 19px 15px 19px;
+}
+.card_ty1 .section_hd .hgroup {
+    float: none;
+}
+.hgroup .txt_titm {
+    font-size: 18px;
+    font-weight: normal;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.section_wrap2 .section_body {
+    padding: 0 19px;
+    height: 257px;
+}
+.gf_box2, .txt_box {
+    height: 50px;
+}
+.gf_box2>dt, .txt_box>dt {
+    position: relative;
+    font-size: 13px;
+    line-height: 20px;
+    height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding-left: 18px;
+}
+.gf_box2>dt>span, .txt_box>dt>span {
+    font-family: Arial,sans-serif;
+    left: 0;
+    position: absolute;
+    top: 0;
+}
+.card_ty1 .gf_box2 dt>a {
+    font-weight: bold;
+}
+.gf_box2>dd {
+    padding-left: 18px;
+    font-size: 13px;
+    clear: both;
+    overflow: hidden;
+}
+.gf_box2>dd .gf_bar1 {
+    
+    display: inline-block;
+    height: 24px;
+    position: relative;
+}
+.us_bl_s .bl_score {
+    background-position: 0 -3192px;
+    height: 7px;
+    width: 124px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    text-indent: -100000px;
+}
+.gf_box2>dd .txt1 {
+    float: left;
+    display: inline-block;
+    font-size: 12px;
+    line-height: 24px;
+    height: 24px;
+    padding-left: 6px;
+}
+.company_star {
+    position: relative;
+    display: inline-block;
+    width: 96px;
+    height: 16px;
+    background: url(https://jpassets.jobplanet.co.kr/production/uploads/material/media/1026/ic_star_off.png) no-repeat 0 0;
+    background-size: 100% 100%;
+}
+.company_star .company_star_average {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 16px;
+    background: url(https://jpassets.jobplanet.co.kr/production/uploads/material/media/1025/ic_star_on.png) no-repeat 0 0;
+    background-size: 96px 16px;
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.section_wrap2 .section_bottom {
+    height: 47px;
+    padding: 0 19px;
+}
+.section_wrap2 .section_bottom .btn_rnd_arrow {
+    float: right;
+}
+.btn_rnd {
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 3px 16px;
+    border: 1px solid #d9d9d9;
+    border-radius: 14px;
+    background-color: #fff;
+    font-size: 13px;
+    color: #333;
+    line-height: 17px;
+}
+/* 카드 1 끝 */
+.card_ty1:nth-child(3n) {
+    border-right: 1px solid #e8e9eb;
+}
+.card_ty1:nth-child(4) {
+    border-top: none;
+}
+.card_ty1:nth-child(5) {
+    border-top: none;
+}
+.card_ty1:nth-child(6) {
+    border-top: none;
+}
+
+.pd_r0 {
+    padding-right: 0;
+}
+
+/* 상업군별 기업 리스트 링크 */
+.jpcont_col2_a .jpcont_lft .jpcont_wrap {
+    margin-top: 15px;
+    position: relative;
+    width: 960px;
+    margin: 0 auto;
+    padding: 0 0 15px 0;
+}
+
+.nav_industry {
+    box-sizing: border-box;
+    width: 100%;
+}
+.section_wrap {
+    border: 1px solid #e8e9eb;
+    background-color: #fff;
+}
+.section_wrap .section_hd {
+    box-sizing: border-box;
+    padding: 19px 20px 16px 19px;
+}
+.section_hd .hgroup {
+    float: left;
+    clear: left;
+}
+.txt_titl {
+    font-size: 22px;
+    color: #333;
+}
+.nav_industry_bottom .list {
+    margin-bottom: 8px;
+    padding: 0 19px 19px;
+}
+.mainContests2{
+    position: relative;
+    width: 647px;
+    margin: 30px auto;
+    padding: 0 0 15px 0;
+    border: 1px black solid;
+}
+.list li {
+    float: left;
+    margin-bottom: 6px;
+}
+.nav_industry_bottom .list li {
+    width: 25%;
+    
+}
+.nav_industry_bottom .list {
+    margin-bottom: 113px;
+    padding: 0 19px 19px;
+    margin-top: 40px;
+}
+}
+ .hgroup .sub_titl {
+    max-width: 100%;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: normal;
+    color: #59ab00;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+    padding-top: 6px;
+    padding-bottom: 0px;
+}
+.list li a {
+    display: inline-block;
+    max-width: 95%;
+    height: 18px;
+    font-size: 14px;
+    line-height: 18px;
+    color: #666;
+    text-decoration: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+}
