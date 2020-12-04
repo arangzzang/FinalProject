@@ -1,4 +1,4 @@
-package com.project.jobnom;
+package com.project.jobnom.common.pagebar;
 
 
 	public class PageBarFactory {

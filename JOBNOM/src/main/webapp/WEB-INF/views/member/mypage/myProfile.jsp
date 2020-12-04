@@ -67,6 +67,7 @@
 								</h2>
 							</div>
 						</div>
+						<span class="col-md-12 span2">이름, 핸드폰 번호</span>
 						<input type="hidden" value="이력서넘버">
 						<input type="hidden" value="이메일">
 						<div class="row">
