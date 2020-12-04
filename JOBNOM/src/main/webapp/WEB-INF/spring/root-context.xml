@@ -11,12 +11,7 @@
 		<property name="username" value="test"/>
 		<property name="password" value="test"/>
 	</bean> -->
-=======
-		<property name="url" value="jdbc:oracle:thin:@rclass.iptime.org:1521:xe"/>
-		<property name="username" value="jobnom"/>
-		<property name="password" value="job5"/>
-	</bean>
->>>>>>> branch 'master' of https://github.com/arangzzang/FinalProject.git
+
 	<!-- Sql문 로그찍을때 필요함 -->
 	<!-- <bean id="dataSource" class="net.sf.log4jdbc.Log4jdbcProxyDataSource">
 		<constructor-arg ref="realDataSource"/>
@@ -43,6 +38,6 @@
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
 		<property name="url" value="jdbc:oracle:thin:@rclass.iptime.org:1521:xe"/>
 		<property name="username" value="jobnom"/>
-		<property name="password" value="jobnom"/>
-	</bean> 
+		<property name="password" value="job5"/>
+	</bean>
 </beans>
