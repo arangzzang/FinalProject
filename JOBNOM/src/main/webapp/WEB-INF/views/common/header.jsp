@@ -38,7 +38,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                <ul class="navbar-nav mr-auto">
                   <li class="nav-item">
-                     <a class="menus" href="">채용</a><!-- nav-link -->
+                     <a class="menus" href="${path }/Hire/HireHome.do">채용</a><!-- nav-link -->
                   </li>
                   <li class="nav-item">
                      <a class="menus" href="${path }/enterprice/companyList.do">기업</a><!-- nav-link -->

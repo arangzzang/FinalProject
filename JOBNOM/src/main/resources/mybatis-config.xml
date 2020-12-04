@@ -3,5 +3,7 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.project.jobnom.member.model.vo.Member" alias="m"/>
+		<typeAlias type="com.project.jobnom.Hire.model.vo.Recruitment" alias="recruitment"/>
+		
 	</typeAliases>
 </configuration>

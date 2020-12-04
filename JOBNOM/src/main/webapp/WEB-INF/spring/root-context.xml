@@ -4,12 +4,14 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
-	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+	<!-- <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
-		<property name="url" value="jdbc:oracle:thin:@rclass.iptime.org:1521:xe"/>
-		<property name="username" value="jobnom"/>
-		<property name="password" value="job5"/>
-	</bean>
+<<<<<<< HEAD
+		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
+		<property name="username" value="test"/>
+		<property name="password" value="test"/>
+	</bean> -->
+
 	<!-- Sql문 로그찍을때 필요함 -->
 	<!-- <bean id="dataSource" class="net.sf.log4jdbc.Log4jdbcProxyDataSource">
 		<constructor-arg ref="realDataSource"/>
@@ -29,5 +31,13 @@
 	
 	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg index="0" ref="sqlSessionFactoryBean"/>
+	</bean>
+	
+	
+	 <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+		<property name="url" value="jdbc:oracle:thin:@rclass.iptime.org:1521:xe"/>
+		<property name="username" value="jobnom"/>
+		<property name="password" value="job5"/>
 	</bean>
 </beans>

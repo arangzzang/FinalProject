@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="hire">
+	<!--  <resultMap type="recruitment" id="recruitmentMap">
+		<result column="REC_NO" property="rec_no"/>
+		<result column=ENT_NO property="ent_no"/>
+		<result column="REC_TITLE" property="rec_title"/>
+		<result column="REC_CONTENTS" property="rec_content"/>
+		<result column="REC_FILE1" property="rec_file1"/>
+		<result column="REC_FILE2" property="rec_file2"/>
+		<result column="REC_STARTDATE" property="rec_startdate"/>
+		<result column="REC_ENDDATE" property="rec_enddate"/>
+		<result column="REC_SALARY" property="rec_salary"/>
+		<result column="REC_INFO" property="rec_info"/>
+		<result column="REC_PREFER" property=rec_prefer/>
+		<result column="REC_WELFARE" property="rec_welfare"/>
+		<result column="REC_QUALIFICATION" property="rec_qualification"/>
+		<result column="REC_PEPOLE" property="rec_pepole"/>
+		<result column="RE_TYPE" property="rec_type"/>
+	
+	</resultMap>  -->
+	
+
+	<insert id="insertReview" parameterType="map">
+		INSERT INTO REVIEW
+		VALUES(seq_review_no.nextval,#{review_name},#{review_title},#{review_contents},null,#{review_satisfaction},#{review_welfare},#{review_promotion},#{review_executive},SYSDATE)
+	</insert>
+	<select id="selectCount" resultType="_int">
+	 SELECT COUNT(*) FROM RECRUITMENT 
+	</select>
+	<select id="HireHomeRecruitmentList" resultType="com.project.jobnom.Hire.model.vo.Recruitment">
+		 SELECT * FROM RECRUITMENT 
+		<!-- SELECT R.*,(SELECT COUNT(*)
+		FROM RECRUITMENT WHERE R.REC_NO=REC_NO) AS
+		RECRUITMENT FROM BOARD B
+		ORDER BY BOARDDATE DESC -->
+	</select>
+	
+</mapper>
