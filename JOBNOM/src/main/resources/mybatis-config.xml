@@ -4,6 +4,6 @@
 	<typeAliases>
 		<typeAlias type="com.project.jobnom.member.model.vo.Member" alias="m"/>
 		<typeAlias type="com.project.jobnom.Hire.model.vo.Recruitment" alias="recruitment"/>
-		
+		<typeAlias type="com.project.jobnom.welcome.model.vo.Notice" alias="notice"/>
 	</typeAliases>
 </configuration>

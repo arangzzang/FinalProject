@@ -2,6 +2,7 @@
 
 #content {
         width: 960px;
+        height: 480px;
         margin: 107px auto;
         min-height: 40px;
     }
@@ -11,7 +12,7 @@
     margin-bottom: 0px;
     height: 303px;
 }
-.save_btn{
+.update_btn{
 	text-align: center;
 	margin-top: -62px;
 }    
@@ -34,7 +35,7 @@
     height: 400px;
     margin-left: 238px;
 }
-#noticeContent{
+#noticeContents{
 	width: 500px;
     height: 300px;
 }

@@ -82,9 +82,11 @@ section{
 }
 .gf_box2>dd {
     padding-left: 18px;
-    font-size: 13px;
+    font-size: 14px;
     clear: both;
     overflow: hidden;
+    height: 30px;
+    width: 170px;
 }
 .gf_box2>dd .gf_bar1 {
     
@@ -92,6 +94,7 @@ section{
     height: 24px;
     position: relative;
 }
+
 .us_bl_s .bl_score {
     background-position: 0 -3192px;
     height: 7px;
@@ -101,6 +104,7 @@ section{
     top: 0;
     height: 100%;
     text-indent: -100000px;
+   
 }
 .gf_box2>dd .txt1 {
     float: left;
@@ -110,6 +114,7 @@ section{
     height: 24px;
     padding-left: 6px;
 }
+
 .company_star {
     position: relative;
     display: inline-block;
@@ -245,4 +250,43 @@ section{
     text-overflow: ellipsis;
     white-space: nowrap;
     word-wrap: normal;
+}
+.gf_bar{
+	width: 155px;
+    height: 25px;
+    position: relative;
+    margin-left: -13px;
+}
+.gr_bar_gray{
+	background-color: #999;
+    position: absolute;
+    margin-right: -41px;
+    margin-left: 1px;
+    width: 154px;
+    height: 25px;
+}
+ .gf_bar div.gr_bar_green{
+	 background-color: #32aa46;   
+	 position:absolute; 
+	 height: 25px; 
+	 margin-left:1px;
+	 position:absolute;
+	 left:0;
+	 top:0;  
+}
+.gr_bar_img{
+    background-image: url(../../image/enterprice/gr_bar.png);
+    background-size: cover;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 155px;
+    height: 25px;
+}
+.avg{
+	margin-left: 102px;
+}
+.total_avg{
+	display: contents;
+	
 }

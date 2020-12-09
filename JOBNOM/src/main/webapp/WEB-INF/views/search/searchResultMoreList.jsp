@@ -97,20 +97,6 @@
                                                     <i class="fas fa-heart"></i>
                                                 </button>
                                             </dt>
-                                            <!-- 하트 눌렀을때 변환 스크립트 -->
-                                            <script>
-                                                $(function() {
-                                                    $('.btn_heart1').click(function() {
-                                                        $('.btn_heart1').hide();
-                                                        $('.btn_heart2').show();
-                                                    });
-                                                    $('.btn_heart2').click(function() {
-                                                        $('.btn_heart2').hide();
-                                                        $('.btn_heart1').show();
-                                                    });
-                                                })
-                                            </script>
-                                            <!-- 하트 눌렀을때 변환 스크립트  끝-->
                                             <dd>
                                                 <span class="us_txt_1">유통/무역</span>
                                                 <span class="vbar">|</span>
@@ -128,7 +114,7 @@
                                                 <div class="us_star_m">
                                                     <div class="star_score">평점</div>
                                                 </div>
-                                                <span class="gfvalue">3.7</span>
+                                                <span class="gfvalue">2.6</span>
                                             </dd>
                                             <dd>
                                                 <a href="" class="us_txt_1">
@@ -142,6 +128,29 @@
                                 </div>
                             </section>
                             <!-- 반복 -->
+                            
+                            <script>
+                            	<!-- 하트 눌렀을때 변환 스크립트 -->
+                                $(function() {
+                                    $('.btn_heart1').click(function() {
+                                        $('.btn_heart1').hide();
+                                        $('.btn_heart2').show();
+                                    });
+                                    $('.btn_heart2').click(function() {
+                                        $('.btn_heart2').hide();
+                                        $('.btn_heart1').show();
+                                    });
+                                })
+                            	<!-- 하트 눌렀을때 변환 스크립트  끝-->
+                                
+                                <!--평균평점 별점 스크립트  -->
+						   	
+								let avg = parseFloat($('.gfvalue').text());
+								let total = avg*20
+								
+								$('.star_score').css('width',total+'%');
+								<!--평균평점 별점 스크립트  -->
+                            </script>
                         </div>
                     </div>
                 </article>

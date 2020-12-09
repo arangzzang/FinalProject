@@ -143,6 +143,7 @@ a {
     position: absolute;
     top: 0px;
     left: 7px;
+    color: gold;
 }
 .result_card .tag {
     display: none;
@@ -367,6 +368,7 @@ a {
     content: "★";
     display: inline-block;
     vertical-align: middle;
+    color: gold;
 }
 em {
     color: #32aa46;

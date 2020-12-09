@@ -262,23 +262,28 @@ dt .btn_heart2 {
     float: left;
     top: 0px;
     margin-right: 5px;
-    background: url(https://jpassets.jobplanet.co.kr/production/uploads/material/media/1025/ic_star_on.png) no-repeat 0 0;
     background-size: 96px 16px;
 }
+
 .us_star_m {
-    background-position: 0 -2998px;
-    height: 15px;
-    width: 92px;
     position: relative;
+    display: inline-block;
+    width: 96px;
+    height: 16px;
+    background: url(https://jpassets.jobplanet.co.kr/production/uploads/material/media/1026/ic_star_off.png) no-repeat 0 0;
+    background-size: 100% 100%;
 }
 .us_star_m .star_score {
-    background-position: 0 -3015px;
-    position: absolute;
-    left: 0;
+   position: absolute;
     top: 0;
-    height: 100%;
-    text-indent: -100000px;
-    width: 74.0%;
+    left: 0;
+    width: 0;
+    height: 16px;
+    background: url(https://jpassets.jobplanet.co.kr/production/uploads/material/media/1025/ic_star_on.png) no-repeat 0 0;
+    background-size: 96px 16px;
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
 }
 .content_col2_4 .gfvalue {
     float: left;
