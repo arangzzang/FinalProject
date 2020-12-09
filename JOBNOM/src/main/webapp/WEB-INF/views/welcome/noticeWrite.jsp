@@ -10,13 +10,19 @@
 	<jsp:param name="title" value=" "/>
 </jsp:include>
 <section id="content">
-	<div id="board-container">
-        <form name="noticeFrm" action="${path }/footer/insertNotice.do" method="post">
-            <input type="text" class="form-control" placeholder="제목" name="noticeTitle" id="noticeTitle" required>
-            <textarea class="form-control" name="noticeContent" id="noticeContent" placeholder="내용" required></textarea>
-            <br />
-            <input type="submit" class="btn btn-outline-success" value="저장" >
-        </form>
-    </div>
+     <form name="noticeFrm" action="${path }/footer/insertNotice.do" method="post">
+		<div id="board-container">
+        	<div class="title">
+            	<input type="text" class="form-control" placeholder="제목" name="noticeTitle" id="noticeTitle" required>
+            </div>
+            <div class="text">
+            	<textarea class="form-control" name="noticeContent" id="noticeContent" placeholder="내용" required></textarea>
+            </div>
+            <br/>
+            <div class="save_btn">
+            	<input type="submit" class="btn btn-outline-success" value="저장" >
+        	</div>
+    	</div>
+      </form>
 </section>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>

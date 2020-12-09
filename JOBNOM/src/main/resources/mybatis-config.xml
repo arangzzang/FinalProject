@@ -8,5 +8,6 @@
 		<typeAlias type="com.project.jobnom.common.model.vo.Login" alias="login"/>
 		<typeAlias type="com.project.jobnom.welcome.model.vo.FAQ" alias="faq"/>
 		<typeAlias type="com.project.jobnom.Hire.model.vo.Recruitment" alias="recruitment"/>
+		<typeAlias type="com.project.jobnom.welcome.model.vo.Notice" alias="notice"/>
 	</typeAliases>
 </configuration>

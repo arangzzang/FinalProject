@@ -20,23 +20,24 @@
                     <div class="section_group">
                         <!-- 공지사항 작성후 리스트 출력 -->
                         <c:forEach items="${list }" var="n">
-                        <section class="notice">
-                            <div class="title new">
-                                <h2 class="subject"><c:out value="${n.NOTICE_TITLE }"/></h2>
-                                <p class="date notranslate"><c:out value="${n.NOTICE_WRITEDATE }"/></p>
-                            </div>
-                            <div class="con notranslate">
-                                <p><c:out value="${n.NOTICE_CONTENTS }"/></p>
-                                <button onclick="location.href='${path}/footer/noticeUpdate.do'" id="notice_btn" class="write_btn">수정하기</button>
-                            </div>
-                        </section>
+	                        <form action="${path}/welcome/noticeUpdate.do" method="post" style="margin: auto;">
+		                        <section class="notice">
+		                            <div class="title new">
+		                                <h2 class="subject">${n.NOTICE_TITLE }</h2>
+		                                <p class="date notranslate">${n.NOTICE_WRITEDATE }</p>
+		                            </div>
+		                            <div class="con notranslate">
+		                                <p>${n.NOTICE_CONTENTS }</p>
+			                            <input type="submit"  name="notice_btn" class="write_btn" value="수정하기">
+			                            <input type="text" style="display:none;" name="noticeNo" value="${n.NOTICE_NO}">
+		                            </div>
+		                        </section>
+	                        </form>
                         </c:forEach>
                     </div>
                     <!-- 펴기 접기 스크립트 -->
-                      <script>
-
+                    <script>
                     $(document).ready(function() {
-                        
                         $('.notranslate section').on('click', function() {
                             if($(this).hasClass('active'))
                             {
@@ -52,8 +53,9 @@
                             
                         });
                     });
-
                     </script>
+                    <!-- 펴기 접기 스크립트 끝 -->
+                    
                 </div>
             </div>
         </div>

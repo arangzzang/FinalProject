@@ -28,9 +28,12 @@
                                 <a href="#">회사명</a>
                             </dt>
                             <dd>
-                                <div class="company_star">
-                                    <div class="company_star_average" style="width: 80.0%">3.2</div>
-                                </div>
+                               <div class="gf_bar">
+							        <div class="gr_bar_gray"></div>
+							        <div class="gr_bar_green"></div>
+							        <div class="gr_bar_img"></div> 
+							        <span class="avg">2.5</span>
+							    </div>
                             </dd>
                         </dl>
                     </div>
@@ -56,9 +59,12 @@
                                 <a href="#">회사명</a>
                             </dt>
                             <dd>
-                                <div class="company_star">
-                                    <div class="company_star_average" style="width: 80.0%">3.2</div>
-                                </div>
+                                <div class="gf_bar">
+							        <div class="gr_bar_gray"></div>
+							        <div class="gr_bar_green"></div>
+							        <div class="gr_bar_img"></div> 
+							        <span class="avg">2.5</span>
+							    </div>
                             </dd>
                         </dl>
                     </div>
@@ -82,9 +88,12 @@
                                 <a href="#">회사명</a>
                             </dt>
                             <dd>
-                                <div class="company_star">
-                                    <div class="company_star_average" style="width: 80.0%">3.2</div>
-                                </div>
+                               <div class="gf_bar">
+							        <div class="gr_bar_gray"></div>
+							        <div class="gr_bar_green"></div>
+							        <div class="gr_bar_img"></div> 
+							        <span class="avg">2.5</span>
+							    </div>
                             </dd>
                         </dl>
                     </div>
@@ -108,9 +117,12 @@
                                 <a href="#">회사명</a>
                             </dt>
                             <dd>
-                                <div class="company_star">
-                                    <div class="company_star_average" style="width: 80.0%">3.2</div>
-                                </div>
+                              <div class="gf_bar">
+							        <div class="gr_bar_gray"></div>
+							        <div class="gr_bar_green"></div>
+							        <div class="gr_bar_img"></div> 
+							        <span class="avg">2.5</span>
+							    </div>
                             </dd>
                         </dl>
                     </div>
@@ -134,9 +146,12 @@
                                 <a href="#">회사명</a>
                             </dt>
                             <dd>
-                                <div class="company_star">
-                                    <div class="company_star_average" style="width: 80.0%">3.2</div>
-                                </div>
+                               <div class="gf_bar">
+							        <div class="gr_bar_gray"></div>
+							        <div class="gr_bar_green"></div>
+							        <div class="gr_bar_img"></div> 
+							        <span class="avg">2.5</span>
+							    </div>
                             </dd>
                         </dl>
                     </div>
@@ -150,19 +165,20 @@
                     <div class="section_hd">
                         <div class="hgroup">
                         <span class="ico_tit ico_titm_money"></span>
-                        <h4 class="txt_titm titm_welf tit">카테고리6</h4>
+                        <h4 class="txt_titm titm_welf tit">총만족도</h4>
                         </div>
                     </div>
                     <div class="section_body">
                         <dl class="gf_box2">
                             <dt title="회사명">
-                                    <span class="txt_r">1</span>
+                                <span class="txt_r">1</span>
                                 <a href="#">회사명</a>
                             </dt>
                             <dd>
                                 <div class="company_star">
-                                    <div class="company_star_average" style="width: 80.0%">3.2</div>
+                                    <div class="company_star_average" style="width: 80.0%"></div>
                                 </div>
+                                <div class="total_avg">1.2</div>
                             </dd>
                         </dl>
                     </div>
@@ -172,10 +188,8 @@
                 </div>      
             </section>
         </article>
-        
     </div>
     <!-- 카테고리별 정렬 리스트 끝 -->
-
     <div class="mainContests2">
         <div class="jpcont_wrap">
             <article id="navIndustry" class="section_wrap nav_industry nav_industry_bottom">
@@ -205,6 +219,19 @@
         </article>
         </div>
     </div>
-
-
+    
+	<!--평균평점 그래프 스크립트  -->
+   	<script>
+		let avg = parseFloat($('.avg').text());
+		let total_bar = avg*20
+		$('.gr_bar_green').css('width',total_bar+'%');
+	</script>
+	
+	<!--평균평점 별점 스크립트  -->
+	<script>
+		let avg1 = parseFloat($('.total_avg').text());
+		let tota_star = avg1*20
+		console.log(tota_star);
+		$('.company_star_average').css('width',tota_star+'%');
+	</script>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
