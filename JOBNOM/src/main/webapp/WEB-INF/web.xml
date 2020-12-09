@@ -6,7 +6,7 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
 			/WEB-INF/spring/root-context.xml
-<!-- 			/WEB-INF/spring/security-context.xml 비밀번호 암호화 -->
+ 			/WEB-INF/spring/security-context.xml <!--비밀번호 암호화 -->
 		</param-value>
 	</context-param>
 	

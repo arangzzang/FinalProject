@@ -24,21 +24,12 @@
 	<context:component-scan base-package="com.project.jobnom" />
 	
 	<!-- 인터셉터 설정 -->
-	<!-- <interceptors>
-		<interceptor>
-			<mapping path="/**"/>
-			<exclude-mapping path="/member/*"/><exclude-mapping> : 전체에서 맴버만 제외한다는 뜻
-			<beans:bean id="logger" class=""/>
-		</interceptor>
-		<interceptor>
-			<mapping path="/demo/*"/>
-			<beans:bean id="logincheck" class="" name="checkLog"></beans:bean>
-		</interceptor>
-		<interceptor>
-			<mapping path="/board/*"/>
-			<beans:bean id="boardcheck"	class=""></beans:bean>
-		</interceptor>
-	</interceptors> -->
+<!-- 	<interceptors> -->
+<!-- 		<interceptor> -->
+<!-- 			<mapping path="/**"/> -->
+<!-- 			<beans:bean></beans:bean> -->
+<!-- 		</interceptor> -->
+<!-- 	</interceptors> -->
 	
 	<!-- 파일데이터 처리하는 bean 등록 -->
 	<!-- <beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">

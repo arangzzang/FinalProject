@@ -8,10 +8,6 @@ import com.project.jobnom.member.model.vo.Member;
 @Repository
 public class MemberDaoImpl implements MemberDao {
 
-	@Override
-	public Member memberLogin(String memEmail, SqlSession session) {
-		return session.selectOne("member.memberLogin",memEmail);
-	}
 
 	@Override
 	public int enrollMember(Member m, SqlSession session) {
