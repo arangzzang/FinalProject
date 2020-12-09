@@ -5,13 +5,12 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <c:set var="path" value="${pageContext.request.contextPath }" />
 
-<link rel="stylesheet" href="${path }/resources/css/mypage/mypagefrist.css"/>
-
+<link rel="stylesheet" href="${path }/resources/css/mypage/jobApplication.css"/>
 <jsp:include page="/WEB-INF/views/common/header.jsp">
 	<jsp:param name="title" value=" "/>
 </jsp:include>
-<section id="content">
-    <div class="memberinfo-parent ">
+<section id="`">
+<div class="memberinfo-parent ">
         <div class="jumbotron row memberinfo" id="memberinfo">
             <div class="col-md-3 col-offset-3">
                 <img src="" alt="">
@@ -51,48 +50,62 @@
     </div>
     <div class="with-parent">
         <div class="with">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="container row withcon">
                 <div class="col-md-3 col-sm-3 withleft">
                     <ul class="nav nav-pills flex-column sidebar" id="sidebar">
-                        <h3 class="sidebar-title">계정</h3>
+                        <h3 class="sidebar-title">활동내역</h3>
                         <li class="nav-item sidebarmenubar">
-                            <button type="button" class="sidebtn">계정설정</button>
+                            <button type="button" class="sidebtn">리뷰</button>
                         </li>
                         <li class="nav-item sidebarmenubar">
-                            <button type="button" class="sidebtn">비밀번호변경</button>
+                            <button type="button" class="sidebtn">면접</button>
                         </li>
                         <li class="nav-item sidebarmenubar">
-                            <button type="button" class="sidebtn">알림</button>
+                            <button type="button" class="sidebtn">입사지원</button>
                         </li>
                     </ul>
                 </div>
                 <div class="col-md-8 col-sm-8 maincon withright" id="maincon">
-                    <div class="maininfo-parent">
-                        <form action="/action_page.php" class="needs-validation" novalidate>
-                            <div class="maininfo">
-                                <h1 class="maintitle">계정설정</h1>
-                                <div>
-                                    <h3>회원 이메일</h2>
-                                    <p>기존 이메일 주소</p>
-                                    <div class="form-gruop">
-                                        <label for="uname">변경할 이메일 주소</label>
-                                        <input type="password" class="form-control" id="uname" placeholder="비밀번호를 입력해주세요." name="uname" required>
-                                        <div class="valid-feedback">비밀번호 입력완료.</div>
-                                        <div class="invalid-feedback">비밀번호를 입력해주세요.</div>
-                                    </div>
-                                </div>
-                                <div class="text-center enrollBtn">
-                                <button type="submit" class="btn btn-primary">Submit</button>
-                                </div>
-                            </div>
-                        </form>
-                        더 이상 job.nom을 이용하지 않는다면 <a href="">회원탈퇴</a>
+                    <div class="maininfo-parent one">
+                        <h2>입사지원한 기업</h2>
+                        <p>∙ 잡플래닛 전용 프로필로 지원한 내역만 확인 됩니다.
+                            ∙ 입사지원을 한 후 내 프로필을 수정해도 이전에 지원한 프로필의 내용은 바뀌지 않습니다. 
+                            따라서 회사마다 프로필 내용을 다르게 지원할 수 있습니다.</p>
+                            <!-- 지원내역이 있을 때 -->
+                        <span>총[count]건</span>
+                        <table class="jpt_list">
+                            <tr class="jpt_th">
+                                <th>회사명</th>
+                                <th>지원내역</th>
+                                <th>지원일/취소일</th>
+                            </tr>
+                            <tr>
+                                <td>[기업명]</td>
+                                <td>[채용공고상태][기업명][채용공고제목]<br><a href="">[내이력서보기]</a></td>
+                                <td>지원취소됨<p>지원일[date 시간까지]<br>취소일[date시간까지]</p></td>
+                            </tr>
+                        </table>
+                        <!-- 지원내역이 없을 때 -->
+                        <c:if test="">
+                            <article class="jpt_list_null">
+                                <p>입사 지원 내역이 없습니다.</p>
+                                <p>
+                                    jobnom전용 프로필로 지원한 내역만 확인됩니다.
+                                    <br>
+                                    회원님과 잘 맞는 기업을 찾아보세요.
+                                </p>
+                            </article>
+                        </c:if>
+                        <div class="jpt_writing">
+                            <button type="button" class="btn btn-outline-success"><i></i>면접후기 작성</button>
+                        </div>
                     </div>
                 </div>
             </div>
+        
         </div>
     </div>
 </section>

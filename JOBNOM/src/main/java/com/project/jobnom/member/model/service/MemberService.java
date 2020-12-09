@@ -6,4 +6,6 @@ public interface MemberService {
 	
 	//회원가입입력
 	int enrollMember(Member m);
+	//마이페이지
+	Member mypageView(int memNo);
 }

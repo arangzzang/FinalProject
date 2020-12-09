@@ -39,12 +39,9 @@
             border: none;
         }
         /*바디 전체부분*/
-        /* .with{
+        .with{
             width: 70%;
-        } */
-        .with>form>.profilebody{
             margin: 0 auto;
-            width: 70%;
         }
         .with-parent{
             background-color: #e5e6e9;
@@ -76,6 +73,9 @@
         .maininfo{
             padding: 56px 26px 56px 26px;
         }
+        .one{
+            padding: 28px 24px 45px 24;
+        }
         #maincon{
             /* margin: 0 auto; */
             padding: 0;
@@ -83,87 +83,27 @@
         .form-gruop{
             padding-bottom: 10px;
         }
-        /* 프로필*/
-        .profilebody{
-            background-color: #fff;
-            padding-bottom: 50px;
+        .following_container{
+            display: flex;
+            margin: 0 auto !important;
         }
-        /* 이름, 휴대전화번호 */
-        .input1{
-            border: 0;
-            height: 50px;
-            outline: 0;
-            width: 100%;
-        }
-        .inp{
-            border: 0 !important;
-            outline: 0 !important;
-        }
-        #inp{
-            border: 0;
-            outline: 0;
-        }
-        /* 성별, 출생연도 */
-        .span1{
-            border-bottom: 1px solid lightgray;
-            width: 50%;
+        .following_icon{
             display: block;
-            margin-bottom: 2px;
+            margin: 0 auto 37px;
         }
-        /* 관심직종 */
-        .span2{
-            border-bottom: 1px solid lightgray;
-            width: 100%;
-            display: block;
+        .ent_name>.fa-heart:before{
+            color: red;
         }
-        /* select css */
-        .select{
-            border: 0;
-            outline: 0;
+        .following_null{
+            text-align: center;
+            padding: 100px 0 50px 0;
+            border-top: 1px solid rgb(209, 209, 209);
         }
-        .flex{
-            display: flex;
+        .following_icon>.fa-heart:before{
+            font-size: 100px;
+            color: rgb(209, 209, 209);
         }
-        /* 필수를 제외한 항목 css */
-        #element1{
-            display: flex;
-        }
-        #element2{
-            padding-top: 10px;
-        }
-        .dateelement{
-            display: flex;
-
-        }
-        .dateinput{
-            border: 0;
-            width: 100px;
-        }
-        .block{
-            display: table-cell;
-        }
-        .float{
-            float: right;
-        }
-        .edu,.awa,.car,.cer,.pofol{
-            margin-bottom: 20px;
-        }
-        #element1:hover{
-            border: 1px solid lightblue;
-        }
-        #emt:hover{
-            border: 1px solid lightblue;
-        }
-        .pd{
-            padding-top: 10px;
+        dd>.fa-star{
+            color: yellow;
         }
         
-        /* 저장하기 버튼 */
-        .submitTag{
-            width: 100%;
-            background-color: #fff;
-            position: fixed;
-            bottom: 0;
-            z-index: 999;
-            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.08);
-        }
