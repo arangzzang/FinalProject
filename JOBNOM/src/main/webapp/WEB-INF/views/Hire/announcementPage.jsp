@@ -7,30 +7,9 @@
 
 <link rel="stylesheet" href="../resources/css/Hire/announcementPage.css" />
 <jsp:include page="/WEB-INF/views/common/header.jsp">
-	<jsp:param name="title" value=" "/>
+   <jsp:param name="title" value=" "/>
 </jsp:include>
-  <!-- 검색창 시작 -->
-            <div class="searchbar_section" id="searchbar_section">
-                <div class="wrap">
-                    <form action="#" id="search_form" method="post">
-                        <div class="schbar_green">
-                            <div class="schbar">
-                                <i class="jp-search">
-
-                                </i>
-                                <label class="placeholder">
-                                    <span class="placeholder_txt"></span>
-                                    <input autocomplete=”off” type="text" class="input_search"
-                                        id="search_bar_search_query" maxlength="201" name="query"
-                                        placeholder="기업,채용공고를 검색해 보세요">
-                                </label>
-                                <button class="btn_schbar">검색</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <!-- 검색창 끝 -->
+  
             
               <div class="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog"
             aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -322,6 +301,7 @@
                                             $("#contentBank").click(function () {
 
                                                 $("#contentDetailfinance").show();
+                                                $("#contentDetailfinance").css("z-index", "99");
                                                 $("#contentDetailIT").css("display", "none");
                                                 $("#contentDetailStudy").css("display", "none");
                                                 $("#contentDetailMarket").css("display", "none");
@@ -508,408 +488,43 @@
 
         <div class="annoAll">
             <div id="annoListAll">
-                <div id="annoList" style="overflow:auto; width:350px; height: 450px; padding:10px;  ">
 
+         
+            
+                <div id="annoList">
+                  <c:forEach items="${anolist }" var="a">
+                  
                     <div class="annoListNum">
                         <div class="annoListLogeFlax">
                             <div class="annoListLoge"></div>
                         </div>
+                      
                         <a href="#">
                             <div class="annoListTitleFlax">
-                                <div class="annoListTitle">카카오웹개발 모집</div>
-                                <div class="annoListTitle">(주)카카오</div>
-                                <div class="annoListTitle">평균 평점</div>
+                            <button value="${a.ent_no }" class="annoListTitleBox" >
+                            <input type="hidden" value="${a.ent_no }" class="annoListTitle" name="ent_no" "><c:out value="${a.rec_title }"/><br>
+                            <input type="hidden" class="annoListTitle" value="${a.ent_no }" name="ent_no">(주)카카오 번호-><br>
+                            <input type="hidden" class="annoListTitle" value="${a.ent_no }" >평균 평점
+                            </button>
+                            
+                                
+                                
                             </div>
                         </a>
+                        
                     </div>
 
-                    <div class="annoListNum">
-                        <div class="annoListLogeFlax">
-                            <div class="annoListLoge"></div>
-                        </div>
-                        <a href="#">
-                            <div class="annoListTitleFlax">
-                                <div class="annoListTitle">카카오웹개발 모집</div>
-                                <div class="annoListTitle">(주)카카오</div>
-                                <div class="annoListTitle">평균 평점</div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="annoListNum">
-                        <div class="annoListLogeFlax">
-                            <div class="annoListLoge"></div>
-                        </div>
-                        <a href="#">
-                            <div class="annoListTitleFlax">
-                                <div class="annoListTitle">카카오웹개발 모집</div>
-                                <div class="annoListTitle">(주)카카오</div>
-                                <div class="annoListTitle">평균 평점</div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="annoListNum">
-                        <div class="annoListLogeFlax">
-                            <div class="annoListLoge"></div>
-                        </div>
-                        <a href="#">
-                            <div class="annoListTitleFlax">
-                                <div class="annoListTitle">카카오웹개발 모집</div>
-                                <div class="annoListTitle">(주)카카오</div>
-                                <div class="annoListTitle">평균 평점</div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="annoListNum">
-                        <div class="annoListLogeFlax">
-                            <div class="annoListLoge"></div>
-                        </div>
-                        <a href="#">
-                            <div class="annoListTitleFlax">
-                                <div class="annoListTitle">카카오웹개발 모집</div>
-                                <div class="annoListTitle">(주)카카오</div>
-                                <div class="annoListTitle">평균 평점</div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="annoListNum">
-                        <div class="annoListLogeFlax">
-                            <div class="annoListLoge"></div>
-                        </div>
-                        <a href="#">
-                            <div class="annoListTitleFlax">
-                                <div class="annoListTitle">카카오웹개발 모집</div>
-                                <div class="annoListTitle">(주)카카오</div>
-                                <div class="annoListTitle">평균 평점</div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="annoListNum">
-                        <div class="annoListLogeFlax">
-                            <div class="annoListLoge"></div>
-                        </div>
-                        <a href="#">
-                            <div class="annoListTitleFlax">
-                                <div class="annoListTitle">카카오웹개발 모집</div>
-                                <div class="annoListTitle">(주)카카오</div>
-                                <div class="annoListTitle">평균 평점</div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="annoListNum">
-                        <div class="annoListLogeFlax">
-                            <div class="annoListLoge"></div>
-                        </div>
-                        <a href="#">
-                            <div class="annoListTitleFlax">
-                                <div class="annoListTitle">카카오웹개발 모집</div>
-                                <div class="annoListTitle">(주)카카오</div>
-                                <div class="annoListTitle">평균 평점</div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="annoListNum">
-                        <div class="annoListLogeFlax">
-                            <div class="annoListLoge"></div>
-                        </div>
-                        <a href="#">
-                            <div class="annoListTitleFlax">
-                                <div class="annoListTitle">카카오웹개발 모집</div>
-                                <div class="annoListTitle">(주)카카오</div>
-                                <div class="annoListTitle">평균 평점</div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="annoListNum">
-                        <div class="annoListLogeFlax">
-                            <div class="annoListLoge"></div>
-                        </div>
-                        <a href="#">
-                            <div class="annoListTitleFlax">
-                                <div class="annoListTitle">카카오웹개발 모집</div>
-                                <div class="annoListTitle">(주)카카오</div>
-                                <div class="annoListTitle">평균 평점</div>
-                            </div>
-                        </a>
-                    </div>
+                      
+                   </c:forEach>
                 </div>
+                
+                    <div id="pageBar">${pageBar }</div>
             </div>
 
 
             <div class="annoDetail">
-                <div class="annoDetailAll">
-                    <div class="annoDetailTitle">
-                        <div class="annoDetailNum">
-                            <div class="annoDetailLogeFlax">
-                                <div class="annoDetailLoge"></div>
-                            </div>
-                            <div class="annoDetailTitleFlax">
-                                <div class="annoDetailTitle1">카카오웹개발 모집</div>
-                                <a href="#">
-                                    <div class="annoDetailTitle1">(주)카카오</div>
-                                </a>
-                            </div>
-                        </div>
-                        <button class="btn_annoDetail" onclick="">지원하기</button>
-                        <button id="favoritesBox" onclick="fn_toggle();">
-                            <img id="announcementFavorites" src="${path }/resources/image/Hire/pngwing.png" />
-                        </button>
-                    </div>
-
-                    <div class="detailedReviewInterview">
-                        <a href="#">
-                            <div class="annoDetailListBox">상세</div>
-                        </a>
-                        <a href="#">
-                            <div class="clickReviewTotalBox">리뷰</div>
-                        </a>
-                        <a href="#">
-                            <div class="">면접</div>
-                        </a>
-                    </div>
-
-                    <div class="annoDetailInfoWidth">
-                        <div class="annoDetailInfoLeft">
-                            <div class="annoDetailInfo">
-                                <div class="annoDetailInfoAll">
-                                    <div class="annoDetailInfoLogo"></div>
-                                    <div class="logoRight">마감일</div>
-                                    <div>2020.12.31</div>
-                                </div>
-
-                                <div class="annoDetailInfoAll">
-                                    <div class="annoDetailInfoLogo"></div>
-                                    <div class="logoRight">직무</div>
-                                    <div>QA(Quality Assurance)</div>
-                                </div>
-
-                                <div class="annoDetailInfoAll">
-                                    <div class="annoDetailInfoLogo"></div>
-                                    <div class="logoRight">경력</div>
-                                    <div>3년 이상</div>
-                                </div>
-                                <div class="annoDetailInfoAll">
-                                    <div class="annoDetailInfoLogo"></div>
-                                    <div class="logoRight">고용형태</div>
-                                    <div>정규직</div>
-                                </div>
-                                <div class="annoDetailInfoAll">
-                                    <div class="annoDetailInfoLogo"></div>
-                                    <div class="logoRight">급여</div>
-                                    <div>면접 후 결정</div>
-                                </div>
-                                <div class="annoDetailInfoAll">
-                                    <div class="annoDetailInfoLogo"></div>
-                                    <div class="logoRight">스킬</div>
-                                    <div>istqb, 테스트, CSTS, 검증</div>
-                                </div>
-
-
-
-
-
-                            </div>
-
-                            <div class="tttt">
-                                <div>
-                                    <div class="InformationList">[주요업무]</div>
-                                    <div class="mainTask">🙋🏻‍♂️마이리얼트립의 QA엔지니어는
-                                        마이리얼트립의 서비스를 구성하는 모든 부분의 시작부터 끝까지 품질을 책임집니다. 새로운 기능이 개발되면 해당 기능의 테스트를 진행하고, 결함이
-                                        발견되면 수정될 수 있도록 도와 안정성 높은 서비스를 제공할 수 있도록 합니다. 다양한 QA 활동의 결과를 분석하여 개발 프로세스를 개선시킬 수
-                                        있도록 의견을 제시합니다. 나아가서는 테크니컬 기반의 QA를 위해 자동화 테스트 및 정적 테스트 등도 적극적으로 도입하여 불필요한 리소스를
-                                        줄이고 더 높은 안정성을 확보할 수 있도록 하는 역할도 맡고 있습니다.
-                                    </div>
-                                </div>
-
-                                <div>
-                                    <div class="InformationList">[팀소개]</div>
-                                    <div class="TeamIntroduction">
-                                        TQA팀은 이렇게 일합니다.
-                                        🙆🏻팀원 각자가 책임감을 가질 수 있도록 한개 이상의 프로젝트를 리딩하여 QA 활동을 수행하게 됩니다.
-                                        💪🏼TQA팀은 개발직군으로 분류되며, 다른 개발자들과 직접 소통하여 더 나은 품질의 프로젝트가 완성될 수 있도록 긴밀히 협업합니다. 개발실
-                                        내에서도 QA를 위해 지원을 아끼지 않으며, 서비스 배포의 최종 권한도 TQA팀에 있습니다.
-                                        📝마이리얼트립 프로덕트 조직의 일하는 방식과 문화에 대해서는 아래 블로그에서 더 자세히 참고하실 수 있습니다.
-                                        - 마이리얼트립 Product Team Blog : http://naver.me/FWLQeR9D</div>
-                                </div>
-
-                                <div>
-                                    <div class="InformationList">[담당업무]</div>
-                                    <div class="responsibilities">- 서비스를 위해 개발되는 기능 및 클라이언트의 안정성 확보<br>
-                                        - 개발 및 QA 프로세스 개선 및 도입<br>
-                                        - 서비스의 자동화 테스트 커버리지율(%) 확대<br>
-                                        - 새로운 테크니컬 QA 활동 도입(API 테스트, 성능 테스트 등)</div>
-                                </div>
-
-                                <div>
-                                    <div class="InformationList">[자격요건]</div>
-                                    <div class="qualificationRequirements">
-                                        - 3년 이상 8년 미만의 Web / App 서비스 QA 경력이 있으신 분<br>
-                                        - 개발, PM, 사업 등 협업 부서들과 효율적이고 생산적인 커뮤니케이션이 가능한 분<br>
-                                        - QA 프로세스 구축, 개선을 직접 진행해 안정적으로 도입한 분<br>
-                                        - Web application 및 Android / iOS application에 대한 이해가 높은 분<br>
-                                        - 기획 단계부터 서비스까지 모든 과정의 QA 프로세스를 경험한 분</div>
-                                </div>
-
-                                <div>
-                                    <div class="InformationList">[우대사항]</div>
-                                    <div class="preferentialTreatment">
-
-                                        - Selenium, Appium 등 자동화 테스트 경험<br>
-                                        - ISTQB 자격증 보유<br>
-                                        - 프로그래밍 스킬 보유<br>
-                                        - 다양한 테스트 툴 사용</div>
-                                </div>
-
-                                <div>
-                                    <div class="InformationList">[채용절차]</div>
-                                    <div class="recruitmentProcedure">
-                                        * 서류전형 → 1차 (기술 면접) → 2차 (경영진 면접) → 처우협의 → 입사<br>
-                                        - 면접관의 판단에 따라 전화면접(기술)이 추가될 수 있습니다.<br>
-                                        - 전형별 결과는 5일 이내에 안내드립니다.<br>
-                                        - 지원서류는 PDF 또는 Word 파일로 제출 부탁드립니다.<br>
-                                    </div>
-                                </div>
-
-                                <div>
-                                    <div class="InformationList">[복리후생]</div>
-                                    <div class="welfareBenefits">- 여행상품 지원 (마이리얼트립 포인트 - 연 100만원, 지인쿠폰 월 5만원)<br>
-                                        - 다양한 휴가제도 (생일 반차, 가족행사 휴가 2일, 경조사 휴가, 근속자 포상휴가)<br>
-                                        - 자기계발비 지원 (체력단련, 도서구매, 문화생활 - 연 180만원)<br>
-                                        - 직무교육비 지원 (직무 관련 강의, 컨퍼런스 - 교육비 80% 지원)<br>
-                                        - 점심 식비 지원 (식권대장 - 월 16만원)<br>
-                                        - 업무장비 지원 (직군 별 최신 장비 제공)<br>
-                                        - 건강검진 지원 (연 1회)<br>
-                                        - 실손보험 제공 (본인 포함 4인)<br>
-                                        - 워크샵 운영 (연 1회)<br>
-                                    </div>
-                                </div>
-
-                                <div>
-                                    <div class="InformationList">[기타]</div>
-                                    <div class="otherThan">
-                                        - 근무형태 : 정규직 (수습기간 3개월 후 정규직 전환 면접)<br>
-                                        - 근무시간 : 주5일 (월~금)<br>
-                                        - 근무제도 : 자율출퇴근제도, 재택근무제도<br>
-                                        - 마이리얼트립 근무제도에 대한 팀원 인터뷰 : http://naver.me/5OFbzfeP<br>
-                                        - 근무지 : 서울시 서초구 강남대로 327 대륭서초타워 18층 마이리얼트립<br>
-                                    </div>
-                                </div>
-                             
-                            </div>
-                        </div>
-                        <!--리뷰틀릭시 나오는 화면  -->
-         <div class="clickReview" style="display: none; width: 555px; height:100%; border:solid; padding: 30px;">
-         	<div class="clickReviewTitleBox" style="border:solid;">
-         		<div class="clickReviewName" style="width: 170px;">닉네임</div>
-         		 <div class="score" style="width:250px;height :55px;position:relative;">
-			        <div class="graybg" style="background-color:#999;  position:absolute; margin-left: 1px; width: 249px; height: 55px;"></div>
-			        <div class="yellowbg" style="background-color:  gold;  position:absolute; width:68%; height: 55px; margin-left:1px;position:absolute;left:0;top:0;"></div>
-			        <img class="starImg" src="${path }/resources/image/Hire/star.png" style="  background-size: cover; position:absolute;left:0;top:0; width:251px;height:100%;" />         
-			    </div>
-         		<div class="clickReviewPromotion" style="width: 170px;">사내 만족도</div>
-         		
-         		<div class="clickReviewSalary" style="width: 170px;">복지 및 급여</div>
-         		
-         		<div class="clickReviewPromotion" style="width: 170px;">승진 기회 및 가능성</div>
-         		
-         		<div class="clickReviewPromotion" style="width: 170px;">경영진</div>
-         		
-
-         	</div>
-                            
-         </div>
-           
-             <script>
-
-              $(document).ready(function () {
-
-             $(".annoDetailListBox").click(function () {
-             $(".clickReview").css("display", "none");
-             $(".annoDetailInfoLeft").show();
-             });
-             });
-             </script>
-              <script>
-
-              $(document).ready(function () {
-
-             $(".clickReviewTotalBox").click(function () {
-             $(".annoDetailInfoLeft").css("display", "none");
-             $(".clickReview").show();
-            /*   $.ajax({
-            	 url:"${path}/Hire/reviewAVG.do",
-            	 data:{review_No:review_No},
-            	 success:review_No{
-            		 
-            	 }
-             })  */
-             });
-             });
-             </script>
-                        <div class="annoDetailInfoRight">
-                            <div style="font-size: 20px; font:bolder">문의처</div>
-                            <div class="Inquiries">
-                                <div class="managerName">담당자</div>
-                                <div class="managerName2">인하준</div>
-                            </div>
-                            <div class="InquiriesInfo">
-                                <div class="Inquiries">
-                                    <div class="InquiriesHomePage">홈페이지</div>
-                                    <div class="InquiriesHomePage2">www.naver.com</div>
-                                </div>
-                                <div class="Inquiries">
-                                    <div class="InquiriesPhone">연락처</div>
-                                    <div class="InquiriesPhone2">010-1234-5678</div>
-                                </div>
-                                <div class="Inquiries">
-                                    <div class="InquiriesEmail">이메일</div>
-                                    <div class="InquiriesEmail2">jobnom@naver.com</div>
-                                </div>
-
-                            </div>
-                            <div class="InquiriesAddress">회사위치</div>
-                            <div>서울 강남구 역삼동 123-345 8층 jobnomOffice </div>
-
-                           	 <!-- 카카오맵 -->
-                            <div id="map" style="width:300px;height:300px; border:solid"></div>
-	 						<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a20465f19ee15158806da31ed0ea9984"></script>
-                            <script>
-                                var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
-                                    var options = { //지도를 생성할 때 필요한 기본 옵션
-                                        center: new kakao.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
-                                        level: 3 //지도의 레벨(확대, 축소 정도)
-                                    };
-
-                                    var map = new daum.maps.Map(container, options);
-
-                                        function setCenter(lat, lng) {
-
-                                            map.setCenter(new daum.maps.LatLng(lat, lng));
-
-                                        }
-
-
-
-                           </script> 
-                        </div>
-
-                    </div>
-
-
-
-
-                </div>
-
-
-
-            </div>
+          <!--   <span class="annoDetailSpan" style="display:none;"> -->
+                <div class="test"></div>
         </div>
         
         
@@ -963,7 +578,7 @@
 </script>
 
 <!-- 이거 스크롤 고정시키는거 -->
-<script>
+<!-- <script>
 
 
     $(function () {
@@ -975,6 +590,7 @@
 
                 $('#annoListAll').addClass('scroll-fixed');
                 $('#annoListAll').css('padding-top', '100px');
+             
 
             }
             else {
@@ -985,8 +601,33 @@
     });
 
 
-</script>
+</script> -->
 
+
+<script>
+
+/*           $(function () {
+         
+             var scrollOffset = $('#contentDetailfinance').offset();
+         
+             $(window).scroll(function () {
+                 if ($(document).scrollTop() > scrollOffset.top) {
+         
+                     $('#contentDetailfinance').addClass('scroll-fixed');
+                     $('#contentDetailfinance').css('padding-top', '100px');
+                     $('#contentDetailfinance').css('padding-top', '0px');
+                     $('#contentDetailfinance').css('z-index', '99');
+         
+                 }
+                 else {
+                     $('#contentDetail').removeClass('scroll-fixed');
+                     $('#contentDetail').css('padding-top', '0px');
+                 }
+             }); 
+         }); */
+
+</script>
+ 
 <script>
     $(function () {
 
@@ -1022,6 +663,7 @@
         $(window).scroll(function () {
             if ($(document).scrollTop() > scrollOffset.top) {
                 $('.annoCategory').addClass('scroll-fixed');
+                $('.annoCategory').css('z-index', '99');
             
             }
             else {
@@ -1042,6 +684,153 @@
     });
 });
 </script>
+
+              <script>
+                    let avg1 = parseFloat($('.scoreReview_satisfactionAVG').text());
+                    let total1 = avg1*20
+                    $('.yellowbgSatisfaction').css('width',total1+'%');
+                    
+                    let avg2 = parseFloat($('.scoreReview_welfareAVG').text());
+                    let total2 = avg2*20
+                    $('.yellowbgWelfare').css('width',total2+'%');
+                    
+                    let avg3 = parseFloat($('.scoreReview_promotionAVG').text());
+                    let total3 = avg3*20
+                    $('.yellowbgPromotion').css('width',total3+'%');
+                    
+                    let avg4 = parseFloat($('.scoreReview_executiveAVG').text());
+                    let total4 = avg4*20
+                    $('.yellowbgExecutive').css('width',total4+'%');
+              </script>
+               
+               
+
+            </div>
+                            
+         </div>
+       
+           
+         <!--     <script>
+
+              $(document).ready(function () {
+
+             $(".annoDetailListBox").click(function () {
+             $(".clickReview").css("display", "none");
+             $(".annoDetailInfoLeft").show();
+             });
+             });
+             </script> -->
+         <!--      <script>
+
+              $(document).ready(function () {
+
+             $(".annoListTitle..").on('click',function () {
+                
+             $(".annoDetailInfoLeft").css("display", "none");
+             $(".clickReview").show();
+             
+             return;
+                $.ajax({
+                
+                url:"${path}/Hire/reviewAVG.do",
+                  type:"post",
+                data:{ent_no:'1'},
+                success:data=>{
+                   console.log(data);
+                }
+             })   
+             })
+              });
+             </script> -->
+             <!--  <script>
+                /*  data:{ent_no:'${a.ent_no}'}, */
+                
+                    $(".annoListTitle").click(e=>{
+                    var formData = $(e.target).next().val();
+                    $.ajax({
+                         
+                         url : "${path}/Hire/reviewAVG.do", // 요기에
+                         type : 'POST', 
+                         data : {ent_no:formData},
+                         cache: false
+                    }).done(function (fragment) {
+                       alertr(fragment);
+                         $("#list").replaceWith(fragment);
+
+
+                           
+                        }
+               
+                    
+                    });
+                
+                </script>   -->
+                
+                $("#searchBtn").click((e) => {//function(){}
+         $.ajax({
+            url:"<%=request.getContextPath()%>/jquery/nameSearch",
+            data:{"name":$("#name").val()},//서버에 전달할 데이터 자바스크립트 객체로 보냄{키:값,키:값,....}
+            dataType:"html",
+            success:function(data){
+               $("#result").html(data);
+            }
+         });
+      });
+                
+                <script>
+                /*  data:{ent_no:'${a.ent_no}'}, */
+                
+                    $(".annoListTitleBox").click((e) => {
+                    var formData = $(e.target).val();
+                    $.ajax({
+                         
+                         url : "${path}/Hire/anoDetail.do", // 요기에
+                         type : 'POST', 
+                          dataType :'html',
+                         data : {ent_no:formData},
+                         success :function(data){
+                           $(".test").html(data);
+                        }
+               })
+                    });
+                
+                </script> 
+               
+              <!--     <script>
+                 $(".annoListTitle").click(e=>{
+                    alert("dd")
+                    var formData = $(e.target).next().val();
+                    $.ajax({
+                     
+                         url : "insertReview.jsp",
+                         success :function(data){
+                            alert(data);
+                           $(".annoDetail").html(data);
+                           $(".annoDetail").hide();
+                           
+                        }
+               }) 
+                    
+                    });
+              </script>  
+    -->
+            <!--  <script>
+             $(".clickReviewTotalBox").click(e=>{
+                alret("tt");
+             }
+              $.ajax({
+                 url:"${path}/Hire/reviewAVG.do",
+                 dataType:"jsp",
+                  data:{ent_no:ent_no},
+                 success:data=>{
+                     console.log(data);
+                 
+                 
+              });
+           });
+        
+             </script> -->
+             
 
 <!-- $(document).ready(function() {  이건 
     $(function() { 이거랑 같은거임 -->

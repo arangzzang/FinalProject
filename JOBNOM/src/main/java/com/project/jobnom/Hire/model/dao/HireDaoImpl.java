@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.project.jobnom.Hire.model.vo.Recruitment;
+import com.project.jobnom.Hire.model.vo.Review;
 
 @Repository
 public class HireDaoImpl implements HireDao {
@@ -26,6 +27,31 @@ public class HireDaoImpl implements HireDao {
 	public int selectCount(SqlSession session) {
 		return session.selectOne("hire.selectCount");
 	}
+
+	@Override
+	public List<Recruitment>  anoList(SqlSession session, int cPage, int numPerPage) {
+		return  session.selectList("hire.anoList",null,new RowBounds((cPage-1)*numPerPage,numPerPage));
+	}
+
+	@Override
+	public List<Map> reviewStar(SqlSession session) {
+		return session.selectList("hire.reviewStar");
+	}
+
+	@Override
+	public Recruitment selectRecruitmentList(SqlSession session,String ent_no) {
+		return session.selectOne("hire.selectRecruitmentList",ent_no);
+	}
+
+	@Override
+	public Review selectReviewList(SqlSession session, String ent_no) {
+		return session.selectOne("hire.selectReviewList",ent_no);
+	}
+	
+	
+	
+	
+	
 	
 	
 
