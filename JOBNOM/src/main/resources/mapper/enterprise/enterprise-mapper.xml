@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="enterprice">
+<mapper namespace="enterprise">
 	<resultMap type="ent" id="entMap">
 		<result column="ent_no" property="entNo"/>
 		<result column="ent_email" property="entEmail"/>
@@ -15,7 +15,7 @@
 	</resultMap>
 
 	<insert id="enrollEnter" parameterType="ent">
-		insert into enterprice values(
+		insert into enterprise values(
 									seq_ent_no.nextval,
 									#{entEmail},
 									#{entPw},

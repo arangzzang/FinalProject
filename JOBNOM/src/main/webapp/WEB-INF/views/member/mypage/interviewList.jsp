@@ -109,8 +109,7 @@
             <div id="popmenu">
                 <form id="popFrm" action="${path }/Hire/insertReview2.do" method="post"  onsubmit="return fn_review();">
                 <div class="popmenuInsertAll">
-                    <div class="popmenuInsert">기업 리뷰 작성</div>
-                    <!--    <button class="popmenuInsertClose"><i class="far fa-window-close"></i></button> -->
+                    <div class="popmenuInsert">면접 후기 작성</div>
                 </div>
                 <div class="popmenuDetail">
                         입력하신 모든 정보는 익명으로 처리되니 걱정마세요.</div>

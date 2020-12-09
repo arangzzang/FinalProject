@@ -1,4 +1,4 @@
-package com.project.jobnom.enterprice.controller;
+package com.project.jobnom.enterprise.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -7,21 +7,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.project.jobnom.enterprice.model.service.EnterpriceService;
-import com.project.jobnom.enterprice.model.vo.Enterprice;
+import com.project.jobnom.enterprise.model.service.EnterpriseService;
+import com.project.jobnom.enterprise.model.vo.Enterprise;
 
 @Controller
 @SessionAttributes("entpriceLogin")
-public class EnterpriceController {
+public class EnterpriseController {
 
 	@Autowired
-	EnterpriceService service;
+	EnterpriseService service;
 	@Autowired
 	BCryptPasswordEncoder pwEncoder;
 	
 	//기업 회원가입
 	@RequestMapping("/enterprice/enrollEnterEnd")
-	public ModelAndView enrollEnterEnd(Enterprice ent, ModelAndView mv) {
+	public ModelAndView enrollEnterEnd(Enterprise ent, ModelAndView mv) {
 		
 		String oriPw=ent.getEntPw();
 		String loc="redirect:/";
