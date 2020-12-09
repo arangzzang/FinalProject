@@ -14,10 +14,7 @@ public class MemberServiceImpl implements MemberService {
 	private MemberDao dao;
 	@Autowired
 	private SqlSession session;
-	@Override
-	public Member memberLogin(String memEmail) {
-		return dao.memberLogin(memEmail,session);
-	}
+	
 	@Override
 	public int enrollMember(Member m) {
 		

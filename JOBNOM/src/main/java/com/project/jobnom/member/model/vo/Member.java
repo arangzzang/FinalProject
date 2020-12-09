@@ -15,5 +15,7 @@ public class Member {
 	private String memManagerYn;
 	private String memCheck;
 	private String memMembership;
-	private String loginType;
+	private String memCategory1;
+	private String memCategory2;
+	private int type;// 3
 }

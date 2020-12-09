@@ -44,7 +44,33 @@
                      <a class="menus" href="${path }/enterprice/companyList.do">기업</a><!-- nav-link -->
                   </li>
                </ul>
-               <c:if test="${memberLogin==null }">
+<%--                <c:if test="${common.enter != null }" > --%>
+<!--                	<ul class="navbar-nav mr-auto"> -->
+<!--                   <li class="nav-item"> -->
+<!--                      <a class="menus" href="">추세파악</a>nav-link -->
+<!--                   </li> -->
+<!--                   <li class="nav-item"> -->
+<!--                      <a class="menus" href="">헤드헌팅</a>nav-link -->
+<!--                   </li> -->
+<!--                   <li class="nav-item"> -->
+<!--                      <a class="menus" href="">기업 알아보기</a>nav-link -->
+<!--                   </li> -->
+<!--                </ul> -->
+<%--                </c:if> --%>
+<%--                <c:if test="${common.admin != null }" > --%>
+<!--                	<ul class="navbar-nav mr-auto"> -->
+<!--                   <li class="nav-item"> -->
+<!--                      <a class="menus" href="">추세파악</a>nav-link -->
+<!--                   </li> -->
+<!--                   <li class="nav-item"> -->
+<!--                      <a class="menus" href="">헤드헌팅</a>nav-link -->
+<!--                   </li> -->
+<!--                   <li class="nav-item"> -->
+<!--                      <a class="menus" href="">기업 알아보기</a>nav-link -->
+<!--                   </li> -->
+<!--                </ul> -->
+<%--                </c:if> --%>
+               <c:if test="${commonLogin == null}">
                   <!-- 모달 버튼 -->
                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
                      	회원가입/로그인
@@ -60,24 +86,25 @@
                            </button>
                         </div>
                         <div class="modal-body">
-                        <!-- action="/action_page.php" -->
-                           <form action="${path }/member/memberLogin" class="needs-validation" method="post" novalidate>
+                           <form action="${path }/common/commonLogin" class="needs-validation" method="post" novalidate>
+<!--                               <input type="hidden" name="type" value="1" > qqq : 회원구분 관리자 -->
+<!--                               <input type="hidden" name="type" value="2">qqq : 회원구분 기업 -->
+<!--                               <input type="hidden" name="type" value="3">qqq : 회원구분 회원 -->
 	                           <div class="modal-body">
 	                              <div class="form-group">
 	                                 <label for="email">E_mail:</label>
-	                                 <input type="email" class="form-control email" id="email" placeholder="이메일을 입력해주세요." name="memEmail" required>
+	                                 <input type="email" class="form-control email" id="email" placeholder="이메일을 입력해주세요." name="email" required>
 	                                 <div class="valid-feedback">이메일입력완료.</div>
 	                                 <div class="invalid-feedback">E_mail을 입력해주세요.</div>
 	                              </div>
 	                              <div class="form-group">
 	                                 <label for="password">비밀번호:</label>
-	                                 <input type="password" class="form-control password" id="password" placeholder="비밀번호를 입력해주세요." name="memPw" required>
+	                                 <input type="password" class="form-control password" id="password" placeholder="비밀번호를 입력해주세요." name="password" required>
 	                                 <div class="valid-feedback">비밀번호 입력완료.</div>
 	                                 <div class="invalid-feedback">비밀번호를 입력해주세요.</div>
 	                              </div>
 	                              <label>
-	                                 <!-- checked="checked" -->
-	                                 <input type="checkbox" name="remember">E_mail저장하기
+	                                 <input type="checkbox" checked="checked" name="remember">E_mail저장하기
 	                              </label>
                               </div>
                               <div class="modal-footer">
@@ -100,10 +127,15 @@
                   </div>
                </div>
                </c:if>
-               <c:if test="${memberLogin!=null }">
-                  <span><a href="#">${memberLogin.memEmail }</a>님,안녕하세요</span>
+               <c:if test="${commonLogin != null && commonLogin.type == 3 }">
+                  <span><a href="${path }/member/myPage">${commonLogin.memEmail}</a></span>
                   &nbsp;
                   <button class="btn btn-outline-success my-4 my-sm-0" type="button" onclick="location.replace('${path}/member/logout');">로그아웃</button>
+               </c:if>
+               <c:if test="${commonLogin !=null && commonLogin.type == 2 }">
+                  <span><a href="${path }/common/myPage">${commonLogin.memEmail}</a></span>
+                  &nbsp;
+                  <button class="btn btn-outline-success my-4 my-sm-0" type="button" onclick="location.replace('${path}/enterprice/logout');">로그아웃</button>
                </c:if>
             </div>
          </nav>

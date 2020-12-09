@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="notice">
-
+	<resultMap type="Notice" id="n">
+		<result column="notice_no" property="noticeNo"/>
+		<result column="notice_title" property="noticeTitle"/>
+		<result column="notice_contents" property="noticeContents"/>
+		<result column="notice_writeDate" property="noticeWriteDate"/>
+		<!--<result column="admin_no" property="adminNo"/>  -->
+	</resultMap>
 	<!--공지사항 작성  -->
 	<insert id="insertNotice" parameterType="java.util.HashMap">
 		INSERT INTO NOTICE VALUES(SEQ_NOTICE_NO.NEXTVAL,#{noticeTitle},#{noticeContent},SYSDATE)
@@ -10,4 +16,23 @@
  	<select id="selectNoticeList" resultType="map">
  		SELECT * FROM NOTICE ORDER BY NOTICE_WRITEDATE DESC
  	</select>
+ 	<!--공지사항 수정하기 조회  -->
+ 	<select id="selectOneNotice" parameterType="string" resultMap="n">
+ 		SELECT * FROM NOTICE WHERE NOTICE_NO=#{noticeNo}
+ 	</select>
+ 	<!--공지사항 수정하기  -->
+ 	<update id="updateNotice" parameterType="notice">
+ 		UPDATE NOTICE 
+ 				SET 
+ 					notice_title=#{noticeTitle,jdbcType=VARCHAR},
+ 					notice_contents=#{noticeContents,jdbcType=VARCHAR},
+ 					notice_writeDate=SYSDATE
+ 					WHERE notice_no=#{noticeNo}
+ 				<!--WHERE admin_no=#{adminNo}  -->
+ 	</update>
+ 	<!--공지사항 삭제하기  -->
+ 	<delete id="delteNotice" parameterType="notice">
+ 		DELETE NOTICE
+        	WHERE notice_no=#{noticeNo}
+ 	</delete>
 </mapper>

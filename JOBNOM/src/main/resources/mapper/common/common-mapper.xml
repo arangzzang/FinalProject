@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="common">
+	<resultMap type="login" id="log">
+		<result column="type" property="type"/>
+		<result column="mem_no" property="memNo"/>
+		<result column="mem_email" property="memEmail"/>
+		<result column="mem_pw" property="memPw"/>
+	</resultMap>
+
+	<select id="commonLogin" parameterType="map" resultMap="log">
+		SELECT * 
+		    FROM (
+			    SELECT '일반' AS TYPE, MEM_NO ,MEM_EMAIL,MEM_PW FROM MEMBER
+			    UNION ALL
+			    SELECT '기업', ENT_NO, ENT_EMAIL,ENT_PW FROM ENTERPRICE
+			    UNION ALL
+			    SELECT '관리자', ADMIN_NO, ADMIN_EMAIL,ADMIN_PW FROM ADMIN
+		    )
+		    WHERE TYPE=#{type} and mem_email=#{email}
+	</select>
+	
+	<select id="checkDuplicateEmail" parameterType="string" resultMap="log">
+		SELECT * 
+		    FROM (
+			    SELECT '일반' AS TYPE, MEM_NO ,MEM_EMAIL,MEM_PW FROM MEMBER
+			    UNION ALL
+			    SELECT '기업', ENT_NO, ENT_EMAIL,ENT_PW FROM ENTERPRICE
+			    UNION ALL
+			    SELECT '관리자', ADMIN_NO, ADMIN_EMAIL,ADMIN_PW FROM ADMIN
+		    )
+		    WHERE mem_email=#{memEmail}
+	</select>
+	
+	
+</mapper>
