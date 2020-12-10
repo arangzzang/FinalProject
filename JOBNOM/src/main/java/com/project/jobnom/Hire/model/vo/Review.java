@@ -10,6 +10,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Review {
 	private int review_no;
+	private int ent_no;
+	private int mem_no;
 	private String review_name;
 	private String review_title;
 	private String review_contents;
