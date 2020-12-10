@@ -766,7 +766,7 @@
                 
                 </script>   -->
                 
-                $("#searchBtn").click((e) => {//function(){}
+               <%--  $("#searchBtn").click((e) => {//function(){}
          $.ajax({
             url:"<%=request.getContextPath()%>/jquery/nameSearch",
             data:{"name":$("#name").val()},//서버에 전달할 데이터 자바스크립트 객체로 보냄{키:값,키:값,....}
@@ -775,7 +775,7 @@
                $("#result").html(data);
             }
          });
-      });
+      }); --%>
                 
                 <script>
                 /*  data:{ent_no:'${a.ent_no}'}, */

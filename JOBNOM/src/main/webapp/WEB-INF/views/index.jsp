@@ -153,7 +153,7 @@
                                           </div>
                                         </div>
                                         <div class="company_star">
-                                          <div class="company_star_average">3.5</div><!--평균평점 넣기  -->
+                                          <div class="company_star_average">2</div><!--평균평점 넣기  -->
                                         </div>
                                       </div>
                                     </div>

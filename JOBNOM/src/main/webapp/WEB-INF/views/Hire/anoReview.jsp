@@ -5,9 +5,18 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <link rel="stylesheet" href="../resources/css/Hire/announcementPage.css">
 <c:set var="path" value="${pageContext.request.contextPath }" />
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <body>
 
 
-<section id="content">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+
 <div class="test1"></div>
 <div class="annoDetailAll">
                   
@@ -57,7 +66,7 @@
 
                     
         </div>
-           <!--리뷰클릭시 나오는 화면  -->
+             <!--리뷰클릭시 나오는 화면  -->
          <div class="clickReview" style=" width: 555px; height:100%; padding: 20px;">
          	<div class="clickReviewTitleBox">
          	<div class="clickReviewTitleBoxFlax">
@@ -75,7 +84,7 @@
 	         		 <div class="score" style="width:150px;height :35px;position:relative;">
 				        <div class="graybg" style="background-color:#999;  position:absolute; margin-left: 1px; width: 149px; height: 35px;"></div>
 				        <div class="yellowbgSatisfaction" style="background-color:  gold;  position:absolute; height: 35px; margin-left:1px;position:absolute;left:0;top:0;"></div>
-				        <div class="scoreReview_satisfactionAVG"><input class="aa" type="text" value="${r.review_satisfaction }"></div>
+				        <div class="scoreReview_satisfactionAVG">${r.review_satisfaction }</div>
 				        <img class="starImg" src="${path }/resources/image/Hire/star.png" style="  background-size: cover; position:absolute;left:0;top:0; width:151px;height:100%;" />         
 				    </div>
 			    </div>
@@ -84,12 +93,12 @@
 			    <div class="q" style="display: flex;">
          		<div class="clickReviewSalary" style="width: 200px;">복지 및 급여 평점</div>
          		
-         		 <div class="score" style="width:150px;height :35px;position:relative;">
-			        <div class="graybg" style="background-color:#999;  position:absolute; margin-left: 1px; width: 149px; height: 35px;"></div>
-			        <div class="yellowbgWelfare" style="background-color:  gold;  position:absolute; height: 35px; margin-left:1px;position:absolute;left:0;top:0;"></div>
-			        <div class="scoreReview_welfareAVG">3.5</div>
-			        <img class="starImg" src="${path }/resources/image/Hire/star.png" style="  background-size: cover; position:absolute;left:0;top:0; width:151px;height:100%;" />         
-			    </div>
+                 <div class="score" style="width:150px;height :35px;position:relative;">
+                    <div class="graybg" style="background-color:#999;  position:absolute; margin-left: 1px; width: 149px; height: 35px;"></div>
+                    <div class="yellowbgWelfare" style="background-color:  gold;  position:absolute; height: 35px; margin-left:1px;position:absolute;left:0;top:0;"></div>
+                    <div class="scoreReview_welfareAVG">${r.review_welfare }</div>
+                    <img class="starImg"  src="${path }/resources/image/Hire/star.png"  style="  background-size: cover; position:absolute;left:0;top:0; width:151px;height:100%;" />         
+                </div>
 			    </div>
 			    <br>
          		
@@ -98,9 +107,9 @@
          		
          		<div class="score" style="width:150px;height :35px;position:relative;">
 			        <div class="graybg" style="background-color:#999;  position:absolute; margin-left: 1px; width: 149px; height: 35px;"></div>
-			        <div class="yellowbgPromotion" style="background-color:  gold;  position:absolute; height: 35px; margin-left:1px;position:absolute;left:0;top:0;"></div>
-			        <div class="scoreReview_promotionAVG">4</div>
-			        <img class="starImg" src="${path }/resources/image/Hire/star.png" style="  background-size: cover; position:absolute;left:0;top:0; width:151px;height:100%;" />         
+			        <div class="yellowbgPromotion"  style="background-color:  gold;  position:absolute; height: 35px; margin-left:1px;position:absolute;left:0;top:0;"></div>
+			        <div class="scoreReview_promotionAVG">${r.review_promotion }</div>
+			        <img class="starImg" src="${path }/resources/image/Hire/star.png"  style="  background-size: cover; position:absolute;left:0;top:0; width:151px;height:100%;" />         
 			    </div>
 			    </div>
 			    <br>
@@ -111,14 +120,15 @@
          		<div class="score" style="width:150px;height :35px;position:relative;">
 			        <div class="graybg" style="background-color:#999;  position:absolute; margin-left: 1px; width: 149px; height: 35px;"></div>
 			        <div class="yellowbgExecutive" style="background-color:  gold;  position:absolute; height: 35px; margin-left:1px;position:absolute;left:0;top:0;"></div>
-			        <div class="scoreReview_executiveAVG">2</div>
+			        <div class="scoreReview_executiveAVG">${r.review_executive }</div>
 			        <img class="starImg" src="${path }/resources/image/Hire/star.png" style="  background-size: cover; position:absolute;left:0;top:0; width:151px;height:100%;" />         
 			    </div>
 			 	</div>
 			 	</div>
-         			</div>
+                     </div>
+    
 
-</section>
+
 
 <script>
                 /*  data:{ent_no:'${a.ent_no}'}, */
@@ -139,24 +149,28 @@
                 
                 </script> 
                 
-                <script>
-                let avg1 = $('.aa').val();
-                console.log(avg1);
-                let total1 = avg1
-                $('.yellowbgSatisfaction').css('width',total1+'%');
-                
-                let avg2 = parseFloat($('.scoreReview_welfareAVG').text());
-                let total2 = avg2*20
-                $('.yellowbgWelfare').css('width',total2+'%');
-                
-                let avg3 = parseFloat($('.scoreReview_promotionAVG').text());
-                let total3 = avg3
-                $('.yellowbgPromotion').css('width',total3+'%');
-                
-                let avg4 = parseFloat($('.scoreReview_executiveAVG').text());
-                let total4 = avg4
-                $('.yellowbgExecutive').css('width',total4+'%');
-         </script>
+</body>
+              <script>
+              $(document).ready(function () {
+				
+    let avg1 = parseFloat($('.scoreReview_satisfactionAVG').text());
+    let total1 = avg1*20;
+   
+    $('.yellowbgSatisfaction').css('width',total1+'%');
+    
+    let avg2 = parseFloat($('.scoreReview_welfareAVG').text());
+    let total2 = avg2*20;
+    $('.yellowbgWelfare').css('width',total2+'%');
+    
+    let avg3 = parseFloat($('.scoreReview_promotionAVG').text());
+    let total3 = avg3*20;
+    $('.yellowbgPromotion').css('width',total3+'%');
+    
+    let avg4 = parseFloat($('.scoreReview_executiveAVG').text());
+    let total4 = avg4*20;
+    $('.yellowbgExecutive').css('width',total4+'%');
+			});
+</script>
                 
                <!--  <script>
 
