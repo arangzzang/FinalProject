@@ -1,14 +1,12 @@
 package com.project.jobnom.member.controller;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.project.jobnom.member.model.service.MemberService;
@@ -40,18 +38,7 @@ public class MemberController {
 //		}
 //		return loc;
 //	}
-	//로그아웃
-	@RequestMapping("/member/logout")
-	public String logout(HttpSession session, SessionStatus ss) {
-		
-		if(!ss.isComplete()) {
-			ss.setComplete();
-		}
-		if(session != null) {
-			session.invalidate();
-		}
-		return "redirect:/";
-	}
+	
 	//회원가입 페이지전환
 	@RequestMapping("/member/enrollMember")
 	public String enrollMember() {
@@ -76,6 +63,16 @@ public class MemberController {
 		
 		mv.setViewName(loc);
 		return mv;
+	}
+	//마이페이지 화면전환
+	@RequestMapping("/member/myPage")
+	public String mypageView(int memNo, Model m) {
+		
+		System.out.println(memNo);
+		Member mem = service.mypageView(memNo);
+		System.out.println(mem);
+		m.addAttribute("mem",mem);
+		return "member/mypage/mypageFirst";
 	}
 	
 	

@@ -1,0 +1,327 @@
+
+ 
+a:hover{
+
+    color: green;
+}
+a{
+    text-decoration: none;
+    color:#000000;
+
+  }
+/* 세션 */
+  section{
+    
+    width: 80%;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    margin: 0 auto;
+    height: 1500px;
+    min-height: 100%;
+
+  }
+  body{
+    width: 100%;
+
+  }
+  
+  .a{
+      margin-top: 30px;
+      display: flex;
+      font-weight: bolder;
+      font-size: 20px;
+      border-bottom: 1px gray;
+      
+   
+      
+  }
+  .hireHome{
+      padding-left:20px ;
+   
+  }
+  .myHire{
+      padding-left:20px ;
+      
+  
+  }
+  .announcementPage{
+    
+      padding-left:20px ;
+  }
+  
+  /* 검색창 css */
+  .searchbar_section{
+      border-bottom: 1px solid #e5e6e9 ;
+      background-color: #fff;
+      padding: 0;
+      margin-top:-50px ;
+      padding-bottom: 20px;
+  }
+  .searchbar_section>.wrap {
+      position: relative;
+      box-sizing: border-box;
+      width: 1060px;
+      min-height: 62px;
+      margin: 0 auto;
+      padding-top: 66px;
+  }
+  .schbar_green {
+      position: relative;
+      display: block;
+      width: 1060px;
+  }
+  .schbar_green .schbar {
+      position: relative;
+      width: 100%;
+      height: 48px;
+      box-sizing: border-box;
+  }
+  .schbar_green .schbar .jp-search, .schbar_green .schbar .jp-briefcase {
+      position: absolute;
+      top: 50%;
+      left: 16px;
+      transform: translateY(-50%);
+      font-size: 18px;
+      color: #686a6d;
+       z-index: 2; 
+  }
+  .placeholder {
+      position: relative;
+  }
+  .schbar_green .schbar .input_search, .schbar_green .schbar .jply_ip_ty1 {
+      width: calc(449% - (66px + 8px));
+      height: 48px;
+      line-height: 48px;
+      background-color: #fff;
+      border: 1px solid #e5e6e9;
+      border-radius: 5px;
+      box-sizing: border-box;
+      font-size: 16px;
+      padding: 0 15px 0 42px;
+      display: block
+  }   
+  .schbar_green .btn_schbar {
+      position: absolute;
+      right: 0;
+      top: 0;
+      background: #00c362;
+      color: #fff;
+      text-align: center;
+      width: 66px;
+      height: 48px;
+      font-size: 14px;
+      font-weight: bold;
+      border-radius: 5px;
+  }
+  .schbar_green .schbar .jp-search{
+      position: absolute;
+      top: 50%;
+      left: 16px;
+      transform: translateY(-50%);
+      font-size: 18px;
+      color: #686a6d;
+      z-index: 2;
+  }
+  .jp-search:before {
+      content: url("https://common.jobplanet.co.kr/images/svg/ic-trophy.svg")
+  }
+
+.intuAll{
+    padding-top: 20px;
+    width: 100%;
+    margin: 0 auto;
+  
+}
+
+
+.intu{
+    padding-top: 10px;
+    margin-left: 180px;
+    height: 130px;
+    width: 70%;
+    text-align: center;
+    border:solid;
+    border-radius: 12px;
+    display: flex;
+}
+.profil{
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    border: solid;
+    margin-left: 300px;
+    background-image: url("../../image/Hire/pro.png"); 
+    background-size: cover;
+}
+.name{
+    padding-left: 30px;
+    padding-top: 15px;
+}
+
+
+
+
+
+/* 여기서부터 추천공고 */
+.recommendation{
+    padding: 20px;
+    padding-bottom: 20px;
+    font-size: 30px;
+    color: #00c362;
+    font:bolder;
+}
+
+.categoryAnnouncement{
+
+    display:flex;
+    width: 100%;
+    background-color:#f7fdfa;
+    border-radius: 30px;
+}
+.announcementMain{
+  
+    width: 30%;
+    height: 400px;
+}
+.announcementList{
+    width: 70%;
+    display:flex;
+    border-left: solid;
+    color: gray;
+    height: 400px;
+    text-align: center;
+}
+.announcementList1{
+    width:100%;
+    padding-left: 50px;
+    padding-top:10px ;
+    padding-right: 400px;
+}
+.announcementListSize{
+	width: 760px;
+	height: 330px;
+
+}
+#pageBar{
+	width:760px;
+
+}
+.announcementList2{
+    padding: 20px;
+}
+
+.announcementMainImage{
+    width: 200px;
+    height: 200px;
+    margin-left: 120px;
+    margin-top: 50px;
+    background-image: url("../../image/Hire/pro.png"); 
+    background-size: cover ;
+}
+.announcementTitle{
+    margin-top: 20px;
+    text-align: center;
+    font:bold;
+    color: #00c362;
+}
+
+/* 추천공고 리스트 설정 */
+.announcementListFlax{
+	width:760px;
+	height:60px;
+    padding: 10px;
+    display: flex;
+    font-size: 20px;
+    margin-top:5px;
+    text-align: center;
+
+}
+.Mylogo{
+    margin-right: 20px;
+    width: 40px;
+    height: 40px;
+    background-image: url("../../image/Hire/Kakao.png"); 
+    background-size: cover ;
+}
+
+.announcementTitleList{
+    text-align: center;
+	width: 400px;
+
+
+}
+/* fmt:formatDate{
+	width: 50px;
+	border:red;
+	padding-left: 20px;
+} */
+.TitleEndDate{
+	display: flex;
+}
+.findingMe{
+    padding: 20px;
+    padding-bottom: 20px;
+    font-size: 30px;
+    color: #00c362;
+    font:bolder;
+}
+
+
+
+/* 스와이퍼 */
+
+
+    .swiper-container {
+      width: 100%;
+      padding-top: 30px;
+      background-size: cover;
+      position: relative;
+
+      
+    }
+   
+    .swiper-slide {
+        height: 300px;
+      
+
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+      border-radius: 10px;
+
+      /* Center slide text vertically */
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+        border: solid;
+      padding-bottom: 30px;
+    }
+    
+
+  
+/* 왼쪽 버튼 */ 
+.swiper-button-prev, .swiper-container-rtl .swiper-button-next {
+
+    background-size:cover;
+    
+    left: 10px;
+    right: auto;
+}
+/* 오른쪽 버튼 */
+.swiper-button-next, .swiper-container-rtl .swiper-button-prev {
+    
+    background-size:cover;
+   
+    right: 10px;
+    left: auto;
+}

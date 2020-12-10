@@ -1,0 +1,317 @@
+@charset "UTF-8";
+	
+		img{
+            width: 100px;
+            height: 100px;
+        }
+        .job2, .option2{
+            display: none;
+        }
+        .container{
+            padding: 0;
+        }
+        /* 마이페이지 헤더회원정보 */
+        #memberinfo{
+            background-color: #fff;
+            padding: 20px 26px 10px 0;
+            width: 70%;
+            margin: 0 auto;
+        }
+        .memberinfo-parent{
+            border-bottom: 1px lightgray solid;
+        }
+        /* 마이페이지 navbar */
+        .MPheadmenu{
+            width: 70%;
+            margin: 0 auto;
+        }
+        .MPheadmenu-parent{
+            border-bottom: 1px lightgray solid;
+            background-color: #fff;
+        }
+        .navbtn{
+            background-color: white;
+            border: none;
+        }
+        .navbtn:hover{
+            font-weight: bold;
+            color: green;
+            border: none;
+        }
+        /*바디 전체부분*/
+        .with{
+            width: 70%;
+            margin: 0 auto;
+        }
+        .with-parent{
+            background-color: #e5e6e9;
+        }
+        /* 사이드바 */
+        .sidebar{
+            background-color: #fff;
+        }
+        .sidebar-title{
+            padding: 10px 0 10px 10px;
+            border-bottom: 1px solid lightgray;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .sidebtn{
+            border: none;
+            background-color: #fff;
+            padding-bottom: 10px;
+        }
+        .sidebtn:hover{
+            font-weight: bold;
+            color: green;
+        }
+        /*바디 메인*/
+        .maininfo-parent{
+            margin-bottom: 100px;
+            background-color: #fff;
+        }
+        .one{
+            padding: 28px 24px 45px 24;
+        }
+        .maininfo{
+            padding: 56px 26px 56px 26px;
+        }
+        #maincon{
+            /* margin: 0 auto; */
+            padding: 0;
+        }
+        .form-gruop{
+            padding-bottom: 10px;
+        }
+        .maintitle{
+            padding: 20px 0px 0 10px;
+        }
+        .list_count{
+            padding-left: 10px;
+        }
+        .interview_table{
+            width: 100%;
+            border-bottom: 1px solid rgb(209, 209, 209);
+            /* margin: 0 auto; */
+        }
+        .interview_th{
+            background-color: rgb(240, 244, 245);
+            text-align: center;
+            height: 50px;
+            border-top: 1px solid black;
+            border-bottom: 1px solid rgb(209, 209, 209);
+        }
+        .interview_td_null{
+            text-align: center;
+            height: 100px;
+        }
+        .interview_td_notnull{
+            text-align: center;
+            height: 100px;
+        }
+        .interview_writing{
+        	padding-top: 50px;
+            width: 100%;
+            text-align: center;
+        }
+        
+        /*팝업창*/
+		#popup{
+		    display: none; /*숨기기*/
+		    position: fixed;
+		    left: 0;
+		    top: 0;
+		    width: 100%;
+		    height: 100%;
+		    z-index: 10;
+		    background-color: rgba(0, 0, 0, 0.755);
+		}
+		.popupAll{
+		    display: flex;
+		}
+		#popmenu {
+		    width: 40%;
+		    height: max-content;
+		    background: #fff;
+		    margin-left: 310px;
+		}
+/* 		.popmenuInsertAll{ */
+/* 		    display: flex; */
+/* 		    background: #00c362; */
+/* 		} */
+/* 		.popmenuInsert{ */
+/* 		    padding-top: 15px; */
+/* 		    width: 100%; */
+/* 		    height: 50px; */
+/* 		    padding-left: 15px; */
+/* 		} */
+/* 		.findingMeDetailCancel{ */
+/* 		    border: none; */
+/* 		} */
+/* 		.popmenuInsertClose{ */
+/* 		  	border-radius: 12px; */
+/* 		    right: 0; */
+/* 		    top: 0; */
+/* 		    background: wihte; */
+/* 		    color: black; */
+/* 		    text-align: center; */
+/* 		    width: 250px; */
+/* 		    height: 50px; */
+/* 		    font-size: 14px; */
+/* 		    font-weight: bold; */
+/* 		    border-radius: 5px; */
+/* 		    margin-right: 10px; */
+/* 		    margin-top: 20px; */
+/* 		    margin-left: 10px; */
+/* 		} */
+/* 		.submitByttonBox{ */
+/* 		   	display: flex; */
+/* 		} */
+/* 		.fa-window-close{ */
+/* 		    font-size: 30px; */
+/* 		    background: #00c362; */
+/* 		    color: white; */
+/* 		} */
+/* 		.popmenuDetail{ */
+/* 		    padding-top: 15px; */
+/* 		    padding-left: 15px; */
+/* 		} */
+/* 		.popmenuEnterprise{ */
+/* 		    display: flex; */
+/* 		    padding-top: 25px; */
+/* 		    padding-left: 15px; */
+/* 		} */
+/* 		.popmenuEnterpriseName{ */
+/* 		    margin-left: 120px; */
+/* 		    width: 300px; */
+/* 		    height: 35px; */
+/* 		} */
+/* 		.popmenuTital{ */
+/* 		    display: flex; */
+/* 		    padding-top: 30px; */
+/* 		    padding-left: 15px; */
+/* 		} */
+/* 		.popmenuTitalName{ */
+/* 		    margin-left: 132px; */
+/* 		    width: 300px; */
+/* 		    height: 35px; */
+/* 		} */
+/* 		.popmenuContents{ */
+/* 		    display: flex; */
+/* 		    padding-top: 30px; */
+/* 		    padding-left: 15px; */
+/* 		} */
+/* 		.popmenuContentsName{ */
+/* 		    margin-left: 132px; */
+/* 		} */
+/* 		///// 여기서 부터 리뷰별//// */
+/* 		.companyStar-box{ */
+/* 		    display: flex; */
+/* 		    padding-top: 20px; */
+/* 		    padding-left: 15px; */
+/* 		} */
+/* 		.blessedStar-box{ */
+/* 		    display: flex; */
+/* 		    padding-top: 20px; */
+/* 		    padding-left: 15px; */
+/* 		} */
+/* 		.promotionStar-box{ */
+/* 		    display: flex; */
+/* 		    padding-top: 20px; */
+/* 		    padding-left: 15px; */
+/* 		} */
+/* 		.executiveStar-box{ */
+/* 		    display: flex; */
+/* 		    padding-top: 20px; */
+/* 		    padding-left: 15px; */
+/* 		} */
+/* 		.companyTitle{ */
+/* 		    width: 150px; */
+/* 		}  */
+/* 		.blessedTitle{ */
+/* 		    width: 150px; */
+/* 		} */
+/* 		.promotionTitle{ */
+/* 		    width: 150px; */
+/* 		} */
+/* 		.executiveTitle{ */
+/* 		    width: 150px; */
+/* 		} */
+/* 		.companyStar { */
+/* 		    background-image: url("../../image/Hire/starGreen.png"); */
+/* 			background-size: cover; */
+/* 			width: 40px; */
+/* 		    height: 40px; */
+/* 		    margin-left: 20px; */
+/* 		} */
+/* 		.blessedStar { */
+/* 		    background-image: url("../../image/Hire/starGreen.png"); */
+/* 			background-size: cover; */
+/* 			width: 40px; */
+/* 		    height: 40px; */
+/* 		    margin-left: 20px; */
+/* 		} */
+/* 		.promotionStar { */
+/* 			background-image: url("../../image/Hire/starGreen.png"); */
+/* 		   	background-size: cover; */
+/* 		   	width: 40px; */
+/* 		    height: 40px; */
+/* 		    margin-left: 20px; */
+/* 		} */
+/* 		.executiveStar { */
+/* 		    background-image: url("../../image/Hire/starGreen.png"); */
+/* 		   	background-size: cover; */
+/* 		   	width: 40px; */
+/* 		    height: 40px; */
+/* 		    margin-left: 20px; */
+/* 		} */
+/* 		.companyStar.on{ */
+/* 		     background-image: url("../../image/Hire/starGreenOn.png"); */
+/* 		  } */
+/* 		.blessedStar.on{ */
+/* 		     background-image: url("../../image/Hire/starGreenOn.png"); */
+/* 		} */
+/* 		.promotionStar.on{ */
+/* 		    background-image: url("../../image/Hire/starGreenOn.png"); */
+/* 		} */
+/* 		.executiveStar.on{ */
+/* 		    background-image: url("../../image/Hire/starGreenOn.png"); */
+/* 		} */
+/* 		///// 여기까지 리뷰별//// */
+/* 		.GradeboxSubmit{ */
+/* 		    border-radius: 12px; */
+/* 		    right: 0; */
+/* 		    top: 0; */
+/* 		    background: #00c362; */
+/* 		    color: #fff; */
+/* 		    text-align: center; */
+/* 		    width: 250px; */
+/* 		    height: 50px; */
+/* 		    font-size: 14px; */
+/* 		    font-weight: bold; */
+/* 		    border-radius: 5px; */
+/* 		    margin-right: 10px; */
+/* 		    margin-top: 20px; */
+/* 		    margin-left: 60px; */
+/* 		} */
+/* 		여기는 리뷰 옆 주의사항 */
+/* 		#popmenuInfo{ */
+/* 		    width: 20%; */
+/* 		    height: max-content; */
+/* 		    background: #fff; */
+/* 			margin-left: 50px; */
+/* 			margin-top: 30px; */
+/* 		} */
+/* 		.popmenuInfoTitle{ */
+/* 		    font-size: 20px; */
+/* 		    padding-top: 10px; */
+/* 		    padding-left: 10px; */
+/* 		    padding-right: 10px; */
+/* 		} */
+/* 		.popmenuInfoContents{ */
+		
+/* 		    padding-top: 10px; */
+/* 		    padding-left: 10px; */
+/* 		    padding-right: 10px; */
+/* 		} */
+        

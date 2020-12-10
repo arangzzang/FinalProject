@@ -5,7 +5,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <c:set var="path" value="${pageContext.request.contextPath }" />
 
-<link rel="stylesheet" href="${path }/resources/css/updatepassword.css"/>
+<link rel="stylesheet" href="${path }/resources/css/mypage/updatepassword.css"/>
 
 <jsp:include page="/WEB-INF/views/common/header.jsp">
 	<jsp:param name="title" value=" "/>

@@ -1,0 +1,139 @@
+
+#findingMeDetail{
+    margin-top: 30px;
+    padding-top:20px ;
+    display: none;
+    width: 100%;
+    position: relative;
+    height: 330px;
+    border-radius: 12px;
+    background-color: #f3f3f3;
+
+
+}
+.findingMeDetailX{
+  
+    width: 100%;
+    height: 30px;
+    text-align: right;
+}
+.findingMeDetailCancel{
+    border: none;
+}
+.fa-window-close{
+    font-size: 30px;
+    color: #00c362;
+}
+.findingMeDetail2{
+    display: inline-flex
+}
+
+.findingMeDetailTitle{
+    width: 33%;
+    display: flex;
+
+}
+.active{
+    
+ 
+    display: block;
+  
+
+}
+
+.findingMeDetailTitleLogo{
+    margin-top: 80px;
+    margin-left: 30px;
+    background-image: url("../hire/image/Kakao.png");
+    background-size: cover;
+    width: 80px;
+    height: 80px;
+    border-radius: 12px;
+
+}
+.findingMeDetailTitleAnnouncement{
+    padding-top: 110px;
+    padding-left: 10px;
+  
+}
+.findingMeDetailSummary{
+    width: 37%;
+    border-right:solid gray;
+    
+}
+
+.findingMeDetailSummary1{
+    padding-top: 70px;
+   
+    display: flex;
+}
+.findingMeDetailSummary2{
+    padding-top: 30px;
+
+    display: flex;
+}
+.findingMeDetailSummary3{
+    padding-top: 30px;
+    padding-left: 20px;
+    display: flex;
+}
+.findingMeDetailSummaryTitle{
+    width: 80px;
+}
+.findingMeDetailSummaryLogo{
+    margin-right: 10px;
+    background-image: url("../hire/image/free.png");
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+}
+.findingMeDetailMaintask{
+    width: 30%;
+
+
+}
+.findingMeDetailMaintaskAll{
+    padding-top: 50px;
+    padding-left: 30px;
+}
+
+.findingMeDetailMaintaskAll2{
+    margin-top: 20px;
+}
+.findingMeDetailMaintaskAll3{
+    margin-top: 20px;
+}
+.findingMeDetailButton{
+    display: flex;
+    padding-left: 150px;
+}
+.btn_annoDetail{
+
+    right: 0;
+    top: 0;
+    background: #00c362;
+    color: #fff;
+    text-align: center;
+    width: 200px;
+    height: 50px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-right: 10px;
+    margin-top: 40px;
+    margin-left: 60px;
+    }
+#announcementFavorites{
+        width: 100%;
+        height: 100%;
+        padding-left:7px ;
+        padding-right:-2px ;
+        padding-top:3px ;
+        
+}
+#favoritesBox {
+    width: 80px;
+    height: 50px;
+    margin-top:40px ;
+    border-radius: 5px;
+}
