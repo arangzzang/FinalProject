@@ -35,5 +35,26 @@
 		RECRUITMENT FROM BOARD B
 		ORDER BY BOARDDATE DESC -->
 	</select>
+	<select id="anoList" resultType="com.project.jobnom.Hire.model.vo.Recruitment">
+	 	SELECT * FROM RECRUITMENT 
+	</select>
+	
+	
+	<select id="reviewStar" resultType="map">
+	 	SELECT  ENT_NAME,REVIEW_SATISFACTION 
+		FROM REVIEW R JOIN ENTERPRICE E ON (R.ENT_NO = E.ENT_NO)
+	</select>
+	
+	<select id="selectRecruitmentList" parameterType="string" resultType="com.project.jobnom.Hire.model.vo.Recruitment">
+			SELECT * FROM RECRUITMENT WHERE ENT_NO=#{ent_no} 
+	</select>
+	
+	<select id="selectReviewList" parameterType="string" resultType="com.project.jobnom.Hire.model.vo.Review">
+		SELECT ENT_NO, REVIEW_TITLE,REVIEW_CONTENTS,REVIEW_WRITER, REVIEW_SATISFACTION,
+		 REVIEW_WELFARE, REVIEW_PROMOTION , REVIEW_EXECUTIVE
+		FROM REVIEW
+		WHERE ENT_NO=#{ent_no}
+		ORDER BY 1 DESC 
+	</select>
 	
 </mapper>

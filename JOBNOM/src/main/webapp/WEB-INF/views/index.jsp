@@ -153,7 +153,7 @@
                                           </div>
                                         </div>
                                         <div class="company_star">
-                                          <div class="company_star_average">3</div>
+                                          <div class="company_star_average">2</div><!--평균평점 넣기  -->
                                         </div>
                                       </div>
                                     </div>
@@ -172,5 +172,13 @@
         </div>
     </div>
     <!-- 리뷰 끝 -->
+    
+    <!--평균평점 별점 스크립트  -->
+   	<script>
+		let avg = parseFloat($('.company_star_average').text());
+		let total = avg*20
+		
+		$('.company_star_average').css('width',total+'%');
+	</script>
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
