@@ -13,3 +13,8 @@ org.eclipse.jdt.core.compiler.problem.forbiddenReference=warning
 org.eclipse.jdt.core.compiler.problem.reportPreviewFeatures=ignore
 org.eclipse.jdt.core.compiler.release=disabled
 org.eclipse.jdt.core.compiler.source=1.8
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> branch 'yoseph' of https://github.com/arangzzang/FinalProject.git
