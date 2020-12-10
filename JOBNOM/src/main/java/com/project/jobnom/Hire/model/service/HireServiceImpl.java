@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.project.jobnom.Hire.model.dao.HireDao;
 import com.project.jobnom.Hire.model.vo.Recruitment;
+import com.project.jobnom.Hire.model.vo.Review;
 @Service
 public class HireServiceImpl implements HireService {
 
@@ -33,6 +34,30 @@ public class HireServiceImpl implements HireService {
 	public int selectCount() {
 		return dao.selectCount(session);
 	}
+
+	@Override
+	public List<Recruitment> anoList(int cPage, int numPerPage) {
+		return dao.anoList(session,cPage,numPerPage);
+	}
+
+	@Override
+	public List<Map> reviewStar() {
+		return dao.reviewStar(session);
+	}
+
+	@Override
+	public Recruitment selectRecruitmentList(String ent_no) {
+		return dao.selectRecruitmentList(session, ent_no);
+	}
+
+	@Override
+	public Review selectReviewList(String ent_no) {
+		return dao.selectReviewList(session, ent_no);
+	}
+	
+	
+	
+	
 	
 
 	
