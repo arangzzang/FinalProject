@@ -96,208 +96,48 @@
                             </c:if>
                         </table>
                         <div class="interview_writing">
-                            <button type="button" class="btn btn-outline-success interviewBtn"><i></i>면접후기 작성</button>
+                            <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#interview">
+                                면접 후기 작성
+                            </button>
+                            <div class="modal fade" id="interview" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document" style="display: flex; width: 100%;">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="">
+                                                <div class="row" style="display: flex;">
+                                                    <div class="col-md-auto col-4 title">
+                                                        기업에 대한 한줄평은?
+                                                    </div>
+                                                    <div class="col-md-8 col-8">
+                                                        <input type="text" >
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary">Understood</button>
+                                        </div>
+                                    </div>
+                                    <div class="interview_info" style="width: 100px; height: 100px; background-color: #fff;">
+
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <div id="popup">
-        <div class="popupAll">
-            <div id="popmenu">
-                <form id="popFrm" action="${path }/Hire/insertReview2.do" method="post"  onsubmit="return fn_review();">
-                <div class="popmenuInsertAll">
-                    <div class="popmenuInsert">면접 후기 작성</div>
-                </div>
-                <div class="popmenuDetail">
-                        입력하신 모든 정보는 익명으로 처리되니 걱정마세요.</div>
-                    <div class="popmenuEnterprise">
-                        <div>기업명</div>
-                        <input class="popmenuEnterpriseName" id="reviewName" name="review_name" type="text" placeholder="기업명">
-                    </div>
-                    <div class="popmenuTital">
-                        <div>제목</div>
-                        <input class="popmenuTitalName" type="text" name="review_title" placeholder="제목">
-                    </div>
-                    <div class="popmenuContents">
-                        <div>내용</div>
-                        <textarea class="popmenuContentsName"   name="review_contents" cols="47" rows="5" placeholder="내용" style="resize: none;"></textarea>
-                    </div>
-                    <!-- 사내 만족도 평점 -->
-                    <div class="companyGradebox"> 
-                        <div class="companyStar-box">
-                            <div class="companyTitle">사내만족도 평점</div>
-                            <div class="companyStar " id="1"></div>
     
-                            <div class="companyStar " id="2"></div> 
     
-                            <div class="companyStar " id="3"></div> 
-    
-                            <div class="companyStar " id="4"></div> 
-    
-                            <div class="companyStar " id="5"></div> 
-                            <input type="hidden" name="review_satisfaction" class="companyGrade">
-                            <input type="hidden" name="memberNo" value="">
-                            <!-- 나중에 스프링에서 value에 다가 로그인한 회원 번호 넣어주기 -->
-                            <!-- 나중에 스프링가서 name 이랑 class 이름 다 바꿔주자  -->
-                        </div>
-                    </div>
-                        <!-- 복지 및 급여평점 -->
-                    <div class="blessedGradebox"> 
-                        <div class="blessedStar-box">
-                            <div class="blessedTitle">복지 및 급여평점</div>
-                            <div class="blessedStar " id="1"></div>
-    
-                            <div class="blessedStar " id="2"></div> 
-    
-                            <div class="blessedStar " id="3"></div> 
-    
-                            <div class="blessedStar " id="4"></div> 
-    
-                            <div class="blessedStar " id="5"></div> 
-                            <input type="hidden" name="review_welfare" class="blessedGrade">
-                            <input type="hidden" name="memberNo" value="">
-                            <!-- 나중에 스프링에서 value에 다가 로그인한 회원 번호 넣어주기 -->
-                        </div>
-                    </div>
-                    <!-- 승진 기회 및 가능성 평점 -->
-                    <div class="promotionGradebox"> 
-                        <div class="promotionStar-box">
-                            <div class="promotionTitle">승진 기회 및 가능성 평점</div>
-                            <div class="promotionStar " id="1"></div>
-                            
-                            <div class="promotionStar " id="2"></div> 
-    
-                            <div class="promotionStar " id="3"></div> 
-    
-                            <div class="promotionStar " id="4"></div> 
-    
-                            <div class="promotionStar " id="5"></div> 
-                            <input type="hidden" name="review_promotion" class="promotionGrade">
-                            <input type="hidden" name="memberNo" value="">
-                            <!-- 나중에 스프링에서 value에 다가 로그인한 회원 번호 넣어주기 -->
-                        </div>
-                    </div>
-                    <!-- 경영진 평점 -->
-                    <div class="executiveGradebox"> 
-                        <div class="executiveStar-box">
-                            <div class="executiveTitle">경영진 평점</div>
-                            <div class="executiveStar " id="1" ></div>
-    
-                            <div class="executiveStar " id="2"></div> 
-    
-                            <div class="executiveStar " id="3"></div> 
-    
-                            <div class="executiveStar " id="4"></div> 
-    
-                            <div class="executiveStar " id="5"></div> 
-                            <input type="hidden" name="review_executive" class="executiveGrade">
-                            <input type="hidden" name="memberNo" value="">
-                            <!-- 나중에 스프링에서 value에 다가 로그인한 회원 번호 넣어주기 -->
-                        </div>
-                    </div>
-                    <div class="submitByttonBox">
-                        <input class="GradeboxSubmit" type="submit" value="제출하기" onclick="fn_return();"  > 
-                        <input class="popmenuInsertClose" type="button" value="닫기" > 
-                    </div>
-                </form>
-            </div>
-            <div id="popmenuInfo">
-                <div class="popmenuInfoTitle">정보 등록 정책</div>
-                <div class="popmenuInfoContents">기업 리뷰의 신뢰성을 높이고 고위적으로 기업 평점 조작을 방지하기위해, 작성된 모든 정보는 JOBNOM 의 자체적인 검토과정을 거쳐 삭제될수도 있습니다</div>
-                <div class="popmenuInfoTitle">등록이 거부되는 이유</div>
-                <div class="popmenuInfoContents">
-                    1. 기업을 이해하는데 도움이 안되거나 항목과 상관없는 내용<br>
-                    2. 부서, 직급 등 개인을 특정 지을수 있는 정보나 펌훼, 비방성 표현<br>
-                    3. 욕설, 비속어, 은어 및 공격적인 언어<br>
-                    4. 기업 비밀에 해당하는 내용<br>
-                    5. 존재하지 않거나 명확하지 않는 기업명<br>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-    <script>
-        //
-
-
-        //
-        function fn_review(){
-            if ($('input[name=review_name]').val()==="" ||
-                $('input[name=review_title]').val()==="" ||
-                $('textarea[name=review_contents]').val()==="" ||
-                $('input[class=review_satisfaction]').val()==="" || 
-                $('input[class=review_welfare]').val()==="" ||
-                $('input[class=review_promotion]').val()==="" ||
-                $('input[class=review_executive]').val()==="") {
-
-                    alert('필수 항목들을 입력해주세요!');  
-                    return false;
-            }
-        };
-        $(document).ready(function(){
-            $(".interviewBtn").click(function(){
-                $("#popup").fadeIn();
-            });
-            $(".popmenuInsertClose").click(function(){
-                $("#popup").fadeOut();
-            });
-        });
-        //시내만족도평점
-        $('.companyStar-box div').click(function(){
-            $(this).parent().children("div").removeClass("on");
-            $(this).addClass("on").prevAll("div").addClass("on");
-        });
-        //급여만족도 평점
-        $('.blessedStar-box div').click(function(){
-            $(this).parent().children("div").removeClass("on");
-            $(this).addClass("on").prevAll("div").addClass("on");
-        });
-        //승진기회 및 가능성 평점
-        $('.promotionStar-box div').click(function(){
-            $(this).parent().children("div").removeClass("on");
-            $(this).addClass("on").prevAll("div").addClass("on");
-        });
-        //경영진 평점
-        $('.executiveStar-box div').click(function(){
-            $(this).parent().children("div").removeClass("on");
-            $(this).addClass("on").prevAll("div").addClass("on");
-        });
-        //별 찍기
-        $(".companyStar").on("click",e=>{
-            let grade=$(e.target).attr("id");
-            console.log(grade+"1번");
-            $(".companyGrade").val(grade);
-        });
-
-        $(".blessedStar").on("click",e=>{
-            let grade=$(e.target).attr("id");
-            console.log(grade+"2번");
-            $(".blessedGrade").val(grade);
-        });
-
-        $(".promotionStar").on("click",e=>{
-            let grade=$(e.target).attr("id");
-            console.log(grade+"3번");
-            $(".promotionGrade").val(grade);
-        });
-
-        $(".executiveStar").on("click",e=>{
-            let grade=$(e.target).attr("id");
-            console.log(grade+"경영진");
-            $(".executiveGrade").val(grade);
-        });
-
-        //주소값 넘기기
-        function Hire(url){
-            $("#popFrm").attr("action",'${path}/Hire/'+url);
-            $("#popFrm").submit();
-        }
-    </script>
 
 
 
