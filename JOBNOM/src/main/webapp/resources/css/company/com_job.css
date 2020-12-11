@@ -1,0 +1,226 @@
+@charset "UTF-8";
+.headerContainerWrap{
+    background-color: #fff;
+    border-bottom: 1px solid #e5e6e9;
+}
+
+/*로고*/
+.logo{
+    width: 100px;
+    height: 50px;
+}
+/* 메뉴에 마우스 올릴 시 색 변화 */
+.menus:hover{
+    font-weight: bold;
+    color: green;
+}
+.menus{
+    text-decoration: none;
+    color:#000000;
+    padding: 8px;
+}
+/* 세션 */
+section{
+    width: 80%;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    margin: 0 auto;
+    min-height: 100%;
+}
+body{
+    width: 100%;
+}
+.cmp_top{
+    position: relative;
+}
+.cmp_top_containner {
+    position: relative;
+    width: 100%;
+}
+.cmp_top_img {
+    position: relative;
+    height: 168px;
+    background-color: #ebecee;
+}
+.cmp_top_wrap {
+    width: 100%;
+    background-color: #fff;
+    z-index: 20;
+}
+.cmp_wrap {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+}
+.cmp_top_box{
+    position: relative;
+}
+.compa_info {
+    position: relative;
+    padding-top: 80px;
+    padding-bottom: 30px;
+}
+.compa_logo {
+    position: absolute;
+    top: -50px;
+    left: 20px;
+    width: 104px;
+    height: 104px;
+    z-index: 5;
+    border: grey 1px;
+}
+.logo_wrap{
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    border: 2px solid #e5e6e9;
+    overflow: hidden;
+    background-color: #fff;
+}
+.compa_name>a{
+    font-size: 40px;
+    text-decoration: none;
+    color: black;
+}
+.about_compa{
+    display: flex;
+}
+.compa_rating>span>i{
+    color: green;
+}
+
+.compa_rating{
+    margin-right: 10px;
+}
+.com_info_small{
+    font-size: 13px;
+}
+#view_com{
+    height: 50px;
+    border-top: 1px solid grey;
+    border-bottom: 1px solid grey;
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    margin: 0 auto;
+
+}
+.com_menu{
+    height: 80px;
+}
+.view_menu{
+    display: flex;
+    list-style: none;
+}
+.li_menu{
+    margin-right: 40px;
+    padding: 15px;
+}
+.li_menu>a{
+    color: black;
+    text-decoration: none;
+}
+.li_menu>a>h2{
+    font-size: 20px;
+}
+.li_menu>a:hover{
+    color: green;
+}
+.li_menu>a>h2>span{
+    font-size: 15px;
+}
+.follow_btn>button{
+    margin-left: 300px;
+    margin-top: 25px;
+    border: 1px solid green;
+    
+}
+.follow_btn>button>i{
+    color: red;
+}
+.num{
+    font-size: 10px;
+}
+.job_container{
+    padding: 20px;
+    background-color: #ebecee;
+    width: 100%;
+    height: auto;
+}
+.job_con_box{
+    position: relative;
+    width: 90%;
+    height: 130px;
+    background-color: white;
+    margin: 0 auto;
+    padding: 20px;
+}
+.job_select>select,.job_result>select{
+    width:auto;
+    border: 1px solid #c2c8cc;
+    color: #323438;
+    cursor: pointer;
+}
+
+.job_result {
+    padding: 35px 0 4px;
+    font-size: 15px;
+    color: #444;
+}
+.job_result>strong{
+    color: green;
+}
+.job_check_filter {
+    position: absolute;
+    bottom: 12px;
+    right: 14px;
+    height: 40px;
+}
+.job_items{
+    width: 90%;
+    height: 90%;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+.job_item_wrap{
+    background-color: white;
+    width: 30%;
+    height: 20%;
+    padding: 15px;
+}
+.job_item_wrap>a:link{
+    text-decoration: none;
+}
+.job_dday{
+    border: 1px solid orange;
+    border-radius: 10px;
+    color: orange;
+    font-size: 13px;
+    
+}
+.info_box>h2{
+    font-size: 15px;
+    color: black;
+    font-weight: bold;
+}
+.info_box>p{
+    font-size: 13px;
+    color: gray;
+}
+.com_job_default{
+	width:100%;
+	height:300px;
+	margin: 0 auto;
+	position: relative;
+	padding: 130px 0 120px;
+}
+.com_job_wrap{
+	text-align: center;
+	color:gray;
+	margin:12px;
+}

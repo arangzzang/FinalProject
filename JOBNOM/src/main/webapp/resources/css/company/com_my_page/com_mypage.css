@@ -1,0 +1,69 @@
+@charset "UTF-8";
+
+img{
+    width: 100px;
+    height: 100px;
+}
+.job2, .option2{
+    display: none;
+}
+.container{
+    padding: 0;
+}
+  /* 마이페이지 헤더회원정보 */
+#memberinfo{
+    background-color: #fff;
+    padding: 20px 26px 10px 0;
+    width: 70%;
+    margin: 0 auto;
+}
+.memberinfo-parent{
+    border-bottom: 1px lightgray solid;
+}
+/* 마이페이지 navbar */
+.MPheadmenu{
+    width: 70%;
+    margin: 0 auto;
+}
+.MPheadmenu-parent{
+    border-bottom: 1px lightgray solid;
+    background-color: #fff;
+}
+.navbtn{
+    background-color: white;
+    border: none;
+}
+.navbtn:hover{
+    font-weight: bold;
+    color: green;
+    border: none;
+}
+/*바디 전체부분*/
+.mypage_container{
+	width:100%;
+	height:auto;
+	background-color: #ebecee;
+	padding: 30px;
+}
+.mypage_box{
+	margin: 0 auto;
+	width: 70%;
+	height: auto;
+	background-color:white;
+	padding: 50px;
+}
+.mypage_box>h2{
+	width:300px;
+}
+.btn_1{
+	float: right;
+}
+.anno_title{
+	float: left;
+	
+}
+#anno_list{
+	width: 100%;
+	margin:0 auto;
+	text-align: center;
+}
