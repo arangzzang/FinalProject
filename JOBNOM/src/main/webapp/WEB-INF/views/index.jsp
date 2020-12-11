@@ -12,6 +12,7 @@
 
 
 <!-- 메인페이지 전체 화면 시작 -->
+	<a href="${path }/header/jmk.do">go to new header</a>
     <div id="contents_warp_new">
         <!-- 오늘의 추천 -->
         <div id="contents" class="contents">

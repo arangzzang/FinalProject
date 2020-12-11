@@ -35,5 +35,9 @@ public class HomeController {
 //		"member/mypage/myProfile"
 		return "index";
 	}
+	@RequestMapping("header/jmk.do")
+	public String headerJmk() {
+		return "/common/header_jmk";
+	}
 	
 }
