@@ -18,7 +18,7 @@ public interface HireService {
 
 	List<Map> reviewStar();
 	
-	Recruitment selectRecruitmentList(String ent_no);
+	Recruitment selectRecruitmentList(String rec_no);
 	
 	Review selectReviewList(String ent_no);
 	

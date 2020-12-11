@@ -17,7 +17,7 @@
 
 
 
-<div class="test1"></div>
+<div class="annoDetailAllReview">
 <div class="annoDetailAll">
                   
                     <div class="annoDetailTitle">
@@ -26,16 +26,11 @@
                                 <div class="annoDetailLoge"></div>
                             </div>
                             <div class="annoDetailTitleFlax">
-                            <%--  <c:forEach items="${data }" var="a">  --%>
-                            
-                                <div class="annoDetailTitle1"></div>
-                                 
-                           
-                                 
+                                <div class="annoDetailTitle1">${r.rec_title }</div>
                                  <a href="#">
-                                    <div class="annoDetailTitleFont"></div>
+                                    <div class="annoDetailTitleFont">${r.ent_name }</div>
                                 </a>
-                                 <%--  </c:forEach>  --%>
+                    
                             </div>
                         </div>
                         <button class="btn_annoDetail" onclick="">지원하기</button>
@@ -46,8 +41,8 @@
 
                      <div class="detailedReviewInterview">
                        <a href="#">
-                         <button value="${r.ent_no }" class="annoDetailListBoxs" >
-                            <input type="hidden" value="${r.ent_no }" class="annoDetailListBox">상세
+                         <button value="${r.rec_no }" class="annoDetailListBoxs" >
+                            <input type="hidden" value="${r.rec_no }" class="annoDetailListBox">상세
                          </button>
                         </a>
                         <a href="#">
@@ -126,6 +121,8 @@
 			 	</div>
 			 	</div>
                      </div>
+                     
+ </div>
     
 
 
@@ -140,7 +137,7 @@
                          url : "${path}/Hire/anoDetail.do", 
                          type : 'POST', 
                           dataType :'html',
-                         data : {ent_no:formData},
+                         data : {rec_no:formData},
                          success :function(data){
                            $(".test").html(data);
                         }

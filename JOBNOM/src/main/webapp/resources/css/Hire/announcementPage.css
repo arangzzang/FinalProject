@@ -512,6 +512,10 @@ input[type="checkbox"]:checked + label span
     height: 150px;
 
 }
+.annoDetailAllReview{
+
+	padding-left: 90px;
+}
 .annoDetailAllHeight{
 	height: 400px;
 	
@@ -600,9 +604,9 @@ border-radius: 5px;
     display: flex;
 }
 .annoDetailTitleFlax{
-    width: 200px;
+    width: 300px;
     margin-left: 10px;
-    font-size: 30px;
+    font-size: 20px;
     font:bolder;
 
 }
