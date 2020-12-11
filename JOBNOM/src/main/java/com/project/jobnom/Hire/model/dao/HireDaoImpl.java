@@ -39,8 +39,8 @@ public class HireDaoImpl implements HireDao {
 	}
 
 	@Override
-	public Recruitment selectRecruitmentList(SqlSession session,String ent_no) {
-		return session.selectOne("hire.selectRecruitmentList",ent_no);
+	public Recruitment selectRecruitmentList(SqlSession session,String rec_no) {
+		return session.selectOne("hire.selectRecruitmentList",rec_no);
 	}
 
 	@Override
