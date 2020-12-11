@@ -32,8 +32,10 @@ public class HomeController {
 		String formattedDate = dateFormat.format(date);
 		
 		model.addAttribute("serverTime", formattedDate );
-//		"member/mypage/myProfile"
-		return "index";
+		//"member/mypage/myProfile"
+		//"member/mypage/myfirst"	
+		return "enterprice/com_job";
+		
 	}
 	@RequestMapping("header/jmk.do")
 	public String headerJmk() {
