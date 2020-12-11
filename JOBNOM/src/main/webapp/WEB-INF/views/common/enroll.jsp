@@ -34,12 +34,13 @@
          <div class="jumbotron">
             <h1>회원 가입</h1>
             <div class="row">
-               <div class="col-sm-12">
+               <div class="col-sm-12 col-md-12">
   	               <div class="form-gruop">
 	                  <label for="mem_email">이메일</label>
-	                  <input type="email" class="form-control" id="mem_email" placeholder="이메일을 입력해주세요." name="" required>
+	                  <input type="email" class="form-control email" id="mem_email" placeholder="이메일을 입력해주세요." name="memEmail" required>
 	                  <div class="valid-feedback">이메일 입력완료.</div>
 	                  <div class="invalid-feedback">이메일을 입력해주세요.</div>
+	                  <input type="button" class="dupliBtnMember" value="이메일 중복확인">
 	               </div>
                   <div class="form-gruop">
                      <label for="memPw">비밀번호</label>
@@ -55,85 +56,32 @@
                   </div>
                   <div class="form-gruop">
                      <label for="mem_catagory">1차 직업군</label>
-                     <select class="form-control catagory" id="mem_catagory" required>
+                     <select class="form-control mem_catagory" id="mem_catagory" name="memCategory1" required>
                         <option>기타</option>
-                        <option value=1>it</option>
-                        <option value=2>경영</option>
-                        <option>비즈니스</option>
-                        <option>마케팅</option>
-                        <option>디자인</option>
+                        <option value="IT">IT</option>
+                        <option value="금융/재무">금융/재무</option>
+                        <option value="교육">교육</option>
+                        <option value="마케팅">마케팅</option>
+                        <option value="의약">의약</option>
+                        <option value="서비스/고객지원">서비스/고객지원</option>
                      </select>
                   </div>
-                  <div class="form-gruop option2">
-                     <label for="mem_catagory2_it">it</label>
-                     <select class="form-control catagory2" id="mem_catagory2" required>
+                  <div class="form-gruop">
+                     <label for="mem_catagory2">2차 직업군</label>
+                     <select class="form-control mem_catagory2" id="mem_catagory2" name="memCategory2" required>
                         <option>기타</option>
-                        <option value=1>1</option>
-                        <option value=2>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                     </select>
-                  </div>
-                  <div class="form-gruop option2">
-                     <label for="mem_catagory2_bez">경영</label>
-                     <select class="form-control catagory2" id="mem_catagory2_bez" required>
-                        <option>기타</option>
-                        <option value=1>1</option>
-                        <option value=2>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                     </select>
-                  </div>
-                  <div class="form-gruop option2">
-                     <label for="mem_catagory2_">비즈니스</label>
-                     <select class="form-control catagory2" required>
-                        <option>기타</option>
-                        <option value=1>1</option>
-                        <option value=2>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                     </select>
-                  </div>
-                  <div class="form-gruop option2">
-                  <label for="catagory2">마케팅</label>
-                     <select class="form-control catagory2" required>
-                        <option>기타</option>
-                        <option value=1>1</option>
-                        <option value=2>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                        <!--  -->
-                     </select>
-                  </div>
-                  <div class="form-gruop option2">
-                     <label for="catagory2">디자인</label>
-                     <select class="form-control catagory2" required>
-                        <!-- 여기 포문돌려야됨 -->
-                        <option>기타</option>
-                        <option value=1>1</option>
-                        <option value=2>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                        <!--  -->
                      </select>
                   </div>
                   <div class="form-gruop">
                      <label for="work">회원 구분</label>
-                     <select class="form-control work" required>
-                        <!-- 여기 포문돌려야됨 -->
+                     <select class="form-control work" name="memCheck" required>
                         <option>기타</option>
-                        <option value=1>구직자</option>
-                        <option value=2>퇴사자</option>
-                        <option>재직자</option>
-                        <!--  -->
+                        <option>구직자</option>
+                        <option>퇴사자</option>
+                        <option>재직중</option>
                      </select>
                   </div>
-                  <input type="hidden" value="회원분류: 1">
+<!--                   <input type="hidden" name="type" value="3"> -->
                </div>
             </div>
             <div class="text-center enrollBtn">
@@ -144,137 +92,79 @@
    </div>
    <!-- 기업회원 -->
    <div class="container enrollMain ent_enroll">
-      <form action="${path }/member/enrollEnterEnd" class="needs-validation" novalidate>
+      <form action="${path }/enterprice/enrollEnterEnd" class="needs-validation" novalidate>
          <div class="jumbotron">
             <h1>기업 회원 가입</h1>
             <div class="row">
-               <div class="col-sm-12">
+               <div class="col-sm-12 col-md-12">
 	               <div class="form-gruop">
 	                  <label for="ent_email">담당자이메일</label>
-	                  <input type="email" class="form-control" id="ent_email" placeholder="담당자 이메일을 입력해주세요." name="" required>
+	                  <input type="email" class="form-control email" id="ent_email" placeholder="담당자 이메일을 입력해주세요." name="entEmail" required>
 	                  <div class="valid-feedback">이메일 입력완료.</div>
 	                  <div class="invalid-feedback">이메일을 입력해주세요.</div>
+	                  <button type="button" class="dupliBtn">이메일 중복확인</button>
 	               </div>
                   <div class="form-gruop">
                      <label for="entPw">비밀번호</label>
-                     <input type="password" class="form-control" id="entPw" placeholder="비밀번호를 입력해주세요." name="" required>
+                     <input type="password" class="form-control" id="entPw" placeholder="비밀번호를 입력해주세요." name="entPw" required>
                      <div class="valid-feedback">비밀번호 입력완료.</div>
                      <div class="invalid-feedback">비밀번호를 입력해주세요.</div>
                   </div>
                   <div class="form-gruop">
                      <label for="entPw2">비밀번호확인</label>
-                     <input type="password" id="entPw2" class="form-control" placeholder="2차 비밀번호를 입력해주세요." name="" required>
+                     <input type="password" id="entPw2" class="form-control" placeholder="2차 비밀번호를 입력해주세요." name="entPw2" required>
                      <div class="valid-feedback">비밀번호 입력완료.</div>
                      <div class="invalid-feedback">비밀번호를 입력해주세요.</div>
                   </div>
                   <div class="form-gruop">
                      <label for="ent_name">기업이름</label>
-                     <input type="text" id="ent_name" class="form-control entName" placeholder="기업이름을 입력해주세요." name="" required>
+                     <input type="text" id="ent_name" class="form-control entName" placeholder="기업이름을 입력해주세요." name="entName" required>
                      <div class="valid-feedback">기업 이름 입력완료.</div>
                      <div class="invalid-feedback">기업 이름을 입력해주세요.</div>
                   </div>
                   <div class="form-gruop">
                      <label for="ent_CRN">사업자 등록번호</label>
-                     <input type="number" id="ent_CRN" class="form-control" placeholder="입력시'-'는 제외합니다." name="" required>
+                     <input type="number" id="ent_CRN" class="form-control" placeholder="입력시'-'는 제외합니다." name="entBusinessNo" required>
                      <div class="valid-feedback">비밀번호 입력완료.</div>
                      <div class="invalid-feedback">비밀번호를 입력해주세요.</div>
                   </div>
                   <div class="form-gruop">
                      <label for="rep_name">담당자 이름(실명)</label>
-                     <input type="text" id="rep_name" class="form-control" placeholder="실명을 기입해주세요." name="" required>
+                     <input type="text" id="rep_name" class="form-control" placeholder="실명을 기입해주세요." name="repName" required>
                      <div class="valid-feedback">이름 입력완료.</div>
                      <div class="invalid-feedback">이름을 입력해주세요.</div>
                   </div>
                   <div class="form-gruop">
                      <label for="rep_phone">담당자 번호</label>
-                     <input type="tel" id="rep_phone" class="form-control" placeholder="입력시'-'는 제외합니다." name="" required>
+                     <input type="tel" id="rep_phone" class="form-control" placeholder="입력시'-'는 제외합니다." name="repPhone" required>
                      <div class="valid-feedback">번호 입력완료.</div>
                      <div class="invalid-feedback">번호를 입력해주세요.</div>
                   </div>
                   <div class="form-gruop">
                      <label for="ent_catagory">1차 직업군</label>
-                     <select class="form-control job1" id="ent_catagory" name="">
-                        <!-- 여기 포문돌려야됨 -->
+                     <select class="form-control ent_catagory" id="ent_catagory" name="entCategory1">
                         <option>기타</option>
-                        <option value=1>1</option>
-                        <option value=2>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                        <!--  -->
+                        <option>IT/웹/통신</option>
+                        <option>은행/금융업</option>
+                        <option>교육업</option>
+                        <option>마케팅/디자인</option>
+                        <option>의약/제약</option>
+                        <option>서비스업</option>
                      </select>
                   </div>
-                  <div class="form-gruop option2">
-                     <label for="ent_catagory2_1">직무1</label>
-                     <select class="form-control job1" id="ent_catagory2_1" name="">
-                        <!-- 여기 포문돌려야됨 -->
+                  <div class="form-gruop">
+                     <label for="ent_catagory2">2차 직업군</label>
+                     <select class="form-control ent_catagory2" id="ent_catagory2" name="entCategory2" required>
                         <option>기타</option>
-                        <option value=1>1</option>
-                        <option value=2>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                        <!--  -->
                      </select>
                   </div>
-                  <div class="form-gruop option2">
-                     <label for="ent_catagory2_2">직무2</label>
-                     <select class="form-control job1" id="ent_catagory2_2" name="">
-                        <!-- 여기 포문돌려야됨 -->
-                        <option>기타</option>
-                        <option value=1>1</option>
-                        <option value=2>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                        <!--  -->
-                     </select>
-                  </div>
-                  <div class="form-gruop option2">
-                     <label for="ent_catagory2_3">직무3</label>
-                     <select class="form-control job1" id="ent_catagory2_3" name="">
-                        <!-- 여기 포문돌려야됨 -->
-                        <option>기타</option>
-                        <option value=1>1</option>
-                        <option value=2>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                        <!--  -->
-                     </select>
-                  </div>
-                  <div class="form-gruop option2">
-                     <label for="ent_catagory2_4">직무4</label>
-                     <select class="form-control job1" id="ent_catagory2_4" name="">
-                        <!-- 여기 포문돌려야됨 -->
-                        <option>기타</option>
-                        <option value=1>1</option>
-                        <option value=2>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                        <!--  -->
-                     </select>
-                  </div>
-                  <div class="form-gruop option2">
-                     <label for="ent_catagory2_5">직무5</label>
-                     <select class="form-control job1" id="ent_catagory2_5" name="">
-                        <!-- 여기 포문돌려야됨 -->
-                        <option>기타</option>
-                        <option value=1>1</option>
-                        <option value=2>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                        <!--  -->
-                     </select>
-                  </div>
+                  
                   <label>기업 로고(선택)</label>
                   <div class="custom-file">
-                     <input type="file" class="custom-file-input" id="customFile">
+                     <input type="file" class="custom-file-input" id="customFile" name="entLogo">
                      <label class="custom-file-label" for="customFile">이쁜로고가 좋겠죠?</label>
                   </div>
-                  <input type="hidden" value="회원분류: 2">
+<!--                   <input type="hidden" name="type" value="2"> -->
                </div>
             </div>
             <div class="text-center enrollBtn">
@@ -285,8 +175,6 @@
    </div>
 </div>
 
-
-</section>
 
 <script>
    //버튼클릭시 회원가입화면 전환
@@ -301,26 +189,97 @@
          $(".ent_enroll").show();
       });
    });
-   
-  
-   // $(".job1").change(function(){
-   //   var state = $('.job1 option:selected').val();
-   //   if(state == 1){
-   //     $(".option2").show();
-   //   }else{
-   //     $(".option2").hide();
-   //   }
-   // })
+   //1차직업군 선택시 해당하는 2차직업군 출력
    $(function(){
-      $(".catagory").change(e=>{
+      //회원
+      $(".mem_catagory").change(e=>{
          console.log($(e.target).val());
-         let job1=$(e.target).val();
-         let job2=document.getElementsByClassName("catagory2")
-         if(job1==1){
-            job2.show();
-         } 
-      })
-   })
+         let job1 = $(e.target).val()
+         let car1 = ["웹개발", "시스템엔지니어", "웹퍼블리셔", "기획","네트워크/보안/운영","데이터분석"];
+         let car2 = ["은행원", "세무사", "경리/출납/수납", "증권/투자분석가","보험계리사/손해사정인"];
+         let car3 = ["교육기획/교재개발", "전문강사", "초중고/특수교사", "대학교수", "교직원","입시/복습/학원강사","전문강사"];
+         let car4 = ["마케팅","브랜드마케팅","시장조사/분석","상품개발/기획/MD","온라인마케팅","CRM"];
+         let car5 = ["의사","한의사","치과의사","약사/한약사","간호사","간호조무사","물리치료사","수의사"];
+         let car6 = ["고객지원/CS","호텔/숙박관련/여행가이드","웨딩플래너/커플매니저","외식업/식음료","기타서비스직","뷰티/미용"];
+         let target = document.getElementById("mem_catagory2")
+
+         if(job1 == "IT") var values = car1;
+         else if (job1 == "금융/재무") values = car2;
+         else if (job1 == "교육") values = car3;
+         else if (job1 == "마케팅") values = car4;
+         else if (job1 == "의약") values = car5;
+         else if (job1 == "서비스/고객지원") values = car6;
+         
+         target.options.length = 0;
+
+         for (i in values) {
+            var opt = document.createElement("option");
+            opt.value = values[i];
+            opt.innerHTML = values[i];
+            target.appendChild(opt);
+         }  
+         console.log($(".mem_catagory option:selected").index(""));
+         // console.log(typeof $(".mem_catagory option").val("#mem_catagory option:selected"));
+         var index = $("#mem_catagory option").index($("#mem_catagory option:selected"));
+         var select_val = $("#mem_catagory option:selected").val();
+         // alert('선택 인덱스 =' + index + ' 선택한 값 ' + select_val);
+         console.log($(".mem_category2").val());
+      });
+         //기업
+         $(".ent_catagory").change(e=>{
+         console.log($(e.target).val());
+         let jobs1 = $(e.target).val()
+         let cars1 = ["웹에이젼시","네트워크/통신/모바일","IT컨설팅","게임","기타IT/웹/통신"];
+         let cars2 = ["은행/금융/저축", "증권/보험/카드", "기타금융"];
+         let cars3 = ["학원/어학원", "초중고/대학","기타 교육업"];
+         let cars4 = ["신문/잡지/언론사","광고/홍보/전시","디자인/설계"];
+         let cars5 = ["의료","보건","기타의료"];
+         let cars6 = ["호텔/여행/항공","웨딩/이벤트","외식업/식음료","기타 서비스업","뷰티/미용"];
+         let targets = document.getElementById("ent_catagory2")
+
+         if(jobs1 == "IT/웹/통신") var values = cars1;
+         else if (jobs1 == "은행/금융업") values = cars2;
+         else if (jobs1 == "교육업") values = cars3;
+         else if (jobs1 == "마케팅/디자인") values = cars4;
+         else if (jobs1 == "의약/제약") values = cars5;
+         else if (jobs1 == "서비스업") values = cars6;
+         
+         targets.options.length = 0;
+
+         for (i in values) {
+            var opt = document.createElement("option");
+            opt.value = values[i];
+            opt.innerHTML = values[i];
+            targets.appendChild(opt);
+         }
+      });
+   });
+   
+   //이메일 중복확인
+   $(function(){
+	   $(".dupliBtnMember").click(e=>{
+		   const dupli=document.getElementById("mem_email").value;
+		   $.ajax({
+			   url: "${path}/checkDuplicate/enrollCommon",
+			   data: {dupli:dupli},
+			   success:data=>{
+				   console.log(data);
+				   if(data != null){
+					   alert("사용할수 없는 emaiil입니다")
+				   }else{
+                  alert("사용할수 있는 emaiil입니다")
+               }
+			   }
+		   })
+	   });
+   });
+   
+//    $(".email").keyup(e=>{
+// 		  const userEmail=$(e.target).val().tirm();
+// 		  if(userEmail==""){
+// 			  return;
+// 		  }
+// 	   });
 </script>
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>

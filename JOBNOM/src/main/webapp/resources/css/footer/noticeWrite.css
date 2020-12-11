@@ -10,4 +10,31 @@
 	margin-top: 0px;
     margin-bottom: 0px;
     height: 303px;
+}
+.save_btn{
+	text-align: center;
+	margin-top: -62px;
 }    
+#board-container{
+	width: 960px;
+    height: 400px;
+
+}
+.title{
+	width: 500px;
+    height: 100px;
+    margin-left: 238px;
+}
+#noticeTitle{
+	width: 500px;
+    height: 60px;
+}
+.text{
+	width: 500px;
+    height: 400px;
+    margin-left: 238px;
+}
+#noticeContent{
+	width: 500px;
+    height: 300px;
+}

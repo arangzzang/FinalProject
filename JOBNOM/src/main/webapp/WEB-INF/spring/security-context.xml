@@ -5,14 +5,6 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-5.1.xsd">
 	
-	<!-- 비밀번호 암호화에 적용할 클래스를 빈으로 등록하기 -->
 	<bean id="bcyptPassword" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
-
-<!-- 
-	Spring Security 프로젝트 -> 애플리케이션에 대한 보안 -> 인증, 권한설계!
-	단방향 암호화 처리 담당하는 클레스를 제공 -> BCryptPasswordEncoder -> bean등록 -> DI @Autowired
-	클래스 메소드 이용! 끝! 
--->
-
-
+	
 </beans>
