@@ -50,10 +50,16 @@ public class HireServiceImpl implements HireService {
 		return dao.selectRecruitmentList(session, rec_no);
 	}
 
-	@Override
-	public Review selectReviewList(String ent_no) {
+	@Override 
+	public List<Map> selectReviewList(String ent_no) {
 		return dao.selectReviewList(session, ent_no);
 	}
+
+	@Override
+	public List<Recruitment> anoList2(int cPage, int numPerPage) {
+		return dao.anoList2(session,cPage,numPerPage);
+	} 
+	
 	
 	
 	

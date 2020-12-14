@@ -22,5 +22,8 @@ public interface HireDao {
 	
 	Recruitment selectRecruitmentList(SqlSession session, String rec_no);
 	
-	Review selectReviewList(SqlSession session, String ent_no);
+	List<Map> selectReviewList(SqlSession session, String ent_no);
+
+	List<Recruitment>  anoList2(SqlSession session, int cPage, int numPerPage);
+
 }

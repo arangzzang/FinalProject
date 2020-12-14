@@ -68,7 +68,7 @@
                     <div class="questList">은행관련</div><div class="arrow">></div>
                     </div>
                     </a>
-                    <a href="#">
+                    <a href="${path }/Hire/announcementPage2.do">
                     <div class="questListDetail">
                     <div class="questList">세무/법무</div><div class="arrow">></div>
                     </div>

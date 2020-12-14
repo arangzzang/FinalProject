@@ -16,7 +16,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.project.jobnom.PageBarFactory;
 import com.project.jobnom.Hire.model.service.HireService;
 import com.project.jobnom.Hire.model.vo.Recruitment;
-import com.project.jobnom.Hire.model.vo.Review;
 
 @Controller
 public class HireController {
@@ -134,15 +133,15 @@ public class HireController {
 
 	// 이건 리뷰클릭하면 나오는 에이작스
 	@RequestMapping("/Hire/reviewAVG.do")
-	public ModelAndView reviewAVG(String ent_no, ModelAndView mv) {
+	public ModelAndView reviewAVG(String ent_no, ModelAndView mv) throws Exception{
 		System.out.println("리뷰용" + ent_no);
-		Review r=service.selectReviewList(ent_no);
+		List<Map> r=service.selectReviewList(ent_no);
 		/* mv.addObject(service.selectReviewList(ent_no)); */
 		mv.addObject("r", r);
 		System.out.println(r);
 		 mv.setViewName("Hire/anoReview");
 		return mv;
-	}
+	} 
 
 //	@RequestMapping("/Hire/reviewAVG.do")
 //	@ResponseBody
@@ -175,5 +174,29 @@ public class HireController {
 //		return mv;
 //		
 //	}
+	
+	
+	
+		@RequestMapping("/Hire/announcementPage2.do")
+	public ModelAndView announcementPage2(ModelAndView mv, @RequestParam(value = "cPage", defaultValue = "1") int cPage,
+			@RequestParam(value = "numPerpage", defaultValue = "10") int numPerpage) {
+		// 공고 리스트들 출력해주는곳
+
+		List<Recruitment> anolist = service.anoList2(cPage, numPerpage);
+
+		int totalData = service.selectCount(); /* 이거페이지바 */
+
+		mv.addObject("pageBar", PageBarFactory.getPageBar(totalData, cPage, numPerpage, "announcementPage.do"));
+		mv.addObject("totalData", totalData);
+		mv.addObject("anolist", anolist);
+		mv.setViewName("Hire/announcementPage");
+//		Review r = service.selectReviewList(ent_no);
+//		mv.addObject("r", r);
+//		System.out.println(r);
+//		 mv.setViewName("Hire/anoDetail");
+//		return mv;
+		return mv;
+
+	}
 
 }

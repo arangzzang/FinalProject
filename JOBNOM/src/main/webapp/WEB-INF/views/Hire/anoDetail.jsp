@@ -10,9 +10,8 @@
 List<Review> r=(List)request.getAttribute("r");
 %> --%>
 <section id="content">
-<div class="test1"></div>
-<div class="annoDetailAllHeight">
-<div class="annoDetailAll">
+
+<div class="annoDetailAll" >
                   
                     <div class="annoDetailTitle">
                         <div class="annoDetailNum">
@@ -48,13 +47,16 @@ List<Review> r=(List)request.getAttribute("r");
                          <button value="${r.ent_no }" class="interviewBoxs" >
                             <div class="interviewBox">면접</div>
                          </button>
-                        </a>
-                    </div>
+                        </a>  
+                    </div> 
   
                     
 
                     
-        </div>
+        </div> 
+        
+<div class="annoDetailAllHeight">
+      
 
 
 <div class="annoDetailInfoWidth">
@@ -146,7 +148,7 @@ List<Review> r=(List)request.getAttribute("r");
                             <div class="InquiriesInfo">
                                 <div class="Inquiries">
                                     <div class="InquiriesHomePage">홈페이지</div>
-                                    <div class="InquiriesHomePage2">www.naver.com</div>
+                                    <div class="InquiriesHomePage2"><a href="https://search.naver.com">www.naver.com</a></div>
                                 </div>
                                 <div class="Inquiries">
                                     <div class="InquiriesPhone">연락처</div>
@@ -186,13 +188,14 @@ List<Review> r=(List)request.getAttribute("r");
                         
                         </div>
                         </div>
+                        <div class="test1"></div>
                         
   
                 <!-- </span> -->
 
 
 
-            
+          
             
 </section>
 
@@ -212,7 +215,7 @@ List<Review> r=(List)request.getAttribute("r");
                           dataType :'html',
                          data : {ent_no:formData},
                          success :function(data){
-                           $(".test").html(data);
+                           $(".test1").html(data);
                         }
                })
                     });
@@ -224,7 +227,7 @@ List<Review> r=(List)request.getAttribute("r");
               $(document).ready(function () {
 
              $(".clickReviewTotalBoxs").click(function () {
-              $(".annoDetailInfoWidth").css("display", "none");
+              $(".annoDetailAllHeight").css("display", "none");
               
 
              });

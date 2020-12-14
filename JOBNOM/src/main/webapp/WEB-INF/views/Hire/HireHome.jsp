@@ -85,7 +85,7 @@
             </div>
         </div>
 
-    </div>
+    </div> 
     <div class="findingMe"> 나를 찾는 기업들이 여기에</div>
  <!-- Swiper -->
 <div class="bb" style="height: 300px;" >

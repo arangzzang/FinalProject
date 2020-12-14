@@ -15,12 +15,13 @@ public interface HireService {
 	int selectCount();
 
 	List<Recruitment>  anoList(int cPage, int numPerPage);
+	List<Recruitment>  anoList2(int cPage, int numPerPage);
 
 	List<Map> reviewStar();
 	
 	Recruitment selectRecruitmentList(String rec_no);
 	
-	Review selectReviewList(String ent_no);
+	List<Map> selectReviewList(String ent_no);
 	
 
 

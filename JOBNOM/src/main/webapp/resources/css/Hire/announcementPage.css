@@ -470,6 +470,8 @@ input[type="checkbox"]:checked + label span
 	overflow:auto;
     position: sticky;
 	height: 830px;
+
+	width: 300px;
   
 
 
@@ -477,7 +479,6 @@ input[type="checkbox"]:checked + label span
     
 }
 .test{
-	height: 900px;
 	overflow: auto;
 }
 .scroll-menu{
@@ -501,24 +502,33 @@ input[type="checkbox"]:checked + label span
     padding-bottom: 30px;
 }
 .annoDetail{
-    overflow:auto;
+
     width:60%;
     position: absolute;
-  margin-left: 310px;
+  margin-left: 360px;
   box-sizing: border-box;
+
 }
 .annoDetailAll{
 	width:200px;
     height: 150px;
+   
 
 }
 .annoDetailAllReview{
+	height:1000px;
+	padding-left: 30px;
+	/* overflow: auto; */
 
-	padding-left: 90px;
 }
 .annoDetailAllHeight{
 	height: 400px;
 	
+
+	
+}
+.annoDetailAll4{
+	border:solid;
 }
 
 .annoListLoge{
@@ -574,7 +584,7 @@ input[type="checkbox"]:checked + label span
 }
 
 .annoDetailTitle{
-    width: 760px;
+    width: 900px;
     height: 80px;
     display: flex;
     border-bottom: 1px solid;

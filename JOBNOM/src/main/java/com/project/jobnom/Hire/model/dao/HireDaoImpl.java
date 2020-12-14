@@ -28,11 +28,7 @@ public class HireDaoImpl implements HireDao {
 		return session.selectOne("hire.selectCount");
 	}
 
-	@Override
-	public List<Recruitment>  anoList(SqlSession session, int cPage, int numPerPage) {
-		return  session.selectList("hire.anoList",null,new RowBounds((cPage-1)*numPerPage,numPerPage));
-	}
-
+	
 	@Override
 	public List<Map> reviewStar(SqlSession session) {
 		return session.selectList("hire.reviewStar");
@@ -44,8 +40,26 @@ public class HireDaoImpl implements HireDao {
 	}
 
 	@Override
-	public Review selectReviewList(SqlSession session, String ent_no) {
-		return session.selectOne("hire.selectReviewList",ent_no);
+	public List<Map> selectReviewList(SqlSession session, String ent_no) {
+		return session.selectList("hire.selectReviewList",ent_no);
+	}
+
+	
+	
+	
+	
+	
+	
+	///////////여기서 부터는 공고 카테고리별로 가는 임플리먼트
+	
+	@Override
+	public List<Recruitment>  anoList(SqlSession session, int cPage, int numPerPage) {
+		return  session.selectList("hire.anoList",null,new RowBounds((cPage-1)*numPerPage,numPerPage));
+	}
+
+	@Override
+	public List<Recruitment> anoList2(SqlSession session, int cPage, int numPerPage) {
+		return  session.selectList("hire.anoList2",null,new RowBounds((cPage-1)*numPerPage,numPerPage));
 	}
 	
 	

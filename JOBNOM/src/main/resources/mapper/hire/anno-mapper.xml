@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="anno">
+<!-- 	
+	<select id="anoList" resultType="com.project.jobnom.Hire.model.vo.Recruitment">
+	 	SELECT ENT_NAME ,REC_NO,E.ENT_NO,REC_TITLE,REC_CONTENTS,REC_STARTDATE,REC_ENDDATE,REC_SALARY,
+			REC_INFO,REC_PREFER,REC_WELFARE,REC_QUALIFICATION,REC_PEPOLE,REC_CAREER,REC_ORDER,REC_TYPE, REP_NAME, REP_PHONE,ENT_LOGO
+			FROM RECRUITMENT E 
+			JOIN ENTERPRISE R ON (R.ENT_NO = E.ENT_NO)
+	</select>
+	
+	<select id="anoList2" resultType="com.project.jobnom.Hire.model.vo.Recruitment">
+		SELECT ENT_NAME ,REC_NO,E.ENT_NO,REC_TITLE,REC_CONTENTS,REC_STARTDATE,REC_ENDDATE,REC_SALARY,
+			REC_INFO,REC_PREFER,REC_WELFARE,REC_QUALIFICATION,REC_PEPOLE,REC_CAREER,REC_ORDER,REC_TYPE, REP_NAME, REP_PHONE,ENT_LOGO
+			FROM RECRUITMENT E 
+			JOIN ENTERPRISE R ON (R.ENT_NO = E.ENT_NO)
+			  WHERE REC_SALARY='4000'
+	</select> -->
+	
+	
+</mapper> 

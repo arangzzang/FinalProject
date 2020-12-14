@@ -15,7 +15,7 @@
 	</resultMap>
 
 	<insert id="enrollEnter" parameterType="ent">
-		insert into enterprice values(
+		insert into enterprise values(
 									seq_ent_no.nextval,
 									#{entEmail},
 									#{entPw},
@@ -27,6 +27,7 @@
 									#{repName},
 									#{repPhone},
 									default
+									,null
 									)
 	</insert>
 
