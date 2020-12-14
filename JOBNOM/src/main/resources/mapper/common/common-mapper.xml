@@ -11,13 +11,13 @@
 	<select id="commonLogin" parameterType="map" resultMap="log">
 		SELECT * 
 		    FROM (
-			    SELECT '일반' AS TYPE, MEM_NO ,MEM_EMAIL,MEM_PW FROM MEMBER
+			    SELECT type, MEM_NO ,MEM_EMAIL,MEM_PW FROM MEMBER
 			    UNION ALL
-			    SELECT '기업', ENT_NO, ENT_EMAIL,ENT_PW FROM ENTERPRISE
+			    SELECT type, ENT_NO, ENT_EMAIL,ENT_PW FROM ENTERPRISE
 			    UNION ALL
-			    SELECT '관리자', ADMIN_NO, ADMIN_EMAIL,ADMIN_PW FROM ADMIN
+			    SELECT type, ADMIN_NO, ADMIN_EMAIL,ADMIN_PW FROM ADMIN
 		    )
-		    WHERE TYPE=#{type} and mem_email=#{email}
+		    WHERE mem_email=#{email}
 	</select>
 	
 	<select id="checkDuplicateEmail" parameterType="string" resultMap="log">

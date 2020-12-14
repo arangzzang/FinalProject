@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="enterprise">
+	<resultMap type="ent" id="entMap">
+		<result column="ent_no" property="entNo"/>
+		<result column="ent_email" property="entEmail"/>
+		<result column="ent_pw" property="entPw"/>
+		<result column="ent_name" property="entName"/>
+		<result column="ent_business_no" property="entBusinessNo"/>
+		<result column="ent_logo" property="entLogo"/>
+		<result column="ent_category1" property="entCategory1"/>
+		<result column="ent_category2" property="entCategory2"/>
+		<result column="rep_name" property="repName"/>
+		<result column="rep_phone" property="repPhone"/>
+		<result column="ent_site" property="entSite"/>
+	</resultMap>
+
+	<insert id="enrollEnter" parameterType="ent">
+		insert into enterprise values(
+									seq_ent_no.nextval,
+									#{entEmail},
+									#{entPw},
+									#{entName},
+									#{entBusinessNo},
+									#{entLogo},
+									#{entCategory1},
+									#{entCategory2},
+									#{repName},
+									#{repPhone},
+									default,
+									${entSite}
+									)
+	</insert>
+
+</mapper>

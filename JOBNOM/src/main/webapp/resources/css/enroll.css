@@ -37,9 +37,12 @@ body{
       width: 100px;
       height: 100px;
    }
-   .info{
-      margin: 30px auto;
-      width: 30%;
-      text-align: left;
-      display: flex;
-   }
+	.info{
+	   margin: 30px auto;
+	   width: 30%;
+	   text-align: left;
+	   display: flex;
+	}
+	.searchbar_section{
+		display:none;
+	}

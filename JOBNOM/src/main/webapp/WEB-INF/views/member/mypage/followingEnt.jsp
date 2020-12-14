@@ -4,14 +4,13 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <c:set var="path" value="${pageContext.request.contextPath }" />
-
-<link rel="stylesheet" href="${path }/resources/css/mypage/mypagefrist.css"/>
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="${path }/resources/css/mypage/followingEnt.css"/>
 <jsp:include page="/WEB-INF/views/common/header.jsp">
 	<jsp:param name="title" value=" "/>
 </jsp:include>
-<section id="content">
-    <div class="memberinfo-parent ">
+<section id="`">
+<div class="memberinfo-parent ">
         <div class="jumbotron row memberinfo" id="memberinfo">
             <div class="col-md-3 col-offset-3">
                 <img src="" alt="">
@@ -51,45 +50,51 @@
     </div>
     <div class="with-parent">
         <div class="with">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="container row withcon">
                 <div class="col-md-3 col-sm-3 withleft">
                     <ul class="nav nav-pills flex-column sidebar" id="sidebar">
-                        <h3 class="sidebar-title">계정</h3>
+                        <h3 class="sidebar-title">관심정보</h3>
                         <li class="nav-item sidebarmenubar">
-                            <button type="button" class="sidebtn">계정설정</button>
+                            <button type="button" class="sidebtn">팔로잉기업</button>
                         </li>
                         <li class="nav-item sidebarmenubar">
-                            <button type="button" class="sidebtn">비밀번호변경</button>
-                        </li>
-                        <li class="nav-item sidebarmenubar">
-                            <button type="button" class="sidebtn">알림</button>
+                            <button type="button" class="sidebtn">저장된채용</button>
                         </li>
                     </ul>
                 </div>
                 <div class="col-md-8 col-sm-8 maincon withright" id="maincon">
-                    <div class="maininfo-parent">
-                        <form action="/action_page.php" class="needs-validation" novalidate>
-                            <div class="maininfo">
-                                <h1 class="maintitle">계정설정</h1>
-                                <div>
-                                    <h3>회원 이메일</h2>
-                                    <p>기존 이메일 주소</p>
-                                    <div class="form-gruop">
-                                        <label for="uname">변경할 이메일 주소</label>
-                                        <input type="password" class="form-control" id="uname" placeholder="비밀번호를 입력해주세요." name="uname" required>
-                                        <div class="valid-feedback">비밀번호 입력완료.</div>
-                                        <div class="invalid-feedback">비밀번호를 입력해주세요.</div>
-                                    </div>
-                                </div>
-                                <div class="text-center enrollBtn">
-                                <button type="submit" class="btn btn-primary">Submit</button>
-                                </div>
-                            </div>
-                        </form>
-                        더 이상 job.nom을 이용하지 않는다면 <a href="">회원탈퇴</a>
+                    <div class="maininfo-parent one">
+                        <h2>팔로잉 기업</h2>
+                        <span>[count]개의 관심기업이 있습니다.</span>
+                        <!-- 팔로잉한 기업이 있을 때 -->
+                        <div class="following_container row">
+                            <a href="#" class="col-sm-2 col-md-2"><img src="" alt=""></a>
+                            <dl class="col-sm-5 col-md-5">
+                                <dt class="ent_name">기업명<i class="fa fa-heart"></i></dt>
+                                <dd>[1차산업군] | 주소</dd>
+                                <dd><a href="">[count]기업리뷰</a>|<a href="">[count]면접후기</a></dd>
+                            </dl>
+                            <dl class="col-sm-5 col-md-5">
+                                <dt>총 만족도</dt>
+                                <dd>
+                                    별평균 들어가야함.    
+                                    [count]
+                                </dd>
+                                <dd>[연봉 해두되고 안해두되고]</dd>
+                            </dl>
+                        </div>
+                        <!-- 팔로잉한 기업이 없을 때 -->
+                        <!-- <c:if test=""> -->
+                            <!-- <article class="following_null">
+                                <span class="following_icon"><i class="fa fa-heart"></i></span>
+                                <p><strong>팔로잉한 기업이 없습니다.</strong><br><br>
+                                    관심있는 기업을 등록하셔서 기업들의 최신정보를 받아보세요.
+                                </p>
+                            </article> -->
+                        <!-- </c:if> -->
                     </div>
                 </div>
             </div>

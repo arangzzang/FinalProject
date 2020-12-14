@@ -38,21 +38,19 @@
   	               <div class="form-gruop">
 	                  <label for="mem_email">이메일</label>
 	                  <input type="email" class="form-control email" id="mem_email" placeholder="이메일을 입력해주세요." name="memEmail" required>
-	                  <div class="valid-feedback">이메일 입력완료.</div>
-	                  <div class="invalid-feedback">이메일을 입력해주세요.</div>
+	                  <div class="result1"></div>
 	                  <input type="button" class="dupliBtnMember" value="이메일 중복확인">
 	               </div>
                   <div class="form-gruop">
                      <label for="memPw">비밀번호</label>
-                     <input type="password" class="form-control"  placeholder="비밀번호를 입력해주세요." name="memPw" required>
-                     <div class="valid-feedback">비밀번호 입력완료.</div>
-                     <div class="invalid-feedback">비밀번호를 입력해주세요.</div>
+                     <input type="password" class="form-control" id="mem_pw" placeholder="비밀번호를 입력해주세요." name="memPw" required>
+                     <div class="result2"></div>
                   </div>
                   <div class="form-gruop">
                      <label for="memPw2">비밀번호확인</label>
-                     <input type="password" class="form-control" placeholder="2차 비밀번호를 입력해주세요." name="memPw2" required>
-                     <div class="valid-feedback">비밀번호 입력완료.</div>
-                     <div class="invalid-feedback">비밀번호를 입력해주세요.</div>
+                     <input type="password" class="form-control" id="mem_pw2" placeholder="2차 비밀번호를 입력해주세요." name="memPw2" required>
+                     <div class="result3"></div>
+                     <input type="button" class="dupliBtnMemberPw" value="비밀번호 중복확인">
                   </div>
                   <div class="form-gruop">
                      <label for="mem_catagory">1차 직업군</label>
@@ -65,12 +63,14 @@
                         <option value="의약">의약</option>
                         <option value="서비스/고객지원">서비스/고객지원</option>
                      </select>
+                     <div class="result4"></div>
                   </div>
                   <div class="form-gruop">
                      <label for="mem_catagory2">2차 직업군</label>
                      <select class="form-control mem_catagory2" id="mem_catagory2" name="memCategory2" required>
                         <option>기타</option>
                      </select>
+                     <div class="result5"></div>
                   </div>
                   <div class="form-gruop">
                      <label for="work">회원 구분</label>
@@ -80,8 +80,8 @@
                         <option>퇴사자</option>
                         <option>재직중</option>
                      </select>
+                     <div class="result6"></div>
                   </div>
-<!--                   <input type="hidden" name="type" value="3"> -->
                </div>
             </div>
             <div class="text-center enrollBtn">
@@ -100,45 +100,37 @@
 	               <div class="form-gruop">
 	                  <label for="ent_email">담당자이메일</label>
 	                  <input type="email" class="form-control email" id="ent_email" placeholder="담당자 이메일을 입력해주세요." name="entEmail" required>
-	                  <div class="valid-feedback">이메일 입력완료.</div>
-	                  <div class="invalid-feedback">이메일을 입력해주세요.</div>
-	                  <button type="button" class="dupliBtn">이메일 중복확인</button>
+	                  <div class="result1"></div>
 	               </div>
                   <div class="form-gruop">
                      <label for="entPw">비밀번호</label>
                      <input type="password" class="form-control" id="entPw" placeholder="비밀번호를 입력해주세요." name="entPw" required>
-                     <div class="valid-feedback">비밀번호 입력완료.</div>
-                     <div class="invalid-feedback">비밀번호를 입력해주세요.</div>
+                     <div class="result2"></div>
                   </div>
                   <div class="form-gruop">
                      <label for="entPw2">비밀번호확인</label>
                      <input type="password" id="entPw2" class="form-control" placeholder="2차 비밀번호를 입력해주세요." name="entPw2" required>
-                     <div class="valid-feedback">비밀번호 입력완료.</div>
-                     <div class="invalid-feedback">비밀번호를 입력해주세요.</div>
+                     <div class="result3"></div>
                   </div>
                   <div class="form-gruop">
                      <label for="ent_name">기업이름</label>
                      <input type="text" id="ent_name" class="form-control entName" placeholder="기업이름을 입력해주세요." name="entName" required>
-                     <div class="valid-feedback">기업 이름 입력완료.</div>
-                     <div class="invalid-feedback">기업 이름을 입력해주세요.</div>
+                     <div class="resultEx1">기업 이름 입력완료.</div>
                   </div>
                   <div class="form-gruop">
                      <label for="ent_CRN">사업자 등록번호</label>
                      <input type="number" id="ent_CRN" class="form-control" placeholder="입력시'-'는 제외합니다." name="entBusinessNo" required>
-                     <div class="valid-feedback">비밀번호 입력완료.</div>
-                     <div class="invalid-feedback">비밀번호를 입력해주세요.</div>
+                     <div class="resultEx2">비밀번호 입력완료.</div>
                   </div>
                   <div class="form-gruop">
                      <label for="rep_name">담당자 이름(실명)</label>
                      <input type="text" id="rep_name" class="form-control" placeholder="실명을 기입해주세요." name="repName" required>
-                     <div class="valid-feedback">이름 입력완료.</div>
-                     <div class="invalid-feedback">이름을 입력해주세요.</div>
+                     <div class="resultEx3">이름 입력완료.</div>
                   </div>
                   <div class="form-gruop">
                      <label for="rep_phone">담당자 번호</label>
                      <input type="tel" id="rep_phone" class="form-control" placeholder="입력시'-'는 제외합니다." name="repPhone" required>
-                     <div class="valid-feedback">번호 입력완료.</div>
-                     <div class="invalid-feedback">번호를 입력해주세요.</div>
+                     <div class="resultEx4">번호 입력완료.</div>
                   </div>
                   <div class="form-gruop">
                      <label for="ent_catagory">1차 직업군</label>
@@ -151,20 +143,24 @@
                         <option>의약/제약</option>
                         <option>서비스업</option>
                      </select>
+                     <div class="result4"></div>
                   </div>
                   <div class="form-gruop">
                      <label for="ent_catagory2">2차 직업군</label>
                      <select class="form-control ent_catagory2" id="ent_catagory2" name="entCategory2" required>
                         <option>기타</option>
                      </select>
+                     <div class="result5"></div>
                   </div>
-                  
+                  <div class="form-gruop">
+                     <label for="rep_phone">기업홈페이지</label>
+                     <input type="text" id="ent_site" class="form-control" placeholder="없으면 작성하지 않으셔두 되요." name="entSite">
+                  </div>
                   <label>기업 로고(선택)</label>
                   <div class="custom-file">
                      <input type="file" class="custom-file-input" id="customFile" name="entLogo">
                      <label class="custom-file-label" for="customFile">이쁜로고가 좋겠죠?</label>
                   </div>
-<!--                   <input type="hidden" name="type" value="2"> -->
                </div>
             </div>
             <div class="text-center enrollBtn">
@@ -255,31 +251,31 @@
       });
    });
    
-   //이메일 중복확인
    $(function(){
+      //이메일 중복확인
 	   $(".dupliBtnMember").click(e=>{
-		   const dupli=document.getElementById("mem_email").value;
+		   const mem_dupli=document.getElementById("mem_email").value;
 		   $.ajax({
 			   url: "${path}/checkDuplicate/enrollCommon",
-			   data: {dupli:dupli},
+			   data: {dupli:mem_dupli},
 			   success:data=>{
 				   console.log(data);
-				   if(data != null){
-					   alert("사용할수 없는 emaiil입니다")
-				   }else{
-                  alert("사용할수 있는 emaiil입니다")
-               }
+               $(".result1").html(data);
 			   }
 		   })
 	   });
+      //비밀번호 중복확인
+      $(".dupliBtnMemberPw").click(e=>{
+         const mem_duplipw=$("#mem_pw").val();
+         const mem_duplipw2=$("#mem_pw2").val();
+         if(mem_duplipw==mem_duplipw2){
+            
+         }
+      });
    });
+
    
-//    $(".email").keyup(e=>{
-// 		  const userEmail=$(e.target).val().tirm();
-// 		  if(userEmail==""){
-// 			  return;
-// 		  }
-// 	   });
+
 </script>
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>

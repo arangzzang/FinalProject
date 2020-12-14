@@ -3,7 +3,7 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.project.jobnom.member.model.vo.Member" alias="mem"/>
-		<typeAlias type="com.project.jobnom.enterprice.model.vo.Enterprice" alias="ent"/>
+		<typeAlias type="com.project.jobnom.enterprise.model.vo.Enterprise" alias="ent"/>
 		<typeAlias type="com.project.jobnom.admin.model.vo.Admin" alias="admin"/>
 		<typeAlias type="com.project.jobnom.common.model.vo.Login" alias="login"/>
 		<typeAlias type="com.project.jobnom.welcome.model.vo.FAQ" alias="faq"/>
