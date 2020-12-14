@@ -46,8 +46,8 @@ public class HireServiceImpl implements HireService {
 	}
 
 	@Override
-	public Recruitment selectRecruitmentList(String ent_no) {
-		return dao.selectRecruitmentList(session, ent_no);
+	public Recruitment selectRecruitmentList(String rec_no) {
+		return dao.selectRecruitmentList(session, rec_no);
 	}
 
 	@Override
