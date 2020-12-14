@@ -22,6 +22,11 @@ public class MemberServiceImpl implements MemberService {
 //		if(result > 0) dao.insertResume( session);
 		return result;
 	}
+
+	@Override
+	public Member mypageView(int memNo) {
+		return dao.mypageView(memNo,session);
+	}
 	
 
 }

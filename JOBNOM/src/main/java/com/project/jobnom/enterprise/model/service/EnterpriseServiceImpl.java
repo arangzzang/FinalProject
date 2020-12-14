@@ -1,23 +1,23 @@
-package com.project.jobnom.enterprice.model.service;
+package com.project.jobnom.enterprise.model.service;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.project.jobnom.enterprice.model.dao.EnterpriceDao;
-import com.project.jobnom.enterprice.model.vo.Enterprice;
+import com.project.jobnom.enterprise.model.dao.EnterpriseDao;
+import com.project.jobnom.enterprise.model.vo.Enterprise;
 
 @Service
-public class EnterpriceServiceImpl implements EnterpriceService {
+public class EnterpriseServiceImpl implements EnterpriseService {
 
 	@Autowired
-	EnterpriceDao dao;
+	EnterpriseDao dao;
 	@Autowired
 	SqlSession session;
 	
 	//기업회원가입
 	@Override
-	public int enrollEnter(Enterprice ent) {
+	public int enrollEnter(Enterprise ent) {
 		return dao.enrollEnter(ent,session);
 	}
 

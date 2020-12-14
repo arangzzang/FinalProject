@@ -1,4 +1,4 @@
-package com.project.jobnom.enterprice.controller;
+package com.project.jobnom.enterprise.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

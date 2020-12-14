@@ -1,0 +1,184 @@
+@charset "UTF-8";
+	
+		img{
+            width: 100px;
+            height: 100px;
+        }
+        .job2, .option2{
+            display: none;
+        }
+        .container{
+            padding: 0;
+        }
+        /* 마이페이지 헤더회원정보 */
+        #memberinfo{
+            background-color: #fff;
+            padding: 20px 26px 10px 0;
+            width: 70%;
+            margin: 0 auto;
+        }
+        .memberinfo-parent{
+            border-bottom: 1px lightgray solid;
+        }
+        /* 마이페이지 navbar */
+        .MPheadmenu{
+            width: 70%;
+            margin: 0 auto;
+        }
+        .MPheadmenu-parent{
+            border-bottom: 1px lightgray solid;
+            background-color: #fff;
+        }
+        .navbtn{
+            background-color: white;
+            border: none;
+        }
+        .navbtn:hover{
+            font-weight: bold;
+            color: green;
+            border: none;
+        }
+        /*바디 전체부분*/
+        /* .with{
+            width: 70%;
+        } */
+        .with>form>.profilebody{
+            margin: 0 auto;
+            width: 70%;
+        }
+        .with-parent{
+            background-color: #e5e6e9;
+        }
+        /* 사이드바 */
+        .sidebar{
+            background-color: #fff;
+        }
+        .sidebar-title{
+            padding: 10px 0 10px 10px;
+            border-bottom: 1px solid lightgray;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .sidebtn{
+            border: none;
+            background-color: #fff;
+            padding-bottom: 10px;
+        }
+        .sidebtn:hover{
+            font-weight: bold;
+            color: green;
+        }
+        /*바디 메인*/
+        .maininfo-parent{
+            margin-bottom: 100px;
+            background-color: #fff;
+        }
+        .maininfo{
+            padding: 56px 26px 56px 26px;
+        }
+        #maincon{
+            /* margin: 0 auto; */
+            padding: 0;
+        }
+        .form-gruop{
+            padding-bottom: 10px;
+        }
+        /* 프로필*/
+        .profilebody{
+            background-color: #fff;
+            padding-bottom: 50px;
+        }
+        /* 이름, 휴대전화번호 */
+        .input1{
+            border: 0;
+            height: 50px;
+            outline: 0;
+            width: 40%;
+        }
+        .inp{
+            border: 0 !important;
+            outline: 0 !important;
+        }
+        .bg_color{
+            background-color: rgb(244, 248, 250) !important;
+        }
+       
+        /* 성별, 출생연도 */
+        .span1{
+            border-bottom: 1px solid lightgray;
+            width: 50%;
+            display: block;
+            margin-bottom: 2px;
+        }
+        /* 관심직종 */
+        .span2{
+            border-bottom: 1px solid lightgray;
+            width: 100%;
+            display: block;
+        }
+        /* select css */
+        .select{
+            border: 0;
+            outline: 0;
+        }
+        .flex{
+            display: flex;
+        }
+        /* 필수를 제외한 항목 css */
+        #element1{
+            display: flex;
+        }
+        #element2{
+            padding-top: 10px;
+        }
+        .dateelement{
+            display: flex;
+
+        }
+        /* .junk{
+            
+        } */
+        .dateinput{
+            border: 0;
+            width: 100px;
+        }
+        .block{
+            display: table-cell;
+        }
+        .float{
+            position: absolute;
+            right: 0;
+            top: 0;
+            z-index: 99;
+        }
+        .float1{
+            position: absolute;
+            right: 16;
+            top: 25;
+            z-index: 99;
+        }
+        .edu,.awa,.car,.cer{
+            margin-bottom: 20px;
+        }
+        .pofol{
+            margin-bottom: 10px;
+        }
+        #element1:hover{
+            border: 1px solid lightblue;
+        }
+        #emt:hover{
+            border: 1px solid lightblue;
+        }
+        .pd{
+            padding-top: 10px;
+        }
+        
+        /* 저장하기 버튼 */
+        .submitTag{
+            width: 100%;
+            background-color: #fff;
+            position: fixed;
+            bottom: 0;
+            z-index: 999;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.08);
+        }
