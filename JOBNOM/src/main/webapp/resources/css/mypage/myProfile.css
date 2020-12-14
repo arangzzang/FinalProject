@@ -93,7 +93,7 @@
             border: 0;
             height: 50px;
             outline: 0;
-            width: 100%;
+            width: 40%;
         }
         .inp{
             border: 0 !important;
@@ -102,10 +102,7 @@
         .bg_color{
             background-color: rgb(244, 248, 250) !important;
         }
-        #inp{
-            border: 0;
-            outline: 0;
-        }
+       
         /* 성별, 출생연도 */
         .span1{
             border-bottom: 1px solid lightgray;

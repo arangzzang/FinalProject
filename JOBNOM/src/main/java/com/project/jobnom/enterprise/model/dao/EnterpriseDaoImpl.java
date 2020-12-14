@@ -10,7 +10,7 @@ public class EnterpriseDaoImpl implements EnterpriseDao {
 
 	@Override
 	public int enrollEnter(Enterprise ent, SqlSession session) {
-		return session.insert("enterprice.enrollEnter",ent);
+		return session.insert("enterprise.enrollEnter",ent);
 	}
 
 	

@@ -114,204 +114,63 @@
             width: 100%;
             text-align: center;
         }
+        /* modal css */
+        .mh{
+            background-color: green;
+        }
+        .mb {
+            padding-bottom: 0 !important
+        }
+        @media (min-width: 576px){
+            .md{
+                min-width: 45% !important;
+                max-width: 45% !important;
+            }
+        }
+        .md{
+            margin-bottom: 14px !important;
+            margin-top: 14px !important;
+        }
+        /* 모달 안내문 */
+        .interview_info{
+            height: auto; 
+            background-color: #fff;
+            border-radius: 10px;
+        }
+
+        /* 내용물 css */
+        .title_inp{
+            width: 100%;
+            border-top: 0;
+            border-right: 0;
+            border-left: 0;
+            border-bottom: 1px solid;
+            outline: 0;
+        }
+        .inter_detail_text{
+            background-color: #edf0f35f;
+            border: 0;
+            width: 100%;
+        }
+        select{
+            width: 60%;
+        }
+        .common_static{
+            padding-bottom: 5px;
+            padding-top: 5px;
+        }
+        .format{
+            margin-top: 20px;
+        }
+        .date_picker{
+            margin-top: 10px;
+        }
+
         
-        /*팝업창*/
-		#popup{
-		    display: none; /*숨기기*/
-		    position: fixed;
-		    left: 0;
-		    top: 0;
-		    width: 100%;
-		    height: 100%;
-		    z-index: 10;
-		    background-color: rgba(0, 0, 0, 0.755);
-		}
-		.popupAll{
-		    display: flex;
-		}
-		#popmenu {
-		    width: 40%;
-		    height: max-content;
-		    background: #fff;
-		    margin-left: 310px;
-		}
-/* 		.popmenuInsertAll{ */
-/* 		    display: flex; */
-/* 		    background: #00c362; */
-/* 		} */
-/* 		.popmenuInsert{ */
-/* 		    padding-top: 15px; */
-/* 		    width: 100%; */
-/* 		    height: 50px; */
-/* 		    padding-left: 15px; */
-/* 		} */
-/* 		.findingMeDetailCancel{ */
-/* 		    border: none; */
-/* 		} */
-/* 		.popmenuInsertClose{ */
-/* 		  	border-radius: 12px; */
-/* 		    right: 0; */
-/* 		    top: 0; */
-/* 		    background: wihte; */
-/* 		    color: black; */
-/* 		    text-align: center; */
-/* 		    width: 250px; */
-/* 		    height: 50px; */
-/* 		    font-size: 14px; */
-/* 		    font-weight: bold; */
-/* 		    border-radius: 5px; */
-/* 		    margin-right: 10px; */
-/* 		    margin-top: 20px; */
-/* 		    margin-left: 10px; */
-/* 		} */
-/* 		.submitByttonBox{ */
-/* 		   	display: flex; */
-/* 		} */
-/* 		.fa-window-close{ */
-/* 		    font-size: 30px; */
-/* 		    background: #00c362; */
-/* 		    color: white; */
-/* 		} */
-/* 		.popmenuDetail{ */
-/* 		    padding-top: 15px; */
-/* 		    padding-left: 15px; */
-/* 		} */
-/* 		.popmenuEnterprise{ */
-/* 		    display: flex; */
-/* 		    padding-top: 25px; */
-/* 		    padding-left: 15px; */
-/* 		} */
-/* 		.popmenuEnterpriseName{ */
-/* 		    margin-left: 120px; */
-/* 		    width: 300px; */
-/* 		    height: 35px; */
-/* 		} */
-/* 		.popmenuTital{ */
-/* 		    display: flex; */
-/* 		    padding-top: 30px; */
-/* 		    padding-left: 15px; */
-/* 		} */
-/* 		.popmenuTitalName{ */
-/* 		    margin-left: 132px; */
-/* 		    width: 300px; */
-/* 		    height: 35px; */
-/* 		} */
-/* 		.popmenuContents{ */
-/* 		    display: flex; */
-/* 		    padding-top: 30px; */
-/* 		    padding-left: 15px; */
-/* 		} */
-/* 		.popmenuContentsName{ */
-/* 		    margin-left: 132px; */
-/* 		} */
-/* 		///// 여기서 부터 리뷰별//// */
-/* 		.companyStar-box{ */
-/* 		    display: flex; */
-/* 		    padding-top: 20px; */
-/* 		    padding-left: 15px; */
-/* 		} */
-/* 		.blessedStar-box{ */
-/* 		    display: flex; */
-/* 		    padding-top: 20px; */
-/* 		    padding-left: 15px; */
-/* 		} */
-/* 		.promotionStar-box{ */
-/* 		    display: flex; */
-/* 		    padding-top: 20px; */
-/* 		    padding-left: 15px; */
-/* 		} */
-/* 		.executiveStar-box{ */
-/* 		    display: flex; */
-/* 		    padding-top: 20px; */
-/* 		    padding-left: 15px; */
-/* 		} */
-/* 		.companyTitle{ */
-/* 		    width: 150px; */
-/* 		}  */
-/* 		.blessedTitle{ */
-/* 		    width: 150px; */
-/* 		} */
-/* 		.promotionTitle{ */
-/* 		    width: 150px; */
-/* 		} */
-/* 		.executiveTitle{ */
-/* 		    width: 150px; */
-/* 		} */
-/* 		.companyStar { */
-/* 		    background-image: url("../../image/Hire/starGreen.png"); */
-/* 			background-size: cover; */
-/* 			width: 40px; */
-/* 		    height: 40px; */
-/* 		    margin-left: 20px; */
-/* 		} */
-/* 		.blessedStar { */
-/* 		    background-image: url("../../image/Hire/starGreen.png"); */
-/* 			background-size: cover; */
-/* 			width: 40px; */
-/* 		    height: 40px; */
-/* 		    margin-left: 20px; */
-/* 		} */
-/* 		.promotionStar { */
-/* 			background-image: url("../../image/Hire/starGreen.png"); */
-/* 		   	background-size: cover; */
-/* 		   	width: 40px; */
-/* 		    height: 40px; */
-/* 		    margin-left: 20px; */
-/* 		} */
-/* 		.executiveStar { */
-/* 		    background-image: url("../../image/Hire/starGreen.png"); */
-/* 		   	background-size: cover; */
-/* 		   	width: 40px; */
-/* 		    height: 40px; */
-/* 		    margin-left: 20px; */
-/* 		} */
-/* 		.companyStar.on{ */
-/* 		     background-image: url("../../image/Hire/starGreenOn.png"); */
-/* 		  } */
-/* 		.blessedStar.on{ */
-/* 		     background-image: url("../../image/Hire/starGreenOn.png"); */
-/* 		} */
-/* 		.promotionStar.on{ */
-/* 		    background-image: url("../../image/Hire/starGreenOn.png"); */
-/* 		} */
-/* 		.executiveStar.on{ */
-/* 		    background-image: url("../../image/Hire/starGreenOn.png"); */
-/* 		} */
-/* 		///// 여기까지 리뷰별//// */
-/* 		.GradeboxSubmit{ */
-/* 		    border-radius: 12px; */
-/* 		    right: 0; */
-/* 		    top: 0; */
-/* 		    background: #00c362; */
-/* 		    color: #fff; */
-/* 		    text-align: center; */
-/* 		    width: 250px; */
-/* 		    height: 50px; */
-/* 		    font-size: 14px; */
-/* 		    font-weight: bold; */
-/* 		    border-radius: 5px; */
-/* 		    margin-right: 10px; */
-/* 		    margin-top: 20px; */
-/* 		    margin-left: 60px; */
-/* 		} */
-/* 		여기는 리뷰 옆 주의사항 */
-/* 		#popmenuInfo{ */
-/* 		    width: 20%; */
-/* 		    height: max-content; */
-/* 		    background: #fff; */
-/* 			margin-left: 50px; */
-/* 			margin-top: 30px; */
-/* 		} */
-/* 		.popmenuInfoTitle{ */
-/* 		    font-size: 20px; */
-/* 		    padding-top: 10px; */
-/* 		    padding-left: 10px; */
-/* 		    padding-right: 10px; */
-/* 		} */
-/* 		.popmenuInfoContents{ */
-		
-/* 		    padding-top: 10px; */
-/* 		    padding-left: 10px; */
-/* 		    padding-right: 10px; */
-/* 		} */
+        
+        
+        
+        
+        
+
         

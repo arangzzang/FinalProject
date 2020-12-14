@@ -22,13 +22,15 @@ public class EnterpriseController {
 	//기업 회원가입
 	@RequestMapping("/enterprice/enrollEnterEnd")
 	public ModelAndView enrollEnterEnd(Enterprise ent, ModelAndView mv) {
-		
+		System.out.println("========1번째 실행 ============");
+		System.out.println(ent);
 		String oriPw=ent.getEntPw();
 		String loc="redirect:/";
-		
+
 		ent.setEntPw(pwEncoder.encode(oriPw));
+		System.out.println("========2번째 실행 ============");
 		int result=service.enrollEnter(ent);
-		
+		System.out.println(ent);
 		mv.addObject("ent",ent);
 		mv.addObject("msg",result>0?"회원가입성공":"회원가입실패");
 		
