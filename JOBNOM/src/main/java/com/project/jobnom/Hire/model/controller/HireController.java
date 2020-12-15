@@ -1,6 +1,5 @@
 package com.project.jobnom.Hire.model.controller;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,13 +11,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.project.jobnom.PageBarFactory;
 import com.project.jobnom.Hire.model.service.HireService;
 import com.project.jobnom.Hire.model.vo.Recruitment;
+import com.project.jobnom.common.pagebar.PageBarFactory;
 import com.project.jobnom.Hire.model.vo.Review;
+
 
 @Controller
 public class HireController {
@@ -123,11 +122,12 @@ public class HireController {
 	}
 //공소 강세 페이지에서 상세 버튼
 	@RequestMapping("/Hire/anoDetail.do")
-	public ModelAndView anoDetail(String ent_no, ModelAndView mv) {
+	public ModelAndView anoDetail(String rec_no, ModelAndView mv) {
 		System.out.println("혹시");
-		System.out.println("서비스 가기전" + ent_no);
-		Recruitment r = service.selectRecruitmentList(ent_no);
-		mv.addObject("r", r);
+		Recruitment r=service.selectRecruitmentList(rec_no);
+		System.out.println("서비스 가기전" + rec_no);
+//		mv.addObject(service.selectRecruitmentList(rec_no));
+		mv.addObject("r",r);
 		System.out.println(r);
 		 mv.setViewName("Hire/anoDetail");
 		return mv;
@@ -137,7 +137,8 @@ public class HireController {
 	@RequestMapping("/Hire/reviewAVG.do")
 	public ModelAndView reviewAVG(String ent_no, ModelAndView mv) {
 		System.out.println("리뷰용" + ent_no);
-		Review r = service.selectReviewList(ent_no);
+		Review r=service.selectReviewList(ent_no);
+		/* mv.addObject(service.selectReviewList(ent_no)); */
 		mv.addObject("r", r);
 		System.out.println(r);
 		 mv.setViewName("Hire/anoReview");

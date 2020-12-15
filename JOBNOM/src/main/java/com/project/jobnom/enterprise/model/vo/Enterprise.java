@@ -1,4 +1,4 @@
-package com.project.jobnom.enterprice.model.vo;
+package com.project.jobnom.enterprise.model.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Enterprice {
+public class Enterprise {
 
 	private int entNo;				//기업번호 PK
 	private String entEmail;		//기업 이메일(id)
@@ -20,4 +20,5 @@ public class Enterprice {
 	private String repName;			//담당자이름
 	private String repPhone;		//담당자 번호
 	private int type;// 2
+	private String entSite;			//기업이메일
 }

@@ -29,4 +29,19 @@
 								default
 								)
 	</insert>
+	<!-- 마이페이지 -->
+	<select id="mypageView" parameterType="_int" resultMap="memMap">
+		select * from member where mem_no=#{memNo}
+	</select>
+	
+	
+	
 </mapper>
+
+
+
+
+
+
+
+

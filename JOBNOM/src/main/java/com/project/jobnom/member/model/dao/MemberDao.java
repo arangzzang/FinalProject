@@ -8,4 +8,6 @@ public interface MemberDao {
 	
 	//회원가입입력
 	int enrollMember(Member m, SqlSession session);
+	//마이페이지
+	Member mypageView(int memNo, SqlSession session);
 }

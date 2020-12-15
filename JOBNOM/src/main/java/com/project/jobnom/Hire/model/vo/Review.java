@@ -10,9 +10,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Review {
 	private int review_no;
+	private int rec_no;
 	private int ent_no;
 	private int mem_no;
-	private String review_name;
 	private String review_title;
 	private String review_contents;
 	private String review_writer;
@@ -22,5 +22,7 @@ public class Review {
 	private int review_executive;
 	private Date re_enroll_date;
 	
+	private String rec_title;
+	private String ent_name;
 
 }

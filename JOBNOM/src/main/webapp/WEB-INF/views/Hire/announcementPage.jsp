@@ -501,10 +501,10 @@
                       
                         <a href="#">
                             <div class="annoListTitleFlax">
-                            <button value="${a.ent_no }" class="annoListTitleBox" >
-                            <input type="hidden" value="${a.ent_no }" class="annoListTitle" name="ent_no" "><c:out value="${a.rec_title }"/><br>
-                            <input type="hidden" class="annoListTitle" value="${a.ent_no }" name="ent_no">(주)카카오 번호-><br>
-                            <input type="hidden" class="annoListTitle" value="${a.ent_no }" >평균 평점
+                            <button value="${a.rec_no }" class="annoListTitleBox" >
+                            <input type="hidden" value="${a.rec_no }" class="annoListTitle" name="ent_no" "><c:out value="${a.rec_title }"/><br>
+                            <input type="hidden" class="annoListTitle" value="${a.rec_no }" name="ent_no"><c:out value="${a.ent_name }"/><br>
+                            <input type="hidden" class="annoListTitle" value="${a.rec_no }" >평균 평점 
                             </button>
                             
                                 
@@ -787,7 +787,7 @@
                          url : "${path}/Hire/anoDetail.do", // 요기에
                          type : 'POST', 
                           dataType :'html',
-                         data : {ent_no:formData},
+                         data : {rec_no:formData},
                          success :function(data){
                            $(".test").html(data);
                         }
