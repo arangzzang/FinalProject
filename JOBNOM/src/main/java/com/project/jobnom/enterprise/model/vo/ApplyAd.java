@@ -1,4 +1,4 @@
-package com.project.jobnom.enterprice.model.vo;
+package com.project.jobnom.enterprise.model.vo;
 
 import java.sql.Date;
 

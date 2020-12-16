@@ -1,0 +1,208 @@
+@charset "UTF-8";
+	
+		img{
+            width: 100px;
+            height: 100px;
+        }
+        .job2, .option2{
+            display: none;
+        }
+        .container{
+            padding: 0;
+        }
+        /* 마이페이지 헤더회원정보 */
+        #memberinfo{
+            background-color: #fff;
+            padding: 20px 26px 10px 0;
+            width: 70%;
+            margin: 0 auto;
+        }
+        .memberinfo-parent{
+            border-bottom: 1px lightgray solid;
+        }
+        /* 마이페이지 navbar */
+        .MPheadmenu{
+            width: 70%;
+            margin: 0 auto;
+        }
+        .MPheadmenu-parent{
+            border-bottom: 1px lightgray solid;
+            background-color: #fff;
+        }
+        .navbtn{
+            background-color: white;
+            border: none;
+        }
+        .navbtn:hover{
+            font-weight: bold;
+            color: green;
+            border: none;
+        }
+        /*바디 전체부분*/
+        .with{
+            width: 70%;
+            margin: 0 auto;
+        }
+        .with-parent{
+            background-color: #e5e6e9;
+        }
+        /* 사이드바 */
+        .sidebar{
+            background-color: #fff;
+        }
+        .sidebar-title{
+            padding: 10px 0 10px 10px;
+            border-bottom: 1px solid lightgray;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .sidebtn{
+            border: none;
+            background-color: #fff;
+            padding-bottom: 10px;
+        }
+        .sidebtn:hover{
+            font-weight: bold;
+            color: green;
+        }
+        /*바디 메인*/
+        #maincon{
+            /* margin: 0 auto; */
+            padding: 0;
+        }
+        .saveHire_body{
+            margin-left: 10px !important;
+            margin-bottom: 100px;
+            width: 100%;
+        }
+        /* 저장된 채용 부모 요소 */
+        .saveHire_wrap{
+            height: 300px;
+            margin-bottom: 10px;
+            padding-left: 0 !important;
+        }
+        /* 기업정보 div */
+        .company_item{
+            display: flex;
+            height: 160px;
+            background-image: url("/jobnom/resources/image/Hire/Kakao.png");
+            background-size: 243px 160px;
+            position: relative;
+        }
+        /* 기업 로고 */
+        .ent_logo{
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            width: 70px;
+            height: 70px;
+            background-size: 70px 70px;
+            background-image: url(/jobnom/resources/image/Hire/Kakao.png);
+        }
+        /* 기업정보 */
+        .ent_info{
+            position: absolute;
+            width: 150px;
+            height: 70px;
+            bottom: 8px;
+            left: 85px;
+        }
+        .choice_save{
+            position: absolute;
+            right: 10px;
+            border-radius: 20px;
+            font-size: 10px;
+            background-color: honeydew;
+            padding: 5px;
+            margin-top: 5px;
+        }
+        .job_item{
+            position: relative;
+            display: block;
+            height: 138px;
+            background-color: #fff;
+        }
+        .hire_date{
+            font-size: 10px;
+            position: absolute;
+            left: 10px;
+            top: 10px;
+            border-radius: 10px 10px;
+            border: 1px solid red;
+        }
+        .hire_info{
+            position: absolute;
+            bottom: 0;
+            padding-bottom: 10px;
+            padding-left: 10px;
+        }
+        .title{
+            font-weight: bold;
+        }
+        .content{
+            font-size: 13px;
+            color: rgb(164, 164, 164);
+        }
+        .hire_info>div{
+            font-size: 10px;
+        }
+        .ent_title{
+            text-decoration:none ;
+            font-weight: bolder;
+            font-size: 14px;
+            color:#fff
+        }
+        .ent_title:hover{
+            text-decoration:none ;
+            color:#fff;
+            border-bottom: 2px solid #fff;
+        }
+        .star::before{
+            color: gold;
+        }
+        .satisfaction{
+            background-color: rgba(74, 73, 73, 0.326);
+            border-radius: 20px;
+            padding: 3px 10px 5px 10px;
+            font-weight: bolder;
+        }
+        .job_cate_name{
+            font-size: 11px;
+        }
+        .ent_logo,.choice_save,.job_item{
+            text-decoration:none ;
+            color:#000000
+        }
+        .choice_save:hover{
+            text-decoration:none ;
+            color:#000000
+        }
+        .ent_logo:hover,.job_item:hover{
+            text-decoration:none ;
+            color:#000000;
+        }
+        .title,.content{
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            display: block;
+            width: 200px;
+        }
+        .hire_null{
+            margin: 100 auto;
+            text-align: center;
+        }
+        .alert{
+            font-size: 50px;
+        }
+        .hire_list_view{
+            width: 300px;
+            height: 50px;
+            background-color: rgb(81, 194, 81) !important;
+            color: #fff !important;
+            font-weight: bolder !important;
+            font-size: 15px !important;
+        }
+        
+
+        

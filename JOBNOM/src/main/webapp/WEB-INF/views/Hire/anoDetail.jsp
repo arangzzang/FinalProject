@@ -19,17 +19,12 @@ List<Review> r=(List)request.getAttribute("r");
                             <div class="annoDetailLogeFlax">
                                 <div class="annoDetailLoge"></div>
                             </div>
-                            <div class="annoDetailTitleFlax">
-                            <%--  <c:forEach items="${data }" var="a">  --%>
-                            
-                                <div class="annoDetailTitle1"></div>
-                                 
-                           
-                                 
+                            <div class="annoDetailTitleFlax">            
+                                <div class="annoDetailTitle1">${r.rec_title }</div>
                                  <a href="#">
-                                    <div class="annoDetailTitleFont"></div>
+                                    <div class="annoDetailTitleFont">${r.ent_name }</div>
                                 </a>
-                                 <%--  </c:forEach>  --%>
+
                             </div>
                         </div>
                         <button class="btn_annoDetail" onclick="">지원하기</button>
@@ -40,8 +35,8 @@ List<Review> r=(List)request.getAttribute("r");
 
                     <div class="detailedReviewInterview">
                        <a href="#">
-                         <button value="${r.ent_no }" class="annoDetailListBoxs" >
-                            <input type="hidden" value="${r.ent_no }" class="annoDetailListBox">상세
+                         <button value="${r.rec_no }" class="annoDetailListBoxs" >
+                            <input type="hidden" value="${r.rec_no }" class="annoDetailListBox">상세
                          </button>
                         </a>
                         <a href="#">
@@ -76,7 +71,7 @@ List<Review> r=(List)request.getAttribute("r");
                                 <div class="annoDetailInfoAll">
                                     <div class="annoDetailInfoLogo"></div>
                                     <div class="logoRight">경력</div>
-                                    <div>3년 이상</div>
+                                    <div>${r.rec_career} 년</div>
                                 </div>
                                 <div class="annoDetailInfoAll">
                                     <div class="annoDetailInfoLogo"></div>
@@ -85,7 +80,7 @@ List<Review> r=(List)request.getAttribute("r");
                                 </div>
                                 <div class="annoDetailInfoAll">
                                     <div class="annoDetailInfoLogo"></div>
-                                    <div class="logoRight">급여</div>
+                                    <div class="logoRight">연봉</div>
                                       <div>${r.rec_salary}</div>
                                 </div>
                                
@@ -99,13 +94,7 @@ List<Review> r=(List)request.getAttribute("r");
                                     </div>
                                 </div>
 
-                               
-
-                                <div>
-                                    <div class="InformationList">[담당업무]</div>
-                                    <div class="responsibilities">${r.rec_info}</div>
-                                </div>
-
+                   
                                 <div>
                                     <div class="InformationList">[자격요건]</div>
                                     <div class="qualificationRequirements">
@@ -121,7 +110,7 @@ List<Review> r=(List)request.getAttribute("r");
 
                                 <div>
                                     <div class="InformationList">[채용절차]</div>
-                                    <div class="recruitmentProcedure">
+                                    <div class="recruitmentProcedure">${r.rec_order}
                                         * 서류전형 → 1차 (기술 면접) → 2차 (경영진 면접) → 처우협의 → 입사<br>
                                         - 면접관의 판단에 따라 전화면접(기술)이 추가될 수 있습니다.<br>
                                         - 전형별 결과는 5일 이내에 안내드립니다.<br>
@@ -152,7 +141,7 @@ List<Review> r=(List)request.getAttribute("r");
                             <div style="font-size: 20px; font:bolder">문의처</div>
                             <div class="Inquiries">
                                 <div class="managerName">담당자</div>
-                                <div class="managerName2">인하준</div>
+                                <div class="managerName2">${r.rep_name}</div>
                             </div>
                             <div class="InquiriesInfo">
                                 <div class="Inquiries">
@@ -161,11 +150,11 @@ List<Review> r=(List)request.getAttribute("r");
                                 </div>
                                 <div class="Inquiries">
                                     <div class="InquiriesPhone">연락처</div>
-                                    <div class="InquiriesPhone2">010-1234-5678</div>
+                                    <div class="InquiriesPhone2">${r.rep_phone}</div>
                                 </div>
                                 <div class="Inquiries">
                                     <div class="InquiriesEmail">이메일</div>
-                                    <div class="InquiriesEmail2">jobnom@naver.com</div>
+                                    <div class="InquiriesEmail2"></div>
                                 </div>
 
                             </div>

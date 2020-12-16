@@ -20,7 +20,7 @@ public interface HireDao {
 	
 	List<Map> reviewStar(SqlSession session);
 	
-	Recruitment selectRecruitmentList(SqlSession session, String ent_no);
+	Recruitment selectRecruitmentList(SqlSession session, String rec_no);
 	
 	Review selectReviewList(SqlSession session, String ent_no);
 }

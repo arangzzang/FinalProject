@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="enterprice">
+<mapper namespace="enterprise">
 	<resultMap type="ent" id="entMap">
 		<result column="ent_no" property="entNo"/>
 		<result column="ent_email" property="entEmail"/>
@@ -12,10 +12,11 @@
 		<result column="ent_category2" property="entCategory2"/>
 		<result column="rep_name" property="repName"/>
 		<result column="rep_phone" property="repPhone"/>
+		<result column="ent_site" property="entSite"/>
 	</resultMap>
 
 	<insert id="enrollEnter" parameterType="ent">
-		insert into enterprice values(
+		insert into enterprise values(
 									seq_ent_no.nextval,
 									#{entEmail},
 									#{entPw},
@@ -26,10 +27,11 @@
 									#{entCategory2},
 									#{repName},
 									#{repPhone},
-									default
+									default,
+									${entSite}
 									)
 	</insert>
-	<insert id="insertApplyAd" parameterType="ad">
+		<insert id="insertApplyAd" parameterType="ad">
 		insert into recruitment values(
 			seq_rec_no.nextval,
 			#{ent_no},
@@ -51,10 +53,6 @@
 			#{rec_other},
 			#{rec_category}
 		)
-		
-		
-		
-	
 	</insert>
 
 </mapper>
