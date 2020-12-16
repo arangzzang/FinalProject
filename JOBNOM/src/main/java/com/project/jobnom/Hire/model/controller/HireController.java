@@ -13,10 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.project.jobnom.PageBarFactory;
 import com.project.jobnom.Hire.model.service.HireService;
 import com.project.jobnom.Hire.model.vo.Recruitment;
-import com.project.jobnom.Hire.model.vo.Review;
+import com.project.jobnom.common.pagebar.PageBarFactory;
 
 
 @Controller
