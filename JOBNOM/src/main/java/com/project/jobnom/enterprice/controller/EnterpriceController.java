@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.project.jobnom.enterprice.model.service.EnterpriceService;
+import com.project.jobnom.enterprice.model.service.EnterpriseService;
 import com.project.jobnom.enterprice.model.vo.Enterprice;
 
 @Controller
@@ -15,7 +15,7 @@ import com.project.jobnom.enterprice.model.vo.Enterprice;
 public class EnterpriceController {
 
 	@Autowired
-	EnterpriceService service;
+	EnterpriseService service;
 	@Autowired
 	BCryptPasswordEncoder pwEncoder;
 	

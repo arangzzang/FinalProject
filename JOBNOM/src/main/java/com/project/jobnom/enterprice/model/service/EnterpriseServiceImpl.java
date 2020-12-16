@@ -5,10 +5,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.project.jobnom.enterprice.model.dao.EnterpriceDao;
+import com.project.jobnom.enterprice.model.vo.ApplyAd;
 import com.project.jobnom.enterprice.model.vo.Enterprice;
+import com.project.jobnom.member.model.vo.Member;
 
 @Service
-public class EnterpriceServiceImpl implements EnterpriceService {
+public class EnterpriseServiceImpl implements EnterpriseService {
 
 	@Autowired
 	EnterpriceDao dao;
@@ -21,4 +23,10 @@ public class EnterpriceServiceImpl implements EnterpriceService {
 		return dao.enrollEnter(ent,session);
 	}
 
+	@Override
+	public int insertApplyAd(Member mem, ApplyAd ad) {
+		// TODO Auto-generated method stub
+		return dao.insertApplyAd(mem, ad, session);
+	}
+	
 }
