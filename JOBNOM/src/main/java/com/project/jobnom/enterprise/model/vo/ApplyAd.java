@@ -17,12 +17,12 @@ public class ApplyAd {
 	private String rec_file2;
 	private Date rec_startdate;
 	private Date rec_enddate;
-	private int rec_salary;
+	private String rec_salary;
 	private String rec_info;
 	private String rec_prefer;
 	private String rec_welfare;
 	private String rec_qualification;
-	private int rec_people;
+	private String rec_people;
 	private int rec_career;
 	private String rec_order;
 	private String rec_type;

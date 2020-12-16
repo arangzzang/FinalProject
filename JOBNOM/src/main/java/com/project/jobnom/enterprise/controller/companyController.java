@@ -1,14 +1,17 @@
 package com.project.jobnom.enterprise.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.project.jobnom.enterprise.model.service.EnterpriseService;
 import com.project.jobnom.enterprise.model.vo.ApplyAd;
-import com.project.jobnom.member.model.vo.Member;
 
 @Controller
 public class companyController {
+	@Autowired
+	EnterpriseService service;
 
 	@RequestMapping("/enterprice/companyList.do")
 	public String companyList() {

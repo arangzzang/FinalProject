@@ -102,18 +102,18 @@
   			<div class="input-group-prepend">
   				<span class="input-group-text">모집인원</span>
   			</div>
-	  		<input type="number" class="jmklabel" step="1" name="rec_">
+	  		<input type="number" class="jmklabel" step="1" name="rec_people" id="rec_people">
   			&nbsp;&nbsp;
 	  		<div class="input-group-prepend">
   				<span class="input-group-text">경력</span>
   			</div>
-  			<input type="number" class="jmklabel">년 이상
+  			<input type="number" class="jmklabel" name="rec_career" id="rec_career">년 이상
   		</div>
   		<div class="input-group mb-3">
   			<div class="input-group-prepend">
   				<span class="input-group-text">채용절차</span>
   			</div>
-	  		<textarea class="form-control" rows="5" id="about"></textarea>
+	  		<textarea class="form-control" rows="5" name="rec_order" id="rec_order"></textarea>
   		</div>
   		<div class="input-group mb-3">
   			<div class="input-group-prepend">
@@ -121,33 +121,28 @@
   			</div>
 	  		<div class="form-check-inline jmklabel" style="padding:5px;">
 	  			<label class="form-check-label">
-	  				<input type="radio" class="form-check-input">알바
+	  				<input type="radio" class="form-check-input" name="rec_type" id="rec_type">알바
 	  			</label>
 				&nbsp;&nbsp;
 	  			<label class="form-check-label">
-	  				<input type="radio" class="form-check-input">인턴
+	  				<input type="radio" class="form-check-input" name="rec_type" id="rec_type">인턴
 	  			</label>
 	  			&nbsp;&nbsp;
 	  			<label class="form-check-label">
-	  				<input type="radio" class="form-check-input">비정규직
+	  				<input type="radio" class="form-check-input" name="rec_type" id="rec_type">비정규직
 	  			</label>
   				&nbsp;&nbsp;	  			
 	  			<label class="form-check-label">
-	  				<input type="radio" class="form-check-input">정규직
+	  				<input type="radio" class="form-check-input" name="rec_type" id="rec_type">정규직
 	  			</label>
 	  		</div>
-	  		<div class="form-check-inline">
-	  		</div>
-	  		<div class="form-check-inline">
-	  		</div>
-	  		<div class="form-check-inline">
-	  		</div>
+
   		</div>
   		<div class="input-group mb-3">
   			<div class="input-group-prepend">
   				<span class="input-group-text">기타</span>
   			</div>
-	  		<textarea class="form-control" rows="5" id="about"></textarea>
+	  		<textarea class="form-control" rows="5" id="about" name="rec_other" id="rec_other"></textarea>
   		</div>
   		<div class="form-group">
 			<label for="sel1">업무 분야</label>
