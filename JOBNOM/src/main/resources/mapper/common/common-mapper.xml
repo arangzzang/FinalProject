@@ -23,13 +23,13 @@
 	<select id="checkDuplicateEmail" parameterType="string" resultMap="log">
 		SELECT * 
 		    FROM (
-			    SELECT '일반' AS TYPE, MEM_NO ,MEM_EMAIL,MEM_PW FROM MEMBER
-			    UNION ALL
-			    SELECT '기업', ENT_NO, ENT_EMAIL,ENT_PW FROM ENTERPRISE
-			    UNION ALL
-			    SELECT '관리자', ADMIN_NO, ADMIN_EMAIL,ADMIN_PW FROM ADMIN
+			    SELECT TYPE, MEM_NO ,MEM_EMAIL,MEM_PW FROM MEMBER
+			    UNION
+			    SELECT TYPE, ENT_NO, ENT_EMAIL,ENT_PW FROM ENTERPRISE
+			    UNION
+			    SELECT TYPE, ADMIN_NO, ADMIN_EMAIL,ADMIN_PW FROM ADMIN
 		    )
-		    WHERE mem_email=#{memEmail}
+		    WHERE MEM_EMAIL=#{memEmail}
 	</select>
 	
 	
