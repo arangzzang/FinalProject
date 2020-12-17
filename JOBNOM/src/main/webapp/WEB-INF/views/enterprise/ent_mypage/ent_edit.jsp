@@ -3,7 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ page import="java.util.ArrayList" %>
 <c:set var="path" value="${pageContext.request.contextPath }" />
 <style>
 	.jmkbtn{
@@ -59,6 +58,18 @@
 					<input type="text" class="form-control" value="${enterprise.entName} ">
   				</div>
   				<div class="input-group mb-3">
+						<div class="input-group-prepend">
+		      				<span class="input-group-text">대표 이름</span>
+		    			</div>
+						<input type="text" class="form-control" value="${enterprise.repName} ">					
+	  				</div>
+  				<div class="input-group mb-3">
+						<div class="input-group-prepend">
+		      				<span class="input-group-text">1차 산업군</span>
+		    			</div>
+						<input type="text" class="form-control" value="${enterprise.entCategory1} ">					
+	  				</div>
+  				<div class="input-group mb-3">
 					<div class="input-group-prepend">
 	      				<span class="input-group-text">사업자등록번호</span>
 	    			</div>
@@ -88,25 +99,13 @@
 					<div class="input-group-prepend">
 	      				<span class="input-group-text">기업종류</span>
 	    			</div>
-					<input type="text" class="form-control" value="${types[2]} ">					
+					<input type="text" class="form-control" value="${jname} ">					
   					</div>
-	  				<div class="input-group mb-3">
-						<div class="input-group-prepend">
-		      				<span class="input-group-text">1차 산업군</span>
-		    			</div>
-						<input type="text" class="form-control" value="${enterprise.entCategory1} ">					
-	  				</div>
 	  				<div class="input-group mb-3">
 						<div class="input-group-prepend">
 		      				<span class="input-group-text">2차 산업군</span>
 		    			</div>
 						<input type="text" class="form-control" value="${enterprise.entCategory2} ">					
-	  				</div>
-	  				<div class="input-group mb-3">
-						<div class="input-group-prepend">
-		      				<span class="input-group-text">대표 이름</span>
-		    			</div>
-						<input type="text" class="form-control" value="${enterprise.repName} ">					
 	  				</div>
 	  				<div class="input-group mb-3">
 						<div class="input-group-prepend">

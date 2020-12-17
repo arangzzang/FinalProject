@@ -84,9 +84,10 @@ public class companyController {
 		System.out.println("controller" + session.getAttribute("commonLogin"));
 		System.out.println(log.getMemNo());
 		Enterprise ent = (Enterprise)service.findOneEnterprise(log);
+		String jname = jtypes[ent.getType()-1];
 		System.out.println(ent);
 		mv.addObject("enterprise", ent);
-		mv.addObject("types", jtypes);
+		mv.addObject("jname", jname);
 		mv.setViewName("/enterprise/ent_mypage/ent_edit");
 		return mv;
 	}
