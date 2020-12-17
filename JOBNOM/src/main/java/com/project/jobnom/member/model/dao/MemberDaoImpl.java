@@ -18,6 +18,10 @@ public class MemberDaoImpl implements MemberDao {
 	public Member mypageView(int memNo, SqlSession session) {
 		return session.selectOne("member.mypageView",memNo);
 	}
+	@Override
+	public int changeMemEmail(String memEmail, SqlSession session) {
+		return session.update("member.changeEmail",memEmail);
+	}
 	
 	
 

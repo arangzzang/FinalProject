@@ -10,4 +10,6 @@ public interface MemberDao {
 	int enrollMember(Member m, SqlSession session);
 	//마이페이지
 	Member mypageView(int memNo, SqlSession session);
+	//email변경
+	int changeMemEmail(String memEmail,SqlSession session);
 }

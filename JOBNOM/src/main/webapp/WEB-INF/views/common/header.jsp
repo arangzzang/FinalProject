@@ -40,10 +40,10 @@
 				<input type="hidden" value="${commonLogin.type}" class="memType">
 				<ul class="navbar-nav mr-auto mem_nav">
 					<li class="nav-item">
-						<a class="menus" href="${path }/Hire/HireHome.do">채용</a><!-- nav-link -->
+						<a class="menus" href="${path }/Hire/HireHome.do">채용</a>
 					</li>
 					<li class="nav-item">
-						<a class="menus" href="${path }/enterprice/companyList.do">기업</a><!-- nav-link -->
+						<a class="menus" href="${path }/enterprice/companyList.do">기업</a>
 					</li>
 				</ul>
 				<c:if test="${commonLogin !=null && commonLogin.type == 2 || commonLogin.type == 1}" >
@@ -68,7 +68,7 @@
 							<a class="menus" href="">회원조회</a>
 						</li>
 						<li class="nav-item">
-							<a class="menus" href="">기업 알아보기</a>
+							<a class="menus" href="${path }/enterprice/companyList.do">기업</a>
 						</li>
 					</ul>
 				</c:if>
@@ -86,7 +86,7 @@
 					<button class="btn btn-outline-success my-4 my-sm-0" type="button" onclick="location.replace('${path}/common/logout');">로그아웃</button>
 				</c:if>
 				<c:if test="${commonLogin !=null && commonLogin.type == 2 }">
-					<span><a href="${path }/enterprice/myPage?ent_no=${commonLogin.memNo}"><i class="far fa-building"></i></a></span>
+					<span><a href="${path }/com/mypage.do?ent_no=${commonLogin.memNo}"><i class="far fa-building"></i></a></span>
 					&nbsp;
 					<button class="btn btn-outline-success my-4 my-sm-0" type="button" onclick="location.replace('${path}/common/logout');">로그아웃</button>
 				</c:if>
@@ -149,7 +149,7 @@
                               	<div class="modal-footer">
 									<div class="row">
 										<div class="col-6 text-center" >
-											<input type="submit" class="btn btn-outline-success my-4 my-sm-0" value="로그인"></button>
+											<input type="submit" class="btn btn-outline-success my-4 my-sm-0" value="로그인">
 										</div>
 										<div class="col-6 text-center" >
 											<button type="button" class="btn btn-outline-success my-4 my-sm-0" onclick="location.href='${path}/member/enrollMember'">회원가입</button>
@@ -176,47 +176,47 @@
 			}
 		});
 		//이메일, 비밀번호 정규표현식
-		// function logincheck(){  
-		// 	let value = $(".email").val();
-		// 	let pwval = $(".password").val()
-        //     let re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-		// 	var repw = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
+		function logincheck(){  
+			let value = $(".email").val();
+			let pwval = $(".password").val()
+            let re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+			var repw = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
 
-		// 	if(value!=""){
-		// 		if(!re.test(value)){
-		// 			alert("이메일 형식이 아닙니다.")
-		// 			console.log(2);
-		// 			return false;
-		// 		};
-		// 	}else {
-		// 		alert("아이디를 작성해주세요");
-		// 		return false;
-		// 	};
+			if(value!=""){
+				if(!re.test(value)){
+					alert("이메일 형식이 아닙니다.")
+					console.log(2);
+					return false;
+				};
+			}else {
+				alert("아이디를 작성해주세요");
+				return false;
+			};
 			//비밀번호 8자리 이상
             //숫자,영대문자,영소문자,특수문자 포함
             //공백X 같은문자 4번 반복X 아이디 X 한글 X
-		// 	if(pwval==""){
-        //         alert("비밀번호를 입력해주세요")
-        //         return false;
-        //     }else if(!repw.test(pwval)){
-        //         alert('비밀번호는 8자 이상이어야 하며, 숫자/대문자/소문자/특수문자를 모두 포함해야 합니다.');
-        //         return false;
-        //     }else if(/(\w)\1\1\1/.test(pwval)){
-        //         alert('같은 문자를 4번 이상 사용하실 수 없습니다.');
-        //         return false;
-        //     }else if(pwval.search(value) > -1){
-        //         alert("비밀번호에 아이디가 포함되었습니다.");
-        //         return false;
-        //     }else if(pwval.search(/\s/) != -1){
-        //         alert("비밀번호는 공백 없이 입력해주세요.");
-		// 		$.trim(pwval)
-        //         return false;
-        //     }else if(hangulcheck.test(pwval)){
-        //         alert("비밀번호에 한글을 사용 할 수 없습니다."); 
-        //     }else {
-        //         console.log("통과");
-        //     };
-		// };
+			// if(pwval==""){
+            //     alert("비밀번호를 입력해주세요")
+            //     return false;
+            // }else if(!repw.test(pwval)){
+            //     alert('비밀번호는 8자 이상이어야 하며, 숫자/대문자/소문자/특수문자를 모두 포함해야 합니다.');
+            //     return false;
+            // }else if(/(\w)\1\1\1/.test(pwval)){
+            //     alert('같은 문자를 4번 이상 사용하실 수 없습니다.');
+            //     return false;
+            // }else if(pwval.search(value) > -1){
+            //     alert("비밀번호에 아이디가 포함되었습니다.");
+            //     return false;
+            // }else if(pwval.search(/\s/) != -1){
+            //     alert("비밀번호는 공백 없이 입력해주세요.");
+			// 	$.trim(pwval)
+            //     return false;
+            // }else if(hangulcheck.test(pwval)){
+            //     alert("비밀번호에 한글을 사용 할 수 없습니다."); 
+            // }else {
+            //     console.log("통과");
+            // };
+		};
 		
 		
  

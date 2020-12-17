@@ -33,8 +33,10 @@
 	<select id="mypageView" parameterType="_int" resultMap="memMap">
 		select * from member where mem_no=#{memNo}
 	</select>
-	
-	
+	<!-- email변경 -->
+	<update id="changeEmail" parameterType="string">
+		update member set mem_email = #{memEmail} where mem_email = #{memEmail}
+	</update>	
 	
 </mapper>
 
