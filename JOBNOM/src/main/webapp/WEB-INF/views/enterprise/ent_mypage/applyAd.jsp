@@ -168,7 +168,7 @@
 				<option value="16">교직원</option>
 				<option value="17">입시/보습/학원강사</option>
 				<option value="18">마켓팅</option>
-				<option value="19">브랜트 마켓팅</option>
+				<option value="19">브랜드 마켓팅</option>
 				<option value="20">시장조사/분석</option>
 				<option value="21">상품개발/기획/MD</option>
 				<option value="22">온라인 마켓팅</option>
