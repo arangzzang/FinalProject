@@ -23,6 +23,9 @@
 <link rel="stylesheet" href="${path }/resources/css/footer.css"/>
 </head>
 <body>
+	<c:if test="${not empty cookie.loginCheck}">
+		<c:set var="checked" value="checked"/>
+	</c:if>
 
    <div id="container">
       <header>
@@ -132,18 +135,15 @@
 	                           	<div class="modal-body">
 									<div class="form-group">
 										<label for="email">E_mail:</label>
-										<input type="email" class="form-control email" id="email" placeholder="이메일을 입력해주세요." name="email" required>
-										<div class="email_good">이메일입력완료.</div>
-										<div class="email_bad">E_mail을 입력해주세요.</div>
+										<input type="email" class="form-control email" id="email" placeholder="이메일을 입력해주세요." name="email" value="${cookie.loginCheck.value }" required>
+									
 									</div>
 									<div class="form-group">
 										<label for="password">비밀번호:</label>
 										<input type="password" class="form-control password" id="password" placeholder="비밀번호를 입력해주세요." name="password" required>
-										<div class="pw_good">비밀번호 입력완료.</div>
-										<div class="pw_bad">비밀번호를 입력해주세요.</div>
 									</div>
 									<label>
-										<input type="checkbox" name="remember">E_mail저장하기
+										<input type="checkbox" name="loginCheck" ${checked }>E_mail저장하기
 									</label>
                               	</div>
                               	<div class="modal-footer">
@@ -177,13 +177,13 @@
 		});
 		//이메일, 비밀번호 정규표현식
 		function logincheck(){  
-			let value = $(".email").val();
+			let emailId = $(".email").val();
 			let pwval = $(".password").val()
             let re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 			var repw = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
 
-			if(value!=""){
-				if(!re.test(value)){
+			if(emailId!=""){
+				if(!re.test(emailId)){
 					alert("이메일 형식이 아닙니다.")
 					console.log(2);
 					return false;
@@ -204,7 +204,7 @@
             // }else if(/(\w)\1\1\1/.test(pwval)){
             //     alert('같은 문자를 4번 이상 사용하실 수 없습니다.');
             //     return false;
-            // }else if(pwval.search(value) > -1){
+            // }else if(pwval.search(emailId) > -1){
             //     alert("비밀번호에 아이디가 포함되었습니다.");
             //     return false;
             // }else if(pwval.search(/\s/) != -1){

@@ -38,18 +38,18 @@ public class CommonController {
 		System.out.println(who);
 		if(who!=null) {
 			//아이디 기억하기
-			if(login.get("remember") != null) {//login.get("remember").equals("on")는 무조건적인 true이기 때문에 checkbox가 check되있지 않으면 nullpoint에러 발생
+			if(login.get("loginCheck") != null) {//login.get("remember").equals("on")는 무조건적인 true이기 때문에 checkbox가 check되있지 않으면 nullpoint에러 발생
 				Cookie c = new Cookie("loginCheck",who.getMemEmail());
 				c.setMaxAge(60*60*24*7);
 				c.setPath("/jobnom");
 				response.addCookie(c);
-				System.out.println("true일 때");
+				System.out.println("쿠키값true일 때");
 				System.out.println(c);
 			}else {
 				Cookie c = new Cookie("loginCheck","");
 				c.setMaxAge(0);
 				response.addCookie(c);
-				System.out.println("false일 때");
+				System.out.println("쿠키값false일 때");
 				System.out.println(c);
 			}
 			//로그인 시도 시 암호화된 비밀번호 분기처리
