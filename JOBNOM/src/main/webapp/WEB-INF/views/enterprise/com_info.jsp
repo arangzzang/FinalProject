@@ -51,18 +51,18 @@
             <div class="com_menu" >
                 <div id="view_com_wrap"> 
                 <nav id="view_com">
-                    <ul class="view_menu">
+                     <ul class="view_menu">
                         <li class="li_menu">
-                            <a href="${path}/enterprice/com_info.do"><h2>소개</h2></a>
+                            <a href="${path}/enterprise/com_info.do"><h2>소개</h2></a>
                         </li>
                         <li class="li_menu">
-                            <a href="${path }/enterprice/com_review.do"><h2>리뷰<span class="num">(1)</span></h2></a>
+                            <a href="${path }/enterprise/com_review.do"><h2>리뷰<span class="num">(1)</span></h2></a>
                         </li>
                         <li class="li_menu">
-                            <a href="${path }/enterprice/com_interview.do"><h2>면접후기<span class="num">(1)</span></h2></a>
+                            <a href="${path }/enterprise/com_interview.do"><h2>면접후기<span class="num">(1)</span></h2></a>
                         </li>
                         <li class="li_menu">
-                            <a href="${path }/enterprice/com_job.do"><h2>채용<span class="num">(1)</span></h2></a>
+                            <a href="${path }/enterprise/com_job.do"><h2>채용<span class="num">(1)</span></h2></a>
                         </li>
                     </ul>
                     <div class="follow_btn">

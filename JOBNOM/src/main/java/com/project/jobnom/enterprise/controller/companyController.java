@@ -22,34 +22,34 @@ public class companyController {
 	@Autowired
 	EnterpriseService service;
 
-	@RequestMapping("/enterprice/companyList.do")
+	@RequestMapping("/enterprise/companyList.do")
 	public String companyList() {
 		
-		return "enterprice/companyList";
+		return "enterprise/companyList";
 	}
 
-	@RequestMapping("/enterprice/com_info.do")
+	@RequestMapping("/enterprise/com_info.do")
 	public String companyInfo() {
 		
-		return "enterprice/com_info";
+		return "enterprise/com_info";
 	}
 	
-	@RequestMapping("/enterprice/com_review.do")
+	@RequestMapping("/enterprise/com_review.do")
 	public String companyReview() {
 		
-		return "enterprice/com_review";
+		return "enterprise/com_review";
 	}
 	
-	@RequestMapping("/enterprice/com_interview.do")
+	@RequestMapping("/enterprise/com_interview.do")
 	public String companyInterview() {
 		
-		return "enterprice/com_interview";
+		return "enterprise/com_interview";
 	}
 	
-	@RequestMapping("/enterprice/com_job.do")
+	@RequestMapping("/enterprise/com_job.do")
 	public String companyJob() {
 		
-		return "enterprice/com_job";
+		return "enterprise/com_job";
 	}
 	@RequestMapping("/enterprise/applyAdEnd.do")
 	public String applyAdEnd(ApplyAd ad, Model m) {
