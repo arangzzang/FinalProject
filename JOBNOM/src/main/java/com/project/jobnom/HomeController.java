@@ -35,10 +35,6 @@ public class HomeController {
 
 
 
-		return "index";
-	}
-	@RequestMapping("/header/jmk.do")
-	public String headerJmk() {
-		return "/common/header_jmk";
+		return "enterprise/com_info";
 	}
 }

@@ -43,7 +43,7 @@
 						<a class="menus" href="${path }/Hire/HireHome.do">채용</a>
 					</li>
 					<li class="nav-item">
-						<a class="menus" href="${path }/enterprice/companyList.do">기업</a>
+						<a class="menus" href="${path }/enterprise/companyList.do">기업</a>
 					</li>
 				</ul>
 				<c:if test="${commonLogin !=null && commonLogin.type == 2 || commonLogin.type == 1}" >
