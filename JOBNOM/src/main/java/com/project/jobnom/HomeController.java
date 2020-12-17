@@ -34,19 +34,10 @@ public class HomeController {
 		model.addAttribute("serverTime", formattedDate );
 		//"member/mypage/myProfile"
 		//"member/mypage/myfirst"	
-		return "enterprise/com_job";
-		
+		return "enterprise/com_job";		
 	}
-	@RequestMapping("header/jmk.do")
+	@RequestMapping("/header/jmk.do")
 	public String headerJmk() {
 		return "/common/header_jmk";
 	}
-	@RequestMapping("com/mypage.do")
-	public String comMypage() {
-		return "/enterprise/ent_mypage/com_mypage";
-	}
-	@RequestMapping("com/applyAd.do")
-	public String applyAd() {
-		return "/enterprise/ent_mypage/applyAd";
-	}	
 }

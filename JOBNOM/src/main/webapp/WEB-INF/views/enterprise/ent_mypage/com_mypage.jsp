@@ -5,9 +5,6 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <c:set var="path" value="${pageContext.request.contextPath }" />
 
-<%-- <link rel="stylesheet" href="${path }/resources/css/company/com_my_page/com_mypage.css"/> --%>
- 
-<link rel="stylesheet" href="${path }/resources/css/index.css"/>
 <jsp:include page="/WEB-INF/views/common/header.jsp">
    <jsp:param name="title" value=" "/>
 </jsp:include>
@@ -25,7 +22,8 @@
 		<div class="row">
 			<div class="col-sm-10"></div>
 			<div class="col-sm-2">
-				<button class="btn btn_1 btn-success my-2 my-sm-0 text-nowrap" style="margin:10px;">공고 올리기</button>
+				<button class="btn btn_1 btn-success my-2 my-sm-0 text-nowrap" 
+					style="margin:10px;" onclick="applyAd();">공고 올리기</button>
 			</div>
 		</div>
 		<br>
@@ -59,4 +57,10 @@
     		</div>
     	</div>
 	</section>
+<script>
+	function applyAd(){
+		location.replace("${path }/com/applyAd.do");
+	}
+</script>	
+	
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>

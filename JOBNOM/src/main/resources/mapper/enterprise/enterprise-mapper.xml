@@ -53,27 +53,10 @@
 			#{rec_other},
 			#{rec_category}
 			)
-		<!-- insert into recruitment values(
-			seq_rec_no.nextval,
-			#{ent_no},
-			#{rec_title},
-			#{rec_contents},
-			#{rec_file1},
-			#{rec_file2},
-			#{rec_startdate},
-			#{rec_enddate},
-			#{rec_salary},
-			#{rec_info},
-			#{rec_prefer},
-			#{rec_welfare},
-			#{rec_qualification},
-			#{rec_people},
-			#{rec_career},
-			#{rec_order},
-			#{rec_type},
-			#{rec_other},
-			#{rec_category}
-		) -->
 	</insert>
+	<select id="findOneEnterprise" parameterType="int" resultMap="entMap">
+		SELECT * FROM ENTERPRISE WHERE ENT_NO=#{memNo}
+	
+	</select>
 
 </mapper>

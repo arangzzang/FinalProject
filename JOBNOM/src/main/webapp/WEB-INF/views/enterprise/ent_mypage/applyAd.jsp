@@ -3,17 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-
 <c:set var="path" value="${pageContext.request.contextPath }" />
-<jsp:include page="/WEB-INF/views/common/header.jsp">
-   <jsp:param name="title" value=" "/>
-</jsp:include>
-<jsp:include page="/WEB-INF/views/enterprise/ent_mypage/myCom_info.jsp">
-	<jsp:param name="myCom_info" value=""/>
-</jsp:include>
-<jsp:include page="/WEB-INF/views/enterprise/ent_mypage/ent_common.jsp">
-	<jsp:param name="subheader" value=""/>
-</jsp:include> 
+
 <style>
 	.jmklabel{
 		background-color:/* #e9ecef */; color:#495057; border:1px solid #ced4da;
@@ -26,22 +17,34 @@
 		font-weight:bold;
 	}
 </style>
+<jsp:include page="/WEB-INF/views/common/header.jsp">
+   <jsp:param name="title" value=" "/>
+</jsp:include>
+<section id="content">
+<jsp:include page="/WEB-INF/views/enterprise/ent_mypage/myCom_info.jsp">
+	<jsp:param name="myCom_info" value=""/>
+</jsp:include>
+<jsp:include page="/WEB-INF/views/enterprise/ent_mypage/ent_common.jsp">
+	<jsp:param name="subheader" value=""/>
+</jsp:include> 
+    
+ 
 
 <div class="container form-group">
 	<h5 class="text-center">공고 올리기</h5>
 	<form action="${path}/enterprise/applyAdEnd.do" method="post">
-		<input type="hidden" value="${commonLogin.memNo }" name="" id="">
+		<input type="hidden" value="${commonLogin.memNo }" name="ent_no" id="ent_no">
 		<div class="input-group mb-3">
 	    	<div class="input-group-prepend">
 	      		<span class="input-group-text">제목</span>
 	    	</div>
-    		<input type="text" class="form-control" name="rec_title" id="rec_title">
+    		<input type="text" class="form-control" name="rec_title" id="rec_title" required>
   		</div>
   		<div class="input-group mb-3">
   			<div class="input-group-prepend">
   				<span class="input-group-text">내용</span>
   			</div>
-	  		<textarea class="form-control" rows="5" name="rec_contents" id="rec_contents"></textarea>
+	  		<textarea class="form-control" rows="5" name="rec_contents" id="rec_contents" required></textarea>
   		</div>
 		<div class="custom-file">
 			<input type="file" class="custom-file-input" name="rec_file1" id="rec_file1">
@@ -57,28 +60,28 @@
   			<div class="input-group-prepend">
   				<span class="input-group-text">시작일</span>
   			</div>
-			<input type="date" class="jmklabel text-center" name="rec_startdate" id="rec_startdate">
+			<input type="date" class="jmklabel text-center" name="rec_startdate" id="rec_startdate" required>
 			&nbsp;&nbsp;
 		<div class="input-group-prepend">
   				<span class="input-group-text">종료일</span>
   			</div>
-			<input type="date" class="jmklabel text-center" name="rec_enddate" id="rec_enddate">
+			<input type="date" class="jmklabel text-center" name="rec_enddate" id="rec_enddate" required>
   		</div>
   		<div class="input-group mb-3 inline form-check-inline">
 			<div class="input-group-prepend">
 	  				<span class="input-group-text">연봉</span>
   			</div>
-	  		<input class="jmklabel" type="number" step="500000" name="rec_salary" id="rec_salary">
+	  		<input class="jmklabel" type="number" step="500000" name="rec_salary" id="rec_salary" required>
 	  		&nbsp;&nbsp;
 	  		<label class="form-check-label text-center">
-		  		<input type="checkbox" class="form-check-input">회사 내규에 따름
+		  		<input type="checkbox" class="form-check-input" id="salary_noinfo">회사 내규에 따름
 	  		</label>
   		</div>
   		<div class="input-group mb-3">
   			<div class="input-group-prepend">
   				<span class="input-group-text">주요업무</span>
   			</div>
-	  		<textarea class="form-control" rows="5" name="rec_info" id="rec_info"></textarea>
+	  		<textarea class="form-control" rows="5" name="rec_info" id="rec_info" required></textarea>
   		</div>
   		<div class="input-group mb-3">
   			<div class="input-group-prepend">
@@ -96,18 +99,18 @@
   			<div class="input-group-prepend">
   				<span class="input-group-text">자격요건</span>
   			</div>
-	  		<textarea class="form-control" rows="5" name="rec_qualification" id="rec_qualification"></textarea>
+	  		<textarea class="form-control" rows="5" name="rec_qualification" id="rec_qualification" required></textarea>
   		</div>
   		<div class="input-group mb-3">
   			<div class="input-group-prepend">
   				<span class="input-group-text">모집인원</span>
   			</div>
-	  		<input type="number" class="jmklabel" step="1" name="rec_people" id="rec_people">
+	  		<input type="number" class="jmklabel" step="1" name="rec_people" id="rec_people" required>
   			&nbsp;&nbsp;
 	  		<div class="input-group-prepend">
   				<span class="input-group-text">경력</span>
   			</div>
-  			<input type="number" class="jmklabel" name="rec_career" id="rec_career">년 이상
+  			<input type="number" class="jmklabel" name="rec_career" id="rec_career" required>년 이상
   		</div>
   		<div class="input-group mb-3">
   			<div class="input-group-prepend">
@@ -121,7 +124,7 @@
   			</div>
 	  		<div class="form-check-inline jmklabel" style="padding:5px;">
 	  			<label class="form-check-label">
-	  				<input type="radio" class="form-check-input" name="rec_type" id="rec_type">알바
+	  				<input type="radio" class="form-check-input" name="rec_type" id="rec_type" required>알바
 	  			</label>
 				&nbsp;&nbsp;
 	  			<label class="form-check-label">
@@ -146,7 +149,7 @@
   		</div>
   		<div class="form-group">
 			<label for="sel1">업무 분야</label>
-			<select class="form-control" name="rec_category" id="rec_category">
+			<select class="form-control" name="rec_category" id="rec_category" required>
 				<option value="1">은행관련</option>
 				<option value="2">세무/법무</option>
 				<option value="3">경리/출납/수납</option>
@@ -190,6 +193,7 @@
   		</div>
 	</form>
 </div>
+</section>
 
 <script>
 // Add the following code if you want the name of the file appear on select
@@ -197,6 +201,24 @@
 	  var fileName = $(this).val().split("\\").pop();
 	  $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
 	});
+	$("#salary_noinfo").change(function(){
+		if(this.checked){
+			$("#rec_salary").prop("disabled", true);			
+		}
+		if(!this.checked){
+			$("#rec_salary").prop("disabled", false);			
+		}
+	});
+	
+	
+	
 </script>
 
+<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+<script>
+	function applyAd(){
+		location.replace("${path }/com/applyAd.do");
+	}
+</script>	
+	
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>

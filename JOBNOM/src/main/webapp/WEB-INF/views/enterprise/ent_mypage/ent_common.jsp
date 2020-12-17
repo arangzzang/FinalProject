@@ -15,17 +15,10 @@
 	<nav class="navbar navbar-expand-sm navbar-light ">
 		<ul class="navbar-nav">
 			<li class="nav-item">
-				<a class="nav-link" href="#">회원정보수정</a>
+				<a class="nav-link" href="${path }/jobnom/com/ent_edit.do">회원정보수정</a>
 			</li>
 			<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="navbardrop">
-				나의공고
-				</a>
-			    <div class="dropdown-menu">
-					<a class="dropdown-item" href="#">공고 올리기</a>
-					<a class="dropdown-item" href="#">공고 상세보기</a>
-					<a class="dropdown-item" href="#">지원자 조회</a>                        
-			    </div>
+				<a class="nav-link" href="${path }/jobnom/com/mypage.do">나의공고</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" href="#">멤버십</a>
