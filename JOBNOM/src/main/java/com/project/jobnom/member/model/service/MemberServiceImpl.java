@@ -27,6 +27,12 @@ public class MemberServiceImpl implements MemberService {
 	public Member mypageView(int memNo) {
 		return dao.mypageView(memNo,session);
 	}
+
+	@Override
+	public int changeMemEmail(String memEmail) {
+		return dao.changeMemEmail(memEmail,session);
+	}
+	
 	
 
 }
