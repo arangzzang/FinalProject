@@ -10,4 +10,5 @@ public interface EnterpriseService {
 	int enrollEnter(Enterprise ent);
 	int insertApplyAd(ApplyAd ad);
 	Enterprise findOneEnterprise(Login log);
+	int updateEnterprise(Enterprise ent);
 }

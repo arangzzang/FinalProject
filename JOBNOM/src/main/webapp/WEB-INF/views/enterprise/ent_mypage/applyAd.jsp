@@ -147,8 +147,10 @@
   			</div>
 	  		<textarea class="form-control" rows="5" id="about" name="rec_other" id="rec_other"></textarea>
   		</div>
-  		<div class="form-group">
-			<label for="sel1">업무 분야</label>
+  		<div class="form-group input-group mb-3">
+  			<div class="input-group-prepend">
+				<span class="input-group-text"">업무 분야</span>
+  			</div>
 			<select class="form-control" name="rec_category" id="rec_category" required>
 				<option value="1">은행관련</option>
 				<option value="2">세무/법무</option>

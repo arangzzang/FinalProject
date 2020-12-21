@@ -56,7 +56,19 @@
 	</insert>
 	<select id="findOneEnterprise" parameterType="int" resultMap="entMap">
 		SELECT * FROM ENTERPRISE WHERE ENT_NO=#{memNo}
-	
 	</select>
+	
+	<update id="updateEnterprise" parameterType="ent">
+		UPDATE ENTERPRISE SET
+			ENT_PW=TRIM(#{entPw}),
+			ENT_LOGO=TRIM(#{entLogo}),
+			ENT_CATEGORY1=TRIM(#{entCategory1}),
+			ENT_CATEGORY2=TRIM(#{entCategory2}),
+			REP_NAME=TRIM(#{repName}),
+			REP_PHONE=TRIM(#{repPhone}),
+			ENT_SITE=TRIM(#{entSite})
+		WHERE ENT_NO=TRIM(#{entNo})
+	
+	</update>
 
 </mapper>

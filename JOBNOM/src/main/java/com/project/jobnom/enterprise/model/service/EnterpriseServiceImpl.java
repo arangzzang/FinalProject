@@ -32,6 +32,11 @@ public class EnterpriseServiceImpl implements EnterpriseService {
 		// TODO Auto-generated method stub
 		return dao.findOneEnterprise(log, session);
 	}
+	@Override
+	public int updateEnterprise(Enterprise ent) {
+		// TODO Auto-generated method stub
+		return dao.updateEnterprise(ent, session);
+	}
 	
 
 }

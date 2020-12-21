@@ -1,12 +1,9 @@
 package com.project.jobnom.enterprise.controller;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +18,8 @@ import com.project.jobnom.enterprise.model.vo.Enterprise;
 public class companyController {
 	@Autowired
 	EnterpriseService service;
+	@Autowired
+	BCryptPasswordEncoder pwEncoder;
 
 	@RequestMapping("/enterprise/companyList.do")
 	public String companyList() {
@@ -77,9 +76,6 @@ public class companyController {
 				"시장조사/분석", "상품개발/기획/MD", "온라인 마켓팅", "의사", "한의사", "치과의사", 
 				"약사/한약사", "간호사", "간호조무사", "물리치료사", "수의사", "고객지원/CS", 
 				"호텔/숙박 관련", "가이드", "외식업/식음료", "기타 서비스직", "경영"};
-		for(String l : jtypes) {
-			System.out.println(l);
-		}
 		Login log = (Login)session.getAttribute("commonLogin");
 		System.out.println("controller" + session.getAttribute("commonLogin"));
 		System.out.println(log.getMemNo());
@@ -90,5 +86,34 @@ public class companyController {
 		mv.addObject("jname", jname);
 		mv.setViewName("/enterprise/ent_mypage/ent_edit");
 		return mv;
+	}
+	@RequestMapping("/com/ent_edit_end.do")
+	public ModelAndView entEditEnd(HttpSession session, Enterprise ent, ModelAndView mv) {
+		Login log=(Login)session.getAttribute("commonLogin");
+		String bforePw = ent.getEntPw();
+		System.out.println(ent.getRepPhone());
+		ent.setEntPw(pwEncoder.encode(ent.getEntPw()));
+		System.out.println("비번 암호화 후:" + ent.getEntPw());
+		System.out.println(ent);
+		int result = service.updateEnterprise(ent);
+		String msg="";
+		String loc="";
+		if(result>0) {
+			mv.addObject("commonLogin", service.findOneEnterprise(log));
+			msg="회원정보수정 성공";
+			loc="/com/ent_edit.do";
+		}else {
+			msg="회원정보수정 실패";
+			loc="/com/ent_edit.do";
+		}
+		mv.addObject("msg", msg);
+		mv.addObject("loc", loc);
+		mv.setViewName("common/msg");
+		return mv;
+	}
+	@RequestMapping("/com/membership.do")
+	public String membership() {
+		
+		return "enterprise/ent_mypage/membership";
 	}
 }

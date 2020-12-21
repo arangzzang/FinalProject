@@ -27,6 +27,12 @@ public class EnterpriseDaoImpl implements EnterpriseDao {
 		return session.selectOne("enterprise.findOneEnterprise", log);
 	}
 
+	@Override
+	public int updateEnterprise(Enterprise ent, SqlSession session) {
+		// TODO Auto-generated method stub
+		return session.update("enterprise.updateEnterprise", ent);
+	}
+
 	
 
 }

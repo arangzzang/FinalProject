@@ -21,7 +21,7 @@
 				<a class="nav-link" href="${path }/jobnom/com/mypage.do">나의공고</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="#">멤버십</a>
+				<a class="nav-link" href="${path }/jobnom/com/membership.do">멤버십</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" href="#">배너</a>

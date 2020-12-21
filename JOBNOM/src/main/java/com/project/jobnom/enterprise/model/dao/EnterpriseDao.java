@@ -11,4 +11,5 @@ public interface EnterpriseDao {
 	int enrollEnter(Enterprise ent, SqlSession session);
 	int insertApplyAd(ApplyAd ad, SqlSession session);
 	Enterprise findOneEnterprise(Login log, SqlSession session);
+	int updateEnterprise(Enterprise ent, SqlSession session);
 }
