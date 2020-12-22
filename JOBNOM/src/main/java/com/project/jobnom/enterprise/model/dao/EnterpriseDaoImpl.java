@@ -33,6 +33,12 @@ public class EnterpriseDaoImpl implements EnterpriseDao {
 		return session.update("enterprise.updateEnterprise", ent);
 	}
 
+	@Override
+	public int entMembership(Login log, SqlSession session) {
+		// TODO Auto-generated method stub
+		return session.update("enterprise.entMembership", log);
+	}
+
 	
 
 }

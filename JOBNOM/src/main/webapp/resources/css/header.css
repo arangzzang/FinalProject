@@ -109,5 +109,12 @@
 	section,#content{
 		padding-top: 158px !important;
 	}
+	.jmkbtn{
+		background-color:#00c362;
+		color:#fff;
+		text-align:center;
+		border-radius:5px;
+		font-weight:bold;
+	}
 	
 	

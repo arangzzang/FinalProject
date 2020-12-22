@@ -51,13 +51,24 @@ public class companyController {
 		return "enterprise/com_job";
 	}
 	@RequestMapping("/enterprise/applyAdEnd.do")
-	public String applyAdEnd(ApplyAd ad, Model m) {
+	public ModelAndView applyAdEnd(ApplyAd ad, Model m, ModelAndView mv) {
 		if(ad.getRec_salary()==null) {
 			ad.setRec_salary("회사내규에 따름");
 		}
 		System.out.println(ad);
 		int result = service.insertApplyAd(ad);
-		return "common/msg";
+		String msg="";
+		String loc="";
+		if(result>0) {
+			msg="공고등록 성공";
+			loc="/com/mypage.do";
+		}else {
+			msg="공고등록 실패";
+			loc="/enterprise/applyAdEnd.do";
+		}
+		mv.addObject("msg", msg);
+		mv.addObject("loc", loc);
+		return mv;
 	}
 	@RequestMapping("/com/mypage.do")
 	public String comMypage() {
@@ -90,7 +101,6 @@ public class companyController {
 	@RequestMapping("/com/ent_edit_end.do")
 	public ModelAndView entEditEnd(HttpSession session, Enterprise ent, ModelAndView mv) {
 		Login log=(Login)session.getAttribute("commonLogin");
-		String bforePw = ent.getEntPw();
 		System.out.println(ent.getRepPhone());
 		ent.setEntPw(pwEncoder.encode(ent.getEntPw()));
 		System.out.println("비번 암호화 후:" + ent.getEntPw());
@@ -109,11 +119,23 @@ public class companyController {
 		mv.addObject("msg", msg);
 		mv.addObject("loc", loc);
 		mv.setViewName("common/msg");
+		
+		//session commonlogin 새로운 회원값으로 대체
 		return mv;
 	}
 	@RequestMapping("/com/membership.do")
-	public String membership() {
-		
-		return "enterprise/ent_mypage/membership";
+	public ModelAndView membership(HttpSession session, ModelAndView mv) {
+		Login log=(Login)session.getAttribute("commonLogin");
+		Enterprise ent = service.findOneEnterprise(log);
+		System.out.println(ent);
+		mv.addObject("Enterprise", ent);
+		mv.setViewName("enterprise/ent_mypage/membership");
+		return mv;
+	}
+	@RequestMapping("/com/membership_end.do")
+	public String membershipEnd(HttpSession session) {
+		Login log=(Login)session.getAttribute("commonLogin");
+		service.entMembership(log);
+		return "/enterprise/ent_mypage/com_mypage";
 	}
 }

@@ -67,3 +67,13 @@ img{
 	margin:0 auto;
 	text-align: center;
 }
+.jmkbtn{
+		background-color:#00c362;
+		color:#fff;
+		text-align:center;
+		border-radius:5px;
+		font-weight:bold;
+	}
+.membership_benefits{
+	border: 2px solid black;
+}

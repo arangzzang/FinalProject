@@ -12,4 +12,5 @@ public interface EnterpriseDao {
 	int insertApplyAd(ApplyAd ad, SqlSession session);
 	Enterprise findOneEnterprise(Login log, SqlSession session);
 	int updateEnterprise(Enterprise ent, SqlSession session);
+	int entMembership(Login log, SqlSession session);
 }
