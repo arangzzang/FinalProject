@@ -13,6 +13,7 @@
 		<result column="rep_name" property="repName"/>
 		<result column="rep_phone" property="repPhone"/>
 		<result column="ent_site" property="entSite"/>
+		<result column="ent_membership" property="entMembership"/>
 	</resultMap>
 
 	<insert id="enrollEnter" parameterType="ent">
@@ -28,7 +29,8 @@
 									#{repName},
 									#{repPhone},
 									default,
-									${entSite}
+									#{entSite},
+									default
 									)
 	</insert>
 

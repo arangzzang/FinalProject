@@ -41,7 +41,7 @@
                                 <div class="maininfo">
                                     <h1 class="maintitle">계정설정</h1>
                                     <div>
-                                        <h3>회원 이메일</h2>
+                                        <h3>회원 이메일</h3>
                                         <p>${mem.memEmail}</p>
                                         <div class="form-gruop">
                                             <label for="uname">변경할 이메일 주소</label>

@@ -1,49 +1,46 @@
 package com.project.jobnom.member.controller;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.project.jobnom.member.model.service.MemberService;
+import com.project.jobnom.member.model.vo.MemCategory;
+import com.project.jobnom.member.model.vo.MemCategory2;
 import com.project.jobnom.member.model.vo.Member;
 
 @Controller
-@SessionAttributes("memberLogin")
 public class MemberController {
 
 	@Autowired
 	private MemberService service;
 	@Autowired
 	BCryptPasswordEncoder pwEncoder;
-	//로그인
-//	@RequestMapping("/member/memberLogin")
-//	public String memberLogin (String memEmail, String memPw, Model m) {
-//		
-//		Member mem = service.memberLogin(memEmail);
-//		System.out.println(mem);
-//		String loc="";
-//		
-//		if(pwEncoder.matches(memPw, mem.getMemPw())) {
-//			m.addAttribute("memberLogin",mem);
-//			loc="redirect:/";
-//		}else {
-//			m.addAttribute("msg","로그인실패");
-//			m.addAttribute("loc","/");
-//			loc="common/msg";
-//		}
-//		return loc;
-//	}
 	
-	//회원가입 페이지전환
+	//회원가입 페이지전환(카테고리리스트출력)
 	@RequestMapping("/member/enrollMember")
-	public String enrollMember() {
+	public String enrollMember(Model m) {
+		List<MemCategory> list = service.selectCategoryList();
+		m.addAttribute("cate",list);
 		return "common/enroll";
+	}
+	@RequestMapping("/member/selectJob")
+	@ResponseBody
+	public List<MemCategory2> selectBjo(int cateNo, Model m) throws IOException{
+		System.out.println("들어온값 : "+cateNo);
+		List<MemCategory2> list2 = service.selectCategoryList2(cateNo);
+		System.out.println("==============================");
+		System.out.println(list2);
+		m.addAttribute("cate2",list2);
+		return list2;
 	}
 	//회원가입
 	@RequestMapping("/member/enrollMemberEnd")

@@ -30,94 +30,91 @@
    <div id="container">
       <header>
       	<div class="fixed-top">
-         <nav class="navbar navbar-expand-lg navbar-light headerContainerWrap"><!-- bg-light -->
-            <a class="navbar-brand" href="${path }">
-               <img src="" class="logo" >
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" 
-            data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-            aria-label="Toggle navigation">
-               <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-				<input type="hidden" value="${commonLogin.type}" class="memType">
-				<ul class="navbar-nav mr-auto mem_nav">
-					<li class="nav-item">
-						<a class="menus" href="${path }/Hire/HireHome.do">채용</a>
-					</li>
-					<li class="nav-item">
-						<a class="menus" href="${path }/enterprise/companyList.do">기업</a>
-					</li>
-				</ul>
-				<c:if test="${commonLogin !=null && commonLogin.type == 2 || commonLogin.type == 1}" >
-					<ul class="navbar-nav mr-auto ent_nav">
+	        <nav class="navbar navbar-expand-lg navbar-light headerContainerWrap"><!-- bg-light -->
+	            <a class="navbar-brand" href="${path }">
+	               <img src="" class="logo" >
+	            </a>
+	            <button class="navbar-toggler" type="button" data-toggle="collapse" 
+	            data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+	            aria-label="Toggle navigation">
+	               <span class="navbar-toggler-icon"></span>
+	            </button>
+	            <div class="collapse navbar-collapse" id="navbarNav">
+					<input type="hidden" value="${commonLogin.type}" class="memType">
+					<ul class="navbar-nav mr-auto mem_nav">
 						<li class="nav-item">
-							<a class="menus" href="">추세파악</a>
+							<a class="menus" href="${path }/Hire/HireHome.do">채용</a>
 						</li>
 						<li class="nav-item">
-							<a class="menus" href="">헤드헌팅</a>
-						</li>
-						<li class="nav-item">
-							<a class="menus" href="">기업 알아보기</a>
+							<a class="menus" href="${path }/enterprise/companyList.do">기업</a>
 						</li>
 					</ul>
-				</c:if>
-				<c:if test="${commonLogin !=null && commonLogin.type == 1 }" >
-						<ul class="navbar-nav mr-auto admin_nav">
-						<li class="nav-item">
-							<a class="menus" href="">관리자메뉴</a>
-						</li>
-						<li class="nav-item">
-							<a class="menus" href="">회원조회</a>
-						</li>
-						<li class="nav-item">
-							<a class="menus" href="${path }/enterprice/companyList.do">기업</a>
-						</li>
-					</ul>
-				</c:if>
-				<c:if test="${commonLogin == null}">
-					<!-- 모달 버튼 -->
-				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#login">
-							회원가입/로그인
-				</button>
-               
-               
-				</c:if>
-				<c:if test="${commonLogin != null && commonLogin.type == 3 }">
-					<span><a href="${path }/member/myPage?memNo=${commonLogin.memNo}"><i class="fas fa-user-tie"></i></a></span>
-					&nbsp;
-					<button class="btn btn-outline-success my-4 my-sm-0" type="button" onclick="location.replace('${path}/common/logout');">로그아웃</button>
-				</c:if>
-				<c:if test="${commonLogin !=null && commonLogin.type == 2 }">
-					<span><a href="${path }/com/mypage.do?ent_no=${commonLogin.memNo}"><i class="far fa-building"></i></a></span>
-					&nbsp;
-					<button class="btn btn-outline-success my-4 my-sm-0" type="button" onclick="location.replace('${path}/common/logout');">로그아웃</button>
-				</c:if>
-				<c:if test="${commonLogin !=null && commonLogin.type == 1 }">
-					<span><a href="${path }/enterprice/myPage?ent_no=${commonLogin.memNo}"><i class="far fa-building"></i></a></span>
-					&nbsp;
-					<button class="btn btn-outline-success my-4 my-sm-0" type="button" onclick="location.replace('${path}/common/logout');">로그아웃</button>
-				</c:if>
+					<c:if test="${commonLogin !=null && commonLogin.type == 2 || commonLogin.type == 1}" >
+						<ul class="navbar-nav mr-auto ent_nav">
+							<li class="nav-item">
+								<a class="menus" href="">추세파악</a>
+							</li>
+							<li class="nav-item">
+								<a class="menus" href="">헤드헌팅</a>
+							</li>
+							<li class="nav-item">
+								<a class="menus" href="">기업 알아보기</a>
+							</li>
+						</ul>
+					</c:if>
+					<c:if test="${commonLogin !=null && commonLogin.type == 1 }" >
+							<ul class="navbar-nav mr-auto admin_nav">
+							<li class="nav-item">
+								<a class="menus" href="">관리자메뉴</a>
+							</li>
+							<li class="nav-item">
+								<a class="menus" href="">회원조회</a>
+							</li>
+							<li class="nav-item">
+								<a class="menus" href="${path }/enterprice/companyList.do">기업</a>
+							</li>
+						</ul>
+					</c:if>
+					<c:if test="${commonLogin == null}">
+						<!-- 모달 버튼 -->
+					<button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#login">
+								회원가입/로그인
+					</button>
+					</c:if>
+					<c:if test="${commonLogin != null && commonLogin.type == 3 }">
+						<span><a href="${path }/member/myPage?memNo=${commonLogin.memNo}"><i class="fas fa-user-tie"></i></a></span>
+						&nbsp;
+						<button class="btn btn-outline-success my-4 my-sm-0" type="button" onclick="location.replace('${path}/common/logout');">로그아웃</button>
+					</c:if>
+					<c:if test="${commonLogin !=null && commonLogin.type == 2 }">
+						<span><a href="${path }/com/mypage.do?ent_no=${commonLogin.memNo}"><i class="far fa-building"></i></a></span>
+						&nbsp;
+						<button class="btn btn-outline-success my-4 my-sm-0" type="button" onclick="location.replace('${path}/common/logout');">로그아웃</button>
+					</c:if>
+					<c:if test="${commonLogin !=null && commonLogin.type == 1 }">
+						<span><a href="${path }/enterprice/myPage?ent_no=${commonLogin.memNo}"><i class="far fa-building"></i></a></span>
+						&nbsp;
+						<button class="btn btn-outline-success my-4 my-sm-0" type="button" onclick="location.replace('${path}/common/logout');">로그아웃</button>
+					</c:if>
+				</div>
+	       	</nav>
+			<!-- 검색창 시작 -->
+			<div class="searchbar_section" id="searchbar_section">
+				<div class="wrap">
+					<form action="${path }/search/searchResult.do" id="search_form" method="post">
+					    <div class="schbar_green" >
+					        <div class="schbar">
+					            <i class="fas fa-search"></i>
+					            <label class="placeholder">
+					                <span class="placeholder_txt"></span>
+					                <input autocomplete=”off” type="text" class="input_search" id="search_bar_search_query" maxlength="201" name="query" placeholder="기업,채용공고를 검색해 보세요">
+					            </label>
+					            <button class="btn_schbar">검색</button>
+					        </div>
+					    </div>
+					</form>
+			   	</div>
 			</div>
-             
-          </nav>
-		<!-- 검색창 시작 -->
-		<div class="searchbar_section" id="searchbar_section">
-			<div class="wrap">
-				<form action="${path }/search/searchResult.do" id="search_form" method="post">
-				    <div class="schbar_green" >
-				        <div class="schbar">
-				            <i class="fas fa-search"></i>
-				            <label class="placeholder">
-				                <span class="placeholder_txt"></span>
-				                <input autocomplete=”off” type="text" class="input_search" id="search_bar_search_query" maxlength="201" name="query" placeholder="기업,채용공고를 검색해 보세요">
-				            </label>
-				            <button class="btn_schbar">검색</button>
-				        </div>
-				    </div>
-				</form>
-	    	</div>
-		</div>
 		<!-- 검색창 끝 -->
 		</div>
           	<!-- 모달 창 -->
@@ -167,13 +164,18 @@
 			</div>
 		</header>
 	<script>
-		//로그인 타입구분
 		$(function(){
+			//로그인 타입구분
 			let memType=$(".memType").val()
 			console.log(memType);
 			if(memType==2){
 				$(".mem_nav").css("display","none")
 			}
+			//헤더높이만큼 사이즈 자르기
+			var head=$(".fixed-top").height();
+			console.log("헤더 높이 : "+ head)
+        	var offset = $("section").offset();
+            $('html, body').animate({scrollTop : offset-head}, 400);
 		});
 		//이메일, 비밀번호 정규표현식
 		function logincheck(){  

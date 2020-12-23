@@ -6,4 +6,5 @@ public interface EnterpriseService {
 	
 	//기업 회원가입입력
 	int enrollEnter(Enterprise ent);
+	
 }
