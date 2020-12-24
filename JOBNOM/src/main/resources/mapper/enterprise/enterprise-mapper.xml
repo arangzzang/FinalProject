@@ -77,5 +77,11 @@
 			ENT_MEMBERSHIP='유료회원'
 			WHERE ENT_NO=#{memNo}
 	</update>
+	
+	<insert id="insertBanner" parameterType="ban">
+		INSERT INTO BANNER VALUES(
+			#{ent_no}, #{bann_title}, #{bann_path}, SYSDATE
+		)
+	</insert>
 
 </mapper>
