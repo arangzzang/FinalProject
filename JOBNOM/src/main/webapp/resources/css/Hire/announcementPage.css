@@ -17,7 +17,7 @@
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     margin: 0 auto;
-    height: 1000px;
+    height: 1200px;
     min-height: 100%;
 
   }
@@ -55,14 +55,14 @@
       background-color: #fff;
       padding: 0;
       margin-top:-50px ;
-      padding-bottom: 20px;
+
   }
   .searchbar_section>.wrap {
       position: relative;
       box-sizing: border-box;
       width: 1060px;
       min-height: 62px;
-      margin: 0 auto;
+      margin: 0 auto; 
       padding-top: 66px;
   }
   .schbar_green {
@@ -378,6 +378,7 @@
     overflow:scroll; width:450px; height:300px; padding:10px; 
 }
 
+
 /* 직종체크박스 */
 input[type="checkbox"]{
     display:none
@@ -470,6 +471,8 @@ input[type="checkbox"]:checked + label span
 	overflow:auto;
     position: sticky;
 	height: 830px;
+
+	width: 300px;
   
 
 
@@ -477,7 +480,6 @@ input[type="checkbox"]:checked + label span
     
 }
 .test{
-	height: 900px;
 	overflow: auto;
 }
 .scroll-menu{
@@ -501,24 +503,34 @@ input[type="checkbox"]:checked + label span
     padding-bottom: 30px;
 }
 .annoDetail{
-    overflow:auto;
+
     width:60%;
     position: absolute;
-  margin-left: 310px;
+  margin-left: 360px;
   box-sizing: border-box;
+
 }
 .annoDetailAll{
 	width:200px;
     height: 150px;
+   
 
 }
 .annoDetailAllReview{
+	height:1000px;
+	padding-left: 30px;
+	/* overflow: auto; */
 
-	padding-left: 90px;
 }
 .annoDetailAllHeight{
-	height: 400px;
+	height: 500px;
+
 	
+
+	
+}
+.annoDetailAll4{
+	border:solid;
 }
 
 .annoListLoge{
@@ -574,7 +586,7 @@ input[type="checkbox"]:checked + label span
 }
 
 .annoDetailTitle{
-    width: 760px;
+    width: 900px;
     height: 80px;
     display: flex;
     border-bottom: 1px solid;
@@ -612,7 +624,7 @@ border-radius: 5px;
 }
 
 
-.btn_annoDetail{
+.apply{
 
 right: 0;
 top: 0;
@@ -637,6 +649,15 @@ margin-left: 150px;
     border-radius: 5px;
 }
 #announcementFavorites{
+    width: 100%;
+    height: 100%;
+    padding-left:7px ;
+    padding-right:-1px ;
+    padding-top:3px ;
+
+    
+}
+#announcementFavorites2{
     width: 100%;
     height: 100%;
     padding-left:7px ;

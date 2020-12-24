@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="hire">
+	<resultMap type="mem" id="memMap"><!-- resultMap의 id값과 select문의 resultMap키값 연결 -->
+		<result column="mem_no" property="memNo"/>
+		<result column="mem_email" property="memEmail"/>
+		<result column="mem_pw" property="memPw"/>
+		<result column="mem_manager_yn" property="memManagerYn"/>
+		<result column="mem_check" property="memCheck"/>
+		<result column="mem_membership" property="memMembership"/>
+		<result column="mem_category1" property="memCategory1"/>
+		<result column="mem_category2" property="memCategory2"/>
+		
+		
+	</resultMap>
+	
+
+	<insert id="insertReview" parameterType="map">
+		INSERT INTO REVIEW
+		VALUES(seq_review_no.nextval,#{ent_no},#{mem_no},#{review_title},#{review_contents},#{review_satisfaction},#{review_welfare},#{review_promotion},#{review_executive},SYSDATE)
+	</insert>
+	
+	<select id="selectCount" resultType="_int">
+	 SELECT COUNT(*) FROM RECRUITMENT 
+	</select>
+	
+	
+	<select id="RecruitmentList" resultType="com.project.jobnom.Hire.model.vo.Recruitment">
+		SELECT * FROM RECRUITMENT
+	</select>
+	
+	
+	<select id="MemberList" parameterType="String" resultType="map">
+		 	SELECT DISTINCT  M.*,RES_NAME
+            FROM MEMBER M 
+             LEFT   JOIN RESUME R ON (R.MEM_NO = M.MEM_NO)
+            WHERE M.MEM_NO =#{mem_no}
+		
+		<!-- SELECT DISTINCT  M.*,RES_NAME
+            FROM MEMBER M 
+              LEFT JOIN SUPPORT S ON(S.MEM_NO = M.MEM_NO)
+            LEFT JOIN RECRUITMENT A ON(A.REC_NO = S.REC_NO)
+             LEFT   JOIN RESUME R ON (R.MEM_NO = M.MEM_NO)
+            WHERE M.MEM_NO =#{mem_no} -->
+	</select>
+	
+	<select id="HireHomeRecruitmentList" resultType="map">
+		  SELECT * FROM RECRUITMENT 
+		 
+		 
+		 <!-- 
+		  SELECT R.*,RES_NAME,M.MEM_NO, MEM_CHECK, MEM_MEMBERSHIP
+         FROM RECRUITMENT R
+           LEFT JOIN SUPPORT S ON(S.REC_NO = R.REC_NO)
+           RIGHT JOIN MEMBER M ON(M.MEM_NO = R.REC_NO)
+            LEFT JOIN RESUME A ON(A.MEM_NO = M.MEM_NO) -->
+	
+	</select>
+	
+	
+	
+	
+	<select id="reviewStar" resultType="map">
+	 	SELECT  ENT_NAME,REVIEW_SATISFACTION 
+		FROM REVIEW R 
+		JOIN ENTERPRICE E ON (R.ENT_NO = E.ENT_NO)
+	</select>
+	
+	<select id="selectRecruitmentList" parameterType="map" resultType="java.util.HashMap">
+		         
+           SELECT  E.*, ENT_NAME,T.MEM_NO,OPEN_CHECK,HIRE_NO, REP_NAME, REP_PHONE,ENT_LOGO
+			FROM RECRUITMENT E 
+			LEFT JOIN ENTERPRISE R ON (R.ENT_NO = E.ENT_NO)
+           LEFT JOIN INTERESTEDRECRUITMENT T ON (T.REC_NO = E.REC_NO)
+              LEFT JOIN SUPPORT S ON (S.REC_NO = E.REC_NO)
+            LEFT JOIN MEMBER M ON (M.MEM_NO = S.MEM_NO)
+			WHERE E.REC_NO=#{rec_no}
+
+	</select>
+	
+	<select id="selectReviewList" parameterType="string" resultType="java.util.HashMap">
+		
+		SELECT  R.REC_NO,E.ENT_NO, R.REC_TITLE, ENT_NAME,REVIEW_TITLE,REVIEW_CONTENTS,REVIEW_SATISFACTION,
+		 REVIEW_WELFARE, REVIEW_PROMOTION , REVIEW_EXECUTIVE
+		FROM REVIEW E 
+        JOIN RECRUITMENT R ON (E.ENT_NO = R.ENT_NO)
+        JOIN ENTERPRISE S  ON (E.ENT_NO = S.ENT_NO)
+		WHERE E.ENT_NO=#{ent_no} 
+	</select>
+	
+	<insert id="insertMemberApply" parameterType="map" >
+	INSERT INTO SUPPORT
+		VALUES(SEQ_APP_NO.NEXTVAL,#{memNo},#{recNo},SYSDATE)
+	</insert>
+	
+	<!-- 즐겨찾기 하기 -->
+	<insert id="recFavorites" parameterType="map" >
+	INSERT INTO INTERESTEDRECRUITMENT
+		VALUES(SEQ_HIRE_NO.NEXTVAL,#{recNo},#{memNo},1)
+	</insert> 
+	<!-- <update id="memberFavorites" parameterType="map">
+	    UPDATE INTERESTEDRECRUITMENT SET OPEN_CHECK = '2'
+		WHERE MEM_NO = #{memNo}
+	</update> -->
+	
+	<!-- 즐겨찾기 없애기 -->
+	<delete id="notFavorites" parameterType="map">
+		DELETE FROM INTERESTEDRECRUITMENT WHERE REC_NO=#{recNo} AND MEM_NO=#{memNo} AND OPEN_CHECK=1
+	</delete>
+	
+	<select id="HireMyHire" parameterType="string" resultType="com.project.jobnom.Hire.model.vo.Support">
+		  				SELECT S.*, ENT_NAME,REC_TITLE,REC_CONTENTS
+                      FROM SUPPORT S
+                       JOIN RECRUITMENT R ON(R.REC_NO = S.REC_NO)
+                       JOIN ENTERPRISE E ON(E.ENT_NO = R.ENT_NO)
+                      WHERE MEM_NO=#{memNo}
+	</select>
+	
+	<select id="selectSuppertCount" resultType="_int">
+		SELECT  COUNT(*) FROM SUPPORT
+	</select>
+	
+	<select id="HireFavorites" parameterType="string" resultType="com.project.jobnom.Hire.model.vo.Interestedrcruitment">
+		  			  SELECT T.*,REC_TITLE,E.ENT_NAME
+                      FROM INTERESTEDRECRUITMENT T
+                    LEFT JOIN RECRUITMENT R ON (R.REC_NO = T.REC_NO) 
+                       JOIN ENTERPRISE E ON (E.ENT_NO = R.ENT_NO)
+                          WHERE MEM_NO=#{memNo}
+	</select>
+	<select id="selectInterestedrcruitmentCount" resultType="_int">
+		                       SELECT  COUNT(*) FROM INTERESTEDRECRUITMENT
+	</select>
+	
+	<select id="hire.selectOneRecruitment" resultType="map">
+	  
+	     select ent_name from enterprise
+              where ent_name like '%'||#{key}||'%'
+	
+	</select>
+	
+
+	<select id="recSerch" parameterType="string" resultType="com.project.jobnom.Hire.model.vo.Recruitment">
+		SELECT E.*,ENT_NAME ,REC_CATEGORY,
+			 REP_NAME, REP_PHONE,ENT_LOGO
+			FROM RECRUITMENT E 
+			   JOIN REVIEW S ON (S.ENT_NO = E.ENT_NO)
+			JOIN ENTERPRISE R ON (R.ENT_NO = E.ENT_NO)
+			  WHERE REC_CATEGORY=#{rec_no}
+	</select>
+	
+	
+</mapper> 
