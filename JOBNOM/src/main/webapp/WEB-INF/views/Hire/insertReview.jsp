@@ -100,7 +100,8 @@
                                         	입력하신 모든 정보는 익명으로 처리되니 걱정마세요.</div>
                                         <div class="popmenuEnterprise">
                                             <div>기업명</div>
-                                            <input class="popmenuEnterpriseName" id="reviewName" name="review_name" type="text" placeholder="기업명">
+                                            <input class="popmenuEnterpriseName" id="reviewName" name="review_name" type="text" placeholder="기업명" list="locationData">
+                                        	<datalist id="locationData"></datalist>
                                         </div>
                                         <div class="popmenuTital">
                                             <div>제목</div>
@@ -110,6 +111,7 @@
                                             <div>내용</div>
                                             <textarea class="popmenuContentsName"   name="review_contents" cols="47" rows="5" placeholder="내용" style="resize: none;"></textarea>
                                         </div>
+                                        <input type="hidden" value="${commonLogin.memNo}" name="mem_no">
 
 
                           
@@ -185,7 +187,7 @@
                                             </div>
                                         </div>
                                                   
-                                               
+                                             
                                       
                                         
                               
@@ -298,6 +300,8 @@
             $(document).ready(function(){
                 $(".reviewBtnInsert").click(function(){
                 $("#popup").fadeIn();
+                
+                
                 });
                 $(".popmenuInsertClose").click(function(){
                 $("#popup").fadeOut();
@@ -431,4 +435,29 @@
 		}
 	
 	</script>
-        
+
+
+	<<script>
+	
+	$("#reviewName").keyup(e=>{
+		$.ajax({
+            url: "${path}/Hire/reviewSearch.do",
+            data:{"key":$(e.target).val()},
+            success:data => {
+                let keys=data.split(",");
+          
+               
+                console.log(keys);
+            
+
+				
+                $("#locationData").html("");
+                for(let i=0;i<keys.length;i++){
+                	$("#locationData").append($("<option>").html(keys[i]));
+                	
+                }
+            }
+            
+        });
+	});
+</script>        

@@ -40,7 +40,11 @@
 				<input type="hidden" value="${commonLogin.type}" class="memType">
 				<ul class="navbar-nav mr-auto mem_nav">
 					<li class="nav-item">
-						<a class="menus" href="${path }/Hire/HireHome.do">채용</a><!-- nav-link -->
+						<a class="menus" href="${path }/Hire/HireHome.do?memNo=${commonLogin.memNo}">채용
+		
+							<%-- <input type="hidden" value="${commonLogin }" name="commonLogin"> --%>
+						
+						</a><!-- nav-link -->
 					</li>
 					<li class="nav-item">
 						<a class="menus" href="${path }/enterprice/companyList.do">기업</a><!-- nav-link -->
