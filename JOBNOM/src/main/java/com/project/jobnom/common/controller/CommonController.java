@@ -8,6 +8,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.io.ResolverUtil.IsA;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -85,31 +86,25 @@ public class CommonController {
 	//email중복체크
 	@RequestMapping("/checkDuplicate/enrollCommon")
 	@ResponseBody
-	public ModelAndView checkDuplicateEmail(String dupli, ModelAndView mv) throws IOException{
+	public String checkDuplicateEmail(String dupli, ModelAndView mv) throws IOException{
 		
 		System.out.println(dupli);
 		List<Login> list=service.checkDuplicateEmail(dupli);
 		String str="";
+		System.out.println(list);
 		
-		if(list!=null) {
+		if(list.isEmpty()) {
 			str="사용 할 수 있는 email입니다.";
+			System.out.println(str);
 		}else {
 			str="사용 할 수 없는 email입니다.";
+			System.out.println(str);
 		}
-		System.out.println(list);
 		mv.addObject("str",str);
-		return mv;
+		
+		return str;
 	}
-//	@RequestMapping("/checkDuplicate/enrollCommon")
-//	@ResponseBody
-//	public List<Login> checkDuplicateEmail(String dupli) throws IOException{
-//		
-//		System.out.println(dupli);
-//		List<Login> list=service.checkDuplicateEmail(dupli);
-//		System.out.println(list);
-//		
-//		return list;
-//	}
+	
 	
 	
 }

@@ -1,38 +1,119 @@
 package com.project.jobnom.enterprise.controller;
 
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.project.jobnom.common.model.vo.Login;
+import com.project.jobnom.enterprise.model.service.EnterpriseService;
+import com.project.jobnom.enterprise.model.vo.ApplyAd;
+import com.project.jobnom.enterprise.model.vo.Enterprise;
 
 @Controller
 public class companyController {
+	@Autowired
+	EnterpriseService service;
+	@Autowired
+	BCryptPasswordEncoder pwEncoder;
 
-	@RequestMapping("/enterprice/companyList.do")
+	@RequestMapping("/enterprise/companyList.do")
 	public String companyList() {
 		
-		return "enterprice/companyList";
+		return "enterprise/companyList";
 	}
 
-	@RequestMapping("/enterprice/com_info.do")
+	@RequestMapping("/enterprise/com_info.do")
 	public String companyInfo() {
 		
-		return "enterprice/com_info";
+		return "enterprise/com_info";
 	}
 	
-	@RequestMapping("/enterprice/com_review.do")
+	@RequestMapping("/enterprise/com_review.do")
 	public String companyReview() {
 		
-		return "enterprice/com_review";
+		return "enterprise/com_review";
 	}
 	
-	@RequestMapping("/enterprice/com_interview.do")
+	@RequestMapping("/enterprise/com_interview.do")
 	public String companyInterview() {
 		
-		return "enterprice/com_interview";
+		return "enterprise/com_interview";
 	}
 	
-	@RequestMapping("/enterprice/com_job.do")
+	@RequestMapping("/enterprise/com_job.do")
 	public String companyJob() {
 		
-		return "enterprice/com_job";
+		return "enterprise/com_job";
+	}
+	@RequestMapping("/enterprise/applyAdEnd.do")
+	public String applyAdEnd(ApplyAd ad, Model m) {
+		if(ad.getRec_salary()==null) {
+			ad.setRec_salary("회사내규에 따름");
+		}
+		System.out.println(ad);
+		int result = service.insertApplyAd(ad);
+		return "common/msg";
+	}
+	@RequestMapping("/com/mypage.do")
+	public String comMypage() {
+		return "/enterprise/ent_mypage/com_mypage";
+	}
+	@RequestMapping("/com/applyAd.do")
+	public String applyAd() {
+		return "/enterprise/ent_mypage/applyAd";
+	}
+	@RequestMapping("/com/ent_edit.do")
+	public ModelAndView entEdit(HttpSession session, ModelAndView mv) {
+		String[] jtypes = {"은행관련", "세무/법무","경리/출납/수납", "증거 투자 분석사", 
+				"보험계리사/손해사정인", "웹계발", "시스템 엔지니어", "웹퍼블리셔", "기획",
+				"네트워크/보안/운영", "데이터분석", "교육기획", "전문강사", "초중고/특수 교사", 
+				"대학교수", "교직원", "입시/보습/학원강사", "마켓팅", "브랜드 마켓팅", 
+				"시장조사/분석", "상품개발/기획/MD", "온라인 마켓팅", "의사", "한의사", "치과의사", 
+				"약사/한약사", "간호사", "간호조무사", "물리치료사", "수의사", "고객지원/CS", 
+				"호텔/숙박 관련", "가이드", "외식업/식음료", "기타 서비스직", "경영"};
+		Login log = (Login)session.getAttribute("commonLogin");
+		System.out.println("controller" + session.getAttribute("commonLogin"));
+		System.out.println(log.getMemNo());
+		Enterprise ent = (Enterprise)service.findOneEnterprise(log);
+		String jname = jtypes[ent.getType()-1];
+		System.out.println(ent);
+		mv.addObject("enterprise", ent);
+		mv.addObject("jname", jname);
+		mv.setViewName("/enterprise/ent_mypage/ent_edit");
+		return mv;
+	}
+	@RequestMapping("/com/ent_edit_end.do")
+	public ModelAndView entEditEnd(HttpSession session, Enterprise ent, ModelAndView mv) {
+		Login log=(Login)session.getAttribute("commonLogin");
+		String bforePw = ent.getEntPw();
+		System.out.println(ent.getRepPhone());
+		ent.setEntPw(pwEncoder.encode(ent.getEntPw()));
+		System.out.println("비번 암호화 후:" + ent.getEntPw());
+		System.out.println(ent);
+		int result = service.updateEnterprise(ent);
+		String msg="";
+		String loc="";
+		if(result>0) {
+			mv.addObject("commonLogin", service.findOneEnterprise(log));
+			msg="회원정보수정 성공";
+			loc="/com/ent_edit.do";
+		}else {
+			msg="회원정보수정 실패";
+			loc="/com/ent_edit.do";
+		}
+		mv.addObject("msg", msg);
+		mv.addObject("loc", loc);
+		mv.setViewName("common/msg");
+		return mv;
+	}
+	@RequestMapping("/com/membership.do")
+	public String membership() {
+		
+		return "enterprise/ent_mypage/membership";
 	}
 }

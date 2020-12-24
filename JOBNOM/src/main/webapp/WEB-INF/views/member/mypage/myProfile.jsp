@@ -7,60 +7,18 @@
 
 <link rel="stylesheet" href="${path }/resources/css/mypage/myProfile.css"/>
 
-<jsp:include page="/WEB-INF/views/common/header.jsp">
-<jsp:param name="title" value=" "/>
-</jsp:include>
 <!-- date_picker -->
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
 <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 <script src="${path}/resources/js/jquery-ui.js"></script>
 <link rel="stylesheet" href="${path}/resources/css/jquery-ui.css">
-<section id="content">
-
-	<div class="memberinfo-parent ">
-	    <div class="jumbotron row memberinfo" id="memberinfo">
-	        <div class="col-md-3 col-offset-3">
-	            <img src="" alt="">
-	        </div>
-	        <div class="col-md-6">
-	            <p>조현</p>
-	            <p>취준생</p>
-	            <p>IT취업하고싶다</p>
-	        </div>
-	    </div>
-	</div>
-	<div class="MPheadmenu-parent">
-	    <nav class="navbar navbar-expand-sm  navbar-light MPheadmenu">
-	        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-	        <span class="navbar-toggler-icon"></span>
-	        </button>
-	        <div class="collapse navbar-collapse" id="collapsibleNavbar">
-	            <ul class="navbar-nav headbar">
-	                <li class="nav-item sidebarmenubar">
-	                    <button type="button" class="navbtn">계정</button>
-	                </li>
-	                <li class="nav-item sidebarmenubar">
-	                    <button type="button" class="navbtn">이력서</button>
-	                </li>
-	                <li class="nav-item sidebarmenubar">
-	                    <button type="button" class="navbtn">활동내역</button>
-	                </li>
-	                <li class="nav-item sidebarmenubar">
-	                    <button type="button" class="navbtn">관심정보</button>
-	                </li>
-	                <li class="nav-item sidebarmenubar">
-	                    <button type="button" class="navbtn">멤버십</button>
-	                </li>    
-	            </ul>
-	        </div>  
-	    </nav>
-	</div>
 
     <div class="with-parent">
 		<div class="with" style="padding-bottom: 50px;">
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
 				<span class="navbar-toggler-icon"></span>
 			</button>
+			<div class="a">
 			<form action="" method="POST" onsubmit="return required();">
 				<div class="profilebody">  
 					<div class="container">
@@ -87,9 +45,9 @@
 							<div class="col-md-6">
 								<span class="span1">성별</span>
 								<label for="memGender-M">남자</label>
-								<input type="checkbox" class="aaa" onclick="genderCheck(this);" aria-required="false" id="memGender-M" >
+								<input type="checkbox" class="gender" onclick="genderCheck(this);" aria-required="false" id="memGender-M" >
 								<label for="memGender-F">여자</label>
-								<input type="checkbox" class="aaa" onclick="genderCheck(this);" aria-required="false" id="memGender-F" >
+								<input type="checkbox" class="gender" onclick="genderCheck(this);" aria-required="false" id="memGender-F" >
 							</div>
 							<div class="col-md-6 b">
 								<span class="span1">출생연도</span>
@@ -118,8 +76,8 @@
 						<div class="row">
 							<div class="col-md-12">
 								<span class="line">
-									<label for="currial" class="span2">경력</label>
-									<select name="" id="currial" class="input1" required>
+									<label for="career" class="span2">경력</label>
+									<select name="" id="career" class="input1" required>
 										<option value="">선택해주세요</option>
 										<option value="0">0</option>
 										<option value="1">1</option>
@@ -130,8 +88,8 @@
 										<option value="6">6</option>
 										<option value="7">7</option>
 									</select>
-									<label for="comment" class="span2">업무 및 스킬</label>
-									<textarea class="form-control inp" rows="1" id="comment" placeholder="(예시) 영업기획, 디지털마케팅,UI디자인(업무와 관련된 자격증 및 기술명 포함)" required></textarea>
+									<label for="skill" class="span2">업무 및 스킬</label>
+									<textarea class="form-control inp" rows="1" id="skill" placeholder="(예시) 영업기획, 디지털마케팅,UI디자인(업무와 관련된 자격증 및 기술명 포함)" required></textarea>
 									
 									<!-- <ul>
 										<li><a href=""></a></li>
@@ -330,16 +288,14 @@
 					</div>
 				</div>
 				<div class="submitTag">
-					<input type="submit" onclick="required()" value="저장완료">
+					<input type="submit" class="profileBtn" value="저장완료">
 				</div>
 			</form>
+			</div>
 	    </div>
 	</div>
 
 	<script>
-		function required(){
-
-		}
 		//check선택시 다른 checkbox비활성화
 		function genderCheck(chk){
 			var gender = document.getElementsByClassName("aaa");
@@ -350,7 +306,7 @@
 			}
 		}
 		//select box 값 바꾸기
-		$(function(){
+		function selectSetting(){
 		//회원
 		console.log( $(".mem_category").val());
 		$(".mem_category2").hide();
@@ -358,12 +314,12 @@
 			$(".mem_category2").show();
 			console.log($(e.target).val());
 			let job1 = $(e.target).val()
-			let car1 = ["웹개발", "시스템엔지니어", "웹퍼블리셔", "기획","네트워크/보안/운영","데이터분석"];
-			let car2 = ["은행원", "세무사", "경리/출납/수납", "증권/투자분석가","보험계리사/손해사정인"];
+			let car1 = ["웹개발", "시스템엔지니어", "웹퍼블리셔", "프로젝트매니저","DBA","모바일앱개발"];
+			let car2 = ["회계사", "세무사", "경리", "증권/투자분석가","보험계리사/손해사정인","자산운용가"];
 			let car3 = ["교육기획/교재개발", "전문강사", "초중고/특수교사", "대학교수", "교직원","입시/복습/학원강사","전문강사"];
 			let car4 = ["마케팅","브랜드마케팅","시장조사/분석","상품개발/기획/MD","온라인마케팅","CRM"];
-			let car5 = ["의사","한의사","치과의사","약사/한약사","간호사","간호조무사","물리치료사","수의사"];
-			let car6 = ["고객지원/CS","호텔/숙박관련/여행가이드","웨딩플래너/커플매니저","외식업/식음료","기타서비스직","뷰티/미용"];
+			let car5 = ["의사","한의사","치과의사","약사/한약사","간호사","간호조무사"];
+			let car6 = ["고객지원/CS","호텔/숙박관련","웨딩플래너/커플매니저","외식업/식음료","여행가이드","뷰티/미용"];
 			let target = document.getElementById("mem_category2")
 
 			if(job1 == "IT") var values = car1;
@@ -385,7 +341,9 @@
 				console.log(target.value);
 				console.log(typeof $(".mem_category option:selected").val());
 			});
-		});
+		};
+		//selectBox함수 실행
+		selectSetting();
 		//학력사항
 		var edu="<div class='row edu'>";
 			edu+="<div class='col-12 col-md-12 nth'>";
@@ -444,30 +402,29 @@
 			cer+="<button class='float1'><i>휴지통아이콘</i></button></div></div></div></div>";
 		//포폴 파일
 		var pofol="<div class='row pofol'><div style='padding-bottom: 10px;' class='col-12 col-md-12 pd' id='emt'><input type='file' name='pofolFile'></div></div>";
-		
 		//요소 추가
-		$(function(){
-			//학력사항추가
-			$(".eduBtn").click(e=>{
-				$(".edu_parent").append(edu)
-			})
-			//활동및수상내역추가
-			$(".awaBtn").click(e=>{
-				$(".awa_parent").append(awa);
-			})
-			//경력사항 추가
-			$(".carBtn").click(e=>{
-				$(".car_parent").append(car);
-			})
-			//자격증 추가
-			$(".cerBtn").click(e=>{
-				$(".cer_parent").append(cer);
-			})
-			//포트폴리오추가
-			$(".pofolBtn").click(e=>{
-				$(".pofol_parent").append(pofol);
-			})
+		
+		//학력사항추가
+		$(".eduBtn").click(e=>{
+			$(".edu_parent").append(edu)
 		})
+		//활동및수상내역추가
+		$(".awaBtn").click(e=>{
+			$(".awa_parent").append(awa);
+		})
+		//경력사항 추가
+		$(".carBtn").click(e=>{
+			$(".car_parent").append(car);
+		})
+		//자격증 추가
+		$(".cerBtn").click(e=>{
+			$(".cer_parent").append(cer);
+		})
+		//포트폴리오추가
+		$(".pofolBtn").click(e=>{
+			$(".pofol_parent").append(pofol);
+		})
+		
 		//요소 삭제(미완)
 		function remove(){
 			$(".junk").click(e=>{
@@ -475,143 +432,58 @@
 				$("edu").eq(edu_index).remove(e.target);
 			})
 		}
-		let b=$(".b").children(".ui-datepicker-month");
-		$(function(){
-			$(b).css("display","none");
-		})
-		//출생연도 date-picker
-		$(document).ready(function () {
-			$(".ui-datepicker-month").css("display","none")
-			$.datepicker.regional['ko'] = {
-				// closeText: '닫기',
-				// prevText: '이전달',
-				// nextText: '다음달',
-				// currentText: '오늘',
-				// monthNames: ['1월(JAN)','2월(FEB)','3월(MAR)','4월(APR)','5월(MAY)','6월(JUN)',
-				// '7월(JUL)','8월(AUG)','9월(SEP)','10월(OCT)','11월(NOV)','12월(DEC)'],
-				// monthNamesShort: ['1월','2월','3월','4월','5월','6월',
-				// '7월','8월','9월','10월','11월','12월'],
-				// dayNames: ['일','월','화','수','목','금','토'],
-				// dayNamesShort: ['일','월','화','수','목','금','토'],
-				// dayNamesMin: ['일','월','화','수','목','금','토'],
-				// weekHeader: 'Wk',
-				// dateFormat: 'yy-mm-dd',
-				setdate:"",
-				minViewMode: 'year',
-				dateFormat: 'yy',
-				// firstDay: 0,
-				isRTL: false,
-				showMonthAfterYear: true,
-				yearSuffix: '년',
-				showOn: 'both',
-				buttonText: "년도",
-				// changeMonth: true,
-				changeYear: true,
-				showButtonPanel: true,
-				yearRange: 'c-99:c+01'
-			};
-			$.datepicker.setDefaults($.datepicker.regional['ko']);
-			// 오늘날선택
-			var datepicker_default = {
-				showOn: 'both',
-				buttonText: "년도",
-				currentText: "이번년",
-				// changeMonth: true,
-				// changeYear: true,
-				showButtonPanel: true,
-				yearRange: 'c-99:c+1',
-				showOtherMonths: true,
-				selectOtherMonths: false
+		
+		//저장시 필수항목 확인 검사
+		$(".profileBtn").click(e=>{
+			let saveCheck=new Array(5).fill(false);
+			if($("#memName").val ==""){
+				$(".sResult1").html("이름은 필수 항목입니다.");
+				saveCheck[0]=false;
+			}else{
+				saveCheck[0]=true;
 			}
-			datepicker_default.closeText = "선택";//submit
-			datepicker_default.dateFormat = "yy";//년도 선택
-			datepicker_default.onClose = function (dateText, inst) {
-				// var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
-				var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
-				$(this).datepicker( "option", "defaultDate", new Date(year) );
-				$(this).datepicker('setDate', new Date(year));
+			if($("#memTel").val()==""){
+				$(".sResult2").html("번호는 필수 항목입니다.");
+				saveCheck[1]=false;
+			}else{
+				saveCheck[1]=true;
 			}
-
-			datepicker_default.beforeShow = function () {
-				var selectDate = $("#memBirth").val().split("-");
-				var year = Number(selectDate[0]);
-				// var month = Number(selectDate[1]) - 1;
-				$(this).datepicker( "option", "defaultDate", new Date(year, 1) );
+			if($(".gender").val()!="checked"){
+				$(".sResult3").html("성별은 반드시 체크 해야합니다.");
+				saveCheck[2]=false;
+			}else{
+				saveCheck[2]=true;
 			}
-			$("#memBirth").datepicker(datepicker_default);
+			if($(".mem_category").var()=="기타" || $(".mem_category option").index($(".mem_catagory option:selected"))==0){
+				$(".sResult4").html("직업군은 필수 항목입니다.");
+				saveCheck[3]=false;
+			}else{
+				saveCheck[3]=true;
+			}
+			if($("#career").var()=="기타" || $("#career option").index($("#career option:selected"))==0){
+				$(".sResult5").html("경력은 필수 항목입니다.");
+				saveCheck[4]=false;
+			}else{
+				saveCheck[4]=true;
+			}
+			if($("#skill").val()==""){
+				$(".sResult6").html("업무 및 스킬은 필수 항목입니다.");
+				saveCheck[5]=false;
+			}else{
+				saveCheck[5]=true;
+			}
+			var saveAllCheck=true;
+			for(var i=0; i<saveCheck.length; i++){
+				if(saveCheck[i]==false){
+					saveAllCheck=false;
+				}
+			}
+			if(!saveAllCheck){
+				alert("필수 항목은 반드시 작성해주셔야 합니다.")
+			return false;
+			}
 		});
-		//학력사항 date-picker
-		$(document).ready(function () {
-			$.datepicker.regional['ko'] = {
-				closeText: '닫기',
-				prevText: '이전달',
-				nextText: '다음달',
-				currentText: '오늘',
-				monthNames: ['1월(JAN)','2월(FEB)','3월(MAR)','4월(APR)','5월(MAY)','6월(JUN)',
-				'7월(JUL)','8월(AUG)','9월(SEP)','10월(OCT)','11월(NOV)','12월(DEC)'],
-				monthNamesShort: ['1월','2월','3월','4월','5월','6월',
-				'7월','8월','9월','10월','11월','12월'],
-				// dayNames: ['일','월','화','수','목','금','토'],
-				// dayNamesShort: ['일','월','화','수','목','금','토'],
-				// dayNamesMin: ['일','월','화','수','목','금','토'],
-				// weekHeader: 'Wk',
-				// dateFormat: 'yy-mm-dd',
-				setdate:"",
-				minViewMode: 'year',
-				dateFormat: 'yy-dd',
-				firstDay: 0,
-				isRTL: false,
-				showMonthAfterYear: true,
-				yearSuffix: '년',
-				showOn: 'both',
-				buttonText: "년도",
-				changeMonth: true,
-				changeYear: true,
-				showButtonPanel: true,
-				yearRange: 'c-99:c+01'
-			};
-			$.datepicker.setDefaults($.datepicker.regional['ko']);
-			// 오늘날선택
-			var datepicker_default = {
-				showOn: 'both',
-				buttonText: "년도",
-				currentText: "이번년",
-				changeMonth: true,
-				changeYear: true,
-				showButtonPanel: true,
-				yearRange: 'c-99:c+1',
-				showOtherMonths: true,
-				selectOtherMonths: false
-			}
-			datepicker_default.closeText = "선택";//submit
-			datepicker_default.dateFormat = "yy-mm";//년도 선택
-			datepicker_default.onClose = function (dateText, inst) {
-				var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
-				var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
-				$(this).datepicker( "option", "defaultDate", new Date(year ,month ,1) );
-				$(this).datepicker('setDate', new Date(year, month, 1));
-			}
 
-			datepicker_default.beforeShow = function () {
-				var selectDate = $("#edu_term").val().split("-");
-				var year = Number(selectDate[0]);
-				var month = Number(selectDate[1]) - 1;
-				$(this).datepicker( "option", "defaultDate", new Date(year, month, 1) );
-			}
-			$("#edu_term").datepicker(datepicker_default);
-		});
+
 		</script>
-		<style>
-			table.ui-datepicker-calendar{
-				display: none;
-			}
-			/* .ui-datepicker-month{
-				display: none;
-			}
-			.ui-datepicker-next,.ui-datepicker-prev{
-				display: none;
-			} */
-	</style>
-
-</section>
-<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+		

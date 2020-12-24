@@ -5,6 +5,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <c:set var="path" value="${pageContext.request.contextPath }"/>
 <link rel="stylesheet" href="${path }/resources/css/company/com_style.css"/> 
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <jsp:include page="/WEB-INF/views/common/header.jsp">
 	<jsp:param name="title" value=""/>
 </jsp:include>
@@ -52,16 +53,16 @@
                 <nav id="view_com">
                    <ul class="view_menu">
                         <li class="li_menu">
-                            <a href="${path}/enterprice/com_info.do"><h2>소개</h2></a>
+                            <a href="${path}/enterprise/com_info.do"><h2>소개</h2></a>
                         </li>
                         <li class="li_menu">
-                            <a href="${path }/enterprice/com_review.do"><h2>리뷰<span class="num">(1)</span></h2></a>
+                            <a href="${path }/enterprise/com_review.do"><h2>리뷰<span class="num">(1)</span></h2></a>
                         </li>
                         <li class="li_menu">
-                            <a href="${path }/enterprice/com_interview.do"><h2>면접후기<span class="num">(1)</span></h2></a>
+                            <a href="${path }/enterprise/com_interview.do"><h2>면접후기<span class="num">(1)</span></h2></a>
                         </li>
                         <li class="li_menu">
-                            <a href="${path }/enterprice/com_job.do"><h2>채용<span class="num">(1)</span></h2></a>
+                            <a href="${path }/enterprise/com_job.do"><h2>채용<span class="num">(1)</span></h2></a>
                         </li>
                     </ul>
                     <div class="follow_btn">
@@ -115,11 +116,25 @@
                 </div>
             </div>
             <div class="inter_bottom">
-                <div class="inter_ex">
-                    <span>면접경험</span>
+               <div class="inter_ex">
+                    <div>
+                        <span>면접경험</span>
+                    </div>
+                    <div class="inter_default">
+                        <i class="fas fa-exclamation-circle fa-4x"></i>
+                        <p>결과 값이 없습니다.</p>
+                    </div>
+                    <!-- <div id="inter_piechart" style="width: 400px; height: 200px; "></div> -->
                 </div>
-                <div class="inter_result">
-                    <span>면접결과</span>
+               <div class="inter_result">
+                    <div>
+                        <span>면접결과</span>
+                    </div>
+                    <div class="inter_default">
+                        <i class="fas fa-exclamation-circle fa-4x"></i>
+                        <p>결과 값이 없습니다.</p>
+                    </div>
+                    <!-- <div id="inter1_piechart" style="width: 400px; height: 200px; "></div> -->
                 </div>
             </div>
         </div>
@@ -201,14 +216,44 @@
                 	신고하기
             </button>
         </div> -->
-        <section class="com_inter_default">
+        <article class="com_inter_default">
         	<div class="com_inter_de_box">
         		<div class="com_inter_de_wrap">
         			<h4>등록된 후기가 없습니다.</h4>
         			<button class="btn btn-success" onclick=""><i class="fas fa-pen-square"></i>  리뷰 작성하기</button>	
         		</div>
         	</div>
-        </section>
+        </article>
     </div>
 </section>
+<script>
+    google.load("visualization", "1", {packages:["corechart"]});
+    google.setOnLoadCallback(drawChart);
+    function drawChart() 
+    {
+        var data = google.visualization.arrayToDataTable(
+            [["",""],["긍정적",25],["부정적",56],["보통",37]]
+        );
+        var options = {
+            sliceVisibilityThreshold:0
+        };
+        var chart = new google.visualization.PieChart(document.getElementById("inter_piechart"));
+        chart.draw(data,options);
+        
+    }
+    google.load("visualization", "1", {packages:["corechart"]});
+    google.setOnLoadCallback(drawChart1);
+    function drawChart1() 
+    {
+        var data = google.visualization.arrayToDataTable(
+            [["1","1"],["합격",0],["불합격",0],["대기중",0]]
+        );
+        var options = {
+            sliceVisibilityThreshold:0
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById("inter1_piechart"));
+        chart.draw(data,options);
+    }
+</script>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>

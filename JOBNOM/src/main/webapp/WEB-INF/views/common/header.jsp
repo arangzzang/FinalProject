@@ -41,13 +41,11 @@
 				<ul class="navbar-nav mr-auto mem_nav">
 					<li class="nav-item">
 						<a class="menus" href="${path }/Hire/HireHome.do?memNo=${commonLogin.memNo}">채용
-		
-							<%-- <input type="hidden" value="${commonLogin }" name="commonLogin"> --%>
 						
-						</a><!-- nav-link -->
+						</a>
 					</li>
 					<li class="nav-item">
-						<a class="menus" href="${path }/enterprice/companyList.do">기업</a><!-- nav-link -->
+						<a class="menus" href="${path }/enterprice/companyList.do">기업</a>
 					</li>
 				</ul>
 				<c:if test="${commonLogin !=null && commonLogin.type == 2 || commonLogin.type == 1}" >
