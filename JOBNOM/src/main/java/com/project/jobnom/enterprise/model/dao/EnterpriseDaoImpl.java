@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.project.jobnom.common.model.vo.Login;
 import com.project.jobnom.enterprise.model.vo.ApplyAd;
+import com.project.jobnom.enterprise.model.vo.Banner;
 import com.project.jobnom.enterprise.model.vo.Enterprise;
 import com.project.jobnom.enterprise.model.vo.Support;
 
@@ -44,9 +45,22 @@ public class EnterpriseDaoImpl implements EnterpriseDao {
 		return session.selectOne("enterprise.selectCount");
 	}
 
-	
+	public int updateEnterprise(Enterprise ent, SqlSession session) {
+		// TODO Auto-generated method stub
+		return session.update("enterprise.updateEnterprise", ent);
+	}
 
-	
+	@Override
+	public int entMembership(Login log, SqlSession session) {
+		// TODO Auto-generated method stub
+		return session.update("enterprise.entMembership", log);
+	}
+
+	@Override
+	public int insertBanner(Banner ban, SqlSession session) {
+		// TODO Auto-generated method stub
+		return session.insert("enterprise.insertBanner", ban);
+	}
 
 	
 

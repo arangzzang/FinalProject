@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.project.jobnom.common.model.vo.Login;
 import com.project.jobnom.enterprise.model.dao.EnterpriseDao;
 import com.project.jobnom.enterprise.model.vo.ApplyAd;
+import com.project.jobnom.enterprise.model.vo.Banner;
 import com.project.jobnom.enterprise.model.vo.Enterprise;
 import com.project.jobnom.enterprise.model.vo.Support;
 
@@ -45,8 +46,21 @@ public class EnterpriseServiceImpl implements EnterpriseService {
 		// TODO Auto-generated method stub
 		return dao.selectCount(session);
 	}
-	
-	
+	public int updateEnterprise(Enterprise ent) {
+		// TODO Auto-generated method stub
+		return dao.updateEnterprise(ent, session);
+	}
+	@Override
+	public int entMembership(Login log) {
+		// TODO Auto-generated method stub
+		return dao.entMembership(log, session);
+	}
+	@Override
+	public int insertBanner(Banner ban) {
+		// TODO Auto-generated method stub
+		return dao.insertBanner(ban, session);
+	}
+
 	
 
 }
