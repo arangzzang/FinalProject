@@ -1,17 +1,22 @@
 package com.project.jobnom.enterprise.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.project.jobnom.common.model.vo.Login;
 import com.project.jobnom.enterprise.model.service.EnterpriseService;
 import com.project.jobnom.enterprise.model.vo.ApplyAd;
 import com.project.jobnom.enterprise.model.vo.Enterprise;
+import com.project.jobnom.enterprise.model.vo.Support;
+import com.project.jobnom.enterprise.page.EnterprisePageBar;
 
 @Controller
 public class companyController {
@@ -76,4 +81,20 @@ public class companyController {
 		mv.setViewName("/enterprise/ent_mypage/ent_edit");
 		return mv;
 	}
+	//지원자 조회 or 페이징 처리
+	@RequestMapping("/com/com_check.do")
+	public ModelAndView comCheck(ModelAndView mv,@RequestParam(value="cPage",defaultValue="1") int cPage, 
+			@RequestParam(value="numPerpage",defaultValue="5") int numPerpage)  {
+		System.out.println("???");
+		List<Support> s = service.selectSupport(cPage,numPerpage);
+		int totalData=service.selectCount();
+		mv.addObject("s",s);
+		mv.addObject("pageBar",EnterprisePageBar.getPageBar(totalData,cPage,numPerpage,"com_check.do"));
+		mv.addObject("totalData",totalData);
+		mv.setViewName("/enterprise/ent_mypage/com_check");
+		
+		return mv;
+	}
+
+	
 }

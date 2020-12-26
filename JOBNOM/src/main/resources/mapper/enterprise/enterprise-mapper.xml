@@ -13,6 +13,11 @@
 		<result column="rep_name" property="repName"/>
 		<result column="rep_phone" property="repPhone"/>
 		<result column="ent_site" property="entSite"/>
+		<result column="res_name" property="resName"/>
+		<result column="res_gender" property="resGender"/>
+		<result column="res_birth" property="resBirth"/>
+		<result column="res_opencheck" property="resOpencheck"/> 
+		<result column="mem_no" property="memNo"/>
 	</resultMap>
 
 	<insert id="enrollEnter" parameterType="ent">
@@ -59,4 +64,13 @@
 	
 	</select>
 
+	<select id="selectSupport" resultType="support" >
+	SELECT S.*,RES_NAME , RES_GENDER , RES_BIRTH, RES_OPENCHECK
+		FROM support S
+		JOIN RESUME R ON (R.MEM_NO =S.MEM_NO )
+	</select>
+	
+	<select id ="selectCount" resultType="_int">
+		SELECT COUNT(*) FROM SUPPORT
+	</select>
 </mapper>

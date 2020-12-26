@@ -35,6 +35,6 @@ public class HomeController {
 
 
 
-		return "enterprise/com_info";
+		return "enterprise/ent_mypage/com_mypage";
 	}
 }

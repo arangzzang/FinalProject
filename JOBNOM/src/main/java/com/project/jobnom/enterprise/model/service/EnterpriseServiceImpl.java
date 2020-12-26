@@ -1,5 +1,7 @@
 package com.project.jobnom.enterprise.model.service;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,6 +10,7 @@ import com.project.jobnom.common.model.vo.Login;
 import com.project.jobnom.enterprise.model.dao.EnterpriseDao;
 import com.project.jobnom.enterprise.model.vo.ApplyAd;
 import com.project.jobnom.enterprise.model.vo.Enterprise;
+import com.project.jobnom.enterprise.model.vo.Support;
 
 @Service
 public class EnterpriseServiceImpl implements EnterpriseService {
@@ -32,6 +35,18 @@ public class EnterpriseServiceImpl implements EnterpriseService {
 		// TODO Auto-generated method stub
 		return dao.findOneEnterprise(log, session);
 	}
+	@Override
+	public List<Support> selectSupport( int cPage, int numPerpage) {
+		// TODO Auto-generated method stub
+		return dao.selectSupport(session,cPage,numPerpage);
+	}
+	@Override
+	public int selectCount() {
+		// TODO Auto-generated method stub
+		return dao.selectCount(session);
+	}
+	
+	
 	
 
 }

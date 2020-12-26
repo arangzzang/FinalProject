@@ -49,7 +49,7 @@
                        <td>15</td>
                        <td><button type="button" class="btn btn">상세보기</button></td>
                         <td><button type="button" class="btn btn">수정</button></td>
-                       <td><button type="button" class="btn btn">조회</button></td>
+                       <td><button type="button" class="btn btn" onclick="comCheck()">조회</button></td>
 				</tr>
 			</tbody>
 		</table>
@@ -60,6 +60,9 @@
 <script>
 	function applyAd(){
 		location.replace("${path }/com/applyAd.do");
+	}
+	function comCheck(){
+		location.replace("${path}/com/com_check.do");
 	}
 </script>	
 	
