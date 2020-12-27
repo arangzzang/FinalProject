@@ -39,7 +39,7 @@
 <form id="" action="${path }/Hire/annCarrer.do" method="post" onsubmit="return fn_carrer();">
  <div class="annoCategory">
             <div class="dropdown">
-                <button class="dropbtn"> 직종</button>
+                <input class="dropbtn" type="button" value="직종"> 
                 <div class="dropdown-contentAll">
                     <div class="dropdown-content">
                             <div>
@@ -400,7 +400,7 @@
             </div>
 
             <div class="dropdown">
-                <button class="dropbtn">경력</button>
+                <input type="button" value="경력" class="dropbtn">
                 
                 <div class="dropdown-contentCareer">
                     <input id="rangeStyle" type="range" min="0" max="10" step="1" value="" name="carNum" />
@@ -427,7 +427,7 @@
             </script>
 
             <div class="dropdown">
-                <button class="dropbtn">고용형태</button>
+                <input type="button" value= "고용형태" class="dropbtn">
                 <form action="">
                     <div class="dropdown-contentShape">
                         <div class="check_wrap">
@@ -519,7 +519,7 @@
 				style="border-radius: 12px; width: 800px; height: 500px;">
 			</a>
 		</div>
-		<a href="${path }/Hire/Mail.do">메일발송</a>
+		
 	</c:if> 
 	<c:if test="${null != anolist[0].rec_no }">
         <div class="annoAll">
@@ -591,10 +591,24 @@
                        <c:if test="${anoList[0].open_check == 1  && commonLogin !=null}">
                         <button id="favoritesBox" onclick="fn_toggle();">
                             <img id="announcementFavorites" src="${path }/resources/image/Hire/pngwing2.png" />
-                        </button>
+                        </button> 
                       </c:if>
-                        
-                    </div>
+                      
+                       
+						<script>
+						
+                       $(".apply").click(function () {
+                      		if(${anoList[0].mem_no == null}){
+                      			alert("로그인 회원만 이용가능합니다");	
+                      } 
+                       });  
+                    
+                      </script>
+
+
+
+
+					</div>
 
                     <div class="detailedReviewInterview">
                        <a href="#">

@@ -21,5 +21,5 @@ public class Enterprise {
 	private String repPhone;		//담당자 번호
 	private int type;// 2
 	private String entSite;			//기업이메일
-	private String entMembership;
+	private String entMembership;	//맴버십
 }

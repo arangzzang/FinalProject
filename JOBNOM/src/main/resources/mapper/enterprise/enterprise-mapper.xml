@@ -30,7 +30,8 @@
 									#{repName},
 									#{repPhone},
 									default,
-									${entSite}
+									#{entSite},
+									default
 									)
 	</insert>
 		<insert id="insertApplyAd" parameterType="ad">
@@ -84,4 +85,8 @@
 		)
 	</insert>
 
+	<delete id="quit">
+		DELETE FROM ENTERPRISE WHERE ENT_NO=#{entNo}
+	
+	</delete>
 </mapper>

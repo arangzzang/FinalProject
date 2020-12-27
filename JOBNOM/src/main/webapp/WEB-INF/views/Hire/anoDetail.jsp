@@ -24,25 +24,44 @@ List<Review> r=(List)request.getAttribute("r");
                                  <a href="#">
                                     <div class="annoDetailTitleFont" >${r[0].ENT_NAME }</div>
                                 </a>
+                                <p>${commonLogin.memNo}</p>
 							
                             </div>
                         </div>
                      
-                      <button class="apply" onclick="location.href='${path }/Hire/apply.do?memNo=${commonLogin.memNo}&recNo=${r[0].REC_NO}&entName=${r[0].ENT_NAME }'" >지원하기</a>
+                      <button class="apply" onclick="location.href='${path }/Hire/apply.do?memNo=${commonLogin.memNo}&recNo=${r[0].REC_NO}&entName=${r[0].ENT_NAME }'" >지원하기
                        </button>
-                       <c:choose>
+                       <c:if test="${r[0].OPEN_CHECK == null && commonLogin !=null && commonLogin.memNo !=  r[0].MEM_NO }">
+                      
+                        <button id="favoritesBox" onclick="fn_toggle();">
+                            <img id="announcementFavorites2" src="${path }/resources/image/Hire/pngwing.png" />
+                        </button>
+                      </c:if>
+                      <%--  <c:if test="${r[0].OPEN_CHECK == null && commonLogin !=null }">
+                      
+                        <button id="favoritesBox" onclick="fn_toggle();">
+                            <img id="announcementFavorites2" src="${path }/resources/image/Hire/pngwing.png" />
+                        </button>
+                      </c:if>  --%>
+                       <c:if test="${r[0].OPEN_CHECK == 1  && commonLogin !=null && commonLogin.memNo ==  r[0].MEM_NO }">
+                        <button id="favoritesBox" onclick="fn_toggle();">
+                            <img id="announcementFavorites2" src="${path }/resources/image/Hire/pngwing2.png" />
+                        </button>
+                      </c:if>
+                      
+                       <%-- <c:choose>
                        <c:when test="${r[0].OPEN_CHECK ==1  && commonLogin !=null && commonLogin.memNo ==  r[0].MEM_NO }">
-	                        <button id="favoritesBox" onclick="fn_toggle();">
+	                        <button id="favoritesBox" onclick="fn_toggle();"> 
 	                            <img id="announcementFavorites2" src="${path }/resources/image/Hire/pngwing2.png" />
 	                        </button>
-                       </c:when>
+                       </c:when> 
                        <c:otherwise>
                         <button id="favoritesBox" onclick="fn_toggle();">
                             <img id="announcementFavorites2" src="${path }/resources/image/Hire/pngwing.png" />
                         </button>
-                     </c:otherwise>
+                     </c:otherwise> 
                        
-                      </c:choose>
+                      </c:choose> --%>
                     </div>
 
                     <div class="detailedReviewInterview">
@@ -321,13 +340,20 @@ List<Review> r=(List)request.getAttribute("r");
 
 		<script>
 		$(".apply").click(function(){
-		    alert("지원완료");
+			if(${commonLogin == null}){
+      			alert("로그인 회원만 이용가능합니다");	
+      			 return false; 
+			}else{
+				alert("지원완료");
+			}
+		    
 		});
 		</script>
 		
+		
 		<script>
 
-    var cnt = 1;
+
     function fn_toggle() {
     	
         var announcementFavorites2 = document.getElementById("announcementFavorites2");
@@ -342,7 +368,7 @@ List<Review> r=(List)request.getAttribute("r");
            	location.href="${path }/Hire/favorites.do?memNo=${commonLogin.memNo}&recNo=${r[0].REC_NO}";
         	alert("즐겨찾기 완료");
         }
-        cnt++
+        
 
     };
 		  

@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 import com.project.jobnom.Hire.model.dao.HireDao;
 import com.project.jobnom.Hire.model.vo.Interestedrcruitment;
 import com.project.jobnom.Hire.model.vo.Recruitment;
+import com.project.jobnom.Hire.model.vo.Review;
+import com.project.jobnom.member.model.vo.Member;
 import com.project.jobnom.Hire.model.vo.Support;
 import com.project.jobnom.enterprise.model.vo.Enterprise;
 @Service
@@ -59,6 +61,9 @@ public class HireServiceImpl implements HireService {
 	}
 
 	@Override
+	public Member selectMember(int memNo) {
+		return dao.selectMember(memNo,session);
+	}
 	public List<Map> MemberList(String memNo) {
 		return dao.MemberList(session,memNo);
 	}

@@ -11,7 +11,6 @@ import com.project.jobnom.enterprise.model.service.EnterpriseService;
 import com.project.jobnom.enterprise.model.vo.Enterprise;
 
 @Controller
-@SessionAttributes("entpriceLogin")
 public class EnterpriseController {
 
 	@Autowired

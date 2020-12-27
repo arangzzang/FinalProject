@@ -15,4 +15,5 @@ public interface EnterpriseDao {
 	int updateEnterprise(Enterprise ent, SqlSession session);
 	int entMembership(Login log, SqlSession session);
 	int insertBanner(Banner ban, SqlSession session);
+	int quit(Enterprise ent, SqlSession session);
 }

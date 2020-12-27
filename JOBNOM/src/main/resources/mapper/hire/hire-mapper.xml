@@ -1,17 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="hire">
-	<resultMap type="mem" id="memMap"><!-- resultMap의 id값과 select문의 resultMap키값 연결 -->
+	<!--  <resultMap type="recruitment" id="recruitmentMap">
+		<result column="REC_NO" property="rec_no"/>
+		<result column=ENT_NO property="ent_no"/>
+		<result column="REC_TITLE" property="rec_title"/>
+		<result column="REC_CONTENTS" property="rec_content"/>
+		<result column="REC_FILE1" property="rec_file1"/>
+		<result column="REC_FILE2" property="rec_file2"/>
+		<result column="REC_STARTDATE" property="rec_startdate"/>
+		<result column="REC_ENDDATE" property="rec_enddate"/>
+		<result column="REC_SALARY" property="rec_salary"/>
+		<result column="REC_INFO" property="rec_info"/>
+		<result column="REC_PREFER" property=rec_prefer/>
+		<result column="REC_WELFARE" property="rec_welfare"/>
+		<result column="REC_QUALIFICATION" property="rec_qualification"/>
+		<result column="REC_PEPOLE" property="rec_pepole"/>
+		<result column="RE_TYPE" property="rec_type"/>
+	
+	</resultMap>  -->
+
+	<resultMap type="mem" id="memMap">
 		<result column="mem_no" property="memNo"/>
 		<result column="mem_email" property="memEmail"/>
 		<result column="mem_pw" property="memPw"/>
 		<result column="mem_manager_yn" property="memManagerYn"/>
 		<result column="mem_check" property="memCheck"/>
 		<result column="mem_membership" property="memMembership"/>
-		<result column="mem_category1" property="memCategory1"/>
-		<result column="mem_category2" property="memCategory2"/>
-		
-		
+		<result column="cate_no2" property="mCateNo2"/>
 	</resultMap>
 	
 
@@ -68,7 +84,7 @@
 	
 	<select id="selectRecruitmentList" parameterType="map" resultType="java.util.HashMap">
 		         
-           SELECT  E.*, ENT_NAME,T.MEM_NO,OPEN_CHECK,HIRE_NO, REP_NAME, REP_PHONE,ENT_LOGO
+           SELECT DISTINCT E.*, ENT_NAME,T.MEM_NO,OPEN_CHECK,HIRE_NO, REP_NAME, REP_PHONE,ENT_LOGO
 			FROM RECRUITMENT E 
 			LEFT JOIN ENTERPRISE R ON (R.ENT_NO = E.ENT_NO)
            LEFT JOIN INTERESTEDRECRUITMENT T ON (T.REC_NO = E.REC_NO)

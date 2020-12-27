@@ -3,15 +3,21 @@ package com.project.jobnom.common.controller;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.ibatis.io.ResolverUtil.IsA;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -30,6 +36,10 @@ public class CommonController {
 	CommonService service;
 	@Autowired
 	BCryptPasswordEncoder pwEncoder;
+	@Autowired
+	private JavaMailSender mailSender;
+	
+	static int checkNum;
 	//로그인
 	@RequestMapping("/common/commonLogin")
 	public ModelAndView commonLogin(@RequestParam Map login, ModelAndView mv, HttpServletResponse response) {
@@ -38,18 +48,18 @@ public class CommonController {
 		System.out.println(who);
 		if(who!=null) {
 			//아이디 기억하기
-			if(login.get("remember") != null) {//login.get("remember").equals("on")는 무조건적인 true이기 때문에 checkbox가 check되있지 않으면 nullpoint에러 발생
+			if(login.get("loginCheck") != null) {//login.get("remember").equals("on")는 무조건적인 true이기 때문에 checkbox가 check되있지 않으면 nullpoint에러 발생
 				Cookie c = new Cookie("loginCheck",who.getMemEmail());
 				c.setMaxAge(60*60*24*7);
 				c.setPath("/jobnom");
 				response.addCookie(c);
-				System.out.println("true일 때");
+				System.out.println("쿠키값true일 때");
 				System.out.println(c);
 			}else {
 				Cookie c = new Cookie("loginCheck","");
 				c.setMaxAge(0);
 				response.addCookie(c);
-				System.out.println("false일 때");
+				System.out.println("쿠키값false일 때");
 				System.out.println(c);
 			}
 			//로그인 시도 시 암호화된 비밀번호 분기처리
@@ -86,28 +96,100 @@ public class CommonController {
 	//email중복체크
 	@RequestMapping("/checkDuplicate/enrollCommon")
 	@ResponseBody
-	public String checkDuplicateEmail(String dupli, ModelAndView mv) throws IOException{
+	public String checkDuplicateEmail(String dupli, Model m) throws IOException{
 		
-		System.out.println(dupli);
 		List<Login> list=service.checkDuplicateEmail(dupli);
-		String str="";
-		System.out.println(list);
+		m.addAttribute("list",list);
+		return list.isEmpty()?"사용 할 수 있는 email입니다.":"사용 할 수 없는 email입니다.";
+	}
+	//이메일 인증확인
+	@RequestMapping("/certification/sendEmail")
+	@ResponseBody
+	public String sendemail(String mEmail,Model m) {
 		
-		if(list.isEmpty()) {
-			str="사용 할 수 있는 email입니다.";
-			System.out.println(str);
-		}else {
-			str="사용 할 수 없는 email입니다.";
-			System.out.println(str);
+		//인증번호(난수)생성
+		Random random = new Random();
+		checkNum = random.nextInt(888888) + 111111;
+		
+		
+		//이메일 보내기
+		String setFrom = "dkfkd1198@gmail.com";
+		String toMail = mEmail;
+		String title = "회원가입 인증 이메일 입니다.";
+		String content="홈페이지를 방문해 주셔서 감사합니다."+"<br><br>"+"인증번호는"+checkNum+"입니다."+"<br>"+"해당 인증번호를 인증번호 확인란에 기입하여 주세요.";
+		try {
+			MimeMessage eMsg = mailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(eMsg, true, "UTF-8");
+             
+            helper.setFrom(setFrom);
+            helper.setTo(toMail);
+            helper.setSubject(title);
+            helper.setText(content,true);
+            helper.setTo(mEmail);
+            eMsg.setRecipients(MimeMessage.RecipientType.TO , InternetAddress.parse(mEmail));
+            mailSender.send(eMsg);
+		}catch(MessagingException e) {
+			e.printStackTrace();
 		}
-		mv.addObject("str",str);
+		System.out.println("인증번호 : " + checkNum);
+		m.addAttribute("cNum",checkNum);
 		
-		return str;
+		return "/views/common/enroll";
+	}
+	//인증번호 비교하기
+	@RequestMapping("/certification/emailCheck")
+	@ResponseBody
+	public int emailCheck(int eNum) {
+		int result=0;
+		if(eNum==0) {//널값일때
+			result=0;
+		}else if(eNum != checkNum) {//인증번호 값이 같지않을때
+			result=2;
+		}else {//인증번호 값이 같을때
+			result=1;
+		}
+		return result;
+	}
+	//회원탈퇴
+	@RequestMapping("/common/userSecession")
+	public ModelAndView userSecession(String memNo, ModelAndView mv, HttpSession session) {
+		Login who=(Login)session.getAttribute("commonLogin");
+		int result = service.userSecession(Integer.parseInt(memNo));
+		System.out.println(result);
+		String msg="";
+		String loc="";
+		if(result>0) {
+			msg="좋은 직장 구하길 바래요~";
+			loc="redirect:/common/logout"+who.getMemNo();
+		}else {
+			msg="잠시 후에 다시 시도 해주세요";
+			loc="/member/myPage?="+memNo;
+		}
+		mv.addObject("msg",msg);
+		mv.addObject("loc",loc);
+		mv.setViewName("common/msg");
+		
+		return mv;
 	}
 	
 	
 	
+	
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
