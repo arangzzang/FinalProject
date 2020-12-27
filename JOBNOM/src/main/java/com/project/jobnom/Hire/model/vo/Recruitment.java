@@ -1,6 +1,6 @@
 package com.project.jobnom.Hire.model.vo;
 
-import java.util.Date;
+import java.sql.Date;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -34,6 +34,7 @@ public class Recruitment {
 	private String ent_logo;			//로고
 	private String rep_name;			//담당자이름
 	private String rep_phone;		//담당자 번호
+	
 	
 
 }

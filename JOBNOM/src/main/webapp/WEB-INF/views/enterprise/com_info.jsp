@@ -9,7 +9,8 @@
 <jsp:include page="/WEB-INF/views/common/header.jsp">
 	<jsp:param name="title" value=""/>
 </jsp:include>
-<section id="content">  
+<section id="content"> 
+	<c:forEach items="${ent }" var="ent">
         <div class="cmp_info">
             <div class="cmp_top">
                 <div class="cmp_top_containner">
@@ -27,7 +28,7 @@
                             </div>
                             <div class="compa_info_box">
                                 <div class="compa_name">
-                                    <a href="" >회사이름</a>
+                                    <a href="" ><c:out value="${ent.entName }"/></a>
                                 </div>
                                 <div class="about_compa">
                                     <div class="compa_rating">
@@ -36,9 +37,9 @@
                                         </span>
                                     </div>
                                     <div class="com_info_small">
-                                        <span>대분류</span>
+                                        <span><c:out value="${ent.entCategory1 }"/></span>
                                         <span class="dot">&middot;</span>
-                                        <a href="http://www.naver.com">www.naver.com</a>
+                                        <a href=""><c:out value="${ent.entSite }"/></a>
                                     </div>
                                 </div>
                             </div>
@@ -73,29 +74,28 @@
             </div>
         </div>
         <!-- 상세페이지 끝 -->
-        <div class="com_info_container">
+        <div class="com_info_container">	
             <div class="com_info" >
                 <div class="com_title" >
                     <h2>기업정보</h2>
-
                 </div>
                 <div class="com_box_info">
                     <div class="company_sub">
                         <div class="tool_box">
                             <i class="fas fa-tools"></i>
-                            <span><strong>소분류</strong><p>산업</p></span>
+                            <span><strong><c:out value="${ent.entCategory2 }"/></strong><p>산업</p></span>
                         </div>
                         <div class="tool_box">
                             <i class="fas fa-building"></i>
-                            <span><strong>대기업</strong><p>기업형태</p>
+                            <span><strong>-</strong><p>기업형태</p>
                         </div>
                         <div class="tool_box">
                             <i class="fas fa-users"></i>
-                            <span><strong>30명</strong><p>사원수</p></span>
+                            <span><strong>-</strong><p>사원수</p></span>
                         </div>
                         <div class="tool_box">
                             <i class="far fa-calendar"></i>
-                            <span><strong>2012-12-31</strong><p>설립일</p></span>
+                            <span><strong>-</strong><p>설립일</p></span>
                         </div>
                     </div>
                     <div class="company_info">
@@ -136,6 +136,7 @@
                           </div>
                      	</div>
                      </div>
-                 </div>
+                   </div>
+                  </c:forEach>
     </section>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>

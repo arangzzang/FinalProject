@@ -56,27 +56,25 @@
    						<th>나이</th>
    						<th>성별</th>
    						<th>이력서 보기</th>
-   						<th>지원날짜</th>
    						
    					</tr>
    				</thead>
 					<tbody>
-						<c:forEach items="${s }" var="s">
+						<c:forEach items="${res }" var="res">
 							<tr>
-								<td></td>	
-		                    	<td><c:out value="${s.res_name }" /></td>
-		                        <td><c:out value="${s.res_birth }" /></td>
-		                        <td><c:out value="${s.res_gender }" /></td>
-		                        <td><button class="btn btn"><c:out value="${s.res_opencheck }" /></button></td>
-								<td><fmt:formatDate value="${s.support_day }" pattern="yyyy-MM-dd"/></td>
+								<td><c:out value="${res.resNo }"/></td>	
+		                    	<td><c:out value="${res.resName }" /></td>
+		                        <td><c:out value="${res.resBirth }" /></td>
+		                        <td><c:out value="${res.resGender }" /></td>
+		                        <td><button class="btn btn"><c:out value="${res.resOpenCheck }" /></button></td>
 		   					</tr>
 	   					</c:forEach>
   					</tbody>
    			</table>
-   		</div>
    		<div id="pageBar" style="margin-top: 20px;">
 			${pageBar }
 		</div>
+   		</div>
    	</div>
 </section>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>

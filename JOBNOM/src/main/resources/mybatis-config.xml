@@ -12,5 +12,6 @@
 		<typeAlias type="com.project.jobnom.enterprise.model.vo.ApplyAd" alias="ad"/>
 		<typeAlias type="com.project.jobnom.enterprise.model.vo.Support" alias="support"/>
 		<typeAlias type="com.project.jobnom.enterprise.model.vo.Banner" alias="ban"/>
+		<typeAlias type="com.project.jobnom.resume.model.vo.Resume" alias="resume"/>
 	</typeAliases>
 </configuration>

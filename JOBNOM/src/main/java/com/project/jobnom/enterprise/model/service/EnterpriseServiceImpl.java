@@ -1,17 +1,20 @@
 package com.project.jobnom.enterprise.model.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.project.jobnom.Hire.model.vo.Recruitment;
 import com.project.jobnom.common.model.vo.Login;
 import com.project.jobnom.enterprise.model.dao.EnterpriseDao;
 import com.project.jobnom.enterprise.model.vo.ApplyAd;
 import com.project.jobnom.enterprise.model.vo.Banner;
 import com.project.jobnom.enterprise.model.vo.Enterprise;
 import com.project.jobnom.enterprise.model.vo.Support;
+import com.project.jobnom.resume.model.vo.Resume;
 
 @Service
 public class EnterpriseServiceImpl implements EnterpriseService {
@@ -37,9 +40,9 @@ public class EnterpriseServiceImpl implements EnterpriseService {
 		return dao.findOneEnterprise(log, session);
 	}
 	@Override
-	public List<Support> selectSupport( int cPage, int numPerpage) {
+	public List<Support> selectSupport( int cPage, int numPerpage,Recruitment rec) {
 		// TODO Auto-generated method stub
-		return dao.selectSupport(session,cPage,numPerpage);
+		return dao.selectSupport(session,cPage,numPerpage, rec);
 	}
 	@Override
 	public int selectCount() {
@@ -60,6 +63,28 @@ public class EnterpriseServiceImpl implements EnterpriseService {
 		// TODO Auto-generated method stub
 		return dao.insertBanner(ban, session);
 	}
+	@Override
+	public List<Recruitment> selectRecruitment(int memNo,int cPage, int numPerpage) {
+		// TODO Auto-generated method stub
+		return dao.selectRecruitment(session,memNo,cPage,numPerpage);
+	}
+	
+	@Override
+	public int selectRecruitmentCount() {
+		// TODO Auto-generated method stub
+		return dao.selectRecruitmentCount(session);
+	}
+	@Override
+	public Resume selectResume(int mem_no) {
+		// TODO Auto-generated method stub
+		return dao.selectResume(session,mem_no);
+	}
+	@Override
+	public Enterprise selectCominfo() {
+		// TODO Auto-generated method stub
+		return dao.selectCominfo(session);
+	}
+	
 
 	
 

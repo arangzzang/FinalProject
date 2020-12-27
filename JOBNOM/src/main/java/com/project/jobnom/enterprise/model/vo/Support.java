@@ -1,6 +1,6 @@
 package com.project.jobnom.enterprise.model.vo;
 
-import java.util.Date;
+import java.sql.Date;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,7 +14,6 @@ public class Support {
    private int app_no;
    private int mem_no;
    private int rec_no;
-   private Date support_daty;
    
    private String rec_title;
    private String ent_name;
