@@ -7,11 +7,18 @@
 
 <link rel="stylesheet" href="${path }/resources/css/mypage/myProfile.css"/>
 
-<!-- date_picker -->
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
-<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-<script src="${path}/resources/js/jquery-ui.js"></script>
-<link rel="stylesheet" href="${path}/resources/css/jquery-ui.css">
+<!-- <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" /> -->
+<script src="${path}/resources/js/month/jquery-ui.js"></script>
+
+<!-- year_picker -->
+<script src="${path}/resources/js/year-select.js"></script>
+<!-- month_picker -->
+<link href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="${path }/resources/css/MonthPicker.css"/>
+<script src="${path}/resources/js/month/gruntfile.js"></script>
+<script src="${path}/resources/js/month/MonthPicker.js"></script>
+
+
 
     <div class="with-parent">
 		<div class="with" style="padding-bottom: 50px;">
@@ -51,7 +58,7 @@
 							</div>
 							<div class="col-md-6 b">
 								<span class="span1">출생연도</span>
-								<input type="text" id="memBirth" class="input1" value="2020" placeholder="출생년도를 골라주세요">
+								<select class="yrselectdesc"></select>
 							</div>
 						</div>
 						<div class="row">
@@ -87,6 +94,9 @@
 										<option value="5">5</option>
 										<option value="6">6</option>
 										<option value="7">7</option>
+										<option value="8">8</option>
+										<option value="9">9</option>
+										<option value="10">10년이상</option>
 									</select>
 									<label for="skill" class="span2">업무 및 스킬</label>
 									<textarea class="form-control inp" rows="1" id="skill" placeholder="(예시) 영업기획, 디지털마케팅,UI디자인(업무와 관련된 자격증 및 기술명 포함)" required></textarea>
@@ -128,8 +138,8 @@
 									<div id="element1">
 										<div class="col-4 col-md-4" id="element2">
 											<div class="dateElement">
-												<input type="text" class="dateinput inp" name="eduTerm" id='edu_term' placeholder="년/월">&nbsp;~&nbsp;
-												<input type="text" class="dateinput inp" name="eduTermend" id='edu_termend' placeholder="년/월">
+												<input type="text" class="edu_term inp" name="eduTerm" id='edu_term' placeholder="년/월">&nbsp;~&nbsp;
+												<input type="text" class="edu_termend inp" name="eduTermend" id='edu_termend' placeholder="년/월">
 											</div>
 											<label for="goal">졸업</label>
 											<input type="checkbox" name="eduGoal" id="goal">
@@ -173,8 +183,8 @@
 									<div id="element1">
 										<div class="col-4 col-md-4">
 											<div class="dateElement">
-												<input type="text" class="dateinput inp" name='awaTerm' id='awa_term' placeholder="년/월">&nbsp;~&nbsp;
-												<input type="text" class="dateinput inp" name='awaTermend' id='awa_termend' placeholder="년/월">
+												<input type="text" class="awa_term inp" name='awaTerm' id='awa_term' placeholder="년/월">&nbsp;~&nbsp;
+												<input type="text" class="awa_termend inp" name='awaTermend' id='awa_termend' placeholder="년/월">
 											</div>
 											<label for="prize">수상</label>
 											<input type="checkbox" name='awaYn' id="prize">
@@ -201,8 +211,8 @@
 									<div id="element1">
 										<div class="col-4 col-md-4">
 											<div class="dateElement">
-												<input type="text" class="dateinput" name='carTerm' id='car_term' placeholder="년/월">&nbsp;~&nbsp;
-												<input type="text" class="dateinput" name='carTermend' id='car_termend' placeholder="년/월">
+												<input type="text" class="car_term" name='carTerm' id='car_term' placeholder="년/월">&nbsp;~&nbsp;
+												<input type="text" class="car_termend" name='carTermend' id='car_termend' placeholder="년/월">
 											</div>
 											<label for="Incumbent">재직중</label>
 											<input type="checkbox" name='carAttend' id="Incumbent">
@@ -295,6 +305,42 @@
 	    </div>
 	</div>
 
+	<script type="text/javascript">
+		$(document).ready(function(e) {
+			$('.yrselectdesc').yearselect({
+				start:1940,
+				end:2030,
+				order: 'desc',
+				selected: 2020
+
+			});
+			$(".yrselectdesc").change(e=>{
+				let birth_index=$(".yrselectdesc option").index($(".mem_catagory option:selected"));
+				console.log(typeof $(".yrselectdesc").val())
+				console.log(birth_index);
+			})
+			
+
+		});
+	</script>
+	<script>
+		$(document).ready(function(){
+			var option={
+					startYear:1940,
+					finalYear:2040,
+					selectedYear:2020,
+					Button: "<i class='far fa-calendar-alt calendar' style='cursor: pointer'></i>",
+					monthName:['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월']
+			};
+			$(".edu_term").MonthPicker(option);
+			$(".edu_term").bind('click',function(){
+				$(".edu_term").monthpicker('show');
+			});
+// 			$(".edu_term").monthpicker().bind('monthpicker-click-month',function(e,month){
+// 				alert("선택한월 :"+month)
+// 			})
+		});
+	</script>
 	<script>
 		//check선택시 다른 checkbox비활성화
 		function genderCheck(chk){
@@ -305,6 +351,7 @@
 				}
 			}
 		}
+		
 		//select box 값 바꾸기
 		function selectSetting(){
 		//회원
@@ -380,8 +427,8 @@
 		//경력사항(checkbox name 이름 같게 했음)
 		var car="<div class='row car'><div class='col-12 col-md-12'><span class='span2' >경력 사항</span>";
 			car+="<div id='element1'><div class='col-4 col-md-4'><div class='dateelement'>";
-			car+="<input type='text' class='dateinput inp' name='carTerm' id='car_term' placeholder='년/월'>&nbsp;~&nbsp;";
-			car+="<input type='text' class='dateinput inp' name='carTermend' id='car_termend' placeholder='년/월'></div>";
+			car+="<input type='text' class='car_term inp' name='carTerm' id='car_term' placeholder='년/월'>&nbsp;~&nbsp;";
+			car+="<input type='text' class='car_termend inp' name='carTermend' id='car_termend' placeholder='년/월'></div>";
 			car+="<label for='Incumbent'>재직중</label><input type='checkbox' name='carAttend' id='Incumbent'>";
 			car+="<label for='Leaves'>퇴사</label><input type='checkbox' name='carAttend' id='Leaves'>";
 			car+="</div><div class='col-8 col-md-8'><input type='text' class='col-md-12 inp' name='carName'  placeholder='기업명'>";

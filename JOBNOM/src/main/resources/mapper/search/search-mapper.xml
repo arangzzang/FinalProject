@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="search">
+
+	<!--기업 검색결과 조회  -->
+	<select id="selectSearchResult" resultType="map">
+		<![CDATA[
+			select 
+				e.ent_no
+				,e.ent_category1
+				,e.ent_name
+				,round(sum(review_satisfaction+review_welfare+review_promotion+review_executive)/(count(review_satisfaction)+count(review_welfare)+count(review_promotion)+count(r.review_executive)),1) as avg
+			from enterprise e
+			join review r
+			on (r.ent_no = e.ent_no)
+			where lower(e.ent_name) 
+			like '%'||#{keyword}||'%' 
+			AND ROWNUM <=5
+			group by e.ent_no
+					,e.ent_category1
+					,e.ent_name
+					
+		]]>
+	</select>
+	
+	<!--채용공고 검색 결과 조회  -->
+	<select id="selectSercjResultRec" resultType="map">
+	<![CDATA[
+         select 
+            e.ent_no
+            ,e.ent_category1
+            ,e.ent_name
+            ,rec.rec_title
+            ,rec.rec_contents
+            ,rec.rec_type
+            ,rec.rec_salary
+            ,rec.rec_info
+            ,rec.rec_qualification
+            ,rec.rec_other
+            ,rec.rec_career
+            ,round(sum(review_satisfaction+review_welfare+review_promotion+review_executive)/(count(review_satisfaction)+count(review_welfare)+count(review_promotion)+count(r.review_executive)),1) as avg
+         from enterprise e
+         inner join review r
+         on (r.ent_no = e.ent_no)
+         inner join recruitment rec
+         on (e.ent_no = rec.ent_no)
+         where lower(e.ent_name) 
+         like '%'||#{keyword}||'%' 
+         AND ROWNUM <=5
+         group by e.ent_no
+               ,e.ent_category1
+               ,e.ent_name
+               ,rec.rec_title
+               ,rec.rec_contents
+               ,rec.rec_type
+               ,rec.rec_salary
+               ,rec.rec_info
+               ,rec.rec_qualification
+               ,rec.rec_other
+               ,rec.rec_career
+      ]]>
+      </select>
+      
+      <select id="searchResultMore" resultType="map">
+      	SELECT
+			e.ent_no
+			,e.ent_name
+			,e.ent_logo
+			,e.ent_category1
+			,e.ent_category2
+			,round(sum(review_satisfaction+review_welfare+review_promotion+review_executive)/(count(review_satisfaction)+count(review_welfare)+count(review_promotion)+count(r.review_executive)),1) as avg
+		FROM enterprise e
+		inner join review r
+		on (r.ent_no = e.ent_no)
+		group by e.ent_no
+			,e.ent_name
+			,e.ent_logo
+			,e.ent_category1
+			,e.ent_category2
+		order by avg desc
+      </select>
+      
+      <select id="selectCount" resultType="_int">
+	 SELECT COUNT(*) FROM enterprise
+	</select>
+
+</mapper>

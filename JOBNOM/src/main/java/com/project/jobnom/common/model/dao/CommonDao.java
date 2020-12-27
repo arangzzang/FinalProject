@@ -11,4 +11,5 @@ public interface CommonDao {
 
 	Login commonLogin(SqlSession session, Map login);
 	List<Login> checkDuplicateEmail(SqlSession session, String memEmail);
+	int userSecession(SqlSession session, int memNo);
 }

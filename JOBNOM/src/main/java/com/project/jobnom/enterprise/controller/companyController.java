@@ -1,5 +1,8 @@
 package com.project.jobnom.enterprise.controller;
 
+import java.io.File;
+import java.io.IOException;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,11 +10,16 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.project.jobnom.common.model.vo.Login;
 import com.project.jobnom.enterprise.model.service.EnterpriseService;
+
 import com.project.jobnom.enterprise.model.vo.ApplyAd;
+import com.project.jobnom.enterprise.model.vo.Banner;
 import com.project.jobnom.enterprise.model.vo.Enterprise;
 
 @Controller
@@ -50,17 +58,33 @@ public class companyController {
 		
 		return "enterprise/com_job";
 	}
+
 	@RequestMapping("/enterprise/applyAdEnd.do")
-	public String applyAdEnd(ApplyAd ad, Model m) {
+	public ModelAndView applyAdEnd(ApplyAd ad, Model m, ModelAndView mv) {
 		if(ad.getRec_salary()==null) {
 			ad.setRec_salary("회사내규에 따름");
 		}
 		System.out.println(ad);
 		int result = service.insertApplyAd(ad);
-		return "common/msg";
+		String msg="";
+		String loc="";
+		if(result>0) {
+			msg="공고등록 성공";
+			loc="/com/mypage.do";
+		}else {
+			msg="공고등록 실패";
+			loc="/enterprise/applyAd.do";
+		}
+		mv.addObject("msg", msg);
+		mv.addObject("loc", loc);
+		mv.setViewName("/common/msg");
+		return mv;
 	}
 	@RequestMapping("/com/mypage.do")
-	public String comMypage() {
+	public String comMypage(HttpSession session) {
+		Login log=(Login)session.getAttribute("commonLogin");
+		Enterprise ent = service.findOneEnterprise(log);
+		session.setAttribute("Enterprise", ent);
 		return "/enterprise/ent_mypage/com_mypage";
 	}
 	@RequestMapping("/com/applyAd.do")
@@ -88,22 +112,45 @@ public class companyController {
 		return mv;
 	}
 	@RequestMapping("/com/ent_edit_end.do")
-	public ModelAndView entEditEnd(HttpSession session, Enterprise ent, ModelAndView mv) {
+	public ModelAndView entEditEnd(HttpSession session, SessionStatus ss, Model m, Enterprise ent, ModelAndView mv) {
 		Login log=(Login)session.getAttribute("commonLogin");
-		String bforePw = ent.getEntPw();
-		System.out.println(ent.getRepPhone());
-		ent.setEntPw(pwEncoder.encode(ent.getEntPw()));
+		System.out.println("================");
+		System.out.println("pw:" + ent.getEntPw());
+		if(!log.getMemPw().equals(ent.getEntPw())) {
+			ent.setEntPw(pwEncoder.encode(ent.getEntPw()));			
+		}
 		System.out.println("비번 암호화 후:" + ent.getEntPw());
 		System.out.println(ent);
 		int result = service.updateEnterprise(ent);
 		String msg="";
 		String loc="";
 		if(result>0) {
-			mv.addObject("commonLogin", service.findOneEnterprise(log));
 			msg="회원정보수정 성공";
 			loc="/com/ent_edit.do";
+			session.setAttribute("Enterprise", service.findOneEnterprise(log));
 		}else {
 			msg="회원정보수정 실패";
+			loc="/com/ent_edit.do";
+		}
+		mv.addObject("msg", msg);
+		mv.addObject("loc", loc);
+		mv.setViewName("common/msg");
+		//session commonlogin 새로운 회원값으로 대체
+		return mv;
+	}
+	@RequestMapping("/com/quit.do")
+	public ModelAndView quit(HttpSession session, Enterprise ent, ModelAndView mv) {
+		System.out.println("회원탈퇴");
+		System.out.println(ent);
+		int result = service.quit(ent);
+		String msg = "";
+		String loc = "";
+		if(result>0) {
+			msg="회원탈퇴 성공";
+			loc="/";
+			session.invalidate();
+		}else {
+			msg="회원탈퇴 실패";
 			loc="/com/ent_edit.do";
 		}
 		mv.addObject("msg", msg);
@@ -112,8 +159,66 @@ public class companyController {
 		return mv;
 	}
 	@RequestMapping("/com/membership.do")
-	public String membership() {
-		
-		return "enterprise/ent_mypage/membership";
+	public ModelAndView membership(HttpSession session, Model m, ModelAndView mv) {
+		Login log=(Login)session.getAttribute("commonLogin");
+		Enterprise ent = service.findOneEnterprise(log);
+		session.setAttribute("Enterprise", ent);
+		System.out.println(ent);
+		mv.setViewName("enterprise/ent_mypage/membership");
+		return mv;
 	}
+	@RequestMapping("/com/membership_end.do")
+	public String membershipEnd(HttpSession session) {
+		Login log=(Login)session.getAttribute("commonLogin");
+		service.entMembership(log);
+		return "/enterprise/ent_mypage/com_mypage";
+	}
+	@RequestMapping("/com/entBanner.do")
+	public String entBanner() {
+		return "/enterprise/ent_mypage/banner";
+	}
+	
+	
+	@RequestMapping("/com/bannerEnd.do")
+	public ModelAndView bannerEnd(String bann_title, ModelAndView mv, 
+			@RequestParam(value="bann_file", required=false) 
+			CommonsMultipartFile bann_file, 
+			HttpSession session) {
+		
+		Enterprise ent = (Enterprise)session.getAttribute("Enterprise");
+		
+		String path=session.getServletContext().getRealPath("/resources/enterprise/banner/" + ent.getEntNo());
+		String oldName=bann_file.getOriginalFilename();
+		System.out.println(path + " " + oldName);
+		
+		File dir=new File(path);
+		if(!dir.exists()) dir.mkdirs();
+		String ext=oldName.substring(oldName.lastIndexOf(".")+1);
+		String newName = ent.getEntName() + "_banner." + ext;
+		try {
+			bann_file.transferTo(new File(path+"/"+newName));
+		}catch(IOException e){
+			e.printStackTrace();
+		}
+		Banner ban = Banner.builder().ent_no(ent.getEntNo()).bann_title(bann_title).bann_path(path).build();
+		int result = service.insertBanner(ban);
+		String msg="";
+		String loc="";
+		if(result>0) {
+			msg="배너 등록 성공";
+			loc="/com/mypage.do";
+		}else {
+			msg="배너등록 실패";
+			loc="com/bannerEnd.do";
+		}
+		mv.addObject("msg", msg);
+		mv.addObject("loc", loc);
+		System.out.println(ban);
+		
+		
+		mv.setViewName("common/msg");
+		
+		return mv;
+	}	
+
 }

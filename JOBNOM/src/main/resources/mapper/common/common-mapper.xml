@@ -31,6 +31,8 @@
 		    )
 		    WHERE MEM_EMAIL=#{memEmail}
 	</select>
-	
+	<delete id="userSecession" parameterType="_int">
+		delete from member where mem_no=#{memNo}
+	</delete>
 	
 </mapper>

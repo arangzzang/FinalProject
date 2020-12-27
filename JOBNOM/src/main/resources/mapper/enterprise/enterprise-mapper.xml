@@ -12,7 +12,9 @@
 		<result column="ent_category2" property="entCategory2"/>
 		<result column="rep_name" property="repName"/>
 		<result column="rep_phone" property="repPhone"/>
+		<result column="type" property="type"/>
 		<result column="ent_site" property="entSite"/>
+		<result column="ent_membership" property="entMembership"/>
 	</resultMap>
 
 	<insert id="enrollEnter" parameterType="ent">
@@ -28,7 +30,8 @@
 									#{repName},
 									#{repPhone},
 									default,
-									${entSite}
+									#{entSite},
+									default
 									)
 	</insert>
 		<insert id="insertApplyAd" parameterType="ad">
@@ -70,5 +73,20 @@
 		WHERE ENT_NO=TRIM(#{entNo})
 	
 	</update>
+	<update id="entMembership" parameterType="int">
+		UPDATE ENTERPRISE SET
+			ENT_MEMBERSHIP='유료회원'
+			WHERE ENT_NO=#{memNo}
+	</update>
+	
+	<insert id="insertBanner" parameterType="ban">
+		INSERT INTO BANNER VALUES(
+			#{ent_no}, #{bann_title}, #{bann_path}, SYSDATE
+		)
+	</insert>
 
+	<delete id="quit">
+		DELETE FROM ENTERPRISE WHERE ENT_NO=#{entNo}
+	
+	</delete>
 </mapper>

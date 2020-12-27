@@ -124,19 +124,19 @@
   			</div>
 	  		<div class="form-check-inline jmklabel" style="padding:5px;">
 	  			<label class="form-check-label">
-	  				<input type="radio" class="form-check-input" name="rec_type" id="rec_type" required>알바
+	  				<input type="radio" class="form-check-input" name="rec_type" id="rec_type" value="알바" required>알바
 	  			</label>
 				&nbsp;&nbsp;
 	  			<label class="form-check-label">
-	  				<input type="radio" class="form-check-input" name="rec_type" id="rec_type">인턴
+	  				<input type="radio" class="form-check-input" name="rec_type" id="rec_type" value="인턴">인턴
 	  			</label>
 	  			&nbsp;&nbsp;
 	  			<label class="form-check-label">
-	  				<input type="radio" class="form-check-input" name="rec_type" id="rec_type">비정규직
+	  				<input type="radio" class="form-check-input" name="rec_type" id="rec_type" value="비정규직">비정규직
 	  			</label>
   				&nbsp;&nbsp;	  			
 	  			<label class="form-check-label">
-	  				<input type="radio" class="form-check-input" name="rec_type" id="rec_type">정규직
+	  				<input type="radio" class="form-check-input" name="rec_type" id="rec_type" value="정규직">정규직
 	  			</label>
 	  		</div>
 
@@ -149,7 +149,7 @@
   		</div>
   		<div class="form-group input-group mb-3">
   			<div class="input-group-prepend">
-				<span class="input-group-text"">업무 분야</span>
+				<span class="input-group-text">업무 분야</span>
   			</div>
 			<select class="form-control" name="rec_category" id="rec_category" required>
 				<option value="1">은행관련</option>

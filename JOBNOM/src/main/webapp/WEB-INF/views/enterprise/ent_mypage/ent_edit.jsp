@@ -26,7 +26,7 @@
 
     
 <div class="container">
-	<form action="${path }/com/ent_edit_end.do" method="post">
+	<form action="${path }/com/ent_edit_end.do" method="post" id="editForm">
 	<input type="hidden" value="${commonLogin.memNo }" name="entNo" id="entNo">
 		<div class="row">
 			<div class="col">
@@ -70,7 +70,7 @@
 	    			</div>
 	    				<input type="hidden" value="${enterprise.entPw }" name="entPw" id="entPw">
 						<input type="password" class="form-control" placeholder="비밀번호 입력 " name="newPw" id="newPw">
-						<input type="password" class="form-control" placeholder="비밀번호 재입력" name="newPw2" id="newPw2">
+						<!-- <input type="password" class="form-control" placeholder="비밀번호 재입력" name="newPw2" id="newPw2"> -->
   				</div>
 	  				
 					<div class="input-group mb-3">
@@ -102,33 +102,61 @@
 		<div class="row">
 			<div class="col"></div>
 			<div style="text-align:center;" class="col">
-		  		<input type="submit" class="jmkbtn btn-lg" value="저장" id="submit" data-toggle="modal" data-target="#loginModal">
+		  		<input type="submit" class="jmkbtn btn-lg" value="저장" id="save" data-toggle="modal" data-target="#loginModal">
 	  		</div>
 	  		<div style="text-align:right;" class="col">
-				<input type="button" class="jmkbtn btn-lg" value="회원탈퇴">
+				<button class="jmkbtn btn-lg" id="quit">회원탈퇴</button>
 	  		</div>
 		</div>
 	</form>
+	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#pwCheck">
+							회원가입/로그인
+	</button>
 </div>
+<div class="modal fade" id="pwCheck" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+				<div class="modal-dialog header_md" role="document">
+					<div class="modal-content">
+                        <div class="modal-header">
+                           	<h5 class="modal-title" id="staticBackdropLabel">비밀번호 인증</h5>
+                           	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                           	</button>
+                        </div>
+                        <div class="modal-body">
+                           <form action="" onsubmit="return pwCheck()" class="needs-validation" method="post" novalidate>
+	                           	<div class="modal-body">
+									<div class="form-group">
+										<label for="password">비밀번호:</label>
+										<input type="password" class="form-control password" id="password" placeholder="비밀번호를 입력해주세요." name="password" required>
+									</div>
+                              	</div>
+                              	<input type="submit" value="인증">
+                           	</form>
+                        </div>
+					</div>
+				</div>
+			</div>
     
-    
-    
-
-
-
-
 
 </section>
 <script>
 	function applyAd(){
 		location.replace("${path }/com/applyAd.do");
 	}
-	$("#submit").click(function(){			
-		if($("#newPw").length > 1){
+	$("#save").click(function(){	
+		if($("#newPw").val().length > 1){
+			alert($("#newPw").val());
 			$("#entPw").val($("#newPw").val());
-			alert($("#newPw").val() + "비번 비지 않음");
+		}else{
+			alert("새로운 비번 설정하지 않음");
 		}
-	})
+	});
+	$("#quit").click(function(){
+		$("#editForm").attr("action", "${path}/com/quit.do");
+		alert("잘가요 내사랑");
+		$("#save").submit();
+	});
+	
 </script>	
 	
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>

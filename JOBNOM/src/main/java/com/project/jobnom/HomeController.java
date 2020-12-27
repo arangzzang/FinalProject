@@ -33,8 +33,8 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 
-
-
-		return "enterprise/com_info";
+//		"member/mypage/myProfile"
+		return "index";
 	}
+	
 }

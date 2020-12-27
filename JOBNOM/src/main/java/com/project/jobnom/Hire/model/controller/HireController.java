@@ -29,6 +29,9 @@ import com.project.jobnom.Hire.model.vo.Interestedrcruitment;
 import com.project.jobnom.Hire.model.vo.Recruitment;
 import com.project.jobnom.Hire.model.vo.Support;
 import com.project.jobnom.common.pagebar.PageBarFactory;
+import com.project.jobnom.member.model.vo.Member;
+import com.project.jobnom.Hire.model.vo.Review;
+
 
 @Controller
 @SessionAttributes("commonLogin")
@@ -115,8 +118,10 @@ public class HireController {
 	}
 
 	@RequestMapping("/Hire/insertReview.do")
-	public String insertReview() {
+	public String insertReview(int memNo, Model m)  throws IOException {
 
+		Member mem = service.selectMember(memNo);
+		m.addAttribute("mem",mem);
 		return "Hire/insertReview";
 	}
 

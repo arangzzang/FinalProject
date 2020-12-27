@@ -27,6 +27,12 @@ public class CommonServiceImpl implements CommonService {
 	public List<Login> checkDuplicateEmail(String memEmail) {
 		return dao.checkDuplicateEmail(session, memEmail);
 	}
+
+	@Override
+	public int userSecession(int memNo) {
+		return dao.userSecession(session, memNo);
+	}
+	
 	
 	
 
