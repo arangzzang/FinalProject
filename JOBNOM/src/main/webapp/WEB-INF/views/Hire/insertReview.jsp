@@ -11,45 +11,7 @@
 </jsp:include>
 
 
-<section id="content">
-<div class="memberinfo-parent row">
-                <div class="jumbotron row memberinfo">
-                    <div class="col-md-3 col-offset-3">
-                        <img src="" alt="">
-                    </div>
-                    <div class="col-md-6">
-                        <p>조현</p>
-                        <p>취준생</p>
-                        <p>IT취업하고싶다</p>
-                    </div>
-                </div>
-            </div>
-            <div class="MPheadmenu-parent">
-                <nav class="navbar navbar-expand-sm  navbar-light MPheadmenu">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-                    <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                        <ul class="navbar-nav headbar">
-                            <li class="nav-item sidebarmenubar">
-                                <button type="button" class="navbtn">계정</button>
-                            </li>
-                            <li class="nav-item sidebarmenubar">
-                                <button type="button" class="navbtn">이력서</button>
-                            </li>
-                            <li class="nav-item sidebarmenubar">
-                                <button type="button" class="navbtn">활동내역</button>
-                            </li>
-                            <li class="nav-item sidebarmenubar">
-                                <button type="button" class="navbtn">관심정보</button>
-                            </li>
-                            <li class="nav-item sidebarmenubar">
-                                <button type="button" class="navbtn">멤버십</button>
-                            </li>    
-                        </ul>
-                    </div>  
-                </nav>
-            </div>
+
             <div class="with-parent">
                 <div class="with">
                     <div class="activity">
@@ -57,7 +19,6 @@
                                 <a class="activityListReview" href="${path }/Hire/insertReview.do"><div class="review">리뷰</div><div class="activityCount1">(0)</div></a>
                                 <a class="activityListCom"  href="${path }/Hire/supportingCompany.do"><div class="supportingCompany">입사지원기업</div><div  class="activityCount2">(0)</div></a>
                         </div>
-
                         <div class="activityInfo">
                             <div>내기업 리뷰</div>
                             <div class="ReviewSmallTitle">
@@ -75,21 +36,14 @@
                                 <div><button style="margin-left: 23px; border-radius: 12px;">수정/삭제</button></div>
                             </div>
                             <button class="reviewImgBtn"></button>
-                            
-
                             <div class="reviewBtn">
                                 <button class="reviewBtnInsert">기업 리뷰 작성하기</button>
                                 <button class="reviewBtnFAQ">FAQ 바로가기</button>
                             </div>
                         </div>
-                      
-                       
                     </div>
-
-
                     <div id="popup">
                         <div class="popupAll">
-                         
                                 <div id="popmenu">
                                     <form id="popFrm" action="${path }/Hire/insertReview2.do" method="post"  onsubmit="return fn_review();">
                                     <div class="popmenuInsertAll">
@@ -110,9 +64,6 @@
                                             <div>내용</div>
                                             <textarea class="popmenuContentsName"   name="review_contents" cols="47" rows="5" placeholder="내용" style="resize: none;"></textarea>
                                         </div>
-
-
-                          
                                         <div class="companyGradebox"> 
                                             <div class="companyStar-box">
                                                 <div class="companyTitle">사내만족도 평점</div>
@@ -184,20 +135,12 @@
                                                 <!-- 나중에 스프링에서 value에 다가 로그인한 회원 번호 넣어주기 -->
                                             </div>
                                         </div>
-                                                  
-                                               
-                                      
-                                        
-                              
-                                    
                                     	<div class="submitByttonBox">
 	                                      	<input class="GradeboxSubmit" type="submit" value="제출하기" onclick="fn_return();"  > 
 	                                       	<input class="popmenuInsertClose" type="button" value="닫기" > 
                                        </div>
                                     </form>
-                                       
                                 </div>
-                            
                             <div id="popmenuInfo">
                                 <div class="popmenuInfoTitle">정보 등록 정책</div>
                                 <div class="popmenuInfoContents">기업 리뷰의 신뢰성을 높이고 고위적으로 기업 평점 조작을 방지하기위해, 작성된 모든 정보는 JOBNOM 의 자체적인 검토과정을 거쳐 삭제될수도 있습니다</div>
@@ -209,34 +152,12 @@
                                     4. 기업 비밀에 해당하는 내용<br>
                                     5. 존재하지 않거나 명확하지 않는 기업명<br>
                                 </div>
-                                
                             </div>
                         </div>
                     </div>
-
-                 
-
-                   
-
-                    
-
-
-
-
-
-
-
-
-
-
-
-
-
                 </div>
             </div>
 
-</section>
-<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
 
  <script>

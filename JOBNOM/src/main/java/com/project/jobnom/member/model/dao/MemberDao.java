@@ -1,6 +1,7 @@
 package com.project.jobnom.member.model.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -19,5 +20,9 @@ public interface MemberDao {
 	//마이페이지
 	Member mypageView(int memNo, SqlSession session);
 	//email변경
-	int changeMemEmail(String memEmail,SqlSession session);
+	int changeMemEmail(Map<String,Object> mem,SqlSession session);
+	//비밀번호 확인
+	Member selectPw(Map data, SqlSession session);
+	//비밀번호 변경
+	int updatePw(Map mem, SqlSession session);
 }

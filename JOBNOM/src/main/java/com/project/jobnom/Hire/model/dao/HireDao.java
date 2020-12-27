@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.project.jobnom.Hire.model.vo.Recruitment;
 import com.project.jobnom.Hire.model.vo.Review;
+import com.project.jobnom.member.model.vo.Member;
 
 public interface HireDao {
 	int insertReview(SqlSession session, Map ModelMap);
@@ -23,4 +24,7 @@ public interface HireDao {
 	Recruitment selectRecruitmentList(SqlSession session, String rec_no);
 	
 	Review selectReviewList(SqlSession session, String ent_no);
+	
+	//리뷰화면전환
+	Member selectMember(int memNo, SqlSession session);
 }

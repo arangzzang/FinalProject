@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.project.jobnom.Hire.model.vo.Recruitment;
 import com.project.jobnom.Hire.model.vo.Review;
+import com.project.jobnom.member.model.vo.Member;
 
 @Repository
 public class HireDaoImpl implements HireDao {
@@ -46,6 +47,11 @@ public class HireDaoImpl implements HireDao {
 	@Override
 	public Review selectReviewList(SqlSession session, String ent_no) {
 		return session.selectOne("hire.selectReviewList",ent_no);
+	}
+
+	@Override
+	public Member selectMember(int memNo, SqlSession session) {
+		return session.selectOne("hire.selectMember",memNo);
 	}
 	
 	

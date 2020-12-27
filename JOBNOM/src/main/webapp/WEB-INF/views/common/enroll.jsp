@@ -269,7 +269,6 @@
 	    $(".dupliBtnMember").click(e=>{
 		  $(".certification").show();
 		const mem_dupli=document.getElementById("mem_email").value;
-         // qqq
          if(mem_dupli!=""){
             if(!memIdck.test(mem_dupli)){
 					$(".result1").html("이메일 형식이 아닙니다.")
@@ -307,7 +306,7 @@
 			   	$(".submit_email").attr("disabled",false)
 		 		//인증 타이머 설정
 		    	var display = $('.time');
-		    	var leftSec = 30;
+		    	var leftSec = 180;
 		    	// 남은 시간
 		    	// 이미 타이머가 작동중이면 중지
 		    	if (isRunning){
@@ -443,7 +442,6 @@
 
       //중복확인 했는지 확인하기
       $(".memJoin").click(function(){
-         alert("유효성검사")
          console.log($(".mCertification").val())
          if($(".emailCk").val()==undefined || $(".emailCk").val()===""){
             alert("이메일 중복확인을 해주세요");
@@ -454,7 +452,6 @@
             $(".dupliBtnMemberPw").focus();
             return false
          };
-         // qqq
          let check=new Array(4).fill(false);
          //일반회원 가입 전 유효성검사 확인
          if(memIdck.test($("#mem_email").val())){
@@ -670,8 +667,6 @@
             $(".e_result9").html("")
          }
       });
-      // qqq
-      //ent_name,ent_crn
       //담당자 이름 정규표현식
       var ko=/^[가-힣]{2,17}$/; 
       var num=/^[0-9]+$/; 

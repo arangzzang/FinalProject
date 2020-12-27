@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.project.jobnom.Hire.model.vo.Recruitment;
 import com.project.jobnom.Hire.model.vo.Review;
+import com.project.jobnom.member.model.vo.Member;
 
 public interface HireService {
 
@@ -22,7 +23,8 @@ public interface HireService {
 	
 	Review selectReviewList(String ent_no);
 	
-
+	//리뷰화면전환
+	Member selectMember(int memNo);
 
 
 }

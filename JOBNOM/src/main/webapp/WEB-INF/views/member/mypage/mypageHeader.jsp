@@ -74,17 +74,17 @@
 	        });
 	    });
 	    //활동내역 activity
-// 	    $(".activityBtn").click(e=>{
-// 	        $.ajax({
-// 	            url:"${path}/member/리뷰주소넣어야함.",
-// 	            type:"get",
-// 	            data:{memNo:<c:out value='${mem.memNo}'/>},
-// 	            success:data=>{
-// 	            	$(".with-parent").html("");
-// 	                $(".a").html(data);
-// 	            }
-// 	        });
-// 	    });
+	    $(".activityBtn").click(e=>{
+	        $.ajax({
+	            url:"${path}/Hire/insertReview.do",
+	            type:"get",
+	            data:{memNo:<c:out value='${mem.memNo}'/>},
+	            success:data=>{
+	            	$(".with-parent").html("");
+	            	$(".with-parent").html(data);
+	            }
+	        });
+	    });
 	    //관심정보 interestInfo
 	    $(".interestInfoBtn").click(e=>{
 	        $.ajax({

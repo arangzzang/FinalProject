@@ -1,6 +1,7 @@
 package com.project.jobnom.member.model.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.project.jobnom.member.model.vo.MemCategory;
 import com.project.jobnom.member.model.vo.MemCategory2;
@@ -17,5 +18,9 @@ public interface MemberService {
 	//마이페이지
 	Member mypageView(int memNo);
 	//email변경
-	int changeMemEmail(String memEmail);
+	int changeMemEmail(Map<String,Object> mem);
+	//비밀번호 확인
+	Member selectPw(Map data);
+	//비밀번호 변경
+	int updatePw(Map mem);
 }

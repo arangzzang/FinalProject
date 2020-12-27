@@ -1,6 +1,7 @@
 package com.project.jobnom.member.model.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,8 +33,8 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public int changeMemEmail(String memEmail) {
-		return dao.changeMemEmail(memEmail,session);
+	public int changeMemEmail(Map<String,Object> mem) {
+		return dao.changeMemEmail(mem,session);
 	}
 
 	@Override
@@ -45,10 +46,18 @@ public class MemberServiceImpl implements MemberService {
 	public List<MemCategory2> selectCategoryList2(int cateNo) {
 		return dao.selectCategoryList2(cateNo, session);
 	}
-//	@Override
-//	public List<MemCategory2> selectCategoryList2(int cateNo) {
-//		return dao.selectCategoryList2(cateNo,session);
-//	}
+
+	@Override
+	public Member selectPw(Map data) {
+		return dao.selectPw(data,session);
+	}
+
+	@Override
+	public int updatePw(Map mem) {
+		return dao.updatePw(mem,session);
+	}
+	
+	
 	
 
 }

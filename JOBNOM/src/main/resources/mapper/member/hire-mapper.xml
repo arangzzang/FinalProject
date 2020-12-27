@@ -19,6 +19,15 @@
 		<result column="RE_TYPE" property="rec_type"/>
 	
 	</resultMap>  -->
+	<resultMap type="mem" id="memMap">
+		<result column="mem_no" property="memNo"/>
+		<result column="mem_email" property="memEmail"/>
+		<result column="mem_pw" property="memPw"/>
+		<result column="mem_manager_yn" property="memManagerYn"/>
+		<result column="mem_check" property="memCheck"/>
+		<result column="mem_membership" property="memMembership"/>
+		<result column="cate_no2" property="mCateNo2"/>
+	</resultMap>
 	
 
 	<insert id="insertReview" parameterType="map">
@@ -65,6 +74,10 @@
         JOIN RECRUITMENT R ON (E.ENT_NO = R.ENT_NO)
         JOIN ENTERPRISE S  ON (E.ENT_NO = S.ENT_NO)
 		WHERE E.ENT_NO=#{ent_no} 
+	</select>
+	<!-- 리뷰화면전환용 -->
+	<select id="selectMember" parameterType="_int" resultType="mem">
+		select * from member where mem_no=#{memNo}
 	</select>
 	
 </mapper>

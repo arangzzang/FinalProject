@@ -46,11 +46,20 @@
 		select * from member where mem_no=#{memNo}
 	</select>
 	<!-- email변경 -->
-	<update id="changeEmail" parameterType="string">
-		update member set mem_email = #{memEmail} where mem_email = #{memEmail}
-	</update>	
+	<update id="changeEmail" parameterType="map">
+		update member set mem_email = #{memEmail} where mem_no = #{memNo}
+	</update>
+	<!-- 비밀번호 확인 -->
+	<select id="selectPw" parameterType="map" resultMap="memMap">
+		select * from member where mem_email = #{memEmail}
+	</select>	
+	<!-- 비밀번호 변경 -->
+	<update id="updatePw" parameterType="map">
+		update member set mem_pw=#{password1} where mem_no=#{memNo}
+	</update>
 	
 </mapper>
+
 
 
 

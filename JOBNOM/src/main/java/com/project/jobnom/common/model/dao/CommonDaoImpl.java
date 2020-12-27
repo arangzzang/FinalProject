@@ -20,6 +20,12 @@ public class CommonDaoImpl implements CommonDao {
 	public List<Login> checkDuplicateEmail(SqlSession session, String memEmail) {
 		return session.selectList("common.checkDuplicateEmail", memEmail);
 	}
+
+	@Override
+	public int userSecession(SqlSession session, int memNo) {
+		return session.delete("common.userSecession",memNo);
+	}
+	
 	
 
 }

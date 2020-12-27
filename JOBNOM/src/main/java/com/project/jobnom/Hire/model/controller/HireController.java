@@ -1,5 +1,6 @@
 package com.project.jobnom.Hire.model.controller;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.project.jobnom.Hire.model.service.HireService;
 import com.project.jobnom.Hire.model.vo.Recruitment;
 import com.project.jobnom.common.pagebar.PageBarFactory;
+import com.project.jobnom.member.model.vo.Member;
 import com.project.jobnom.Hire.model.vo.Review;
 
 
@@ -83,8 +85,10 @@ public class HireController {
 	}
 
 	@RequestMapping("/Hire/insertReview.do")
-	public String insertReview() {
+	public String insertReview(int memNo, Model m)  throws IOException {
 
+		Member mem = service.selectMember(memNo);
+		m.addAttribute("mem",mem);
 		return "Hire/insertReview";
 	}
 
