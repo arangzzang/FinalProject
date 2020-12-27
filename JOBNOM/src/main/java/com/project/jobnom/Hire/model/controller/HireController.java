@@ -119,9 +119,10 @@ public class HireController {
 
 	@RequestMapping("/Hire/insertReview.do")
 	public String insertReview(int memNo, Model m)  throws IOException {
-
-		Member mem = service.selectMember(memNo);
-		m.addAttribute("mem",mem);
+		/*
+		 * System.out.println("전환"+memNo); Member mem = service.selectMember(memNo);
+		 * System.out.println(mem); m.addAttribute("mem",mem);
+		 */
 		return "Hire/insertReview";
 	}
 

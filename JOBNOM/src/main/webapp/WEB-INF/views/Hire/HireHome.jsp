@@ -30,19 +30,19 @@
         </div>
         <div>
             <div class="announcementPage">
-                <a class="menus" href="${path }/Hire/HireAnnouncement.do" class="announcementPage1">공고페이지</a>
+                <a class="menus" href="${path }/Hire/HireAnnouncement.do?" class="announcementPage1">공고페이지</a>
             </div>
         </div>
     </div>
-    <a class="menus" href="${path }/Hire/insertReview.do" class="">리뷰</a>
+    <a class="menus" href="${path }/Hire/insertReview.do?memNo=${commonLogin.memNo}" class="">리뷰</a>
    
 
 
    
-    <div class="intuAll">
+    <div class="intuAll"> 
         <div  class="intu">
             <div class="profil" ></div>
-            <div class="nameAll">
+            <div class="nameAll"> 
                 <div class="name">
                 <c:if test="${commonLogin != null}">
                     <div>이름 : ${m[0].RES_NAME }</div>

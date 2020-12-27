@@ -14,7 +14,7 @@ body{
  /* 세션 고정값 */
  section{
      
-     width: 80%;
+     width: 100%;
      margin: 0 auto;
      min-height: 100%;
      box-sizing: border-box;

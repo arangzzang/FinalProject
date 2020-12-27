@@ -1063,7 +1063,7 @@
         
              </script> 
              	<script>
-
+ 
               $(document).ready(function () {
 
              $(".clickReviewTotalBoxs").click(function () {
