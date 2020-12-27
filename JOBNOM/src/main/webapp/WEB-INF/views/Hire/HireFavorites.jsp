@@ -44,17 +44,17 @@
  <div class="a">
         <div>
             <div class="hireHome">
-                <a href="${path }/Hire/HireHome.do" class="hireHome1">Home</a>
+						<a class="menus" href="${path }/Hire/HireHome.do?memNo=${commonLogin.memNo}">HOME</a>
             </div>
         </div>
         <div>
             <div class="myHire">
-                <a href="${path }/Hire/HireMyHire.do" class="myHire1">My채용</a>
+                <a class="menus" href="${path }/Hire/HireMyHire.do?memNo=${commonLogin.memNo}" class="myHire1">My채용</a>
             </div>
         </div>
         <div>
             <div class="announcementPage">
-                <a href="${path }/Hire/HireAnnouncement.do" class="announcementPage1">공고페이지</a>
+                <a class="menus" href="${path }/Hire/HireAnnouncement.do" class="announcementPage1">공고페이지</a>
             </div>
         </div>
     </div>
@@ -64,22 +64,45 @@
         <div class="myHireListAllLeft">
             <div class="myHireList">
                 <div class="myHireListTag">
-                    <a href="${path }/Hire/HireMyHire.do"><div class="myHyreSupport">입사지원 공고
-                    </div></a>
-                    <div class="count">갯수</div><br><br>
+                    <a class="menus" href="${path }/Hire/HireMyHire.do?memNo=${commonLogin.memNo}" class="myHire1">입사지원 공고
+                    </a>
+                   <c:if test="${commonLogin != null }">
+						<div class="count">${totalDataSu }개</div>
+						<br>
+						<br>
+					</c:if>
+					<c:if test="${commonLogin == null }">
+						<div class="count">0개</div>
+					</c:if>
                 </div>
                 <div class="myHireListTag2">
-                    <a href="#"><div class="myHireSave">즐겨찾기 채용  
-                    </div></a><div class="count">갯수</div>
+                    <a class="menus" href="${path }/Hire/HireFavorites.do?memNo=${commonLogin.memNo}" class="myHire1">즐겨찾기 채용  
+                    </a>
+                   <c:if test="${commonLogin != null }">
+					<div class="count">${totalDataIn }개</div>
+					</c:if>
+					<c:if test="${commonLogin == null }">
+						<div class="count">0개</div>
+					</c:if>
                 </div>
             </div>
         </div>
+        
         <div class="myFavoritesView" style="font-size: 30px;"> 즐겨찾기 채용
-            <div class="myFavoritesViewInfo">0 개의저장된 채용이 있습니다.  </div>
+       <div>
+        <c:if test="${commonLogin != null }">
+            <div class="myFavoritesViewInfo">총 ${totalDataIn }개의저장된 채용이 있습니다.  </div>
+          </c:if>  
+            <c:if test="${commonLogin == null }">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#login">
+							회원가입/로그인
+				</button>
+				</c:if>
+            <c:forEach items="${i }" var="i">
             <div class="myFavoritesList">
                 <div class="logoImage"></div>
                 <div class="myFavoritesListAll">
-                    <div>카카오 모빌리언스</div>
+                    <div><c:out value="${i.rec_title }"></c:out></div>
                     <div>(주) 카카오</div>
                     <div class="myFavoritesDetail">
                         <div class="myFavoritesDetail1">평점</div>
@@ -87,14 +110,17 @@
                         <div class="myFavoritesDetai3">면접후기</div>
 
                     </div>
+                   
                 </div>
+             
 
             </div>
-            
+               </c:forEach>
+          <div id="pageBar">${pageBar }</div>
         </div>
         
            
-            
+            </div>
             
     </div>
 

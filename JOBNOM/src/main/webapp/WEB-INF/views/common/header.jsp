@@ -39,11 +39,14 @@
 	            aria-label="Toggle navigation">
 	               <span class="navbar-toggler-icon"></span>
 	            </button>
+	      
 	            <div class="collapse navbar-collapse" id="navbarNav">
 					<input type="hidden" value="${commonLogin.type}" class="memType">
 					<ul class="navbar-nav mr-auto mem_nav">
 						<li class="nav-item">
-							<a class="menus" href="${path }/Hire/HireHome.do">채용</a>
+							<a class="menus" href="${path }/Hire/HireHome.do?memNo=${commonLogin.memNo}">채용
+							
+							</a>
 						</li>
 						<li class="nav-item">
 							<a class="menus" href="${path }/enterprise/companyList.do">기업</a>
@@ -63,59 +66,43 @@
 						</ul>
 					</c:if>
 					<c:if test="${commonLogin !=null && commonLogin.type == 1 }" >
-							<ul class="navbar-nav mr-auto admin_nav">
-							<li class="nav-item">
-								<a class="menus" href="">관리자메뉴</a>
-							</li>
-							<li class="nav-item">
-								<a class="menus" href="">회원조회</a>
-							</li>
-							<li class="nav-item">
-								<a class="menus" href="${path }/enterprice/companyList.do">기업</a>
-							</li>
-						</ul>
-					</c:if>
-					<c:if test="${commonLogin == null}">
-						<!-- 모달 버튼 -->
-					<button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#login">
-								회원가입/로그인
-					</button>
-					</c:if>
-					<c:if test="${commonLogin != null && commonLogin.type == 3 }">
-						<span><a href="${path }/member/myPage?memNo=${commonLogin.memNo}"><i class="fas fa-user-tie"></i></a></span>
-						&nbsp;
-						<button class="btn btn-outline-success my-4 my-sm-0" type="button" onclick="location.replace('${path}/common/logout');">로그아웃</button>
-					</c:if>
-					<c:if test="${commonLogin !=null && commonLogin.type == 2 }">
-						<span><a href="${path }/com/mypage.do?ent_no=${commonLogin.memNo}"><i class="far fa-building"></i></a></span>
-						&nbsp;
-						<button class="btn btn-outline-success my-4 my-sm-0" type="button" onclick="location.replace('${path}/common/logout');">로그아웃</button>
-					</c:if>
-					<c:if test="${commonLogin !=null && commonLogin.type == 1 }">
-						<span><a href="${path }/enterprice/myPage?ent_no=${commonLogin.memNo}"><i class="far fa-building"></i></a></span>
-						&nbsp;
-						<button class="btn btn-outline-success my-4 my-sm-0" type="button" onclick="location.replace('${path}/common/logout');">로그아웃</button>
-					</c:if>
+						<ul class="navbar-nav mr-auto admin_nav">
+						<li class="nav-item">
+							<a class="menus" href="">관리자메뉴</a>
+						</li>
+						<li class="nav-item">
+							<a class="menus" href="">회원조회</a>
+						</li>
+						<li class="nav-item">
+							<a class="menus" href="">기업 알아보기</a>
+						</li>
+					</ul>
+				</c:if>
+				<c:if test="${commonLogin == null}">
+					<!-- 모달 버튼 -->
+				<button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#login">
+							회원가입/로그인
+				</button>
+               
+               
+				</c:if>
+				<c:if test="${commonLogin != null && commonLogin.type == 3 }">
+					<span><a href="${path }/member/myPage?memNo=${commonLogin.memNo}"><i class="fas fa-user-tie"></i></a></span>
+					&nbsp;
+					<button class="btn btn-outline-success my-4 my-sm-0" type="button" onclick="location.replace('${path}/common/logout');">로그아웃</button>
+				</c:if>
+				<c:if test="${commonLogin !=null && commonLogin.type == 2 }">
+					<span><a href="${path }/com/mypage.do"><i class="far fa-building"></i></a></span>
+					&nbsp;
+					<button class="btn btn-outline-success my-4 my-sm-0" type="button" onclick="location.replace('${path}/common/logout');">로그아웃</button>
+				</c:if>
+				<c:if test="${commonLogin !=null && commonLogin.type == 1 }">
+					<span><a href="${path }/com/mypage.do"><i class="far fa-building"></i></a></span>
+					&nbsp;
+					<button class="btn btn-outline-success my-4 my-sm-0" type="button" onclick="location.replace('${path}/common/logout');">로그아웃</button>
+				</c:if>
 				</div>
 	       	</nav>
-			<!-- 검색창 시작 -->
-			<div class="searchbar_section" id="searchbar_section">
-				<div class="wrap">
-					<form action="${path }/search/searchResult.do" id="search_form" method="post">
-					    <div class="schbar_green" >
-					        <div class="schbar">
-					            <i class="fas fa-search"></i>
-					            <label class="placeholder">
-					                <span class="placeholder_txt"></span>
-					                <input autocomplete=”off” type="text" class="input_search" id="search_bar_search_query" maxlength="201" name="query" placeholder="기업,채용공고를 검색해 보세요">
-					            </label>
-					            <button class="btn_schbar">검색</button>
-					        </div>
-					    </div>
-					</form>
-			   	</div>
-			</div>
-		<!-- 검색창 끝 -->
 		</div>
           	<!-- 모달 창 -->
           	<div class="modal fade" id="login" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -146,7 +133,7 @@
                               	<div class="modal-footer">
 									<div class="row">
 										<div class="col-6 text-center" >
-											<input type="submit" class="btn btn-outline-success my-4 my-sm-0" value="로그인">
+											<input type="submit" class="btn btn-outline-success my-4 my-sm-0" value="로그인"></button>
 										</div>
 										<div class="col-6 text-center" >
 											<button type="button" class="btn btn-outline-success my-4 my-sm-0" onclick="location.href='${path}/member/enrollMember'">회원가입</button>
@@ -197,27 +184,27 @@
 			//비밀번호 8자리 이상
             //숫자,영대문자,영소문자,특수문자 포함
             //공백X 같은문자 4번 반복X 아이디 X 한글 X
-			// if(pwval==""){
-            //     alert("비밀번호를 입력해주세요")
-            //     return false;
-            // }else if(!repw.test(pwval)){
-            //     alert('비밀번호는 8자 이상이어야 하며, 숫자/대문자/소문자/특수문자를 모두 포함해야 합니다.');
-            //     return false;
-            // }else if(/(\w)\1\1\1/.test(pwval)){
-            //     alert('같은 문자를 4번 이상 사용하실 수 없습니다.');
-            //     return false;
-            // }else if(pwval.search(emailId) > -1){
-            //     alert("비밀번호에 아이디가 포함되었습니다.");
-            //     return false;
-            // }else if(pwval.search(/\s/) != -1){
-            //     alert("비밀번호는 공백 없이 입력해주세요.");
-			// 	$.trim(pwval)
-            //     return false;
-            // }else if(hangulcheck.test(pwval)){
-            //     alert("비밀번호에 한글을 사용 할 수 없습니다."); 
-            // }else {
-            //     console.log("통과");
-            // };
+// 			if(pwval==""){
+//                 alert("비밀번호를 입력해주세요")
+//                 return false;
+//             }else if(!repw.test(pwval)){
+//                 alert('비밀번호는 8자 이상이어야 하며, 숫자/대문자/소문자/특수문자를 모두 포함해야 합니다.');
+//                 return false;
+//             }else if(/(\w)\1\1\1/.test(pwval)){
+//                 alert('같은 문자를 4번 이상 사용하실 수 없습니다.');
+//                 return false;
+//             }else if(pwval.search(emailId) > -1){
+//                 alert("비밀번호에 아이디가 포함되었습니다.");
+//                 return false;
+//             }else if(pwval.search(/\s/) != -1){
+//                 alert("비밀번호는 공백 없이 입력해주세요.");
+// 				$.trim(pwval)
+//                 return false;
+//             }else if(hangulcheck.test(pwval)){
+//                 alert("비밀번호에 한글을 사용 할 수 없습니다."); 
+//             }else {
+//                 console.log("통과");
+//             };
 		};
 		
 		

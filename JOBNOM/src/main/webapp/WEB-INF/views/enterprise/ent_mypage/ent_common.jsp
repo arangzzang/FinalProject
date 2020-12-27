@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
@@ -21,11 +24,13 @@
 				<a class="nav-link" href="${path }/jobnom/com/mypage.do">나의공고</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="#">멤버십</a>
+				<a class="nav-link" href="${path }/jobnom/com/membership.do">멤버십</a>
 			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="#">배너</a>
-			</li>
+			<c:if test="${Enterprise.entMembership eq '유료회원' }">
+				<li class="nav-item">
+					<a class="nav-link" href="${path }/jobnom/com/entBanner.do">배너</a>
+				</li> 				
+ 			</c:if>	
 		</ul>
 	
 	</nav>

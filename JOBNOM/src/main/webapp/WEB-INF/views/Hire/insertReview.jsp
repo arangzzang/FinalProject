@@ -54,7 +54,8 @@
                                         	입력하신 모든 정보는 익명으로 처리되니 걱정마세요.</div>
                                         <div class="popmenuEnterprise">
                                             <div>기업명</div>
-                                            <input class="popmenuEnterpriseName" id="reviewName" name="review_name" type="text" placeholder="기업명">
+                                            <input class="popmenuEnterpriseName" id="reviewName" name="review_name" type="text" placeholder="기업명" list="locationData">
+                                        	<datalist id="locationData"></datalist>
                                         </div>
                                         <div class="popmenuTital">
                                             <div>제목</div>
@@ -64,6 +65,7 @@
                                             <div>내용</div>
                                             <textarea class="popmenuContentsName"   name="review_contents" cols="47" rows="5" placeholder="내용" style="resize: none;"></textarea>
                                         </div>
+
                                         <div class="companyGradebox"> 
                                             <div class="companyStar-box">
                                                 <div class="companyTitle">사내만족도 평점</div>
@@ -158,41 +160,7 @@
                 </div>
             </div>
 
-
-
- <script>
-        // Disable form submissions if there are invalid fields
-        (function() {
-          'use strict';
-          window.addEventListener('load', function() {
-            // Get the forms we want to add validation styles to
-            var forms = document.getElementsByClassName('needs-validation');
-            // Loop over them and prevent submission
-            var validation = Array.prototype.filter.call(forms, function(form) {
-              form.addEventListener('submit', function(event) {
-                if (form.checkValidity() === false) {
-                  event.preventDefault();
-                  event.stopPropagation();
-                }
-                form.classList.add('was-validated');
-              }, false);
-            });
-          }, false);
-        })();
-        
-           
-        $(function(){
-            $(".job1").change(e=>{
-                console.log($(e.target).val())
-            })
-        })
-        $(".form-control").removeAttr("display");
-        </script>
-        
-        
-        
-
-
+    
         <!-- 이건 리뷰 작성하기 누르면 팝업 뜨게 하는거 -->
    
    
@@ -219,6 +187,8 @@
             $(document).ready(function(){
                 $(".reviewBtnInsert").click(function(){
                 $("#popup").fadeIn();
+                
+                
                 });
                 $(".popmenuInsertClose").click(function(){
                 $("#popup").fadeOut();
@@ -352,4 +322,29 @@
 		}
 	
 	</script>
-        
+
+
+	<<script>
+	
+	$("#reviewName").keyup(e=>{
+		$.ajax({
+            url: "${path}/Hire/reviewSearch.do",
+            data:{"key":$(e.target).val()},
+            success:data => {
+                let keys=data.split(",");
+          
+               
+                console.log(keys);
+            
+
+				
+                $("#locationData").html("");
+                for(let i=0;i<keys.length;i++){
+                	$("#locationData").append($("<option>").html(keys[i]));
+                	
+                }
+            }
+            
+        });
+	});
+</script>        

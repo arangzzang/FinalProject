@@ -1,5 +1,7 @@
 package com.project.jobnom.member.model.vo;
 
+import java.util.Date;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,4 +19,7 @@ public class Member {
 	private String memMembership;	//맴버십가입유무
 	private int type;				// 관리자,기업,회원 구분 일반회원:3
 	private int mCateNo2;			//2차직업군FK
+	private String rec_title;
+	private String res_name;
+	private Date rec_enddate;
 }
