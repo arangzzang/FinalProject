@@ -103,21 +103,45 @@
 		<!-- 검색창 시작 -->
 		<div class="searchbar_section" id="searchbar_section">
 			<div class="wrap">
-				<form action="${path }/search/searchResult.do" id="search_form" method="post">
+				<form id="search_form" action="${path }/searchResult.do" method="POST" onsubmit="return true;">
 				    <div class="schbar_green" >
 				        <div class="schbar">
 				            <i class="fas fa-search"></i>
 				            <label class="placeholder">
 				                <span class="placeholder_txt"></span>
-				                <input autocomplete=”off” type="text" class="input_search" id="search_bar_search_query" maxlength="201" name="query" placeholder="기업,채용공고를 검색해 보세요">
+				                <input autocomplete=”off” type="text" class="input_search" id="search_bar_search_query" maxlength="201" name="keyword" placeholder="기업,채용공고를 검색해 보세요">
 				            </label>
-				            <button class="btn_schbar">검색</button>
+				            <button class="btn_schbar" id="btn">검색</button>
 				        </div>
 				    </div>
 				</form>
 	    	</div>
 		</div>
 		<!-- 검색창 끝 -->
+		<!--OPEN API  -->
+		<script>
+		/* $(document).ready(function () {
+				$('#btn').click(function() {
+					
+					$.ajax({
+						url :'${path }/api',
+						type : 'get',
+						data : {"wkpl_nm" : wkpl_nm},
+						dataType : 'json',
+						success: function(data) {
+							
+							
+						},
+						
+							error: function(XMLHttpRequest, textstatus, errorThrown) {
+								alert("Status" + textstatus); alert("Error" + errorThrown );
+							}
+						
+					});
+					
+				});
+			}); */
+		</script>
 		</div>
           	<!-- 모달 창 -->
           	<div class="modal fade" id="login" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
