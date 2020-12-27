@@ -11,89 +11,111 @@
 	<jsp:param name="title" value=" "/>
 </jsp:include>
 <section id="content">
-    <div class="memberinfo-parent ">
-        <div class="jumbotron row memberinfo" id="memberinfo">
-            <div class="col-md-3 col-offset-3">
-                <img src="" alt="">
-            </div>
-            <div class="col-md-6">
-                <p>조현</p>
-                <p>취준생</p>
-                <p>IT취업하고싶다</p>
-            </div>
-        </div>
-    </div>
-    <div class="MPheadmenu-parent">
-        <nav class="navbar navbar-expand-sm  navbar-light MPheadmenu">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                <ul class="navbar-nav headbar">
-                    <li class="nav-item sidebarmenubar">
-                        <button type="button" class="navbtn">계정</button>
-                    </li>
-                    <li class="nav-item sidebarmenubar">
-                        <button type="button" class="navbtn">이력서</button>
-                    </li>
-                    <li class="nav-item sidebarmenubar">
-                        <button type="button" class="navbtn">활동내역</button>
-                    </li>
-                    <li class="nav-item sidebarmenubar">
-                        <button type="button" class="navbtn">관심정보</button>
-                    </li>
-                    <li class="nav-item sidebarmenubar">
-                        <button type="button" class="navbtn">멤버십</button>
-                    </li>    
-                </ul>
-            </div>  
-        </nav>
-    </div>
+    <jsp:include page="/WEB-INF/views/member/mypage/mypageHeader.jsp">
+        <jsp:param name="mypageHeader" value=" "/>
+    </jsp:include>
     <div class="with-parent">
         <div class="with">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="container row withcon">
-                <div class="col-md-3 col-sm-3 withleft">
-                    <ul class="nav nav-pills flex-column sidebar" id="sidebar">
-                        <h3 class="sidebar-title">계정</h3>
-                        <li class="nav-item sidebarmenubar">
-                            <button type="button" class="sidebtn">계정설정</button>
-                        </li>
-                        <li class="nav-item sidebarmenubar">
-                            <button type="button" class="sidebtn">비밀번호변경</button>
-                        </li>
-                        <li class="nav-item sidebarmenubar">
-                            <button type="button" class="sidebtn">알림</button>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-md-8 col-sm-8 maincon withright" id="maincon">
-                    <div class="maininfo-parent">
-                        <form action="/action_page.php" class="needs-validation" novalidate>
-                            <div class="maininfo">
-                                <h1 class="maintitle">계정설정</h1>
-                                <div>
-                                    <h3>회원 이메일</h2>
-                                    <p>기존 이메일 주소</p>
-                                    <div class="form-gruop">
-                                        <label for="uname">변경할 이메일 주소</label>
-                                        <input type="password" class="form-control" id="uname" placeholder="비밀번호를 입력해주세요." name="uname" required>
-                                        <div class="valid-feedback">비밀번호 입력완료.</div>
-                                        <div class="invalid-feedback">비밀번호를 입력해주세요.</div>
+            <div class="a">
+                <div class="container row withcon">
+                    <div class="col-md-3 col-sm-3 withleft">
+                        <ul class="nav nav-pills flex-column sidebar" id="sidebar">
+                            <h3 class="sidebar-title">계정</h3>
+                            <li class="nav-item sidebarmenubar">
+                                <button type="button" class="sidebtn accountSettingBtn">계정설정</button>
+                            </li>
+                            <li class="nav-item sidebarmenubar">
+                                <button type="button" class="sidebtn passBtn">비밀번호변경</button>
+                            </li>
+                            <li class="nav-item sidebarmenubar">
+                                <button type="button" class="sidebtn alram">알림</button>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-8 col-sm-8 maincon withright" id="maincon">
+                        <div class="maininfo-parent">
+                            <form action="${path}/member/changeEmail" onsubmit="return mem_changeEmail();" class="needs-validation" novalidate>
+                                <div class="maininfo">
+                                    <h1 class="maintitle">계정설정</h1>
+                                    <div>
+                                        <h3>회원 이메일</h2>
+                                        <p>${mem.memEmail}</p>
+                                        <div class="form-gruop">
+                                            <label for="uname">변경할 이메일 주소</label>
+                                            <input type="email" class="form-control changeEmail" id="uname" placeholder="변경하실 이메일을 작성해주세요." name="memName" required>
+                                        </div>
+                                    </div>
+                                    <div class="text-center enrollBtn">
+                                        <input type="submit" class="btn btn-primary changeEmailBtn" value="이메일 변경">
                                     </div>
                                 </div>
-                                <div class="text-center enrollBtn">
-                                <button type="submit" class="btn btn-primary">Submit</button>
-                                </div>
-                            </div>
-                        </form>
-                        더 이상 job.nom을 이용하지 않는다면 <a href="">회원탈퇴</a>
+                            </form>
+                            더 이상 job.nom을 이용하지 않는다면 <a href="">회원탈퇴</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+<script>
+    //email변경 이건 원래있던거야
+    function mem_changeEmail(){
+    let re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        let changeMail = document.getElementById("uname").value;
+        if(changeMail!=""){
+            if(!re.test(changeMail)){
+            console.log(changeMail)
+                alert("이메일 형식이 아닙니다.")
+                return false;
+            }
+        }else {
+            alert("이메일을 작성해주세요");
+            return false;
+        };
+    }
+    //사이드바
+    //계정설정
+    $(".accountSettingBtn").click(e=>{
+        $.ajax({
+            url:"${path}/member/accountSettings",
+            data:{memNo:<c:out value='${mem.memNo}'/>},
+            type:"get",
+            async: false,
+            success:data=>{
+                $(".maininfo-parent").html(data);
+            }
+        });
+    });
+    //비밀번호 변경 페이지 전환
+    $(".passBtn").click(e=>{
+        $.ajax({
+            url:"${path}/member/updatePassword",
+            data:{memNo:<c:out value='${mem.memNo}'/>},
+            type:"get",
+            async: false,
+            success:data=>{
+                
+                $(".maininfo-parent").html(data);
+            }
+        });
+    });
+    //알람
+    $(".alram").click(e=>{
+        $.ajax({
+            url:"${path}/member/alram",
+            data:{memNo:<c:out value='${mem.memNo}'/>},
+            type:"get",
+            async: false,
+            success:data=>{
+                $(".maininfo-parent").html(data);
+            }
+        });
+    })
+
+</script>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>

@@ -1,0 +1,50 @@
+.tool{
+    text-align: center;
+}
+
+    .thank{
+        color: green;
+        font-size: 30px;
+    }
+    .info{
+        margin: 0 auto;
+        width: 800px;
+        height: 400px;
+    }
+}
+.hireHome{
+    padding-left:20px ;
+ 
+}
+.myHire{
+    padding-left:20px ;
+    
+
+}
+.announcementPage{
+  
+    padding-left:20px ;
+}
+.a{
+	  margin-top: 30px;
+    display: flex;
+    font-weight: bolder;
+    font-size: 20px;
+    border-bottom: 1px gray;
+}
+/* 세션 */
+ section{
+    
+    width: 80%;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    margin: 0 auto;
+    height: 1000px;
+    min-height: 100%;
+
+  }
+  body{
+    width: 100%;
+
+  }

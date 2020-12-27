@@ -19,21 +19,22 @@
     <div class="a">
         <div>
             <div class="hireHome">
-                <a href="${path }/Hire/HireHome.do" class="hireHome1">Home</a>
+				<a class="menus" href="${path }/Hire/HireHome.do?memNo=${commonLogin.memNo}">HOME</a>
+
             </div>
         </div>
         <div>
             <div class="myHire">
-                <a href="${path }/Hire/HireMyHire.do" class="myHire1">My채용</a>
+                <a class="menus" href="${path }/Hire/HireMyHire.do?memNo=${commonLogin.memNo}" class="myHire1">My채용</a>
             </div>
         </div>
         <div>
             <div class="announcementPage">
-                <a href="${path }/Hire/HireAnnouncement.do" class="announcementPage1">공고페이지</a>
+                <a class="menus" href="${path }/Hire/HireAnnouncement.do" class="announcementPage1">공고페이지</a>
             </div>
         </div>
     </div>
-    <a href="${path }/Hire/insertReview.do" class="">리뷰</a>
+    <a class="menus" href="${path }/Hire/insertReview.do" class="">리뷰</a>
    
 
 
@@ -43,15 +44,21 @@
             <div class="profil" ></div>
             <div class="nameAll">
                 <div class="name">
-                    <div>이름을 입력하세요</div>
-                    <div class="lv">Lv.7</div>
+                <c:if test="${commonLogin != null}">
+                    <div>이름 : ${m[0].RES_NAME }</div>
+                    <div class="lv">회원 등급 : ${m[0].MEM_MEMBERSHIP }</div>
+                	<div>현재 상태 : ${m[0].MEM_CHECK }</div>
+               </c:if>
+               <c:if test="${commonLogin == null}">
+                    <div>지금 회원 가입 해보세요</div>
+                    <div class="lv">회원가입후 원하는 회사에 지원해 보세요</div>
+                	<div>"JOBNOM"은 여러분의 성공을 기원합니단</div>
+               </c:if>
                 </div>
-                <div>경영지원,경럭</div>
-              
             </div>
         </div>
     </div> 
-<div class="recommendation">회원 기준 추천 공고 List</div>
+<div class="recommendation">지금 뜨는 공고 List</div>
 <p><c:out value="${totalData}"/>총 건의 게시물이 있습니다.</p>
     <div class="categoryAnnouncementAll">
         <div class="categoryAnnouncement">
@@ -63,29 +70,53 @@
 
             <div class="announcementList">
                 <div class="announcementList1">
+	               
+	                	
 	                <div class="announcementListSize">
-	            		<c:forEach items="${Recruitment }" var="d">
+	            		<c:forEach items="${re }" var="d">
 		                    <div class="announcementListFlax">
-		                        <div class="Mylogo"></div>
-		                        <div>1</div><a href="#">
-		                        <div class="TitleEndDate">
-		                        <div class="announcementTitleList"><c:out value="${d.rec_title }"/></div>
-								<div>- 마감 일자 : <fmt:formatDate  value="${d.rec_enddate }" pattern="yyyy.MM.dd" /></div>
+		                        <div class="Mylogo1">
+		                        
+		                        <c:choose>
+		                        	<c:when test="${empty d.REC_FILE1 }">
+		                				<img src="${path }/resources/image/Hire/job.png" style="width: 40px; height: 40px; border: solid;">
+		                        	</c:when>
+		                        	<c:otherwise>
+		                        		<img src="${path }/resources/image/Hire/${d.REC_FILE1}" style="width: 40px; height: 40px; border: solid;">
+		                        	</c:otherwise>
+		                        
+		                        </c:choose>
+		                       
+		            
+		                        
+		                       	
+												
+												
+								
+		                        
 		                        </div>
-		                        <!-- 날짜 표현식 변경 -->
+		                        
+		                        <a href="${path }/Hire/announcementPage2.do?anoNum=${d.REC_CATEGORY}">
+		                        <div class="TitleEndDate">
+		                        <div class="announcementTitleList"><c:out value="${d.REC_TITLE }"/></div>
+								<div>- 마감 일자 : <fmt:formatDate  value="${d.REC_ENDDATE }" pattern="yyyy.MM.dd" /></div>
+		                        </div>
+		                        
 		                        </a> 
 		                    </div>
-	                     </c:forEach>   
+	                     </c:forEach> 
+	                     
 	                </div>
                 <div id="pageBar">${pageBar }</div>
+                 
                 </div>
                
-               
-               
+                
+                
             </div>
-        </div>
+        </div> 
 
-    </div>
+    </div> 
     <div class="findingMe"> 나를 찾는 기업들이 여기에</div>
  <!-- Swiper -->
 <div class="bb" style="height: 300px;" >
@@ -227,7 +258,7 @@ var swiper = new Swiper('.swiper-container', {
     $(document).ready(function(){
      $(".swiper-slide").click(function(){
     $("#findingMeDetail").show();
-
+    $("section").css("height","1750");
     });
     });
      </script>
@@ -238,6 +269,7 @@ var swiper = new Swiper('.swiper-container', {
     $(document).ready(function(){
      $(".findingMeDetailCancel").click(function(){
     $("#findingMeDetail").hide();
+    $("section").css("height","1450");
  
     });
     });

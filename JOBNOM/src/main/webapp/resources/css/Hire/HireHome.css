@@ -17,7 +17,7 @@ a{
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     margin: 0 auto;
-    height: 1500px;
+    height: 1450px;
     min-height: 100%;
 
   }
@@ -229,8 +229,9 @@ a{
 /* 추천공고 리스트 설정 */
 .announcementListFlax{
 	width:760px;
-	height:60px;
-    padding: 10px;
+	height:50px;
+    padding-left: 10px;
+    padding-top: 20px;
     display: flex;
     font-size: 20px;
     margin-top:5px;
@@ -239,8 +240,8 @@ a{
 }
 .Mylogo{
     margin-right: 20px;
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     background-image: url("../../image/Hire/Kakao.png"); 
     background-size: cover ;
 }

@@ -12,7 +12,9 @@
 		<result column="ent_category2" property="entCategory2"/>
 		<result column="rep_name" property="repName"/>
 		<result column="rep_phone" property="repPhone"/>
+		<result column="type" property="type"/>
 		<result column="ent_site" property="entSite"/>
+		<result column="ent_membership" property="entMembership"/>
 	</resultMap>
 
 	<insert id="enrollEnter" parameterType="ent">
@@ -30,6 +32,56 @@
 									default,
 									${entSite}
 									)
+	</insert>
+		<insert id="insertApplyAd" parameterType="ad">
+			INSERT INTO RECRUITMENT VALUES (
+			seq_rec_no.nextval,
+			#{ent_no},
+			#{rec_title},
+			#{rec_contents},
+			#{rec_file1},
+			#{rec_file2},
+			#{rec_startdate},
+			#{rec_enddate},
+			#{rec_salary},
+			#{rec_info},
+			#{rec_prefer},
+			#{rec_welfare},
+			#{rec_qualification},
+			#{rec_people},
+			#{rec_career},
+			#{rec_order},
+			#{rec_type},
+			#{rec_other},
+			#{rec_category}
+			)
+	</insert>
+	<select id="findOneEnterprise" parameterType="int" resultMap="entMap">
+		SELECT * FROM ENTERPRISE WHERE ENT_NO=#{memNo}
+	</select>
+	
+	<update id="updateEnterprise" parameterType="ent">
+		UPDATE ENTERPRISE SET
+			ENT_PW=TRIM(#{entPw}),
+			ENT_LOGO=TRIM(#{entLogo}),
+			ENT_CATEGORY1=TRIM(#{entCategory1}),
+			ENT_CATEGORY2=TRIM(#{entCategory2}),
+			REP_NAME=TRIM(#{repName}),
+			REP_PHONE=TRIM(#{repPhone}),
+			ENT_SITE=TRIM(#{entSite})
+		WHERE ENT_NO=TRIM(#{entNo})
+	
+	</update>
+	<update id="entMembership" parameterType="int">
+		UPDATE ENTERPRISE SET
+			ENT_MEMBERSHIP='유료회원'
+			WHERE ENT_NO=#{memNo}
+	</update>
+	
+	<insert id="insertBanner" parameterType="ban">
+		INSERT INTO BANNER VALUES(
+			#{ent_no}, #{bann_title}, #{bann_path}, SYSDATE
+		)
 	</insert>
 
 </mapper>

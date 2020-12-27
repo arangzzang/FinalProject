@@ -16,7 +16,7 @@
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     margin: 0 auto;
-    height: 800px;
+    height: 1000px;
     min-height: 100%;
 
   }
@@ -140,6 +140,7 @@
 
 }
 
+
 .myHireList{
     padding: 20px;
     border:solid;
@@ -175,7 +176,7 @@
 .myHyreSupportView{
     margin-left: 30px;
     width: 80%;
-    height: 400px;
+    height: 650px;
     font-size: 30px;
     font: bold;
     padding: 10px;
@@ -219,23 +220,28 @@
     font-size: 16px;
     display: flex;
     border-bottom: solid rgb(176, 174, 174);
+        box-sizing: border-box;
     
     
 
 }
 .myHyreSupportList1{
-    padding-left: 50px;
+	width:200px;
     text-align: center;
     padding-top: 5px;
+    padding-left: 6px;
 }
 .myHyreSupportList2{
-    padding-left: 100px;
+
     text-align: center;
     padding-top: 5px;
+    width:500px;
+
 }
 
 .myHyreSupportList3{
-    padding-left: 130px;
     text-align: center;
+     width:200px;
+
 }
 

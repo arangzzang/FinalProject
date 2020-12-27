@@ -9,5 +9,7 @@
 		<typeAlias type="com.project.jobnom.welcome.model.vo.FAQ" alias="faq"/>
 		<typeAlias type="com.project.jobnom.Hire.model.vo.Recruitment" alias="recruitment"/>
 		<typeAlias type="com.project.jobnom.welcome.model.vo.Notice" alias="notice"/>
+		<typeAlias type="com.project.jobnom.enterprise.model.vo.ApplyAd" alias="ad"/>
+		<typeAlias type="com.project.jobnom.enterprise.model.vo.Banner" alias="ban"/>
 	</typeAliases>
 </configuration>
