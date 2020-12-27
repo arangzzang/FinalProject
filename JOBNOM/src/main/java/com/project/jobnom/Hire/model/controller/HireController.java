@@ -4,18 +4,16 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Properties;
 
-import javax.mail.Message;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -35,7 +33,8 @@ import com.project.jobnom.common.pagebar.PageBarFactory;
 @Controller
 @SessionAttributes("commonLogin")
 public class HireController {
-
+	
+	
 	@Autowired
 	private HireService service;
 
@@ -123,9 +122,7 @@ public class HireController {
 
 	@RequestMapping("/Hire/insertReview2.do")
 	public String insertReview2(HttpServletRequest request) throws Exception {
-
 		Map<String, Object> paramMap = new HashMap<String, Object>();
-
 		String review_name = request.getParameter("review_name");
 		paramMap.put("review_name", review_name);
 		String review_title = request.getParameter("review_title");
@@ -143,11 +140,9 @@ public class HireController {
 		String review_executive = request.getParameter("review_executive");
 		paramMap.put("review_executive", review_executive);
 		System.out.println(paramMap);
-
 		int result = service.insertReview(paramMap);
-
+		
 		return "Hire/insertReview";
-
 	}
 
 	@RequestMapping("/Hire/supportingCompany.do")
@@ -175,7 +170,7 @@ public class HireController {
 
 		mv.setViewName("Hire/anoDetail");
 		return mv;
-	}
+	} 
 
 	// 이건 리뷰클릭하면 나오는 에이작스
 	@RequestMapping("/Hire/reviewAVG.do")
@@ -220,7 +215,8 @@ public class HireController {
 //		return mv;
 //		
 //	}
-
+	@Autowired
+	protected JavaMailSender mailSender;
 	@RequestMapping("/Hire/apply.do")
 //	public ModelAndView memberApply(ModelAndView mv,  @RequestParam(value = "memNo") int memNo) {
 	public String memberApply(HttpServletRequest request, ModelMap mo, HttpSession session,Model model, int memNo, int recNo, String entName)
@@ -247,42 +243,85 @@ public class HireController {
 		
 		///////////////////////////////////////////////
 		
-		// 메일 관련 정보
-        String host = "smtp.naver.com";
-        final String username = "dlscjfry2010";       //네이버 이메일 주소중 @ naver.com앞주소만 기재합니다.
-        final String password = "Dsds2010##";   //네이버 이메일 비밀번호를 기재합니다.
-        int port=465;
-        
-        // 메일 내용
-        String recipient = "dlscjfry2010@naver.com";    //메일을 발송할 이메일 주소를 기재해 줍니다.
-        String subject = "JOBNOM";
-        String body = "해당공고로 지원이 완료 되었습니다";
-        
-        Properties props = System.getProperties();
-         
-         
-        props.put("mail.smtp.host", host);
-        props.put("mail.smtp.port", port);
-        props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.ssl.enable", "true");
-        props.put("mail.smtp.ssl.trust", host);
-          
-        Session session1 = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
-            String un=username;
-            String pw=password;
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(un, pw);
-            }
-        });
-        session1.setDebug(true); 
-        String mail = "JOBNOM";
-          
-        Message mimeMessage = new MimeMessage(session1);
-        mimeMessage.setFrom(new InternetAddress("dlscjfry2010@naver.com"));
-        mimeMessage.setRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
-        mimeMessage.setSubject(subject);
-        mimeMessage.setText(body);
-        Transport.send(mimeMessage); 
+//		// 메일 관련 정보
+//        String host = "smtp.naver.com";
+//        final String username = "dlscjfry2010";       //네이버 이메일 주소중 @ naver.com앞주소만 기재합니다.
+//        final String password = "Dsds2010##";   //네이버 이메일 비밀번호를 기재합니다.
+//        int port=465;
+//        
+//        // 메일 내용
+//        String recipient = "dlscjfry2010@naver.com";    //메일을 발송할 이메일 주소를 기재해 줍니다.
+//        String subject = "JOBNOM";
+//        String body = "해당공고로 지원이 완료 되었습니다";
+		/* String filename = "src/main/webapp/resources/image/Hire/Kakao.png"; */
+//        
+//        Properties props = System.getProperties();
+//         
+//         
+//        props.put("mail.smtp.host", host);
+//        props.put("mail.smtp.port", port);
+//        props.put("mail.smtp.auth", "true");
+//        props.put("mail.smtp.ssl.enable", "true");
+//        props.put("mail.smtp.ssl.trust", host);
+		/*
+		 * MimeMessage mimeMessage = mailSender.createMimeMessage(); MimeMessageHelper
+		 * messageHelper = new MimeMessageHelper(mimeMessage, true, "UTF-8");
+		 */
+//          
+//        Session session1 = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
+//            String un=username;
+//            String pw=password;
+//            protected PasswordAuthentication getPasswordAuthentication() {
+//                return new PasswordAuthentication(un, pw);
+//            }
+//        });
+//        session1.setDebug(true); 
+//        String mail = "JOBNOM";
+//          
+//        Message mimeMessage = new MimeMessage(session1);
+//        mimeMessage.setFrom(new InternetAddress("dlscjfry2010@naver.com"));
+//        mimeMessage.setRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
+//        mimeMessage.setSubject(subject);
+//        mimeMessage.setText(body);
+//        Transport.send(mimeMessage); 
+		
+		//////////////////////////////////////////
+		
+		
+		////////////////////////////////////
+		
+		
+		
+		    
+		    String setfrom = "dlscjfry2010@naver.com";         
+		    String tomail = "dlscjfry2010@naver.com";    // 받는 사람 이메일
+		    String title = "제목";      // 보내는 사람 이메일
+		    String content = "내용";  // 보내는 사람 이메일
+		    String filename = "resources/image/Hire/pngwing.png";                   // 파일 경로.
+		   System.out.println(tomail); 
+		    try {     
+		      MimeMessage message = mailSender.createMimeMessage();
+		      MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "UTF-8");
+		  
+		      messageHelper.setFrom(setfrom);   // 보내는사람 생략하거나 하면 정상작동을 안함
+		      messageHelper.setTo(tomail);      // 받는사람 이메일
+		      messageHelper.setSubject(title);  // 메일제목은 생략이 가능하다
+		      messageHelper.setText(content);   // 메일 내용
+		         
+		      // 파일첨부 
+		      FileSystemResource fsr = new FileSystemResource(filename);
+		      messageHelper.addAttachment("test2.txt",fsr); 
+		      System.out.println("????????===="+fsr);
+		        
+		      mailSender.send(message);
+		    } catch(Exception e){ 
+		      System.out.println("용녀용녀"+e);
+		    }
+		    
+		  
+		
+
+
 
 		return "Hire/support"; 
 	}

@@ -108,7 +108,7 @@ public class annoController {
 			String carNum1 = num;
 			System.out.println("경력2"+carNum1);
 			paramMap.put("carNum", carNum1);
-		}
+		} 
 		
 		
 		if(employType != null) {

@@ -10,8 +10,6 @@
 		<result column="mem_membership" property="memMembership"/>
 		<result column="mem_category1" property="memCategory1"/>
 		<result column="mem_category2" property="memCategory2"/>
-		
-		
 	</resultMap>
 	
 
@@ -68,7 +66,7 @@
 	
 	<select id="selectRecruitmentList" parameterType="map" resultType="java.util.HashMap">
 		         
-           SELECT  E.*, ENT_NAME,T.MEM_NO,OPEN_CHECK,HIRE_NO, REP_NAME, REP_PHONE,ENT_LOGO
+           SELECT DISTINCT E.*, ENT_NAME,T.MEM_NO,OPEN_CHECK,HIRE_NO, REP_NAME, REP_PHONE,ENT_LOGO
 			FROM RECRUITMENT E 
 			LEFT JOIN ENTERPRISE R ON (R.ENT_NO = E.ENT_NO)
            LEFT JOIN INTERESTEDRECRUITMENT T ON (T.REC_NO = E.REC_NO)
