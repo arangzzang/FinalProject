@@ -47,7 +47,7 @@ public class SearchController {
 		
 		int totalData = service.selectCount(); /* 이거페이지바 */
 		
-		mv.addObject("pageBar", PageBarFactory.getPageBar(totalData, cPage, numPerpage, "searchResultMore.do"));
+		mv.addObject("pageBar", PageBarFactory.getPageBar(totalData, cPage, numPerpage, "searchResultMore.do", null));
 		mv.addObject("totalData", totalData);
 		mv.addObject("list", list);
 		mv.setViewName("search/searchResultMoreList");

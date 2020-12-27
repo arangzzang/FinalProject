@@ -17,42 +17,15 @@
                 <div class="filterWrap">
                     <!-- 필터 시작 -->
                     <div class="col1Wrap">
-                        <label class="css_ty1 industry">
-                            <a class="btn_sel">
-                               	산업군
-                                <i class="fas fa-angle-down"></i>
-                            </a>
-                            <select name="parent_industry_id" id="industry_id">
-                                <option value>산업군</option>
-                                <option value="100">산업군1</option>
-                                <option value="200">산업군2</option>
-                                <option value="300">산업군3</option>
-                            </select>
-                        </label>
-                        <label class="css_ty1 industry_two">
-                            <a class="btn_sel">
-                                2차산업군
-                                <i class="fas fa-angle-down"></i>
-                            </a>
-                            <select name="parent_industry_id" id="industry_id">
-                                <option value>2차산업군</option>
-                                <option value="100">산업군1</option>
-                                <option value="200">산업군2</option>
-                                <option value="300">산업군3</option>
-                            </select>
-                        </label>
-                        <label class="css_ty1 area">
-                            <a class="btn_sel">
-                               	지역
-                                <i class="fas fa-angle-down"></i>
-                            </a>
-                            <select name="city_id" id="city_id">
-                                <option value>지역</option>
-                                <option value="100">서울</option>
-                                <option value="200">경기</option>
-                                <option value="300">인천</option>
-                            </select>
-                        </label>
+                            <select name="parent_industry_id" id="ent_catagory1">
+                                <option name="entCate">1차산업군</option>
+								<option name="entCate" >IT/웹/통신</option>
+								<option name="entCate">은행/금융업</option>
+								<option name="entCate">교육업</option>
+								<option name="entCate">마케팅/디자인</option>
+								<option name="entCate">의약/제약</option>
+								<option name="entCate">서비스업</option>
+							</select>
                         <label class="frow_ty2" >
                             <div class="css_ty1">
                                 <a class="btn_sel">
@@ -68,9 +41,10 @@
                             </div>
                         </label>                
                     </div>
+                    
                     <!-- 필터 끝 -->
                     <div class="result">
-                        <span class="num">100</span>
+                        <span class="num"></span>
                        	 검색결과
                     </div>
                 </div>

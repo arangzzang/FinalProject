@@ -10,13 +10,13 @@ a {
 .contents_wrap {
     position: relative;
     z-index: 10;
-    padding-top: 20px;
 }
 .contents {
     position: relative;
     width: 960px;
     margin: 0 auto;
     padding: 0 0 15px 0;
+    margin-top: 97px;
 }
 .mainContents {
     z-index: 10;
