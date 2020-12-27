@@ -14,4 +14,5 @@ public interface EnterpriseService {
 	int updateEnterprise(Enterprise ent);
 	int entMembership(Login log);
 	int insertBanner(Banner ban);
+	int quit(Enterprise ent);
 }

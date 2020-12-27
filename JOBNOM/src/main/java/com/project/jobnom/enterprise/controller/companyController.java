@@ -112,23 +112,20 @@ public class companyController {
 	@RequestMapping("/com/ent_edit_end.do")
 	public ModelAndView entEditEnd(HttpSession session, SessionStatus ss, Model m, Enterprise ent, ModelAndView mv) {
 		Login log=(Login)session.getAttribute("commonLogin");
-		System.out.println(ent.getRepPhone());
-		ent.setEntPw(pwEncoder.encode(ent.getEntPw()));
+		System.out.println("================");
+		System.out.println("pw:" + ent.getEntPw());
+		if(!log.getMemPw().equals(ent.getEntPw())) {
+			ent.setEntPw(pwEncoder.encode(ent.getEntPw()));			
+		}
 		System.out.println("비번 암호화 후:" + ent.getEntPw());
 		System.out.println(ent);
 		int result = service.updateEnterprise(ent);
 		String msg="";
 		String loc="";
 		if(result>0) {
-			if(!ss.isComplete()) {
-				//세션삭제하기 -> setComplete();
-				ss.setComplete();	
-			}			
-			if(session != null) session.invalidate();
-			
-			mv.addObject("commonLogin", service.findOneEnterprise(log));
 			msg="회원정보수정 성공";
 			loc="/com/ent_edit.do";
+			session.setAttribute("Enterprise", service.findOneEnterprise(log));
 		}else {
 			msg="회원정보수정 실패";
 			loc="/com/ent_edit.do";
@@ -137,6 +134,26 @@ public class companyController {
 		mv.addObject("loc", loc);
 		mv.setViewName("common/msg");
 		//session commonlogin 새로운 회원값으로 대체
+		return mv;
+	}
+	@RequestMapping("/com/quit.do")
+	public ModelAndView quit(HttpSession session, Enterprise ent, ModelAndView mv) {
+		System.out.println("회원탈퇴");
+		System.out.println(ent);
+		int result = service.quit(ent);
+		String msg = "";
+		String loc = "";
+		if(result>0) {
+			msg="회원탈퇴 성공";
+			loc="/";
+			session.invalidate();
+		}else {
+			msg="회원탈퇴 실패";
+			loc="/com/ent_edit.do";
+		}
+		mv.addObject("msg", msg);
+		mv.addObject("loc", loc);
+		mv.setViewName("common/msg");
 		return mv;
 	}
 	@RequestMapping("/com/membership.do")

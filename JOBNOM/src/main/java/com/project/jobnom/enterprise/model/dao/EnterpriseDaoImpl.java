@@ -46,6 +46,12 @@ public class EnterpriseDaoImpl implements EnterpriseDao {
 		return session.insert("enterprise.insertBanner", ban);
 	}
 
+	@Override
+	public int quit(Enterprise ent, SqlSession session) {
+		// TODO Auto-generated method stub
+		return session.delete("enterprise.quit", ent);
+	}
+
 	
 
 }

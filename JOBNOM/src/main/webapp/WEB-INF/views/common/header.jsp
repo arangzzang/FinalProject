@@ -45,7 +45,7 @@
 						</a>
 					</li>
 					<li class="nav-item">
-						<a class="menus" href="${path }/enterprice/companyList.do">기업</a>
+						<a class="menus" href="${path }/enterprise/companyList.do">기업</a>
 					</li>
 				</ul>
 				<c:if test="${commonLogin !=null && commonLogin.type == 2 || commonLogin.type == 1}" >
@@ -88,12 +88,12 @@
 					<button class="btn btn-outline-success my-4 my-sm-0" type="button" onclick="location.replace('${path}/common/logout');">로그아웃</button>
 				</c:if>
 				<c:if test="${commonLogin !=null && commonLogin.type == 2 }">
-					<span><a href="${path }/enterprice/myPage?ent_no=${commonLogin.memNo}"><i class="far fa-building"></i></a></span>
+					<span><a href="${path }/com/mypage.do"><i class="far fa-building"></i></a></span>
 					&nbsp;
 					<button class="btn btn-outline-success my-4 my-sm-0" type="button" onclick="location.replace('${path}/common/logout');">로그아웃</button>
 				</c:if>
 				<c:if test="${commonLogin !=null && commonLogin.type == 1 }">
-					<span><a href="${path }/enterprice/myPage?ent_no=${commonLogin.memNo}"><i class="far fa-building"></i></a></span>
+					<span><a href="${path }/com/mypage.do"><i class="far fa-building"></i></a></span>
 					&nbsp;
 					<button class="btn btn-outline-success my-4 my-sm-0" type="button" onclick="location.replace('${path}/common/logout');">로그아웃</button>
 				</c:if>

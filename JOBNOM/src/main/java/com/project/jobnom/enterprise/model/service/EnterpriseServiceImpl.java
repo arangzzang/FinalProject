@@ -48,6 +48,11 @@ public class EnterpriseServiceImpl implements EnterpriseService {
 		// TODO Auto-generated method stub
 		return dao.insertBanner(ban, session);
 	}
+	@Override
+	public int quit(Enterprise ent) {
+		// TODO Auto-generated method stub
+		return dao.quit(ent, session);
+	}
 	
 
 }
