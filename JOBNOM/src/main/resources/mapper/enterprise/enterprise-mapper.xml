@@ -89,4 +89,5 @@
 		DELETE FROM ENTERPRISE WHERE ENT_NO=#{entNo}
 	
 	</delete>
+
 </mapper>
