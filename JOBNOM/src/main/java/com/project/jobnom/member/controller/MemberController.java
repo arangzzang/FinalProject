@@ -61,6 +61,38 @@ public class MemberController {
 		mv.setViewName(loc);
 		return mv;
 	}
+	//비밀번호 확인(Ajax)
+	@RequestMapping("/member/selectPw")
+	@ResponseBody
+	public int selectMemPw(@RequestParam Map data) {
+		int count=0;
+		Member mem=service.selectPw(data);
+		
+		if(pwEncoder.matches((String)data.get("memPw"), mem.getMemPw())) {
+			count=1;
+		}else {
+			count=0;
+		}
+		return count;
+	}
+	//비밀번호 변경(Ajax)
+	@RequestMapping("/member/updatePasswordEnd")
+	public ModelAndView updatePasswordEnd(HttpSession session, String password1, ModelAndView mv) {
+		Login who=(Login)session.getAttribute("commonLogin");
+		Map<String,Object> mem=new HashMap<String,Object>();
+		String loc="redirect:/";
+		
+		who.setMemPw(pwEncoder.encode(password1));
+		mem.put("memNo",who.getMemNo());
+		mem.put("password1",who.getMemPw());
+		
+		int result= service.updatePw(mem);
+		mv.addObject("msg",result>0?"비밀번호 변경 완료":"잠시후에 다시 시도해주세요.");
+		mv.addObject("loc",loc);
+		mv.setViewName(loc);
+		return mv;
+	}
+	
 	//마이페이지 화면전환
 	@RequestMapping("/member/myPage")
 	public String mypageView(int memNo, Model m) {
@@ -69,7 +101,7 @@ public class MemberController {
 		m.addAttribute("mem",mem);
 		return "member/mypage/mypageFirst";
 	}
-	//email 변경 시
+	//email 변경 시(Ajax)
 	@RequestMapping("/member/changeEmail")
 	public String changeMemEmail(String memEmail, HttpSession session, Model m) {
 		String loc="";
@@ -106,7 +138,7 @@ public class MemberController {
 		m.addAttribute("mem",mem);
 		return "/member/mypage/account/updatePassword";
 	}
-	//이력서화면 이동
+	//이력서화면 이동(Ajax)
 	@RequestMapping("/member/myProfile")
 	public String myProfile (int memNo, Model m) throws IOException{
 		Member mem = service.myProfileView(memNo);
@@ -119,7 +151,7 @@ public class MemberController {
 		m.addAttribute("mem",mem);
 		return "/member/mypage/myProfile";
 	}
-	//관심정보 페이지 이동(첫 화면 팔로잉한 기업)
+	//관심정보 페이지 이동(첫 화면 팔로잉한 기업)(Ajax)
 	@RequestMapping("/member/followingEnt")
 	public String followingEnt (int memNo, Model m) throws IOException {
 		
@@ -127,7 +159,7 @@ public class MemberController {
 		m.addAttribute("mem",mem);
 		return "/member/mypage/interestinfo/followingEnt";
 	}
-	//계정화면
+	//계정화면(Ajax)
 	@RequestMapping("/member/accountView")
 	public String accountView (int memNo, Model m) throws IOException {
 		
@@ -135,7 +167,7 @@ public class MemberController {
 		m.addAttribute("mem",mem);
 		return "/member/mypage/account/accountView";
 	}
-	//저장된 채용공고
+	//저장된 채용공고(Ajax)
 	@RequestMapping("/member/saveHire")
 	public String saveHire (int memNo, Model m) throws IOException {
 		
@@ -143,37 +175,35 @@ public class MemberController {
 		m.addAttribute("mem",mem);
 		return "/member/mypage/interestinfo/saveHire";
 	}
-	//비밀번호 확인
-	@RequestMapping("/member/selectPw")
-	@ResponseBody
-	public int selectMemPw(@RequestParam Map data) {
-		int count=0;
-		Member mem=service.selectPw(data);
-		
-		if(pwEncoder.matches((String)data.get("memPw"), mem.getMemPw())) {
-			count=1;
-		}else {
-			count=0;
-		}
-		return count;
+	//리뷰작성하기 (Ajax)
+	@RequestMapping("/member/insertReview.do")
+	public String insertReview(int memNo, Model m)  throws IOException {
+		 Member mem = service.mypageView(memNo);
+		 m.addAttribute("mem",mem);
+		 return "Hire/insertReview";
 	}
-	//비밀번호 변경
-	@RequestMapping("/member/updatePasswordEnd")
-	public ModelAndView updatePasswordEnd(HttpSession session, String password1, ModelAndView mv) {
-		Login who=(Login)session.getAttribute("commonLogin");
-		Map<String,Object> mem=new HashMap<String,Object>();
-		String loc="redirect:/";
-		
-		who.setMemPw(pwEncoder.encode(password1));
-		mem.put("memNo",who.getMemNo());
-		mem.put("password1",who.getMemPw());
-		
-		int result= service.updatePw(mem);
-		mv.addObject("msg",result>0?"비밀번호 변경 완료":"잠시후에 다시 시도해주세요.");
-		mv.addObject("loc",loc);
-		mv.setViewName(loc);
-		return mv;
+	//면접후기작성 (Ajax)
+	@RequestMapping("/member/interviewList")
+	public String interviewList(int memNo, Model m) throws IOException {
+		 Member mem = service.mypageView(memNo);
+		 m.addAttribute("mem",mem);
+		 return "/member/mypage/activityHistory/interviewList";
 	}
+	//리뷰 작성 (Ajax)
+	@RequestMapping("/member/reviewList")
+	public String reviewList(int memNo, Model m) throws IOException {
+		 Member mem = service.mypageView(memNo);
+		 m.addAttribute("mem",mem);
+		 return "/member/mypage/activityHistory/reviewList";
+	}
+	//입사지원 (Ajax)
+	@RequestMapping("/member/supporting")
+	public String supportingCompany(int memNo, Model m) throws IOException {
+		 Member mem = service.mypageView(memNo);
+		 m.addAttribute("mem",mem);
+		 return "/member/mypage/activityHistory/supportingCompany";
+	}
+	
 }
 
 

@@ -28,8 +28,6 @@ public interface HireDao {
 	
 //	Review selectReviewList(SqlSession session, String ent_no);
 	
-	//리뷰화면전환
-	Member selectMember(int memNo, SqlSession session);
 	List<Map> selectReviewList(SqlSession session, String ent_no);
 
 	int insertMemberApply(SqlSession session, Map paramMap);

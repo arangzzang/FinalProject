@@ -28,8 +28,6 @@ import com.project.jobnom.Hire.model.vo.Interestedrcruitment;
 import com.project.jobnom.Hire.model.vo.Recruitment;
 import com.project.jobnom.Hire.model.vo.Support;
 import com.project.jobnom.common.pagebar.PageBarFactory;
-import com.project.jobnom.member.model.vo.Member;
-import com.project.jobnom.Hire.model.vo.Review;
 
 
 @Controller
@@ -115,15 +113,7 @@ public class HireController {
 
 		// return "Hire/HireAnnouncement";
 	}
-
-	@RequestMapping("/Hire/insertReview.do")
-	public String insertReview(int memNo, Model m)  throws IOException {
-		/*
-		 * System.out.println("전환"+memNo); Member mem = service.selectMember(memNo);
-		 * System.out.println(mem); m.addAttribute("mem",mem);
-		 */
-		return "Hire/insertReview";
-	}
+	
 
 	@RequestMapping("/Hire/insertReview2.do")
 	public String insertReview2(HttpServletRequest request) throws Exception {
@@ -148,12 +138,6 @@ public class HireController {
 		int result = service.insertReview(paramMap);
 		
 		return "Hire/insertReview";
-	}
-
-	@RequestMapping("/Hire/supportingCompany.do")
-	public String supportingCompany() {
-
-		return "Hire/supportingCompany";
 	}
 
 //공소 강세 페이지에서 상세 버튼
