@@ -44,7 +44,8 @@
 									#{repName},
 									#{repPhone},
 									default,
-									${entSite}
+									#{entSite},
+									default
 									)
 	</insert>
 		<insert id="insertApplyAd" parameterType="ad">
@@ -119,5 +120,8 @@
 		SELECT COUNT(*) FROM RECRUITMENT
 	</select>
 	
-
+	<delete id="quit">
+		DELETE FROM ENTERPRISE WHERE ENT_NO=#{entNo}
+	
+	</delete>
 </mapper>

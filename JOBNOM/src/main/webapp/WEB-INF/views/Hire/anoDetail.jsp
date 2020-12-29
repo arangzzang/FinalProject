@@ -9,10 +9,9 @@
 <%-- <%
 List<Review> r=(List)request.getAttribute("r");
 %> --%>
-<section id="content">
-<div class="test1"></div>
-<div class="annoDetailAllHeight">
-<div class="annoDetailAll">
+<section id="content" style="margin-top: -158px; height: 1100px; ">
+
+<div class="annoDetailAll" >
                   
                     <div class="annoDetailTitle">
                         <div class="annoDetailNum">
@@ -20,41 +19,76 @@ List<Review> r=(List)request.getAttribute("r");
                                 <div class="annoDetailLoge"></div>
                             </div>
                             <div class="annoDetailTitleFlax">            
-                                <div class="annoDetailTitle1">${r.rec_title }</div>
+                                <div id="annoDetailTitle1">${r[0].REC_TITLE }</div>
+                                
                                  <a href="#">
-                                    <div class="annoDetailTitleFont">${r.ent_name }</div>
+                                    <div class="annoDetailTitleFont" >${r[0].ENT_NAME }</div>
                                 </a>
-
+                                <p>${commonLogin.memNo}</p>
+							
                             </div>
                         </div>
-                        <button class="btn_annoDetail" onclick="">지원하기</button>
+                     
+                      <button class="apply" onclick="location.href='${path }/Hire/apply.do?memNo=${commonLogin.memNo}&recNo=${r[0].REC_NO}&entName=${r[0].ENT_NAME }'" >지원하기
+                       </button>
+                       <c:if test="${r[0].OPEN_CHECK == null && commonLogin !=null && commonLogin.memNo !=  r[0].MEM_NO }">
+                      
                         <button id="favoritesBox" onclick="fn_toggle();">
-                            <img id="announcementFavorites" src="${path }/resources/image/Hire/pngwing.png" />
+                            <img id="announcementFavorites2" src="${path }/resources/image/Hire/pngwing.png" />
                         </button>
+                      </c:if>
+                      <%--  <c:if test="${r[0].OPEN_CHECK == null && commonLogin !=null }">
+                      
+                        <button id="favoritesBox" onclick="fn_toggle();">
+                            <img id="announcementFavorites2" src="${path }/resources/image/Hire/pngwing.png" />
+                        </button>
+                      </c:if>  --%>
+                       <c:if test="${r[0].OPEN_CHECK == 1  && commonLogin !=null && commonLogin.memNo ==  r[0].MEM_NO }">
+                        <button id="favoritesBox" onclick="fn_toggle();">
+                            <img id="announcementFavorites2" src="${path }/resources/image/Hire/pngwing2.png" />
+                        </button>
+                      </c:if>
+                      
+                       <%-- <c:choose>
+                       <c:when test="${r[0].OPEN_CHECK ==1  && commonLogin !=null && commonLogin.memNo ==  r[0].MEM_NO }">
+	                        <button id="favoritesBox" onclick="fn_toggle();"> 
+	                            <img id="announcementFavorites2" src="${path }/resources/image/Hire/pngwing2.png" />
+	                        </button>
+                       </c:when> 
+                       <c:otherwise>
+                        <button id="favoritesBox" onclick="fn_toggle();">
+                            <img id="announcementFavorites2" src="${path }/resources/image/Hire/pngwing.png" />
+                        </button>
+                     </c:otherwise> 
+                       
+                      </c:choose> --%>
                     </div>
 
                     <div class="detailedReviewInterview">
                        <a href="#">
-                         <button value="${r.rec_no }" class="annoDetailListBoxs" >
-                            <input type="hidden" value="${r.rec_no }" class="annoDetailListBox">상세
+                         <button value="${r[0].REC_NO }" class="annoDetailListBoxs" >
+                            <input type="hidden" value="${r[0].REC_NO }" class="annoDetailListBox">상세
                          </button>
                         </a>
                         <a href="#">
-                        <button value="${r.ent_no }" class="clickReviewTotalBoxs" >
-	                       <input type="hidden" value="${r.ent_no }" class="clickReviewTotalBox">리뷰
+                        <button value="${r[0].ENT_NO }" class="clickReviewTotalBoxs" >
+	                       <input type="hidden" value="${r[0].ENT_NO }" class="clickReviewTotalBox">리뷰
                         </button>
                         </a>
                         <a href="#">
-                         <button value="${r.ent_no }" class="interviewBoxs" >
+                         <button value="${r[0].ENT_NO }" class="interviewBoxs" >
                             <div class="interviewBox">면접</div>
                          </button>
-                        </a>
-                    </div>
+                        </a>  
+                    </div> 
   
                     
 
                     
-        </div>
+        </div> 
+        
+<div class="annoDetailAllHeight">
+      
 
 
 <div class="annoDetailInfoWidth">
@@ -63,7 +97,7 @@ List<Review> r=(List)request.getAttribute("r");
                                 <div class="annoDetailInfoAll">
                                     <div class="annoDetailInfoLogo"></div>
                                     <div class="logoRight">마감일</div>
-                                   <div><fmt:formatDate  value="${r.rec_enddate}" pattern="YY.MM.DD" /></div>
+                                   <div><fmt:formatDate  value="${r[0].REC_ENDDATE}" pattern="yy.MM.dd" /></div>
                                 </div>
 
                                 
@@ -71,17 +105,17 @@ List<Review> r=(List)request.getAttribute("r");
                                 <div class="annoDetailInfoAll">
                                     <div class="annoDetailInfoLogo"></div>
                                     <div class="logoRight">경력</div>
-                                    <div>${r.rec_career} 년</div>
+                                    <div>${r[0].REC_CAREER} 년</div>
                                 </div>
                                 <div class="annoDetailInfoAll">
                                     <div class="annoDetailInfoLogo"></div>
                                     <div class="logoRight">고용형태</div>
-                                     <div>${r.rec_type}</div>
+                                     <div>${r[0].REC_TYPE}</div>
                                 </div>
                                 <div class="annoDetailInfoAll">
                                     <div class="annoDetailInfoLogo"></div>
                                     <div class="logoRight">연봉</div>
-                                      <div>${r.rec_salary}</div>
+                                      <div>${r[0].REC_SALARY} 만원</div>
                                 </div>
                                
 
@@ -90,7 +124,7 @@ List<Review> r=(List)request.getAttribute("r");
                             <div class="tttt" >
                                 <div>
                                     <div class="InformationList">[주요업무]</div>
-                                    <div class="mainTask">${r.rec_info}
+                                    <div class="mainTask">${r[0].REC_INFO}
                                     </div>
                                 </div>
 
@@ -98,19 +132,19 @@ List<Review> r=(List)request.getAttribute("r");
                                 <div>
                                     <div class="InformationList">[자격요건]</div>
                                     <div class="qualificationRequirements">
-                                       ${r.rec_qualification}</div>
+                                       ${r[0].REC_QUALIFICATION}</div>
                                 </div>
 
                                 <div>
                                     <div class="InformationList">[우대사항]</div>
                                     <div class="preferentialTreatment">
- 										${r.rec_prefer}
+ 										${r[0].REC_PREFER}
                                         </div>
                                 </div>
 
                                 <div>
                                     <div class="InformationList">[채용절차]</div>
-                                    <div class="recruitmentProcedure">${r.rec_order}
+                                    <div class="recruitmentProcedure">${r[0].REC_ORDER}
                                         * 서류전형 → 1차 (기술 면접) → 2차 (경영진 면접) → 처우협의 → 입사<br>
                                         - 면접관의 판단에 따라 전화면접(기술)이 추가될 수 있습니다.<br>
                                         - 전형별 결과는 5일 이내에 안내드립니다.<br>
@@ -120,7 +154,7 @@ List<Review> r=(List)request.getAttribute("r");
 
                                 <div>
                                     <div class="InformationList">[복리후생]</div>
-                                    <div class="welfareBenefits">${r.rec_welfare}
+                                    <div class="welfareBenefits">${r[0].REC_WELFARE}
                                     </div>
                                 </div>
 
@@ -141,16 +175,16 @@ List<Review> r=(List)request.getAttribute("r");
                             <div style="font-size: 20px; font:bolder">문의처</div>
                             <div class="Inquiries">
                                 <div class="managerName">담당자</div>
-                                <div class="managerName2">${r.rep_name}</div>
+                                <div class="managerName2">${r[0].REP_PHONE}</div>
                             </div>
                             <div class="InquiriesInfo">
                                 <div class="Inquiries">
                                     <div class="InquiriesHomePage">홈페이지</div>
-                                    <div class="InquiriesHomePage2">www.naver.com</div>
+                                    <div class="InquiriesHomePage2"><a href="https://search.naver.com">www.naver.com</a></div>
                                 </div>
                                 <div class="Inquiries">
                                     <div class="InquiriesPhone">연락처</div>
-                                    <div class="InquiriesPhone2">${r.rep_phone}</div>
+                                    <div class="InquiriesPhone2">${r[0].REP_PHONE}</div>
                                 </div>
                                 <div class="Inquiries">
                                     <div class="InquiriesEmail">이메일</div>
@@ -186,13 +220,14 @@ List<Review> r=(List)request.getAttribute("r");
                         
                         </div>
                         </div>
+                        <div class="test1"></div>
                         
   
                 <!-- </span> -->
 
 
 
-            
+          
             
 </section>
 
@@ -201,7 +236,6 @@ List<Review> r=(List)request.getAttribute("r");
              
              <!-- 리뷰 클릭시 전환되는 에이작스 -->
               <script>
-                /*  data:{ent_no:'${a.ent_no}'}, */
                 
                     $(".clickReviewTotalBoxs").click((e) => {
                     var formData = $(e.target).val();
@@ -212,7 +246,7 @@ List<Review> r=(List)request.getAttribute("r");
                           dataType :'html',
                          data : {ent_no:formData},
                          success :function(data){
-                           $(".test").html(data);
+                           $(".test1").html(data);
                         }
                })
                     });
@@ -224,7 +258,7 @@ List<Review> r=(List)request.getAttribute("r");
               $(document).ready(function () {
 
              $(".clickReviewTotalBoxs").click(function () {
-              $(".annoDetailInfoWidth").css("display", "none");
+              $(".annoDetailAllHeight").css("display", "none");
               
 
              });
@@ -250,3 +284,94 @@ List<Review> r=(List)request.getAttribute("r");
                 
                 </script> 
      
+     
+     <script>
+    $(function () {
+
+
+
+        var scrollOffset = $('.annoDetailTitle').offset();
+
+        $(window).scroll(function () {
+            if ($(document).scrollTop() > scrollOffset.top) {
+                $('.annoDetailTitle').addClass('scroll-fixed');
+                $('.annoDetailTitle').css('margin-top', '158px');
+                $('.annoDetailTitle').css('z-index', '5');
+              
+          /*       $('.detailedReviewInterview').css('display','none')l */
+            }
+            else {
+                $('.annoDetailTitle').removeClass('scroll-fixed');
+                $('.annoDetailTitle').css('margin-top', '0px');
+            }
+        });
+    });
+
+
+</script>
+
+<script>
+    $(function () {
+
+
+
+        var scrollOffset = $('.annoCategory').offset();
+
+        $(window).scroll(function () {
+            if ($(document).scrollTop() > scrollOffset.top) {
+            	
+                $('.annoCategory').addClass('scroll-fixed');
+                $('.annoCategory').css('margin-top', '158px');
+                $('.annoCategory').css('z-index', '4');
+               
+            
+            }
+            else {
+                $('.annoCategory').removeClass('scroll-fixed');
+                $('.annoCategory').css('margin-top', '0px');
+            }
+        });
+    });
+
+    
+
+
+</script> 
+
+		<script>
+		$(".apply").click(function(){
+			if(${commonLogin == null}){
+      			alert("로그인 회원만 이용가능합니다");	
+      			 return false; 
+			}else{
+				alert("지원완료");
+			}
+		    
+		});
+		</script>
+		
+		
+		<script>
+
+
+    function fn_toggle() {
+    	
+        var announcementFavorites2 = document.getElementById("announcementFavorites2");
+        if(${r[0].OPEN_CHECK==1})
+         {
+        	announcementFavorites2.src="${path }/resources/image/Hire/pngwing.png";
+        	location.href="${path }/Hire/notFavorites.do?memNo=${commonLogin.memNo}&recNo=${r[0].REC_NO}&openCheck=${r[0].OPEN_CHECK}";
+        	alert("즐겨찾기 빼기 완료");
+        }else
+        {
+            announcementFavorites2.src="${path }/resources/image/Hire/pngwing2.png";
+           	location.href="${path }/Hire/favorites.do?memNo=${commonLogin.memNo}&recNo=${r[0].REC_NO}";
+        	alert("즐겨찾기 완료");
+        }
+        
+
+    };
+		  
+</script>
+
+

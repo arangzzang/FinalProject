@@ -46,3 +46,41 @@ body{
 	.searchbar_section{
 		display:none;
 	}
+	.email_certification_check,
+	.dupliBtnMember,
+	.dupliBtnEnter,
+	.dupliBtnEnterPw,
+	.dupliBtnMemberPw{
+		margin-top:10px;
+	}
+	input[type="number"]::-webkit-outer-spin-button,
+	input[type="number"]::-webkit-inner-spin-button {
+	    -webkit-appearance: none;
+	    margin: 0;
+	}
+	.ent_submit_email, .submit_email{
+		margin-left:20px;
+	}
+	.time,.ent_time{
+		margin-left:10px;
+	}
+	.jumbotron{
+		background-color: #fff !important;
+	}.mar{
+		margin-bottom:200px;
+	}
+	#container,html{
+		background-color:#e6e4e46b;
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

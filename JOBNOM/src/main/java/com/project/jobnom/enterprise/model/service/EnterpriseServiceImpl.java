@@ -12,6 +12,7 @@ import com.project.jobnom.common.model.vo.Login;
 import com.project.jobnom.enterprise.model.dao.EnterpriseDao;
 import com.project.jobnom.enterprise.model.vo.ApplyAd;
 import com.project.jobnom.enterprise.model.vo.Banner;
+//github.com/arangzzang/FinalProject.git
 import com.project.jobnom.enterprise.model.vo.Enterprise;
 import com.project.jobnom.enterprise.model.vo.Support;
 import com.project.jobnom.resume.model.vo.Resume;
@@ -75,17 +76,16 @@ public class EnterpriseServiceImpl implements EnterpriseService {
 		return dao.selectRecruitmentCount(session);
 	}
 	@Override
-	public Resume selectResume(int mem_no) {
+	public Resume selectResume(int memNo) {
 		// TODO Auto-generated method stub
-		return dao.selectResume(session,mem_no);
+		return dao.selectResume(session,memNo);
 	}
-	@Override
-	public Enterprise selectCominfo() {
-		// TODO Auto-generated method stub
-		return dao.selectCominfo(session);
-	}
-	
 
+	@Override
+	public int quit(Enterprise ent) {
+		// TODO Auto-generated method stub
+		return dao.quit(ent, session);
+	}
 	
 
 }

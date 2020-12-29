@@ -24,10 +24,12 @@ public interface EnterpriseService {
 	int updateEnterprise(Enterprise ent);
 	int entMembership(Login log);
 	int insertBanner(Banner ban);
+
 	List<Recruitment> selectRecruitment(int memNo,int cPage, int numPerpage);
 	int selectRecruitmentCount();
 	
-	Resume selectResume(int mem_no);
-	Enterprise selectCominfo();
+	Resume selectResume(int memNo);
 	
+	int quit(Enterprise ent);
 }
+

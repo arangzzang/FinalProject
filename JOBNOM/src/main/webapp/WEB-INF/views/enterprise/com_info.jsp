@@ -10,7 +10,7 @@
 	<jsp:param name="title" value=""/>
 </jsp:include>
 <section id="content"> 
-	<c:forEach items="${ent }" var="ent">
+	
         <div class="cmp_info">
             <div class="cmp_top">
                 <div class="cmp_top_containner">
@@ -28,7 +28,7 @@
                             </div>
                             <div class="compa_info_box">
                                 <div class="compa_name">
-                                    <a href="" ><c:out value="${ent.entName }"/></a>
+                                    <a href="" ></a>
                                 </div>
                                 <div class="about_compa">
                                     <div class="compa_rating">
@@ -37,9 +37,9 @@
                                         </span>
                                     </div>
                                     <div class="com_info_small">
-                                        <span><c:out value="${ent.entCategory1 }"/></span>
+                                        <span>></span>
                                         <span class="dot">&middot;</span>
-                                        <a href=""><c:out value="${ent.entSite }"/></a>
+                                        <a href=""></a>
                                     </div>
                                 </div>
                             </div>
@@ -83,7 +83,7 @@
                     <div class="company_sub">
                         <div class="tool_box">
                             <i class="fas fa-tools"></i>
-                            <span><strong><c:out value="${ent.entCategory2 }"/></strong><p>산업</p></span>
+                            <span><strong></strong><p>산업</p></span>
                         </div>
                         <div class="tool_box">
                             <i class="fas fa-building"></i>
@@ -137,6 +137,5 @@
                      	</div>
                      </div>
                    </div>
-                  </c:forEach>
     </section>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>

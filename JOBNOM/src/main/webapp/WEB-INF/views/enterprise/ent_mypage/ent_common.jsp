@@ -15,23 +15,23 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <div class="container">
-   <nav class="navbar navbar-expand-sm navbar-light ">
-      <ul class="navbar-nav">
-         <li class="nav-item">
-            <a class="nav-link" href="${path }/jobnom/com/ent_edit.do">회원정보수정</a>
-         </li>
-         <li class="nav-item dropdown">
-            <a class="nav-link" href="${path }/jobnom/com/mypage.do">나의공고</a>
-         </li>
-         <li class="nav-item">
-            <a class="nav-link" href="${path }/jobnom/com/membership.do">멤버십</a>
-         </li>
-         <c:if test="${Enterprise.entMembership eq '유료회원' }">
-            <li class="nav-item">
-               <a class="nav-link" href="${path }/jobnom/com/entBanner.do">배너</a>
-            </li>             
-          </c:if>   
-      </ul>
-   
-   </nav>
-</div>   
+	<nav class="navbar navbar-expand-sm navbar-light ">
+		<ul class="navbar-nav">
+			<li class="nav-item">
+				<a class="nav-link" href="${path }/jobnom/com/ent_edit.do">회원정보수정</a>
+			</li>
+			<li class="nav-item dropdown">
+				<a class="nav-link" href="${path }/jobnom/com/mypage.do">나의공고</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="${path }/jobnom/com/membership.do">멤버십</a>
+			</li>
+			<c:if test="${Enterprise.entMembership eq '유료회원' }">
+				<li class="nav-item">
+					<a class="nav-link" href="${path }/jobnom/com/entBanner.do">배너</a>
+				</li> 				
+ 			</c:if>	
+		</ul>
+	
+	</nav>
+</div>	

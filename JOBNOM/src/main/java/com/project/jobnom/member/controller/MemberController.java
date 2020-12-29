@@ -1,49 +1,51 @@
 package com.project.jobnom.member.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.project.jobnom.common.model.vo.Login;
 import com.project.jobnom.member.model.service.MemberService;
+import com.project.jobnom.member.model.vo.MemCategory;
+import com.project.jobnom.member.model.vo.MemCategory2;
 import com.project.jobnom.member.model.vo.Member;
 
 @Controller
-@SessionAttributes("memberLogin")
 public class MemberController {
 
 	@Autowired
 	private MemberService service;
 	@Autowired
 	BCryptPasswordEncoder pwEncoder;
-	//로그인
-//	@RequestMapping("/member/memberLogin")
-//	public String memberLogin (String memEmail, String memPw, Model m) {
-//		
-//		Member mem = service.memberLogin(memEmail);
-//		System.out.println(mem);
-//		String loc="";
-//		
-//		if(pwEncoder.matches(memPw, mem.getMemPw())) {
-//			m.addAttribute("memberLogin",mem);
-//			loc="redirect:/";
-//		}else {
-//			m.addAttribute("msg","로그인실패");
-//			m.addAttribute("loc","/");
-//			loc="common/msg";
-//		}
-//		return loc;
-//	}
 	
-	//회원가입 페이지전환
+	//회원가입 페이지전환(카테고리리스트출력)
 	@RequestMapping("/member/enrollMember")
-	public String enrollMember() {
+	public String enrollMember(Model m) {
+		List<MemCategory> list = service.selectCategoryList();
+		m.addAttribute("cate",list);
 		return "common/enroll";
+	}
+	@RequestMapping("/member/selectJob")
+	@ResponseBody
+	public List<MemCategory2> selectBjo(int cateNo, Model m) throws IOException{
+		System.out.println("들어온값 : "+cateNo);
+		List<MemCategory2> list2 = service.selectCategoryList2(cateNo);
+		System.out.println("==============================");
+		System.out.println(list2);
+		m.addAttribute("cate2",list2);
+		return list2;
 	}
 	//회원가입
 	@RequestMapping("/member/enrollMemberEnd")
@@ -57,6 +59,7 @@ public class MemberController {
 		
 		String loc="redirect:/";
 		int result = service.enrollMember(m);
+		
 		mv.addObject("mem",m);
 		mv.addObject("msg",result>0?"회원가입성공":"회원가입실패");
 		
@@ -73,13 +76,25 @@ public class MemberController {
 	}
 	//email 변경 시
 	@RequestMapping("/member/changeEmail")
-	public ModelAndView changeMemEmail(String memName, ModelAndView mv) {
+	public String changeMemEmail(String memEmail, HttpSession session, Model m) {
+		String loc="";
+		Login who=(Login)session.getAttribute("commonLogin");
+		Map<String,Object> mem=new HashMap<String,Object>();
+
+		mem.put("memNo",who.getMemNo());
+		mem.put("memEmail",memEmail);
 		
-		String loc="redirect:/member/mypage/mypageFirst";
-		int result= service.changeMemEmail(memName);
-		mv.addObject("msg",result>0?"이메일변경 성공":"이메일변경 실패");
-		mv.setViewName(loc);
-		return mv;
+		int result= service.changeMemEmail(mem);
+		
+		if (result>0) {
+			m.addAttribute("msg","이메일이 변경되었습니다.");
+			loc="redirect:/member/myPage?memNo="+who.getMemNo();
+		}else {
+			m.addAttribute("msg","이메일 변경을 실패하셨습니다. 잠시후에 다시 시도해주세요.");
+			m.addAttribute("loc","/member/myPage?memNo="+who.getMemNo());
+			loc="common/msg";
+		}
+		return loc;
 	}
 	//계정 설정 페이지 화면전환(Ajax)
 	@RequestMapping("/member/accountSettings")
@@ -128,4 +143,45 @@ public class MemberController {
 		m.addAttribute("mem",mem);
 		return "/member/mypage/interestinfo/saveHire";
 	}
+	//비밀번호 확인
+	@RequestMapping("/member/selectPw")
+	@ResponseBody
+	public int selectMemPw(@RequestParam Map data) {
+		int count=0;
+		Member mem=service.selectPw(data);
+		
+		if(pwEncoder.matches((String)data.get("memPw"), mem.getMemPw())) {
+			count=1;
+		}else {
+			count=0;
+		}
+		return count;
+	}
+	//비밀번호 변경
+	@RequestMapping("/member/updatePasswordEnd")
+	public ModelAndView updatePasswordEnd(HttpSession session, String password1, ModelAndView mv) {
+		Login who=(Login)session.getAttribute("commonLogin");
+		Map<String,Object> mem=new HashMap<String,Object>();
+		String loc="redirect:/";
+		
+		who.setMemPw(pwEncoder.encode(password1));
+		mem.put("memNo",who.getMemNo());
+		mem.put("password1",who.getMemPw());
+		
+		int result= service.updatePw(mem);
+		mv.addObject("msg",result>0?"비밀번호 변경 완료":"잠시후에 다시 시도해주세요.");
+		
+		mv.setViewName(loc);
+		return mv;
+	}
 }
+
+
+
+
+
+
+
+
+
+

@@ -18,16 +18,14 @@ public interface EnterpriseDao {
 	int enrollEnter(Enterprise ent, SqlSession session);
 	int insertApplyAd(ApplyAd ad, SqlSession session);
 	Enterprise findOneEnterprise(Login log, SqlSession session);
-
 	List<Support> selectSupport(SqlSession session,int cPage, int numPerpage,Recruitment rec);
 	int selectCount(SqlSession session);
-
 	int updateEnterprise(Enterprise ent, SqlSession session);
 	int entMembership(Login log, SqlSession session);
 	int insertBanner(Banner ban, SqlSession session);
-	
 	List<Recruitment> selectRecruitment(SqlSession session,int memNo,int cPage, int numPerpage);
 	int selectRecruitmentCount(SqlSession session);
 	Resume selectResume(SqlSession session , int mem_no);
-	Enterprise selectCominfo(SqlSession session);
+	int quit(Enterprise ent, SqlSession session);
+
 }

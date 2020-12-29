@@ -8,12 +8,25 @@
 		<result column="mem_manager_yn" property="memManagerYn"/>
 		<result column="mem_check" property="memCheck"/>
 		<result column="mem_membership" property="memMembership"/>
-		<result column="mem_category1" property="memCategory1"/>
-		<result column="mem_category2" property="memCategory2"/>
+		<result column="cate_no2" property="mCateNo2"/>
+	</resultMap>
+	<resultMap type="cate" id="cateMap">
+		<result column="cate_no" property="cateNo"/>
+	</resultMap>
+	<resultMap type="cate2" id="cateMap2">
+		<result column="cate_no2" property="cateNo2"/>
+		<result column="cate_no" property="cateNo"/>
 	</resultMap>
 	<!-- 로그인 -->
 	<select id="memberLogin" parameterType="string" resultMap="memMap">
 		select* from member where mem_email=#{memEmail}
+	</select>
+	<!-- 카테고리리스트 -->
+	<select id="selectCategoryList" resultMap="cateMap">
+		select * from category
+	</select>
+	<select id="selectCategoryList2" parameterType="_int" resultMap="cateMap2">
+		select * from category2 where cate_no=#{cateNo}
 	</select>
 	<!-- 회원가입(일반회원)  -->
 	<insert id="enrollMember" parameterType="mem">
@@ -24,9 +37,8 @@
 								default,
 								#{memCheck},
 								default,
-								#{memCategory1},
-								#{memCategory2},
-								default
+								default,
+								#{mCateNo2}
 								)
 	</insert>
 	<!-- 마이페이지 -->
@@ -34,11 +46,20 @@
 		select * from member where mem_no=#{memNo}
 	</select>
 	<!-- email변경 -->
-	<update id="changeEmail" parameterType="string">
-		update member set mem_email = #{memEmail} where mem_email = #{memEmail}
-	</update>	
+	<update id="changeEmail" parameterType="map">
+		update member set mem_email = #{memEmail} where mem_no = #{memNo}
+	</update>
+	<!-- 비밀번호 확인 -->
+	<select id="selectPw" parameterType="map" resultMap="memMap">
+		select * from member where mem_email = #{memEmail}
+	</select>	
+	<!-- 비밀번호 변경 -->
+	<update id="updatePw" parameterType="map">
+		update member set mem_pw=#{password1} where mem_no=#{memNo}
+	</update>
 	
 </mapper>
+
 
 
 

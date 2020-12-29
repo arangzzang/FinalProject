@@ -69,6 +69,13 @@ public class EnterpriseDaoImpl implements EnterpriseDao {
 	public List<Recruitment> selectRecruitment(SqlSession session, int memNo,int cPage, int numPerpage) {
 		// TODO Auto-generated method stub
 		return session.selectList("enterprise.selectRecruitment",memNo,new RowBounds((cPage-1)*numPerpage,numPerpage));
+
+	}
+	@Override
+	public int quit(Enterprise ent, SqlSession session) {
+		// TODO Auto-generated method stub
+		return session.delete("enterprise.quit", ent);
+
 	}
 	
 
@@ -79,14 +86,9 @@ public class EnterpriseDaoImpl implements EnterpriseDao {
 	}
 
 	@Override
-	public Resume selectResume(SqlSession session, int mem_no) {
+	public Resume selectResume(SqlSession session, int memNo) {
 		// TODO Auto-generated method stub
-		return session.selectOne("enterprise.selectResume",mem_no);
+		return session.selectOne("enterprise.selectResume",memNo);
 	}
 
-	@Override
-	public Enterprise selectCominfo(SqlSession session) {
-		// TODO Auto-generated method stub
-		return session.selectOne("enterprise.selectCominfo");
-	}
 }
