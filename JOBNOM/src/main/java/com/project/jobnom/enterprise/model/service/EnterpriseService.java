@@ -32,5 +32,7 @@ public interface EnterpriseService {
 	
 	int quit(Enterprise ent);
 	Enterprise findEmailEnterprise(Login log);
+	//카카오페이 결제
+	Enterprise selectEnterprise(int entNo);
 }
 

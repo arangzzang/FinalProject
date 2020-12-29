@@ -91,6 +91,12 @@ public class EnterpriseServiceImpl implements EnterpriseService {
 		// TODO Auto-generated method stub
 		return dao.findEmailEnterprise(log, session);
 	}
+	//카카오결제
+	@Override
+	public Enterprise selectEnterprise(int entNo) {
+		return dao.selectEnterprise(entNo,session);
+	}
+	
 	
 	
 

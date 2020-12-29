@@ -96,5 +96,13 @@ public class EnterpriseDaoImpl implements EnterpriseDao {
 		// TODO Auto-generated method stub
 		return session.selectOne("enterprise.selectResume",memNo);
 	}
+	//카카오페이
+
+	@Override
+	public Enterprise selectEnterprise(int entNo, SqlSession session) {
+		return session.selectOne("enterprise.selectEnterprise",entNo);
+	}
+	
+	
 
 }

@@ -129,4 +129,7 @@
 	<select id="findEmailEnterprise" parameterType="string" resultMap="entMap">
 		SELECT * FROM ENTERPRISE WHERE ENT_EMAIL=#{memEmail}
 	</select>
+	<select id="selectEnterprise" parameterType="_int" resultType="ent">
+		select * from ENTERPRISE where ent_no=#{entNo}
+	</select>
 </mapper>
