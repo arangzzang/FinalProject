@@ -71,7 +71,7 @@
                      </div>
                      <div class="form-gruop">
                         <label for="mem_catagory2">2차 직업군</label>
-	                        <select class="form-control mem_category2" id="mem_category2" name="mCateNo2" required>
+	                        <select class="form-control mem_category2" id="mem_category2" name="cateNo2" required>
 	                        	<option class="cate2">기타</option>
 	                        </select>
                         <div class="result5"></div>
@@ -96,7 +96,7 @@
       </div>
       <!-- 기업회원 -->
       <div class="container enrollMain ent_enroll">
-         <form action="${path }/enterprice/enrollEnterEnd" method="post" class="needs-validation" novalidate>
+         <form action="${path }/enterprise/enrollEnterEnd" method="post" class="needs-validation" enctype="multipart/form-data" novalidate>
             <div class="jumbotron mar">
                <h1>기업 회원 가입</h1>
                <div class="row">
@@ -130,7 +130,7 @@
                      </div>
                      <div class="form-gruop">
                         <label for="ent_crn">사업자 등록번호</label>
-                        <input type="number" id="ent_crn" class="form-control" placeholder="입력시'-'는 제외합니다." name="entBusinessNo" required>
+                        <input type="number" id="ent_crn" class="form-control bizNum" placeholder="입력시'-'는 제외합니다." name="entBusinessNo" required>
                         <div class="e_result5"></div>
                      </div>
                      <div class="form-gruop">
@@ -140,7 +140,7 @@
                      </div>
                      <div class="form-gruop">
                         <label for="rep_phone">담당자 번호</label>
-                        <input type="tel" id="rep_phone" class="form-control" placeholder="입력시'-'는 제외합니다." name="repPhone" required>
+                        <input type="tel" id="rep_phone" class="form-control entPh" placeholder="입력시'-'는 제외합니다." name="repPhone" required>
                         <div class="e_result7"></div>
                      </div>
                      <div class="form-gruop">
@@ -169,7 +169,7 @@
                      </div>
                      <label>기업 로고(선택)</label>
                      <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="customFile" name="entLogo">
+                        <input type="file" class="custom-file-input" id="Logo" name="Logo">
                         <label class="custom-file-label" for="customFile">이쁜로고가 좋겠죠?</label>
                      </div>
                   </div>
@@ -207,11 +207,10 @@
    
    //1차직업군 선택시 해당하는 2차직업군 출력
    $(function(){ 
-	   //회원
+	  //회원
       $(".mem_catagory").change(e=>{
       	let job1=$(".mem_catagory option").index($(".mem_catagory option:selected"));
       	console.log(typeof job1)
-      	let target=document.getElementById("mem_catagory2")
 		$.ajax({
 			url:"${path}/member/selectJob",
 			data:{cateNo:job1},
@@ -501,11 +500,15 @@
             return false;
          }
       });
+   });
+   $(function(){
       
       //ent_email,entPw,entPw2,ent_name,ent_crn,rep_name,rep_phone,
       //ent_catagory,ent_site,customFile
       //dupliBtnEnter, dupliBtnEnterPw
       $(".ent_certification").hide();
+      var memIdck = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      var hangulcheck = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
       //기업회원 이메일 중복확인
       $(".dupliBtnEnter").click(e=>{
     	  $(".ent_certification").show();
@@ -538,6 +541,8 @@
       $(".ent_submit_email").hide();
       $(".ent_email_certification").hide()
 	   //기업회원 이메일 인증
+	   var timer = null;
+	   var isRunning = false;
 	  $(".ent_certification").click(e=>{
 		   if($(".ent_emailCk").val()=="good"){
 			   	let ent_ctf=$("#ent_email").val();
@@ -546,7 +551,7 @@
 			   	$(".ent_submit_email").attr("disabled",false)
 		 		//인증 타이머 설정
 		    	var display = $('.ent_time');
-		    	var leftSec = 30;
+		    	var leftSec = 180;
 		    	// 남은 시간
 		    	// 이미 타이머가 작동중이면 중지
 		    	if (isRunning){
@@ -622,6 +627,7 @@
 		   	}
    		});
       //기업회원 비밀번호 확인
+      var memPwck = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
       $(".dupliBtnEnterPw").click(e=>{
          const ent_duplipw=$("#entPw").val();
          const ent_duplipw2=$("#entPw2").val();
@@ -670,7 +676,7 @@
       //담당자 이름 정규표현식
       var ko=/^[가-힣]{2,17}$/; 
       var num=/^[0-9]+$/; 
-      $("#rep_name").keyup(e=>{
+      $("#rep_name").blur(e=>{
          let rName=$("#rep_name").val();
          if(rName.length>=2){
             if(!ko.test(rName)){
@@ -689,19 +695,53 @@
       });
       //핸드폰 정규표현식
       let hpRegExp = /^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})-?[0-9]{3,4}-?[0-9]{4}$/;
-      $("#rep_phone").keyup(e=>{
+      $("#rep_phone").blur(e=>{
          let entPh=$("#rep_phone").val();
          if(!hpRegExp.test(entPh)){
             $(".e_result7").html("휴대폰 번호가 올바르지 않습니다. 다시한번 확인하세요")
             return false;
          }else{
             $(".e_result7").html("")
-            $(entPh).replace(/\-/g,'');
+            $(".entPh").replace(/\-/g,'');
          }
       });
+      //사업자 번호 정규표현식
+      $(".bizNum").blur(e=>{
+    	  
+    	  var bizNo=$(e.target).val();
+    	  console.log(bizNo)
+          // 넘어온 값의 정수만 추츨하여 문자열의 배열로 만들고 10자리 숫자인지 확인합니다.
+          if ((bizNo = (bizNo+'').match(/\d{1}/g)).length != 10) { 
+				$(".e_result5").html("사업자 등록번호를 입력해주세요.")
+				return false; 
+		  }else{
+	          // 합 / 체크키
+	          var sum = 0, key = [1, 3, 7, 1, 3, 7, 1, 3, 5];
+	          // 0 ~ 8 까지 9개의 숫자를 체크키와 곱하여 합에더합니다.
+	          for (var i = 0 ; i < 9 ; i++) { 
+	        	  sum += (key[i] * Number(bizNo[i])); 
+	          }
+	          // 각 8번배열의 값을 곱한 후 10으로 나누고 내림하여 기존 합에 더합니다.
+	          // 다시 10의 나머지를 구한후 그 값을 10에서 빼면 이것이 검증번호 이며 기존 검증번호와 비교하면됩니다.
+	          // 체크섬구함
+	          var chkSum = 0;
+	          chkSum = Math.floor(key[8] * Number(bizNo[8]) / 10);
+	          console.log("chkSum :"+chkSum)
+	          // 체크섬 합계에 더해줌
+	          sum +=chkSum;
+	          var reminder = (10 - (sum % 10)) % 10;
+	          //값 비교
+	          if(reminder==Number(bizNo[9])) {
+	        	  $(".e_result5").html("")
+	          }else{
+	        	  $(".e_result5").html("틀린 사업자번호입니다. 다시 한 번 확인해주세요.")
+	        	  return false;
+	          }
+          }
+      })
       //기업 회원 중복확인
       $(".entJoin").click(function(){
-         let entCheck=new Array(7).fill(false);
+         
          if($(".ent_emailCk").val()==undefined || $(".ent_emailCk").val()===""){
             alert("이메일 중복확인을 해주세요");
             $(".dupliBtnEnter").focus();
@@ -711,60 +751,61 @@
             $(".dupliBtnEnterPw").focus();
             return false
          };
+         let entCheck=new Array(7).fill(false);
          //기업회원 가입 전 유효성검사 확인
          if(memIdck.test($("#ent_email").val())){
-            entCheck[0]=true;
+        	 entCheck[0]=true;
          }else{
-            entCheck[0]=false;
+        	 entCheck[0]=false;
             $(".e_result1").html("이메일을 양식에 맞게 써주세요")
          }
          if($(".eCertification").val()==""){
-        	 check[1]=false;
+        	 entCheck[1]=false;
         	 alert("인증확인 해주시기 바랍니다.")
          }else{
-        	 check[1]=true;
+        	 entCheck[1]=true;
          }
          if(memPwck.test($("#entPw").val())){
-            entCheck[2]=true;
+        	 entCheck[2]=true;
          }else{
-            entCheck[2]=false;
-            $(".e_result3").html("비밀번호를 양식에 맞게 써주세요");
+        	 entCheck[2]=false;
+             $(".e_result3").html("비밀번호를 양식에 맞게 써주세요");
          }
          if($("#ent_name").val()==""){
-            entCheck[3]=false;
-            $(".e_result4").html("기업이름을 작성해주세요");
+        	 entCheck[3]=false;
+             $(".e_result4").html("기업이름을 작성해주세요");
          }else{
-            entCheck[3]=true;
+        	 entCheck[3]=true;
          }
          if($("#ent_crn").val()==""){
-            entCheck[4]=false;
-            $(".e_result5").html("사업자 등록 번호를 작성해주세요");
+        	 entCheck[4]=false;
+             $(".e_result5").html("사업자 등록 번호를 작성해주세요");
          }else{
-            entCheck[4]=true;
+        	 entCheck[4]=true;
          }
          if($("#rep_name").val()=="" || !ko.test($("#rep_name").val())){
-            entCheck[5]=false;
-            $(".e_result6").html("이름을 제대로 작성해주세요");
+        	 entCheck[5]=false;
+             $(".e_result6").html("이름을 제대로 작성해주세요");
          }else{
-            entCheck[5]=true;
+        	 entCheck[5]=true;
          }if(!hpRegExp.test($("#rep_phone").val()) || $("#rep_phone").val()==""){
         	 entCheck[6]=false;
              $(".e_result7").html("핸드폰 번호를 정확히 입력해주세요.")
          }else{
-            entCheck[6]=true;
+        	 entCheck[6]=true;
          }
          var ent_sel1ck = $("#ent_catagory option").index($("#ent_catagory option:selected"));
          if(ent_sel1ck==0 || $("#ent_catagory").val()==="기타"){
-            check[7]=false;
+        	 entCheck[7]=false;
             $(".e_result8").html("1차 직업군을 선택해주세요.")
             $(".e_result9").html("2차 직업군을 선택해주세요.")
          }else{
-            check[7]=true;
+        	 entCheck[7]=true;
          }
          //ent_email,entPw,ent_name,ent_crn,rep_name,rep_phone,ent_catagory,e_result4
          var allCheck = true;
-         for(var i=0; i<ent_check.length; i++){
-            if(ent_check[i]==false){
+         for(var i=0; i<entCheck.length; i++){
+            if(entCheck[i]==false){
                allCheck=false;
             }
          }
@@ -773,7 +814,7 @@
             return false;
          }
       });
-   });
+   })
    
 
 </script>

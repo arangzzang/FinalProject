@@ -15,4 +15,5 @@ public interface EnterpriseService {
 	int entMembership(Login log);
 	int insertBanner(Banner ban);
 	int quit(Enterprise ent);
+	Enterprise findEmailEnterprise(Login log);
 }

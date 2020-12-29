@@ -54,6 +54,11 @@ public class EnterpriseServiceImpl implements EnterpriseService {
 		// TODO Auto-generated method stub
 		return dao.quit(ent, session);
 	}
+	@Override
+	public Enterprise findEmailEnterprise(Login log) {
+		// TODO Auto-generated method stub
+		return dao.findEmailEnterprise(log, session);
+	}
 	
 
 }

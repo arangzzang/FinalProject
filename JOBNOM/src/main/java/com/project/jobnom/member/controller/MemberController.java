@@ -40,22 +40,17 @@ public class MemberController {
 	@RequestMapping("/member/selectJob")
 	@ResponseBody
 	public List<MemCategory2> selectBjo(int cateNo, Model m) throws IOException{
-		System.out.println("들어온값 : "+cateNo);
 		List<MemCategory2> list2 = service.selectCategoryList2(cateNo);
-		System.out.println("==============================");
-		System.out.println(list2);
 		m.addAttribute("cate2",list2);
 		return list2;
 	}
 	//회원가입
 	@RequestMapping("/member/enrollMemberEnd")
 	public ModelAndView enrollMemberEnd(Member m, ModelAndView mv) {
-		
 		String oriPw=m.getMemPw();
-		System.out.println(pwEncoder.encode(oriPw));
 		
 		m.setMemPw(pwEncoder.encode(oriPw));
-		//m.bulider().memEmail(pwEncoder.encode(memPw)); -> map으로 받을땐 이렇게 하면됨.
+		//m.bulider().memEmail(pwEncoder.encode(memPw));// -> map으로 받을땐 이렇게 하면됨.
 		
 		String loc="redirect:/";
 		int result = service.enrollMember(m);
@@ -114,8 +109,13 @@ public class MemberController {
 	//이력서화면 이동
 	@RequestMapping("/member/myProfile")
 	public String myProfile (int memNo, Model m) throws IOException{
-		
-		Member mem = service.mypageView(memNo);
+		Member mem = service.myProfileView(memNo);
+		List<MemCategory> list = service.selectCategoryList();
+		System.out.println("회원 카테번호 : "+mem.getCateNo2());
+		List<MemCategory2> list2 = service.selectCategoryList2(mem.getCateNo());
+		System.out.println("카테 리스트 : "+list2);
+		m.addAttribute("cate3",list2);
+		m.addAttribute("cate",list);
 		m.addAttribute("mem",mem);
 		return "/member/mypage/myProfile";
 	}
@@ -170,7 +170,7 @@ public class MemberController {
 		
 		int result= service.updatePw(mem);
 		mv.addObject("msg",result>0?"비밀번호 변경 완료":"잠시후에 다시 시도해주세요.");
-		
+		mv.addObject("loc",loc);
 		mv.setViewName(loc);
 		return mv;
 	}

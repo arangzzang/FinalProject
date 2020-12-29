@@ -16,4 +16,5 @@ public interface EnterpriseDao {
 	int entMembership(Login log, SqlSession session);
 	int insertBanner(Banner ban, SqlSession session);
 	int quit(Enterprise ent, SqlSession session);
+	Enterprise findEmailEnterprise(Login log, SqlSession session);
 }

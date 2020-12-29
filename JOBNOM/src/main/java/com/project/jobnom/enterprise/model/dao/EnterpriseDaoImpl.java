@@ -51,6 +51,12 @@ public class EnterpriseDaoImpl implements EnterpriseDao {
 		// TODO Auto-generated method stub
 		return session.delete("enterprise.quit", ent);
 	}
+
+	@Override
+	public Enterprise findEmailEnterprise(Login log, SqlSession session) {
+		// TODO Auto-generated method stub
+		return session.selectOne("enterprise.findEmailEnterprise", log);
+	}
 	
 
 }

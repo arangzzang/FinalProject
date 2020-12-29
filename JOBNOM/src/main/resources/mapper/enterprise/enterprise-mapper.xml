@@ -89,4 +89,7 @@
 		DELETE FROM ENTERPRISE WHERE ENT_NO=#{entNo}
 	
 	</delete>
+	<select id="findEmailEnterprise" parameterType="string" resultMap="entMap">
+		SELECT * FROM ENTERPRISE WHERE ENT_EMAIL=#{memEmail}
+	</select>
 </mapper>
