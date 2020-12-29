@@ -37,7 +37,6 @@
                     </div>
                     <div class="col-md-8 col-sm-8 maincon withright" id="maincon">
                         <div class="maininfo-parent">
-                        <!-- onsubmit="return mem_changeEmail();" -->
                             <form action="${path}/member/changeEmail" class="needs-validation" novalidate>
                                 <div class="maininfo">
                                     <h1 class="maintitle">계정설정</h1>

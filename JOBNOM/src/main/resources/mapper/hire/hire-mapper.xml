@@ -20,15 +20,6 @@
 	
 	</resultMap>  -->
 
-	<resultMap type="mem" id="memMap">
-		<result column="mem_no" property="memNo"/>
-		<result column="mem_email" property="memEmail"/>
-		<result column="mem_pw" property="memPw"/>
-		<result column="mem_manager_yn" property="memManagerYn"/>
-		<result column="mem_check" property="memCheck"/>
-		<result column="mem_membership" property="memMembership"/>
-		<result column="cate_no2" property="mCateNo2"/>
-	</resultMap>
 	
 
 	<insert id="insertReview" parameterType="map">
@@ -148,7 +139,7 @@
 		                       SELECT  COUNT(*) FROM INTERESTEDRECRUITMENT
 	</select>
 	
-	<select id="hire.selectOneRecruitment" resultType="map">
+	<select id="selectOneRecruitment" resultType="map">
 	  
 	     select ent_name from enterprise
               where ent_name like '%'||#{key}||'%'

@@ -80,16 +80,6 @@ public class HireDaoImpl implements HireDao {
 	public int selectSuppertCount(SqlSession session) {
 		return session.selectOne("hire.selectSuppertCount");
 	}
-
-	@Override
-	public Member selectMember(int memNo, SqlSession session) {
-		return session.selectOne("hire.selectMember",memNo);
-	}
-	
-	
-	
-	
-	
 	
 	@Override
 	public List<Recruitment>  anoList(SqlSession session, int cPage, int numPerPage) {

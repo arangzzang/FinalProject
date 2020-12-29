@@ -28,9 +28,6 @@ public interface HireService {
 	
 	List<Map> selectReviewList(String ent_no);
 	
-	//리뷰화면전환
-	Member selectMember(int memNo);
-
 	int insertMemberApply(Map paramMap);
 	
 	int recFavorites(Map paramMap);
