@@ -92,7 +92,7 @@
 					<button class="btn btn-outline-success my-4 my-sm-0" type="button" onclick="location.replace('${path}/common/logout');">로그아웃</button>
 				</c:if>
 				<c:if test="${commonLogin !=null && commonLogin.type == 2 }">
-					<span><a href="${path }/com/mypage.do"><i class="far fa-building"></i></a></span>
+					<span><a href="${path }/com/mypage.do?ent_no=${commonLogin.memNo}"><i class="far fa-building"></i></a></span>
 					&nbsp;
 					<button class="btn btn-outline-success my-4 my-sm-0" type="button" onclick="location.replace('${path}/common/logout');">로그아웃</button>
 				</c:if>

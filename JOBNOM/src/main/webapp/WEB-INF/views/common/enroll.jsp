@@ -702,7 +702,7 @@
             return false;
          }else{
             $(".e_result7").html("")
-            $(".entPh").replace(/\-/g,'');
+            $("#rep_phone").replace(/\-/g,'');
          }
       });
       //사업자 번호 정규표현식

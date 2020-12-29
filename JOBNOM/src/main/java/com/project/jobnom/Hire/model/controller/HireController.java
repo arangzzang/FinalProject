@@ -28,6 +28,8 @@ import com.project.jobnom.Hire.model.vo.Interestedrcruitment;
 import com.project.jobnom.Hire.model.vo.Recruitment;
 import com.project.jobnom.Hire.model.vo.Support;
 import com.project.jobnom.common.pagebar.PageBarFactory;
+import com.project.jobnom.member.model.vo.Member;
+import com.project.jobnom.Hire.model.vo.Review;
 
 
 @Controller

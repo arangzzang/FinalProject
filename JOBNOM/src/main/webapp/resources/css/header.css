@@ -31,7 +31,6 @@
 	    background-color: #fff;
 	    padding: 0px;
 	    margin-top: -50px;
-
 	   /*  padding-bottom: 20px; */
 	}
 	.searchbar_section>.wrap {
@@ -102,6 +101,7 @@
 	.header_md{
 		z-index:1050 !important;
 	}
+
 	.jmkbtn{
 		background-color:#00c362;
 		color:#fff;

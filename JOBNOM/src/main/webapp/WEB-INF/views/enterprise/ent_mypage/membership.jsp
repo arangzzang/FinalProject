@@ -11,47 +11,47 @@
 </jsp:include>
 <section id="content">
 <jsp:include page="/WEB-INF/views/enterprise/ent_mypage/myCom_info.jsp">
-	<jsp:param name="myCom_info" value=""/>
+   <jsp:param name="myCom_info" value=""/>
 </jsp:include>
 <jsp:include page="/WEB-INF/views/enterprise/ent_mypage/ent_common.jsp">
-	<jsp:param name="subheader" value=""/>
+   <jsp:param name="subheader" value=""/>
 </jsp:include>
     
  <div class="container" style="text-align:center;">
- 	<c:if test="${Enterprise.entMembership eq '일반회원' }">
-	 	<h4>혜택</h4>
-	 	<div class="row" style="margin:auto; width:50%">
-	 		<div class="col membership_benefits">
-	 			<h6>일반회원</h6>
-	 			<ul class="text-nowrap">
-	 				<li>기업 리뷰 조회</li>
-	 				<li>면접 후기 조회</li>
-	 			</ul>
-	 		</div>
-	 		<div class="col membership_benefits">
-	 			<h6>기업회원</h6>
-	 			<ul>
-	 				<li>배너등록</li>
-	 			</ul>
-	 		</div>
-	 	</div>
- 		<button class="jmkbtn btn-lg" id="join">멤버십 가입</button>
- 	</c:if>
- 	<c:if test="${Enterprise.entMembership eq '유료회원' }">
- 		<h4><c:out value="${Enterprise.entName }"/>님은 이미 멤버십이 있습니다</h4>
- 	</c:if>
+    <c:if test="${Enterprise.entMembership eq '일반회원' }">
+       <h4>혜택</h4>
+       <div class="row" style="margin:auto; width:50%">
+          <div class="col membership_benefits">
+             <h6>일반회원</h6>
+             <ul class="text-nowrap">
+                <li>기업 리뷰 조회</li>
+                <li>면접 후기 조회</li>
+             </ul>
+          </div>
+          <div class="col membership_benefits">
+             <h6>기업회원</h6>
+             <ul>
+                <li>배너등록</li>
+             </ul>
+          </div>
+       </div>
+       <button class="jmkbtn btn-lg" id="join">멤버십 가입</button>
+    </c:if>
+    <c:if test="${Enterprise.entMembership eq '유료회원' }">
+       <h4><c:out value="${Enterprise.entName }"/>님은 이미 멤버십이 있습니다</h4>
+    </c:if>
  </div>
  
 
 </section>
 <script>
-	function applyAd(){
-		location.replace("path/com/applyAd.do");
-	}
- 	$("#join").click(function(){
- 		alert("hello");
- 		location.href="${path}/com/membership_end.do";
- 	})
-</script>	
-	
+   function applyAd(){
+      location.replace("path/com/applyAd.do");
+   }
+    $("#join").click(function(){
+       alert("hello");
+       location.href="${path}/com/membership_end.do";
+    })
+</script>   
+   
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
