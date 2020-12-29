@@ -2,6 +2,8 @@ package com.project.jobnom.enterprise.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,11 +21,16 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.project.jobnom.Hire.model.vo.Recruitment;
 import com.project.jobnom.common.model.vo.Login;
 import com.project.jobnom.enterprise.model.service.EnterpriseService;
 import com.project.jobnom.enterprise.model.vo.ApplyAd;
 import com.project.jobnom.enterprise.model.vo.Banner;
 import com.project.jobnom.enterprise.model.vo.Enterprise;
+import com.project.jobnom.enterprise.model.vo.Support;
+import com.project.jobnom.enterprise.page.EnterprisePageBar;
+import com.project.jobnom.resume.model.vo.Resume;
+
 
 @Controller
 public class companyController {
@@ -39,15 +46,17 @@ public class companyController {
 	}
 
 	@RequestMapping("/enterprise/com_info.do")
-	public String companyInfo() {
 
-		return "enterprise/com_info";
+	public ModelAndView companyInfo(ModelAndView mv) {
+		
+		mv.setViewName("enterprise/com_info");
+		return mv;
 	}
 
 	@RequestMapping("/enterprise/com_review.do")
-	public String companyReview() {
-
-		return "enterprise/com_review";
+	public ModelAndView companyReview(ModelAndView mv) { 
+		mv.setViewName("enterprise/com_review");
+		return mv;
 	}
 
 	@RequestMapping("/enterprise/com_interview.do")
@@ -85,11 +94,23 @@ public class companyController {
 	}
 
 	@RequestMapping("/com/mypage.do")
-	public String comMypage(HttpSession session) {
+	public ModelAndView comMypage(ModelAndView mv,@RequestParam(value="cPage",defaultValue="1")
+										int cPage,@RequestParam(value="numPerpage",defaultValue="5") int numPerpage, HttpSession session) {
 		Login log = (Login) session.getAttribute("commonLogin");
 		Enterprise ent = service.findOneEnterprise(log);
 		session.setAttribute("Enterprise", ent);
-		return "/enterprise/ent_mypage/com_mypage";
+		System.out.println("sdds"+ent.getEntNo());
+		List<Recruitment> res = service.selectRecruitment(ent.getEntNo(),cPage,numPerpage); 
+		int totalData = service.selectRecruitmentCount();
+		
+		System.out.println(res);
+		System.out.println("공고 총갯수 : " + totalData);
+		System.out.println("페이지 위치 : " + cPage+"페이지 갯수" + numPerpage);
+		mv.addObject("res", res);
+		mv.addObject("pageBar",EnterprisePageBar.getPageBar2(totalData,cPage,numPerpage,ent.getEntNo(),"mypage.do"));
+		mv.addObject("totalData",totalData);
+		mv.setViewName("/enterprise/ent_mypage/com_mypage");
+		return mv;
 	}
 
 	@RequestMapping("/com/applyAd.do")
@@ -112,6 +133,28 @@ public class companyController {
 		mv.addObject("enterprise", ent);
 		mv.addObject("jname", jname);
 		mv.setViewName("/enterprise/ent_mypage/ent_edit");
+		return mv;
+	}
+	@RequestMapping("/com/com_check.do")
+	public ModelAndView comCheck(ModelAndView mv,@RequestParam(value="cPage",defaultValue="1") int cPage, 
+			@RequestParam(value="numPerpage",defaultValue="5") int numPerpage, Recruitment rec)  {
+		/* System.out.println("???"); */
+		System.out.println(rec.getRec_no());
+		List<Support> s = service.selectSupport(cPage,numPerpage, rec);
+		List<Resume> res = new ArrayList<Resume>();
+		for(Support l : s) {
+			System.out.println("회원번호:" + l.getMem_no());
+			res.add(service.selectResume(l.getMem_no()));
+		}
+		System.out.println("이력서 목록:" + res);
+		int totalData=service.selectCount();
+		
+		mv.addObject("s",s);
+		mv.addObject("res", res);
+		mv.addObject("pageBar",EnterprisePageBar.getPageBar(totalData,cPage,numPerpage,"com_check.do"));
+		mv.addObject("totalData",totalData);
+		mv.setViewName("/enterprise/ent_mypage/com_check");
+		
 		return mv;
 	}
 
@@ -190,6 +233,7 @@ public class companyController {
 	public ModelAndView membership(HttpSession session, Model m, ModelAndView mv) {
 		Login log = (Login) session.getAttribute("commonLogin");
 		Enterprise ent = service.findOneEnterprise(log);
+		System.out.println(ent);
 		session.setAttribute("Enterprise", ent);
 		System.out.println(ent);
 		mv.setViewName("enterprise/ent_mypage/membership");
@@ -270,5 +314,4 @@ public class companyController {
 		}
 		return result;
 	}
-
 }

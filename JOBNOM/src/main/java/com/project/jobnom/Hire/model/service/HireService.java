@@ -5,10 +5,8 @@ import java.util.Map;
 
 import com.project.jobnom.Hire.model.vo.Interestedrcruitment;
 import com.project.jobnom.Hire.model.vo.Recruitment;
-import com.project.jobnom.Hire.model.vo.Review;
-import com.project.jobnom.member.model.vo.Member;
 import com.project.jobnom.Hire.model.vo.Support;
-import com.project.jobnom.enterprise.model.vo.Enterprise;
+import com.project.jobnom.member.model.vo.Member;
 
 public interface HireService {
 

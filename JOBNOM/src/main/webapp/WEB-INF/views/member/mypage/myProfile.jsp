@@ -15,7 +15,6 @@
 <!-- month_picker -->
 <link href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="${path }/resources/css/MonthPicker.css"/>
-<script src="${path}/resources/js/month/gruntfile.js"></script>
 <script src="${path}/resources/js/month/MonthPicker.js"></script>
 
 
@@ -26,7 +25,7 @@
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="a">
-			<form action="" method="POST" onsubmit="return required();">
+			<form action="${path }/resume/insertResume" method="POST" onsubmit="return required();">
 				<div class="profilebody">  
 					<div class="container">
 						<div class="row">
@@ -42,40 +41,42 @@
 						<input type="hidden" value="이메일">
 						<div class="row">
 							<div class="col-md-6">
-								<input type="text" id="memName" class="input1" placeholder="이름을 작성해주세요." required>
+								<input type="text" id="memName" class="input1" name="resName" placeholder="이름을 작성해주세요." required>
 							</div>
 							<div class="col-md-6">
-								<input type="text" id="memTel" class="input1" placeholder="번호를 작성해주세요." required>
+								<input type="text" id="memTel" class="input1" name="resPhone" placeholder="번호를 작성해주세요." required>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-md-6">
 								<span class="span1">성별</span>
 								<label for="memGender-M">남자</label>
-								<input type="checkbox" class="gender" onclick="genderCheck(this);" aria-required="false" id="memGender-M" >
+								<input type="checkbox" class="gender" name="resGender" onclick="genderCheck(this);" aria-required="false" id="memGender-M" >
 								<label for="memGender-F">여자</label>
-								<input type="checkbox" class="gender" onclick="genderCheck(this);" aria-required="false" id="memGender-F" >
+								<input type="checkbox" class="gender" name="resGender" onclick="genderCheck(this);" aria-required="false" id="memGender-F" >
 							</div>
 							<div class="col-md-6 b">
 								<span class="span1">출생연도</span>
-								<select class="yrselectdesc"></select>
+								<select class="yrselectdesc" name="resBirth"></select>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-md-12">
 								<span class="span2">현재(관심)직종</span>
 								<div class="flex">
-									<select class="input1 mem_category col-md-6" id="mem_category" name="memCategory1" required>
-										<option value="">기타</option>
-										<option value="IT">IT</option>
-										<option value="금융/재무">금융/재무</option>
-										<option value="교육">교육</option>
-										<option value="마케팅">마케팅</option>
-										<option value="의약">의약</option>
-										<option value="서비스/고객지원">서비스/고객지원</option>
-									</select>
-									<select class="input1 mem_category2 col-md-6" id="mem_category2" name="memCategory2" required>
+									<c:if test="${!empty cate }">
+										<select class="input1 mem_category col-md-6" id="mem_category"  required>
+											<option value="none">기타</option>
+											<c:forEach var="cate1" items="${cate }" varStatus="Status">
+				                           			<option value="${cate1.cateNo }" ${mem.cateNo==cate1.cateNo?"selected":"id='false'"} class="mem_opt1"><c:out value="${cate1.job }"/></option>
+				                           </c:forEach>
+										</select>
+									</c:if>
+									<select class="input1 mem_category2 col-md-6" name="category2" id="mem_category2" required>
 										<option value="none">기타</option>
+										<c:forEach var="cate3" items="${cate3 }" varStatus="Status">
+												<option value="${cate3.cateNo2 }" ${mem.cateNo2==cate3.cateNo2?"selected":"id='false'" }><c:out value="${cate3.jobs2 }"/></option>
+										</c:forEach>
 									</select>
 								</div>
 							</div>
@@ -84,7 +85,7 @@
 							<div class="col-md-12">
 								<span class="line">
 									<label for="career" class="span2">경력</label>
-									<select name="" id="career" class="input1" required>
+									<select name="" id="career" name="resCar" class="input1" required>
 										<option value="">선택해주세요</option>
 										<option value="0">0</option>
 										<option value="1">1</option>
@@ -99,7 +100,7 @@
 										<option value="10">10년이상</option>
 									</select>
 									<label for="skill" class="span2">업무 및 스킬</label>
-									<textarea class="form-control inp" rows="1" id="skill" placeholder="(예시) 영업기획, 디지털마케팅,UI디자인(업무와 관련된 자격증 및 기술명 포함)" required></textarea>
+									<textarea class="form-control inp" rows="1" name="resContent" id="skill" placeholder="(예시) 영업기획, 디지털마케팅,UI디자인(업무와 관련된 자격증 및 기술명 포함)" required></textarea>
 									
 									<!-- <ul>
 										<li><a href=""></a></li>
@@ -290,9 +291,9 @@
 						<div class="row">
 							<div class="offset-4 col-4">
 								<label for="yes">공개</label>
-								<input type="checkbox" id="yes">
+								<input type="checkbox" name="resOpencheck" id="yes">
 								<label for="no">미공개</label>
-								<input type="checkbox" id="no">
+								<input type="checkbox" name="resOpencheck" id="no">
 							</div>
 						</div>
 					</div>
@@ -312,18 +313,14 @@
 				end:2030,
 				order: 'desc',
 				selected: 2020
-
 			});
 			$(".yrselectdesc").change(e=>{
 				let birth_index=$(".yrselectdesc option").index($(".mem_catagory option:selected"));
 				console.log(typeof $(".yrselectdesc").val())
 				console.log(birth_index);
 			})
-			
-
 		});
-	</script>
-	<script>
+
 		$(document).ready(function(){
 			var option={
 					startYear:1940,
@@ -340,8 +337,7 @@
 // 				alert("선택한월 :"+month)
 // 			})
 		});
-	</script>
-	<script>
+
 		//check선택시 다른 checkbox비활성화
 		function genderCheck(chk){
 			var gender = document.getElementsByClassName("aaa");
@@ -353,44 +349,29 @@
 		}
 		
 		//select box 값 바꾸기
-		function selectSetting(){
-		//회원
-		console.log( $(".mem_category").val());
-		$(".mem_category2").hide();
-		$(".mem_category").change(e=>{
-			$(".mem_category2").show();
-			console.log($(e.target).val());
-			let job1 = $(e.target).val()
-			let car1 = ["웹개발", "시스템엔지니어", "웹퍼블리셔", "프로젝트매니저","DBA","모바일앱개발"];
-			let car2 = ["회계사", "세무사", "경리", "증권/투자분석가","보험계리사/손해사정인","자산운용가"];
-			let car3 = ["교육기획/교재개발", "전문강사", "초중고/특수교사", "대학교수", "교직원","입시/복습/학원강사","전문강사"];
-			let car4 = ["마케팅","브랜드마케팅","시장조사/분석","상품개발/기획/MD","온라인마케팅","CRM"];
-			let car5 = ["의사","한의사","치과의사","약사/한약사","간호사","간호조무사"];
-			let car6 = ["고객지원/CS","호텔/숙박관련","웨딩플래너/커플매니저","외식업/식음료","여행가이드","뷰티/미용"];
-			let target = document.getElementById("mem_category2")
-
-			if(job1 == "IT") var values = car1;
-			else if (job1 == "금융/재무") values = car2;
-			else if (job1 == "교육") values = car3;
-			else if (job1 == "마케팅") values = car4;
-			else if (job1 == "의약") values = car5;
-			else if (job1 == "서비스/고객지원") values = car6;
-			else if (job1 == "") $(".mem_category2").hide();
-			
-			console.log(target.options.length)
-			target.options.length = 0;
-				for (i in values) {
-					var opt = document.createElement("option");
-					opt.value = values[i];
-					opt.innerHTML = values[i];
-					target.appendChild(opt);
-				}
-				console.log(target.value);
-				console.log(typeof $(".mem_category option:selected").val());
-			});
-		};
-		//selectBox함수 실행
-		selectSetting();
+		$(function(){
+			$(".mem_category").change(e=>{
+				let job1=$(".mem_category option").index($(".mem_category option:selected"));
+				$.ajax({
+					url:"${path}/member/selectJob",
+					data:{cateNo:job1},
+					type:"get",
+					success:data=>{
+						console.log(data)
+						$(".mem_category2").empty();
+						if(job1!=0){
+							for(var i=0; i<data.length; i++ ){
+								var opt = $("<option value='"+data[i]['cateNo2']+"'>"+data[i]['jobs2']+"</option>")
+								$(".mem_category2").append(opt);
+							}
+						}else{
+							$(".mem_category2").find('option').remove();
+							$(".mem_category2").append("<option value='0'>기타</option>");
+						}
+					}
+				})
+			})
+		})
 		//학력사항
 		var edu="<div class='row edu'>";
 			edu+="<div class='col-12 col-md-12 nth'>";

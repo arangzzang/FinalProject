@@ -6,9 +6,8 @@
 <c:set var="path" value="${pageContext.request.contextPath }" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 <link rel="stylesheet" href="${path}/resources/css/Hire/insertReview.css" />
-<jsp:include page="/WEB-INF/views/common/header.jsp">
-	<jsp:param name="title" value=" "/>
-</jsp:include>
+
+
 
 
 

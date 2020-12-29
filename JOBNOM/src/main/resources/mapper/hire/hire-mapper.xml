@@ -39,6 +39,7 @@
 	<select id="selectCount" resultType="_int">
 	 SELECT COUNT(*) FROM RECRUITMENT 
 	</select>
+
 	
 	
 	<select id="RecruitmentList" resultType="com.project.jobnom.Hire.model.vo.Recruitment">

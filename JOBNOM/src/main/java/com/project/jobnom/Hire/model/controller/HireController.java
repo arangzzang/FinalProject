@@ -13,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -119,9 +118,10 @@ public class HireController {
 
 	@RequestMapping("/Hire/insertReview.do")
 	public String insertReview(int memNo, Model m)  throws IOException {
-
-		Member mem = service.selectMember(memNo);
-		m.addAttribute("mem",mem);
+		/*
+		 * System.out.println("전환"+memNo); Member mem = service.selectMember(memNo);
+		 * System.out.println(mem); m.addAttribute("mem",mem);
+		 */
 		return "Hire/insertReview";
 	}
 

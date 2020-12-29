@@ -23,4 +23,8 @@ public interface MemberService {
 	Member selectPw(Map data);
 	//비밀번호 변경
 	int updatePw(Map mem);
+	//이력서페이지
+	Member myProfileView(int memNo);
+	//이력서 가기전 직종 값 뿌려줄 데이터
+	
 }

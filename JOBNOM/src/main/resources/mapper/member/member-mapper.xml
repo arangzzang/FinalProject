@@ -8,7 +8,8 @@
 		<result column="mem_manager_yn" property="memManagerYn"/>
 		<result column="mem_check" property="memCheck"/>
 		<result column="mem_membership" property="memMembership"/>
-		<result column="cate_no2" property="mCateNo2"/>
+		<result column="cate_no2" property="cateNo2"/>
+		<result column="cate_no" property="cateNo"/>
 	</resultMap>
 	<resultMap type="cate" id="cateMap">
 		<result column="cate_no" property="cateNo"/>
@@ -38,7 +39,7 @@
 								#{memCheck},
 								default,
 								default,
-								#{mCateNo2}
+								#{cateNo2}
 								)
 	</insert>
 	<!-- 마이페이지 -->
@@ -57,7 +58,14 @@
 	<update id="updatePw" parameterType="map">
 		update member set mem_pw=#{password1} where mem_no=#{memNo}
 	</update>
-	
+	<!-- 이력서 -->
+	<select id="selectCategory" parameterType="_int" resultMap="memMap">
+		select*from member
+			join category2 using(cate_no2)
+			join category using (cate_no)
+			where mem_no =#{memNo}
+	</select>
+		
 </mapper>
 
 

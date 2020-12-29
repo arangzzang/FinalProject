@@ -11,8 +11,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class Banner {
-	private int ent_no;
-	private String bann_title;
-	private String bann_path;
-	private Date uploaddate;
+   private int ent_no;
+   private String bann_title;
+   private String bann_path;
+   private Date uploaddate;
 }

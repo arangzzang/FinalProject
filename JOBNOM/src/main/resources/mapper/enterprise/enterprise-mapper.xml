@@ -16,7 +16,22 @@
 		<result column="ent_site" property="entSite"/>
 		<result column="ent_membership" property="entMembership"/>
 	</resultMap>
-
+	<resultMap type="resume" id="resMap">
+		<result column="res_no" property="resNo"/>
+		<result column="res_name" property="resName"/>
+		<result column="res_gender" property="resGender"/>
+		<result column="res_birth" property="resBirth"/>
+		<result column="res_opencheck" property="resOpenCheck"/>
+		<result column="mem_no" property="memNo"/>
+	</resultMap>
+	<resultMap type="recruitment" id="recMap"> 
+		<result column="rec_no" property="recNo"/>
+		<result column="ent_no" property="entNo"/>
+		<result column="rec_title" property="recTitle"/>
+		<result column="rec_startdate" property="recStartdate"/>
+		<result column="rec_enddate" property="recEnddate"/>
+		<result column="rec_info" property="recInfo"/>
+	</resultMap>
 	<insert id="enrollEnter" parameterType="ent">
 		insert into enterprise values(
 									seq_ent_no.nextval,
@@ -85,9 +100,33 @@
 		)
 	</insert>
 
+	<select id="selectSupport" resultType="support" >
+		SELECT DISTINCT MEM_NO
+		FROM SUPPORT WHERE REC_NO=#{rec_no}
+	</select>
+	
+	<select id ="selectCount" resultType="_int">
+		SELECT COUNT(*) FROM RESUME
+	</select>
+	
+	<select id="selectRecruitment" resultType="recruitment" parameterType="_int">
+		SELECT * FROM RECRUITMENT WHERE ENT_NO=#{entNo}
+	</select>
+	
+	<select id="selectResume" parameterType="int" resultMap="resMap">
+		SELECT * FROM RESUME WHERE MEM_NO=#{memNo}
+	</select>
+	
+	<select id="selectRecruitmentCount" resultType="_int">
+		SELECT COUNT(*) FROM RECRUITMENT
+	</select>
+	
 	<delete id="quit">
 		DELETE FROM ENTERPRISE WHERE ENT_NO=#{entNo}
 	
 	</delete>
 
+	<select id="findEmailEnterprise" parameterType="string" resultMap="entMap">
+		SELECT * FROM ENTERPRISE WHERE ENT_EMAIL=#{memEmail}
+	</select>
 </mapper>

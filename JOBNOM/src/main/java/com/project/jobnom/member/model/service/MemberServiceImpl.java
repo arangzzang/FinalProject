@@ -56,6 +56,14 @@ public class MemberServiceImpl implements MemberService {
 	public int updatePw(Map mem) {
 		return dao.updatePw(mem,session);
 	}
+
+	@Override
+	public Member myProfileView(int memNo) {
+		return dao.myProfileView(memNo, session);
+	}
+
+	
+	
 	
 	
 	

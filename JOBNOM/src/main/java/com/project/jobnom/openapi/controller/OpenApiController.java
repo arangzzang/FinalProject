@@ -3,7 +3,6 @@ package com.project.jobnom.openapi.controller;
 import java.io.InputStream;
 import java.io.PrintWriter;
 import java.net.URL;
-import java.net.URLDecoder;
 import java.net.URLEncoder;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,7 +13,6 @@ import org.apache.commons.io.output.ByteArrayOutputStream;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 
 import net.sf.json.JSONObject;
 @Controller

@@ -13,6 +13,5 @@ public class Login {
 	private int memNo;
 	private String memEmail;
 	private String memPw;
-
 	
 }
