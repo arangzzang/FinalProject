@@ -3,10 +3,7 @@ package com.project.jobnom.enterprise.model.service;
 import java.util.List;
 import java.util.Map;
 
-<<<<<<< HEAD
-=======
 import com.project.jobnom.Hire.model.vo.Recruitment;
->>>>>>> branch 'master' of https://github.com/arangzzang/FinalProject.git
 import com.project.jobnom.common.model.vo.Login;
 import com.project.jobnom.enterprise.model.vo.ApplyAd;
 import com.project.jobnom.enterprise.model.vo.Banner;

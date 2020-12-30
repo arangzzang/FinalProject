@@ -53,7 +53,7 @@ public class companyController {
 		System.out.println(mv.addObject("list",service.companyList()));
 		
 		return mv;
-
+	}
 
 	@RequestMapping("/enterprise/com_info.do")
 

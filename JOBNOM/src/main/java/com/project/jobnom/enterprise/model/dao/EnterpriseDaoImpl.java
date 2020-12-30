@@ -3,10 +3,7 @@ package com.project.jobnom.enterprise.model.dao;
 import java.util.List;
 import java.util.Map;
 
-<<<<<<< HEAD
-=======
 import org.apache.ibatis.session.RowBounds;
->>>>>>> branch 'master' of https://github.com/arangzzang/FinalProject.git
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
