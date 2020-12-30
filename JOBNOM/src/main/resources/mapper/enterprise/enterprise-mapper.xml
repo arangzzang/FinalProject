@@ -122,6 +122,18 @@
 	
 	<delete id="quit">
 		DELETE FROM ENTERPRISE WHERE ENT_NO=#{entNo}
-	
 	</delete>
+
+	<select id="selectReviewList" resultType="review">
+		SELECT * FROM REVIEW
+	</select>
+	
+	<select id="selectJoblist" resultType="recruitment">
+		SELECT * FROM RECRUITMENT
+	</select>
+	
+	<select id="getC2" resultType="cat2" >
+		SELECT * FROM CATEGORY2
+	</select>	
+	
 </mapper>

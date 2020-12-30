@@ -378,6 +378,13 @@ body{
     height: 100%;
     font-weight: bolder;
 }
+.inter_default{
+    margin-top: 50px;
+    text-align: center;
+}
+.inter_default>i{
+    color: #c2c8cc;
+}
 .level_con{
     text-align: center;
 }

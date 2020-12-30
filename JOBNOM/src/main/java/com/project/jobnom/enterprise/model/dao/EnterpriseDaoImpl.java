@@ -8,9 +8,11 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.project.jobnom.Hire.model.vo.Recruitment;
+import com.project.jobnom.Hire.model.vo.Review;
 import com.project.jobnom.common.model.vo.Login;
 import com.project.jobnom.enterprise.model.vo.ApplyAd;
 import com.project.jobnom.enterprise.model.vo.Banner;
+import com.project.jobnom.enterprise.model.vo.Category2;
 import com.project.jobnom.enterprise.model.vo.Enterprise;
 import com.project.jobnom.enterprise.model.vo.Support;
 import com.project.jobnom.resume.model.vo.Resume;
@@ -91,4 +93,25 @@ public class EnterpriseDaoImpl implements EnterpriseDao {
 		return session.selectOne("enterprise.selectResume",memNo);
 	}
 
+
+	@Override
+	public List<Review> selectReviewList(SqlSession session) {
+		// TODO Auto-generated method stub
+		return session.selectList("enterprise.selectReviewList");
+	}
+
+	@Override
+	public List<Recruitment> selectJoblist(SqlSession session) {
+		// TODO Auto-generated method stub
+		return session.selectList("enterprise.selectJoblist");
+	}
+
+	@Override
+	public List<Category2> getC2(SqlSession session) {
+		// TODO Auto-generated method stub
+		return session.selectList("enterprise.getC2");
+	}
+	
+	
+	
 }

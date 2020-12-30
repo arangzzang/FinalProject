@@ -1,12 +1,13 @@
 package com.project.jobnom.enterprise.model.service;
 
 import java.util.List;
-import java.util.Map;
 
 import com.project.jobnom.Hire.model.vo.Recruitment;
+import com.project.jobnom.Hire.model.vo.Review;
 import com.project.jobnom.common.model.vo.Login;
 import com.project.jobnom.enterprise.model.vo.ApplyAd;
 import com.project.jobnom.enterprise.model.vo.Banner;
+import com.project.jobnom.enterprise.model.vo.Category2;
 import com.project.jobnom.enterprise.model.vo.Enterprise;
 import com.project.jobnom.enterprise.model.vo.Support;
 import com.project.jobnom.resume.model.vo.Resume;
@@ -31,5 +32,10 @@ public interface EnterpriseService {
 	Resume selectResume(int memNo);
 	
 	int quit(Enterprise ent);
+	
+	List<Review> selectReviewList();
+	List<Recruitment> selectJoblist();
+	
+	List<Category2> getC2();
 }
 

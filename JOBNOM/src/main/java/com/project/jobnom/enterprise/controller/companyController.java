@@ -18,10 +18,12 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.project.jobnom.Hire.model.vo.Recruitment;
+import com.project.jobnom.Hire.model.vo.Review;
 import com.project.jobnom.common.model.vo.Login;
 import com.project.jobnom.enterprise.model.service.EnterpriseService;
 import com.project.jobnom.enterprise.model.vo.ApplyAd;
 import com.project.jobnom.enterprise.model.vo.Banner;
+import com.project.jobnom.enterprise.model.vo.Category2;
 import com.project.jobnom.enterprise.model.vo.Enterprise;
 import com.project.jobnom.enterprise.model.vo.Support;
 import com.project.jobnom.enterprise.page.EnterprisePageBar;
@@ -43,13 +45,16 @@ public class companyController {
 
 	@RequestMapping("/enterprise/com_info.do")
 	public ModelAndView companyInfo(ModelAndView mv) {
-		
+
 		mv.setViewName("enterprise/com_info");
 		return mv;
 	}
 	
 	@RequestMapping("/enterprise/com_review.do")
 	public ModelAndView companyReview(ModelAndView mv) { 
+		List<Review> rev=service.selectReviewList();
+		
+		mv.addObject("rev",rev);
 		mv.setViewName("enterprise/com_review");
 		return mv;
 	}
@@ -61,9 +66,16 @@ public class companyController {
 	}
 	
 	@RequestMapping("/enterprise/com_job.do")
-	public String companyJob() {
+	public ModelAndView companyJob(ModelAndView mv) {
+		List<Category2> c2 = service.getC2();
+		System.out.println("결과값 : "+c2);
 		
-		return "enterprise/com_job";
+		
+		List<Recruitment> Rec= service.selectJoblist();
+		mv.addObject("c2",c2);
+		mv.addObject("Rec",Rec);
+		mv.setViewName("enterprise/com_job");
+		return mv;
 	}
 
 	@RequestMapping("/enterprise/applyAdEnd.do")

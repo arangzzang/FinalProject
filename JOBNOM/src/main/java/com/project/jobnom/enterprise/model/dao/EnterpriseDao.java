@@ -1,14 +1,15 @@
 package com.project.jobnom.enterprise.model.dao;
 
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
 import com.project.jobnom.Hire.model.vo.Recruitment;
+import com.project.jobnom.Hire.model.vo.Review;
 import com.project.jobnom.common.model.vo.Login;
 import com.project.jobnom.enterprise.model.vo.ApplyAd;
 import com.project.jobnom.enterprise.model.vo.Banner;
+import com.project.jobnom.enterprise.model.vo.Category2;
 import com.project.jobnom.enterprise.model.vo.Enterprise;
 import com.project.jobnom.enterprise.model.vo.Support;
 import com.project.jobnom.resume.model.vo.Resume;
@@ -27,5 +28,7 @@ public interface EnterpriseDao {
 	int selectRecruitmentCount(SqlSession session);
 	Resume selectResume(SqlSession session , int mem_no);
 	int quit(Enterprise ent, SqlSession session);
-
+	List<Review> selectReviewList(SqlSession session);
+	List<Recruitment> selectJoblist(SqlSession session);
+	List<Category2> getC2(SqlSession session);
 }
