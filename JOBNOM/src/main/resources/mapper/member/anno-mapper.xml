@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="anno">
+<select id="anoList" resultType="com.project.jobnom.Hire.model.vo.Recruitment">
+	  SELECT DISTINCT E.*,ENT_NAME ,REP_NAME, REP_PHONE,ENT_LOGO,OPEN_CHECK, M.MEM_NO
+			FROM RECRUITMENT E 
+			 LEFT JOIN REVIEW S ON (S.ENT_NO = E.ENT_NO)
+             LEFT JOIN INTERESTEDRECRUITMENT T ON(T.REC_NO = E.REC_NO)
+			LEFT JOIN ENTERPRISE R ON (R.ENT_NO = E.ENT_NO)
+             LEFT JOIN SUPPORT U ON (U.REC_NO = E.REC_NO)
+              LEFT JOIN MEMBER M ON (M.MEM_NO = U.MEM_NO)
+              ORDER BY REC_STARTDATE DESC
+	</select>
+	
+	<select id="anoList2" resultType="com.project.jobnom.Hire.model.vo.Recruitment" parameterType="_int">
+		SELECT E.*,ENT_NAME ,REC_CATEGORY,
+			 REP_NAME, REP_PHONE,ENT_LOGO
+			FROM RECRUITMENT E 
+			   JOIN REVIEW S ON (S.ENT_NO = E.ENT_NO)
+			JOIN ENTERPRISE R ON (R.ENT_NO = E.ENT_NO)
+			  WHERE REC_CATEGORY=#{anoNum}
+	</select>
+	
+	<select id="annCarrer" resultType="com.project.jobnom.Hire.model.vo.Recruitment" parameterType="map">
+		SELECT E.*,ENT_NAME ,REC_CATEGORY,
+			 REP_NAME, REP_PHONE,ENT_LOGO
+			FROM RECRUITMENT E  
+			   JOIN REVIEW S ON (S.ENT_NO = E.ENT_NO)
+			JOIN ENTERPRISE R ON (R.ENT_NO = E.ENT_NO)
+			  WHERE REC_CAREER <![CDATA[<=]]> #{carNum} 
+			   AND REC_CATEGORY=#{anoNum}
+			   AND  REC_TYPE LIKE '%'||#{employType}||'%'
+	</select> 
+	 
+	<select id="selectCount" resultType="_int">
+	 SELECT COUNT(*) FROM  RECRUITMENT 
+	</select>  
+	      
+</mapper>     
+ 

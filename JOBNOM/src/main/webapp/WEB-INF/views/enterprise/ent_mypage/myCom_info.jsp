@@ -1,15 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="path" value="${pageContext.request.contextPath }"/>
+	<div class="row">
+		<div class="col" style="text-align:center">
+	     <img src="${path }/resources/enterprise/logo/3/BBQ_logo.png" width="100">
+		</div>
+	</div>
 
-<div class="memberinfo-parent ">
-        <div class="jumbotron row memberinfo" id="memberinfo">
-            <div class="col-sm-3 col-offset-3">
-                <img src="" alt="">
-            </div>
-            <div class="col-sm-6">
-                <p>회원이름</p>
-                <p>소속회사</p>
-                <p>이메일주소</p>
-            </div>
-        </div>
-</div>

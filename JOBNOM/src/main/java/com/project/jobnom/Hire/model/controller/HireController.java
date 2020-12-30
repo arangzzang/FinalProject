@@ -118,7 +118,6 @@ public class HireController {
 	
 	}
 
-	
 	@RequestMapping("/Hire/insertReview2.do")
 	public String insertReview2(HttpServletRequest request) throws Exception {
 		Map<String, Object> paramMap = new HashMap<String, Object>();

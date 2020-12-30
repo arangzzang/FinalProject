@@ -57,11 +57,7 @@ public class HireServiceImpl implements HireService {
 	public List<Recruitment> RecruitmentList() {
 		return dao.RecruitmentList(session);
 	}
-
 	@Override
-	public Member selectMember(int memNo) {
-		return dao.selectMember(memNo,session);
-	}
 	public List<Map> MemberList(String memNo) {
 		return dao.MemberList(session,memNo);
 	}

@@ -25,4 +25,8 @@ public interface MemberDao {
 	Member selectPw(Map data, SqlSession session);
 	//비밀번호 변경
 	int updatePw(Map mem, SqlSession session);
+	//이력서
+	Member myProfileView(int memNo, SqlSession session);
+	//이력서 가기전 직종 값 뿌려줄 데이터
+	
 }
