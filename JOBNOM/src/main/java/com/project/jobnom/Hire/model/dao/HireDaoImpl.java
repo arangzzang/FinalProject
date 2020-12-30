@@ -79,8 +79,8 @@ public class HireDaoImpl implements HireDao {
 	}
 
 	@Override
-	public int selectSuppertCount(SqlSession session) {
-		return session.selectOne("hire.selectSuppertCount");
+	public int selectSuppertCount(SqlSession session, String memNo) {
+		return session.selectOne("hire.selectSuppertCount", memNo);
 	}
 
 	@Override
@@ -104,8 +104,8 @@ public class HireDaoImpl implements HireDao {
 	}
 
 	@Override
-	public int selectInterestedrcruitmentCount(SqlSession session) {
-		return session.selectOne("hire.selectInterestedrcruitmentCount");
+	public int selectInterestedrcruitmentCount(SqlSession session,String memNo) {
+		return session.selectOne("hire.selectInterestedrcruitmentCount",memNo);
 	}
 
 	@Override
@@ -116,6 +116,16 @@ public class HireDaoImpl implements HireDao {
 	@Override
 	public List<Recruitment> recSerch(SqlSession session, String rec_no) {
 		return session.selectList("hire.recSerch",rec_no);
+	}
+
+	@Override
+	public List<Map> selectMemberApply(SqlSession session, Map parMap) {
+		return session.selectList("hire.selectMemberApply",parMap);
+	}
+
+	@Override
+	public List<Map> MemberFitList(SqlSession session, String memNo) {
+		return session.selectList("hire.MemberFitList",memNo);
 	}
 	
 

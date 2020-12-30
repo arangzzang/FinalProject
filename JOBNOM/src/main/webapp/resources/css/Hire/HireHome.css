@@ -27,7 +27,7 @@ a{
   }
   
   .a{
-      margin-top: 30px;
+      margin-top: 100px;
       display: flex;
       font-weight: bolder;
       font-size: 20px;
@@ -173,33 +173,26 @@ a{
 }
 
 .categoryAnnouncement{
-
-    display:flex;
+	text-align:center;
     width: 100%;
     background-color:#f7fdfa;
     border-radius: 30px;
 }
-.announcementMain{
-  
-    width: 30%;
-    height: 400px;
-}
+
 .announcementList{
-    width: 70%;
+    width: 100%;
     display:flex;
-    border-left: solid;
     color: gray;
     height: 400px;
     text-align: center;
 }
 .announcementList1{
     width:100%;
-    padding-left: 50px;
-    padding-top:10px ;
-    padding-right: 400px;
+	text-align: center;
+	padding-left: 300px;
 }
 .announcementListSize{
-	width: 760px;
+
 	height: 330px;
 
 }
@@ -219,12 +212,7 @@ a{
     background-image: url("../../image/Hire/pro.png"); 
     background-size: cover ;
 }
-.announcementTitle{
-    margin-top: 20px;
-    text-align: center;
-    font:bold;
-    color: #00c362;
-}
+
 
 /* 추천공고 리스트 설정 */
 .announcementListFlax{
@@ -325,4 +313,17 @@ a{
    
     right: 10px;
     left: auto;
+}
+.findingMeDetailButton{
+
+	width: 400px;
+}
+
+.btn_annoDetail{
+
+}
+.HireHome2{
+	background-image: url("../../image/Hire/HireHome.png");
+	background-size: cover;
+	width: 100%; height: 200px;
 }

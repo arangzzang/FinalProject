@@ -57,7 +57,25 @@ public class annoController {
 		List<Recruitment> anolist = service.anoList2(anoNum,cPage, numPerpage);
 
 		int totalData = service.selectCount(); /* 이거페이지바 */
+		System.out.println("어떻게 나오는지 보까?"+anolist);
+		mv.addObject("pageBar", PageBarFactory.getPageBar2(totalData, cPage, numPerpage, "announcementPage.do"));
+		//mv.addObject("totalData", totalData);
+		mv.addObject("anolist", anolist);
+		mv.setViewName("Hire/announcementPage");
+ 
+		return mv;
 
+	}
+	
+	@RequestMapping("/Hire/annoHomeDetailMove.do")
+	public ModelAndView annoHomeDetailMove(ModelAndView mv, @RequestParam(value = "cPage", defaultValue = "1") int cPage,
+			@RequestParam(value = "numPerpage", defaultValue = "10") int numPerpage,int recNo ) {
+		// 공고 리스트들 출력해주는곳
+		System.out.println("이건 recNo :"+recNo);
+		List<Recruitment> anolist = service.annoHomeDetailMove(recNo,cPage, numPerpage);
+
+		int totalData = service.selectCount(); /* 이거페이지바 */
+		System.out.println("어떻게 나오는지 보까?"+anolist);
 		mv.addObject("pageBar", PageBarFactory.getPageBar2(totalData, cPage, numPerpage, "announcementPage.do"));
 		//mv.addObject("totalData", totalData);
 		mv.addObject("anolist", anolist);
@@ -74,10 +92,9 @@ public class annoController {
 			@RequestParam(value = "numPerpage", defaultValue = "10") int numPerpage, String anoNum, int carNum, String employType) throws Exception{
 		// 공고 리스트들 출력해주는곳
 		
-		String per = "%";
-		String num = "10"; 
-		String resultMsg ="";
-		String rec_category="REC_CATEGORY";
+		
+	
+		
 		
 		
 		Map<String, Object> paramMap = new HashMap<String, Object>();
@@ -87,16 +104,10 @@ public class annoController {
 		System.out.println("번호"+anoNum1);
 		paramMap.put("anoNum", anoNum1);
 		}else {
-			String anoNum1 = rec_category;
+			String anoNum1 = null;
 			System.out.println("번호1"+anoNum1);
 			paramMap.put("anoNum", anoNum1);
-	//		PrintWriter out = response.getWriter();
-			
-			//resultMsg="<script>alert('공고 형태를 선택해주세요');location.href='/Hire/annCarrer.do'</script>";
-//			out.println("<script>alert('공고 형태를 선택해주세요');location.href='redirect:/Hire/annCarrer.do'</script>");
-			
-//			m.addAttribute("msg","테스트");
-//			m.addAttribute("url","test.jsp");
+
 		}    
 		   
 		   
@@ -105,7 +116,7 @@ public class annoController {
 		System.out.println("경력"+carNum1);
 		paramMap.put("carNum", carNum1);
 		}else {
-			String carNum1 = num;
+			String carNum1 = null;
 			System.out.println("경력2"+carNum1);
 			paramMap.put("carNum", carNum1);
 		} 
@@ -116,7 +127,7 @@ public class annoController {
 		System.out.println("고용형태"+employType1); 
 		paramMap.put("employType", employType1);
 		}else {
-			String employType1 = per;
+			String employType1 = null;
 			System.out.println("고용형태2"+employType1); 
 			paramMap.put("employType", employType1);
 		}   

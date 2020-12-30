@@ -41,9 +41,9 @@ public interface HireService {
 	
 	List<Support> HireMyHire(String memNo,int cPage, int numPerpage);
 
-	int selectSuppertCount();
+	int selectSuppertCount(String memNo);
 	
-	int selectInterestedrcruitmentCount();
+	int selectInterestedrcruitmentCount(String memNo);
 	
 	List<Interestedrcruitment> HireFavorites(String memNo,int cPage, int numPerpage);
 
@@ -51,6 +51,11 @@ public interface HireService {
 
 
 	List<Recruitment> recSerch(String rec_no);
+	
+	List<Map> selectMemberApply(Map paramMap);
+
+	List<Map> MemberFitList(String memNo);
+	
 	
 
 

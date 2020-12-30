@@ -39,7 +39,15 @@ public class annoServiceImpl implements annoService {
 	@Override
 	public List<Recruitment> annCarrer(Map paramMap, int cPage, int numPerPage) {
 		return dao.annCarrer(session, paramMap, cPage, numPerPage);
+	}
+
+
+	@Override
+	public List<Recruitment> annoHomeDetailMove(int recNo, int cPage, int numPerPage) {
+		return dao.annoHomeDetailMove(session, recNo, cPage, numPerPage);
 	} 
+	
+	
 	
 	
 	

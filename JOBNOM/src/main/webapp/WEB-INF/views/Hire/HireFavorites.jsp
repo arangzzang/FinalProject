@@ -94,6 +94,8 @@
             <div class="myFavoritesViewInfo">총 ${totalDataIn }개의저장된 채용이 있습니다.  </div>
           </c:if>  
             <c:if test="${commonLogin == null }">
+            <div style="font-size: 16px; color: gray;"><br>잡놈전용 프로필로 즐겨찾기한 내역만 확인 됩니다. 
+              로그인후 공고를 즐겨찾기 해보세요</div>
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#login">
 							회원가입/로그인
 				</button>

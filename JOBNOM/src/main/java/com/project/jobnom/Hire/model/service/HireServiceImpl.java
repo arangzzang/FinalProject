@@ -10,10 +10,8 @@ import org.springframework.stereotype.Service;
 import com.project.jobnom.Hire.model.dao.HireDao;
 import com.project.jobnom.Hire.model.vo.Interestedrcruitment;
 import com.project.jobnom.Hire.model.vo.Recruitment;
-import com.project.jobnom.Hire.model.vo.Review;
-import com.project.jobnom.member.model.vo.Member;
 import com.project.jobnom.Hire.model.vo.Support;
-import com.project.jobnom.enterprise.model.vo.Enterprise;
+import com.project.jobnom.member.model.vo.Member;
 @Service
 public class HireServiceImpl implements HireService {
 
@@ -89,8 +87,8 @@ public class HireServiceImpl implements HireService {
 	}
 
 	@Override
-	public int selectSuppertCount() {
-		return dao.selectSuppertCount(session);
+	public int selectSuppertCount(String memNo) {
+		return dao.selectSuppertCount(session, memNo);
 	}
 
 	@Override
@@ -99,8 +97,8 @@ public class HireServiceImpl implements HireService {
 	}
 
 	@Override
-	public int selectInterestedrcruitmentCount() {
-		return dao.selectInterestedrcruitmentCount(session);
+	public int selectInterestedrcruitmentCount(String memNo) {
+		return dao.selectInterestedrcruitmentCount(session, memNo);
 	}
 
 	@Override
@@ -111,6 +109,16 @@ public class HireServiceImpl implements HireService {
 	@Override
 	public List<Recruitment> recSerch(String rec_no) {
 		return dao.recSerch(session, rec_no);
+	}
+
+	@Override
+	public List<Map> selectMemberApply(Map paramMap) {
+		return dao.selectMemberApply(session, paramMap);
+	}
+
+	@Override
+	public List<Map> MemberFitList(String memNo) {
+		return dao.MemberFitList(session, memNo);
 	}
 
 	
