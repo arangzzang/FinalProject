@@ -40,15 +40,17 @@
 					<div class="result_card ">
 						<span class="llogo"> 
 							<a href=""> 
-							<img src="" alt="">
+							<img src="${list.ENT_LOGO }" alt="">
 							</a>
 						</span>
-						<a href="" class="tit" ><span >${list.ENT_NAME }</span></a>
-						  <span	class="tit_sub">${list.JOB }</span>
-						   <span class="rate_ty02">${list.AVG }</span> 
-						   <span class="tag">
-						   <img src="https://jpassets.jobplanet.co.kr/production/uploads/email_medium/media/ic_badge_recruit.png"alt="채용">
-						   </span>
+						<a href="#" onclick="location.href = '${path }/enterprise/com_info.do?entNo=${list.ENT_NO}'" class="tit" >
+						<span >${list.ENT_NAME }</span>
+						</a>
+					   <span class="tit_sub">${list.ENT_CATEGORY1 }</span>
+					   <span class="rate_ty02">${list.AVG }</span> 
+					   <span class="tag">
+					   <img src="https://jpassets.jobplanet.co.kr/production/uploads/email_medium/media/ic_badge_recruit.png"alt="채용">
+					   </span>
 					</div>
 				</c:forEach>
 	</div>

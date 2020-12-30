@@ -9,20 +9,16 @@
 				e.ent_no
 				,e.ent_category1
 				,e.ent_name
-				,c.job
 				,round(sum(review_satisfaction+review_welfare+review_promotion+review_executive)/(count(review_satisfaction)+count(review_welfare)+count(review_promotion)+count(r.review_executive)),1) as avg
 			from enterprise e
 			inner join review r
 			on (r.ent_no = e.ent_no)
-			 inner join category c
-        	on (c.cate_no = e.ent_category1)
 			where lower(e.ent_name) 
 			like '%'||#{keyword}||'%' 
 			AND ROWNUM <=5
 			group by e.ent_no
 					,e.ent_category1
 					,e.ent_name
-					,c.job
 					
 		]]>
 	</select>
@@ -42,15 +38,12 @@
             ,rec.rec_qualification
             ,rec.rec_other
             ,rec.rec_career
-            ,c.job
             ,round(sum(review_satisfaction+review_welfare+review_promotion+review_executive)/(count(review_satisfaction)+count(review_welfare)+count(review_promotion)+count(r.review_executive)),1) as avg
          from enterprise e
          inner join review r
          on (r.ent_no = e.ent_no)
          inner join recruitment rec
          on (e.ent_no = rec.ent_no)
-         inner join category c
-        on (c.cate_no = e.ent_category1)
          where lower(e.ent_name) 
          like '%'||#{keyword}||'%' 
          AND ROWNUM <=5
@@ -65,7 +58,6 @@
                ,rec.rec_qualification
                ,rec.rec_other
                ,rec.rec_career
-               ,c.job
       ]]>
       </select>
       <!--기업 더보기 조회  -->
@@ -76,20 +68,16 @@
 			,e.ent_logo
 			,e.ent_category1
 			,e.ent_category2
-			,c.job
 			,cOUNT(*) OVER () count
 			,round(sum(review_satisfaction+review_welfare+review_promotion+review_executive)/(count(review_satisfaction)+count(review_welfare)+count(review_promotion)+count(r.review_executive)),1) as avg
 		FROM enterprise e
 		inner join review r
 		on (r.ent_no = e.ent_no)
-		inner join category c
-        on (c.cate_no = e.ent_category1)
 		group by e.ent_no
 			,e.ent_name
 			,e.ent_logo
 			,e.ent_category1
 			,e.ent_category2
-			,c.job
 		order by avg desc
       </select>
       <!--기업 더보기 페이징 바  -->
@@ -105,21 +93,17 @@
 			,e.ent_logo
 			,e.ent_category1
 			,e.ent_category2
-			,c.job
 			,cOUNT(*) OVER () count
 			,round(sum(review_satisfaction+review_welfare+review_promotion+review_executive)/(count(review_satisfaction)+count(review_welfare)+count(review_promotion)+count(r.review_executive)),1) as avg
 		FROM enterprise e
 		inner join review r
 		on (r.ent_no = e.ent_no)
-		inner join category c
-        on (c.cate_no = e.ent_category1)
-	    where c.job = #{entCategory}
+	    where e.ent_category1 = #{entCategory}
 		group by e.ent_no
 			,e.ent_name
 			,e.ent_logo
 			,e.ent_category1
 			,e.ent_category2
-			,c.job
 		order by avg desc
 	</select>
 </mapper>

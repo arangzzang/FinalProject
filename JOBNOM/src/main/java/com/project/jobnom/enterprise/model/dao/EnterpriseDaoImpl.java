@@ -137,6 +137,13 @@ public class EnterpriseDaoImpl implements EnterpriseDao {
 		// TODO Auto-generated method stub
 		return session.selectList("enterprise.companyList6");
 	}
+	
+	//기업명 클릭시 이동
+	@Override
+	public List<Map> companyInfo(SqlSession session, String entNo) {
+		// TODO Auto-generated method stub
+		return session.selectList("enterprise.companyInfo",entNo);
+	}
 
 
 	@Override

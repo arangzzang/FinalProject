@@ -148,5 +148,11 @@ public class EnterpriseServiceImpl implements EnterpriseService {
 		// TODO Auto-generated method stub
 		return dao.companyList6(session);
 	}
-
+	
+	// 기업명 클릭시 이동
+	@Override
+	public List<Map> companyInfo(String entNo) {
+		// TODO Auto-generated method stub
+		return dao.companyInfo(session,entNo);
+	}
 }

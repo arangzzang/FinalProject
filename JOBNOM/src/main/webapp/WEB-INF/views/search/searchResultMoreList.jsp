@@ -18,7 +18,7 @@
                     <!-- 필터 시작 -->
                     <div class="col1Wrap">
                             <select name="parent_industry_id" id="ent_catagory1">
-                                <option name="entCate" value="JOB">1차산업군</option>
+                                <option name="entCate" value="ENT_CATEGORY1">1차산업군</option>
 								<option name="entCate" >IT/인터넷</option>
 								<option name="entCate">금융/재무</option>
 								<option name="entCate">의약</option>
@@ -66,7 +66,7 @@
                                                 </button>
                                             </dt>
                                             <dd>
-                                                <span class="us_txt_1">${list.JOB }</span>
+                                                <span class="us_txt_1">${list.ENT_CATEGORY1 }</span>
                                             </dd>
                                             <dd class="row_end">
                                                 <a href="" class="us_txt_1">기업리뷰</a>
