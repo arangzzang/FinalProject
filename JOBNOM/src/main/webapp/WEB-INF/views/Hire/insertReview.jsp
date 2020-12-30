@@ -6,6 +6,7 @@
 <c:set var="path" value="${pageContext.request.contextPath }" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 <link rel="stylesheet" href="${path}/resources/css/Hire/insertReview.css" />
+<link rel="stylesheet" href="${path }/resources/css/mypage/interviewList.css"/>
 
 
 
@@ -55,6 +56,7 @@
                                             <div>기업명</div>
                                             <input class="popmenuEnterpriseName" id="reviewName" name="review_name" type="text" placeholder="기업명" list="locationData">
                                         	<datalist id="locationData"></datalist>
+                                        	<%-- <input type="text" value="${list[0].ENT_NAME }"> --%>
                                         </div>
                                         <div class="popmenuTital">
                                             <div>제목</div>
@@ -330,13 +332,10 @@
             url: "${path}/Hire/reviewSearch.do",
             data:{"key":$(e.target).val()},
             success:data => {
-                let keys=data.split(",");
+                 let keys=data; 
           
                
                 console.log(keys);
-            
-
-				
                 $("#locationData").html("");
                 for(let i=0;i<keys.length;i++){
                 	$("#locationData").append($("<option>").html(keys[i]));
@@ -344,6 +343,6 @@
                 }
             }
             
-        });
+        })
 	});
 </script>        

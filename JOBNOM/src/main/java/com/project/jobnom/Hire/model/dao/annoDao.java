@@ -21,4 +21,6 @@ public interface annoDao {
 	
 	List<Recruitment>  annCarrer(SqlSession session,Map paramMap, int cPage, int numPerPage);
 
+	List<Recruitment>  annoHomeDetailMove(SqlSession session,int recNo, int cPage, int numPerPage);
+
 }

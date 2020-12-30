@@ -31,4 +31,7 @@ public interface EnterpriseDao {
 	List<Review> selectReviewList(SqlSession session);
 	List<Recruitment> selectJoblist(SqlSession session);
 	List<Category2> getC2(SqlSession session);
+	Enterprise findEmailEnterprise(Login log, SqlSession session);
+	//카카오페이
+	Enterprise selectEnterprise (int entNo,SqlSession session);
 }

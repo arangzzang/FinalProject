@@ -36,7 +36,7 @@
     
     <div>
         <div class="thank">감사합니다</div><br><br>
-        <div>${entName } 에 지원이 완료되었습니다</div><br>
+       	  <div>${applyM[0].REC_TITLE } 에 지원이 완료되었습니다</div><br>
         <a class="menus" class="menus" href="${path }/Hire/HireHome.do?memNo=${commonLogin.memNo}"> <div>메인으로 이동</div></a><br>
          <a class="menus" href="${path }/Hire/HireMyHire.do?memNo=${commonLogin.memNo}" class="myHire1"><div>내 지원 공고 보러가기</div></a><br>
     </div><br><br>

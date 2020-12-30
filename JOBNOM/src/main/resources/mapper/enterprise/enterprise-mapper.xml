@@ -14,6 +14,7 @@
 		<result column="rep_phone" property="repPhone"/>
 		<result column="type" property="type"/>
 		<result column="ent_site" property="entSite"/>
+		<result column="ent_membership" property="entMembership"/>
 	</resultMap>
 	<resultMap type="resume" id="resMap">
 		<result column="res_no" property="resNo"/>
@@ -136,4 +137,10 @@
 		SELECT * FROM CATEGORY2
 	</select>	
 	
+	<select id="findEmailEnterprise" parameterType="string" resultMap="entMap">
+		SELECT * FROM ENTERPRISE WHERE ENT_EMAIL=#{memEmail}
+	</select>
+	<select id="selectEnterprise" parameterType="_int" resultType="ent">
+		select * from ENTERPRISE where ent_no=#{entNo}
+	</select>
 </mapper>

@@ -79,6 +79,12 @@ public class EnterpriseDaoImpl implements EnterpriseDao {
 		return session.delete("enterprise.quit", ent);
 
 	}
+
+	@Override
+	public Enterprise findEmailEnterprise(Login log, SqlSession session) {
+		// TODO Auto-generated method stub
+		return session.selectOne("enterprise.findEmailEnterprise", log);
+	}
 	
 
 	@Override
@@ -92,6 +98,14 @@ public class EnterpriseDaoImpl implements EnterpriseDao {
 		// TODO Auto-generated method stub
 		return session.selectOne("enterprise.selectResume",memNo);
 	}
+	//카카오페이
+
+	@Override
+	public Enterprise selectEnterprise(int entNo, SqlSession session) {
+		return session.selectOne("enterprise.selectEnterprise",entNo);
+	}
+	
+	
 
 
 	@Override

@@ -5,10 +5,8 @@ import java.util.Map;
 
 import com.project.jobnom.Hire.model.vo.Interestedrcruitment;
 import com.project.jobnom.Hire.model.vo.Recruitment;
-import com.project.jobnom.Hire.model.vo.Review;
-import com.project.jobnom.member.model.vo.Member;
 import com.project.jobnom.Hire.model.vo.Support;
-import com.project.jobnom.enterprise.model.vo.Enterprise;
+import com.project.jobnom.member.model.vo.Member;
 
 public interface HireService {
 
@@ -30,9 +28,6 @@ public interface HireService {
 	
 	List<Map> selectReviewList(String ent_no);
 	
-	//리뷰화면전환
-	Member selectMember(int memNo);
-
 	int insertMemberApply(Map paramMap);
 	
 	int recFavorites(Map paramMap);
@@ -41,9 +36,9 @@ public interface HireService {
 	
 	List<Support> HireMyHire(String memNo,int cPage, int numPerpage);
 
-	int selectSuppertCount();
+	int selectSuppertCount(String memNo);
 	
-	int selectInterestedrcruitmentCount();
+	int selectInterestedrcruitmentCount(String memNo);
 	
 	List<Interestedrcruitment> HireFavorites(String memNo,int cPage, int numPerpage);
 
@@ -51,6 +46,11 @@ public interface HireService {
 
 
 	List<Recruitment> recSerch(String rec_no);
+	
+	List<Map> selectMemberApply(Map paramMap);
+
+	List<Map> MemberFitList(String memNo);
+	
 	
 
 

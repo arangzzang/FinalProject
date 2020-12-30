@@ -13,6 +13,7 @@ public interface annoService {
 	int selectCount();
 	List<Recruitment>  annCarrer(Map paramMap,int cPage, int numPerPage);
 
+	List<Recruitment> annoHomeDetailMove(int recNo,int cPage, int numPerPage);
 
 
 

@@ -37,5 +37,8 @@ public interface EnterpriseService {
 	List<Recruitment> selectJoblist();
 	
 	List<Category2> getC2();
+	Enterprise findEmailEnterprise(Login log);
+	//카카오페이 결제
+	Enterprise selectEnterprise(int entNo);
 }
 
