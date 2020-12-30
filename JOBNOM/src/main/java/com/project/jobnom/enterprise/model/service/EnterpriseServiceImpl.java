@@ -99,5 +99,36 @@ public class EnterpriseServiceImpl implements EnterpriseService {
 	
 	
 	
+	//헤더 기업 버튼 클릭 -ys-
+	@Override
+	public List<Map> companyList() {
+		// TODO Auto-generated method stub
+		return dao.companyList(session);
+	}
+	@Override
+	public List<Map> companyList2() {
+		// TODO Auto-generated method stub
+		return dao.companyList2(session);
+	}
+	@Override
+	public List<Map> companyList3() {
+		// TODO Auto-generated method stub
+		return dao.companyList3(session);
+	}
+	@Override
+	public List<Map> companyList4() {
+		// TODO Auto-generated method stub
+		return dao.companyList4(session);
+	}
+	@Override
+	public List<Map> companyList5() {
+		// TODO Auto-generated method stub
+		return dao.companyList5(session);
+	}
+	@Override
+	public List<Map> companyList6() {
+		// TODO Auto-generated method stub
+		return dao.companyList6(session);
+	}
 
 }

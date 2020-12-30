@@ -39,10 +39,20 @@ public class companyController {
 	@Autowired
 	BCryptPasswordEncoder pwEncoder;
 
+	//헤더 기업 버튼 클릭시 
 	@RequestMapping("/enterprise/companyList.do")
-	public String companyList() {
-
-		return "enterprise/companyList";
+	public ModelAndView companyList(ModelAndView mv) {
+		
+		mv.addObject("list",service.companyList());
+		mv.addObject("list2",service.companyList2());
+		mv.addObject("list3",service.companyList3());
+		mv.addObject("list4",service.companyList4());
+		mv.addObject("list5",service.companyList5());
+		mv.addObject("list6",service.companyList6());
+		mv.setViewName("enterprise/companyList");
+		System.out.println(mv.addObject("list",service.companyList()));
+		
+		return mv;
 	}
 
 	@RequestMapping("/enterprise/com_info.do")

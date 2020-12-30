@@ -31,8 +31,17 @@ public interface EnterpriseService {
 	Resume selectResume(int memNo);
 	
 	int quit(Enterprise ent);
+
 	Enterprise findEmailEnterprise(Login log);
 	//카카오페이 결제
 	Enterprise selectEnterprise(int entNo);
+
+	//기업 버튼 클릭시 화면 -ys-
+		List<Map> companyList();
+		List<Map> companyList2();
+		List<Map> companyList3();
+		List<Map> companyList4();
+		List<Map> companyList5();
+		List<Map> companyList6();
 }
 
