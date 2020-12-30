@@ -38,4 +38,7 @@ public interface EnterpriseDao {
 		List<Map> companyList4(SqlSession session);
 		List<Map> companyList5(SqlSession session);
 		List<Map> companyList6(SqlSession session);
+		
+	//기업명 클릭시 -ys-
+		List<Map> companyInfo(SqlSession session, String entNo);
 }

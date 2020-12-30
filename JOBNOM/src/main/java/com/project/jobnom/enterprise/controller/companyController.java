@@ -54,11 +54,16 @@ public class companyController {
 		
 		return mv;
 	}
+	
+	//기업 메인 페이지
 
 	@RequestMapping("/enterprise/com_info.do")
 
-	public ModelAndView companyInfo(ModelAndView mv) {
+	public ModelAndView companyInfo(ModelAndView mv,@RequestParam String entNo) {
+		System.out.println(entNo);
 		
+		mv.addObject("list",service.companyInfo(entNo));
+		System.out.println(mv.addObject("list",service.companyInfo(entNo)));
 		mv.setViewName("enterprise/com_info");
 		return mv;
 	}

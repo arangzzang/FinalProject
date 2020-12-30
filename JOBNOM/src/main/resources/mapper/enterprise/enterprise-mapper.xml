@@ -278,4 +278,24 @@
 		]]>
 	
 	</select>
+	<!--기업명 클릭시 -YS  -->
+	<select id="companyInfo" resultType="map">
+		select 
+				e.ent_no
+				,e.ent_category1
+				,e.ent_category2
+				,e.ent_name
+				,e.ent_logo
+				,round(sum(review_satisfaction+review_welfare+review_promotion+review_executive)/(count(review_satisfaction)+count(review_welfare)+count(review_promotion)+count(r.review_executive)),1) as avg
+			from enterprise e
+			inner join review r
+			on (r.ent_no = e.ent_no)
+			where e.ent_no = #{entNo}
+			group by e.ent_no
+					,e.ent_category1
+					,e.ent_name
+					,e.ent_logo
+					,e.ent_category2
+					
+	</select>
 </mapper>

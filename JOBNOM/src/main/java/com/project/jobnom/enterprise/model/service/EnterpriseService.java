@@ -43,5 +43,7 @@ public interface EnterpriseService {
 		List<Map> companyList4();
 		List<Map> companyList5();
 		List<Map> companyList6();
+	//기업 검색결과 기업명 클릭시 
+	List<Map> companyInfo(String entNo);
 }
 

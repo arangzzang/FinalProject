@@ -42,7 +42,7 @@
                                                 </button>
                                             </dt>
                                             <dd>
-                                                <span class="us_txt_1">${list.JOB }</span>
+                                                <span class="us_txt_1">${list.ENT_CATEGORY1 }</span>
                                                 <span class="us_txt_1">${list.COUNT }</span>
                                             </dd>
                                             <dd class="row_end">
