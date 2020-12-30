@@ -116,6 +116,13 @@ option {
     clear: both;
     margin-right: 0;
 }
+.col1Wrap .frow_ty1 {
+    position: absolute;
+    bottom: 8px;
+    right: 15px;
+    clear: both;
+    margin-right: 0;
+}
 .filterWrap .result {
     float: left;
     display: block;

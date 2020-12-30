@@ -89,4 +89,151 @@
 		DELETE FROM ENTERPRISE WHERE ENT_NO=#{entNo}
 	
 	</delete>
+	
+	<!--헤더 기업 버튼 클릭시 리스트 YS  -->
+	<select id="companyList" resultType="map">
+		<![CDATA[
+			select 
+				e.ent_no
+				,e.ent_category1
+				,e.ent_name
+				,c.job
+				,round(sum(review_satisfaction+review_welfare+review_promotion+review_executive)/(count(review_satisfaction)+count(review_welfare)+count(review_promotion)+count(r.review_executive)),1) as avg
+			from enterprise e
+			inner join review r
+			on (r.ent_no = e.ent_no)
+			 inner join category c
+        	on (c.cate_no = e.ent_category1)
+        	where c.cate_no = 1
+			AND ROWNUM <=5
+			group by e.ent_no
+					,e.ent_category1
+					,e.ent_name
+					,c.job
+			order by avg desc		
+					
+		]]>
+	
+	</select>
+	
+	<select id="companyList2" resultType="map">
+		<![CDATA[
+			select 
+				e.ent_no
+				,e.ent_category1
+				,e.ent_name
+				,c.job
+				,round(sum(review_satisfaction+review_welfare+review_promotion+review_executive)/(count(review_satisfaction)+count(review_welfare)+count(review_promotion)+count(r.review_executive)),1) as avg
+			from enterprise e
+			inner join review r
+			on (r.ent_no = e.ent_no)
+			 inner join category c
+        	on (c.cate_no = e.ent_category1)
+        	where c.cate_no = 2
+			AND ROWNUM <=5
+			group by e.ent_no
+					,e.ent_category1
+					,e.ent_name
+					,c.job
+			order by avg desc		
+					
+		]]>
+	
+	</select>
+	<select id="companyList3" resultType="map">
+		<![CDATA[
+			select 
+				e.ent_no
+				,e.ent_category1
+				,e.ent_name
+				,c.job
+				,round(sum(review_satisfaction+review_welfare+review_promotion+review_executive)/(count(review_satisfaction)+count(review_welfare)+count(review_promotion)+count(r.review_executive)),1) as avg
+			from enterprise e
+			inner join review r
+			on (r.ent_no = e.ent_no)
+			 inner join category c
+        	on (c.cate_no = e.ent_category1)
+        	where c.cate_no = 3
+			AND ROWNUM <=5
+			group by e.ent_no
+					,e.ent_category1
+					,e.ent_name
+					,c.job
+			order by avg desc		
+					
+		]]>
+	
+	</select>
+	<select id="companyList4" resultType="map">
+		<![CDATA[
+			select 
+				e.ent_no
+				,e.ent_category1
+				,e.ent_name
+				,c.job
+				,round(sum(review_satisfaction+review_welfare+review_promotion+review_executive)/(count(review_satisfaction)+count(review_welfare)+count(review_promotion)+count(r.review_executive)),1) as avg
+			from enterprise e
+			inner join review r
+			on (r.ent_no = e.ent_no)
+			 inner join category c
+        	on (c.cate_no = e.ent_category1)
+        	where c.cate_no = 4
+			AND ROWNUM <=5
+			group by e.ent_no
+					,e.ent_category1
+					,e.ent_name
+					,c.job
+			order by avg desc		
+					
+		]]>
+	
+	</select>
+	<select id="companyList5" resultType="map">
+		<![CDATA[
+			select 
+				e.ent_no
+				,e.ent_category1
+				,e.ent_name
+				,c.job
+				,round(sum(review_satisfaction+review_welfare+review_promotion+review_executive)/(count(review_satisfaction)+count(review_welfare)+count(review_promotion)+count(r.review_executive)),1) as avg
+			from enterprise e
+			inner join review r
+			on (r.ent_no = e.ent_no)
+			 inner join category c
+        	on (c.cate_no = e.ent_category1)
+        	where c.cate_no = 5
+			AND ROWNUM <=5
+			group by e.ent_no
+					,e.ent_category1
+					,e.ent_name
+					,c.job
+			order by avg desc		
+					
+		]]>
+	
+	</select>
+	<select id="companyList6" resultType="map">
+		<![CDATA[
+			select 
+				e.ent_no
+				,e.ent_category1
+				,e.ent_name
+				,c.job
+				,round(sum(review_satisfaction+review_welfare+review_promotion+review_executive)/(count(review_satisfaction)+count(review_welfare)+count(review_promotion)+count(r.review_executive)),1) as avg
+			from enterprise e
+			inner join review r
+			on (r.ent_no = e.ent_no)
+			inner join category c
+        	on (c.cate_no = e.ent_category1)
+        	where c.cate_no = 6
+			AND ROWNUM <=5
+			group by e.ent_no
+					,e.ent_category1
+					,e.ent_name
+					,c.job
+			order by avg desc		
+					
+		]]>
+	
+	</select>
 </mapper>

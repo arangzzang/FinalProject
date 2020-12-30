@@ -1,5 +1,8 @@
 package com.project.jobnom.enterprise.model.dao;
 
+import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
@@ -52,5 +55,36 @@ public class EnterpriseDaoImpl implements EnterpriseDao {
 		return session.delete("enterprise.quit", ent);
 	}
 	
+	// 헤더 기업 버튼 클릭-ys-
+	@Override
+	public List<Map> companyList(SqlSession session) {
+		// TODO Auto-generated method stub
+		return session.selectList("enterprise.companyList");
+	}
+	@Override
+	public List<Map> companyList2(SqlSession session) {
+		// TODO Auto-generated method stub
+		return session.selectList("enterprise.companyList2");
+	}
+	@Override
+	public List<Map> companyList3(SqlSession session) {
+		// TODO Auto-generated method stub
+		return session.selectList("enterprise.companyList3");
+	}
+	@Override
+	public List<Map> companyList4(SqlSession session) {
+		// TODO Auto-generated method stub
+		return session.selectList("enterprise.companyList4");
+	}
+	@Override
+	public List<Map> companyList5(SqlSession session) {
+		// TODO Auto-generated method stub
+		return session.selectList("enterprise.companyList5");
+	}
+	@Override
+	public List<Map> companyList6(SqlSession session) {
+		// TODO Auto-generated method stub
+		return session.selectList("enterprise.companyList6");
+	}
 
 }
