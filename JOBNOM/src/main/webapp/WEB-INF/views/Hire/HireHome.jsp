@@ -12,6 +12,9 @@
 <jsp:include page="/WEB-INF/views/common/header.jsp">
 	<jsp:param name="title" value=" "/>
 </jsp:include>
+<jsp:include page="/WEB-INF/views/common/searchbar.jsp">
+	<jsp:param name="title" value=" "/>
+</jsp:include>
 
 
 <section class="section">

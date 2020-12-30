@@ -1,6 +1,7 @@
 package com.project.jobnom.enterprise.model.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -34,4 +35,12 @@ public interface EnterpriseDao {
 	Enterprise findEmailEnterprise(Login log, SqlSession session);
 	//카카오페이
 	Enterprise selectEnterprise (int entNo,SqlSession session);
+	
+	//헤더 기업 버튼 클릭시 -ys-
+		List<Map> companyList(SqlSession session);
+		List<Map> companyList2(SqlSession session);
+		List<Map> companyList3(SqlSession session);
+		List<Map> companyList4(SqlSession session);
+		List<Map> companyList5(SqlSession session);
+		List<Map> companyList6(SqlSession session);
 }

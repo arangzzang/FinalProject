@@ -1,6 +1,7 @@
 package com.project.jobnom.enterprise.model.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.project.jobnom.Hire.model.vo.Recruitment;
 import com.project.jobnom.Hire.model.vo.Review;
@@ -37,8 +38,17 @@ public interface EnterpriseService {
 	List<Recruitment> selectJoblist();
 	
 	List<Category2> getC2();
+
 	Enterprise findEmailEnterprise(Login log);
 	//카카오페이 결제
 	Enterprise selectEnterprise(int entNo);
+
+	//기업 버튼 클릭시 화면 -ys-
+		List<Map> companyList();
+		List<Map> companyList2();
+		List<Map> companyList3();
+		List<Map> companyList4();
+		List<Map> companyList5();
+		List<Map> companyList6();
 }
 

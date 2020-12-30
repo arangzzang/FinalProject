@@ -18,5 +18,11 @@ public interface SearchDao {
 	// 기업더보기 페이징바
 		int selectCount(SqlSession session);
 		
+	// 기업 더보기 카테고리별 ajax
+		List<Map> ajaxCategoryList(SqlSession session, String entCategory);
+		
+	// 기업 더보기 리뷰카테고리별 ajax
+		List<Map> ajaxReivewCateList(SqlSession session, String reivewCategory);
+		
 
 }
