@@ -107,7 +107,7 @@
 
 		<div class="myHyreSupportView">
 			입사 지원 공고
-			<div class="myHyreSupportInfo">잡플래닛 전용 프로필로 지원한 내역만 확인 됩니다. ∙
+			<div class="myHyreSupportInfo">잡놈 전용 프로필로 지원한 내역만 확인 됩니다. ∙
 				입사지원을 한 후 내 프로필을 수정해도 이전에 지원한 프로필의 내용은 바뀌지 않습니다. 따라서 회사마다 프로필 내용을
 				다르게 지원할 수 있습니다.</div>
 			<c:if test="${commonLogin != null }">

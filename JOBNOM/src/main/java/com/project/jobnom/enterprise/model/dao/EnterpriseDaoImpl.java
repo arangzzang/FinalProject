@@ -3,16 +3,24 @@ package com.project.jobnom.enterprise.model.dao;
 import java.util.List;
 import java.util.Map;
 
+<<<<<<< HEAD
+=======
+import org.apache.ibatis.session.RowBounds;
+>>>>>>> branch 'master' of https://github.com/arangzzang/FinalProject.git
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.project.jobnom.Hire.model.vo.Recruitment;
 import com.project.jobnom.common.model.vo.Login;
 import com.project.jobnom.enterprise.model.vo.ApplyAd;
 import com.project.jobnom.enterprise.model.vo.Banner;
 import com.project.jobnom.enterprise.model.vo.Enterprise;
+import com.project.jobnom.enterprise.model.vo.Support;
+import com.project.jobnom.resume.model.vo.Resume;
 
 @Repository
 public class EnterpriseDaoImpl implements EnterpriseDao {
+	
 
 	@Override
 	public int enrollEnter(Enterprise ent, SqlSession session) {
@@ -32,6 +40,17 @@ public class EnterpriseDaoImpl implements EnterpriseDao {
 	}
 
 	@Override
+	public List<Support> selectSupport(SqlSession session,int cPage, int numPerpage, Recruitment rec) {
+		// TODO Auto-generated method stub
+		return session.selectList("enterprise.selectSupport",rec,new RowBounds((cPage-1)*numPerpage,numPerpage));
+	}
+
+	@Override
+	public int selectCount(SqlSession session) {
+		// TODO Auto-generated method stub
+		return session.selectOne("enterprise.selectCount");
+	}
+
 	public int updateEnterprise(Enterprise ent, SqlSession session) {
 		// TODO Auto-generated method stub
 		return session.update("enterprise.updateEnterprise", ent);
@@ -50,10 +69,43 @@ public class EnterpriseDaoImpl implements EnterpriseDao {
 	}
 
 	@Override
+	public List<Recruitment> selectRecruitment(SqlSession session, int memNo,int cPage, int numPerpage) {
+		// TODO Auto-generated method stub
+		return session.selectList("enterprise.selectRecruitment",memNo,new RowBounds((cPage-1)*numPerpage,numPerpage));
+
+	}
+	@Override
 	public int quit(Enterprise ent, SqlSession session) {
 		// TODO Auto-generated method stub
 		return session.delete("enterprise.quit", ent);
+
 	}
+
+	@Override
+	public Enterprise findEmailEnterprise(Login log, SqlSession session) {
+		// TODO Auto-generated method stub
+		return session.selectOne("enterprise.findEmailEnterprise", log);
+	}
+	
+
+	@Override
+	public int selectRecruitmentCount(SqlSession session) {
+		// TODO Auto-generated method stub
+		return session.selectOne("enterprise.selectRecruitmentCount");
+	}
+
+	@Override
+	public Resume selectResume(SqlSession session, int memNo) {
+		// TODO Auto-generated method stub
+		return session.selectOne("enterprise.selectResume",memNo);
+	}
+	//카카오페이
+
+	@Override
+	public Enterprise selectEnterprise(int entNo, SqlSession session) {
+		return session.selectOne("enterprise.selectEnterprise",entNo);
+	}
+	
 	
 	// 헤더 기업 버튼 클릭-ys-
 	@Override

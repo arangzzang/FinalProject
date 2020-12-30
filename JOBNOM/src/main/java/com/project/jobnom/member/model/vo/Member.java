@@ -18,8 +18,10 @@ public class Member {
 	private String memCheck;		//구직,재직,퇴사유무
 	private String memMembership;	//맴버십가입유무
 	private int type;				// 관리자,기업,회원 구분 일반회원:3
-	private int mCateNo2;			//2차직업군FK
+	private int cateNo2;			//2차 직업군FK
+	private int cateNo;
 	private String rec_title;
-	private String res_name;
+	private String res_name; 
 	private Date rec_enddate;
+	
 }

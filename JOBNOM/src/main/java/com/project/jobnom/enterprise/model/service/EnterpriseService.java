@@ -3,10 +3,16 @@ package com.project.jobnom.enterprise.model.service;
 import java.util.List;
 import java.util.Map;
 
+<<<<<<< HEAD
+=======
+import com.project.jobnom.Hire.model.vo.Recruitment;
+>>>>>>> branch 'master' of https://github.com/arangzzang/FinalProject.git
 import com.project.jobnom.common.model.vo.Login;
 import com.project.jobnom.enterprise.model.vo.ApplyAd;
 import com.project.jobnom.enterprise.model.vo.Banner;
 import com.project.jobnom.enterprise.model.vo.Enterprise;
+import com.project.jobnom.enterprise.model.vo.Support;
+import com.project.jobnom.resume.model.vo.Resume;
 
 public interface EnterpriseService {
 	
@@ -14,16 +20,31 @@ public interface EnterpriseService {
 	int enrollEnter(Enterprise ent);
 	int insertApplyAd(ApplyAd ad);
 	Enterprise findOneEnterprise(Login log);
+
+	List<Support> selectSupport(int cPage, int numPerpage,Recruitment rec);
+	int selectCount();
+
 	int updateEnterprise(Enterprise ent);
 	int entMembership(Login log);
 	int insertBanner(Banner ban);
-	int quit(Enterprise ent);
+
+	List<Recruitment> selectRecruitment(int memNo,int cPage, int numPerpage);
+	int selectRecruitmentCount();
 	
+	Resume selectResume(int memNo);
+	
+	int quit(Enterprise ent);
+
+	Enterprise findEmailEnterprise(Login log);
+	//카카오페이 결제
+	Enterprise selectEnterprise(int entNo);
+
 	//기업 버튼 클릭시 화면 -ys-
-	List<Map> companyList();
-	List<Map> companyList2();
-	List<Map> companyList3();
-	List<Map> companyList4();
-	List<Map> companyList5();
-	List<Map> companyList6();
+		List<Map> companyList();
+		List<Map> companyList2();
+		List<Map> companyList3();
+		List<Map> companyList4();
+		List<Map> companyList5();
+		List<Map> companyList6();
 }
+

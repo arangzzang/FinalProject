@@ -14,7 +14,7 @@
                 <div class="container row withcon">
                     <div class="col-md-3 col-sm-3 withleft">
                         <ul class="nav nav-pills flex-column sidebar" id="sidebar">
-                            <h3 class="sidebar-title">계정</h3>
+	                        <h3 class="sidebar-title">계정</h3>
                             <li class="nav-item sidebarmenubar">
                                 <button type="button" class="sidebtn accountSettingBtn">계정설정</button>
                             </li>
@@ -220,7 +220,6 @@
                 type:"get",
                 async: false,
                 success:data=>{
-                    
                     $(".maininfo-parent").html(data);
                 }
             });

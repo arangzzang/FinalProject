@@ -97,7 +97,7 @@
                 </div>
             </div>
         </article>
-       <!--  <section class="review_write_con">
+      <article class="review_write_con">
             <div class="write_info">
                 <div class="write_info_user">
                     <span><i class="fas fa-user-circle fa-2x"></i></span>
@@ -134,21 +134,21 @@
                     </dl>
                 </div>
             </div>
-            <div class="btn_area">
-                <button id="report_btn" class="btn btn">
-                    신고하기
-                </button>
+	            <div class="btn_area">
+	                <button id="report_btn" class="btn btn">
+	                    	신고하기
+	                </button>
+	            </div>
             </div>
-            </div>
-        </section> -->
-        <article class="com_review_default">
+        </article>
+       <!--  <article class="com_review_default">
         	<div class="com_de_box">
         		<div class="com_de_wrap">
         			<h4>등록된 리뷰가 없습니다.</h4>
 					<button class="btn btn-success" onclick=""><i class="fas fa-pen-square"></i>  리뷰 작성하기</button>	        	
         	   </div>
         	</div>
-        </article>
+        </article> -->
 </section>
 
 <script type="text/javascript">

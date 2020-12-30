@@ -20,15 +20,6 @@
 	
 	</resultMap>  -->
 
-	<resultMap type="mem" id="memMap">
-		<result column="mem_no" property="memNo"/>
-		<result column="mem_email" property="memEmail"/>
-		<result column="mem_pw" property="memPw"/>
-		<result column="mem_manager_yn" property="memManagerYn"/>
-		<result column="mem_check" property="memCheck"/>
-		<result column="mem_membership" property="memMembership"/>
-		<result column="cate_no2" property="mCateNo2"/>
-	</resultMap>
 	
 
 	<insert id="insertReview" parameterType="map">
@@ -39,6 +30,7 @@
 	<select id="selectCount" resultType="_int">
 	 SELECT COUNT(*) FROM RECRUITMENT 
 	</select>
+
 	
 	
 	<select id="RecruitmentList" resultType="com.project.jobnom.Hire.model.vo.Recruitment">
@@ -95,7 +87,6 @@
 	</select>
 	
 	<select id="selectReviewList" parameterType="string" resultType="java.util.HashMap">
-		
 		SELECT  R.REC_NO,E.ENT_NO, R.REC_TITLE, ENT_NAME,REVIEW_TITLE,REVIEW_CONTENTS,REVIEW_SATISFACTION,
 		 REVIEW_WELFARE, REVIEW_PROMOTION , REVIEW_EXECUTIVE
 		FROM REVIEW E 
@@ -132,8 +123,8 @@
                       WHERE MEM_NO=#{memNo}
 	</select>
 	
-	<select id="selectSuppertCount" resultType="_int">
-		SELECT  COUNT(*) FROM SUPPORT
+	<select id="selectSuppertCount" resultType="_int"  parameterType="string">
+		SELECT  COUNT(*) FROM SUPPORT WHERE MEM_NO=#{memNo}
 	</select>
 	
 	<select id="HireFavorites" parameterType="string" resultType="com.project.jobnom.Hire.model.vo.Interestedrcruitment">
@@ -143,11 +134,11 @@
                        JOIN ENTERPRISE E ON (E.ENT_NO = R.ENT_NO)
                           WHERE MEM_NO=#{memNo}
 	</select>
-	<select id="selectInterestedrcruitmentCount" resultType="_int">
-		                       SELECT  COUNT(*) FROM INTERESTEDRECRUITMENT
+	<select id="selectInterestedrcruitmentCount" resultType="_int" parameterType="string">
+		                       SELECT  COUNT(*) FROM INTERESTEDRECRUITMENT  WHERE MEM_NO=#{memNo}
 	</select>
 	
-	<select id="hire.selectOneRecruitment" resultType="map">
+	<select id="selectOneRecruitment" resultType="map">
 	  
 	     select ent_name from enterprise
               where ent_name like '%'||#{key}||'%'
@@ -162,6 +153,26 @@
 			   JOIN REVIEW S ON (S.ENT_NO = E.ENT_NO)
 			JOIN ENTERPRISE R ON (R.ENT_NO = E.ENT_NO)
 			  WHERE REC_CATEGORY=#{rec_no}
+	</select>
+	
+	<select id="selectMemberApply" parameterType="map" resultType="map">
+	         SELECT DISTINCT E.*,REC_TITLE
+	      FROM ENTERPRISE E
+              JOIN RECRUITMENT R ON (R.ENT_NO=E.ENT_NO)
+              JOIN SUPPORT S ON (S.REC_NO=R.REC_NO)
+              WHERE S.MEM_NO=#{memNo} AND R.REC_NO=#{recNo}
+	</select>
+	
+	<select id="MemberFitList" resultType="map" parameterType="string">
+		SELECT DISTINCT R.*,M.MEM_NO,M.CATE_NO2, JOBS2
+               FROM RECRUITMENT R
+               JOIN SUPPORT S ON(S.REC_NO=R.REC_NO) 
+               JOIN MEMBER M ON(M.MEM_NO=S.MEM_NO)
+               JOIN CATEGORY2 C ON(C.CATE_NO2 = M.CATE_NO2)
+               WHERE REC_CATEGORY=M.CATE_NO2
+               AND M.MEM_NO=#{memNo}
+               
+               
 	</select>
 	
 	

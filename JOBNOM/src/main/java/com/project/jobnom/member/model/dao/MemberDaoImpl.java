@@ -46,6 +46,13 @@ public class MemberDaoImpl implements MemberDao {
 	public int updatePw(Map mem, SqlSession session) {
 		return session.update("member.updatePw", mem);
 	}
+
+	@Override
+	public Member myProfileView(int memNo, SqlSession session) {
+		return session.selectOne("member.selectCategory",memNo);
+	}
+
+	
 	
 	
 	

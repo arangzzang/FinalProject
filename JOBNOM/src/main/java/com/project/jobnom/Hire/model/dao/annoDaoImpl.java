@@ -34,6 +34,11 @@ public class annoDaoImpl implements annoDao {
 	public List<Recruitment> annCarrer(SqlSession session,Map paramMap, int cPage, int numPerPage) {
 		return session.selectList("anno.annCarrer",paramMap,new RowBounds((cPage-1)*numPerPage,numPerPage));
 	}
+
+	@Override
+	public List<Recruitment> annoHomeDetailMove(SqlSession session, int recNo, int cPage, int numPerPage) {
+		return session.selectList("anno.annoHomeDetailMove",recNo,new RowBounds((cPage-1)*numPerPage,numPerPage));
+	}
 	
 	
 	

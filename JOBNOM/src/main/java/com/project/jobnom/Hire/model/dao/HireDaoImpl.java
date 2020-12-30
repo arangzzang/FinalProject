@@ -9,10 +9,8 @@ import org.springframework.stereotype.Repository;
 
 import com.project.jobnom.Hire.model.vo.Interestedrcruitment;
 import com.project.jobnom.Hire.model.vo.Recruitment;
-import com.project.jobnom.Hire.model.vo.Review;
-import com.project.jobnom.member.model.vo.Member;
 import com.project.jobnom.Hire.model.vo.Support;
-import com.project.jobnom.enterprise.model.vo.Enterprise;
+import com.project.jobnom.member.model.vo.Member;
 
 @Repository
 public class HireDaoImpl implements HireDao {
@@ -79,19 +77,9 @@ public class HireDaoImpl implements HireDao {
 	}
 
 	@Override
-	public int selectSuppertCount(SqlSession session) {
-		return session.selectOne("hire.selectSuppertCount");
+	public int selectSuppertCount(SqlSession session, String memNo) {
+		return session.selectOne("hire.selectSuppertCount", memNo);
 	}
-
-	@Override
-	public Member selectMember(int memNo, SqlSession session) {
-		return session.selectOne("hire.selectMember",memNo);
-	}
-	
-	
-	
-	
-	
 	
 	@Override
 	public List<Recruitment>  anoList(SqlSession session, int cPage, int numPerPage) {
@@ -104,8 +92,8 @@ public class HireDaoImpl implements HireDao {
 	}
 
 	@Override
-	public int selectInterestedrcruitmentCount(SqlSession session) {
-		return session.selectOne("hire.selectInterestedrcruitmentCount");
+	public int selectInterestedrcruitmentCount(SqlSession session,String memNo) {
+		return session.selectOne("hire.selectInterestedrcruitmentCount",memNo);
 	}
 
 	@Override
@@ -116,6 +104,16 @@ public class HireDaoImpl implements HireDao {
 	@Override
 	public List<Recruitment> recSerch(SqlSession session, String rec_no) {
 		return session.selectList("hire.recSerch",rec_no);
+	}
+
+	@Override
+	public List<Map> selectMemberApply(SqlSession session, Map parMap) {
+		return session.selectList("hire.selectMemberApply",parMap);
+	}
+
+	@Override
+	public List<Map> MemberFitList(SqlSession session, String memNo) {
+		return session.selectList("hire.MemberFitList",memNo);
 	}
 	
 
