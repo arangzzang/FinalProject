@@ -105,4 +105,10 @@ public class NoticeController {
 		mv.setViewName("common/msg");
 		return mv;
 	}
+	@RequestMapping("/welcome/personal_info.do")
+	public ModelAndView personInfo(ModelAndView mv) {
+		
+		mv.setViewName("welcome/personal_info");
+		return mv;
+	}
 }

@@ -183,7 +183,7 @@ body{
 }
 .job_items{
     width: 90%;
-    height: 90%;
+    height: auto;
     margin: 0 auto;
     margin-top: 20px;
 }
@@ -192,6 +192,10 @@ body{
     width: 30%;
     height: 20%;
     padding: 15px;
+    display: inline-flex;
+    margin-bottom: 20px;
+    margin-right: 30px;
+    
 }
 .job_item_wrap>a:link{
     text-decoration: none;

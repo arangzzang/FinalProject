@@ -8,10 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.project.jobnom.Hire.model.vo.Recruitment;
+import com.project.jobnom.Hire.model.vo.Review;
 import com.project.jobnom.common.model.vo.Login;
 import com.project.jobnom.enterprise.model.dao.EnterpriseDao;
 import com.project.jobnom.enterprise.model.vo.ApplyAd;
 import com.project.jobnom.enterprise.model.vo.Banner;
+import com.project.jobnom.enterprise.model.vo.Category2;
 //github.com/arangzzang/FinalProject.git
 import com.project.jobnom.enterprise.model.vo.Enterprise;
 import com.project.jobnom.enterprise.model.vo.Support;
@@ -85,6 +87,22 @@ public class EnterpriseServiceImpl implements EnterpriseService {
 	public int quit(Enterprise ent) {
 		// TODO Auto-generated method stub
 		return dao.quit(ent, session);
+	}
+
+	@Override
+	public List<Review> selectReviewList() {
+		// TODO Auto-generated method stub
+		return dao.selectReviewList(session);
+	}
+	@Override
+	public List<Recruitment> selectJoblist() {
+		// TODO Auto-generated method stub
+		return dao.selectJoblist(session);
+	}
+	@Override
+	public List<Category2> getC2() {
+		// TODO Auto-generated method stub
+		return dao.getC2(session);
 	}
 	@Override
 	public Enterprise findEmailEnterprise(Login log) {

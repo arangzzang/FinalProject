@@ -1,6 +1,9 @@
 @charset "UTF-8";
 
 /* 헤더바 */
+	section{
+		margin-top: 200px;
+	}
       .headerContainerWrap{
          background-color: #fff;
          border-bottom: 1px solid #e5e6e9;
