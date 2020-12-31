@@ -1,45 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="utf-8"%>
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <c:set var= "path" value="${pageContext.request.contextPath }"/>
-
 <link rel="stylesheet" href="${path }/resources/css/search/searchResultMoreList.css"/>
-<jsp:include page="/WEB-INF/views/common/header.jsp">
-	<jsp:param name="title" value=" "/>
-</jsp:include>
- <!-- 기업 더보기 페이지 -->
-<div class="contents_wrap">
-    <div class="contents">
-        <div class="mainContents">
-            <div class="cont_wrap">
-                <div class="filterWrap">
-                    <!-- 필터 시작 -->
-                    <div class="col1Wrap">
-                            <select name="parent_industry_id" id="ent_catagory1">
-                                <option name="entCate" value="ENT_CATEGORY1">1차산업군</option>
-								<option name="entCate" value=1>IT/인터넷</option>
-								<option name="entCate" value=2>금융/재무</option>
-								<option name="entCate" value=3>의약</option>
-								<option name="entCate" value=4>서비스/고객지원</option>
-								<option name="entCate" value=5>마케팅/시장조사</option>
-								<option name="entCate" value=6>교육</option>
-							</select>
-                    </div>
-                    
-                    <!-- 필터 끝 -->
-                    <div class="result">
-                        <span class="num"><c:out value="${list[1].COUNT }"/></span>
+<script src="${path }/resources/js/jquery-3.5.1.min.js"></script>
+						<div class="result">
+	                        <span class="num"><c:out value="${ajaxList[1].COUNT}"/></span>
                        	 검색결과
-                    </div>
-                </div>
-                <!--내용 들  -->
+                    	</div>
+     <!--내용 들  -->
                 <article class="listCompany">
                     <div class="section_wrap">
                         <div class="section_group">
                             <!-- for문  -->
-                            <c:forEach items="${list}" var="list">
+                            <c:forEach items="${ajaxList}" var="list">
                             <section class="company content_ty3">
                                 <div class="ty3_wrap">
                                     <div class="content_wrap">
@@ -67,6 +43,7 @@
                                             </dt>
                                             <dd>
                                                 <span class="us_txt_1">${list.ENT_CATEGORY1 }</span>
+                                                <span class="us_txt_1">${list.COUNT }</span>
                                             </dd>
                                             <dd class="row_end">
                                                 <a href="" class="us_txt_1">기업리뷰</a>
@@ -86,60 +63,42 @@
                                     </div>
                                 </div>
                             </section>
-                            
                             </c:forEach>
                             <!-- 반복 -->
-                            
                         </div>
                     </div>
                 </article>
-                <!--ajax 태그  -->
-                <div class="test"></div>
-            </div>
-                        <div id="pageBar">${pageBar }</div>
-        </div>
-    </div>
-</div>
-<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
-
                             <script>
-                            /*카테고리 별 ajax  */
-                            	$('#ent_catagory1').change((e) =>{
-                            		var formData = $(e.target).val();
-                            		console.log(formData);
-                            		
-                            		$.ajax({
+                            	<!-- 하트 눌렀을때 변환 스크립트 -->
+                               $(function() {
+                                	
+                                	$(document).on('click', '.tn_heart1', function() {
+                                		$('.btn_heart1').hide();
+                                        $('.btn_heart2').show();
                             			
-                            			url : "${path}/ajaxCateList",
-                            			type : 'POST',
-                            			data : {entCategory : formData},
-                            			success : function(data) {
-                            				 $(".listCompany").hide();
-                            				 $(".result").hide();
-                            				 $(".test").html(data);
-										}
-                            		})
-                            	});
-                            </script>
-                            <script>
-                            	/* <!-- 하트 눌렀을때 변환 스크립트 --> */
-                                $(function() {
-                                    $('.btn_heart1').click(function() {
+                                	});
+                                	$(document).on('click', '.btn_heart2', function() {
+                                		$('.btn_heart1').hide();
+                                        $('.btn_heart2').show();
+                            			
+                                	});
+                                	
+                                  /*   $('.btn_heart1').click(function() {
                                         $('.btn_heart1').hide();
                                         $('.btn_heart2').show();
                                     });
                                     $('.btn_heart2').click(function() {
                                         $('.btn_heart2').hide();
                                         $('.btn_heart1').show();
-                                    });
-                                });
-                            	/* <!-- 하트 눌렀을때 변환 스크립트  끝--> */
+                                    }); */
+                               }); 
+                            	<!-- 하트 눌렀을때 변환 스크립트  끝-->
                                 
-                              /*   <!--평균평점 별점 스크립트  --> */
+                                <!--평균평점 별점 스크립트  -->
 						   	
 								let avg = parseFloat($('.gfvalue').text());
 								let total = avg*20
-								
+								console.log(agv);
 								$('.star_score').css('width',total+'%');
 								<!--평균평점 별점 스크립트  -->
                             </script>

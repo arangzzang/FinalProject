@@ -38,4 +38,36 @@ public class SearchDaoImpl implements SearchDao {
 		// TODO Auto-generated method stub
 		return session.selectOne("search.selectCount");
 	}
+	
+	//기업더보기 카테고리멸 ajax
+	@Override
+	public List<Map> ajaxCategoryList(SqlSession session, String entCategory) {
+		// TODO Auto-generated method stub
+		return session.selectList("search.ajaxCategoryList",entCategory);
+	}
+	
+	// 기업더보기 리뷰 카테고리별 ajax
+	@Override
+	public List<Map> ajaxReivewCateList(SqlSession session, String reivewCategory) {
+		// TODO Auto-generated method stub
+		return session.selectList("search.ajaxReivewCateList",reivewCategory);
+	}
+	// 공고 검색 즐겨 찾기
+	@Override
+	public int recFav(SqlSession session, Map param) {
+		// TODO Auto-generated method stub
+		return session.insert("search.recFav",param);
+	}
+	//공고 검색 즐겨찾기 빼기
+	@Override
+	public int recFavDelete(SqlSession session, Map param) {
+		// TODO Auto-generated method stub
+		return session.delete("search.recFav",param);
+	}
+	//즐겨찾기 리스트
+	@Override
+	public List<Map> selectFav(SqlSession session) {
+		// TODO Auto-generated method stub
+		return session.selectList("search.selectFav");
+	}
 }

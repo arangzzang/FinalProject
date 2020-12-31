@@ -18,27 +18,29 @@
                     <div class="section_hd">
                         <div class="hgroup">
                         <span class="ico_tit ico_titm_money"></span>
-                        <h4 class="txt_titm titm_welf tit">카테고리1</h4>
+                        <h4 class="txt_titm titm_welf tit">IT/인터넷</h4>
                         </div>
                     </div>
                     <div class="section_body">
+                    	<c:forEach items="${list }" var="list">
                         <dl class="gf_box2">
                             <dt title="회사명">
                                     <span class="txt_r">1</span>
-                                <a href="#">회사명</a>
+                                <a href="#">${list.ENT_NAME }</a>
                             </dt>
                             <dd>
                                <div class="gf_bar">
 							        <div class="gr_bar_gray"></div>
 							        <div class="gr_bar_green"></div>
 							        <div class="gr_bar_img"></div> 
-							        <span class="avg">2.5</span>
+							        <span class="avg">${list.AVG }</span>
 							    </div>
                             </dd>
                         </dl>
+                        </c:forEach>
                     </div>
                     <p class="section_bottom">
-                        <a href="#" class="btn_rnd btn_rnd_arrow"><span class="txt">전체보기</span>
+                        <a href="#" class="btn_rnd btn_rnd_arrow"><span class="txt">기업더보기</span>
                             <span class="ico_bracket3_gray"></span>
                         </a>
                     </p>
@@ -49,27 +51,29 @@
                     <div class="section_hd">
                         <div class="hgroup">
                         <span class="ico_tit ico_titm_money"></span>
-                        <h4 class="txt_titm titm_welf tit">카테고리2</h4>
+                        <h4 class="txt_titm titm_welf tit">금융/재무</h4>
                         </div>
                     </div>
                     <div class="section_body">
+                    <c:forEach items="${list2 }" var="list2">
                         <dl class="gf_box2">
                             <dt title="회사명">
                                     <span class="txt_r">1</span>
-                                <a href="#">회사명</a>
+                                <a href="#">${list2.ENT_NAME }</a>
                             </dt>
                             <dd>
                                 <div class="gf_bar">
 							        <div class="gr_bar_gray"></div>
 							        <div class="gr_bar_green"></div>
 							        <div class="gr_bar_img"></div> 
-							        <span class="avg">2.5</span>
+							        <span class="avg">${list2.AVG }</span>
 							    </div>
                             </dd>
                         </dl>
+                     </c:forEach>
                     </div>
                     <p class="section_bottom">
-                        <a href="#" class="btn_rnd btn_rnd_arrow"><span class="txt">전체보기</span><span class="ico_bracket3_gray"></span></a>
+                        <a href="#" class="btn_rnd btn_rnd_arrow"><span class="txt">기업더보기</span><span class="ico_bracket3_gray"></span></a>
                     </p>
                 </div>      
             </section>
@@ -78,24 +82,26 @@
                     <div class="section_hd">
                         <div class="hgroup">
                         <span class="ico_tit ico_titm_money"></span>
-                        <h4 class="txt_titm titm_welf tit">카테고리3</h4>
+                        <h4 class="txt_titm titm_welf tit">의약</h4>
                         </div>
                     </div>
                     <div class="section_body">
+                    	<c:forEach items="${list3 }" var="list3">
                         <dl class="gf_box2">
                             <dt title="회사명">
                                     <span class="txt_r">1</span>
-                                <a href="#">회사명</a>
+                                <a href="#">${list3.ENT_NAME }</a>
                             </dt>
                             <dd>
                                <div class="gf_bar">
 							        <div class="gr_bar_gray"></div>
 							        <div class="gr_bar_green"></div>
 							        <div class="gr_bar_img"></div> 
-							        <span class="avg">2.5</span>
+							        <span class="avg">${list3.AVG }</span>
 							    </div>
                             </dd>
                         </dl>
+                        </c:forEach>
                     </div>
                     <p class="section_bottom">
                         <a href="#" class="btn_rnd btn_rnd_arrow"><span class="txt">전체보기</span><span class="ico_bracket3_gray"></span></a>
@@ -107,27 +113,29 @@
                     <div class="section_hd">
                         <div class="hgroup">
                         <span class="ico_tit ico_titm_money"></span>
-                        <h4 class="txt_titm titm_welf tit">카테고리4</h4>
+                        <h4 class="txt_titm titm_welf tit">서비스/고객지원</h4>
                         </div>
                     </div>
                     <div class="section_body">
+                    	<c:forEach items="${list4 }" var="list4">
                         <dl class="gf_box2">
                             <dt title="회사명">
                                     <span class="txt_r">1</span>
-                                <a href="#">회사명</a>
+                                <a href="#">${list4.ENT_NAME }</a>
                             </dt>
                             <dd>
                               <div class="gf_bar">
 							        <div class="gr_bar_gray"></div>
 							        <div class="gr_bar_green"></div>
 							        <div class="gr_bar_img"></div> 
-							        <span class="avg">2.5</span>
+							        <span class="avg">${list4.AVG }</span>
 							    </div>
                             </dd>
                         </dl>
+                        </c:forEach>
                     </div>
                     <p class="section_bottom">
-                        <a href="#" class="btn_rnd btn_rnd_arrow"><span class="txt">전체보기</span><span class="ico_bracket3_gray"></span></a>
+                        <a href="#" class="btn_rnd btn_rnd_arrow"><span class="txt">기업더보기</span><span class="ico_bracket3_gray"></span></a>
                     </p>
                 </div>      
             </section>
@@ -136,27 +144,29 @@
                     <div class="section_hd">
                         <div class="hgroup">
                         <span class="ico_tit ico_titm_money"></span>
-                        <h4 class="txt_titm titm_welf tit">카테고리5</h4>
+                        <h4 class="txt_titm titm_welf tit">마케팅/시장조사</h4>
                         </div>
                     </div>
                     <div class="section_body">
+                    <c:forEach items="${list5 }" var="list5">
                         <dl class="gf_box2">
                             <dt title="회사명">
                                     <span class="txt_r">1</span>
-                                <a href="#">회사명</a>
+                                <a href="#">${list5.ENT_NAME }</a>
                             </dt>
                             <dd>
                                <div class="gf_bar">
 							        <div class="gr_bar_gray"></div>
 							        <div class="gr_bar_green"></div>
 							        <div class="gr_bar_img"></div> 
-							        <span class="avg">2.5</span>
+							        <span class="avg">${list5.AVG }</span>
 							    </div>
                             </dd>
                         </dl>
+                    </c:forEach>
                     </div>
                     <p class="section_bottom">
-                        <a href="#" class="btn_rnd btn_rnd_arrow"><span class="txt">전체보기</span><span class="ico_bracket3_gray"></span></a>
+                        <a href="#" class="btn_rnd btn_rnd_arrow"><span class="txt">기업더보기</span><span class="ico_bracket3_gray"></span></a>
                     </p>
                 </div>      
             </section>
@@ -165,7 +175,7 @@
                     <div class="section_hd">
                         <div class="hgroup">
                         <span class="ico_tit ico_titm_money"></span>
-                        <h4 class="txt_titm titm_welf tit">총만족도</h4>
+                        <h4 class="txt_titm titm_welf tit">교육</h4>
                         </div>
                     </div>
                     <div class="section_body">
@@ -183,43 +193,12 @@
                         </dl>
                     </div>
                     <p class="section_bottom">
-                        <a href="#" class="btn_rnd btn_rnd_arrow"><span class="txt">전체보기</span><span class="ico_bracket3_gray"></span></a>
+                        <a href="#" class="btn_rnd btn_rnd_arrow"><span class="txt">기업더보기</span><span class="ico_bracket3_gray"></span></a>
                     </p>
                 </div>      
             </section>
         </article>
     </div>
-    <!-- 카테고리별 정렬 리스트 끝 -->
-    <div class="mainContests2">
-        <div class="jpcont_wrap">
-            <article id="navIndustry" class="section_wrap nav_industry nav_industry_bottom">
-                <div class="section_hd">
-                    <div class="hgroup">
-                        <h4 class="txt_titl">산업군</h4>
-                        <h5 class="sub_titl"></h5>
-                    </div>
-                </div>
-                <ul class="list">
-                    <li>
-                        <a href="#" title="서비스업">서비스업</a>
-                    </li>
-                    <li>
-                        <a href="#" title="의료/제약/복지">의료/제약/복지</a>
-                    </li>
-                    <li>
-                        <a href="#" title="교육업">교육업</a>
-                    </li>
-                    <li>
-                        <a href="#" title="IT/웹/통신">IT/웹/통신</a>
-                    </li>
-                    <li>
-                        <a href="#" title="은행/금융업">은행/금융업</a>
-                    </li>
-                </ul>
-        </article>
-        </div>
-    </div>
-    
 	<!--평균평점 그래프 스크립트  -->
    	<script>
 		let avg = parseFloat($('.avg').text());

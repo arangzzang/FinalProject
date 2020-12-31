@@ -534,7 +534,18 @@
                   
                     <div class="annoListNum">
                         <div class="annoListLogeFlax">
-                            <div class="annoListLoge"></div>
+                            <div class="annoListLoge2">
+                            <c:choose>
+		                        	<c:when test="${empty a.ent_logo }">
+		                				<img src="${path }/resources/image/Hire/job.png" style="width: 50px; height: 50px; ">
+		                        	</c:when>
+		                        	<c:otherwise>
+		                        		<img src="${path }/resources/enterprise/logo/${a.ent_no }/${a.ent_logo}" style="width: 40px; height: 40px; ">
+		                        	</c:otherwise>
+		                        
+		                        </c:choose>
+                            
+                            </div>
                         </div>
                       
                         <a href="#">
@@ -545,7 +556,7 @@
                             <input type="hidden" class="annoListTitle" value="${a.rec_no }" name="ent_no"><c:out value="${a.ent_name }"/><br>
                             <input type="hidden" class="annoListTitle" value="${a.rec_no }" >평균 평점 
                             <input type="hidden" value="${commonLogin.memNo}" class="annoListTitle" name="mem_no" >
-                            <c:out value="${commonLogin.memNo }"/>
+                            
                             </button>
                             
                                 
@@ -569,7 +580,16 @@
                     <div class="annoDetailTitle">
                         <div class="annoDetailNum">
                             <div class="annoDetailLogeFlax">
-                                <div class="annoDetailLoge"></div>
+                                <div class="annoDetailLoge">
+                                 <c:choose>
+		                        	<c:when test="${empty anolist[0].ent_logo }">
+		                				<img src="${path }/resources/image/Hire/job.png" style="width: 50px; height: 50px; ">
+		                        	</c:when>
+		                        	<c:otherwise>
+		                        		<img src="${path }/resources/enterprise/logo/${anolist[0].ent_no }/${anolist[0].ent_logo}" style="width: 40px; height: 40px; ">
+		                        	</c:otherwise>
+		                        
+		                        </c:choose></div>
                             </div>
                             <div class="annoDetailTitleFlax">            
                                 <div class="annoDetailTitle1">${anolist[0].rec_title}</div> 
@@ -580,34 +600,22 @@
                             </div> 
                         </div>
                         
-                      <button class="apply" onclick="location.href='${path }/Hire/apply.do?memNo=${commonLogin.memNo}&recNo=${r[0].REC_NO}'" >지원하기</a>
+                      <button class="apply" onclick="location.href='${path }/Hire/apply.do?memNo=${commonLogin.memNo}&recNo=${anolist[0].rec_no}'" >지원하기</a>
                        </button>
-                       <c:if test="${anoList[0].open_check == null && commonLogin !=null}">
+                       <c:if test="${commonLogin !=null && commonLogin.memNo !=  anolist[0].mem_no }">
                       
                         <button id="favoritesBox" onclick="fn_toggle();">
                             <img id="announcementFavorites" src="${path }/resources/image/Hire/pngwing.png" />
                         </button>
                       </c:if>
-                       <c:if test="${anoList[0].open_check == 1  && commonLogin !=null}">
+                      
+                       <c:if test="${anolist[0].open_check == 1  && commonLogin !=null && commonLogin.memNo ==  anolist[0].mem_no }">
                         <button id="favoritesBox" onclick="fn_toggle();">
                             <img id="announcementFavorites" src="${path }/resources/image/Hire/pngwing2.png" />
                         </button> 
                       </c:if>
-                      
-                       
-						<script>
-						
-                       $(".apply").click(function () {
-                      		if(${anoList[0].mem_no == null}){
-                      			alert("로그인 회원만 이용가능합니다");	
-                      } 
-                       });  
-                    
-                      </script>
-
-
-
-
+           
+    
 					</div>
 
                     <div class="detailedReviewInterview">
@@ -868,9 +876,9 @@
         $(window).scroll(function () {
             if ($(document).scrollTop() > scrollOffset.top) {
                 $('.annoDetailTitle').addClass('scroll-fixed');
-                $('.annoDetailTitle').css('margin-top', '158px');
+                $('.annoDetailTitle').css('margin-top', '100px');
                 $('.annoDetailTitle').css('z-index', '5');
-                
+                $('.annoDetailTitle').css('height', '90px');
           /*       $('.detailedReviewInterview').css('display','none')l */
             }
             else {
@@ -894,12 +902,9 @@
 
         $(window).scroll(function () {
             if ($(document).scrollTop() > scrollOffset.top) {
-            	
                 $('.annoCategory').addClass('scroll-fixed');
-                $('.annoCategory').css('margin-top', '158px');
-                $('.annoCategory').css('z-index', '4');
+                $('.annoCategory').css('z-index', '10');
                 $('.annoCategory').css('height', '80px');
-            
             }
             else {
                 $('.annoCategory').removeClass('scroll-fixed');
@@ -1081,7 +1086,7 @@
     function fn_toggle() {
     	
         var announcementFavorites = document.getElementById("announcementFavorites");
-        if(${r[0].OPEN_CHECK==1})
+        if(${anolist[0].open_check==1 && commonLogin.memNo == anolist[0].mem_no })
          {
         	announcementFavorites.src="${path }/resources/image/Hire/pngwing.png";
         	location.href="${path }/Hire/notFavorites.do?memNo=${commonLogin.memNo}&recNo=${anolist[0].rec_no}&openCheck=${anolist[0].open_check}";
@@ -1098,3 +1103,26 @@
 		  
 </script>
 
+<script>
+		$(".apply").click(function(){
+			if(${commonLogin.memNo == null}){
+      			alert("로그인 회원만 이용가능합니다");	
+      			 return false; 
+			}else{
+				alert("지원완료");
+			}
+		    
+		});
+		</script>
+		
+		<!-- 	<script>
+		$(".contentButtonApply3").click(function(){
+			if($('input[name=anoNum]').val()===null){
+      			alert("로그인 회원만 이용가능합니다");	
+      			 return false; 
+			}else{
+				alert("??");
+			}
+		    
+		});
+		</script> -->

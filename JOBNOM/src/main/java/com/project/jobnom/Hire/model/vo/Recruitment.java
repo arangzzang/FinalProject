@@ -29,7 +29,7 @@ public class Recruitment {
 	private String rec_career;    //공고경력
 	private String rec_order;    //면접절차
 	private String rec_type;    //고용형태
-	private int rec_category;
+	private String rec_category;
 	
 	//여기서 부터 다른테이블에 있는 내용 받아올수있게 생성해주는곳
 	private String ent_name;    //기업이름
@@ -41,6 +41,6 @@ public class Recruitment {
 	private String res_name;
 	private String mem_check;
 	private String mem_membership;
-	private int open_check;
+	private String open_check;
 
 }

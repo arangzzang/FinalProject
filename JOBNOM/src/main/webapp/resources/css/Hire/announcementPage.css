@@ -26,7 +26,7 @@
 
   }
   .a{
-      margin-top: 30px;
+      margin-top: 100px;
       display: flex;
       font-weight: bolder;
       font-size: 20px;
@@ -132,7 +132,7 @@
     width: 1280px;
     height: 100px;
     display: flex;
-    padding-top: 10px;
+    padding-top: 110px;
     background-color: white;
     z-index: 4;
 
@@ -451,6 +451,7 @@ input[type="checkbox"]:checked + label span
 .annoAll{
     display: flex;
     height: 800px;
+    padding-top: 100px;
     
 
     
@@ -460,6 +461,7 @@ input[type="checkbox"]:checked + label span
     height: 600px;
     padding: 20px;
     overflow:auto;
+    
 }
 .annoList:after{
     content:"";
@@ -537,8 +539,7 @@ input[type="checkbox"]:checked + label span
     border-radius: 5px;
     width: 70px;
     height: 70px;
-    background-image: url("../../image/Hire/Kakao.png");
-    background-size: cover;
+   
 }
 .annoDetailTitleFont{
     font-size: 14px;
@@ -592,6 +593,7 @@ input[type="checkbox"]:checked + label span
     border-bottom: 1px solid;
     background-color: white;
     z-index: 2px;
+    
 
     
     
@@ -609,8 +611,7 @@ input[type="checkbox"]:checked + label span
 border-radius: 5px;
     width: 60px;
     height: 60px;
-    background-image: url("../../image/Hire/Kakao.png"); 
-    background-size: cover;
+ 
 }
 .annoDetailNum{
     display: flex;

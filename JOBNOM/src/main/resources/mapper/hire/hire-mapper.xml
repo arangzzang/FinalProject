@@ -19,6 +19,11 @@
 		<result column="RE_TYPE" property="rec_type"/>
 	
 	</resultMap>  -->
+	<resultMap type="ent" id="entMap">
+		<result column="ent_name" property="entName"/>
+		<result column="ent_no" property="entNo"/>
+		
+	</resultMap>
 
 	
 
@@ -44,24 +49,12 @@
              LEFT   JOIN RESUME R ON (R.MEM_NO = M.MEM_NO)
             WHERE M.MEM_NO =#{mem_no}
 		
-		<!-- SELECT DISTINCT  M.*,RES_NAME
-            FROM MEMBER M 
-              LEFT JOIN SUPPORT S ON(S.MEM_NO = M.MEM_NO)
-            LEFT JOIN RECRUITMENT A ON(A.REC_NO = S.REC_NO)
-             LEFT   JOIN RESUME R ON (R.MEM_NO = M.MEM_NO)
-            WHERE M.MEM_NO =#{mem_no} -->
 	</select>
 	
 	<select id="HireHomeRecruitmentList" resultType="map">
-		  SELECT * FROM RECRUITMENT 
-		 
-		 
-		 <!-- 
-		  SELECT R.*,RES_NAME,M.MEM_NO, MEM_CHECK, MEM_MEMBERSHIP
-         FROM RECRUITMENT R
-           LEFT JOIN SUPPORT S ON(S.REC_NO = R.REC_NO)
-           RIGHT JOIN MEMBER M ON(M.MEM_NO = R.REC_NO)
-            LEFT JOIN RESUME A ON(A.MEM_NO = M.MEM_NO) -->
+	   SELECT R.*, ENT_LOGO
+            FROM RECRUITMENT  R
+             LEFT   JOIN enterprise E ON (E.ENT_NO = R.ENT_NO)
 	
 	</select>
 	
@@ -87,7 +80,6 @@
 	</select>
 	
 	<select id="selectReviewList" parameterType="string" resultType="java.util.HashMap">
-		
 		SELECT  R.REC_NO,E.ENT_NO, R.REC_TITLE, ENT_NAME,REVIEW_TITLE,REVIEW_CONTENTS,REVIEW_SATISFACTION,
 		 REVIEW_WELFARE, REVIEW_PROMOTION , REVIEW_EXECUTIVE
 		FROM REVIEW E 
@@ -106,10 +98,7 @@
 	INSERT INTO INTERESTEDRECRUITMENT
 		VALUES(SEQ_HIRE_NO.NEXTVAL,#{recNo},#{memNo},1)
 	</insert> 
-	<!-- <update id="memberFavorites" parameterType="map">
-	    UPDATE INTERESTEDRECRUITMENT SET OPEN_CHECK = '2'
-		WHERE MEM_NO = #{memNo}
-	</update> -->
+	
 	
 	<!-- 즐겨찾기 없애기 -->
 	<delete id="notFavorites" parameterType="map">
@@ -124,8 +113,8 @@
                       WHERE MEM_NO=#{memNo}
 	</select>
 	
-	<select id="selectSuppertCount" resultType="_int">
-		SELECT  COUNT(*) FROM SUPPORT
+	<select id="selectSuppertCount" resultType="_int"  parameterType="string">
+		SELECT  COUNT(*) FROM SUPPORT WHERE MEM_NO=#{memNo}
 	</select>
 	
 	<select id="HireFavorites" parameterType="string" resultType="com.project.jobnom.Hire.model.vo.Interestedrcruitment">
@@ -135,14 +124,15 @@
                        JOIN ENTERPRISE E ON (E.ENT_NO = R.ENT_NO)
                           WHERE MEM_NO=#{memNo}
 	</select>
-	<select id="selectInterestedrcruitmentCount" resultType="_int">
-		                       SELECT  COUNT(*) FROM INTERESTEDRECRUITMENT
+	<select id="selectInterestedrcruitmentCount" resultType="_int" parameterType="string">
+		                       SELECT  COUNT(*) FROM INTERESTEDRECRUITMENT  WHERE MEM_NO=#{memNo}
 	</select>
 	
-	<select id="selectOneRecruitment" resultType="map">
-	  
-	     select ent_name from enterprise
-              where ent_name like '%'||#{key}||'%'
+	<select id="selectOneRecruitment"  parameterType="string" resultMap="entMap">
+	 	
+	 	select ent_Name from enterprise
+	 	where ent_Name like '%'||#{key}||'%'
+             
 	
 	</select>
 	
@@ -156,5 +146,30 @@
 			  WHERE REC_CATEGORY=#{rec_no}
 	</select>
 	
+	<select id="selectMemberApply" parameterType="map" resultType="map">
+	         SELECT DISTINCT E.*,REC_TITLE
+	      FROM ENTERPRISE E
+              JOIN RECRUITMENT R ON (R.ENT_NO=E.ENT_NO)
+              JOIN SUPPORT S ON (S.REC_NO=R.REC_NO)
+              WHERE S.MEM_NO=#{memNo} AND R.REC_NO=#{recNo}
+	</select>
+	
+	<select id="MemberFitList" resultType="map" parameterType="string">
+		SELECT DISTINCT R.*,M.MEM_NO,M.CATE_NO2, JOBS2
+               FROM RECRUITMENT R
+               JOIN SUPPORT S ON(S.REC_NO=R.REC_NO) 
+               JOIN MEMBER M ON(M.MEM_NO=S.MEM_NO)
+               JOIN CATEGORY2 C ON(C.CATE_NO2 = M.CATE_NO2)
+               WHERE REC_CATEGORY=M.CATE_NO2
+               AND M.MEM_NO=#{memNo}
+               
+               
+	</select>
+	
+	<select id="reviewSearch2" parameterType="string" resultMap="entMap">
+		select ent_No from enterprise
+	 	where ent_Name like '%'||#{key}||'%'
+             
+	</select>
 	
 </mapper> 

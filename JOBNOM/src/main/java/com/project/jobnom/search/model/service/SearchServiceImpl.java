@@ -44,4 +44,38 @@ public class SearchServiceImpl implements SearchService {
 		// TODO Auto-generated method stub
 		return dao.selectCount(session);
 	}
+	
+	//기업 더보기 카테고리별 ajax
+	@Override
+	public List<Map> ajaxCategoryList(String entCategory) {
+		// TODO Auto-generated method stub
+		return dao.ajaxCategoryList(session, entCategory);
+	}
+	
+	//기업 더보기 리뷰카테고리별 ajax
+	@Override
+	public List<Map> ajaxReivewCateList(String reivewCategory) {
+		// TODO Auto-generated method stub
+		return dao.ajaxReivewCateList(session,reivewCategory);
+	}
+	// 공고 검색 즐겨찾기
+	@Override
+	public int recFav(Map param) {
+		// TODO Auto-generated method stub
+		return dao.recFav(session,param);
+	}
+	
+	//공고 검색 즐겨찾기 삭제
+	@Override
+	public int recFavDelete(Map param) {
+		// TODO Auto-generated method stub
+		return dao.recFavDelete(session,param);
+	}
+	
+	//즐겨찾기 리스트
+	@Override
+	public List<Map> selectFav() {
+		// TODO Auto-generated method stub
+		return dao.selectFav(session);
+	}
 }

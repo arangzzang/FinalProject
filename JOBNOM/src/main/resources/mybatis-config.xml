@@ -14,7 +14,12 @@
 		<typeAlias type="com.project.jobnom.enterprise.model.vo.ApplyAd" alias="ad"/>
 		<typeAlias type="com.project.jobnom.enterprise.model.vo.Support" alias="support"/>
 		<typeAlias type="com.project.jobnom.enterprise.model.vo.Banner" alias="ban"/>
-		<typeAlias type="com.project.jobnom.resume.model.vo.Resume" alias="resume"/>
+
 		<typeAlias type="com.project.jobnom.enterprise.model.vo.MemberDataC2" alias="mdc2"/>
+
+		<typeAlias type="com.project.jobnom.resume.model.vo.Resume" alias="resume"/>
+		<typeAlias type="com.project.jobnom.Hire.model.vo.Review" alias="review"/>
+		<typeAlias type="com.project.jobnom.enterprise.model.vo.Category2" alias="cat2"/>
+
 	</typeAliases>
 </configuration>

@@ -9,69 +9,11 @@
 <jsp:include page="/WEB-INF/views/common/header.jsp">
 	<jsp:param name="title" value=""/>
 </jsp:include>
+<!-- 기업상세헤더 -->
+<jsp:include page="/WEB-INF/views/enterprise/com_info_header.jsp">
+	<jsp:param name="title" value=""/>
+</jsp:include>
 <section class="main">
-    <div class="cmp_info">
-        <div class="cmp_top">
-            <div class="cmp_top_containner">
-            <div class="cmp_top_img">
-                <div class="cover_img"></div>
-            </div>
-            <div class="cmp_top_wrap">
-                <div class="cmp_wrap">
-                    <div class="cmp_top_box">
-                        <div class="compa_info">
-                        <div class="compa_logo">
-                            <a href="" class="logo_wrap" >
-                            <span class="logoimg"><img src="" alt="기업이미지"/></span>
-                            </a>
-                        </div>
-                        <div class="compa_info_box">
-                            <div class="compa_name">
-                                <a href="" >회사이름</a>
-                            </div>
-                            <div class="about_compa">
-                                <div class="compa_rating">
-                                    <span>
-                                        <i class="fas fa-star">4.5</i>             
-                                    </span>
-                                </div>
-                                <div class="com_info_small">
-                                    <span>소분류</span>
-                                    <span class="dot">&middot;</span>
-                                    <a href="www.naver.com">기업주소</a>
-                                </div>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            </div>
-        </div>
-        <div class="com_menu" >
-            <div id="view_com_wrap"> 
-            <nav id="view_com">
-                  <ul class="view_menu">
-                        <li class="li_menu">
-                            <a href="${path}/enterprise/com_info.do"><h2>소개</h2></a>
-                        </li>
-                        <li class="li_menu">
-                            <a href="${path }/enterprise/com_review.do"><h2>리뷰<span class="num">(1)</span></h2></a>
-                        </li>
-                        <li class="li_menu">
-                            <a href="${path }/enterprise/com_interview.do"><h2>면접후기<span class="num">(1)</span></h2></a>
-                        </li>
-                        <li class="li_menu">
-                            <a href="${path }/enterprise/com_job.do"><h2>채용<span class="num">(1)</span></h2></a>
-                        </li>
-                    </ul>
-                <div class="follow_btn">
-                    <button id="follow" class="btn btn"><i id="heart" class="far fa-heart"></i>찜하기</button> 
-                </div>
-            </nav>
-            </div>
-        </div>
-    </div>
     <div class="review_container">
         <div class="review_con_box">
             <div class="review_title">
@@ -97,15 +39,16 @@
                 </div>
             </div>
         </article>
+            <c:forEach items="${rev }" var="rev">
       <article class="review_write_con">
             <div class="write_info">
                 <div class="write_info_user">
                     <span><i class="fas fa-user-circle fa-2x"></i></span>
-                    <span>현직원</span>
+                    <span></span>
                     <span> | </span>
                     <span>서울</span>
                     <span> | </span>
-                    <span>2020.11.21</span>
+                    <span><c:out value="${rev.re_enroll_date }"/></span>
                 </div>
             <div class="write_rat">
                 <dl class="rating">
@@ -120,15 +63,13 @@
                 </dl>
                 <div class="write_content" >
                     <div class="write_content_title">
-                        <h2>별로에여</h2>
+                        <h2><c:out value="${rev.review_title }"/></h2>
                     </div>
                     <dl class="co_list">
                         <dt style="color:red">리뷰내용</dt>
                         <dd class="df1">
                             <span>
-                                밥 마싯당
-                                <br>
-                             
+                               <c:out value="${rev.review_contents }"/>              
                             </span>
                         </dd>
                     </dl>
@@ -141,14 +82,16 @@
 	            </div>
             </div>
         </article>
-       <!--  <article class="com_review_default">
-        	<div class="com_de_box">
-        		<div class="com_de_wrap">
-        			<h4>등록된 리뷰가 없습니다.</h4>
-					<button class="btn btn-success" onclick=""><i class="fas fa-pen-square"></i>  리뷰 작성하기</button>	        	
-        	   </div>
-        	</div>
-        </article> -->
+       		<c:if test="${rev.review_no==null }">
+		       <article class="com_review_default">
+		        	<div class="com_de_box">
+		        		<div class="com_de_wrap">
+		        			<h4>등록된 리뷰가 없습니다.</h4>
+		        	   </div>
+		        	</div>
+		        </article>
+        	</c:if>
+        </c:forEach>
 </section>
 
 <script type="text/javascript">

@@ -127,9 +127,20 @@
 	
 	<delete id="quit">
 		DELETE FROM ENTERPRISE WHERE ENT_NO=#{entNo}
-	
 	</delete>
-
+	
+	<select id="selectReviewList" resultType="review">
+		SELECT * FROM REVIEW
+	</select>
+	
+	<select id="selectJoblist" resultType="recruitment">
+		SELECT * FROM RECRUITMENT
+	</select>
+	
+	<select id="getC2" resultType="cat2" >
+		SELECT * FROM CATEGORY2
+	</select>	
+	
 	<select id="findEmailEnterprise" parameterType="string" resultMap="entMap">
 		SELECT * FROM ENTERPRISE WHERE ENT_EMAIL=#{memEmail}
 	</select>
@@ -138,5 +149,179 @@
 	</select>
 	<select id="memDataC2" resultMap="mdc2Map">
 		SELECT CATE_NO, COUNT(*) AS COUNT FROM MEMBER JOIN CATEGORY2 ON MEMBER.CATE_NO2 = CATEGORY2.CATE_NO2 GROUP BY CATE_NO ORDER BY CATE_NO
+	</select>
+
+<!--헤더 기업 버튼 클릭시 리스트 YS  -->
+	<select id="companyList" resultType="map">
+		<![CDATA[
+			select 
+				e.ent_no
+				,e.ent_category1
+				,e.ent_name
+				,c.job
+				,round(sum(review_satisfaction+review_welfare+review_promotion+review_executive)/(count(review_satisfaction)+count(review_welfare)+count(review_promotion)+count(r.review_executive)),1) as avg
+			from enterprise e
+			inner join review r
+			on (r.ent_no = e.ent_no)
+			 inner join category c
+        	on (c.cate_no = e.ent_category1)
+        	where c.cate_no = 1
+			AND ROWNUM <=5
+			group by e.ent_no
+					,e.ent_category1
+					,e.ent_name
+					,c.job
+			order by avg desc		
+					
+		]]>
+	
+	</select>
+	
+	<select id="companyList2" resultType="map">
+		<![CDATA[
+			select 
+				e.ent_no
+				,e.ent_category1
+				,e.ent_name
+				,c.job
+				,round(sum(review_satisfaction+review_welfare+review_promotion+review_executive)/(count(review_satisfaction)+count(review_welfare)+count(review_promotion)+count(r.review_executive)),1) as avg
+			from enterprise e
+			inner join review r
+			on (r.ent_no = e.ent_no)
+			 inner join category c
+        	on (c.cate_no = e.ent_category1)
+        	where c.cate_no = 2
+			AND ROWNUM <=5
+			group by e.ent_no
+					,e.ent_category1
+					,e.ent_name
+					,c.job
+			order by avg desc		
+					
+		]]>
+	
+	</select>
+	<select id="companyList3" resultType="map">
+		<![CDATA[
+			select 
+				e.ent_no
+				,e.ent_category1
+				,e.ent_name
+				,c.job
+				,round(sum(review_satisfaction+review_welfare+review_promotion+review_executive)/(count(review_satisfaction)+count(review_welfare)+count(review_promotion)+count(r.review_executive)),1) as avg
+			from enterprise e
+			inner join review r
+			on (r.ent_no = e.ent_no)
+			 inner join category c
+        	on (c.cate_no = e.ent_category1)
+        	where c.cate_no = 3
+			AND ROWNUM <=5
+			group by e.ent_no
+					,e.ent_category1
+					,e.ent_name
+					,c.job
+			order by avg desc		
+					
+		]]>
+	
+	</select>
+	<select id="companyList4" resultType="map">
+		<![CDATA[
+			select 
+				e.ent_no
+				,e.ent_category1
+				,e.ent_name
+				,c.job
+				,round(sum(review_satisfaction+review_welfare+review_promotion+review_executive)/(count(review_satisfaction)+count(review_welfare)+count(review_promotion)+count(r.review_executive)),1) as avg
+			from enterprise e
+			inner join review r
+			on (r.ent_no = e.ent_no)
+			 inner join category c
+        	on (c.cate_no = e.ent_category1)
+        	where c.cate_no = 4
+			AND ROWNUM <=5
+			group by e.ent_no
+					,e.ent_category1
+					,e.ent_name
+					,c.job
+			order by avg desc		
+					
+		]]>
+	
+	</select>
+	<select id="companyList5" resultType="map">
+		<![CDATA[
+			select 
+				e.ent_no
+				,e.ent_category1
+				,e.ent_name
+				,c.job
+				,round(sum(review_satisfaction+review_welfare+review_promotion+review_executive)/(count(review_satisfaction)+count(review_welfare)+count(review_promotion)+count(r.review_executive)),1) as avg
+			from enterprise e
+			inner join review r
+			on (r.ent_no = e.ent_no)
+			 inner join category c
+        	on (c.cate_no = e.ent_category1)
+        	where c.cate_no = 5
+			AND ROWNUM <=5
+			group by e.ent_no
+					,e.ent_category1
+					,e.ent_name
+					,c.job
+			order by avg desc		
+					
+		]]>
+	
+	</select>
+	<select id="companyList6" resultType="map">
+		<![CDATA[
+			select 
+				e.ent_no
+				,e.ent_category1
+				,e.ent_name
+				,c.job
+				,round(sum(review_satisfaction+review_welfare+review_promotion+review_executive)/(count(review_satisfaction)+count(review_welfare)+count(review_promotion)+count(r.review_executive)),1) as avg
+			from enterprise e
+			inner join review r
+			on (r.ent_no = e.ent_no)
+			inner join category c
+        	on (c.cate_no = e.ent_category1)
+        	where c.cate_no = 6
+			AND ROWNUM <=5
+			group by e.ent_no
+					,e.ent_category1
+					,e.ent_name
+					,c.job
+			order by avg desc		
+					
+		]]>
+	
+	</select>
+	<!--기업명 클릭시 -YS  -->
+	<select id="companyInfo" resultType="map">
+		select 
+				e.ent_no
+				,e.ent_category1
+				,e.ent_category2
+				,e.ent_name
+				,e.ent_logo
+				,e.ent_site
+				,e.ent_email
+				,e.rep_name
+				,e.rep_phone
+				,round(sum(review_satisfaction+review_welfare+review_promotion+review_executive)/(count(review_satisfaction)+count(review_welfare)+count(review_promotion)+count(r.review_executive)),1) as avg
+			from enterprise e
+			inner join review r
+			on (r.ent_no = e.ent_no)
+			where e.ent_no = #{entNo}
+			group by e.ent_no
+					,e.ent_category1
+					,e.ent_name
+					,e.ent_logo
+					,e.ent_category2
+					,e.ent_site
+					,e.ent_email
+					,e.rep_name
+					,e.rep_phone
 	</select>
 </mapper>

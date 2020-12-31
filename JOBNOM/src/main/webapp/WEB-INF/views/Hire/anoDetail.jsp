@@ -9,14 +9,24 @@
 <%-- <%
 List<Review> r=(List)request.getAttribute("r");
 %> --%>
-<section id="content" style="margin-top: -158px; height: 1100px; ">
+<section id="content" style="margin-top: -158px; height: 1100px; padding-top: 160px; ">
 
 <div class="annoDetailAll" >
                   
                     <div class="annoDetailTitle">
                         <div class="annoDetailNum">
                             <div class="annoDetailLogeFlax">
-                                <div class="annoDetailLoge"></div>
+                                <div class="annoDetailLoge">
+                                  <c:choose>
+		                        	<c:when test="${empty r[0].ENT_LOGO }">
+		                				<img src="${path }/resources/image/Hire/job.png" style="width: 50px; height: 50px; ">
+		                        	</c:when>
+		                        	<c:otherwise>
+		                        		<img src="${path }/resources/enterprise/logo/${r[0].ENT_NO }/${r[0].ENT_LOGO}" style="width: 40px; height: 40px; ">
+		                        	</c:otherwise>
+		                        
+		                        </c:choose>
+                                </div>
                             </div>
                             <div class="annoDetailTitleFlax">            
                                 <div id="annoDetailTitle1">${r[0].REC_TITLE }</div>
@@ -31,37 +41,20 @@ List<Review> r=(List)request.getAttribute("r");
                      
                       <button class="apply" onclick="location.href='${path }/Hire/apply.do?memNo=${commonLogin.memNo}&recNo=${r[0].REC_NO}&entName=${r[0].ENT_NAME }'" >지원하기
                        </button>
-                       <c:if test="${r[0].OPEN_CHECK == null && commonLogin !=null && commonLogin.memNo !=  r[0].MEM_NO }">
+                       <c:if test="${commonLogin !=null && commonLogin.memNo !=  r[0].MEM_NO }">
                       
                         <button id="favoritesBox" onclick="fn_toggle();">
                             <img id="announcementFavorites2" src="${path }/resources/image/Hire/pngwing.png" />
                         </button>
                       </c:if>
-                      <%--  <c:if test="${r[0].OPEN_CHECK == null && commonLogin !=null }">
-                      
-                        <button id="favoritesBox" onclick="fn_toggle();">
-                            <img id="announcementFavorites2" src="${path }/resources/image/Hire/pngwing.png" />
-                        </button>
-                      </c:if>  --%>
+                     
                        <c:if test="${r[0].OPEN_CHECK == 1  && commonLogin !=null && commonLogin.memNo ==  r[0].MEM_NO }">
                         <button id="favoritesBox" onclick="fn_toggle();">
                             <img id="announcementFavorites2" src="${path }/resources/image/Hire/pngwing2.png" />
                         </button>
                       </c:if>
                       
-                       <%-- <c:choose>
-                       <c:when test="${r[0].OPEN_CHECK ==1  && commonLogin !=null && commonLogin.memNo ==  r[0].MEM_NO }">
-	                        <button id="favoritesBox" onclick="fn_toggle();"> 
-	                            <img id="announcementFavorites2" src="${path }/resources/image/Hire/pngwing2.png" />
-	                        </button>
-                       </c:when> 
-                       <c:otherwise>
-                        <button id="favoritesBox" onclick="fn_toggle();">
-                            <img id="announcementFavorites2" src="${path }/resources/image/Hire/pngwing.png" />
-                        </button>
-                     </c:otherwise> 
-                       
-                      </c:choose> --%>
+                      
                     </div>
 
                     <div class="detailedReviewInterview">
@@ -97,7 +90,7 @@ List<Review> r=(List)request.getAttribute("r");
                                 <div class="annoDetailInfoAll">
                                     <div class="annoDetailInfoLogo"></div>
                                     <div class="logoRight">마감일</div>
-                                   <div><fmt:formatDate  value="${r[0].REC_ENDDATE}" pattern="yy.MM.dd" /></div>
+                                   <div><fmt:formatDate  value="${r[0].REC_ENDDATE}" pattern="yy.MM.dd" />  까지</div>
                                 </div>
 
                                 
@@ -105,7 +98,7 @@ List<Review> r=(List)request.getAttribute("r");
                                 <div class="annoDetailInfoAll">
                                     <div class="annoDetailInfoLogo"></div>
                                     <div class="logoRight">경력</div>
-                                    <div>${r[0].REC_CAREER} 년</div>
+                                    <div>${r[0].REC_CAREER} 년 이상</div>
                                 </div>
                                 <div class="annoDetailInfoAll">
                                     <div class="annoDetailInfoLogo"></div>
@@ -196,9 +189,33 @@ List<Review> r=(List)request.getAttribute("r");
                             <div>서울 강남구 역삼동 123-345 8층 jobnomOffice </div>
 
                            	 <!-- 카카오맵 -->
-                            <div id="map" style="width:300px;height:300px; border:solid"></div>
-	 						<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a20465f19ee15158806da31ed0ea9984"></script>
-                            <script>
+                           	 <div id="map" style="width:500px;height:400px;"></div>
+								<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d192ba0bc9d9cf37cf920c7c1f62a2c8"></script>
+								<script>
+									var container = document.getElementById('map');
+									var options = {
+										center: new kakao.maps.LatLng(33.450701, 126.570667),
+										level: 3
+									};
+							
+									var map = new kakao.maps.Map(container, options);
+								</script>
+                           <script>
+                           var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
+                           var options = { //지도를 생성할 때 필요한 기본 옵션
+                           	center: new kakao.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
+                           	level: 3 //지도의 레벨(확대, 축소 정도)
+                           };
+
+                           var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
+                           </script>
+
+
+
+                           
+                           
+                           
+                           <!--  <script>
                                 var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
                                     var options = { //지도를 생성할 때 필요한 기본 옵션
                                         center: new kakao.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
@@ -215,7 +232,9 @@ List<Review> r=(List)request.getAttribute("r");
 
 
 
-                           </script> 
+                           </script>  -->
+                           
+                         
                         </div>
                         
                         </div>
@@ -295,7 +314,7 @@ List<Review> r=(List)request.getAttribute("r");
         $(window).scroll(function () {
             if ($(document).scrollTop() > scrollOffset.top) {
                 $('.annoDetailTitle').addClass('scroll-fixed');
-                $('.annoDetailTitle').css('margin-top', '158px');
+                $('.annoDetailTitle').css('margin-top', '76px');
                 $('.annoDetailTitle').css('z-index', '5');
               
           /*       $('.detailedReviewInterview').css('display','none')l */
@@ -321,7 +340,7 @@ List<Review> r=(List)request.getAttribute("r");
             if ($(document).scrollTop() > scrollOffset.top) {
             	
                 $('.annoCategory').addClass('scroll-fixed');
-                $('.annoCategory').css('margin-top', '158px');
+                /* $('.annoCategory').css('margin-top', '158px'); */
                 $('.annoCategory').css('z-index', '4');
                
             
@@ -357,10 +376,10 @@ List<Review> r=(List)request.getAttribute("r");
     function fn_toggle() {
     	
         var announcementFavorites2 = document.getElementById("announcementFavorites2");
-        if(${r[0].OPEN_CHECK==1})
+        if(${r[0].OPEN_CHECK==1 && commonLogin.memNo == r[0].MEM_NO})
          {
         	announcementFavorites2.src="${path }/resources/image/Hire/pngwing.png";
-        	location.href="${path }/Hire/notFavorites.do?memNo=${commonLogin.memNo}&recNo=${r[0].REC_NO}&openCheck=${r[0].OPEN_CHECK}";
+        	location.href="${path }/Hire/notFavorites.do?memNo=${commonLogin.memNo}&recNo=${r[0].REC_NO}&openCheck=${r[0].OPEN_CHECK}&anoNum=${r[0].REC_CATEGORY}";
         	alert("즐겨찾기 빼기 완료");
         }else
         {

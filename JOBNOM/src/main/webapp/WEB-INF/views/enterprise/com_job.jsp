@@ -109,33 +109,41 @@
                 </label>
             </div>
         </div>
-        <!-- <div class="job_items">
+        <div class="job_items">
+        <c:forEach items="${Rec }" var="Rec">
             <div class="job_item_wrap" >
-                <a href="" class="job_a">
-                  <span class="job_dday">D-49 (채용시 마감)</span>
+                <a href="${path }/" class="job_a">
+                  <span class="job_dday"><fmt:formatDate value="${Rec.rec_enddate }" pattern="yyyy.MM.dd"/></span>
                   <div class="info_box">
-                    <h2 class="tit">개발팀(산업기능요원-보충역)</h2>
+                    <h2 class="tit"><c:out value="${Rec.rec_title}"/></h2>
+                    <c:forEach items="${c2 }" var="c">
                     <p class="duty">
-                       	 소프트웨어엔지니어, 웹개발
+                    	<c:set var= "ctg" value="${Rec.rec_category }"/>
+                       	<c:if test="${c.cate_no2 == ctg }">
+                       		<c:out value="${c.jobs2 }"/>
+                       	</c:if>
                     </p>
+                    </c:forEach>
                     <div class="label">
-                      <span class="tags ">서울</span>
-                          <span>경력</span>
+                      <span class="tags "><c:out value="${Rec.rec_type }"/></span>
                     </div>
                   </div>
                 </a>
             </div>
-        </div> -->
-        <section class="com_job_default">
-        	<div class="com_job_de_box">
-        		<div class="com_job_wrap">
-        			<i class="fas fa-exclamation fa-5x"></i>
-        		</div>
-        		<div class="com_job_wrap">
-        			<h2>조회된 공고가 없습니다.</h2>
-        		</div>
-        	</div>
-        </section>
+            <c:if test="${Rec.rec_no==null }">
+	        <section class="com_job_default">
+	        	<div class="com_job_de_box">
+	        		<div class="com_job_wrap">
+	        			<i class="fas fa-exclamation fa-5x"></i>
+	        		</div>
+	        		<div class="com_job_wrap">
+	        			<h2>조회된 공고가 없습니다.</h2>
+	        		</div>
+	        	</div>
+	        </section>
+	        </c:if>
+            </c:forEach>
+        </div>
     </div>
 </section>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
