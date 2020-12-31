@@ -97,15 +97,16 @@
                 </div>
             </div>
         </article>
+            <c:forEach items="${rev }" var="rev">
       <article class="review_write_con">
             <div class="write_info">
                 <div class="write_info_user">
                     <span><i class="fas fa-user-circle fa-2x"></i></span>
-                    <span>현직원</span>
+                    <span></span>
                     <span> | </span>
                     <span>서울</span>
                     <span> | </span>
-                    <span>2020.11.21</span>
+                    <span><c:out value="${rev.re_enroll_date }"/></span>
                 </div>
             <div class="write_rat">
                 <dl class="rating">
@@ -120,15 +121,13 @@
                 </dl>
                 <div class="write_content" >
                     <div class="write_content_title">
-                        <h2>별로에여</h2>
+                        <h2><c:out value="${rev.review_title }"/></h2>
                     </div>
                     <dl class="co_list">
                         <dt style="color:red">리뷰내용</dt>
                         <dd class="df1">
                             <span>
-                                밥 마싯당
-                                <br>
-                             
+                               <c:out value="${rev.review_contents }"/>              
                             </span>
                         </dd>
                     </dl>
@@ -141,14 +140,17 @@
 	            </div>
             </div>
         </article>
-       <!--  <article class="com_review_default">
-        	<div class="com_de_box">
-        		<div class="com_de_wrap">
-        			<h4>등록된 리뷰가 없습니다.</h4>
-					<button class="btn btn-success" onclick=""><i class="fas fa-pen-square"></i>  리뷰 작성하기</button>	        	
-        	   </div>
-        	</div>
-        </article> -->
+       		<c:if test="${rev.review_no==null }">
+		       <article class="com_review_default">
+		        	<div class="com_de_box">
+		        		<div class="com_de_wrap">
+		        			<h4>등록된 리뷰가 없습니다.</h4>
+							<button class="btn btn-success" onclick=""><i class="fas fa-pen-square"></i>  리뷰 작성하기</button>	        	
+		        	   </div>
+		        	</div>
+		        </article>
+        	</c:if>
+        </c:forEach>
 </section>
 
 <script type="text/javascript">

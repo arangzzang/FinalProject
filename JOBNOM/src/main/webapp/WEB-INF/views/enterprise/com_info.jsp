@@ -23,7 +23,7 @@
                             <div class="compa_info">
                             <div class="compa_logo">
                                 <a href="" class="logo_wrap" >
-                                <span class="logoimg"><img src="" alt="기업이미지"/></span>
+                                <span class="logoimg"><img src="${list[0].ENT_LOGO }" alt="기업이미지"/></span>
                                 </a>
                             </div>
                             <div class="compa_info_box">
@@ -33,7 +33,7 @@
                                 <div class="about_compa">
                                     <div class="compa_rating">
                                         <span>
-                                            <i class="fas fa-star">4.5</i>             
+                                            <i class="fas fa-star">${list[0].AVG }</i>             
                                         </span>
                                     </div>
                                     <div class="com_info_small">
@@ -77,17 +77,17 @@
         <div class="com_info_container">	
             <div class="com_info" >
                 <div class="com_title" >
-                    <h2>기업정보</h2>
+                    <h2><c:out value="${list[0].ENT_NAME }"/></h2>
                 </div>
                 <div class="com_box_info">
                     <div class="company_sub">
                         <div class="tool_box">
                             <i class="fas fa-tools"></i>
-                            <span><strong></strong><p>산업</p></span>
+                            <span><strong></strong><p>${list[0].ENT_CATEGORY1 }</p></span>
                         </div>
                         <div class="tool_box">
                             <i class="fas fa-building"></i>
-                            <span><strong>-</strong><p>기업형태</p>
+                            <span><strong>-</strong><p>${list[0].ENT_CATEGORY2 }</p>
                         </div>
                         <div class="tool_box">
                             <i class="fas fa-users"></i>

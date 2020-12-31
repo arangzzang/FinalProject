@@ -44,4 +44,18 @@ public class SearchServiceImpl implements SearchService {
 		// TODO Auto-generated method stub
 		return dao.selectCount(session);
 	}
+	
+	//기업 더보기 카테고리별 ajax
+	@Override
+	public List<Map> ajaxCategoryList(String entCategory) {
+		// TODO Auto-generated method stub
+		return dao.ajaxCategoryList(session, entCategory);
+	}
+	
+	//기업 더보기 리뷰카테고리별 ajax
+	@Override
+	public List<Map> ajaxReivewCateList(String reivewCategory) {
+		// TODO Auto-generated method stub
+		return dao.ajaxReivewCateList(session,reivewCategory);
+	}
 }

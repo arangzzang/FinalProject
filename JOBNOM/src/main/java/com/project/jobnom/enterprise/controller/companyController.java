@@ -5,8 +5,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +12,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.support.SessionStatus;
@@ -22,10 +19,12 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.project.jobnom.Hire.model.vo.Recruitment;
+import com.project.jobnom.Hire.model.vo.Review;
 import com.project.jobnom.common.model.vo.Login;
 import com.project.jobnom.enterprise.model.service.EnterpriseService;
 import com.project.jobnom.enterprise.model.vo.ApplyAd;
 import com.project.jobnom.enterprise.model.vo.Banner;
+import com.project.jobnom.enterprise.model.vo.Category2;
 import com.project.jobnom.enterprise.model.vo.Enterprise;
 import com.project.jobnom.enterprise.model.vo.Support;
 import com.project.jobnom.enterprise.page.EnterprisePageBar;
@@ -39,22 +38,39 @@ public class companyController {
 	@Autowired
 	BCryptPasswordEncoder pwEncoder;
 
+	//헤더 기업 버튼 클릭시 
 	@RequestMapping("/enterprise/companyList.do")
-	public String companyList() {
-
-		return "enterprise/companyList";
+	public ModelAndView companyList(ModelAndView mv) {
+		
+		mv.addObject("list",service.companyList());
+		mv.addObject("list2",service.companyList2());
+		mv.addObject("list3",service.companyList3());
+		mv.addObject("list4",service.companyList4());
+		mv.addObject("list5",service.companyList5());
+		mv.addObject("list6",service.companyList6());
+		mv.setViewName("enterprise/companyList");
+		System.out.println(mv.addObject("list",service.companyList()));
+		
+		return mv;
 	}
+	
+	//기업 메인 페이지
 
 	@RequestMapping("/enterprise/com_info.do")
-
-	public ModelAndView companyInfo(ModelAndView mv) {
+	public ModelAndView companyInfo(ModelAndView mv,@RequestParam String entNo) {
+		System.out.println(entNo);
 		
+		mv.addObject("list",service.companyInfo(entNo));
+		System.out.println(mv.addObject("list",service.companyInfo(entNo)));
 		mv.setViewName("enterprise/com_info");
 		return mv;
 	}
 
 	@RequestMapping("/enterprise/com_review.do")
 	public ModelAndView companyReview(ModelAndView mv) { 
+		List<Review> rev=service.selectReviewList();
+		
+		mv.addObject("rev",rev);
 		mv.setViewName("enterprise/com_review");
 		return mv;
 	}
@@ -66,9 +82,16 @@ public class companyController {
 	}
 
 	@RequestMapping("/enterprise/com_job.do")
-	public String companyJob() {
-
-		return "enterprise/com_job";
+	public ModelAndView companyJob(ModelAndView mv) {
+		List<Category2> c2 = service.getC2();
+		System.out.println("결과값 : "+c2);
+		
+		
+		List<Recruitment> Rec= service.selectJoblist();
+		mv.addObject("c2",c2);
+		mv.addObject("Rec",Rec);
+		mv.setViewName("enterprise/com_job");
+		return mv;
 	}
 
 	@RequestMapping("/enterprise/applyAdEnd.do")

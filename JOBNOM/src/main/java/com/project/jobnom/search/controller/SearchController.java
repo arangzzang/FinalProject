@@ -32,7 +32,6 @@ public class SearchController {
 				mv.addObject("list2",service.selectSercjResultRec(keyword));
 				mv.setViewName("search/searchResultList");
 				System.out.println(mv.addObject("list",service.selectSearchResult(keyword)));
-				System.out.println(mv.addObject("list2",service.selectSercjResultRec(keyword)));
 				return mv;
 				
 				
@@ -44,7 +43,7 @@ public class SearchController {
 	public ModelAndView searchResultMore(ModelAndView mv,@RequestParam(value = "cPage", defaultValue = "1") int cPage,
 			@RequestParam(value = "numPerpage", defaultValue = "10") int numPerpage) {
 		List<Map> list = service.searchResultMore(cPage,numPerpage);
-		
+		System.out.println(list);
 		int totalData = service.selectCount(); /* 이거페이지바 */
 		
 		mv.addObject("pageBar", PageBarFactory.getPageBar(totalData, cPage, numPerpage, "searchResultMore.do", null));
@@ -54,5 +53,19 @@ public class SearchController {
 		return mv;
 		
 	}
+	
+	//기업 더보기 화면 카테고리별 ajax
+	@RequestMapping("/ajaxCateList")
+	public ModelAndView ajaxCategoryList(ModelAndView mv, String entCategory) {
+		
+		System.out.println("zzzzzzzzzzzzzzz"+ entCategory);
+		
+		List<Map> list = service.ajaxCategoryList(entCategory);
+		System.out.println("카테고리별"+list);
+		mv.addObject("ajaxList",list);
+		mv.setViewName("search/ajax/ajaxCategoryList");
+		return mv;
+	}
+	
 
 }

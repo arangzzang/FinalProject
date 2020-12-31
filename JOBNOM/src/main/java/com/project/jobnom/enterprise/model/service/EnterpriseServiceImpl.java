@@ -8,10 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.project.jobnom.Hire.model.vo.Recruitment;
+import com.project.jobnom.Hire.model.vo.Review;
 import com.project.jobnom.common.model.vo.Login;
 import com.project.jobnom.enterprise.model.dao.EnterpriseDao;
 import com.project.jobnom.enterprise.model.vo.ApplyAd;
 import com.project.jobnom.enterprise.model.vo.Banner;
+import com.project.jobnom.enterprise.model.vo.Category2;
 //github.com/arangzzang/FinalProject.git
 import com.project.jobnom.enterprise.model.vo.Enterprise;
 import com.project.jobnom.enterprise.model.vo.Support;
@@ -86,6 +88,22 @@ public class EnterpriseServiceImpl implements EnterpriseService {
 		// TODO Auto-generated method stub
 		return dao.quit(ent, session);
 	}
+
+	@Override
+	public List<Review> selectReviewList() {
+		// TODO Auto-generated method stub
+		return dao.selectReviewList(session);
+	}
+	@Override
+	public List<Recruitment> selectJoblist() {
+		// TODO Auto-generated method stub
+		return dao.selectJoblist(session);
+	}
+	@Override
+	public List<Category2> getC2() {
+		// TODO Auto-generated method stub
+		return dao.getC2(session);
+	}
 	@Override
 	public Enterprise findEmailEnterprise(Login log) {
 		// TODO Auto-generated method stub
@@ -99,5 +117,42 @@ public class EnterpriseServiceImpl implements EnterpriseService {
 	
 	
 	
-
+	//헤더 기업 버튼 클릭 -ys-
+	@Override
+	public List<Map> companyList() {
+		// TODO Auto-generated method stub
+		return dao.companyList(session);
+	}
+	@Override
+	public List<Map> companyList2() {
+		// TODO Auto-generated method stub
+		return dao.companyList2(session);
+	}
+	@Override
+	public List<Map> companyList3() {
+		// TODO Auto-generated method stub
+		return dao.companyList3(session);
+	}
+	@Override
+	public List<Map> companyList4() {
+		// TODO Auto-generated method stub
+		return dao.companyList4(session);
+	}
+	@Override
+	public List<Map> companyList5() {
+		// TODO Auto-generated method stub
+		return dao.companyList5(session);
+	}
+	@Override
+	public List<Map> companyList6() {
+		// TODO Auto-generated method stub
+		return dao.companyList6(session);
+	}
+	
+	// 기업명 클릭시 이동
+	@Override
+	public List<Map> companyInfo(String entNo) {
+		// TODO Auto-generated method stub
+		return dao.companyInfo(session,entNo);
+	}
 }
