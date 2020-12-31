@@ -19,8 +19,11 @@
 	<resultMap type="res" id="resMap">
 		<result column="res_no" property="resNo"/>
 		<result column="res_name" property="resName"/>
+		<result column="res_phone" property="resPhone"/>
 		<result column="res_gender" property="resGender"/>
 		<result column="res_birth" property="resBirth"/>
+		<result column="res_car" property="resCar"/>
+		<result column="res_content" property="resContent"/>
 		<result column="res_opencheck" property="resOpenCheck"/>
 		<result column="mem_no" property="memNo"/>
 	</resultMap>

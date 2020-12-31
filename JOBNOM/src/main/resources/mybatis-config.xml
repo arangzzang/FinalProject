@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd" >
 <configuration>
-   <typeAliases>
-      <typeAlias type="com.project.jobnom.member.model.vo.Member" alias="mem"/>
-      <typeAlias type="com.project.jobnom.member.model.vo.MemCategory" alias="cate"/>
-      <typeAlias type="com.project.jobnom.member.model.vo.MemCategory2" alias="cate2"/>
-      <typeAlias type="com.project.jobnom.enterprise.model.vo.Enterprise" alias="ent"/>
-      <typeAlias type="com.project.jobnom.admin.model.vo.Admin" alias="admin"/>
-      <typeAlias type="com.project.jobnom.common.model.vo.Login" alias="login"/>
-      <typeAlias type="com.project.jobnom.welcome.model.vo.FAQ" alias="faq"/>
-      <typeAlias type="com.project.jobnom.Hire.model.vo.Recruitment" alias="recruitment"/>
-      <typeAlias type="com.project.jobnom.welcome.model.vo.Notice" alias="notice"/>
-      <typeAlias type="com.project.jobnom.enterprise.model.vo.ApplyAd" alias="ad"/>
-      <typeAlias type="com.project.jobnom.enterprise.model.vo.Support" alias="support"/>
-      <typeAlias type="com.project.jobnom.enterprise.model.vo.Banner" alias="ban"/>
-      <!-- 이력서용 -->
-      <typeAlias type="com.project.jobnom.resume.model.vo.Awards" alias="awa"/>
-      <typeAlias type="com.project.jobnom.resume.model.vo.Education" alias="edu"/>
-      <typeAlias type="com.project.jobnom.resume.model.vo.License" alias="lic"/>
-      <typeAlias type="com.project.jobnom.resume.model.vo.Portfolio" alias="pofol"/>
-      <typeAlias type="com.project.jobnom.resume.model.vo.Resume" alias="res"/>
-      <typeAlias type="com.project.jobnom.resume.model.vo.Skill" alias="skill"/>
-      <typeAlias type="com.project.jobnom.resume.model.vo.MySkill" alias="mySkill"/>
+	<typeAliases>
+		<typeAlias type="com.project.jobnom.member.model.vo.Member" alias="mem"/>
+		<typeAlias type="com.project.jobnom.member.model.vo.MemCategory" alias="cate"/>
+		<typeAlias type="com.project.jobnom.member.model.vo.MemCategory2" alias="cate2"/>
+		<typeAlias type="com.project.jobnom.enterprise.model.vo.Enterprise" alias="ent"/>
+		<typeAlias type="com.project.jobnom.admin.model.vo.Admin" alias="admin"/>
+		<typeAlias type="com.project.jobnom.common.model.vo.Login" alias="login"/>
+		<typeAlias type="com.project.jobnom.welcome.model.vo.FAQ" alias="faq"/>
+		<typeAlias type="com.project.jobnom.Hire.model.vo.Recruitment" alias="recruitment"/>
+		<typeAlias type="com.project.jobnom.welcome.model.vo.Notice" alias="notice"/>
+		<typeAlias type="com.project.jobnom.enterprise.model.vo.ApplyAd" alias="ad"/>
+		<typeAlias type="com.project.jobnom.enterprise.model.vo.Support" alias="support"/>
+		<typeAlias type="com.project.jobnom.enterprise.model.vo.Banner" alias="ban"/>
+		<!-- 이력서용 -->
+		<typeAlias type="com.project.jobnom.resume.model.vo.Awards" alias="awa"/>
+		<typeAlias type="com.project.jobnom.resume.model.vo.Education" alias="edu"/>
+		<typeAlias type="com.project.jobnom.resume.model.vo.License" alias="lic"/>
+		<typeAlias type="com.project.jobnom.resume.model.vo.Portfolio" alias="pofol"/>
+		<typeAlias type="com.project.jobnom.resume.model.vo.Resume" alias="res"/>
+		<typeAlias type="com.project.jobnom.resume.model.vo.Skill" alias="skill"/>
+		<typeAlias type="com.project.jobnom.resume.model.vo.MySkill" alias="mySkill"/>
 
-      <typeAlias type="com.project.jobnom.enterprise.model.vo.MemberDataC2" alias="mdc2"/>
-      <typeAlias type="com.project.jobnom.Hire.model.vo.Review" alias="review"/>
-      <typeAlias type="com.project.jobnom.enterprise.model.vo.Category2" alias="cat2"/>
+		<typeAlias type="com.project.jobnom.enterprise.model.vo.MemberDataC2" alias="mdc2"/>
+		<typeAlias type="com.project.jobnom.Hire.model.vo.Review" alias="review"/>
+		<typeAlias type="com.project.jobnom.enterprise.model.vo.Category2" alias="cat2"/>
 
-   </typeAliases>
+	</typeAliases>
 </configuration>

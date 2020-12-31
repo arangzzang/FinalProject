@@ -59,7 +59,6 @@
 	    			
 	    		}
 	    	})
-// 	        location.assign('${path}/member/myPage?memNo=${mem.memNo}')
 	    });
 	    //이력서
 	    $(".resumeBtn").click(e=>{
@@ -97,7 +96,6 @@
 	            }
 	        });
 	    });
-	
 	    //멤버십 membership
 		$(".membershipBtn").click(e=>{
 	        $.ajax({
