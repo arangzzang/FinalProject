@@ -16,7 +16,7 @@
 		<result column="ent_site" property="entSite"/>
 		<result column="ent_membership" property="entMembership"/>
 	</resultMap>
-	<resultMap type="resume" id="resMap">
+	<resultMap type="res" id="resMap">
 		<result column="res_no" property="resNo"/>
 		<result column="res_name" property="resName"/>
 		<result column="res_gender" property="resGender"/>
