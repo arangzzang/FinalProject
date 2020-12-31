@@ -16,7 +16,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.project.jobnom.Hire.model.service.HireService;
+import com.project.jobnom.Hire.model.vo.Support;
 import com.project.jobnom.common.model.vo.Login;
+import com.project.jobnom.common.pagebar.PageBarFactory;
 import com.project.jobnom.member.model.service.MemberService;
 import com.project.jobnom.member.model.vo.MemCategory;
 import com.project.jobnom.member.model.vo.MemCategory2;
@@ -27,6 +30,10 @@ public class MemberController {
 
 	@Autowired
 	private MemberService service;
+	
+	@Autowired
+	private HireService HireService;
+	
 	@Autowired
 	BCryptPasswordEncoder pwEncoder;
 	
@@ -198,9 +205,19 @@ public class MemberController {
 	}
 	//입사지원 (Ajax)
 	@RequestMapping("/member/supporting")
-	public String supportingCompany(int memNo, Model m) throws IOException {
-		 Member mem = service.mypageView(memNo);
-		 m.addAttribute("mem",mem);
+	public String supportingCompany(String memNo, Model m,@RequestParam(value = "cPage", defaultValue = "1") int cPage,
+			@RequestParam(value = "numPerpage", defaultValue = "5") int numPerpage) throws IOException {
+		 //Member mem = service.mypageView(memNo);
+		 //m.addAttribute("mem",mem);
+		
+		List<Support> support = HireService.HireMyHire(memNo, cPage, numPerpage); //지원한 공고 정보검색
+		int totalDataSu = HireService.selectSuppertCount(memNo); // 이건 지원한 공고 갯수
+		////////////////////////////////
+		m.addAttribute("support",support);
+		m.addAttribute("totalDataSu",totalDataSu);
+		
+		m.addAttribute("pageBar", PageBarFactory.getPageBar3(totalDataSu, cPage, numPerpage, memNo, "supporting"));
+		
 		 return "/member/mypage/activityHistory/supportingCompany";
 	}
 	

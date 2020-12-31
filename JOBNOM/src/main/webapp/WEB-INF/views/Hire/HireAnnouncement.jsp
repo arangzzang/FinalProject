@@ -35,9 +35,6 @@
     </div>
 
 
-    <script>
-        //모달창 만들구간
-    </script>
 <section id="content">
 
   <div class="a">

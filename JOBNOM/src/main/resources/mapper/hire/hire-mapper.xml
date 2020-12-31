@@ -19,6 +19,11 @@
 		<result column="RE_TYPE" property="rec_type"/>
 	
 	</resultMap>  -->
+	<resultMap type="ent" id="entMap">
+		<result column="ent_name" property="entName"/>
+		<result column="ent_no" property="entNo"/>
+		
+	</resultMap>
 
 	
 
@@ -44,24 +49,12 @@
              LEFT   JOIN RESUME R ON (R.MEM_NO = M.MEM_NO)
             WHERE M.MEM_NO =#{mem_no}
 		
-		<!-- SELECT DISTINCT  M.*,RES_NAME
-            FROM MEMBER M 
-              LEFT JOIN SUPPORT S ON(S.MEM_NO = M.MEM_NO)
-            LEFT JOIN RECRUITMENT A ON(A.REC_NO = S.REC_NO)
-             LEFT   JOIN RESUME R ON (R.MEM_NO = M.MEM_NO)
-            WHERE M.MEM_NO =#{mem_no} -->
 	</select>
 	
 	<select id="HireHomeRecruitmentList" resultType="map">
-		  SELECT * FROM RECRUITMENT 
-		 
-		 
-		 <!-- 
-		  SELECT R.*,RES_NAME,M.MEM_NO, MEM_CHECK, MEM_MEMBERSHIP
-         FROM RECRUITMENT R
-           LEFT JOIN SUPPORT S ON(S.REC_NO = R.REC_NO)
-           RIGHT JOIN MEMBER M ON(M.MEM_NO = R.REC_NO)
-            LEFT JOIN RESUME A ON(A.MEM_NO = M.MEM_NO) -->
+	   SELECT R.*, ENT_LOGO
+            FROM RECRUITMENT  R
+             LEFT   JOIN enterprise E ON (E.ENT_NO = R.ENT_NO)
 	
 	</select>
 	
@@ -105,10 +98,7 @@
 	INSERT INTO INTERESTEDRECRUITMENT
 		VALUES(SEQ_HIRE_NO.NEXTVAL,#{recNo},#{memNo},1)
 	</insert> 
-	<!-- <update id="memberFavorites" parameterType="map">
-	    UPDATE INTERESTEDRECRUITMENT SET OPEN_CHECK = '2'
-		WHERE MEM_NO = #{memNo}
-	</update> -->
+	
 	
 	<!-- 즐겨찾기 없애기 -->
 	<delete id="notFavorites" parameterType="map">
@@ -138,10 +128,11 @@
 		                       SELECT  COUNT(*) FROM INTERESTEDRECRUITMENT  WHERE MEM_NO=#{memNo}
 	</select>
 	
-	<select id="selectOneRecruitment" resultType="map">
-	  
-	     select ent_name from enterprise
-              where ent_name like '%'||#{key}||'%'
+	<select id="selectOneRecruitment"  parameterType="string" resultMap="entMap">
+	 	
+	 	select ent_Name from enterprise
+	 	where ent_Name like '%'||#{key}||'%'
+             
 	
 	</select>
 	
@@ -175,5 +166,10 @@
                
 	</select>
 	
+	<select id="reviewSearch2" parameterType="string" resultMap="entMap">
+		select ent_No from enterprise
+	 	where ent_Name like '%'||#{key}||'%'
+             
+	</select>
 	
 </mapper> 

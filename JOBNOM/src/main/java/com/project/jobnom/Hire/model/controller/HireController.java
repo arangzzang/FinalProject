@@ -1,6 +1,5 @@
 package com.project.jobnom.Hire.model.controller;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,7 +10,6 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
-import org.springframework.core.io.Resource;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
@@ -29,6 +27,7 @@ import com.project.jobnom.Hire.model.vo.Interestedrcruitment;
 import com.project.jobnom.Hire.model.vo.Recruitment;
 import com.project.jobnom.Hire.model.vo.Support;
 import com.project.jobnom.common.pagebar.PageBarFactory;
+import com.project.jobnom.enterprise.model.vo.Enterprise;
 
 
 @Controller
@@ -49,13 +48,16 @@ public class HireController {
 
 		List<Map> re = service.HireHomeRecruitmentList(cPage, numPerpage);
 		mv.addObject("re", re);
-
+		System.out.println("re 머냐" + re);
+		
+		//여긴회원정보만 보여주는곳
 		System.out.println(memNo);
 		List<Map> m = service.MemberList(memNo);
 		mv.addObject("m", m);
+		
 		System.out.println("머지" + m);
 		
-		//회원추천 공고
+		//회원맞춤 스와이프 추천 공고
 		List<Map> fitM = service.MemberFitList(memNo);
 		System.out.println("fitM"+fitM);
 		mv.addObject("fitM", fitM);
@@ -121,26 +123,28 @@ public class HireController {
 	@RequestMapping("/Hire/insertReview2.do")
 	public String insertReview2(HttpServletRequest request) throws Exception {
 		Map<String, Object> paramMap = new HashMap<String, Object>();
-		String review_name = request.getParameter("review_name");
-		paramMap.put("review_name", review_name);
-		String review_title = request.getParameter("review_title");
+		String ent_no = request.getParameter("ent_no"); //기업번호
+		paramMap.put("ent_no", ent_no);
+		String review_title = request.getParameter("review_title"); //기업 타이틀
 		paramMap.put("review_title", review_title);
-		String mem_no = request.getParameter("mem_no");
+		String mem_no = request.getParameter("mem_no"); //멤버번호
 		paramMap.put("mem_no", mem_no);
-		String review_contents = request.getParameter("review_contents");
+		String review_contents = request.getParameter("review_contents"); //리뷰내용
 		paramMap.put("review_contents", review_contents);
-		String review_satisfaction = request.getParameter("review_satisfaction");
+		String review_satisfaction = request.getParameter("review_satisfaction"); //사내만족도
 		paramMap.put("review_satisfaction", review_satisfaction);
-		String review_welfare = request.getParameter("review_welfare");
+		String review_welfare = request.getParameter("review_welfare"); //복지 및 급여평점
 		paramMap.put("review_welfare", review_welfare);
-		String review_promotion = request.getParameter("review_promotion");
+		String review_promotion = request.getParameter("review_promotion"); //승진 기회 및 가능성 평점
 		paramMap.put("review_promotion", review_promotion);
-		String review_executive = request.getParameter("review_executive");
+		String review_executive = request.getParameter("review_executive"); //경영진 평점
 		paramMap.put("review_executive", review_executive);
 		System.out.println(paramMap);
 		int result = service.insertReview(paramMap);
 		
+		
 		return "Hire/insertReview";
+		
 	}
 
 	@RequestMapping("/Hire/supportingCompany.do")
@@ -358,7 +362,7 @@ public class HireController {
 
 		int totalData = service.selectCount(); /* 이거페이지바 */
 	
-		mv.addObject("pageBar", PageBarFactory.getPageBar2(totalData, cPage, numPerpage, "announcementPage.do"));
+		mv.addObject("pageBar", PageBarFactory.getPageBar2(totalData, cPage, numPerpage, "notFavorites.do"));
 		
 		mv.addObject("anolist", anolist);
 		mv.setViewName("Hire/announcementPage");
@@ -392,30 +396,49 @@ public class HireController {
 		mv.addObject("pageBar", PageBarFactory.getPageBar2(totalData, cPage, numPerpage, "favorites.do"));
 
 		mv.addObject("anolist", anolist);
-		mv.setViewName("Hire/Interestedrcruitment");
+		mv.setViewName("Hire/announcementPage2");
 		return mv;
 	}
 
 	@RequestMapping("/Hire/reviewSearch.do")
 	@ResponseBody
-	public ModelAndView streamAjax(ModelAndView mv,String key) throws IOException {
+	public String streamAjax(ModelAndView mv,String key) throws Exception {
 
-		
 		System.out.println("되라");
 		System.out.println(key);
-		List<Map> list = service.selectOneRecruitment(key);
+		List<Enterprise> list = service.selectOneRecruitment(key);
 		System.out.println("되라" + list);
-
 		System.out.println(list);
-	
-		mv.addObject("list", list);
-		mv.setViewName("Hire/insertReview");
-		return mv ;
+		String csv="";
+		for(int i=0;i<list.size();i++) {
+			if(i!=0)  csv+=",";
+			csv+=list.get(i).getEntName();
 		
+		}
+		System.out.println(csv);
 
+		return csv;
 	}
 
-	
+	@RequestMapping("/Hire/reviewSearch2.do")
+	@ResponseBody
+	public String streamAjax2(ModelAndView mv,String key) throws Exception {
+
+		System.out.println("되라");
+		System.out.println(key);
+		List<Enterprise> list = service.reviewSearch2(key);
+		System.out.println("되라" + list);
+		System.out.println(list);
+		String csv2="";
+		for(int i=0;i<list.size();i++) {
+			if(i!=0)  csv2+=",";
+			csv2+=list.get(i).getEntNo();
+		
+		}
+		System.out.println(csv2);
+
+		return csv2;
+	}
 
 	
 

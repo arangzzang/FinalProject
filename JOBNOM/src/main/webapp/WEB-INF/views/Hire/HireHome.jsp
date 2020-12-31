@@ -74,11 +74,11 @@
 		                        <div class="Mylogo1">
 		                        
 		                        <c:choose>
-		                        	<c:when test="${empty d.REC_FILE1 }">
-		                				<img src="${path }/resources/image/Hire/job.png" style="width: 40px; height: 40px; border: solid;">
+		                        	<c:when test="${empty d.ENT_LOGO }">
+		                				<img src="${path }/resources/image/Hire/job.png" style="width: 50px; height: 50px; ">
 		                        	</c:when>
 		                        	<c:otherwise>
-		                        		<img src="${path }/resources/image/Hire/${d.REC_FILE1}" style="width: 40px; height: 40px; border: solid;">
+		                        		<img src="${path }/resources/enterprise/logo/${d.ENT_NO }/${d.ENT_LOGO}" style="width: 40px; height: 40px; ">
 		                        	</c:otherwise>
 		                        
 		                        </c:choose>
