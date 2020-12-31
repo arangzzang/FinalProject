@@ -100,8 +100,8 @@
 	            type:"get",
 	            data:{memNo:<c:out value='${mem.memNo}'/>},
 	            success:data=>{
-	            	$(".a").html("");
-	                $(".a").html(data);
+	            	$(".with-parent").html("");
+	                $(".with-parent").html(data);
 	            }
 	        });
         })

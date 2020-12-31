@@ -22,13 +22,5 @@ public interface SearchService {
 	
 	// 기업 더보기 리뷰 카테고리별 ajax
 	List<Map> ajaxReivewCateList(String reivewCategory);
-	
-	// 공고 검색 즐겨찾기
-	int recFav(Map param);
-	
-	// 공고 검색 즐겨찾기 삭제
-	int recFavDelete(Map param);
-	//즐겨찾기 리스트
-	List<Map> selectFav();
 
 }

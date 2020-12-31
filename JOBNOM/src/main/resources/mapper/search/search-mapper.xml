@@ -117,21 +117,4 @@
 			,e.ent_category2
 		order by avg desc
 	</select>
-	<!--공고 검색 저장  -->
-	<insert id="recFav" parameterType="java.util.HashMap">
-	INSERT 
-		INTO INTERESTEDRECRUITMENT
-			VALUES(SEQ_HIRE_NO.NEXTVAL,#{recNo},#{memNo},1)
-	</insert>
-	<!--공고 사제하기  -->
-	<delete id="recFavDelete" parameterType="java.util.HashMap">
-		delete INTERESTEDRECRUITMENT
-			where mem_no = #{memNo}
-			and rec_no = #{recNo}
-	
-	</delete>
-	<select id="selectFav" resultType="map">
-		select *
-		from INTERESTEDRECRUITMENT
-	</select>
 </mapper>
