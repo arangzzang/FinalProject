@@ -1,6 +1,21 @@
 @charset "UTF-8";
 
+/* 폰트적용 */
+@font-face{
+	font-family:'함초롱돋움R';
+	src:url("/mws/KH/Libraries/함초롱돋움R.ttf") fontformat("truetype");
+	
+}
+body{
+	font-family:함초롱돋움R;
+}
 /* 헤더바 */
+	section{
+		margin-top:150px;
+	}
+	#content{
+		margin-top:100px;
+	}
       .headerContainerWrap{
          background-color: #fff;
          border-bottom: 1px solid #e5e6e9;

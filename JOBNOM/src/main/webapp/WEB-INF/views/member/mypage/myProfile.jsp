@@ -32,7 +32,6 @@
 							<div class="col-md-5">
 								<h2>
 									<span>나의 이력서(필수)</span>
-									<i></i>
 								</h2>
 							</div>
 						</div>
@@ -83,7 +82,7 @@
 						</div>
 						<div class="row">
 							<div class="col-md-12">
-								<span class="line">
+								<div class="line">
 									<label for="career" class="span2">경력</label>
 									<select name="" id="career" name="resCar" class="input1" required>
 										<option value="">선택해주세요</option>
@@ -100,24 +99,15 @@
 										<option value="10">10년이상</option>
 									</select>
 									<label for="skill" class="span2">업무 및 스킬</label>
-									<textarea class="form-control inp" rows="1" name="resContent" id="skill" placeholder="(예시) 영업기획, 디지털마케팅,UI디자인(업무와 관련된 자격증 및 기술명 포함)" required></textarea>
+									<input type="text" class="form-control inp" name="resContent" id="skill" placeholder="(예시) 영업기획, 디지털마케팅,UI디자인(업무와 관련된 자격증 및 기술명 포함)" required>
 									
-									<!-- <ul>
-										<li><a href=""></a></li>
-										<li><a href=""></a></li>
-										<li><a href=""></a></li>
-										<li><a href=""></a></li>
-										<li><a href=""></a></li>
-										<li><a href=""></a></li>
-									</ul>  -->
-									<span>
-										내가 선택한 키워드
-										<span>
-											닫기버튼
-										</span>
-									</span>
+									<ul class="keyword">
+										<c:forEach var="sk" items="${skill }">
+											<li class="keys"><a class="values" href=""><c:out value="${sk.skillName }"/></a></li>
+										</c:forEach>
+									</ul>
 							
-								</span>
+								</div>
 							</div>
 						</div>
 						<div class="row">
@@ -167,7 +157,7 @@
 												<input type="text" name="eduMajor" class="col-md-12 inp" placeholder="전공 및 학위">
 												<textarea name="eduContents"  cols="30" class="bg_color form-control col-md-12 inp" placeholder="학력사항 내용" rows="10"></textarea>
 											</div>
-											<button type="button" onclick="remove();" class="float junk"><i>휴지통아이콘</i></button>
+											<button type="button" class="float junk"><i>휴지통아이콘</i></button>
 										</div>
 									</div>
 								</div>
@@ -454,12 +444,10 @@
 		})
 		
 		//요소 삭제(미완)
-		function remove(){
-			$(".junk").click(e=>{
-				let edu_index=$(".edu").index(this);
-				$("edu").eq(edu_index).remove(e.target);
-			})
-		}
+		$(".junk").click(e=>{
+			let trash=$(e.target).val();
+			trash.detach();
+		})
 		
 		//저장시 필수항목 확인 검사
 		$(".profileBtn").click(e=>{
@@ -511,6 +499,16 @@
 			return false;
 			}
 		});
+		$("#skill").keyup(e=>{
+			let skill=$("#skill").val()
+			$.ajax({
+				url:"${path}/resume/mySkill",
+				data:{skill:skill},
+				success:data=>{
+					
+				}
+			})
+		})
 
 
 		</script>

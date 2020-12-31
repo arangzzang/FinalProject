@@ -10,7 +10,7 @@
 	<jsp:param name="title" value=" "/>
 </jsp:include>
 
-
+<section>
 <!-- 메인페이지 전체 화면 시작 -->
     <div id="contents_warp_new">
         <!-- 오늘의 추천 -->
@@ -172,7 +172,7 @@
         </div>
     </div>
     <!-- 리뷰 끝 -->
-    
+</section>    
     <!--평균평점 별점 스크립트  -->
    	<script>
 		let avg = parseFloat($('.company_star_average').text());

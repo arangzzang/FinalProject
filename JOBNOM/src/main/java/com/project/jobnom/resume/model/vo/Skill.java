@@ -7,9 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Portfolio {
-	//포트폴리오
-	private int popfolNo;
-	private int resNo;
-	private String pofolFile;
+public class Skill {
+	//업무 및 스킬
+	private int skillNo;
+	private String skillName;
 }

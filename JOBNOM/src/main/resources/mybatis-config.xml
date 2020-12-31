@@ -14,6 +14,13 @@
 		<typeAlias type="com.project.jobnom.enterprise.model.vo.ApplyAd" alias="ad"/>
 		<typeAlias type="com.project.jobnom.enterprise.model.vo.Support" alias="support"/>
 		<typeAlias type="com.project.jobnom.enterprise.model.vo.Banner" alias="ban"/>
-		<typeAlias type="com.project.jobnom.resume.model.vo.Resume" alias="resume"/>
+		<!-- 이력서용 -->
+		<typeAlias type="com.project.jobnom.resume.model.vo.Awards" alias="awa"/>
+		<typeAlias type="com.project.jobnom.resume.model.vo.Education" alias="edu"/>
+		<typeAlias type="com.project.jobnom.resume.model.vo.License" alias="lic"/>
+		<typeAlias type="com.project.jobnom.resume.model.vo.Portfolio" alias="pofol"/>
+		<typeAlias type="com.project.jobnom.resume.model.vo.Resume" alias="res"/>
+		<typeAlias type="com.project.jobnom.resume.model.vo.Skill" alias="skill"/>
+		<typeAlias type="com.project.jobnom.resume.model.vo.MySkill" alias="mySkill"/>
 	</typeAliases>
 </configuration>

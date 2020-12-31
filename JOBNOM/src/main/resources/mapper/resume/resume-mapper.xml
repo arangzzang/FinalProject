@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="resume">
+	<!-- 이력서 -->
+	<resultMap type="res" id="resMap">
+		<result column="res_no" property="resNo"/>
+		<result column="res_name" property="resName"/>
+		<result column="res_phone" property="resPhone"/>
+		<result column="res_gender" property="resGender"/>
+		<result column="res_birth" property="resBirth"/>
+		<result column="res_car" property="resCar"/>
+		<result column="res_content" property="resContent"/>
+		<result column="res_opencheck" property="resOpenCheck"/>
+		<result column="mem_no" property="memNo"/>
+	</resultMap>
+	<!-- 나의스킬 -->
+	<resultMap type="mySkill" id="mySkillMap">
+		<result column="skill_no" property=""/>
+		<result column="res_no" property=""/>
+	</resultMap>
+	<!-- 업무 및 스킬 -->
+	<resultMap type="skill" id="skillMap">
+		<result column="skill_no" property="skillNo"/>
+		<result column="skill_name" property="skillName"/>
+	</resultMap>
+	<!-- 학력사항 -->
+	<resultMap type="edu" id="eduMap">
+		<result column="edu_no" property="eduNo"/>
+		<result column="res_no" property="resNo"/>
+		<result column="edu_name" property="eduName"/>
+		<result column="edu_major" property="eduMajor"/>
+		<result column="edu_term" property="eduTerm"/>
+		<result column="edu_termend" property="eduTermend"/>
+		<result column="edu_contents" property="eduContents"/>
+		<result column="edu_attend" property="eduAttend"/>
+	</resultMap>
+	<!-- 활동내역 -->
+	<resultMap type="awa" id="awaMap">
+		<result column="awa_no" property="awaNo"/>
+		<result column="res_no" property="resNo"/>
+		<result column="awa_name" property="awaName"/>
+		<result column="awa_term" property="awaTerm"/>
+		<result column="awa_termend" property="awaTermend"/>
+		<result column="awa_contents" property="awaContents"/>
+		<result column="awa_yn" property="awaYn"/>
+	</resultMap>
+	<!-- 자격증 -->
+	<resultMap type="lic" id="licMap">
+		<result column="lic_no" property="licNo"/>
+		<result column="res_no" property="resNo"/>
+		<result column="lic_name" property="awaName"/>
+		<result column="lic_term" property="awaTerm"/>
+		<result column="lic_contents" property="licContents"/>
+	</resultMap>
+	<!-- 포트폴리오 -->
+	<resultMap type="pofol" id="pofolMap">
+		<result column="pofol_no" property=""/>
+		<result column="res_no" property=""/>
+		<result column="pofol_file" property=""/>
+	</resultMap>
+	
+	<select id="mySkill" parameterType="string" resultMap="skillMap">
+		select * from skill where skill_name like '%'||#{skillName}||'%'
+	</select>
+</mapper>

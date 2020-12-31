@@ -1,5 +1,7 @@
 package com.project.jobnom.resume.model.vo;
 
+import java.sql.Date;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,9 +9,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Portfolio {
-	//포트폴리오
-	private int popfolNo;
+public class MySkill {
+
 	private int resNo;
-	private String pofolFile;
+	private int skillNo;
 }

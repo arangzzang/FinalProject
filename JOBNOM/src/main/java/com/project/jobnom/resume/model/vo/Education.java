@@ -10,11 +10,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Education {
-
+	//학력사항
 	private int eduNo;
+	private int resNo;
 	private String eduName;
 	private String eduMajor;
 	private String eduAttend;
 	private Date eduTerm;
 	private Date eduTermend;
+	private String eduContents;
 }

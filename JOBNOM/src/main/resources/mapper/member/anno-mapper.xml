@@ -35,6 +35,19 @@
 	<select id="selectCount" resultType="_int">
 	 SELECT COUNT(*) FROM  RECRUITMENT 
 	</select>  
+	<!-- 로직추가함 -->
+	   <select id="annoHomeDetailMove" parameterType="_int" resultType="com.project.jobnom.Hire.model.vo.Recruitment">
+       SELECT DISTINCT E.*,ENT_NAME ,REP_NAME, REP_PHONE,ENT_LOGO,OPEN_CHECK,T.MEM_NO
+         FROM RECRUITMENT E 
+          LEFT JOIN REVIEW S ON (S.ENT_NO = E.ENT_NO)
+             LEFT JOIN INTERESTEDRECRUITMENT T ON(T.REC_NO = E.REC_NO)
+         LEFT JOIN ENTERPRISE R ON (R.ENT_NO = E.ENT_NO)
+             LEFT JOIN SUPPORT U ON (U.REC_NO = E.REC_NO)
+              LEFT JOIN MEMBER M ON (M.MEM_NO = U.MEM_NO)
+           WHERE REC_NO=#{recNo}
+            ORDER BY REC_STARTDATE DESC
+   </select>
+	
 	      
 </mapper>     
  
