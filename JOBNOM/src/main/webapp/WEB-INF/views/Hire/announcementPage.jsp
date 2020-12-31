@@ -534,7 +534,18 @@
                   
                     <div class="annoListNum">
                         <div class="annoListLogeFlax">
-                            <div class="annoListLoge"></div>
+                            <div class="annoListLoge2">
+                            <c:choose>
+		                        	<c:when test="${empty a.ent_logo }">
+		                				<img src="${path }/resources/image/Hire/job.png" style="width: 50px; height: 50px; ">
+		                        	</c:when>
+		                        	<c:otherwise>
+		                        		<img src="${path }/resources/enterprise/logo/${a.ent_no }/${a.ent_logo}" style="width: 40px; height: 40px; ">
+		                        	</c:otherwise>
+		                        
+		                        </c:choose>
+                            
+                            </div>
                         </div>
                       
                         <a href="#">
@@ -569,7 +580,16 @@
                     <div class="annoDetailTitle">
                         <div class="annoDetailNum">
                             <div class="annoDetailLogeFlax">
-                                <div class="annoDetailLoge"></div>
+                                <div class="annoDetailLoge">
+                                 <c:choose>
+		                        	<c:when test="${empty anolist[0].ent_logo }">
+		                				<img src="${path }/resources/image/Hire/job.png" style="width: 50px; height: 50px; ">
+		                        	</c:when>
+		                        	<c:otherwise>
+		                        		<img src="${path }/resources/enterprise/logo/${anolist[0].ent_no }/${anolist[0].ent_logo}" style="width: 40px; height: 40px; ">
+		                        	</c:otherwise>
+		                        
+		                        </c:choose></div>
                             </div>
                             <div class="annoDetailTitleFlax">            
                                 <div class="annoDetailTitle1">${anolist[0].rec_title}</div> 

@@ -74,12 +74,106 @@
                                         <!--    <button class="popmenuInsertClose"><i class="far fa-window-close"></i></button> -->
                                        </div>
                                        <div class="popmenuDetail">
-                                              입력하신 모든 정보는 익명으로 처리되니 걱정마세요.</div>
+<!--                                               입력하신 모든 정보는 익명으로 처리되니 걱정마세요.</div> -->
+<!--                                            <div class="popmenuEnterprise"> -->
+<!--                                                <div>기업명</div> -->
+<!--                                                <input class="popmenuEnterpriseName" id="reviewName" name="review_name" type="text" placeholder="기업명" list="locationData"> -->
+<!--                                               <datalist id="locationData"></datalist> -->
+<!--                                            </div> -->
+<!--                                            <div class="popmenuTital"> -->
+<!--                                                <div>제목</div> -->
+<!--                                                <input class="popmenuTitalName" type="text" name="review_title" placeholder="제목"> -->
+<!--                                            </div> -->
+<!--                                            <div class="popmenuContents"> -->
+<!--                                                <div>내용</div> -->
+<!--                                                <textarea class="popmenuContentsName"   name="review_contents" cols="47" rows="5" placeholder="내용" style="resize: none;"></textarea> -->
+<!--                                            </div> -->
+   
+<!--                                            <div class="companyGradebox">  -->
+<!--                                                <div class="companyStar-box"> -->
+<!--                                                    <div class="companyTitle">사내만족도 평점</div> -->
+<!--                                                    <div class="companyStar " id="1"></div> -->
+                           
+<!--                                                    <div class="companyStar " id="2"></div>  -->
+                           
+<!--                                                    <div class="companyStar " id="3"></div>  -->
+                           
+<!--                                                    <div class="companyStar " id="4"></div>  -->
+                           
+<!--                                                    <div class="companyStar " id="5"></div>  -->
+<!--                                                    <input type="hidden" name="review_satisfaction" class="companyGrade"> -->
+<!--                                                    <input type="hidden" name="memberNo" value=""> -->
+<!--                                                    나중에 스프링에서 value에 다가 로그인한 회원 번호 넣어주기 -->
+<!--                                                    나중에 스프링가서 name 이랑 class 이름 다 바꿔주자  -->
+<!--                                                </div> -->
+<!--                                            </div> -->
+                                                     
+<!--                                            <div class="blessedGradebox">  -->
+<!--                                                <div class="blessedStar-box"> -->
+<!--                                                    <div class="blessedTitle">복지 및 급여평점</div> -->
+<!--                                                    <div class="blessedStar " id="1"></div> -->
+                           
+<!--                                                    <div class="blessedStar " id="2"></div>  -->
+                           
+<!--                                                    <div class="blessedStar " id="3"></div>  -->
+                           
+<!--                                                    <div class="blessedStar " id="4"></div>  -->
+                           
+<!--                                                    <div class="blessedStar " id="5"></div>  -->
+<!--                                                    <input type="hidden" name="review_welfare" class="blessedGrade"> -->
+<!--                                                    <input type="hidden" name="memberNo" value=""> -->
+<!--                                                    나중에 스프링에서 value에 다가 로그인한 회원 번호 넣어주기 -->
+<!--                                                </div> -->
+<!--                                            </div> -->
+                                                     
+<!--                                            <div class="promotionGradebox">  -->
+<!--                                                <div class="promotionStar-box"> -->
+<!--                                                    <div class="promotionTitle">승진 기회 및 가능성 평점</div> -->
+<!--                                                    <div class="promotionStar " id="1"></div> -->
+                                                
+<!--                                                    <div class="promotionStar " id="2"></div>  -->
+                           
+<!--                                                    <div class="promotionStar " id="3"></div>  -->
+                           
+<!--                                                    <div class="promotionStar " id="4"></div>  -->
+                           
+<!--                                                    <div class="promotionStar " id="5"></div>  -->
+<!--                                                    <input type="hidden" name="review_promotion" class="promotionGrade"> -->
+<!--                                                    <input type="hidden" name="memberNo" value=""> -->
+<!--                                                    나중에 스프링에서 value에 다가 로그인한 회원 번호 넣어주기 -->
+<!--                                                </div> -->
+<!--                                            </div> -->
+<!--                                            <div class="executiveGradebox">  -->
+<!--                                                <div class="executiveStar-box"> -->
+<!--                                                    <div class="executiveTitle">경영진 평점</div> -->
+<!--                                                    <div class="executiveStar " id="1" ></div> -->
+                           
+<!--                                                    <div class="executiveStar " id="2"></div>  -->
+                           
+<!--                                                    <div class="executiveStar " id="3"></div>  -->
+                           
+<!--                                                    <div class="executiveStar " id="4"></div>  -->
+                           
+<!--                                                    <div class="executiveStar " id="5"></div>  -->
+<!--                                                    <input type="hidden" name="review_executive" class="executiveGrade"> -->
+<!--                                                    <input type="hidden" name="memberNo" value=""> -->
+<!--                                                    나중에 스프링에서 value에 다가 로그인한 회원 번호 넣어주기 -->
+<!--                                                </div> -->
+<!--                                            </div> -->
+<!--                                           <div class="submitByttonBox"> -->
+<!--                                                <input class="GradeboxSubmit" type="submit" value="제출하기" onclick="fn_return();"  >  -->
+<!--                                                 <input class="popmenuInsertClose" type="button" value="닫기" >  -->
+<!--                                           </div> -->
+<!--                                        </form> -->
+                                              		입력하신 모든 정보는 익명으로 처리되니 걱정마세요.</div>
                                            <div class="popmenuEnterprise">
                                                <div>기업명</div>
                                                <input class="popmenuEnterpriseName" id="reviewName" name="review_name" type="text" placeholder="기업명" list="locationData">
                                               <datalist id="locationData"></datalist>
-                                           </div>
+                                              
+                                           <input type="hidden" name="ent_no" id="locationNumber" value="">
+											<input type="hidden" name="mem_no" value="${commonLogin.memNo}">
+                                        </div>
                                            <div class="popmenuTital">
                                                <div>제목</div>
                                                <input class="popmenuTitalName" type="text" name="review_title" placeholder="제목">
@@ -164,7 +258,7 @@
                                                <input class="GradeboxSubmit" type="submit" value="제출하기" onclick="fn_return();"  > 
                                                 <input class="popmenuInsertClose" type="button" value="닫기" > 
                                           </div>
-                                       </form>
+                              </form> 
                                    </div>
                                <div id="popmenuInfo">
                                    <div class="popmenuInfoTitle">정보 등록 정책</div>
@@ -184,6 +278,8 @@
                 </div>
             </div>
         <!-- 이건 리뷰 작성하기 누르면 팝업 뜨게 하는거 -->
+
+
 <script>
    //사이드바
    //리뷰 작성 화면
@@ -226,93 +322,10 @@
         });
    });
    
-   //하준이 로직
-   function fn_review(){
-      if ($('input[name=review_name]').val()==="" ||
-                 $('input[name=review_title]').val()==="" ||
-                 $('textarea[name=review_contents]').val()==="" ||
-             $('input[class=review_satisfaction]').val()==="" || 
-                  $('input[class=review_welfare]').val()==="" ||
-                  $('input[class=review_promotion]').val()==="" ||
-                   $('input[class=review_executive]').val()==="") {
-         alert('필수 항목들을 입력해주세요!');  
-         return false;
-         }
-   };
-   $(document).ready(function(){
-       $(".reviewBtnInsert").click(function(){
-          $("#popup").fadeIn();
-       });
-       $(".popmenuInsertClose").click(function(){
-          $("#popup").fadeOut();
-       });
-    });
-//         $(document).ready(function(){
-//             $(".reviewBtnInsert").click(function(){
-//             $("#popup").fadeIn();
-//             });
-//         });
-//          $(document).ready(function(){
-//             $(".popmenuInsertClose").click(function(){
-//               if ($('.review_satisfaction').val()=="" &&
-//                $('.review_contents').val()=="" &&
-//                $('.review_welfare').val()=="" &&
-//                $('.review_executive').id()=="" &&
-//                $('.review_promotion').id()=="" &&
-//                $('.review_name').id()=="" &&
-//                 $('.review_title').id()=="" {
-//                $("#popup").fadeOut());
-//               }
-//             });
-//             });
-////////////////////////여기서 부터 별클릭하는거/////////////////////////////////////
-   //시내만족도평점
-   $('.companyStar-box div').click(function(){
-        $(this).parent().children("div").removeClass("on");
-        $(this).addClass("on").prevAll("div").addClass("on");
-   });
-   //급여만족도 평점
-   $('.blessedStar-box div').click(function(){
-        $(this).parent().children("div").removeClass("on");
-        $(this).addClass("on").prevAll("div").addClass("on");
-   });
-   //승진기회 및 가능성 평점
-   $('.promotionStar-box div').click(function(){
-        $(this).parent().children("div").removeClass("on");
-        $(this).addClass("on").prevAll("div").addClass("on");
-   });
-    //경영진 평점
-   $('.executiveStar-box div').click(function(){
-      $(this).parent().children("div").removeClass("on");
-      $(this).addClass("on").prevAll("div").addClass("on");
-   });
+  
+  
 
-//                 $(".GradeboxSubmit").click(function(){
-//                     alert("제출완료");
-//                 });
-   $(".companyStar").on("click",e=>{
-      let grade=$(e.target).attr("id");
-      console.log(grade+"1번");
-      $(".companyGrade").val(grade);
-   });
-   
-   $(".blessedStar").on("click",e=>{
-      let grade=$(e.target).attr("id");
-      console.log(grade+"2번");
-      $(".blessedGrade").val(grade);
-   });
-   
-   $(".promotionStar").on("click",e=>{
-      let grade=$(e.target).attr("id");
-      console.log(grade+"3번");
-      $(".promotionGrade").val(grade);
-   });
-            
-   $(".executiveStar").on("click",e=>{
-      let grade=$(e.target).attr("id");
-      console.log(grade+"경영진");
-      $(".executiveGrade").val(grade);
-   });
+
                                         
             
             //https://aramk.tistory.com/35 keyUP 참고사이트
@@ -328,18 +341,221 @@
       $("#popFrm").submit();
    }
    
-   $("#reviewName").keyup(e=>{
-      $.ajax({
-            url: "${path}/Hire/reviewSearch.do",
+  
+
+</script>
+
+<script>
+////////////////////////여기서 부터 별클릭하는거/////////////////////////////////////
+//시내만족도평점
+$('.companyStar-box div').click(function(){
+     $(this).parent().children("div").removeClass("on");
+     $(this).addClass("on").prevAll("div").addClass("on");
+});
+//급여만족도 평점
+$('.blessedStar-box div').click(function(){
+     $(this).parent().children("div").removeClass("on");
+     $(this).addClass("on").prevAll("div").addClass("on");
+});
+//승진기회 및 가능성 평점
+$('.promotionStar-box div').click(function(){
+     $(this).parent().children("div").removeClass("on");
+     $(this).addClass("on").prevAll("div").addClass("on");
+});
+ //경영진 평점
+$('.executiveStar-box div').click(function(){
+   $(this).parent().children("div").removeClass("on");
+   $(this).addClass("on").prevAll("div").addClass("on");
+});
+
+//              $(".GradeboxSubmit").click(function(){
+//                  alert("제출완료");
+//              });
+$(".companyStar").on("click",e=>{
+   let grade=$(e.target).attr("id");
+   console.log(grade+"1번");
+   $(".companyGrade").val(grade);
+});
+
+$(".blessedStar").on("click",e=>{
+   let grade=$(e.target).attr("id");
+   console.log(grade+"2번");
+   $(".blessedGrade").val(grade);
+});
+
+$(".promotionStar").on("click",e=>{
+   let grade=$(e.target).attr("id");
+   console.log(grade+"3번");
+   $(".promotionGrade").val(grade);
+});
+         
+$(".executiveStar").on("click",e=>{
+   let grade=$(e.target).attr("id");
+   console.log(grade+"경영진");
+   $(".executiveGrade").val(grade);
+});
+</script>
+<script>
+
+//리뷰 등록하기
+$(".GradeboxSubmit").click(e=>{
+      var ent_no = $('input[name=ent_no]').val();
+      console.log(ent_no+'되는건가');
+      var review_title = $('input[name=review_title]').val();
+      var mem_no = $('input[name=mem_no]').val();
+      var review_contents = $('input[name=review_contents]').val();
+      var review_satisfaction = $('input[name=review_satisfaction]').val();
+      var review_welfare = $('input[name=review_welfare]').val();
+      var review_promotion = $('input[name=review_promotion]').val();
+      var review_executive = $('input[name=review_executive]').val();
+         $.ajax({
+               url:"${path}/Hire/insertReview2.do",
+               data:{
+                  ent_no:ent_no&
+                  review_title:review_title&
+                  mem_no:mem_no&
+                  review_contents:review_contents&
+                  review_satisfaction:review_satisfaction&
+                  review_welfare:review_welfare&
+                  review_promotion:review_promotion&
+                  review_executive:review_executive
+               },
+               type:"post",
+               success:data=>{
+                   $(".maininfo-parent").html("");
+                   $(".maininfo-parent").html(data);
+               }
+           });
+      });
+
+</script>
+
+<script>
+//하준이 로직
+function fn_review(){
+   if ($('input[name=review_name]').val()==="" ||
+              $('input[name=review_title]').val()==="" ||
+              $('textarea[name=review_contents]').val()==="" ||
+          $('input[class=review_satisfaction]').val()==="" || 
+               $('input[class=review_welfare]').val()==="" ||
+               $('input[class=review_promotion]').val()==="" ||
+                $('input[class=review_executive]').val()==="") {
+      alert('필수 항목들을 입력해주세요!');  
+      return false;
+      }
+};
+
+</script>
+<script>
+$(document).ready(function(){
+    $(".reviewBtnInsert").click(function(){
+       $("#popup").fadeIn();
+    });
+    $(".popmenuInsertClose").click(function(){
+       $("#popup").fadeOut();
+    });
+ });
+</script>   
+<script>
+
+$("#reviewName").keyup(e=>{
+   $.ajax({
+      url:"${path}/Hire/reviewSearch.do",
+      data:{"key":$(e.target).val()},
+      success:data => {
+         
+         $.ajax({
+            url:"${path}/Hire/reviewSearch2.do",
             data:{"key":$(e.target).val()},
             success:data => {
-                let keys=data.split(",");
-                console.log(keys);
-                $("#locationData").html("");
-                for(let i=0;i<keys.length;i++){
-                   $("#locationData").append($("<option>").html(keys[i]));
-                }
+               console.log(data); 
+               let keys=data.split(",");
+               $("#locationNumber").html("");
+               for(let i=0;i<keys.length;i++){
+                  $("#locationNumber").append($('input[name=ent_no]').val(keys[i]));
+                  
+               }
+               
             }
-        });
+         })
+         console.log(data); 
+         let keys=data.split(",");
+         $("#locationData").html("");
+         for(let i=0;i<keys.length;i++){
+            $("#locationData").append($("<option>").html(keys[i]));
+            
+         }
+      }
    });
-</script>        
+});
+</script>     
+<script>
+//리뷰 등록하기
+$(".GradeboxSubmit").click(e=>{
+      var queryString = $("form[name=popFrm]").serialize() ;
+         $.ajax({
+               url:"${path}/Hire/insertReview2.do",         
+               data:
+                  queryString
+               ,
+               type:"post",
+               success:data=>{
+                  $(".with-parent").html("");
+                  $(".with-parent").html(data);
+               }
+           });
+      });
+
+
+</script>
+
+<script>
+////////////////////////여기서 부터 별클릭하는거/////////////////////////////////////
+//시내만족도평점
+$('.companyStar-box div').click(function(){
+     $(this).parent().children("div").removeClass("on");
+     $(this).addClass("on").prevAll("div").addClass("on");
+});
+//급여만족도 평점
+$('.blessedStar-box div').click(function(){
+     $(this).parent().children("div").removeClass("on");
+     $(this).addClass("on").prevAll("div").addClass("on");
+});
+//승진기회 및 가능성 평점
+$('.promotionStar-box div').click(function(){
+     $(this).parent().children("div").removeClass("on");
+     $(this).addClass("on").prevAll("div").addClass("on");
+});
+ //경영진 평점
+$('.executiveStar-box div').click(function(){
+   $(this).parent().children("div").removeClass("on");
+   $(this).addClass("on").prevAll("div").addClass("on");
+});
+
+//              $(".GradeboxSubmit").click(function(){
+//                  alert("제출완료");
+//              });
+$(".companyStar").on("click",e=>{
+   let grade=$(e.target).attr("id");
+   console.log(grade+"1번");
+   $(".companyGrade").val(grade);
+});
+
+$(".blessedStar").on("click",e=>{
+   let grade=$(e.target).attr("id");
+   console.log(grade+"2번");
+   $(".blessedGrade").val(grade);
+});
+
+$(".promotionStar").on("click",e=>{
+   let grade=$(e.target).attr("id");
+   console.log(grade+"3번");
+   $(".promotionGrade").val(grade);
+});
+         
+$(".executiveStar").on("click",e=>{
+   let grade=$(e.target).attr("id");
+   console.log(grade+"경영진");
+   $(".executiveGrade").val(grade);
+});
+</script>

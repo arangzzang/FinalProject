@@ -3,13 +3,12 @@ package com.project.jobnom.Hire.model.dao;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.ibatis.jdbc.SQL;
 import org.apache.ibatis.session.SqlSession;
 
 import com.project.jobnom.Hire.model.vo.Interestedrcruitment;
 import com.project.jobnom.Hire.model.vo.Recruitment;
 import com.project.jobnom.Hire.model.vo.Support;
-import com.project.jobnom.member.model.vo.Member;
+import com.project.jobnom.enterprise.model.vo.Enterprise;
 
 public interface HireDao {
 	int insertReview(SqlSession session, Map ModelMap);
@@ -48,7 +47,7 @@ public interface HireDao {
 
 	int selectInterestedrcruitmentCount(SqlSession session,String memNo);
 
-	List<Map> selectOneRecruitment(SqlSession session, String key);
+	List<Enterprise> selectOneRecruitment(SqlSession session, String key);
 
 	List<Recruitment> recSerch(SqlSession session, String rec_no);
 
@@ -57,5 +56,5 @@ public interface HireDao {
 
 	List<Map> MemberFitList(SqlSession session, String memNo);
 
-
+	List<Enterprise> reviewSearch2(SqlSession session,String key);
 }
