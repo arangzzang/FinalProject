@@ -74,7 +74,7 @@
                                         <!--    <button class="popmenuInsertClose"><i class="far fa-window-close"></i></button> -->
                                        </div>
                                        <div class="popmenuDetail">
-                                              입력하신 모든 정보는 익명으로 처리되니 걱정마세요.</div>
+                                              		입력하신 모든 정보는 익명으로 처리되니 걱정마세요.</div>
                                            <div class="popmenuEnterprise">
                                                <div>기업명</div>
                                                <input class="popmenuEnterpriseName" id="reviewName" name="review_name" type="text" placeholder="기업명" list="locationData">
@@ -380,9 +380,7 @@ $("#reviewName").keyup(e=>{
 					$("#locationNumber").html("");
 					for(let i=0;i<keys.length;i++){
 						$("#locationNumber").append($('input[name=ent_no]').val(keys[i]));
-						
 					}
-					
 				}
 			})
 			console.log(data); 

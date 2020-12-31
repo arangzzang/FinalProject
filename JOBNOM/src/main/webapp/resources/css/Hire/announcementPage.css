@@ -539,8 +539,7 @@ input[type="checkbox"]:checked + label span
     border-radius: 5px;
     width: 70px;
     height: 70px;
-    background-image: url("../../image/Hire/Kakao.png");
-    background-size: cover;
+   
 }
 .annoDetailTitleFont{
     font-size: 14px;
@@ -612,8 +611,7 @@ input[type="checkbox"]:checked + label span
 border-radius: 5px;
     width: 60px;
     height: 60px;
-    background-image: url("../../image/Hire/Kakao.png"); 
-    background-size: cover;
+ 
 }
 .annoDetailNum{
     display: flex;

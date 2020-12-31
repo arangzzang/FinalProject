@@ -167,7 +167,7 @@ public class HireController {
 		System.out.println("서비스 가기전" + rec_no);
 //		mv.addObject(service.selectRecruitmentList(rec_no));
 		mv.addObject("r", r);
-		System.out.println(r);
+		System.out.println("로고"+r);
 		System.out.println(paramMap);
 
 		mv.setViewName("Hire/anoDetail");
