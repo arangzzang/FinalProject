@@ -170,6 +170,12 @@ public class EnterpriseDaoImpl implements EnterpriseDao {
 		// TODO Auto-generated method stub
 		return session.selectList("enterprise.getC2");
 	}
+
+	@Override
+	public List<MemberDataC2> entDataC2(SqlSession session) {
+		// TODO Auto-generated method stub
+		return session.selectList("enterprise.entDataC2");
+	}
 	
 	
 	

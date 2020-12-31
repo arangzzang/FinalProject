@@ -324,4 +324,7 @@
 					,e.rep_name
 					,e.rep_phone
 	</select>
+	<select id="entDataC2" resultMap="mdc2Map">
+		SELECT CATE_NO, COUNT(*) AS COUNT FROM RECRUITMENT JOIN CATEGORY2 ON REC_CATEGORY=CATE_NO2 GROUP BY CATE_NO ORDER BY CATE_NO
+	</select>
 </mapper>

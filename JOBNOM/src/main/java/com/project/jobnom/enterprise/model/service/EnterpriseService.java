@@ -45,6 +45,7 @@ public interface EnterpriseService {
 	Enterprise selectEnterprise(int entNo);
 
 	List<MemberDataC2> memDataC2();
+	List<MemberDataC2> entDataC2();
 
 	//기업 버튼 클릭시 화면 -ys-
 		List<Map> companyList();

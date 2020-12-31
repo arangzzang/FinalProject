@@ -161,4 +161,10 @@ public class EnterpriseServiceImpl implements EnterpriseService {
 		// TODO Auto-generated method stub
 		return dao.companyInfo(session,entNo);
 	}
+	@Override
+	public List<MemberDataC2> entDataC2() {
+		// TODO Auto-generated method stub
+		return dao.entDataC2(session);
+	}
+	
 }
