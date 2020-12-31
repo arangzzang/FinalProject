@@ -19,12 +19,12 @@
                     <div class="col1Wrap">
                             <select name="parent_industry_id" id="ent_catagory1">
                                 <option name="entCate" value="ENT_CATEGORY1">1차산업군</option>
-								<option name="entCate" >IT/인터넷</option>
-								<option name="entCate">금융/재무</option>
-								<option name="entCate">의약</option>
-								<option name="entCate">서비스/고객지원</option>
-								<option name="entCate">마케팅/시장조사</option>
-								<option name="entCate">교육</option>
+								<option name="entCate" value=1>IT/인터넷</option>
+								<option name="entCate" value=2>금융/재무</option>
+								<option name="entCate" value=3>의약</option>
+								<option name="entCate" value=4>서비스/고객지원</option>
+								<option name="entCate" value=5>마케팅/시장조사</option>
+								<option name="entCate" value=6>교육</option>
 							</select>
                     </div>
                     
