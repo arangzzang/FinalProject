@@ -29,7 +29,7 @@
 
    <div id="container">
       <header>
-      	<div class="fixed-top">
+      	<div class="fixed-top" id="fix">
 	        <nav class="navbar navbar-expand-lg navbar-light headerContainerWrap"><!-- bg-light -->
 	            <a class="navbar-brand" href="${path }">
 	               <img src="" class="logo" >
@@ -55,7 +55,7 @@
 					<c:if test="${commonLogin !=null && commonLogin.type == 2 || commonLogin.type == 1}" >
 						<ul class="navbar-nav mr-auto ent_nav">
 							<li class="nav-item">
-								<a class="menus" href="">추세파악</a>
+								<a class="menus" href="${path }/com/charts">추세파악</a>
 							</li>
 							<li class="nav-item">
 								<a class="menus" href="">헤드헌팅</a>
@@ -158,11 +158,6 @@
 			if(memType==2){
 				$(".mem_nav").css("display","none")
 			}
-			//헤더높이만큼 사이즈 자르기
-			var head=$(".fixed-top").height();
-			console.log("헤더 높이 : "+ head)
-        	var offset = $("section").offset();
-            $('html, body').animate({scrollTop : offset-head}, 400);
 		});
 		//이메일, 비밀번호 정규표현식
 		function logincheck(){  

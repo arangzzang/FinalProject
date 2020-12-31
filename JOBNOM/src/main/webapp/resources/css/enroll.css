@@ -3,11 +3,6 @@
 body{
       width: 100%;
    }
-   section{
-      width: 80%;
-      box-sizing: border-box;
-      margin: 0 auto;
-   }
    .container-sm{
       width: 40%;
    }

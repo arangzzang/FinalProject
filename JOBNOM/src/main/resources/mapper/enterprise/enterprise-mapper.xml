@@ -16,11 +16,14 @@
 		<result column="ent_site" property="entSite"/>
 		<result column="ent_membership" property="entMembership"/>
 	</resultMap>
-	<resultMap type="resume" id="resMap">
+	<resultMap type="res" id="resMap">
 		<result column="res_no" property="resNo"/>
 		<result column="res_name" property="resName"/>
+		<result column="res_phone" property="resPhone"/>
 		<result column="res_gender" property="resGender"/>
 		<result column="res_birth" property="resBirth"/>
+		<result column="res_car" property="resCar"/>
+		<result column="res_content" property="resContent"/>
 		<result column="res_opencheck" property="resOpenCheck"/>
 		<result column="mem_no" property="memNo"/>
 	</resultMap>
@@ -31,6 +34,10 @@
 		<result column="rec_startdate" property="recStartdate"/>
 		<result column="rec_enddate" property="recEnddate"/>
 		<result column="rec_info" property="recInfo"/>
+	</resultMap>
+	<resultMap type="mdc2" id="mdc2Map">
+		<result column="cate_no" property="cate_no"/>
+		<result column="count" property="count"/>
 	</resultMap>
 	<insert id="enrollEnter" parameterType="ent">
 		insert into enterprise values(
@@ -142,6 +149,9 @@
 	</select>
 	<select id="selectEnterprise" parameterType="_int" resultType="ent">
 		select * from ENTERPRISE where ent_no=#{entNo}
+	</select>
+	<select id="memDataC2" resultMap="mdc2Map">
+		SELECT CATE_NO, COUNT(*) AS COUNT FROM MEMBER JOIN CATEGORY2 ON MEMBER.CATE_NO2 = CATEGORY2.CATE_NO2 GROUP BY CATE_NO ORDER BY CATE_NO
 	</select>
 
 <!--헤더 기업 버튼 클릭시 리스트 YS  -->
@@ -274,6 +284,10 @@
 				,e.ent_category2
 				,e.ent_name
 				,e.ent_logo
+				,e.ent_site
+				,e.ent_email
+				,e.rep_name
+				,e.rep_phone
 				,round(sum(review_satisfaction+review_welfare+review_promotion+review_executive)/(count(review_satisfaction)+count(review_welfare)+count(review_promotion)+count(r.review_executive)),1) as avg
 			from enterprise e
 			inner join review r
@@ -284,6 +298,9 @@
 					,e.ent_name
 					,e.ent_logo
 					,e.ent_category2
-					
+					,e.ent_site
+					,e.ent_email
+					,e.rep_name
+					,e.rep_phone
 	</select>
 </mapper>

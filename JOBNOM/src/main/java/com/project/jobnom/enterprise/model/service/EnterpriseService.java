@@ -10,6 +10,7 @@ import com.project.jobnom.enterprise.model.vo.ApplyAd;
 import com.project.jobnom.enterprise.model.vo.Banner;
 import com.project.jobnom.enterprise.model.vo.Category2;
 import com.project.jobnom.enterprise.model.vo.Enterprise;
+import com.project.jobnom.enterprise.model.vo.MemberDataC2;
 import com.project.jobnom.enterprise.model.vo.Support;
 import com.project.jobnom.resume.model.vo.Resume;
 
@@ -42,6 +43,8 @@ public interface EnterpriseService {
 	Enterprise findEmailEnterprise(Login log);
 	//카카오페이 결제
 	Enterprise selectEnterprise(int entNo);
+
+	List<MemberDataC2> memDataC2();
 
 	//기업 버튼 클릭시 화면 -ys-
 		List<Map> companyList();

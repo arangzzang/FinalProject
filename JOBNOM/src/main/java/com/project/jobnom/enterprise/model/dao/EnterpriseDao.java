@@ -12,6 +12,7 @@ import com.project.jobnom.enterprise.model.vo.ApplyAd;
 import com.project.jobnom.enterprise.model.vo.Banner;
 import com.project.jobnom.enterprise.model.vo.Category2;
 import com.project.jobnom.enterprise.model.vo.Enterprise;
+import com.project.jobnom.enterprise.model.vo.MemberDataC2;
 import com.project.jobnom.enterprise.model.vo.Support;
 import com.project.jobnom.resume.model.vo.Resume;
 
@@ -35,6 +36,9 @@ public interface EnterpriseDao {
 	Enterprise findEmailEnterprise(Login log, SqlSession session);
 	//카카오페이
 	Enterprise selectEnterprise (int entNo,SqlSession session);
+
+	List<MemberDataC2> memDataC2(SqlSession session);
+
 	
 	//헤더 기업 버튼 클릭시 -ys-
 		List<Map> companyList(SqlSession session);
@@ -46,4 +50,5 @@ public interface EnterpriseDao {
 		
 	//기업명 클릭시 -ys-
 		List<Map> companyInfo(SqlSession session, String entNo);
+
 }
