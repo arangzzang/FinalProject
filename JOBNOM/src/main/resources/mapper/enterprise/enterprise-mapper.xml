@@ -299,6 +299,9 @@
 				,e.ent_name
 				,e.ent_logo
 				,e.ent_site
+				,e.ent_email
+				,e.rep_name
+				,e.rep_phone
 				,round(sum(review_satisfaction+review_welfare+review_promotion+review_executive)/(count(review_satisfaction)+count(review_welfare)+count(review_promotion)+count(r.review_executive)),1) as avg
 			from enterprise e
 			inner join review r
@@ -310,6 +313,8 @@
 					,e.ent_logo
 					,e.ent_category2
 					,e.ent_site
-					
+					,e.ent_email
+					,e.rep_name
+					,e.rep_phone
 	</select>
 </mapper>

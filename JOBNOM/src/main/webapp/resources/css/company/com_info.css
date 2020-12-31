@@ -25,6 +25,7 @@ section{
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     margin: 0 auto;
+    min-height: 100%;
 }
 body{
     width: 100%;
@@ -222,7 +223,7 @@ body{
     color: #85878c;
 }
 .info_item_more>dd{
-    margin-left: 40px;
+    margin-left: 60px;
 }
 .review_title{
     width: 100%;
@@ -346,7 +347,11 @@ body{
    border: 1px solid #c2c8cc;
    bottom: 10px;
 }
-
+.inter_container{
+    padding: 80px;
+    background-color: #c2c8cc;
+    width: auto;
+}
 .inter_box{
     justify-items: center;
     width: 90%;

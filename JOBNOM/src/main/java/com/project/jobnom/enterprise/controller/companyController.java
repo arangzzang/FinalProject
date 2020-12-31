@@ -56,18 +56,12 @@ public class companyController {
 	
 	//기업 메인 페이지
 
-	@RequestMapping("/enterprise/com_info_header.do")
+	@RequestMapping("/enterprise/com_info.do")
 	public ModelAndView companyInfo(ModelAndView mv,@RequestParam String entNo) {
 		System.out.println(entNo);
 		
 		mv.addObject("list",service.companyInfo(entNo));
 		System.out.println(mv.addObject("list",service.companyInfo(entNo)));
-		mv.setViewName("enterprise/com_info_header");
-		return mv;
-	}
-	@RequestMapping("/enterprise/com_info.do")
-	public ModelAndView comInfo(ModelAndView mv) {
-		
 		mv.setViewName("enterprise/com_info");
 		return mv;
 	}
@@ -82,9 +76,10 @@ public class companyController {
 	}
 
 	@RequestMapping("/enterprise/com_interview.do")
-	public String companyInterview() {
-
-		return "enterprise/com_interview";
+	public ModelAndView companyInterview(ModelAndView mv) {
+		
+		mv.setViewName("enterprise/com_interview");
+		return mv;
 	}
 
 	@RequestMapping("/enterprise/com_job.do")

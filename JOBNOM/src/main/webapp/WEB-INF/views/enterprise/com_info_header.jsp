@@ -40,7 +40,7 @@
                                     <div class="com_info_small">
                                         <span><c:out value="${list[0].ENT_CATEGORY1 }"/></span>
                                         <span class="dot">&middot;</span>
-                                        <a href=""><c:out value="${list[0].ENT_SITE }"/></a>
+                                       <%--  <a href=""><c:out value="${list[0].ENT_SITE }"/></a> --%>
                                     </div>
                                 </div>
                             </div>
@@ -58,7 +58,7 @@
                             <a href="${path}/enterprise/com_info.do"><h2>소개</h2></a>
                         </li>
                         <li class="li_menu">
-                            <a href="${path }/enterprise/com_review.do?entNo=${list.ENT_NO}"><h2>리뷰<span class="num">(1)</span></h2></a>
+                            <a href="${path }/enterprise/com_review.do?entNo=${list[0].ENT_NO}"><h2>리뷰<span class="num">(1)</span></h2></a>
                         </li>
                         <li class="li_menu">
                             <a href="${path }/enterprise/com_interview.do"><h2>면접후기<span class="num">(1)</span></h2></a>
@@ -75,8 +75,3 @@
             </div>
         </div>
 </section>
-<script>
-	$.ajax({})
-</script>
-</body>
-</html>
