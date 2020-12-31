@@ -54,12 +54,12 @@
 			      				<span class="input-group-text">1차 산업군</span>
 			    			</div>
 			    			<select class="form-control" id="entCategory1" name="entCategory1">
-			    				<option value="1">IT/인터넷</option>
-			    				<option value="2">금융/재무</option>
-			    				<option value="3">의약</option>
-			    				<option value="4">서비스/고객지원</option>
-			    				<option value="5">마케팅/시장조사</option>
-			    				<option value="6">교육</option>
+			    				<option value="IT/인터넷">IT/인터넷</option>
+			    				<option value="금융/재무">금융/재무</option>
+			    				<option value="의약">의약</option>
+			    				<option value="서비스/고객지원">서비스/고객지원</option>
+			    				<option value="마케팅/시장조사">마케팅/시장조사</option>
+			    				<option value="교육">교육</option>
 			    			</select>
 		  				</div>
 	  				<div class="input-group mb-3">
@@ -94,42 +94,42 @@
 	      				<span class="input-group-text">2차 산업군</span>
 	    			</div>
 			    			<select class="form-control" name="entCategory2" id="entCategory2" required>
-								<option value="1">웹계발</option>
-								<option value="2">시스템 엔지니어</option>
-								<option value="3">웹퍼블리셔</option>
-								<option value="5">기획</option>
-								<option value="6">네트워크/보안/운영</option>
-								<option value="7">데이터분석</option>
-								<option value="8">은행관련</option>
-								<option value="9">세무/법무</option>
-								<option value="10">경리/출납/수납</option>
-								<option value="11">증권 투자 분석사</option>
-								<option value="12">보험계리사/손해사정인</option>
-								<option value="13">자산운용가</option>
-								<option value="14">교육기획/교재개발</option>
-								<option value="15">전문강사</option>
-								<option value="16">초중고/특수 교사</option>
-								<option value="17">대학교수</option>
-								<option value="18">교직원</option>
-								<option value="19">입시/보습/학원강사</option>
-								<option value="20">마켓팅</option>
-								<option value="21">브랜드 마켓팅</option>
-								<option value="22">시장조사/분석</option>
-								<option value="23">상품개발/기획/MD</option>
-								<option value="24">온라인 마켓팅</option>
-								<option value="25">CRM</option>
-								<option value="26">의사</option>
-								<option value="27">한의사</option>
-								<option value="28">치과의사</option>
-								<option value="29">약사/한약사</option>
-								<option value="30">간호사</option>
-								<option value="31">간호조무사</option>
-								<option value="32">고객지원/CS</option>
-								<option value="33">호텔/숙박 관련</option>
-								<option value="34">웨딩플래너/커플매니저</option>
-								<option value="35">외식업/식음료</option>
-								<option value="36">뷰티/미용</option>
-								<option value="37">여행가이드</option>
+								<option value="웹계발">웹계발</option>
+								<option value="시스템 엔지니어">시스템 엔지니어</option>
+								<option value="웹퍼블리셔">웹퍼블리셔</option>
+								<option value="기획">기획</option>
+								<option value="네트워크/보안/운영">네트워크/보안/운영</option>
+								<option value="데이터분석">데이터분석</option>
+								<option value="은행관련">은행관련</option>
+								<option value="세무/법무">세무/법무</option>
+								<option value="경리/출납/수납">경리/출납/수납</option>
+								<option value="증권 투자 분석사">증권 투자 분석사</option>
+								<option value="보험계리사/손해사정인">보험계리사/손해사정인</option>
+								<option value="자산운용가">자산운용가</option>
+								<option value="교육기획/교재개발">교육기획/교재개발</option>
+								<option value="전문강사">전문강사</option>
+								<option value="초중고/특수 교사">초중고/특수 교사</option>
+								<option value="대학교수">대학교수</option>
+								<option value="교직원">교직원</option>
+								<option value="입시/보습/학원강사">입시/보습/학원강사</option>
+								<option value="마켓팅">마켓팅</option>
+								<option value="브랜드 마켓팅">브랜드 마켓팅</option>
+								<option value="시장조사/분석">시장조사/분석</option>
+								<option value="상품개발/기획/MD">상품개발/기획/MD</option>
+								<option value="온라인 마켓팅">온라인 마켓팅</option>
+								<option value="CRM">CRM</option>
+								<option value="의사">의사</option>
+								<option value="한의사">한의사</option>
+								<option value="치과의사">치과의사</option>
+								<option value="약사/한약사">약사/한약사</option>
+								<option value="간호사">간호사</option>
+								<option value="간호조무사">간호조무사</option>
+								<option value="고객지원/CS">고객지원/CS</option>
+								<option value="호텔/숙박 관련">호텔/숙박 관련</option>
+								<option value="웨딩플래너/커플매니저">웨딩플래너/커플매니저</option>
+								<option value="외식업/식음료">외식업/식음료</option>
+								<option value="뷰티/미용">뷰티/미용</option>
+								<option value="여행가이드">여행가이드</option>
 							</select>
 	 						
 		  				</div>

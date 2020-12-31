@@ -121,27 +121,44 @@
              </ul>
           </div>
        </div>
-<!--        <button id="join">멤버십 가입</button> -->
+
 	 <form method="post" action="${path }/kakaoPay">
 	    <button class="jmkbtn btn-lg">카카오페이로 멤버십 가입</button>
 	</form>
-	<!-- <a href="#layer2" class="btn-example">딤처리 팝업레이어 1</a>
-	<div class="dim-layer">
-	    <div class="dimBg"></div>
-	    <div id="layer2" class="pop-layer">
-	        <div class="pop-container">
-	            <div class="pop-conts">
-	                content //
+
+<!-- 
+	<button class="button" onClick="window.open('https://mockup-pg-web.kakao.com/v1/a52c6a752ce3a04904f6941bf30839ee729c384298ea3f10542362157ea8c730/info');">
+     <span class="icon">Open</span>
+	</button>
+	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" id="kkpBtn">
+	  Open modal
+	</button>
 	
-	                <div class="btn-r">
-	                    <a href="#" class="btn-layerClose">취소</a>
-	                </div>
-	                // content
-	            </div>
-	        </div>
+	The Modal
+	<div class="modal" id="myModal">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	
+	      Modal Header
+	      <div class="modal-header">
+	        <h4 class="modal-title">Modal Heading</h4>
+	        <button type="button" class="close" data-dismiss="modal">&times;</button>
+	      </div>
+	
+	      Modal body
+	      <div class="modal-body">
+	        Modal body..
+	      </div>
+	
+	      Modal footer
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+	      </div>
+	
 	    </div>
-	</div>
-	<a href="https://mockup-pg-web.kakao.com/v1/a52c6a752ce3a04904f6941bf30839ee729c384298ea3f10542362157ea8c730/info">결제</a> -->
+	  </div>
+	</div> -->
+
     </c:if>
     <c:if test="${Enterprise.entMembership eq '유료회원' }">
        <h4><c:out value="${Enterprise.entName }"/>님은 이미 멤버십이 있습니다</h4>
@@ -153,60 +170,6 @@
 	function applyAd(){
 		location.replace("path/com/applyAd.do");
 	}
-/*  	$("#join").click(function(){
- 		alert("hello");
- 		location.href="${path}/com/membership_end.do";
- 	}) */
- 	
-/*  	$.ajax({
- 		method:"POST",
- 		url:"https://kapi.kakao.com/v1/payment/ready",
- 		data:{cid:"TC0ONETIME"},
- 		headers:{Authorization: "KakaoAK 214bfaf7b744b18df54f42d1770d50b0"}
- 	})
- 		.done(function(msg){
- 			console.log(msg);
- 			alert("Data Saved: " + msg);
- 		}); */
- 		
- 	
- 		$('.btn-example').click(function(){
- 	        var $href = $(this).attr('href');
- 	        layer_popup($href);
- 	    });
- 	    function layer_popup(el){
-
- 	        var $el = $(el);    //레이어의 id를 $el 변수에 저장
- 	        var isDim = $el.prev().hasClass('dimBg'); //dimmed 레이어를 감지하기 위한 boolean 변수
-
- 	        isDim ? $('.dim-layer').fadeIn() : $el.fadeIn();
-
- 	        var $elWidth = ~~($el.outerWidth()),
- 	            $elHeight = ~~($el.outerHeight()),
- 	            docWidth = $(document).width(),
- 	            docHeight = $(document).height();
-
- 	        // 화면의 중앙에 레이어를 띄운다.
- 	        if ($elHeight < docHeight || $elWidth < docWidth) {
- 	            $el.css({
- 	                marginTop: -$elHeight /2,
- 	                marginLeft: -$elWidth/2
- 	            })
- 	        } else {
- 	            $el.css({top: 0, left: 0});
- 	        }
-
- 	        $el.find('a.btn-layerClose').click(function(){
- 	            isDim ? $('.dim-layer').fadeOut() : $el.fadeOut(); // 닫기 버튼을 클릭하면 레이어가 닫힌다.
- 	            return false;
- 	        });
-
- 	        $('.layer .dimBg').click(function(){
- 	            $('.dim-layer').fadeOut();
- 	            return false;
- 	        });
-
- 	    }
  	
 </script>	
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>

@@ -146,6 +146,10 @@ body{
 .num{
     font-size: 10px;
 }
+.com_info_con{
+	width:80%;
+	margin: 0 auto;
+}
 .com_info_container{
     background-color: #ebecee;
     width: 100%;

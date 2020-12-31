@@ -76,9 +76,10 @@ public class companyController {
 	}
 
 	@RequestMapping("/enterprise/com_interview.do")
-	public String companyInterview() {
-
-		return "enterprise/com_interview";
+	public ModelAndView companyInterview(ModelAndView mv) {
+		
+		mv.setViewName("enterprise/com_interview");
+		return mv;
 	}
 
 	@RequestMapping("/enterprise/com_job.do")
@@ -256,9 +257,7 @@ public class companyController {
 	public ModelAndView membership(HttpSession session, Model m, ModelAndView mv) {
 		Login log = (Login) session.getAttribute("commonLogin");
 		Enterprise ent = service.findOneEnterprise(log);
-		System.out.println(ent);
 		session.setAttribute("Enterprise", ent);
-		System.out.println(ent);
 		mv.setViewName("enterprise/ent_mypage/membership");
 		return mv;
 	}

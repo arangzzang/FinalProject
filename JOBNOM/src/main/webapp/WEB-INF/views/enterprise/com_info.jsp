@@ -28,7 +28,7 @@
                             </div>
                             <div class="compa_info_box">
                                 <div class="compa_name">
-                                    <a href="" ></a>
+                                    <a href="" ><c:out value="${list[0].ENT_NAME }"/></a>
                                 </div>
                                 <div class="about_compa">
                                     <div class="compa_rating">
@@ -37,9 +37,9 @@
                                         </span>
                                     </div>
                                     <div class="com_info_small">
-                                        <span>></span>
+                                        <span></span>
                                         <span class="dot">&middot;</span>
-                                        <a href=""></a>
+                                        <a href=""><c:out value="${list[0].ENT_SITE }"/></a>
                                     </div>
                                 </div>
                             </div>
@@ -54,7 +54,7 @@
                 <nav id="view_com">
                      <ul class="view_menu">
                         <li class="li_menu">
-                            <a href="${path}/enterprise/com_info.do"><h2>소개</h2></a>
+                            <a href="${path }/enterprise/com_info.do"><h2>소개</h2></a>
                         </li>
                         <li class="li_menu">
                             <a href="${path }/enterprise/com_review.do"><h2>리뷰<span class="num">(1)</span></h2></a>
@@ -77,17 +77,17 @@
         <div class="com_info_container">	
             <div class="com_info" >
                 <div class="com_title" >
-                    <h2><c:out value="${list[0].ENT_NAME }"/></h2>
+                    <h2>기업정보</h2>
                 </div>
                 <div class="com_box_info">
                     <div class="company_sub">
                         <div class="tool_box">
                             <i class="fas fa-tools"></i>
-                            <span><strong></strong><p>${list[0].ENT_CATEGORY1 }</p></span>
+                            <span><strong>-</strong><p>분류</p></span>
                         </div>
                         <div class="tool_box">
                             <i class="fas fa-building"></i>
-                            <span><strong>-</strong><p>${list[0].ENT_CATEGORY2 }</p>
+                            <span><strong>-</strong><p>규모</p>
                         </div>
                         <div class="tool_box">
                             <i class="fas fa-users"></i>
@@ -103,32 +103,26 @@
                             <ul class="company_info_more">
                                 <li>
                                   <dl class="info_item_more">
-                                    <dt class="item_subject">대표</dt>
-                                    <dd>황진호</dd>
+                                    <dt class="item_subject">담당자 이름</dt>
+                                    <dd><p>${list[0].REP_NAME }</p></dd>
                                   </dl>
                                 </li>
                                 <li>
                                   <dl class="info_item_more">
-                                    <dt class="item_subject">매출</dt>
-                                    <dd>10억(2019)</dd>
+                                    <dt class="item_subject">담당자 번호</dt>
+                                    <dd>${list[0].REP_PHONE }</dd>
                                   </dl>
                                 </li>
                                 <li>
                                   <dl class="info_item_more">
-                                    <dt class="item_subject">주소</dt>
-                                    <dd>서울특별시 강남구</dd>
+                                    <dt class="item_subject">담당자 E-Mail</dt>
+                                    <dd>${list[0].ENT_EMAIL }</dd>
                                   </dl>
                                 </li>
                                 <li>
                                   <dl class="info_item_more">
                                     <dt class="item_subject">웹사이트</dt>
-                                    <dd><a href="http://www.naver.com" rel="nofollow" target="_blank">www.naver.com</a></dd>
-                                  </dl>
-                                </li>
-                                <li>
-                                  <dl class="info_item_more">
-                                    <dt class="item_subject">소개</dt>
-                                    <dd>-</dd>
+                                    <dd><a href="#" ><c:out value="${list[0].ENT_SITE }"/></a></dd>
                                   </dl>
                                 </li>
                               </ul>

@@ -16,6 +16,7 @@ import com.project.jobnom.enterprise.model.vo.Banner;
 import com.project.jobnom.enterprise.model.vo.Category2;
 //github.com/arangzzang/FinalProject.git
 import com.project.jobnom.enterprise.model.vo.Enterprise;
+import com.project.jobnom.enterprise.model.vo.MemberDataC2;
 import com.project.jobnom.enterprise.model.vo.Support;
 import com.project.jobnom.resume.model.vo.Resume;
 
@@ -113,6 +114,11 @@ public class EnterpriseServiceImpl implements EnterpriseService {
 	@Override
 	public Enterprise selectEnterprise(int entNo) {
 		return dao.selectEnterprise(entNo,session);
+	}
+	@Override
+	public List<MemberDataC2> memDataC2() {
+		// TODO Auto-generated method stub
+		return dao.memDataC2(session);
 	}
 	
 	
