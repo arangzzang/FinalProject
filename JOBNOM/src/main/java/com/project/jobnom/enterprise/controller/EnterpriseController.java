@@ -2,12 +2,14 @@ package com.project.jobnom.enterprise.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
@@ -16,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.project.jobnom.common.model.vo.Login;
 import com.project.jobnom.enterprise.model.service.EnterpriseService;
 import com.project.jobnom.enterprise.model.vo.Enterprise;
+import com.project.jobnom.enterprise.model.vo.MemberDataC2;
 
 @Controller
 public class EnterpriseController {
@@ -62,6 +65,14 @@ public class EnterpriseController {
 		mv.setViewName(loc);
 		
 		return mv;
+	}
+	
+	@RequestMapping("/com/charts")
+	public String charts(Model m) {
+		List<MemberDataC2> memDataC2 = service.memDataC2();
+		System.out.println(memDataC2);
+		m.addAttribute("memDataC2", memDataC2);
+		return "/enterprise/com_charts";
 	}
 	
 }

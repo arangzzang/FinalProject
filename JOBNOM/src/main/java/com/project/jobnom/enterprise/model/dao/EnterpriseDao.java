@@ -1,7 +1,6 @@
 package com.project.jobnom.enterprise.model.dao;
 
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -10,6 +9,7 @@ import com.project.jobnom.common.model.vo.Login;
 import com.project.jobnom.enterprise.model.vo.ApplyAd;
 import com.project.jobnom.enterprise.model.vo.Banner;
 import com.project.jobnom.enterprise.model.vo.Enterprise;
+import com.project.jobnom.enterprise.model.vo.MemberDataC2;
 import com.project.jobnom.enterprise.model.vo.Support;
 import com.project.jobnom.resume.model.vo.Resume;
 
@@ -30,4 +30,5 @@ public interface EnterpriseDao {
 	Enterprise findEmailEnterprise(Login log, SqlSession session);
 	//카카오페이
 	Enterprise selectEnterprise (int entNo,SqlSession session);
+	List<MemberDataC2> memDataC2(SqlSession session);
 }

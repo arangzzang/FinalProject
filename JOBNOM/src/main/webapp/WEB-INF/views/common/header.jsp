@@ -55,7 +55,7 @@
 					<c:if test="${commonLogin !=null && commonLogin.type == 2 || commonLogin.type == 1}" >
 						<ul class="navbar-nav mr-auto ent_nav">
 							<li class="nav-item">
-								<a class="menus" href="">추세파악</a>
+								<a class="menus" href="${path }/com/charts">추세파악</a>
 							</li>
 							<li class="nav-item">
 								<a class="menus" href="">헤드헌팅</a>

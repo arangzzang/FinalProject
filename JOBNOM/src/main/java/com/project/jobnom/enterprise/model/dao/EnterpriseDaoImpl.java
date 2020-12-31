@@ -12,6 +12,7 @@ import com.project.jobnom.common.model.vo.Login;
 import com.project.jobnom.enterprise.model.vo.ApplyAd;
 import com.project.jobnom.enterprise.model.vo.Banner;
 import com.project.jobnom.enterprise.model.vo.Enterprise;
+import com.project.jobnom.enterprise.model.vo.MemberDataC2;
 import com.project.jobnom.enterprise.model.vo.Support;
 import com.project.jobnom.resume.model.vo.Resume;
 
@@ -101,6 +102,12 @@ public class EnterpriseDaoImpl implements EnterpriseDao {
 	@Override
 	public Enterprise selectEnterprise(int entNo, SqlSession session) {
 		return session.selectOne("enterprise.selectEnterprise",entNo);
+	}
+
+	@Override
+	public List<MemberDataC2> memDataC2(SqlSession session) {
+		// TODO Auto-generated method stub
+		return session.selectList("enterprise.memDataC2");
 	}
 	
 	
