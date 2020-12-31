@@ -19,12 +19,12 @@
                     <div class="col1Wrap">
                             <select name="parent_industry_id" id="ent_catagory1">
                                 <option name="entCate" value="ENT_CATEGORY1">1차산업군</option>
-								<option name="entCate" value=1>IT/인터넷</option>
-								<option name="entCate" value=2>금융/재무</option>
-								<option name="entCate" value=3>의약</option>
-								<option name="entCate" value=4>서비스/고객지원</option>
-								<option name="entCate" value=5>마케팅/시장조사</option>
-								<option name="entCate" value=6>교육</option>
+								<option name="entCate" >IT/인터넷</option>
+								<option name="entCate" >금융/재무</option>
+								<option name="entCate" >의약</option>
+								<option name="entCate" >서비스/고객지원</option>
+								<option name="entCate" >마케팅/시장조사</option>
+								<option name="entCate" >교육</option>
 							</select>
                     </div>
                     
@@ -50,14 +50,14 @@
                                             			<img src="https://jpassets.jobplanet.co.kr/assets/default_logo_share-12e4cb8f87fe87d4c2316feb4cb33f42d7f7584f2548350d6a42e47688a00bd0.png">
                                             		</c:when>
                                             		<c:otherwise>
-                                            			<img src="${list.ENT_LOGO }">
+                                            			<img src="${path }/resources/enterprise/logo/${list.ENT_NO}/${list.ENT_LOGO }">
                                             		</c:otherwise>
                                             	</c:choose>
                                             </a>
                                         </div>
                                         <dl class="content_col2_3 cominfo">
                                             <dt class="us_titb_13">
-                                                <a href="">${list.ENT_NAME }</a>
+                                                <a href="#" onclick="location.href = '${path }/enterprise/com_info.do?entNo=${list.ENT_NO}'">${list.ENT_NAME }</a>
                                                 <button class="btn_heart1">
                                                     <i class="far fa-heart"></i>
                                                 </button>
@@ -125,12 +125,12 @@
                             	/* <!-- 하트 눌렀을때 변환 스크립트 --> */
                                 $(function() {
                                     $('.btn_heart1').click(function() {
-                                        $('.btn_heart1').hide();
-                                        $('.btn_heart2').show();
+                                        $(this).hide();
+                                        $(this).next().show();
                                     });
                                     $('.btn_heart2').click(function() {
-                                        $('.btn_heart2').hide();
-                                        $('.btn_heart1').show();
+                                        $(this).hide();
+                                        $(this).prev().show();
                                     });
                                 });
                             	/* <!-- 하트 눌렀을때 변환 스크립트  끝--> */

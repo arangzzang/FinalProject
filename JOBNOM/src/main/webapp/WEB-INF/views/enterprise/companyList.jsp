@@ -26,7 +26,7 @@
                         <dl class="gf_box2">
                             <dt title="회사명">
                                     <span class="txt_r">1</span>
-                                <a href="#">${list.ENT_NAME }</a>
+                                <a href="#" onclick="location.href = '${path }/enterprise/com_info.do?entNo=${list.ENT_NO}'">${list.ENT_NAME }</a>
                             </dt>
                             <dd>
                                <div class="gf_bar">
@@ -40,7 +40,7 @@
                         </c:forEach>
                     </div>
                     <p class="section_bottom">
-                        <a href="#" class="btn_rnd btn_rnd_arrow"><span class="txt">기업더보기</span>
+                        <a href="${path }/search/searchResultMore.do" class="btn_rnd btn_rnd_arrow"><span class="txt">기업더보기</span>
                             <span class="ico_bracket3_gray"></span>
                         </a>
                     </p>
@@ -59,7 +59,7 @@
                         <dl class="gf_box2">
                             <dt title="회사명">
                                     <span class="txt_r">1</span>
-                                <a href="#">${list2.ENT_NAME }</a>
+                                <a href="#" onclick="location.href = '${path }/enterprise/com_info.do?entNo=${list2.ENT_NO}'">${list2.ENT_NAME }</a>
                             </dt>
                             <dd>
                                 <div class="gf_bar">
@@ -73,7 +73,7 @@
                      </c:forEach>
                     </div>
                     <p class="section_bottom">
-                        <a href="#" class="btn_rnd btn_rnd_arrow"><span class="txt">기업더보기</span><span class="ico_bracket3_gray"></span></a>
+                        <a href="${path }/search/searchResultMore.do" class="btn_rnd btn_rnd_arrow"><span class="txt">기업더보기</span><span class="ico_bracket3_gray"></span></a>
                     </p>
                 </div>      
             </section>
@@ -90,7 +90,7 @@
                         <dl class="gf_box2">
                             <dt title="회사명">
                                     <span class="txt_r">1</span>
-                                <a href="#">${list3.ENT_NAME }</a>
+                                <a href="#" onclick="location.href = '${path }/enterprise/com_info.do?entNo=${list3.ENT_NO}'">${list3.ENT_NAME }</a>
                             </dt>
                             <dd>
                                <div class="gf_bar">
@@ -104,7 +104,7 @@
                         </c:forEach>
                     </div>
                     <p class="section_bottom">
-                        <a href="#" class="btn_rnd btn_rnd_arrow"><span class="txt">전체보기</span><span class="ico_bracket3_gray"></span></a>
+                        <a href="${path }/search/searchResultMore.do" class="btn_rnd btn_rnd_arrow"><span class="txt">기업더보기</span><span class="ico_bracket3_gray"></span></a>
                     </p>
                 </div>      
             </section>
@@ -121,7 +121,7 @@
                         <dl class="gf_box2">
                             <dt title="회사명">
                                     <span class="txt_r">1</span>
-                                <a href="#">${list4.ENT_NAME }</a>
+                                <a href="#" onclick="location.href = '${path }/enterprise/com_info.do?entNo=${list4.ENT_NO}'">${list4.ENT_NAME }</a>
                             </dt>
                             <dd>
                               <div class="gf_bar">
@@ -135,7 +135,7 @@
                         </c:forEach>
                     </div>
                     <p class="section_bottom">
-                        <a href="#" class="btn_rnd btn_rnd_arrow"><span class="txt">기업더보기</span><span class="ico_bracket3_gray"></span></a>
+                        <a href="${path }/search/searchResultMore.do" class="btn_rnd btn_rnd_arrow"><span class="txt">기업더보기</span><span class="ico_bracket3_gray"></span></a>
                     </p>
                 </div>      
             </section>
@@ -152,7 +152,7 @@
                         <dl class="gf_box2">
                             <dt title="회사명">
                                     <span class="txt_r">1</span>
-                                <a href="#">${list5.ENT_NAME }</a>
+                                <a href="#" onclick="location.href = '${path }/enterprise/com_info.do?entNo=${list5.ENT_NO}'">${list5.ENT_NAME }</a>
                             </dt>
                             <dd>
                                <div class="gf_bar">
@@ -166,7 +166,7 @@
                     </c:forEach>
                     </div>
                     <p class="section_bottom">
-                        <a href="#" class="btn_rnd btn_rnd_arrow"><span class="txt">기업더보기</span><span class="ico_bracket3_gray"></span></a>
+                        <a href="${path }/search/searchResultMore.do" class="btn_rnd btn_rnd_arrow"><span class="txt">기업더보기</span><span class="ico_bracket3_gray"></span></a>
                     </p>
                 </div>      
             </section>
@@ -179,10 +179,11 @@
                         </div>
                     </div>
                     <div class="section_body">
+                    <c:forEach items="${list6 }" var="list6">
                         <dl class="gf_box2">
                             <dt title="회사명">
                                 <span class="txt_r">1</span>
-                                <a href="#">회사명</a>
+                                <a href="#" onclick="location.href = '${path }/enterprise/com_info.do?entNo=${list6.ENT_NO}'">회사명</a>
                             </dt>
                             <dd>
                                 <div class="company_star">
@@ -191,6 +192,7 @@
                                 <div class="total_avg">1.2</div>
                             </dd>
                         </dl>
+                        </c:forEach>
                     </div>
                     <p class="section_bottom">
                         <a href="#" class="btn_rnd btn_rnd_arrow"><span class="txt">기업더보기</span><span class="ico_bracket3_gray"></span></a>

@@ -161,19 +161,15 @@
 				e.ent_no
 				,e.ent_category1
 				,e.ent_name
-				,c.job
 				,round(sum(review_satisfaction+review_welfare+review_promotion+review_executive)/(count(review_satisfaction)+count(review_welfare)+count(review_promotion)+count(r.review_executive)),1) as avg
 			from enterprise e
 			inner join review r
 			on (r.ent_no = e.ent_no)
-			 inner join category c
-        	on (c.cate_no = e.ent_category1)
-        	where c.cate_no = 1
+        	where e.ent_category1 = 'IT/인터넷'
 			AND ROWNUM <=5
 			group by e.ent_no
 					,e.ent_category1
 					,e.ent_name
-					,c.job
 			order by avg desc		
 					
 		]]>
@@ -186,19 +182,15 @@
 				e.ent_no
 				,e.ent_category1
 				,e.ent_name
-				,c.job
 				,round(sum(review_satisfaction+review_welfare+review_promotion+review_executive)/(count(review_satisfaction)+count(review_welfare)+count(review_promotion)+count(r.review_executive)),1) as avg
 			from enterprise e
 			inner join review r
 			on (r.ent_no = e.ent_no)
-			 inner join category c
-        	on (c.cate_no = e.ent_category1)
-        	where c.cate_no = 2
+        	where e.ent_category1 = '금융/재무'
 			AND ROWNUM <=5
 			group by e.ent_no
 					,e.ent_category1
 					,e.ent_name
-					,c.job
 			order by avg desc		
 					
 		]]>
@@ -210,19 +202,15 @@
 				e.ent_no
 				,e.ent_category1
 				,e.ent_name
-				,c.job
 				,round(sum(review_satisfaction+review_welfare+review_promotion+review_executive)/(count(review_satisfaction)+count(review_welfare)+count(review_promotion)+count(r.review_executive)),1) as avg
 			from enterprise e
 			inner join review r
 			on (r.ent_no = e.ent_no)
-			 inner join category c
-        	on (c.cate_no = e.ent_category1)
-        	where c.cate_no = 3
+        	where e.ent_category1 = '의약'
 			AND ROWNUM <=5
 			group by e.ent_no
 					,e.ent_category1
 					,e.ent_name
-					,c.job
 			order by avg desc		
 					
 		]]>
@@ -234,19 +222,15 @@
 				e.ent_no
 				,e.ent_category1
 				,e.ent_name
-				,c.job
 				,round(sum(review_satisfaction+review_welfare+review_promotion+review_executive)/(count(review_satisfaction)+count(review_welfare)+count(review_promotion)+count(r.review_executive)),1) as avg
 			from enterprise e
 			inner join review r
 			on (r.ent_no = e.ent_no)
-			 inner join category c
-        	on (c.cate_no = e.ent_category1)
-        	where c.cate_no = 4
+        	where e.ent_category1 = '서비스/고객지원'
 			AND ROWNUM <=5
 			group by e.ent_no
 					,e.ent_category1
 					,e.ent_name
-					,c.job
 			order by avg desc		
 					
 		]]>
@@ -258,19 +242,15 @@
 				e.ent_no
 				,e.ent_category1
 				,e.ent_name
-				,c.job
 				,round(sum(review_satisfaction+review_welfare+review_promotion+review_executive)/(count(review_satisfaction)+count(review_welfare)+count(review_promotion)+count(r.review_executive)),1) as avg
 			from enterprise e
 			inner join review r
 			on (r.ent_no = e.ent_no)
-			 inner join category c
-        	on (c.cate_no = e.ent_category1)
-        	where c.cate_no = 5
+        	where e.ent_category1 = '마케팅/시장조사'
 			AND ROWNUM <=5
 			group by e.ent_no
 					,e.ent_category1
 					,e.ent_name
-					,c.job
 			order by avg desc		
 					
 		]]>
@@ -282,19 +262,15 @@
 				e.ent_no
 				,e.ent_category1
 				,e.ent_name
-				,c.job
 				,round(sum(review_satisfaction+review_welfare+review_promotion+review_executive)/(count(review_satisfaction)+count(review_welfare)+count(review_promotion)+count(r.review_executive)),1) as avg
 			from enterprise e
 			inner join review r
 			on (r.ent_no = e.ent_no)
-			inner join category c
-        	on (c.cate_no = e.ent_category1)
-        	where c.cate_no = 6
+        	where e.ent_category1 = '교육'
 			AND ROWNUM <=5
 			group by e.ent_no
 					,e.ent_category1
 					,e.ent_name
-					,c.job
 			order by avg desc		
 					
 		]]>
