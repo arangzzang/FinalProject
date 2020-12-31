@@ -9,6 +9,9 @@
 <jsp:include page="/WEB-INF/views/common/header.jsp">
 	<jsp:param name="title" value=" "/>
 </jsp:include>
+<jsp:include page="/WEB-INF/views/common/searchbar.jsp">
+	<jsp:param name="title" value=" "/>
+</jsp:include>
 
 <section>
 <!-- 메인페이지 전체 화면 시작 -->

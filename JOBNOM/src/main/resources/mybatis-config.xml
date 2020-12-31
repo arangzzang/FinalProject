@@ -22,5 +22,8 @@
 		<typeAlias type="com.project.jobnom.resume.model.vo.Resume" alias="res"/>
 		<typeAlias type="com.project.jobnom.resume.model.vo.Skill" alias="skill"/>
 		<typeAlias type="com.project.jobnom.resume.model.vo.MySkill" alias="mySkill"/>
+		
+		<typeAlias type="com.project.jobnom.Hire.model.vo.Review" alias="review"/>
+		<typeAlias type="com.project.jobnom.enterprise.model.vo.Category2" alias="cat2"/>
 	</typeAliases>
 </configuration>

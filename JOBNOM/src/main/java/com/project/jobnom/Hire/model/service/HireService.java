@@ -6,7 +6,7 @@ import java.util.Map;
 import com.project.jobnom.Hire.model.vo.Interestedrcruitment;
 import com.project.jobnom.Hire.model.vo.Recruitment;
 import com.project.jobnom.Hire.model.vo.Support;
-import com.project.jobnom.member.model.vo.Member;
+import com.project.jobnom.enterprise.model.vo.Enterprise;
 
 public interface HireService {
 
@@ -36,16 +36,23 @@ public interface HireService {
 	
 	List<Support> HireMyHire(String memNo,int cPage, int numPerpage);
 
-	int selectSuppertCount();
+	int selectSuppertCount(String memNo);
 	
-	int selectInterestedrcruitmentCount();
+	int selectInterestedrcruitmentCount(String memNo);
 	
 	List<Interestedrcruitment> HireFavorites(String memNo,int cPage, int numPerpage);
 
-	List<Map> selectOneRecruitment (String key);
+	List<Enterprise> selectOneRecruitment (String key);
 
 
 	List<Recruitment> recSerch(String rec_no);
+	
+	List<Map> selectMemberApply(Map paramMap);
+
+	List<Map> MemberFitList(String memNo);
+	
+	List<Enterprise> reviewSearch2(String key);
+	
 	
 
 

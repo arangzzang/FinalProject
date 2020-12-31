@@ -36,7 +36,7 @@
 	 SELECT COUNT(*) FROM  RECRUITMENT 
 	</select>  
 	<!-- 로직추가함 -->
-	   <select id="annoHomeDetailMove" parameterType="_int" resultType="com.project.jobnom.Hire.model.vo.Recruitment">
+   <select id="annoHomeDetailMove" parameterType="_int" resultType="com.project.jobnom.Hire.model.vo.Recruitment">
        SELECT DISTINCT E.*,ENT_NAME ,REP_NAME, REP_PHONE,ENT_LOGO,OPEN_CHECK,T.MEM_NO
          FROM RECRUITMENT E 
           LEFT JOIN REVIEW S ON (S.ENT_NO = E.ENT_NO)

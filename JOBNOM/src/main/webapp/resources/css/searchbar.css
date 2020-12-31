@@ -1,0 +1,88 @@
+@charset "UTF-8";
+  /* 검색창 css */
+	.searchbar_section{
+	    border-bottom: 1px solid #e5e6e9 ;
+	    background-color: #fff;
+	    padding: 0px;
+	    margin-top: 26px;
+
+	   /*  padding-bottom: 20px; */
+	}
+	.searchbar_section>.wrap {
+	    position: relative;
+	    box-sizing: border-box;
+	    width: 1060px;
+	    min-height: 62px;
+	    margin: 0 auto;
+	    padding-top: 66px;
+	}
+	.schbar_green {
+	    position: relative;
+	    display: block;
+	    width: 1060px;
+	}
+	.schbar_green .schbar {
+	    position: relative;
+	    width: 100%;
+	    height: 48px;
+	    box-sizing: border-box;
+	}
+	.schbar_green .schbar .jp-search, .schbar_green .schbar .jp-briefcase {
+	    position: absolute;
+	    top: 50%;
+	    left: 16px;
+	    transform: translateY(-50%);
+	    font-size: 18px;
+	    color: #686a6d;
+	     z-index: 2; 
+	}
+	.placeholder {
+	    position: relative;
+	}
+	.schbar_green .schbar .input_search, .schbar_green .schbar .jply_ip_ty1 {
+	    width: calc(449% - (66px + 8px));
+	    height: 48px;
+	    line-height: 48px;
+	    background-color: #fff;
+	    border: 1px solid #e5e6e9;
+	    border-radius: 5px;
+	    box-sizing: border-box;
+	    font-size: 16px;
+	    padding: 0 15px 0 42px;
+	    display: block
+	}   
+	.schbar_green .btn_schbar {
+	    position: absolute;
+	    right: 0;
+	    top: 0;
+	    background: #00c362;
+	    color: #fff;
+	    text-align: center;
+	    width: 66px;
+	    height: 48px;
+	    font-size: 14px;
+	    font-weight: bold;
+	    border-radius: 5px;
+	}
+	.schbar_green .schbar .fas {
+	    position: absolute;
+	    top: 50%;
+	    left: 16px;
+	    transform: translateY(-50%);
+	    font-size: 18px;
+	    color: #686a6d;
+	    z-index: 2;
+	}
+	.header_md{
+		z-index:1050 !important;
+	}
+	section,#content{
+		padding-top: 158px !important;
+	}
+	.jmkbtn{
+		background-color:#00c362;
+		color:#fff;
+		text-align:center;
+		border-radius:5px;
+		font-weight:bold;
+	}

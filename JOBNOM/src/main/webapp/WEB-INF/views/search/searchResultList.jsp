@@ -19,8 +19,9 @@
 				<span class="tit_txt">기업</span> 
 				<a href="${path }/search/searchResultMore.do" class="btn_moretxt_aw">기업더보기</a>
 			</div>
+				
 				<!-- 검색 기업 없을시 -->
-				<c:if test="${empty list  }">
+				<c:if test="${empty list }">
 					<div class="no_company_card">
 						<h1 class="no_card_tit">
 							찾으시는 기업이 없나요?<br>근무경험이 있으시면, 첫 리뷰를 작성해주세요.
@@ -32,32 +33,33 @@
 						</a>
 					</div>
 				</c:if>
-		</div>
-		<c:forEach items="${list }" var="list">
+			</div>
 			<div class="result_company_card">
 				<div class="is_company_card">
+				<c:forEach items="${list }" var="list">
 					<div class="result_card ">
 						<span class="llogo"> 
 							<a href=""> 
-							<img src="" alt="">
+							<img src="${list.ENT_LOGO }" alt="">
 							</a>
 						</span>
-						<a href="" class="tit" ><span >${list.ENT_NAME }</span></a>
-						  <span	class="tit_sub">${list.ENT_CATEGORY1 }</span>
-						   <span class="rate_ty02">${list.AVG }</span> 
-						   <span class="tag">
-						   <img src="https://jpassets.jobplanet.co.kr/production/uploads/email_medium/media/ic_badge_recruit.png"alt="채용">
-						   </span>
+						<a href="#" onclick="location.href = '${path }/enterprise/com_info.do?entNo=${list.ENT_NO}'" class="tit" >
+						<span >${list.ENT_NAME }</span>
+						</a>
+					   <span class="tit_sub">${list.ENT_CATEGORY1 }</span>
+					   <span class="rate_ty02">${list.AVG }</span> 
+					   <span class="tag">
+					   <img src="https://jpassets.jobplanet.co.kr/production/uploads/email_medium/media/ic_badge_recruit.png"alt="채용">
+					   </span>
 					</div>
-		</c:forEach>
+				</c:forEach>
 	</div>
 </div>
 <!-- 채용공고 검색결과 -->
 <div class="result_entry">
 	<div class="result_hd">
-		<span class="tit_txt">채용 공고</span> <a
-			href="/job/search?_rs_act=index&amp;_rs_con=search&amp;_rs_element=see_more_job_postings_top&amp;q=%EC%82%BC%EC%84%B1"
-			data-no-turbolink="true" class="btn_moretxt_aw">채용공고 더보기</a>
+		<span class="tit_txt">채용 공고</span>
+		 <a href="${path }/Hire/HireAnnouncement.do"class="btn_moretxt_aw">채용공고 더보기</a>
 	</div>
 	<c:if test="${empty list2 }">
 		<div class="no_REC_card">
