@@ -16,7 +16,17 @@ List<Review> r=(List)request.getAttribute("r");
                     <div class="annoDetailTitle">
                         <div class="annoDetailNum">
                             <div class="annoDetailLogeFlax">
-                                <div class="annoDetailLoge"></div>
+                                <div class="annoDetailLoge">
+                                  <c:choose>
+		                        	<c:when test="${empty r[0].ENT_LOGO }">
+		                				<img src="${path }/resources/image/Hire/job.png" style="width: 50px; height: 50px; ">
+		                        	</c:when>
+		                        	<c:otherwise>
+		                        		<img src="${path }/resources/enterprise/logo/${r[0].ENT_NO }/${r[0].ENT_LOGO}" style="width: 40px; height: 40px; ">
+		                        	</c:otherwise>
+		                        
+		                        </c:choose>
+                                </div>
                             </div>
                             <div class="annoDetailTitleFlax">            
                                 <div id="annoDetailTitle1">${r[0].REC_TITLE }</div>

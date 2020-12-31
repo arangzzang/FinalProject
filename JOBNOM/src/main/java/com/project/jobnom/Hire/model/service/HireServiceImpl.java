@@ -11,7 +11,7 @@ import com.project.jobnom.Hire.model.dao.HireDao;
 import com.project.jobnom.Hire.model.vo.Interestedrcruitment;
 import com.project.jobnom.Hire.model.vo.Recruitment;
 import com.project.jobnom.Hire.model.vo.Support;
-import com.project.jobnom.member.model.vo.Member;
+import com.project.jobnom.enterprise.model.vo.Enterprise;
 @Service
 public class HireServiceImpl implements HireService {
 
@@ -98,8 +98,8 @@ public class HireServiceImpl implements HireService {
 	}
 
 	@Override
-	public List<Map> selectOneRecruitment(String mem_no) {
-		return dao.selectOneRecruitment(session, mem_no);
+	public List<Enterprise> selectOneRecruitment(String key) {
+		return dao.selectOneRecruitment(session, key);
 	}
 
 	@Override
@@ -117,8 +117,13 @@ public class HireServiceImpl implements HireService {
 		return dao.MemberFitList(session, memNo);
 	}
 
-	
+	@Override
+	public List<Enterprise> reviewSearch2(String key) {
+		return dao.reviewSearch2(session, key);
+	}
 
+	
+	
 	
 	
 	

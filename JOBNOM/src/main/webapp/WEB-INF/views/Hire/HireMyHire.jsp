@@ -146,9 +146,7 @@
 
 
 	</div>
-	<script>
-		
-	</script>
+
 
 
 
