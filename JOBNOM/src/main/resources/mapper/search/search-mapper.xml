@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="search">
+	
+	<resultMap type="ent" id="entMap">
+		<result column="ent_name" property="entName"/>
+		<result column="ent_no" property="entNo"/>
+		
+	</resultMap>
 
 	<!--기업 검색결과 조회  -->
 	<select id="selectSearchResult" resultType="map">
@@ -124,7 +130,8 @@
 	</insert>
 	<!--기업 팔로잉 리스트  -->
 	<select id="entFollowCheck" resultType="map">
-		select * from ENTERPRISEFOLLOW
+		select * 
+		from ENTERPRISEFOLLOW
 	
 	</select>
 	<!--기업 언팔로우  -->
@@ -133,4 +140,24 @@
         	WHERE mem_no=#{memNo}
         	AND ent_no=#{entNo}
 	</delete>
+	
+	<!--검색창 자동 완성1-1  -->
+	<select id="selectOneRecruitment"  parameterType="string" resultMap="entMap">
+	 	
+	 	select ent_Name 
+	 	from enterprise
+	 	where lower(ent_Name)
+	 	like '%'||#{key}||'%'
+	
+	</select>
+	<!--검색창 자동 완성 1-2  -->
+	<select id="searchAuto2"  parameterType="string" resultMap="entMap">
+	 	
+	 	select ent_Name 
+	 	from enterprise
+	 	where lower(ent_Name)
+	 	like '%'||#{key}||'%'
+	
+	</select>
+	
 </mapper>

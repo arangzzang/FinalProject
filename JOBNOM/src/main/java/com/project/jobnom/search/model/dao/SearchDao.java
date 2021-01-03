@@ -5,6 +5,8 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.project.jobnom.enterprise.model.vo.Enterprise;
+
 public interface SearchDao {
 	
 	// 기업 검색결과 조회
@@ -32,5 +34,10 @@ public interface SearchDao {
 		
 	// 기업 팔로잉 리스트
 		List<Map>entFollowCheck(SqlSession session);
-
+	
+	// 검색창 자동 완성1-1
+		List<Enterprise> selectOneRecruitment(SqlSession session, String key);
+		
+	// 검색창 자동 완성 1-2
+		List<Enterprise> searchAuto2(SqlSession session, String key);
 }
