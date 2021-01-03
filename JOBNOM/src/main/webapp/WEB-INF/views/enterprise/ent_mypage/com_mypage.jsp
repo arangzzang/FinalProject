@@ -23,7 +23,7 @@
 			<div class="col-sm-10"></div>
 			<div class="col-sm-2">
 				<button class="btn btn_1 btn-success my-2 my-sm-0 text-nowrap" 
-					style="margin:10px;" onclick="applyAd();">공고 올리기</button>
+					style="margin:10px; border:2px solid black;" onclick="applyAd();">공고 올리기</button>
 			</div>
 		</div>
 		<br>

@@ -81,7 +81,7 @@
 							<!-- <input type="password" class="form-control" placeholder="비밀번호 재입력" name="newPw2" id="newPw2"> -->
 	  				</div>
 	  				<div class="input-group mb-3 custom-file">
-						<input type="file" class="custom-file-input editElement" name="Logo" id="Logo">					
+						<input type="file" class="custom-file-input editElement" value="${enterprise.entLogo}" name="Logo" id="Logo">					
 						<label class="custom-file-label" for="customFile">회사로고</label>
 					</div>
 	  				<div class="input-group mb-3">
@@ -166,8 +166,11 @@
 	            	<div class="modal-body">
 						<div class="form-group">
 							<label for="password">비밀번호:</label>
-							<input type="password" class="form-control password" id="lastpw" placeholder="비밀번호를 입력해주세요." name="lastpw" required>
-		                 	<button id="submit">submit</button>
+							<input type="password" class="form-control password" id="lastpw" placeholder="기존 비밀번호를 입력해주세요." name="lastpw" required>
+							<br>
+							<div style="text-align:right;">
+			                 	<button id="submit" class="jmkbtn btn-lg">제출</button>
+							</div>
 						</div>
 	              	</div>
 				</div>
@@ -212,9 +215,10 @@
         }else if(rName==""){
             alert("이름을 작성해주세요.");
             return false;
-        }
+        }else if(newPw.length>7){
 			alert($("#newPw").val());
-			$("#entPw").val($("#newPw").val());			
+			$("#entPw").val($("#newPw").val());			        	
+        }
 		
 	});
 	$("#quit").click(function(){

@@ -13,6 +13,7 @@ import com.project.jobnom.enterprise.model.vo.Banner;
 import com.project.jobnom.enterprise.model.vo.Category2;
 import com.project.jobnom.enterprise.model.vo.Enterprise;
 import com.project.jobnom.enterprise.model.vo.MemberDataC2;
+import com.project.jobnom.enterprise.model.vo.PayData;
 import com.project.jobnom.enterprise.model.vo.Support;
 import com.project.jobnom.resume.model.vo.Resume;
 
@@ -27,7 +28,7 @@ public interface EnterpriseDao {
 	int entMembership(Login log, SqlSession session);
 	int insertBanner(Banner ban, SqlSession session);
 	List<Recruitment> selectRecruitment(SqlSession session,int memNo,int cPage, int numPerpage);
-	int selectRecruitmentCount(SqlSession session);
+	int selectRecruitmentCount(Enterprise ent, SqlSession session);
 	Resume selectResume(SqlSession session , int mem_no);
 	int quit(Enterprise ent, SqlSession session);
 	List<Review> selectReviewList(SqlSession session);
@@ -39,7 +40,7 @@ public interface EnterpriseDao {
 
 	List<MemberDataC2> memDataC2(SqlSession session);
 	List<MemberDataC2> entDataC2(SqlSession session);
-
+	List<PayData> payData(SqlSession session);
 	
 	//헤더 기업 버튼 클릭시 -ys-
 		List<Map> companyList(SqlSession session);

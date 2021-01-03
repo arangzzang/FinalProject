@@ -4,7 +4,7 @@
 <c:set var="path" value="${pageContext.request.contextPath }"/>
 	<div class="row">
 		<div class="col" style="text-align:center">
-	     <img src="${path }/resources/enterprise/logo/3/BBQ_logo.png" width="100">
+	     <img src="${path }/resources/enterprise/logo/${Enterprise.entNo }/${Enterprise.entLogo }" width="100">
 		</div>
 	</div>
 

@@ -17,6 +17,7 @@ import com.project.jobnom.enterprise.model.vo.Category2;
 //github.com/arangzzang/FinalProject.git
 import com.project.jobnom.enterprise.model.vo.Enterprise;
 import com.project.jobnom.enterprise.model.vo.MemberDataC2;
+import com.project.jobnom.enterprise.model.vo.PayData;
 import com.project.jobnom.enterprise.model.vo.Support;
 import com.project.jobnom.resume.model.vo.Resume;
 
@@ -74,9 +75,9 @@ public class EnterpriseServiceImpl implements EnterpriseService {
 	}
 	
 	@Override
-	public int selectRecruitmentCount() {
+	public int selectRecruitmentCount(Enterprise ent) {
 		// TODO Auto-generated method stub
-		return dao.selectRecruitmentCount(session);
+		return dao.selectRecruitmentCount(ent, session);
 	}
 	@Override
 	public Resume selectResume(int memNo) {
@@ -165,6 +166,11 @@ public class EnterpriseServiceImpl implements EnterpriseService {
 	public List<MemberDataC2> entDataC2() {
 		// TODO Auto-generated method stub
 		return dao.entDataC2(session);
+	}
+	@Override
+	public List<PayData> payData() {
+		// TODO Auto-generated method stub
+		return dao.payData(session);
 	}
 	
 }

@@ -125,7 +125,7 @@ public class companyController {
 		session.setAttribute("Enterprise", ent);
 		System.out.println("sdds"+ent.getEntNo());
 		List<Recruitment> res = service.selectRecruitment(ent.getEntNo(),cPage,numPerpage); 
-		int totalData = service.selectRecruitmentCount();
+		int totalData = service.selectRecruitmentCount(ent);
 		
 		System.out.println(res);
 		System.out.println("공고 총갯수 : " + totalData);
@@ -186,30 +186,34 @@ public class companyController {
 	public ModelAndView entEditEnd(HttpSession session, SessionStatus ss, Model m, Enterprise ent, ModelAndView mv, 
 			@RequestParam(value = "Logo", required = false) CommonsMultipartFile Logo) {
 		Login log = (Login) session.getAttribute("commonLogin");
-		
-		
-		
-		String path = session.getServletContext().getRealPath("/resources/enterprise/logo/" + ent.getEntNo());
-		System.out.println(path);
-		String oldName = Logo.getOriginalFilename();
-
-		File dir = new File(path);
-		if (!dir.exists())
-			dir.mkdirs();
-		String ext = oldName.substring(oldName.lastIndexOf(".") + 1);
-		String newName = ent.getEntName() + "_logo." + ext;
-		ent.setEntLogo(newName);
-		try {
-			Logo.transferTo(new File(path + "/" + newName));
-		} catch (IOException e) {
-			e.printStackTrace();
+		System.out.println(Logo.getOriginalFilename());
+		if(Logo.getOriginalFilename().length() == 0) {
+			System.out.println("사진 업로드되지 않음");
+			Enterprise eps = (Enterprise) session.getAttribute("Enterprise");
+			ent.setEntLogo(eps.getEntLogo());
+		}else {
+			String path = session.getServletContext().getRealPath("/resources/enterprise/logo/" + ent.getEntNo());
+			System.out.println(path);
+			String oldName = Logo.getOriginalFilename();
+			
+			File dir = new File(path);
+			if (!dir.exists())
+				dir.mkdirs();
+			String ext = oldName.substring(oldName.lastIndexOf(".") + 1);
+			String newName = ent.getEntName() + "_logo." + ext;
+			ent.setEntLogo(newName);
+			try {
+				Logo.transferTo(new File(path + "/" + newName));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}			
 		}
-		
-		
 		
 		System.out.println("================");
 		System.out.println("pw:" + ent.getEntPw());
-		if (!log.getMemPw().equals(ent.getEntPw())) {
+		System.out.println("logPw:" + log.getMemPw());
+		//encoder.matches(password, user.getPassword());
+		if (!ent.getEntPw().equals(log.getMemPw())) {
 			ent.setEntPw(pwEncoder.encode(ent.getEntPw()));
 		}
 		System.out.println("비번 암호화 후:" + ent.getEntPw());
@@ -229,6 +233,10 @@ public class companyController {
 		mv.addObject("loc", loc);
 		mv.setViewName("common/msg");
 		// session commonlogin 새로운 회원값으로 대체
+		System.out.println("방금 들어간 비번:"+ent.getEntPw());
+		Login newLog = new Login(log.getType(), ent.getEntNo(), ent.getEntEmail(), ent.getEntPw());
+		session.removeAttribute("commonLogin");
+		session.setAttribute("commonLogin", newLog);
 		return mv;
 	}
 

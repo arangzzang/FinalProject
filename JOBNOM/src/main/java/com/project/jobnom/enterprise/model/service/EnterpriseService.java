@@ -11,6 +11,7 @@ import com.project.jobnom.enterprise.model.vo.Banner;
 import com.project.jobnom.enterprise.model.vo.Category2;
 import com.project.jobnom.enterprise.model.vo.Enterprise;
 import com.project.jobnom.enterprise.model.vo.MemberDataC2;
+import com.project.jobnom.enterprise.model.vo.PayData;
 import com.project.jobnom.enterprise.model.vo.Support;
 import com.project.jobnom.resume.model.vo.Resume;
 
@@ -29,7 +30,7 @@ public interface EnterpriseService {
 	int insertBanner(Banner ban);
 
 	List<Recruitment> selectRecruitment(int memNo,int cPage, int numPerpage);
-	int selectRecruitmentCount();
+	int selectRecruitmentCount(Enterprise ent);
 	
 	Resume selectResume(int memNo);
 	
@@ -46,6 +47,7 @@ public interface EnterpriseService {
 
 	List<MemberDataC2> memDataC2();
 	List<MemberDataC2> entDataC2();
+	List<PayData> payData();
 
 	//기업 버튼 클릭시 화면 -ys-
 		List<Map> companyList();
