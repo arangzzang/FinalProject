@@ -23,14 +23,9 @@
 				<!-- 검색 기업 없을시 -->
 				<c:if test="${empty list }">
 					<div class="no_company_card">
-						<h1 class="no_card_tit">
-							찾으시는 기업이 없나요?<br>근무경험이 있으시면, 첫 리뷰를 작성해주세요.
-						</h1>
-						<a
-							href="javascript:desktop_review_form_generator_v1({_fun: 'write@federated_search'});"
-							class="btn_rnd btn_rnd_green">
-							<span class="txt">기업리뷰작성</span>
-						</a>
+						<h2 class="no_card_tit">
+							찾으시는 기업이 없습니다
+						</h2>
 					</div>
 				</c:if>
 			</div>

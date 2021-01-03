@@ -218,8 +218,8 @@ dt .btn_heart2 {
     z-index: 99;
     border: none;
     color: red;
-    border-color: red;;
-    display: none;
+    border-color: red;
+    display: inline-block;
    
 }
 

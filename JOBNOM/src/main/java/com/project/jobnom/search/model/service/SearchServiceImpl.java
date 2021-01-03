@@ -58,4 +58,26 @@ public class SearchServiceImpl implements SearchService {
 		// TODO Auto-generated method stub
 		return dao.ajaxReivewCateList(session,reivewCategory);
 	}
+	
+	//기업 팔로잉
+	@Override
+	public int entFollow(Map param) {
+		// TODO Auto-generated method stub
+		return dao.entFollow(session,param);
+	}
+	
+	
+	//기업 언팔로잉
+	@Override
+	public int entUnFollow(Map param) {
+		// TODO Auto-generated method stub
+		return dao.entUnFollow(session,param);
+	}
+	
+	//기업 팔로잉 리스트
+	@Override
+	public List<Map> entFollowCheck() {
+		// TODO Auto-generated method stub
+		return dao.entFollowCheck(session);
+	}
 }
