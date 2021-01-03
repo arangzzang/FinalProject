@@ -72,6 +72,9 @@ public class EnterpriseController {
 		List<MemberDataC2> memDataC2 = service.memDataC2();
 		System.out.println(memDataC2);
 		m.addAttribute("memDataC2", memDataC2);
+		List<MemberDataC2> entDataC2 = service.entDataC2();
+		System.out.println(entDataC2);
+		m.addAttribute("entDataC2", entDataC2);
 		return "/enterprise/com_charts";
 	}
 	

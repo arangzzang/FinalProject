@@ -38,6 +38,7 @@ public interface EnterpriseDao {
 	Enterprise selectEnterprise (int entNo,SqlSession session);
 
 	List<MemberDataC2> memDataC2(SqlSession session);
+	List<MemberDataC2> entDataC2(SqlSession session);
 
 	
 	//헤더 기업 버튼 클릭시 -ys-
