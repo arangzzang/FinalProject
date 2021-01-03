@@ -7,6 +7,8 @@ import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.project.jobnom.enterprise.model.vo.Enterprise;
+
 @Repository
 public class SearchDaoImpl implements SearchDao {
 	
@@ -72,5 +74,18 @@ public class SearchDaoImpl implements SearchDao {
 	public List<Map> entFollowCheck(SqlSession session) {
 		// TODO Auto-generated method stub
 		return session.selectList("search.entFollowCheck");
+	}
+	
+	//검색창  자동완성1-1
+	@Override
+	public List<Enterprise> selectOneRecruitment(SqlSession session, String key) {
+		// TODO Auto-generated method stub
+		return session.selectList("search.selectOneRecruitment",key);
+	}
+	//검색창 자동 완성 1-2
+	@Override
+	public List<Enterprise> searchAuto2(SqlSession session, String key) {
+		// TODO Auto-generated method stub
+		return session.selectList("search.searchAuto2",key);
 	}
 }

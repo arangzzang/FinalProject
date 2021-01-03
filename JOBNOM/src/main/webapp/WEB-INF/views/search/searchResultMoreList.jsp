@@ -69,6 +69,11 @@
                                                     <i class="fas fa-heart"></i>
                                                 </button>
                                                 </c:when>
+                                                <c:otherwise>
+                                             	<button class="btn_heart1" onclick="javascript:btn_heart3()">
+                                                    <i class="far fa-heart"></i>
+                                                </button>
+                                                </c:otherwise>
                                                 </c:choose>
                                             </dt>
                                             <dd>
@@ -129,16 +134,11 @@
                             </script>
                             <script>
                             	/* <!-- 하트 눌렀을때 변환 스크립트 --> */
-                                /* $(function() {
-                                    $('.btn_heart1').click(function() {
-                                        $(this).hide();
-                                        $(this).next().show();
-                                    });
-                                    $('.btn_heart2').click(function() {
-                                        $(this).hide();
-                                        $(this).prev().show();
-                                    });
-                                }); */
+                                function btn_heart3(){ 
+                            		alert('로그인 후 이용 가능 합니다.'); 
+                            		
+                            	}
+
                             	/* <!-- 하트 눌렀을때 변환 스크립트  끝--> */
                                 
                               /*   <!--평균평점 별점 스크립트  --> */
