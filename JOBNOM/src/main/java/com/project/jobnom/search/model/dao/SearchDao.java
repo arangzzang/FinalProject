@@ -24,5 +24,13 @@ public interface SearchDao {
 	// 기업 더보기 리뷰카테고리별 ajax
 		List<Map> ajaxReivewCateList(SqlSession session, String reivewCategory);
 		
+	// 기업 팔로잉
+		int entFollow(SqlSession session, Map param);
+		
+	// 기업 언팔로잉
+		int entUnFollow(SqlSession session, Map param);
+		
+	// 기업 팔로잉 리스트
+		List<Map>entFollowCheck(SqlSession session);
 
 }

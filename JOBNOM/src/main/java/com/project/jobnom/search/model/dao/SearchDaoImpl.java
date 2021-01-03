@@ -52,4 +52,25 @@ public class SearchDaoImpl implements SearchDao {
 		// TODO Auto-generated method stub
 		return session.selectList("search.ajaxReivewCateList",reivewCategory);
 	}
+	
+	//기업 팔로잉
+	@Override
+	public int entFollow(SqlSession session, Map param) {
+		// TODO Auto-generated method stub
+		return session.insert("search.entFollow",param);
+	}
+	
+	//기업 언팔로잉
+	@Override
+	public int entUnFollow(SqlSession session, Map param) {
+		// TODO Auto-generated method stub
+		return session.delete("search.entUnFollow",param);
+	}
+	
+	//기업 팔로잉 리스트 
+	@Override
+	public List<Map> entFollowCheck(SqlSession session) {
+		// TODO Auto-generated method stub
+		return session.selectList("search.entFollowCheck");
+	}
 }

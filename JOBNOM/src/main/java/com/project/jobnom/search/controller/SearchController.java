@@ -47,6 +47,7 @@ public class SearchController {
 		System.out.println(list);
 		int totalData = service.selectCount(); /* 이거페이지바 */
 		
+		mv.addObject("entFollow",service.entFollowCheck()); // 기업 팔로잉
 		mv.addObject("pageBar", PageBarFactory.getPageBar(totalData, cPage, numPerpage, null,"searchResultMore.do"));
 		mv.addObject("totalData", totalData);
 		mv.addObject("list", list);
@@ -67,4 +68,67 @@ public class SearchController {
 		mv.setViewName("search/ajax/ajaxCategoryList");
 		return mv;
 	}
+	
+	//기업 팔로잉
+	@RequestMapping("/search/entFollow.do")
+	public ModelAndView entFollow(ModelAndView mv, String memNo,String entNo,@RequestParam(value = "cPage", defaultValue = "1") int cPage,
+			@RequestParam(value = "numPerpage", defaultValue = "5") int numPerpage) {
+		// 기업 팔로잉
+		Map param = new HashedMap();
+		param.put("memNo", memNo);
+		param.put("entNo",entNo);
+		
+		int result = service.entFollow(param);
+		
+		// 기업 더보기, 페이징바
+		List<Map> list = service.searchResultMore(cPage,numPerpage);
+		System.out.println(list);
+		int totalData = service.selectCount();
+		
+		if(result> 0 ) {
+			//기업 팔로잉 리스트
+			mv.addObject("entFollow",service.entFollowCheck());
+			mv.setViewName("search/searchResultMoreList");
+			// 기업 더보기, 페이징바
+			mv.addObject("pageBar", PageBarFactory.getPageBar(totalData, cPage, numPerpage, null,"searchResultMore.do"));
+			mv.addObject("totalData", totalData);
+			mv.addObject("list", list);
+		}
+		
+		System.out.println(result);
+		System.out.println(mv.addObject("entFollow",service.entFollowCheck()));
+		
+		return mv;
+		
+	}
+	
+	//기업 언팔로잉
+	@RequestMapping("/search/entUnFollow.do")
+	public ModelAndView entUnFollow(ModelAndView mv,String memNo,String entNo,@RequestParam(value = "cPage", defaultValue = "1") int cPage,
+			@RequestParam(value = "numPerpage", defaultValue = "5") int numPerpage ) {
+		
+		// 기업 언팔로잉
+		Map param = new HashedMap();
+		param.put("memNo", memNo);
+		param.put("entNo",entNo);
+		
+		int result = service.entUnFollow(param);
+		
+		// 기업 더보기, 페이징바
+				List<Map> list = service.searchResultMore(cPage,numPerpage);
+				System.out.println(list);
+				int totalData = service.selectCount();
+		if(result > 0) {
+			//기업 팔로잉 리스트
+			mv.addObject("entFollow",service.entFollowCheck());
+			mv.setViewName("search/searchResultMoreList");
+			// 기업 더보기, 페이징바
+			mv.addObject("pageBar", PageBarFactory.getPageBar(totalData, cPage, numPerpage, null,"searchResultMore.do"));
+			mv.addObject("totalData", totalData);
+			mv.addObject("list", list);
+			
+		}
+		return mv;
+	}
 }
+

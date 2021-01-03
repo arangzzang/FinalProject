@@ -117,4 +117,20 @@
 			,e.ent_category2
 		order by avg desc
 	</select>
+	<!--기업 팔로잉  -->
+	<insert id="entFollow" parameterType="java.util.HashMap">
+		INSERT INTO ENTERPRISEFOLLOW VALUES(SEQ_FAV_NO.NEXTVAL,#{memNo},#{entNo})
+	
+	</insert>
+	<!--기업 팔로잉 리스트  -->
+	<select id="entFollowCheck" resultType="map">
+		select * from ENTERPRISEFOLLOW
+	
+	</select>
+	<!--기업 언팔로우  -->
+	<delete id="entUnFollow" >
+		DELETE ENTERPRISEFOLLOW
+        	WHERE mem_no=#{memNo}
+        	AND ent_no=#{entNo}
+	</delete>
 </mapper>

@@ -23,4 +23,12 @@ public interface SearchService {
 	// 기업 더보기 리뷰 카테고리별 ajax
 	List<Map> ajaxReivewCateList(String reivewCategory);
 
+	//기업 팔로잉
+	int entFollow(Map param);
+	
+	//기업 언팔로잉
+	int entUnFollow(Map param);
+	
+	// 기업 팔로잉 리스트
+	List<Map>entFollowCheck();
 }
