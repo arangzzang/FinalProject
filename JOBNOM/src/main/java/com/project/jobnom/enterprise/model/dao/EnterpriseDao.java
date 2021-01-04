@@ -44,11 +44,10 @@ public interface EnterpriseDao {
 	Resume selectResume(SqlSession session, int mem_no);
 
 	int quit(Enterprise ent, SqlSession session);
-
-	List<Review> selectReviewList(SqlSession session);
-
-	List<Recruitment> selectJoblist(SqlSession session);
-
+	List<Review> selectReviewList(SqlSession session,int entNo,int cPage, int numPerpage);
+	int selectReviewcount(SqlSession session, int entNo);
+	List<Recruitment> selectJoblist(SqlSession session,Map param);
+	int selectJobCount(SqlSession session, int entNo);
 	List<Category2> getC2(SqlSession session);
 
 	Enterprise findEmailEnterprise(Login log, SqlSession session);
@@ -76,7 +75,7 @@ public interface EnterpriseDao {
 	List<Map> companyList6(SqlSession session);
 
 	// 기업명 클릭시 -ys-
-	List<Map> companyInfo(SqlSession session, String entNo);
+	List<Map> companyInfo(SqlSession session, int entNo);
 
 	ApplyAd findAdByNo(SqlSession session, String recNo);
 	

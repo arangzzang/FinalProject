@@ -4,9 +4,11 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.collections.map.HashedMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -57,7 +59,7 @@ public class companyController {
 	//기업 메인 페이지
 
 	@RequestMapping("/enterprise/com_info.do")
-	public ModelAndView companyInfo(ModelAndView mv,@RequestParam String entNo) {
+	public ModelAndView companyInfo(ModelAndView mv,int entNo) {
 		System.out.println(entNo);
 		
 		mv.addObject("list",service.companyInfo(entNo));
@@ -67,30 +69,45 @@ public class companyController {
 	}
 
 	@RequestMapping("/enterprise/com_review.do")
-	public ModelAndView companyReview(ModelAndView mv) { 
-		List<Review> rev=service.selectReviewList();
+	public ModelAndView companyReview(ModelAndView mv,int entNo,@RequestParam(value="cPage",defaultValue="1")
+					int cPage,@RequestParam(value="numPerpage",defaultValue="5") int numPerpage) {
+		List<Review> rev=service.selectReviewList(entNo,cPage,numPerpage);
+		System.out.println("기업번호"+entNo);
+		int totalData = service.selectReviewcount(entNo);
 		
+		mv.addObject("list",service.companyInfo(entNo));
+		mv.addObject("totalData",totalData);
+		mv.addObject("pageBar",EnterprisePageBar.getPageBar3(totalData,entNo,cPage,numPerpage,"com_review.do"));
 		mv.addObject("rev",rev);
 		mv.setViewName("enterprise/com_review");
 		return mv;
 	}
 
 	@RequestMapping("/enterprise/com_interview.do")
-	public ModelAndView companyInterview(ModelAndView mv) {
-		
+	public ModelAndView companyInterview(ModelAndView mv,int entNo) {
+		mv.addObject("list",service.companyInfo(entNo));
 		mv.setViewName("enterprise/com_interview");
 		return mv;
 	}
 
 	@RequestMapping("/enterprise/com_job.do")
-	public ModelAndView companyJob(ModelAndView mv) {
+	public ModelAndView companyJob(ModelAndView mv,@RequestParam(value="cPage",defaultValue="1")
+	int cPage,@RequestParam(value="numPerpage",defaultValue="5") int numPerpage, int entNo, int recNo) {
 		List<Category2> c2 = service.getC2();
-		System.out.println("결과값 : "+c2);
+		System.out.println();
+		Map param = new HashedMap();
+		param.put("entNo", entNo);
+		param.put("recNo",recNo);
 		
-		
-		List<Recruitment> Rec= service.selectJoblist();
+		System.out.println("번호: " + recNo );
+		List<Recruitment> Rec= service.selectJoblist(param);
+		int totalData = service.selectJobCount(entNo);
+		 mv.addObject("totalData",totalData);
+		 mv.addObject("pageBar",EnterprisePageBar.getPageBar4(totalData, cPage, numPerpage, entNo, "com_job.do"));
+		 
 		mv.addObject("c2",c2);
 		mv.addObject("Rec",Rec);
+		mv.addObject("list",service.companyInfo(entNo));
 		mv.setViewName("enterprise/com_job");
 		return mv;
 	}
@@ -131,7 +148,7 @@ public class companyController {
 		System.out.println("공고 총갯수 : " + totalData);
 		System.out.println("페이지 위치 : " + cPage+"페이지 갯수" + numPerpage);
 		mv.addObject("res", res);
-		mv.addObject("pageBar",EnterprisePageBar.getPageBar2(totalData,cPage,numPerpage,ent.getEntNo(),"mypage.do"));
+		mv.addObject("pageBar",EnterprisePageBar.getPageBar2(totalData, ent.getEntNo(), cPage,numPerpage,"mypage.do"));
 		mv.addObject("totalData",totalData);
 		mv.setViewName("/enterprise/ent_mypage/com_mypage");
 		return mv;

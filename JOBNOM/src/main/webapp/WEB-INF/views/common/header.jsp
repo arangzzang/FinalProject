@@ -62,7 +62,7 @@
 								<a class="menus" href="${path }/scout">헤드헌팅</a>
 							</li>
 							<li class="nav-item">
-								<a class="menus" href="">기업 알아보기</a>
+								<a class="menus" href="${path }/enterprise/companyList.do">기업 알아보기</a>
 							</li>
 						</ul>
 					</c:if>

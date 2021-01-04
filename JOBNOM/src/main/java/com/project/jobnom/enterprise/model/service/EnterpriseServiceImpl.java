@@ -14,7 +14,6 @@ import com.project.jobnom.enterprise.model.dao.EnterpriseDao;
 import com.project.jobnom.enterprise.model.vo.ApplyAd;
 import com.project.jobnom.enterprise.model.vo.Banner;
 import com.project.jobnom.enterprise.model.vo.Category2;
-//github.com/arangzzang/FinalProject.git
 import com.project.jobnom.enterprise.model.vo.Enterprise;
 import com.project.jobnom.enterprise.model.vo.Mammoth;
 import com.project.jobnom.enterprise.model.vo.MemberDataC2;
@@ -94,14 +93,26 @@ public class EnterpriseServiceImpl implements EnterpriseService {
 	}
 
 	@Override
-	public List<Review> selectReviewList() {
+	public List<Review> selectReviewList(int entNo,int cPage, int numPerpage) {
 		// TODO Auto-generated method stub
-		return dao.selectReviewList(session);
+		return dao.selectReviewList(session,entNo,cPage,numPerpage);
+	}
+	
+	@Override
+	public int selectReviewcount(int entNo) {
+		// TODO Auto-generated method stub
+		return dao.selectReviewcount(session,entNo);
 	}
 	@Override
-	public List<Recruitment> selectJoblist() {
+	public List<Recruitment> selectJoblist(Map param) {
 		// TODO Auto-generated method stub
-		return dao.selectJoblist(session);
+		return dao.selectJoblist(session,param);
+	}
+	
+	@Override
+	public int selectJobCount(int entNo) {
+		// TODO Auto-generated method stub
+		return dao.selectJobCount(session,entNo);
 	}
 	@Override
 	public List<Category2> getC2() {
@@ -124,8 +135,11 @@ public class EnterpriseServiceImpl implements EnterpriseService {
 		return dao.memDataC2(session);
 	}
 	
-	
-	
+	@Override
+	public List<MemberDataC2> entDataC2() {
+		// TODO Auto-generated method stub
+		return dao.entDataC2(session);
+	}
 	//헤더 기업 버튼 클릭 -ys-
 	@Override
 	public List<Map> companyList() {
@@ -160,14 +174,9 @@ public class EnterpriseServiceImpl implements EnterpriseService {
 	
 	// 기업명 클릭시 이동
 	@Override
-	public List<Map> companyInfo(String entNo) {
+	public List<Map> companyInfo(int entNo) {
 		// TODO Auto-generated method stub
 		return dao.companyInfo(session,entNo);
-	}
-	@Override
-	public List<MemberDataC2> entDataC2() {
-		// TODO Auto-generated method stub
-		return dao.entDataC2(session);
 	}
 	@Override
 	public List<PayData> payData() {

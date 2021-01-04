@@ -18,7 +18,6 @@ import com.project.jobnom.enterprise.model.vo.Worker;
 import com.project.jobnom.resume.model.vo.Resume;
 
 public interface EnterpriseService {
-
 	// 기업 회원가입입력
 	int enrollEnter(Enterprise ent);
 
@@ -44,9 +43,13 @@ public interface EnterpriseService {
 
 	int quit(Enterprise ent);
 
-	List<Review> selectReviewList();
+	List<Review> selectReviewList(int entNo, int cPage, int numPerpage);
 
-	List<Recruitment> selectJoblist();
+	int selectReviewcount(int entNo);
+
+	List<Recruitment> selectJoblist(Map param);
+
+	int selectJobCount(int entNo);
 
 	List<Category2> getC2();
 
@@ -75,13 +78,14 @@ public interface EnterpriseService {
 	List<Map> companyList6();
 
 	// 기업 검색결과 기업명 클릭시
-	List<Map> companyInfo(String entNo);
+	List<Map> companyInfo(int entNo);
 
 	ApplyAd findAdByNo(String recNo);
-	
+
 	int updateApplyAd(ApplyAd ad);
-	
+
 	List<Worker> workerList();
-	
+
 	Mammoth getMammoth(int resno);
+
 }
