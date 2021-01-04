@@ -27,6 +27,7 @@
 		<typeAlias type="com.project.jobnom.enterprise.model.vo.PayData" alias="payData"/>
 		<typeAlias type="com.project.jobnom.Hire.model.vo.Review" alias="review"/>
 		<typeAlias type="com.project.jobnom.enterprise.model.vo.Category2" alias="cat2"/>
-
+		<typeAlias type="com.project.jobnom.enterprise.model.vo.Worker" alias="worker"/>
+		<typeAlias type="com.project.jobnom.enterprise.model.vo.Mammoth" alias="mammoth"/>
 	</typeAliases>
 </configuration>

@@ -59,7 +59,7 @@
 								<a class="menus" href="${path }/com/charts">추세파악</a>
 							</li>
 							<li class="nav-item">
-								<a class="menus" href="">헤드헌팅</a>
+								<a class="menus" href="${path }/scout">헤드헌팅</a>
 							</li>
 							<li class="nav-item">
 								<a class="menus" href="">기업 알아보기</a>

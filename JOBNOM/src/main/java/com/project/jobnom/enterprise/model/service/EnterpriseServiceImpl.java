@@ -16,9 +16,11 @@ import com.project.jobnom.enterprise.model.vo.Banner;
 import com.project.jobnom.enterprise.model.vo.Category2;
 //github.com/arangzzang/FinalProject.git
 import com.project.jobnom.enterprise.model.vo.Enterprise;
+import com.project.jobnom.enterprise.model.vo.Mammoth;
 import com.project.jobnom.enterprise.model.vo.MemberDataC2;
 import com.project.jobnom.enterprise.model.vo.PayData;
 import com.project.jobnom.enterprise.model.vo.Support;
+import com.project.jobnom.enterprise.model.vo.Worker;
 import com.project.jobnom.resume.model.vo.Resume;
 
 @Service
@@ -181,6 +183,16 @@ public class EnterpriseServiceImpl implements EnterpriseService {
 	public int updateApplyAd(ApplyAd ad) {
 		// TODO Auto-generated method stub
 		return dao.updateApplyAd(session, ad);
+	}
+	@Override
+	public List<Worker> workerList() {
+		// TODO Auto-generated method stub
+		return dao.workerList(session);
+	}
+	@Override
+	public Mammoth getMammoth(int resno) {
+		// TODO Auto-generated method stub
+		return dao.getMammoth(session, resno);
 	}
 	
 }

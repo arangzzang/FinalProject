@@ -10,9 +10,11 @@ import com.project.jobnom.enterprise.model.vo.ApplyAd;
 import com.project.jobnom.enterprise.model.vo.Banner;
 import com.project.jobnom.enterprise.model.vo.Category2;
 import com.project.jobnom.enterprise.model.vo.Enterprise;
+import com.project.jobnom.enterprise.model.vo.Mammoth;
 import com.project.jobnom.enterprise.model.vo.MemberDataC2;
 import com.project.jobnom.enterprise.model.vo.PayData;
 import com.project.jobnom.enterprise.model.vo.Support;
+import com.project.jobnom.enterprise.model.vo.Worker;
 import com.project.jobnom.resume.model.vo.Resume;
 
 public interface EnterpriseService {
@@ -78,4 +80,8 @@ public interface EnterpriseService {
 	ApplyAd findAdByNo(String recNo);
 	
 	int updateApplyAd(ApplyAd ad);
+	
+	List<Worker> workerList();
+	
+	Mammoth getMammoth(int resno);
 }

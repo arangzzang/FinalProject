@@ -14,9 +14,11 @@ import com.project.jobnom.enterprise.model.vo.ApplyAd;
 import com.project.jobnom.enterprise.model.vo.Banner;
 import com.project.jobnom.enterprise.model.vo.Category2;
 import com.project.jobnom.enterprise.model.vo.Enterprise;
+import com.project.jobnom.enterprise.model.vo.Mammoth;
 import com.project.jobnom.enterprise.model.vo.MemberDataC2;
 import com.project.jobnom.enterprise.model.vo.PayData;
 import com.project.jobnom.enterprise.model.vo.Support;
+import com.project.jobnom.enterprise.model.vo.Worker;
 import com.project.jobnom.resume.model.vo.Resume;
 
 @Repository
@@ -194,6 +196,18 @@ public class EnterpriseDaoImpl implements EnterpriseDao {
 	public int updateApplyAd(SqlSession session, ApplyAd ad) {
 		// TODO Auto-generated method stub
 		return session.update("enterprise.updateApplyAd", ad);
+	}
+
+	@Override
+	public List<Worker> workerList(SqlSession session) {
+		// TODO Auto-generated method stub
+		return session.selectList("enterprise.workerList");
+	}
+
+	@Override
+	public Mammoth getMammoth(SqlSession session, int resno) {
+		// TODO Auto-generated method stub
+		return session.selectOne("enterprise.getMammoth", resno);
 	}
 	
 	

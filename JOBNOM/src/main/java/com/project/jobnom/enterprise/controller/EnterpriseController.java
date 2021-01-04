@@ -21,8 +21,10 @@ import com.project.jobnom.enterprise.model.service.EnterpriseService;
 import com.project.jobnom.enterprise.model.vo.ApplyAd;
 import com.project.jobnom.enterprise.model.vo.Category2;
 import com.project.jobnom.enterprise.model.vo.Enterprise;
+import com.project.jobnom.enterprise.model.vo.Mammoth;
 import com.project.jobnom.enterprise.model.vo.MemberDataC2;
 import com.project.jobnom.enterprise.model.vo.PayData;
+import com.project.jobnom.enterprise.model.vo.Worker;
 
 @Controller
 public class EnterpriseController {
@@ -142,5 +144,23 @@ public class EnterpriseController {
 		mv.addObject("loc", loc);
 		mv.setViewName("common/msg");
 		return mv;
+	}
+	@RequestMapping("/scout")
+	public String scout(Model m) {
+		List<Worker> workerList = service.workerList();
+		List<Category2> c2 = service.getC2();
+		System.out.println(workerList);
+		m.addAttribute("workerList", workerList);
+		m.addAttribute("c2", c2);
+		return "/enterprise/scout";
+	}
+	@RequestMapping("/getResume")
+	public String getResume(String resNo, Model m) {
+		System.out.println("ajax로 받아온 이력서번호"+ resNo.trim());
+		int resno = Integer.parseInt(resNo.trim());
+		Mammoth mam = service.getMammoth(resno);
+		System.out.println(mam);
+		m.addAttribute("mammoth", mam);
+		return "/enterprise/resume";
 	}
 }
