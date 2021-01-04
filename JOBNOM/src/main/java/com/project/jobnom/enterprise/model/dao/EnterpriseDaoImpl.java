@@ -15,6 +15,7 @@ import com.project.jobnom.enterprise.model.vo.Banner;
 import com.project.jobnom.enterprise.model.vo.Category2;
 import com.project.jobnom.enterprise.model.vo.Enterprise;
 import com.project.jobnom.enterprise.model.vo.MemberDataC2;
+import com.project.jobnom.enterprise.model.vo.PayData;
 import com.project.jobnom.enterprise.model.vo.Support;
 import com.project.jobnom.resume.model.vo.Resume;
 
@@ -89,9 +90,9 @@ public class EnterpriseDaoImpl implements EnterpriseDao {
 	
 
 	@Override
-	public int selectRecruitmentCount(SqlSession session) {
+	public int selectRecruitmentCount(Enterprise ent, SqlSession session) {
 		// TODO Auto-generated method stub
-		return session.selectOne("enterprise.selectRecruitmentCount");
+		return session.selectOne("enterprise.selectRecruitmentCount", ent);
 	}
 
 	@Override
@@ -167,9 +168,9 @@ public class EnterpriseDaoImpl implements EnterpriseDao {
 	}
 
 	@Override
-	public List<Recruitment> selectJoblist(SqlSession session,int entNo) {
+	public List<Recruitment> selectJoblist(SqlSession session,Map param) {
 		// TODO Auto-generated method stub
-		return session.selectList("enterprise.selectJoblist",entNo);
+		return session.selectList("enterprise.selectJoblist",param);
 	}
 	
 
@@ -185,6 +186,29 @@ public class EnterpriseDaoImpl implements EnterpriseDao {
 		return session.selectList("enterprise.getC2");
 	}
 
+	@Override
+	public List<MemberDataC2> entDataC2(SqlSession session) {
+		// TODO Auto-generated method stub
+		return session.selectList("enterprise.entDataC2");
+	}
+
+	@Override
+	public List<PayData> payData(SqlSession session) {
+		// TODO Auto-generated method stub
+		return session.selectList("enterprise.payData");
+	}
+
+	@Override
+	public ApplyAd findAdByNo(SqlSession session, String recNo) {
+		// TODO Auto-generated method stub
+		return session.selectOne("enterprise.findAdByNo", recNo);
+	}
+
+	@Override
+	public int updateApplyAd(SqlSession session, ApplyAd ad) {
+		// TODO Auto-generated method stub
+		return session.update("enterprise.updateApplyAd", ad);
+	}
 	
 	
 	

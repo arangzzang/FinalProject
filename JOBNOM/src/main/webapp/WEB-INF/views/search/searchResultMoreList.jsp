@@ -39,7 +39,7 @@
                     <div class="section_wrap">
                         <div class="section_group">
                             <!-- for문  -->
-                            <c:forEach items="${list}" var="list">
+                            <c:forEach items="${list}" var="list" varStatus="status">
                             <section class="company content_ty3">
                                 <div class="ty3_wrap">
                                     <div class="content_wrap">
@@ -58,12 +58,23 @@
                                         <dl class="content_col2_3 cominfo">
                                             <dt class="us_titb_13">
                                                 <a href="#" onclick="location.href = '${path }/enterprise/com_info.do?entNo=${list.ENT_NO}'">${list.ENT_NAME }</a>
-                                                <button class="btn_heart1">
+                                                <c:choose>
+                                                <c:when test="${not empty commonLogin && commonLogin.memNo ne  entFollow[status.index].MEM_NO && list.ENT_NO ne entFollow[status.index].ENT_NO  }">
+                                                <button class="btn_heart1" onclick="location.href='${path }/search/entFollow.do?memNo=${commonLogin.memNo}&entNo=${list.ENT_NO}'">
                                                     <i class="far fa-heart"></i>
                                                 </button>
-                                                <button class="btn_heart2">
+                                                </c:when>
+                                                <c:when test="${not empty commonLogin && commonLogin.memNo eq  entFollow[status.index].MEM_NO && list.ENT_NO eq entFollow[status.index].ENT_NO  }">
+                                                <button class="btn_heart2" onclick="location.href='${path }/search/entUnFollow.do?memNo=${commonLogin.memNo}&entNo=${list.ENT_NO}'">
                                                     <i class="fas fa-heart"></i>
                                                 </button>
+                                                </c:when>
+                                                <c:otherwise>
+                                             	<button class="btn_heart1" onclick="javascript:btn_heart3()">
+                                                    <i class="far fa-heart"></i>
+                                                </button>
+                                                </c:otherwise>
+                                                </c:choose>
                                             </dt>
                                             <dd>
                                                 <span class="us_txt_1">${list.ENT_CATEGORY1 }</span>
@@ -123,16 +134,11 @@
                             </script>
                             <script>
                             	/* <!-- 하트 눌렀을때 변환 스크립트 --> */
-                                $(function() {
-                                    $('.btn_heart1').click(function() {
-                                        $(this).hide();
-                                        $(this).next().show();
-                                    });
-                                    $('.btn_heart2').click(function() {
-                                        $(this).hide();
-                                        $(this).prev().show();
-                                    });
-                                });
+                                function btn_heart3(){ 
+                            		alert('로그인 후 이용 가능 합니다.'); 
+                            		
+                            	}
+
                             	/* <!-- 하트 눌렀을때 변환 스크립트  끝--> */
                                 
                               /*   <!--평균평점 별점 스크립트  --> */

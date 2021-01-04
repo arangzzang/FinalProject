@@ -39,6 +39,28 @@
 		<result column="cate_no" property="cate_no"/>
 		<result column="count" property="count"/>
 	</resultMap>
+	<resultMap type="payData" id="pdMap">
+		<result column="rec_salary" property="rec_salary"/>
+		<result column="count" property="count"/>
+	</resultMap>
+	<resultMap type="ad" id="adMap">
+		<result column="ent_no" property="ent_no"/>
+		<result column="rec_title" property="rec_title"/>
+		<result column="rec_contents" property="rec_contents"/>
+		<result column="rec_startdate" property="rec_startdate"/>
+		<result column="rec_enddate" property="rec_enddate"/>
+		<result column="rec_salary" property="rec_salary"/>
+		<result column="rec_info" property="rec_info"/>
+		<result column="rec_prefer" property="rec_prefer"/>
+		<result column="rec_welfare" property="rec_welfare"/>
+		<result column="rec_qualification" property="rec_qualification"/>
+		<result column="rec_pepole" property="rec_people"/>
+		<result column="rec_career" property="rec_career"/>
+		<result column="rec_order" property="rec_order"/>
+		<result column="rec_type" property="rec_type"/>
+		<result column="rec_other" property="rec_other"/>
+		<result column="rec_category" property="rec_category"/>
+	</resultMap>
 	<insert id="enrollEnter" parameterType="ent">
 		insert into enterprise values(
 									seq_ent_no.nextval,
@@ -125,7 +147,7 @@
 	</select>
 	
 	<select id="selectRecruitmentCount" resultType="_int">
-		SELECT COUNT(*) FROM RECRUITMENT
+		SELECT COUNT(*) FROM RECRUITMENT WHERE ENT_NO=#{entNo}
 	</select>
 	
 	<delete id="quit">
@@ -141,7 +163,7 @@
 		SELECT COUNT(*) FROM REVIEW WHERE ENT_NO=#{entNo}
 	</select>
 	
-	<select id="selectJoblist" resultType="recruitment" parameterType="_int">
+	<select id="selectJoblist" resultType="map" >
 		SELECT * FROM RECRUITMENT WHERE ENT_NO=#{entNo}
 	</select>
 	
@@ -301,10 +323,13 @@
 				,r.review_welfare
 				,r.review_promotion
 				,r.review_executive
+				,rec.rec_no
 				,round(sum(review_satisfaction+review_welfare+review_promotion+review_executive)/(count(review_satisfaction)+count(review_welfare)+count(review_promotion)+count(r.review_executive)),1) as avg
 			from enterprise e
 			inner join review r
 			on (r.ent_no = e.ent_no)
+			inner join recruitment rec
+			on (e.ent_no = rec.ent_no)
 			where e.ent_no = #{entNo}
 			group by e.ent_no
 					,e.ent_category1
@@ -319,7 +344,36 @@
 					,r.review_welfare
 					,r.review_promotion
 					,r.review_executive
+					,rec.rec_no
 	</select>
 	
 	
+	<select id="entDataC2" resultMap="mdc2Map">
+		SELECT CATE_NO, COUNT(*) AS COUNT FROM RECRUITMENT JOIN CATEGORY2 ON REC_CATEGORY=CATE_NO2 GROUP BY CATE_NO ORDER BY CATE_NO
+	</select>
+	<select id="payData" resultMap="pdMap">
+		SELECT REC_SALARY, COUNT(*) AS COUNT FROM RECRUITMENT JOIN SUPPORT ON RECRUITMENT.REC_NO=SUPPORT.REC_NO WHERE REC_SALARY!='회사내규에 따름' GROUP BY REC_SALARY ORDER BY TO_NUMBER(REC_SALARY)
+	</select>
+	<select id="findAdByNo" resultMap="adMap">
+		SELECT * FROM RECRUITMENT WHERE REC_NO=#{recNo}
+	</select>
+	<update id="updateApplyAd">
+		UPDATE RECRUITMENT SET
+			REC_TITLE=				#{rec_title},
+			REC_CONTENTS=			#{rec_contents},
+			REC_STARTDATE=			#{rec_startdate},
+			REC_ENDDATE=			#{rec_enddate},
+			REC_SALARY=				#{rec_salary},
+			REC_INFO=				#{rec_info},
+			REC_PREFER=				#{rec_prefer},
+			REC_WELFARE=			#{rec_welfare},
+			REC_QUALIFICATION=		#{rec_qualification},
+			REC_PEPOLE=				#{rec_people},
+			REC_CAREER=				#{rec_career},
+			REC_ORDER=				#{rec_order},
+			REC_TYPE=				#{rec_type},
+			REC_OTHER=				#{rec_other},
+			REC_CATEGORY=			#{rec_category}
+		WHERE REC_NO=				#{ent_no}
+	</update>
 </mapper>

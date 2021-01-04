@@ -14,7 +14,6 @@
 
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<br><br><br><br>
 <div class="container">
 	<nav class="navbar navbar-expand-sm navbar-light ">
 		<ul class="navbar-nav">

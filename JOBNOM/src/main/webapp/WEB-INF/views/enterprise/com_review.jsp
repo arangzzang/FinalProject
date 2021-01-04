@@ -63,7 +63,7 @@
 							href="${path }/enterprise/com_interview.do?entNo=${list[0].ENT_NO}"><h2>면접후기</h2></a>
 						</li>
 						<li class="li_menu"><a
-							href="${path }/enterprise/com_job.do?entNo=${list[0].ENT_NO}"><h2>채용</h2></a>
+							href="${path }/enterprise/com_job.do?entNo=${list[0].ENT_NO}&recNo=${list[0].REC_NO}"><h2>채용</h2></a>
 						</li>
 					</ul>
 					<div class="follow_btn">

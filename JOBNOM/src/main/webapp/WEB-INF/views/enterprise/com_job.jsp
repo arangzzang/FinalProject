@@ -62,7 +62,7 @@
 							href="${path }/enterprise/com_interview.do?entNo=${list[0].ENT_NO}"><h2>면접후기</h2></a>
 						</li>
 						<li class="li_menu"><a
-							href="${path }/enterprise/com_job.do?entNo=${list[0].ENT_NO}"><h2>채용</h2></a>
+							href="${path }/enterprise/com_job.do?entNo=${list[0].ENT_NO}&recNo=${list[0].REC_NO}"><h2>채용</h2></a>
 						</li>
 					</ul>
 					<div class="follow_btn">
@@ -76,21 +76,6 @@
 	</div>
 	<div class="job_container">
 		<div class="job_con_box">
-			<div class="job_select">
-				<select class="job_cho" name="jobBox" id="jobBox">
-					<option value="#">직종</option>
-					<option value="1">IT/인터넷</option>
-					<option value="2">서비스</option>
-					<option value="3">교육</option>
-				</select> 
-				<select class="job_detail">
-					<option value="">직종상세</option>
-				</select> 
-				<select class="job_career">
-					<option value="">경력구분</option>
-					<option value="">신입</option>
-				</select>
-			</div>
 			<p class="job_result">
 				좋은 채용 공고 <strong>${totalData }</strong>
 			</p>
@@ -98,23 +83,23 @@
 		<div class="job_items">
 			<c:forEach items="${Rec }" var="Rec">
 				<div class="job_item_wrap">
-					<a href="${path }/Hire/announcementPage2.do?anoNum=${anoNum}">
+					<a href="#" onclick="location.href = '${path }/Hire/annoHomeDetailMove.do?recNo=${Rec.REC_NO}'">
 						<span class="job_dday"><fmt:formatDate
-								value="${Rec.rec_enddate }" pattern="yyyy.MM.dd" /></span>
+								value="${Rec.REC_ENDDATE }" pattern="yyyy.MM.dd" /></span>
 						<div class="info_box">
 							<h2 class="tit">
-								<c:out value="${Rec.rec_title}" />
+								<c:out value="${Rec.REC_TITLE}" />
 							</h2>
 							<c:forEach items="${c2 }" var="c">
 								<p class="duty">
-									<c:set var="ctg" value="${Rec.rec_category }" />
+									<c:set var="ctg" value="${Rec.REC_CATEGORY }" />
 									<c:if test="${c.cate_no2 == ctg }">
 										<c:out value="${c.jobs2 }" />
 									</c:if>
 								</p>
 							</c:forEach>
 							<div class="label">
-								<span class="tags "><c:out value="${Rec.rec_type }" /></span>
+								<span class="tags "><c:out value="${Rec.REC_TYPE }" /></span>
 							</div>
 						</div>
 					</a>
@@ -137,12 +122,4 @@
 	<div id="pageBar" style="margin-top: 20px;">${pageBar }</div>
 </section>
 
-<script>
-	function(){
-		const rc=${Rec};
-		if(${Rec}==null){
-			alert("공고가 없습니다.");
-		}
-	}
-</script>
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />
