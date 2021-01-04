@@ -183,6 +183,18 @@ public class EnterpriseDaoImpl implements EnterpriseDao {
 		// TODO Auto-generated method stub
 		return session.selectList("enterprise.payData");
 	}
+
+	@Override
+	public ApplyAd findAdByNo(SqlSession session, String recNo) {
+		// TODO Auto-generated method stub
+		return session.selectOne("enterprise.findAdByNo", recNo);
+	}
+
+	@Override
+	public int updateApplyAd(SqlSession session, ApplyAd ad) {
+		// TODO Auto-generated method stub
+		return session.update("enterprise.updateApplyAd", ad);
+	}
 	
 	
 	

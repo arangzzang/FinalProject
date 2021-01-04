@@ -20,6 +20,9 @@
 		color:#fff;
 		border-color:black;
 	}
+	h4 {
+ 	 font-family: Arial, Helvetica, sans-serif;
+	}
 	
 </style>
 <jsp:include page="/WEB-INF/views/common/header.jsp">
@@ -35,22 +38,29 @@
 
  <div class="container" style="text-align:center;">
     <c:if test="${Enterprise.entMembership eq '일반회원' }">
-       <h4>혜택</h4>
+       <h4>가입혜택</h4>
        <div class="row" style="margin:auto; width:50%">
           <div class="col membership_benefits">
-             <h6>일반회원</h6>
-             <ul class="text-nowrap">
-                <li>기업 리뷰 조회</li>
-                <li>면접 후기 조회</li>
+             <h6><span class="fab fa-black-tie"></span>일반회원</h6>
+             <ul class="text-nowrap list-group">
+                <li class="list-group-item" style="border:none;">
+	                <span class="far fa-chart-bar">
+	                	기업 리뷰 조회
+	               	</span>
+                <li class="list-group-item" style="border:none;">
+                	<span class="far fa-address-card">
+                		면접 후기 조회
+               		</span>
+           		</li>
              </ul>
           </div>
           <div class="col membership_benefits">
-             <h6>기업회원</h6>
-             <ul>
-                <li>배너등록</li>
+             <h6><span class="fas fa-building"></span>기업회원</h6>
+             <ul class="text-nowrap list-group">
+                <li class="list-group-item fas fa-bullhorn" style="border:none;">배너등록</li>
              </ul>
           </div>
-       </div>
+       </div><br>
 
 	 <form method="post" action="${path }/kakaoPay">
 	    <button class="jmkbtn btn-lg">카카오페이로 멤버십 가입</button>

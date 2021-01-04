@@ -172,5 +172,15 @@ public class EnterpriseServiceImpl implements EnterpriseService {
 		// TODO Auto-generated method stub
 		return dao.payData(session);
 	}
+	@Override
+	public ApplyAd findAdByNo(String recNo) {
+		// TODO Auto-generated method stub
+		return dao.findAdByNo(session, recNo);
+	}
+	@Override
+	public int updateApplyAd(ApplyAd ad) {
+		// TODO Auto-generated method stub
+		return dao.updateApplyAd(session, ad);
+	}
 	
 }

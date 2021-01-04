@@ -43,6 +43,24 @@
 		<result column="rec_salary" property="rec_salary"/>
 		<result column="count" property="count"/>
 	</resultMap>
+	<resultMap type="ad" id="adMap">
+		<result column="ent_no" property="ent_no"/>
+		<result column="rec_title" property="rec_title"/>
+		<result column="rec_contents" property="rec_contents"/>
+		<result column="rec_startdate" property="rec_startdate"/>
+		<result column="rec_enddate" property="rec_enddate"/>
+		<result column="rec_salary" property="rec_salary"/>
+		<result column="rec_info" property="rec_info"/>
+		<result column="rec_prefer" property="rec_prefer"/>
+		<result column="rec_welfare" property="rec_welfare"/>
+		<result column="rec_qualification" property="rec_qualification"/>
+		<result column="rec_pepole" property="rec_people"/>
+		<result column="rec_career" property="rec_career"/>
+		<result column="rec_order" property="rec_order"/>
+		<result column="rec_type" property="rec_type"/>
+		<result column="rec_other" property="rec_other"/>
+		<result column="rec_category" property="rec_category"/>
+	</resultMap>
 	<insert id="enrollEnter" parameterType="ent">
 		insert into enterprise values(
 									seq_ent_no.nextval,
@@ -313,4 +331,26 @@
 	<select id="payData" resultMap="pdMap">
 		SELECT REC_SALARY, COUNT(*) AS COUNT FROM RECRUITMENT JOIN SUPPORT ON RECRUITMENT.REC_NO=SUPPORT.REC_NO WHERE REC_SALARY!='회사내규에 따름' GROUP BY REC_SALARY ORDER BY TO_NUMBER(REC_SALARY)
 	</select>
+	<select id="findAdByNo" resultMap="adMap">
+		SELECT * FROM RECRUITMENT WHERE REC_NO=#{recNo}
+	</select>
+	<update id="updateApplyAd">
+		UPDATE RECRUITMENT SET
+			REC_TITLE=				#{rec_title},
+			REC_CONTENTS=			#{rec_contents},
+			REC_STARTDATE=			#{rec_startdate},
+			REC_ENDDATE=			#{rec_enddate},
+			REC_SALARY=				#{rec_salary},
+			REC_INFO=				#{rec_info},
+			REC_PREFER=				#{rec_prefer},
+			REC_WELFARE=			#{rec_welfare},
+			REC_QUALIFICATION=		#{rec_qualification},
+			REC_PEPOLE=				#{rec_people},
+			REC_CAREER=				#{rec_career},
+			REC_ORDER=				#{rec_order},
+			REC_TYPE=				#{rec_type},
+			REC_OTHER=				#{rec_other},
+			REC_CATEGORY=			#{rec_category}
+		WHERE REC_NO=				#{ent_no}
+	</update>
 </mapper>

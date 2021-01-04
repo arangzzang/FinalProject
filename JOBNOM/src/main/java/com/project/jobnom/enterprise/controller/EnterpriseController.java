@@ -18,6 +18,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.project.jobnom.common.model.vo.Login;
 import com.project.jobnom.enterprise.model.service.EnterpriseService;
+import com.project.jobnom.enterprise.model.vo.ApplyAd;
+import com.project.jobnom.enterprise.model.vo.Category2;
 import com.project.jobnom.enterprise.model.vo.Enterprise;
 import com.project.jobnom.enterprise.model.vo.MemberDataC2;
 import com.project.jobnom.enterprise.model.vo.PayData;
@@ -108,5 +110,37 @@ public class EnterpriseController {
 		 m.addAttribute("payArr", payArr);
 		 return "/enterprise/com_charts";
 	}
-
+	@RequestMapping("/editAd")
+	public String editAd(String recNo, Model m) {
+		m.addAttribute("rec_no", recNo);
+		System.out.println(recNo);
+		ApplyAd applyAd = (ApplyAd)service.findAdByNo(recNo);
+		List<Category2> c2 = service.getC2();
+		System.out.println(c2);
+		System.out.println(applyAd);
+		m.addAttribute("applyAd", applyAd);
+		m.addAttribute("c2", c2);
+		return "/enterprise/ent_mypage/editAd";
+	}
+	@RequestMapping("/editAd_end")
+	public ModelAndView editAdEnd(ApplyAd ad, ModelAndView mv) {
+		String msg = "";
+		String loc = "";
+		if (ad.getRec_salary() == null) {
+			ad.setRec_salary("회사내규에 따름");
+		}
+		int result = service.updateApplyAd(ad);
+		if(result>0) {
+			msg="공고 수정 완료";
+			loc="com/mypage.do";
+		}else {
+			msg="공고 수정 실패";
+			loc="/com/mypage.do";
+		}
+		System.out.println(ad);
+		mv.addObject("msg", msg);
+		mv.addObject("loc", loc);
+		mv.setViewName("common/msg");
+		return mv;
+	}
 }

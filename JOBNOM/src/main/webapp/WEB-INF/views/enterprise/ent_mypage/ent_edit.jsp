@@ -216,7 +216,7 @@
             alert("이름을 작성해주세요.");
             return false;
         }else if(newPw.length>7){
-			alert($("#newPw").val());
+			/* alert($("#newPw").val()); */
 			$("#entPw").val($("#newPw").val());			        	
         }
 		
