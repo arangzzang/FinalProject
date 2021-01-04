@@ -91,14 +91,26 @@ public class EnterpriseServiceImpl implements EnterpriseService {
 	}
 
 	@Override
-	public List<Review> selectReviewList() {
+	public List<Review> selectReviewList(int entNo,int cPage, int numPerpage) {
 		// TODO Auto-generated method stub
-		return dao.selectReviewList(session);
+		return dao.selectReviewList(session,entNo,cPage,numPerpage);
+	}
+	
+	@Override
+	public int selectReviewcount(int entNo) {
+		// TODO Auto-generated method stub
+		return dao.selectReviewcount(session,entNo);
 	}
 	@Override
-	public List<Recruitment> selectJoblist() {
+	public List<Recruitment> selectJoblist(int entNo) {
 		// TODO Auto-generated method stub
-		return dao.selectJoblist(session);
+		return dao.selectJoblist(session,entNo);
+	}
+	
+	@Override
+	public int selectJobCount(int entNo) {
+		// TODO Auto-generated method stub
+		return dao.selectJobCount(session,entNo);
 	}
 	@Override
 	public List<Category2> getC2() {
@@ -157,8 +169,9 @@ public class EnterpriseServiceImpl implements EnterpriseService {
 	
 	// 기업명 클릭시 이동
 	@Override
-	public List<Map> companyInfo(String entNo) {
+	public List<Map> companyInfo(int entNo) {
 		// TODO Auto-generated method stub
 		return dao.companyInfo(session,entNo);
 	}
+	
 }

@@ -35,9 +35,10 @@ public interface EnterpriseService {
 	
 	int quit(Enterprise ent);
 	
-	List<Review> selectReviewList();
-	List<Recruitment> selectJoblist();
-	
+	List<Review> selectReviewList(int entNo ,int cPage, int numPerpage);
+	int selectReviewcount(int entNo);
+	List<Recruitment> selectJoblist(int entNo);
+	int selectJobCount(int entNo);
 	List<Category2> getC2();
 
 	Enterprise findEmailEnterprise(Login log);
@@ -54,6 +55,7 @@ public interface EnterpriseService {
 		List<Map> companyList5();
 		List<Map> companyList6();
 	//기업 검색결과 기업명 클릭시 
-	List<Map> companyInfo(String entNo);
+	List<Map> companyInfo(int entNo);
+	
 }
 

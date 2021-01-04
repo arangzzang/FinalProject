@@ -147,22 +147,36 @@ public class EnterpriseDaoImpl implements EnterpriseDao {
 	
 	//기업명 클릭시 이동
 	@Override
-	public List<Map> companyInfo(SqlSession session, String entNo) {
+	public List<Map> companyInfo(SqlSession session, int entNo) {
 		// TODO Auto-generated method stub
 		return session.selectList("enterprise.companyInfo",entNo);
 	}
 
 
 	@Override
-	public List<Review> selectReviewList(SqlSession session) {
+	public List<Review> selectReviewList(SqlSession session,int entNo,int cPage, int numPerpage) {
 		// TODO Auto-generated method stub
-		return session.selectList("enterprise.selectReviewList");
+		return session.selectList("enterprise.selectReviewList",entNo,new RowBounds((cPage-1)*numPerpage,numPerpage));
+	}
+	
+
+	@Override
+	public int selectReviewcount(SqlSession session,int entNo) {
+		// TODO Auto-generated method stub
+		return session.selectOne("enterprise.selectReviewcount",entNo);
 	}
 
 	@Override
-	public List<Recruitment> selectJoblist(SqlSession session) {
+	public List<Recruitment> selectJoblist(SqlSession session,int entNo) {
 		// TODO Auto-generated method stub
-		return session.selectList("enterprise.selectJoblist");
+		return session.selectList("enterprise.selectJoblist",entNo);
+	}
+	
+
+	@Override
+	public int selectJobCount(SqlSession session, int entNo) {
+		// TODO Auto-generated method stub
+		return session.selectOne("enterprise.selectJobCount",entNo);
 	}
 
 	@Override
@@ -170,6 +184,7 @@ public class EnterpriseDaoImpl implements EnterpriseDao {
 		// TODO Auto-generated method stub
 		return session.selectList("enterprise.getC2");
 	}
+
 	
 	
 	
