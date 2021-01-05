@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.project.jobnom.Hire.model.dao.annoDao;
+import com.project.jobnom.Hire.model.vo.Interestedrcruitment;
 import com.project.jobnom.Hire.model.vo.Recruitment;
 @Service
 public class annoServiceImpl implements annoService {
@@ -45,6 +46,12 @@ public class annoServiceImpl implements annoService {
 	@Override
 	public List<Recruitment> annoHomeDetailMove(int recNo, int cPage, int numPerPage) {
 		return dao.annoHomeDetailMove(session, recNo, cPage, numPerPage);
+	}
+
+
+	@Override
+	public List<Interestedrcruitment> selectIn(int memNo) {
+		return dao.selectIn(session,memNo);
 	} 
 	
 	

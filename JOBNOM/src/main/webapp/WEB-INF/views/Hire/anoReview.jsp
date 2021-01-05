@@ -21,17 +21,20 @@
 
         <c:forEach items="${r }" var="r">
              <!--리뷰클릭시 나오는 화면  -->
-         <div class="clickReview" style=" width: 555px; height:450px; padding: 20px;"> 
+         <div class="clickReview" style=" width: 555px; height:600px; padding: 20px; "> 
          	<div class="clickReviewTitleBox">
          	<div class="clickReviewTitleBoxFlax">
-         		<div class="clickReviewName" style="width: 100px; margin-left: 10px">이름 : </div>  <br><br>
+         		<div class="clickReviewName" style="width: 100px; margin-left: 10px">-이름 :<br> </div> <br>
          	</div>
+         	<div>인하준</div> <br>
          	<div class="clickReviewTitleBoxFlax">
-         		<div class="clickReviewPromotion" style="width: 100px; margin-left: 10px">제목 :</div><div>${r.REVIEW_TITLE }${r[0].REVIEW_TITLE }</div><br><br> 
+         		<div class="clickReviewPromotion" style="width: 100px; margin-left: 10px">-제목 :<br></div><br>
          	</div> 
+         	<div>${r.REVIEW_TITLE }${r[0].REVIEW_TITLE }</div><br>
          	<div class="clickReviewTitleBoxFlax"> 
-         		<div class="clickReviewPromotion" style="width: 100px; margin-left: 10px">내용 :</div><div>${r.REVIEW_CONTENTS }${r[0].REVIEW_CONTENTS }</div><br><br>
+         		<div class="clickReviewPromotion" style="width: 100px; margin-left: 10px">-내용 :<br> </div><br>
          	</div>
+         	<div>${r.REVIEW_CONTENTS }${r[0].REVIEW_CONTENTS }</div><br>
          		<div class="q" style="display: flex;">
 	         		<div class="clickReviewPromotion" style="width: 230px;">사내 만족도 평점 : (${r.REVIEW_SATISFACTION }${r[0].REVIEW_SATISFACTION })</div>
 	         			  

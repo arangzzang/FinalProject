@@ -6,10 +6,8 @@
 <%@ page import="java.util.*,com.project.jobnom.Hire.model.vo.Review" %>
 <link rel="stylesheet" href="../resources/css/Hire/announcementPage.css">
 <c:set var="path" value="${pageContext.request.contextPath }" />
-<%-- <%
-List<Review> r=(List)request.getAttribute("r");
-%> --%>
-<section id="content" style="margin-top: -158px; height: 1100px; padding-top: 160px; ">
+
+<section id="content" style="margin-top: -158px; padding-top: 160px; ">
 
 <div class="annoDetailAll" >
                   
@@ -34,15 +32,22 @@ List<Review> r=(List)request.getAttribute("r");
                                  <a href="#">
                                     <div class="annoDetailTitleFont" >${r[0].ENT_NAME }</div>
                                 </a>
-                                <p>${commonLogin.memNo}</p>
+                               
 							
                             </div>
                         </div>
+                        
+                        <form action="${path }/Hire/apply.do" onsubmit="return fn_apply();" method="post" >
+                        <input type="hidden" name="memNo" value="${commonLogin.memNo}">
+                        <input type="hidden" name="recNo" value="${r[0].REC_NO}">
+                        <input type="hidden" name="entName" value="${r[0].ENT_NAME }">
+                        <input class="apply"  type="submit" value="지원하기">
+                        </form>
+                       
                      
-                      <button class="apply" onclick="location.href='${path }/Hire/apply.do?memNo=${commonLogin.memNo}&recNo=${r[0].REC_NO}&entName=${r[0].ENT_NAME }'" >지원하기
-                       </button>
-                       <c:if test="${commonLogin !=null && commonLogin.memNo !=  r[0].MEM_NO }">
-                      
+                      <%-- <button class="apply"  onclick="location.href='${path }/Hire/apply.do?memNo=${commonLogin.memNo}&recNo=${r[0].REC_NO}&entName=${r[0].ENT_NAME } ' " >지원하기
+                       </button> --%>
+                       <c:if  test="${commonLogin !=null && commonLogin.memNo !=  r[0].MEM_NO }">
                         <button id="favoritesBox" onclick="fn_toggle();">
                             <img id="announcementFavorites2" src="${path }/resources/image/Hire/pngwing.png" />
                         </button>
@@ -108,7 +113,16 @@ List<Review> r=(List)request.getAttribute("r");
                                 <div class="annoDetailInfoAll">
                                     <div class="annoDetailInfoLogo"></div>
                                     <div class="logoRight">연봉</div>
-                                      <div>${r[0].REC_SALARY} 만원</div>
+                                    
+                <c:set var="abc" value="${r[0].REC_SALARY}" />
+                <c:choose>
+                    <c:when test="${abc == '회사내규에따름'}"> 
+				        <c:out value="회사내규에따름"></c:out>
+				    </c:when>
+				<c:otherwise>
+				<fmt:formatNumber type="number" maxFractionDigits="3" value="${r[0].REC_SALARY}" /> 만원
+				</c:otherwise>
+				</c:choose>
                                 </div>
                                
 
@@ -153,12 +167,7 @@ List<Review> r=(List)request.getAttribute("r");
 
                                 <div>
                                     <div class="InformationList">[기타]</div>
-                                    <div class="otherThan">
-                                        - 근무형태 : 정규직 (수습기간 3개월 후 정규직 전환 면접)<br>
-                                        - 근무시간 : 주5일 (월~금)<br>
-                                        - 근무제도 : 자율출퇴근제도, 재택근무제도<br>
-                                        - 마이리얼트립 근무제도에 대한 팀원 인터뷰 : http://naver.me/5OFbzfeP<br>
-                                        - 근무지 : 서울시 서초구 강남대로 327 대륭서초타워 18층 마이리얼트립<br>
+                                    <div class="otherThan">${r[0].REC_OTHER} 
                                     </div>
                                 </div>
                              
@@ -357,18 +366,7 @@ List<Review> r=(List)request.getAttribute("r");
 
 </script> 
 
-		<script>
-		$(".apply").click(function(){
-			if(${commonLogin == null}){
-      			alert("로그인 회원만 이용가능합니다");	
-      			 return false; 
-			}else{
-				alert("지원완료");
-			}
-		    
-		});
-		</script>
-		
+	
 		
 		<script>
 
@@ -384,7 +382,7 @@ List<Review> r=(List)request.getAttribute("r");
         }else
         {
             announcementFavorites2.src="${path }/resources/image/Hire/pngwing2.png";
-           	location.href="${path }/Hire/favorites.do?memNo=${commonLogin.memNo}&recNo=${r[0].REC_NO}";
+           	location.href="${path }/Hire/favorites.do?memNo=${commonLogin.memNo}&recNo=${r[0].REC_NO}&anoNum=${r[0].REC_CATEGORY}";
         	alert("즐겨찾기 완료");
         }
         
@@ -392,5 +390,18 @@ List<Review> r=(List)request.getAttribute("r");
     };
 		  
 </script>
+
+ <script>
+                        function fn_apply(){
+                        	if($('input[name=memNo]').val()===""){
+                      			alert("로그인 회원만 이용가능합니다");	
+                      			 return false; 
+                			}else{
+                				alert("지원완료");
+                			}
+                        	
+                        }
+                        </script>
+                        
 
 

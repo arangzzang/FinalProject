@@ -2,8 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="anno">
 <select id="anoList" resultType="com.project.jobnom.Hire.model.vo.Recruitment">
-     SELECT DISTINCT E.*,ENT_NAME ,REP_NAME, REP_PHONE,ENT_LOGO,OPEN_CHECK, T.MEM_NO
-         FROM RECRUITMENT E 
+      SELECT DISTINCT E.REC_NO,E.ENT_NO, REC_TITLE, REC_CONTENTS,REC_OTHER, REC_STARTDATE, REC_ENDDATE, REC_INFO,REC_PREFER, REC_WELFARE, REC_QUALIFICATION, REC_PEPOLE, REC_CAREER, REC_ORDER,
+                 REC_TYPE, REC_CATEGORY,ENT_NAME,T.MEM_NO,OPEN_CHECK, REP_NAME, REP_PHONE,ENT_LOGO, REPLACE(REC_SALARY,' ')  AS REC_SALARY
+			FROM RECRUITMENT E
           LEFT JOIN REVIEW S ON (S.ENT_NO = E.ENT_NO)
              LEFT JOIN INTERESTEDRECRUITMENT T ON(T.REC_NO = E.REC_NO)
          LEFT JOIN ENTERPRISE R ON (R.ENT_NO = E.ENT_NO)
@@ -13,8 +14,9 @@
    </select>
    
    <select id="anoList2" resultType="com.project.jobnom.Hire.model.vo.Recruitment" parameterType="_int">
-         SELECT DISTINCT E.*,ENT_NAME ,REP_NAME, REP_PHONE,ENT_LOGO,OPEN_CHECK,T.MEM_NO
-         FROM RECRUITMENT E 
+          SELECT DISTINCT E.REC_NO,E.ENT_NO, REC_TITLE, E.REC_OTHER,T.MEM_NO, REC_CONTENTS, REC_STARTDATE, REC_ENDDATE, REC_INFO,REC_PREFER, REC_WELFARE, REC_QUALIFICATION, REC_PEPOLE, REC_CAREER, REC_ORDER,
+                 REC_TYPE, REC_CATEGORY,ENT_NAME,OPEN_CHECK, REP_NAME, REP_PHONE,ENT_LOGO, REPLACE(REC_SALARY,' ')  AS REC_SALARY
+			FROM RECRUITMENT E 
           LEFT JOIN REVIEW S ON (S.ENT_NO = E.ENT_NO)
              LEFT JOIN INTERESTEDRECRUITMENT T ON(T.REC_NO = E.REC_NO)
          LEFT JOIN ENTERPRISE R ON (R.ENT_NO = E.ENT_NO)
@@ -23,6 +25,15 @@
            WHERE REC_CATEGORY=#{anoNum}
             ORDER BY REC_STARTDATE ASC
    </select>
+   
+   <select id="selectIn" parameterType="_int" resultType="com.project.jobnom.Hire.model.vo.Interestedrcruitment">
+      SELECT DISTINCT REC_NO, MEM_NO, OPEN_CHECK FROM INTERESTEDRECRUITMENT
+
+              WHERE MEM_NO=#{memNo}
+
+   	
+   </select>
+   
    
    <select id="annCarrer" resultType="com.project.jobnom.Hire.model.vo.Recruitment" parameterType="map">
       SELECT E.*,ENT_NAME ,REC_CATEGORY,
@@ -48,8 +59,9 @@
    </select>  
    
    <select id="annoHomeDetailMove" parameterType="_int" resultType="com.project.jobnom.Hire.model.vo.Recruitment">
-       SELECT DISTINCT E.*,ENT_NAME ,REP_NAME, REP_PHONE,ENT_LOGO,OPEN_CHECK,T.MEM_NO
-         FROM RECRUITMENT E 
+      SELECT DISTINCT E.REC_NO,E.ENT_NO, REC_TITLE,REC_OTHER, REC_CONTENTS, REC_STARTDATE, REC_ENDDATE, REC_INFO,REC_PREFER, REC_WELFARE, REC_QUALIFICATION, REC_PEPOLE, REC_CAREER, REC_ORDER,
+                 REC_TYPE, REC_CATEGORY,ENT_NAME,T.MEM_NO,OPEN_CHECK, REP_NAME, REP_PHONE,ENT_LOGO, REPLACE(REC_SALARY,' ')  AS REC_SALARY
+			FROM RECRUITMENT E 
           LEFT JOIN REVIEW S ON (S.ENT_NO = E.ENT_NO)
              LEFT JOIN INTERESTEDRECRUITMENT T ON(T.REC_NO = E.REC_NO)
          LEFT JOIN ENTERPRISE R ON (R.ENT_NO = E.ENT_NO)

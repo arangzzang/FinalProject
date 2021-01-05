@@ -185,8 +185,10 @@ public class MemberController {
 	//리뷰작성하기 (Ajax)
 	@RequestMapping("/member/insertReview.do")
 	public String insertReview(int memNo, Model m)  throws IOException {
-		 Member mem = service.mypageView(memNo);
+		System.out.println("되고있나");
+		 List<Map> mem = HireService.mypageView();
 		 m.addAttribute("mem",mem);
+		 System.out.println("테스트 입니다"+mem);
 		 return "Hire/insertReview";
 	}
 	//면접후기작성 (Ajax)
@@ -207,12 +209,10 @@ public class MemberController {
 	@RequestMapping("/member/supporting")
 	public String supportingCompany(String memNo, Model m,@RequestParam(value = "cPage", defaultValue = "1") int cPage,
 			@RequestParam(value = "numPerpage", defaultValue = "5") int numPerpage) throws IOException {
-		 //Member mem = service.mypageView(memNo);
-		 //m.addAttribute("mem",mem);
 		
 		List<Support> support = HireService.HireMyHire(memNo, cPage, numPerpage); //지원한 공고 정보검색
 		int totalDataSu = HireService.selectSuppertCount(memNo); // 이건 지원한 공고 갯수
-		////////////////////////////////
+
 		m.addAttribute("support",support);
 		m.addAttribute("totalDataSu",totalDataSu);
 		

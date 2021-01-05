@@ -12,6 +12,7 @@ import com.project.jobnom.Hire.model.vo.Interestedrcruitment;
 import com.project.jobnom.Hire.model.vo.Recruitment;
 import com.project.jobnom.Hire.model.vo.Support;
 import com.project.jobnom.enterprise.model.vo.Enterprise;
+import com.project.jobnom.member.model.vo.Member;
 @Service
 public class HireServiceImpl implements HireService {
 
@@ -120,6 +121,26 @@ public class HireServiceImpl implements HireService {
 	@Override
 	public List<Enterprise> reviewSearch2(String key) {
 		return dao.reviewSearch2(session, key);
+	}
+
+	@Override
+	public Enterprise reviewSearch3(String key) {
+		return dao.reviewSearch3(session,key);
+	}
+
+	@Override
+	public List<Map> mypageView() {
+		return dao.mypageView(session);
+	}
+
+	@Override
+	public List<Recruitment> swiper(String rec_no) {
+		return dao.swiper(session, rec_no);
+	}
+
+	@Override
+	public List<Member> membercate2(String rec_category) {
+		return dao.membercate2(session, rec_category);
 	}
 
 	

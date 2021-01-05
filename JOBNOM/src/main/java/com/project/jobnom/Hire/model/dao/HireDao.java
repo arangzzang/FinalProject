@@ -9,6 +9,7 @@ import com.project.jobnom.Hire.model.vo.Interestedrcruitment;
 import com.project.jobnom.Hire.model.vo.Recruitment;
 import com.project.jobnom.Hire.model.vo.Support;
 import com.project.jobnom.enterprise.model.vo.Enterprise;
+import com.project.jobnom.member.model.vo.Member;
 
 public interface HireDao {
 	int insertReview(SqlSession session, Map ModelMap);
@@ -57,4 +58,12 @@ public interface HireDao {
 	List<Map> MemberFitList(SqlSession session, String memNo);
 
 	List<Enterprise> reviewSearch2(SqlSession session,String key);
+
+	Enterprise reviewSearch3(SqlSession session,String key);
+	
+	List<Map> mypageView(SqlSession session);
+	
+	List<Recruitment> swiper(SqlSession session, String rec_no);
+	
+	List<Member> membercate2(SqlSession session, String rec_category);
 }
