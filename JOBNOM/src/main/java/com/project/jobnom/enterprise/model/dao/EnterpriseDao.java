@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import com.project.jobnom.Hire.model.vo.Recruitment;
 import com.project.jobnom.Hire.model.vo.Review;
 import com.project.jobnom.common.model.vo.Login;
+import com.project.jobnom.enterprise.model.vo.Applicant;
 import com.project.jobnom.enterprise.model.vo.ApplyAd;
 import com.project.jobnom.enterprise.model.vo.Banner;
 import com.project.jobnom.enterprise.model.vo.Category2;
@@ -75,7 +76,7 @@ public interface EnterpriseDao {
 	List<Map> companyList6(SqlSession session);
 
 	// 기업명 클릭시 -ys-
-	List<Map> companyInfo(SqlSession session, int entNo);
+	List<Map> companyInfo(SqlSession session,int entNo);
 
 	ApplyAd findAdByNo(SqlSession session, String recNo);
 	
@@ -84,4 +85,8 @@ public interface EnterpriseDao {
 	List<Worker> workerList(SqlSession session);
 	
 	Mammoth getMammoth(SqlSession session, int resno);
+	
+	List<Applicant> getApplicant (SqlSession session,int recno, int cPage, int numPerpage);
+
+	int selectSupportCount(SqlSession session, int recno);
 }

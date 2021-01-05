@@ -22,9 +22,19 @@
 						<div class="cmp_top_box">
 							<div class="compa_info">
 								<div class="compa_logo">
-									<a href="" class="logo_wrap"> <span class="logoimg"><img
-											src="${path }/resources/enterprise/logo/${list[0].ENT_NO }/${list[0].ENT_LOGO}"></span>
-									</a>
+									<c:choose>
+										<c:when test="${empty list[0].ENT_LOGO }">
+											<img
+												src="https://jpassets.jobplanet.co.kr/assets/default_logo_share-12e4cb8f87fe87d4c2316feb4cb33f42d7f7584f2548350d6a42e47688a00bd0.png"
+												style="width: 104px; height: 104px;">
+										</c:when>
+										<c:otherwise>
+											<a href="" class="logo_wrap"> <img
+												src="${path }/resources/enterprise/logo/${list[0].ENT_NO }/${list[0].ENT_LOGO}"
+												style="width: 104px; height: 104px;">
+											</a>
+										</c:otherwise>
+									</c:choose>
 								</div>
 								<div class="compa_info_box">
 									<div class="compa_name">

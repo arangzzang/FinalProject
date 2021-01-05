@@ -11,6 +11,7 @@ import com.project.jobnom.Hire.model.vo.Recruitment;
 import com.project.jobnom.Hire.model.vo.Review;
 import com.project.jobnom.common.model.vo.Login;
 import com.project.jobnom.enterprise.model.dao.EnterpriseDao;
+import com.project.jobnom.enterprise.model.vo.Applicant;
 import com.project.jobnom.enterprise.model.vo.ApplyAd;
 import com.project.jobnom.enterprise.model.vo.Banner;
 import com.project.jobnom.enterprise.model.vo.Category2;
@@ -70,7 +71,7 @@ public class EnterpriseServiceImpl implements EnterpriseService {
 		return dao.insertBanner(ban, session);
 	}
 	@Override
-	public List<Recruitment> selectRecruitment(int memNo,int cPage, int numPerpage) {
+	public List<Recruitment> selectRecruitment(int memNo,int cPage, int numPerpage ) {
 		// TODO Auto-generated method stub
 		return dao.selectRecruitment(session,memNo,cPage,numPerpage);
 	}
@@ -203,5 +204,16 @@ public class EnterpriseServiceImpl implements EnterpriseService {
 		// TODO Auto-generated method stub
 		return dao.getMammoth(session, resno);
 	}
+	@Override
+	public List<Applicant> getApplicant(int recno, int cPage,int numPerpage) {
+		// TODO Auto-generated method stub
+		return dao.getApplicant(session, recno,cPage,numPerpage);
+	}
+	@Override
+	public int selectSupportCount(int recno) {
+		// TODO Auto-generated method stub
+		return dao.selectSupportCount(session,recno);
+	}
+	
 	
 }

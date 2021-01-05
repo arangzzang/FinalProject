@@ -6,6 +6,7 @@ import java.util.Map;
 import com.project.jobnom.Hire.model.vo.Recruitment;
 import com.project.jobnom.Hire.model.vo.Review;
 import com.project.jobnom.common.model.vo.Login;
+import com.project.jobnom.enterprise.model.vo.Applicant;
 import com.project.jobnom.enterprise.model.vo.ApplyAd;
 import com.project.jobnom.enterprise.model.vo.Banner;
 import com.project.jobnom.enterprise.model.vo.Category2;
@@ -87,5 +88,8 @@ public interface EnterpriseService {
 	List<Worker> workerList();
 
 	Mammoth getMammoth(int resno);
+	
+	List<Applicant> getApplicant(int recno, int cPage, int numPerpage);
 
+	int selectSupportCount(int recno);
 }

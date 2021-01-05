@@ -98,6 +98,15 @@
 		<result column="car_content" property="car_content" />
 		<result column="skill_no" property="skill_no" />
 	</resultMap>
+	<resultMap type="applicant" id="appMap">
+		<result column="app_no" property="appNo"/>
+		<result column="res_no" property="resNo"/>
+		<result column="res_name" property="resName"/>
+		<result column="res_gender" property="resGender"/>
+		<result column="res_birth" property="resBirth"/>
+		<result column="res_opencheck" property="resOpencheck"/>
+		<result column="support_day" property="supportDay"/>
+	</resultMap>
 
 	<insert id="enrollEnter" parameterType="ent">
 		insert into enterprise
@@ -449,5 +458,12 @@
 		JOIN LICENSE ON AWARDS.RES_NO=LICENSE.RES_NO
 		JOIN CAREER ON LICENSE.RES_NO=CAREER.RES_NO
 		JOIN MYSKILL ON CAREER.RES_NO=MYSKILL.RES_NO WHERE EDUCATION.RES_NO=#{resno}
+	</select>
+	
+	<select id="getApplicant" resultMap="appMap">
+		SELECT * FROM SUPPORT JOIN RESUME ON SUPPORT.MEM_NO=RESUME.MEM_NO WHERE REC_NO=#{recno}
+	</select>
+	<select id="selectSupportCount" resultType="_int">
+		select count(*) from support where rec_no = #{recno}
 	</select>
 </mapper>
