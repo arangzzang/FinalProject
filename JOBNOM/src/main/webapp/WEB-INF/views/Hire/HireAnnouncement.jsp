@@ -65,23 +65,23 @@
                     <div class="questList">은행관련</div><div class="arrow">></div>
                     </div>
                     </a>
-                    <a href="${path }/Hire/announcementPage2.do?anoNum=2">
+                    <a href="${path }/Hire/announcementPage2.do?anoNum=2&memNo=${commonLogin.memNo}">
                     <div class="questListDetail">
                     <div class="questList">세무/법무</div><div class="arrow">></div>
                     </div>
                     
                     </a>
-                      <a href="${path }/Hire/announcementPage2.do?anoNum=3">
+                      <a href="${path }/Hire/announcementPage2.do?anoNum=3&memNo=${commonLogin.memNo}">
                     <div class="questListDetail">
                     <div class="questList">경리/출납/수납</div><div class="arrow">></div>
                     </div>
                     </a>
-                      <a href="${path }/Hire/announcementPage2.do?anoNum=4">
+                      <a href="${path }/Hire/announcementPage2.do?anoNum=4&memNo=${commonLogin.memNo}">
                     <div class="questListDetail">
                     <div class="questList">증거 투자 분석사</div><div class="arrow">></div>
                     </div>
                     </a>
-                    <a href="${path }/Hire/announcementPage2.do?anoNum=5">
+                    <a href="${path }/Hire/announcementPage2.do?anoNum=5&memNo=${commonLogin.memNo}">
                     <div class="questListDetail">
                     <div class="questList">보험계리사/손해사정인</div><div class="arrow">></div>
                     </div>

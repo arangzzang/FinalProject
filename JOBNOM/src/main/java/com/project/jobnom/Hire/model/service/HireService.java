@@ -25,7 +25,7 @@ public interface HireService {
 
 	List<Map> reviewStar();
 	
-	List<Map>  selectRecruitmentList(Map paramMap);
+	List<Map>  selectRecruitmentList(String rec_no);
 	
 	List<Map> selectReviewList(String ent_no);
 	

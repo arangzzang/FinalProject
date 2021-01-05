@@ -294,7 +294,9 @@
                 </div>
             </div>
         <!-- 이건 리뷰 작성하기 누르면 팝업 뜨게 하는거 -->
-
+      <%--   <div class="ee"></div>
+<div class="ss" style="display: none"> 
+<jsp:include page="/WEB-INF/views/common/footer.jsp"/></div> --%>
 <script>
    //사이드바
    //리뷰 작성 화면
@@ -333,6 +335,9 @@
             success:data=>{
                 $(".maininfo-parent").html("");
                 $(".maininfo-parent").html(data);
+               
+             
+
             }
         });
    });

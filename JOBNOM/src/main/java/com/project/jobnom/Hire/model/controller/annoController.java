@@ -54,14 +54,15 @@ public class annoController {
 			@RequestParam(value = "numPerpage", defaultValue = "10") int numPerpage,int anoNum) {
 		// 공고 리스트들 출력해주는곳
 		System.out.println("이건 anoNUm :"+anoNum);
-		//System.out.println("이건 anoNUm :"+memNo);
+		//System.out.println("이건 memNo :"+memNo);
 		List<Recruitment> anolist = service.anoList2(anoNum,cPage, numPerpage);
+		
 		//List<Interestedrcruitment> in=service.selectIn(memNo);
 		int totalData = service.selectCount(); /* 이거페이지바 */
 		System.out.println("어떻게 나오는지 보까?"+anolist);
 		//System.out.println("어떻게 나오노"+in);
 		mv.addObject("pageBar", PageBarFactory.getPageBar6(totalData, cPage, numPerpage, anoNum,  "announcementPage2.do"));
-		//mv.addObject("totalData", totalData);
+		mv.addObject("totalData", totalData);
 		mv.addObject("anolist", anolist);
 		//mv.addObject("in", in);
 		mv.setViewName("Hire/announcementPage");

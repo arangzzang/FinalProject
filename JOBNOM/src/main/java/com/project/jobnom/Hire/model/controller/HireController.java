@@ -26,6 +26,7 @@ import com.project.jobnom.Hire.model.service.annoService;
 import com.project.jobnom.Hire.model.vo.Interestedrcruitment;
 import com.project.jobnom.Hire.model.vo.Recruitment;
 import com.project.jobnom.Hire.model.vo.Support;
+import com.project.jobnom.common.model.vo.Login;
 import com.project.jobnom.common.pagebar.PageBarFactory;
 import com.project.jobnom.enterprise.model.vo.Enterprise;
 import com.project.jobnom.member.model.vo.Member;
@@ -157,21 +158,36 @@ public class HireController {
 
 //공소 강세 페이지에서 상세 버튼
 	@RequestMapping("/Hire/anoDetail.do")
-	public ModelAndView anoDetail(ModelAndView mv, String rec_no, HttpServletRequest request) throws Exception {
+	public ModelAndView anoDetail(String memNo, HttpSession session,ModelAndView mv, String rec_no,HttpServletRequest request) throws Exception {
 		System.out.println("혹시");
+		/*
+		 * Login log=(Login)session.getAttribute("commonLogin");
+		 * System.out.println(log); log.getMemNo(); System.out.println("ddd"+log);
+		 */
+		System.out.println("nn"+memNo);
+		System.out.println("nn"+rec_no);
+		
 
-		Map<String, Object> paramMap = new HashMap<String, Object>();
-
-		String rec_no1 = request.getParameter("rec_no");
-		paramMap.put("rec_no", rec_no1);
-
-		List<Map> r = service.selectRecruitmentList(paramMap);
+		
+		List<Map> r = service.selectRecruitmentList(rec_no);
 		System.out.println("서비스 가기전" + rec_no);
 //		mv.addObject(service.selectRecruitmentList(rec_no));
 		mv.addObject("r", r);
 		System.out.println("로고"+r);
-		System.out.println(paramMap);
+		
 
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		
+		String rec_no1 = request.getParameter("rec_no");
+		paramMap.put("rec_no", rec_no1);
+		String memNo1 = request.getParameter("memNo");
+		paramMap.put("memNo", memNo1);
+		List<Interestedrcruitment> in=service2.selectIn(paramMap);
+		System.out.println("이것은"+in);
+		mv.addObject("in", in);
+		
+		System.out.println(paramMap);
+		
 		mv.setViewName("Hire/anoDetail");
 		return mv;
 	} 
@@ -183,7 +199,7 @@ public class HireController {
 		List<Map> r = service.selectReviewList(ent_no);
 		/* mv.addObject(service.selectReviewList(ent_no)); */
 		mv.addObject("r", r);
-		System.out.println(r);
+		System.out.println("리뷰"+r);
 		mv.setViewName("Hire/anoReview");
 		return mv;
 	}
