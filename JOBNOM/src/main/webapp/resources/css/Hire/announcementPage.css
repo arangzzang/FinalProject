@@ -17,7 +17,7 @@
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     margin: 0 auto;
-    height: 1200px;
+    height: 1400px;
     min-height: 100%;
 
   }
@@ -266,7 +266,7 @@
     }
       /* 버튼 적용 설정 */
       .contentButtonApply3{
-  
+  	
         background: #00c362;
         color: #fff;
         text-align: center;
@@ -276,7 +276,8 @@
         font-weight: bold;
         border-radius: 5px;
         margin-top: 20px;
-        margin-left: 20px;
+        
+
     }
     
     /* 버튼 초기화 설정 */
@@ -410,9 +411,11 @@ input[type="checkbox"]:checked + label span
 }
 /* 버튼 전체 설정 */
 .contentButton{
+	 float: right;
+	  margin-right: 20px;
     margin-top: 10px;
     display: flex;
-    border-top: solid gray;
+    
 }
 /* 버튼 적용 설정 */
 .contentButtonApply{
@@ -587,7 +590,7 @@ input[type="checkbox"]:checked + label span
 }
 
 .annoDetailTitle{
-    width: 900px;
+    width: 800px;
     height: 80px;
     display: flex;
     border-bottom: 1px solid;
@@ -605,6 +608,8 @@ input[type="checkbox"]:checked + label span
 .annoDetailNum{
     padding-left: 20px;
  	z-index: 4px;
+ 	padding-top:20px;
+
     
 }
 .annoDetailLoge{
@@ -627,19 +632,21 @@ border-radius: 5px;
 
 .apply{
 
-right: 0;
-top: 0;
-background: #00c362;
-color: #fff;
-text-align: center;
-width: 100px;
-height: 50px;
-font-size: 14px;
-font-weight: bold;
-border-radius: 5px;
-margin-right: 10px;
-margin-top: 20px;
-margin-left: 150px;
+    border-radius: 12px;
+    right: 0;
+    top: 0;
+    background: #00c362;
+    color: #fff;
+    text-align: center;
+    width: 250px;
+    height: 50px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-right: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 60px;
 
 }
 

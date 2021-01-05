@@ -7,14 +7,21 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 <link rel="stylesheet" href="${path}/resources/css/Hire/insertReview.css" />
 <link rel="stylesheet" href="${path }/resources/css/mypage/interviewList.css"/>
-
+<style>
+	div#name-container{position:relative;padding:0px;}
+		p#name-container span.guide{
+			display:none;font-size:12px;right:10px;
+		}
+		p#name-container span.ok{color:green;}
+		p#name-container span.error{color:red;}
+</style>
             <div class="with-parent" style="padding-bottom: 50px;">
                 <div class="with" style="padding-bottom: 50px;">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
                    <span class="navbar-toggler-icon"></span>
                </button>
                    <div class="a">
-                       <div class="container row withcon">
+                       <div class="container row withcon" style="height: 600px">
                            <div class="col-md-3 col-sm-3 withleft">
                              <ul class="nav nav-pills flex-column sidebar" id="sidebar">
                                  <h3>활동내역</h3>
@@ -57,14 +64,16 @@
                                          </tr>
                                      </c:if>
                                  </table>
-                                  <button class="reviewImgBtn"></button>
+                                  <button class="reviewImgBtn" onclick="location.href='${path }/footer/notice.do'"></button>
                                   <div class="reviewBtn">
                                       <button class="reviewBtnInsert">기업 리뷰 작성하기</button>
-                                      <button class="reviewBtnFAQ">FAQ 바로가기</button>
+                                      <button class="reviewBtnFAQ" onclick="location.href='${path }/welcome/FAQ'">FAQ 바로가기</button>
                                   </div>
                                </div>
                            </div>
                        </div>
+                      
+                      
                        <div id="popup">
                            <div class="popupAll">
                                    <div id="popmenu">
@@ -170,12 +179,19 @@
                                                <div>기업명</div>
                                                <input class="popmenuEnterpriseName" id="reviewName" name="review_name" type="text" placeholder="기업명" list="locationData">
                                               <datalist id="locationData"></datalist>
-                                              
+                                             
                                            <input type="hidden" name="ent_no" id="locationNumber" value="">
-											<input type="hidden" name="mem_no" value="${commonLogin.memNo}">
+                                          
+                                          <p id="name-container" >
+                                              <span class="guide ok">등록된 기업입니다.</span>
+											<span class="guide error">등록되지 않은 기업입니다.</span> 
+                                              </p>
                                         </div>
+                                        
+                                       
                                            <div class="popmenuTital">
                                                <div>제목</div>
+                                               <input type="hidden" name="mem_no" value="${commonLogin.memNo}">
                                                <input class="popmenuTitalName" type="text" name="review_title" placeholder="제목">
                                            </div>
                                            <div class="popmenuContents">
@@ -278,14 +294,16 @@
                 </div>
             </div>
         <!-- 이건 리뷰 작성하기 누르면 팝업 뜨게 하는거 -->
-
+      <%--   <div class="ee"></div>
+<div class="ss" style="display: none"> 
+<jsp:include page="/WEB-INF/views/common/footer.jsp"/></div> --%>
 <script>
    //사이드바
    //리뷰 작성 화면
    $(".review").click(e=>{
       $.ajax({
             url:"${path}/member/reviewList",
-            data:{memNo:<c:out value='${mem.memNo}'/>},
+            data:{memNo:${commonLogin.memNo}},
             type:"get",
             async: false,
             success:data=>{
@@ -298,7 +316,7 @@
    $(".interview").click(e=>{
       $.ajax({
             url:"${path}/member/interviewList",
-            data:{memNo:<c:out value='${mem.memNo}'/>},
+            data:{memNo:${commonLogin.memNo}},
             type:"get",
             async: false,
             success:data=>{
@@ -311,12 +329,15 @@
    $(".supporting").click(e=>{
       $.ajax({
             url:"${path}/member/supporting",
-            data:{memNo:<c:out value='${mem.memNo}'/>},
+            data:{memNo:${commonLogin.memNo}},
             type:"get",
             async: false,
             success:data=>{
                 $(".maininfo-parent").html("");
                 $(".maininfo-parent").html(data);
+               
+             
+
             }
         });
    });
@@ -396,42 +417,10 @@ $(".executiveStar").on("click",e=>{
 </script>
 <script>
 
-//리뷰 등록하기
-$(".GradeboxSubmit").click(e=>{
-      var ent_no = $('input[name=ent_no]').val();
-      console.log(ent_no+'되는건가');
-      var review_title = $('input[name=review_title]').val();
-      var mem_no = $('input[name=mem_no]').val();
-      var review_contents = $('input[name=review_contents]').val();
-      var review_satisfaction = $('input[name=review_satisfaction]').val();
-      var review_welfare = $('input[name=review_welfare]').val();
-      var review_promotion = $('input[name=review_promotion]').val();
-      var review_executive = $('input[name=review_executive]').val();
-         $.ajax({
-               url:"${path}/Hire/insertReview2.do",
-               data:{
-                  ent_no:ent_no&
-                  review_title:review_title&
-                  mem_no:mem_no&
-                  review_contents:review_contents&
-                  review_satisfaction:review_satisfaction&
-                  review_welfare:review_welfare&
-                  review_promotion:review_promotion&
-                  review_executive:review_executive
-               },
-               type:"post",
-               success:data=>{
-                   $(".maininfo-parent").html("");
-                   $(".maininfo-parent").html(data);
-               }
-           });
-      });
 
-</script>
 
-<script>
-//하준이 로직
 function fn_review(){
+	
    if ($('input[name=review_name]').val()==="" ||
               $('input[name=review_title]').val()==="" ||
               $('textarea[name=review_contents]').val()==="" ||
@@ -449,45 +438,73 @@ function fn_review(){
 $(document).ready(function(){
     $(".reviewBtnInsert").click(function(){
        $("#popup").fadeIn();
+       $(".headerContainerWrap").css("display","none");
+       
     });
     $(".popmenuInsertClose").click(function(){
        $("#popup").fadeOut();
     });
  });
 </script>   
-<script>
+
+
+
+
+ 
+ <script>
 
 $("#reviewName").keyup(e=>{
-   $.ajax({
-      url:"${path}/Hire/reviewSearch.do",
-      data:{"key":$(e.target).val()},
-      success:data => {
-         
-         $.ajax({
-            url:"${path}/Hire/reviewSearch2.do",
-            data:{"key":$(e.target).val()},
-            success:data => {
-               console.log(data); 
-               let keys=data.split(",");
-               $("#locationNumber").html("");
-               for(let i=0;i<keys.length;i++){
-                  $("#locationNumber").append($('input[name=ent_no]').val(keys[i]));
-                  
-               }
-               
-            }
-         })
-         console.log(data); 
-         let keys=data.split(",");
-         $("#locationData").html("");
-         for(let i=0;i<keys.length;i++){
-            $("#locationData").append($("<option>").html(keys[i]));
-            
-         }
-      }
-   });
+
+	
+	$.ajax({
+		url:"${path}/Hire/reviewSearch.do",
+		data:{"key":$(e.target).val()},
+		success:data => {
+			
+			$.ajax({
+				url:"${path}/Hire/reviewSearch3.do",
+				data:{"key":$(e.target).val()},
+				success:data => {
+					
+					$.ajax({
+						url:"${path}/Hire/reviewSearch2.do",
+						data:{"key":$(e.target).val()},
+						success:data => {
+							console.log(data); 
+							let keys=data.split(",");
+							$("#locationNumber").html("");
+							for(let i=0;i<keys.length;i++){
+								$("#locationNumber").append($('input[name=ent_no]').val(keys[i]));
+							}
+						}
+					}) 
+					console.log(data); 
+					if(data==="true"){ 
+						$(".guide.error").show();
+						$(".guide.ok").hide();
+					}else{
+						$(".guide.error").hide();
+						$(".guide.ok").show();
+						
+						return false;
+					}
+				}
+			})
+			console.log(data); 
+			let keys=data.split(",");
+			$("#locationData").html("");
+			   for(let i=0;i<keys.length;i++){
+		            $("#locationData").append($("<option>").html(keys[i]));
+
+		}
+	}
+		
+	 	
+})
 });
-</script>     
+</script> 
+
+
 <script>
 //리뷰 등록하기
 $(".GradeboxSubmit").click(e=>{

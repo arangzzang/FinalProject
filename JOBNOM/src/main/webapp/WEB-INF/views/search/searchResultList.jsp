@@ -23,14 +23,9 @@
 				<!-- 검색 기업 없을시 -->
 				<c:if test="${empty list }">
 					<div class="no_company_card">
-						<h1 class="no_card_tit">
-							찾으시는 기업이 없나요?<br>근무경험이 있으시면, 첫 리뷰를 작성해주세요.
-						</h1>
-						<a
-							href="javascript:desktop_review_form_generator_v1({_fun: 'write@federated_search'});"
-							class="btn_rnd btn_rnd_green">
-							<span class="txt">기업리뷰작성</span>
-						</a>
+						<h2 class="no_card_tit">
+							찾으시는 기업이 없습니다
+						</h2>
 					</div>
 				</c:if>
 			</div>
@@ -39,8 +34,8 @@
 				<c:forEach items="${list }" var="list">
 					<div class="result_card ">
 						<span class="llogo"> 
-							<a href=""> 
-							<img src="${list.ENT_LOGO }" alt="">
+							<img src="${path }/resources/enterprise/logo/${list.ENT_NO}/${list.ENT_LOGO }" style="width: 40px; height: 40px; ">
+							<a href="#" onclick="location.href = '${path }/enterprise/com_info.do?entNo=${list.ENT_NO}'"> 
 							</a>
 						</span>
 						<a href="#" onclick="location.href = '${path }/enterprise/com_info.do?entNo=${list.ENT_NO}'" class="tit" >
@@ -132,15 +127,6 @@
 									</div>
 								</div>
 							</div>
-							<!-- 저장 버튼 -->
-							<div class="btn_save_set">
-								<button class="btn_round btn_save" id="btn_save" onclick="fn_toggle()">
-									<i class="far fa-bookmark"></i> <a href="#"onclick="location.href = '${path }/search/recFav.do?recNo=${list2.REC_NO}&memNo=${commonLogin.memNo}'">저장</a>
-								</button>
-								<button class="btn_round btn_saved" id="btn_saved"onclick="fn_toggle() return false;">
-									<i class="fas fa-bookmark"></i><a href="#"onclick="location.href = '${path }/search/recFavDelete.do?recNo=${list2.REC_NO}&memNo=${commonLogin.memNo}'">저장됨</a>
-								</button>
-							</div>
 						</div>
 					</div>
 				</div>
@@ -177,28 +163,4 @@
         });
 </script>
 <!-- 더보기 클릭시 보여주기 끝 -->
-<!--저장버튼 클릭 이벤트  -->
-<script>
-
-		if(${commonLogin.memNo == null}){
-			$(".btn_save_set").hide();
-		}else{
-			$(".btn_save_set").show();
-		};
-	
-               $('#btn_save').on('click',function() {
-            	   
-            		   
-	                   $(this).hide();
-	                   $(this).next().show();
-            	   
-               });
-               $('#btn_saved').on('click',function() {
-                   $(this).hide();
-                   $(this).prev().show();
-               });
-
-</script>
-<!--저장 버튼 클릭 이벤트 끝  -->
-
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />

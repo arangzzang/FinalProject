@@ -15,82 +15,15 @@
     console.log(Kakao.isInitialized());
 </script>
 <style>
-
-	body {
-	  margin: 100px;
+	.jmkbtn{
+		background-color:#28a745;
+		color:#fff;
+		border-color:black;
+	}
+	h4 {
+ 	 font-family: Arial, Helvetica, sans-serif;
 	}
 	
-	.pop-layer .pop-container {
-	  padding: 20px 25px;
-	}
-	
-	.pop-layer p.ctxt {
-	  color: #666;
-	  line-height: 25px;
-	}
-	
-	.pop-layer .btn-r {
-	  width: 100%;
-	  margin: 10px 0 20px;
-	  padding-top: 10px;
-	  border-top: 1px solid #DDD;
-	  text-align: right;
-	}
-	
-	.pop-layer {
-	  display: none;
-	  position: absolute;
-	  top: 50%;
-	  left: 50%;
-	  width: 410px;
-	  height: auto;
-	  background-color: #fff;
-	  border: 5px solid #3571B5;
-	  z-index: 10;
-	}
-	
-	.dim-layer {
-	  display: none;
-	  position: fixed;
-	  _position: absolute;
-	  top: 0;
-	  left: 0;
-	  width: 100%;
-	  height: 100%;
-	  z-index: 100;
-	}
-	
-	.dim-layer .dimBg {
-	  position: absolute;
-	  top: 0;
-	  left: 0;
-	  width: 100%;
-	  height: 100%;
-	  background: #000;
-	  opacity: .5;
-	  filter: alpha(opacity=50);
-	}
-	
-	.dim-layer .pop-layer {
-	  display: block;
-	}
-	
-	a.btn-layerClose {
-	  display: inline-block;
-	  height: 25px;
-	  padding: 0 14px 0;
-	  border: 1px solid #304a8a;
-	  background-color: #3f5a9d;
-	  font-size: 13px;
-	  color: #fff;
-	  line-height: 25px;
-	}
-	
-	a.btn-layerClose:hover {
-	  border: 1px solid #091940;
-	  background-color: #1f326a;
-	  color: #fff;
-	}
 </style>
 <jsp:include page="/WEB-INF/views/common/header.jsp">
    <jsp:param name="title" value=" "/>
@@ -105,26 +38,51 @@
 
  <div class="container" style="text-align:center;">
     <c:if test="${Enterprise.entMembership eq '일반회원' }">
-       <h4>혜택</h4>
+       <h4>가입혜택</h4>
        <div class="row" style="margin:auto; width:50%">
           <div class="col membership_benefits">
-             <h6>일반회원</h6>
-             <ul class="text-nowrap">
-                <li>기업 리뷰 조회</li>
-                <li>면접 후기 조회</li>
+             <h6><span class="fab fa-black-tie"></span>일반회원</h6>
+             <ul class="text-nowrap list-group">
+                <li class="list-group-item" style="border:none;">
+	                <span class="far fa-chart-bar">
+	                	기업 리뷰 조회
+	               	</span>
+                <li class="list-group-item" style="border:none;">
+                	<span class="far fa-address-card">
+                		면접 후기 조회
+               		</span>
+           		</li>
              </ul>
           </div>
           <div class="col membership_benefits">
-             <h6>기업회원</h6>
-             <ul>
-                <li>배너등록</li>
+             <h6><span class="fas fa-building"></span>기업회원</h6>
+             <ul class="text-nowrap list-group">
+                <li class="list-group-item fas fa-bullhorn" style="border:none;">배너등록</li>
              </ul>
           </div>
-       </div>
+       </div><br>
 
 	 <form method="post" action="${path }/kakaoPay">
 	    <button class="jmkbtn btn-lg">카카오페이로 멤버십 가입</button>
 	</form>
+
+
+    </c:if>
+    <c:if test="${Enterprise.entMembership eq '유료회원' }">
+       <h4><c:out value="${Enterprise.entName }"/>님은 이미 멤버십이 있습니다</h4>
+    </c:if>
+ </div>
+
+</section>
+<script>
+	function applyAd(){
+		location.replace("path/com/applyAd.do");
+	}
+ 	
+</script>	
+<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+
+
 
 <!-- 
 	<button class="button" onClick="window.open('https://mockup-pg-web.kakao.com/v1/a52c6a752ce3a04904f6941bf30839ee729c384298ea3f10542362157ea8c730/info');">
@@ -158,18 +116,3 @@
 	    </div>
 	  </div>
 	</div> -->
-
-    </c:if>
-    <c:if test="${Enterprise.entMembership eq '유료회원' }">
-       <h4><c:out value="${Enterprise.entName }"/>님은 이미 멤버십이 있습니다</h4>
-    </c:if>
- </div>
-
-</section>
-<script>
-	function applyAd(){
-		location.replace("path/com/applyAd.do");
-	}
- 	
-</script>	
-<jsp:include page="/WEB-INF/views/common/footer.jsp"/>

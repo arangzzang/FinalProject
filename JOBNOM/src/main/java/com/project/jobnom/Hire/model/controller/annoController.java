@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.project.jobnom.Hire.model.service.annoService;
+import com.project.jobnom.Hire.model.vo.Interestedrcruitment;
 import com.project.jobnom.Hire.model.vo.Recruitment;
 import com.project.jobnom.common.pagebar.PageBarFactory;
 
@@ -50,16 +51,20 @@ public class annoController {
 
 	@RequestMapping("/Hire/announcementPage2.do")
 	public ModelAndView announcementPage2(ModelAndView mv, @RequestParam(value = "cPage", defaultValue = "1") int cPage,
-			@RequestParam(value = "numPerpage", defaultValue = "10") int numPerpage,int anoNum ) {
+			@RequestParam(value = "numPerpage", defaultValue = "10") int numPerpage,int anoNum) {
 		// 공고 리스트들 출력해주는곳
 		System.out.println("이건 anoNUm :"+anoNum);
+		//System.out.println("이건 memNo :"+memNo);
 		List<Recruitment> anolist = service.anoList2(anoNum,cPage, numPerpage);
-
+		
+		//List<Interestedrcruitment> in=service.selectIn(memNo);
 		int totalData = service.selectCount(); /* 이거페이지바 */
 		System.out.println("어떻게 나오는지 보까?"+anolist);
-		mv.addObject("pageBar", PageBarFactory.getPageBar2(totalData, cPage, numPerpage, "announcementPage.do"));
-		//mv.addObject("totalData", totalData);
+		//System.out.println("어떻게 나오노"+in);
+		mv.addObject("pageBar", PageBarFactory.getPageBar6(totalData, cPage, numPerpage, anoNum,  "announcementPage2.do"));
+		mv.addObject("totalData", totalData);
 		mv.addObject("anolist", anolist);
+		//mv.addObject("in", in);
 		mv.setViewName("Hire/announcementPage");
  
 		return mv;
@@ -75,7 +80,7 @@ public class annoController {
 
 		int totalData = service.selectCount(); /* 이거페이지바 */
 		System.out.println("어떻게 나오는지 보까?"+anolist);
-		mv.addObject("pageBar", PageBarFactory.getPageBar2(totalData, cPage, numPerpage, "announcementPage.do"));
+		mv.addObject("pageBar", PageBarFactory.getPageBar5(totalData, cPage, numPerpage,recNo, "annoHomeDetailMove.do"));
 		//mv.addObject("totalData", totalData);
 		mv.addObject("anolist", anolist);
 		mv.setViewName("Hire/announcementPage");

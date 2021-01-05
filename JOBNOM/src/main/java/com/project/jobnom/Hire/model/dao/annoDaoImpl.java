@@ -7,6 +7,7 @@ import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.project.jobnom.Hire.model.vo.Interestedrcruitment;
 import com.project.jobnom.Hire.model.vo.Recruitment;
 
 
@@ -39,6 +40,12 @@ public class annoDaoImpl implements annoDao {
 	public List<Recruitment> annoHomeDetailMove(SqlSession session, int recNo, int cPage, int numPerPage) {
 		return session.selectList("anno.annoHomeDetailMove",recNo,new RowBounds((cPage-1)*numPerPage,numPerPage));
 	}
+
+	@Override
+	public List<Interestedrcruitment> selectIn(SqlSession session, Map memNo) {
+		return session.selectList("anno.selectIn",memNo);
+	}
+	
 	
 	
 	

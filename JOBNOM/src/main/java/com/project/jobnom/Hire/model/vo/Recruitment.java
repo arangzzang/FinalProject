@@ -1,5 +1,6 @@
 package com.project.jobnom.Hire.model.vo;
 
+
 import java.sql.Date;
 import java.util.List;
 
@@ -30,6 +31,7 @@ public class Recruitment {
 	private String rec_order;    //면접절차
 	private String rec_type;    //고용형태
 	private String rec_category;
+	private String rec_other;
 	
 	//여기서 부터 다른테이블에 있는 내용 받아올수있게 생성해주는곳
 	private String ent_name;    //기업이름
@@ -42,5 +44,6 @@ public class Recruitment {
 	private String mem_check;
 	private String mem_membership;
 	private String open_check;
+	private String jobs2;
 
 }

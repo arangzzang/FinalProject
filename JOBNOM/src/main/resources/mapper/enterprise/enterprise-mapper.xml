@@ -2,207 +2,292 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="enterprise">
 	<resultMap type="ent" id="entMap">
-		<result column="ent_no" property="entNo"/>
-		<result column="ent_email" property="entEmail"/>
-		<result column="ent_pw" property="entPw"/>
-		<result column="ent_name" property="entName"/>
-		<result column="ent_business_no" property="entBusinessNo"/>
-		<result column="ent_logo" property="entLogo"/>
-		<result column="ent_category1" property="entCategory1"/>
-		<result column="ent_category2" property="entCategory2"/>
-		<result column="rep_name" property="repName"/>
-		<result column="rep_phone" property="repPhone"/>
-		<result column="type" property="type"/>
-		<result column="ent_site" property="entSite"/>
-		<result column="ent_membership" property="entMembership"/>
+		<result column="ent_no" property="entNo" />
+		<result column="ent_email" property="entEmail" />
+		<result column="ent_pw" property="entPw" />
+		<result column="ent_name" property="entName" />
+		<result column="ent_business_no" property="entBusinessNo" />
+		<result column="ent_logo" property="entLogo" />
+		<result column="ent_category1" property="entCategory1" />
+		<result column="ent_category2" property="entCategory2" />
+		<result column="rep_name" property="repName" />
+		<result column="rep_phone" property="repPhone" />
+		<result column="type" property="type" />
+		<result column="ent_site" property="entSite" />
+		<result column="ent_membership" property="entMembership" />
 	</resultMap>
 	<resultMap type="res" id="resMap">
-		<result column="res_no" property="resNo"/>
-		<result column="res_name" property="resName"/>
-		<result column="res_phone" property="resPhone"/>
-		<result column="res_gender" property="resGender"/>
-		<result column="res_birth" property="resBirth"/>
-		<result column="res_car" property="resCar"/>
-		<result column="res_content" property="resContent"/>
-		<result column="res_opencheck" property="resOpenCheck"/>
-		<result column="mem_no" property="memNo"/>
+		<result column="res_no" property="resNo" />
+		<result column="res_name" property="resName" />
+		<result column="res_phone" property="resPhone" />
+		<result column="res_gender" property="resGender" />
+		<result column="res_birth" property="resBirth" />
+		<result column="res_car" property="resCar" />
+		<result column="res_content" property="resContent" />
+		<result column="res_opencheck" property="resOpenCheck" />
+		<result column="mem_no" property="memNo" />
 	</resultMap>
-	<resultMap type="recruitment" id="recMap"> 
-		<result column="rec_no" property="recNo"/>
-		<result column="ent_no" property="entNo"/>
-		<result column="rec_title" property="recTitle"/>
-		<result column="rec_startdate" property="recStartdate"/>
-		<result column="rec_enddate" property="recEnddate"/>
-		<result column="rec_info" property="recInfo"/>
+	<resultMap type="recruitment" id="recMap">
+		<result column="rec_no" property="recNo" />
+		<result column="ent_no" property="entNo" />
+		<result column="rec_title" property="recTitle" />
+		<result column="rec_startdate" property="recStartdate" />
+		<result column="rec_enddate" property="recEnddate" />
+		<result column="rec_info" property="recInfo" />
 	</resultMap>
 	<resultMap type="mdc2" id="mdc2Map">
-		<result column="cate_no" property="cate_no"/>
-		<result column="count" property="count"/>
+		<result column="cate_no" property="cate_no" />
+		<result column="count" property="count" />
 	</resultMap>
+	<resultMap type="payData" id="pdMap">
+		<result column="rec_salary" property="rec_salary" />
+		<result column="count" property="count" />
+	</resultMap>
+	<resultMap type="ad" id="adMap">
+		<result column="ent_no" property="ent_no" />
+		<result column="rec_title" property="rec_title" />
+		<result column="rec_contents" property="rec_contents" />
+		<result column="rec_startdate" property="rec_startdate" />
+		<result column="rec_enddate" property="rec_enddate" />
+		<result column="rec_salary" property="rec_salary" />
+		<result column="rec_info" property="rec_info" />
+		<result column="rec_prefer" property="rec_prefer" />
+		<result column="rec_welfare" property="rec_welfare" />
+		<result column="rec_qualification" property="rec_qualification" />
+		<result column="rec_pepole" property="rec_people" />
+		<result column="rec_career" property="rec_career" />
+		<result column="rec_order" property="rec_order" />
+		<result column="rec_type" property="rec_type" />
+		<result column="rec_other" property="rec_other" />
+		<result column="rec_category" property="rec_category" />
+	</resultMap>
+	<resultMap type="worker" id="workerMap">
+		<result column="res_name" property="resName" />
+		<result column="res_phone" property="resPhone" />
+		<result column="res_gender" property="resGender" />
+		<result column="res_birth" property="resBirth" />
+		<result column="res_car" property="resCar" />
+		<result column="res_content" property="resContent" />
+		<result column="res_no" property="resNo" />
+		<result column="mem_no" property="memNo" />
+		<result column="mem_check" property="memCheck" />
+		<result column="mem_email" property="memEmail" />
+		<result column="cate_no2" property="cateNo2" />
+		<result column="type" property="type" />
+	</resultMap>
+	<resultMap type="mammoth" id="mammothmap">
+		<result column="edu_no" property="edu_no" />
+		<result column="edu_name" property="edu_name" />
+		<result column="edu_major" property="edu_major" />
+		<result column="edu_term" property="edu_term" />
+		<result column="edu_termend" property="edu_termend" />
+		<result column="edu_contents" property="edu_contents" />
+		<result column="edu_attend" property="edu_attend" />
+		<result column="awa_no" property="awa_no" />
+		<result column="awa_name" property="awa_name" />
+		<result column="awa_term" property="awa_term" />
+		<result column="lic_no" property="lic_no" />
+		<result column="lic_name" property="lic_name" />
+		<result column="lic_term" property="lic_term" />
+		<result column="car_term" property="car_term" />
+		<result column="car_termend" property="car_termend" />
+		<result column="car_name" property="car_name" />
+		<result column="car_dept" property="car_dept" />
+		<result column="car_duty" property="car_duty" />
+		<result column="car_rank" property="car_rank" />
+		<result column="car_content" property="car_content" />
+		<result column="skill_no" property="skill_no" />
+	</resultMap>
+	<resultMap type="applicant" id="appMap">
+		<result column="app_no" property="appNo"/>
+		<result column="res_no" property="resNo"/>
+		<result column="res_name" property="resName"/>
+		<result column="res_gender" property="resGender"/>
+		<result column="res_birth" property="resBirth"/>
+		<result column="res_opencheck" property="resOpencheck"/>
+		<result column="support_day" property="supportDay"/>
+	</resultMap>
+
 	<insert id="enrollEnter" parameterType="ent">
-		insert into enterprise values(
-									seq_ent_no.nextval,
-									#{entEmail},
-									#{entPw},
-									#{entName},
-									#{entBusinessNo},
-									#{entLogo},
-									#{entCategory1},
-									#{entCategory2},
-									#{repName},
-									#{repPhone},
-									default,
-									#{entSite},
-									default
-									)
+		insert into enterprise
+		values(
+		seq_ent_no.nextval,
+		#{entEmail},
+		#{entPw},
+		#{entName},
+		#{entBusinessNo},
+		#{entLogo},
+		#{entCategory1},
+		#{entCategory2},
+		#{repName},
+		#{repPhone},
+		default,
+		#{entSite},
+		default
+		)
 	</insert>
-		<insert id="insertApplyAd" parameterType="ad">
-			INSERT INTO RECRUITMENT VALUES (
-			seq_rec_no.nextval,
-			#{ent_no},
-			#{rec_title},
-			#{rec_contents},
-			#{rec_file1},
-			#{rec_file2},
-			#{rec_startdate},
-			#{rec_enddate},
-			#{rec_salary},
-			#{rec_info},
-			#{rec_prefer},
-			#{rec_welfare},
-			#{rec_qualification},
-			#{rec_people},
-			#{rec_career},
-			#{rec_order},
-			#{rec_type},
-			#{rec_other},
-			#{rec_category}
-			)
+	<insert id="insertApplyAd" parameterType="ad">
+		INSERT INTO RECRUITMENT
+		VALUES (
+		seq_rec_no.nextval,
+		#{ent_no},
+		#{rec_title},
+		#{rec_contents},
+		#{rec_file1},
+		#{rec_file2},
+		#{rec_startdate},
+		#{rec_enddate},
+		#{rec_salary},
+		#{rec_info},
+		#{rec_prefer},
+		#{rec_welfare},
+		#{rec_qualification},
+		#{rec_people},
+		#{rec_career},
+		#{rec_order},
+		#{rec_type},
+		#{rec_other},
+		#{rec_category}
+		)
 	</insert>
-	<select id="findOneEnterprise" parameterType="int" resultMap="entMap">
+	<select id="findOneEnterprise" parameterType="int"
+		resultMap="entMap">
 		SELECT * FROM ENTERPRISE WHERE ENT_NO=#{memNo}
 	</select>
-	
+
 	<update id="updateEnterprise" parameterType="ent">
-		UPDATE ENTERPRISE SET
-			ENT_PW=TRIM(#{entPw}),
-			ENT_LOGO=TRIM(#{entLogo}),
-			ENT_CATEGORY1=TRIM(#{entCategory1}),
-			ENT_CATEGORY2=TRIM(#{entCategory2}),
-			REP_NAME=TRIM(#{repName}),
-			REP_PHONE=TRIM(#{repPhone}),
-			ENT_SITE=TRIM(#{entSite})
-		WHERE ENT_NO=TRIM(#{entNo})
-	
+		UPDATE ENTERPRISE
+		SET
+		ENT_PW=TRIM(#{entPw}),
+		ENT_LOGO=TRIM(#{entLogo}),
+		ENT_CATEGORY1=TRIM(#{entCategory1}),
+		ENT_CATEGORY2=TRIM(#{entCategory2}),
+		REP_NAME=TRIM(#{repName}),
+		REP_PHONE=TRIM(#{repPhone}),
+		ENT_SITE=TRIM(#{entSite})
+		WHERE
+		ENT_NO=TRIM(#{entNo})
+
 	</update>
 	<update id="entMembership" parameterType="int">
 		UPDATE ENTERPRISE SET
-			ENT_MEMBERSHIP='유료회원'
-			WHERE ENT_NO=#{memNo}
+		ENT_MEMBERSHIP='유료회원'
+		WHERE ENT_NO=#{memNo}
 	</update>
-	
+
 	<insert id="insertBanner" parameterType="ban">
-		INSERT INTO BANNER VALUES(
-			#{ent_no}, #{bann_title}, #{bann_path}, SYSDATE
+		INSERT INTO BANNER
+		VALUES(
+		#{ent_no}, #{bann_title}, #{bann_path}, SYSDATE
 		)
 	</insert>
 
-	<select id="selectSupport" resultType="support" >
-		SELECT DISTINCT MEM_NO
-		FROM SUPPORT WHERE REC_NO=#{rec_no}
+	<select id="selectSupport" resultType="support">
+		SELECT DISTINCT
+		MEM_NO
+		FROM
+		SUPPORT WHERE REC_NO=#{rec_no}
 	</select>
-	
-	<select id ="selectCount" resultType="_int">
+
+	<select id="selectCount" resultType="_int">
 		SELECT COUNT(*) FROM RESUME
 	</select>
-	
-	<select id="selectRecruitment" resultType="recruitment" parameterType="_int">
+
+	<select id="selectRecruitment" resultType="recruitment"
+		parameterType="_int">
 		SELECT * FROM RECRUITMENT WHERE ENT_NO=#{entNo}
 	</select>
-	
+
 	<select id="selectResume" parameterType="int" resultMap="resMap">
-		SELECT * FROM RESUME WHERE MEM_NO=#{memNo}
+		SELECT *
+		FROM RESUME WHERE MEM_NO=#{memNo}
 	</select>
-	
+
 	<select id="selectRecruitmentCount" resultType="_int">
-		SELECT COUNT(*) FROM RECRUITMENT
+		SELECT COUNT(*)
+		FROM RECRUITMENT WHERE ENT_NO=#{entNo}
 	</select>
-	
+
 	<delete id="quit">
 		DELETE FROM ENTERPRISE WHERE ENT_NO=#{entNo}
 	</delete>
 	
-	<select id="selectReviewList" resultType="review">
-		SELECT * FROM REVIEW
+	<select id="selectReviewList" resultType="review" parameterType="_int">
+		select * from review
+		join MEMBER using (mem_no)
+		where ent_no=#{entNo}
+	</select>
+	<select id="selectReviewcount" resultType="_int" >
+		SELECT COUNT(*) FROM REVIEW WHERE ENT_NO=#{entNo}
+
 	</select>
 	
-	<select id="selectJoblist" resultType="recruitment">
-		SELECT * FROM RECRUITMENT
+	<select id="selectJoblist" resultType="map" >
+		SELECT * FROM RECRUITMENT WHERE ENT_NO=#{entNo}
 	</select>
 	
-	<select id="getC2" resultType="cat2" >
+	<select id="selectJobCount" resultType="_int">
+		SELECT COUNT(*) FROM RECRUITMENT WHERE ENT_NO=#{entNo} 
+	</select>
+
+	<select id="getC2" resultType="cat2">
 		SELECT * FROM CATEGORY2
-	</select>	
-	
-	<select id="findEmailEnterprise" parameterType="string" resultMap="entMap">
+	</select>
+
+	<select id="findEmailEnterprise" parameterType="string"
+		resultMap="entMap">
 		SELECT * FROM ENTERPRISE WHERE ENT_EMAIL=#{memEmail}
 	</select>
-	<select id="selectEnterprise" parameterType="_int" resultType="ent">
+	<select id="selectEnterprise" parameterType="_int"
+		resultType="ent">
 		select * from ENTERPRISE where ent_no=#{entNo}
 	</select>
 	<select id="memDataC2" resultMap="mdc2Map">
-		SELECT CATE_NO, COUNT(*) AS COUNT FROM MEMBER JOIN CATEGORY2 ON MEMBER.CATE_NO2 = CATEGORY2.CATE_NO2 GROUP BY CATE_NO ORDER BY CATE_NO
+		SELECT CATE_NO, COUNT(*) AS
+		COUNT FROM MEMBER JOIN CATEGORY2 ON MEMBER.CATE_NO2 =
+		CATEGORY2.CATE_NO2 GROUP BY CATE_NO ORDER BY CATE_NO
 	</select>
-
-<!--헤더 기업 버튼 클릭시 리스트 YS  -->
+	<!--헤더 기업 버튼 클릭시 리스트 YS -->
 	<select id="companyList" resultType="map">
 		<![CDATA[
 			select 
 				e.ent_no
 				,e.ent_category1
 				,e.ent_name
-				,c.job
 				,round(sum(review_satisfaction+review_welfare+review_promotion+review_executive)/(count(review_satisfaction)+count(review_welfare)+count(review_promotion)+count(r.review_executive)),1) as avg
 			from enterprise e
 			inner join review r
 			on (r.ent_no = e.ent_no)
-			 inner join category c
-        	on (c.cate_no = e.ent_category1)
-        	where c.cate_no = 1
+        	where e.ent_category1 = 'IT/인터넷'
 			AND ROWNUM <=5
 			group by e.ent_no
 					,e.ent_category1
 					,e.ent_name
-					,c.job
 			order by avg desc		
 					
 		]]>
-	
+
 	</select>
-	
+
 	<select id="companyList2" resultType="map">
 		<![CDATA[
 			select 
 				e.ent_no
 				,e.ent_category1
 				,e.ent_name
-				,c.job
 				,round(sum(review_satisfaction+review_welfare+review_promotion+review_executive)/(count(review_satisfaction)+count(review_welfare)+count(review_promotion)+count(r.review_executive)),1) as avg
 			from enterprise e
 			inner join review r
 			on (r.ent_no = e.ent_no)
-			 inner join category c
-        	on (c.cate_no = e.ent_category1)
-        	where c.cate_no = 2
+        	where e.ent_category1 = '금융/재무'
 			AND ROWNUM <=5
 			group by e.ent_no
 					,e.ent_category1
 					,e.ent_name
-					,c.job
 			order by avg desc		
 					
 		]]>
-	
+
 	</select>
 	<select id="companyList3" resultType="map">
 		<![CDATA[
@@ -210,23 +295,19 @@
 				e.ent_no
 				,e.ent_category1
 				,e.ent_name
-				,c.job
 				,round(sum(review_satisfaction+review_welfare+review_promotion+review_executive)/(count(review_satisfaction)+count(review_welfare)+count(review_promotion)+count(r.review_executive)),1) as avg
 			from enterprise e
 			inner join review r
 			on (r.ent_no = e.ent_no)
-			 inner join category c
-        	on (c.cate_no = e.ent_category1)
-        	where c.cate_no = 3
+        	where e.ent_category1 = '의약'
 			AND ROWNUM <=5
 			group by e.ent_no
 					,e.ent_category1
 					,e.ent_name
-					,c.job
 			order by avg desc		
 					
 		]]>
-	
+
 	</select>
 	<select id="companyList4" resultType="map">
 		<![CDATA[
@@ -234,23 +315,19 @@
 				e.ent_no
 				,e.ent_category1
 				,e.ent_name
-				,c.job
 				,round(sum(review_satisfaction+review_welfare+review_promotion+review_executive)/(count(review_satisfaction)+count(review_welfare)+count(review_promotion)+count(r.review_executive)),1) as avg
 			from enterprise e
 			inner join review r
 			on (r.ent_no = e.ent_no)
-			 inner join category c
-        	on (c.cate_no = e.ent_category1)
-        	where c.cate_no = 4
+        	where e.ent_category1 = '서비스/고객지원'
 			AND ROWNUM <=5
 			group by e.ent_no
 					,e.ent_category1
 					,e.ent_name
-					,c.job
 			order by avg desc		
 					
 		]]>
-	
+
 	</select>
 	<select id="companyList5" resultType="map">
 		<![CDATA[
@@ -258,23 +335,19 @@
 				e.ent_no
 				,e.ent_category1
 				,e.ent_name
-				,c.job
 				,round(sum(review_satisfaction+review_welfare+review_promotion+review_executive)/(count(review_satisfaction)+count(review_welfare)+count(review_promotion)+count(r.review_executive)),1) as avg
 			from enterprise e
 			inner join review r
 			on (r.ent_no = e.ent_no)
-			 inner join category c
-        	on (c.cate_no = e.ent_category1)
-        	where c.cate_no = 5
+        	where e.ent_category1 = '마케팅/시장조사'
 			AND ROWNUM <=5
 			group by e.ent_no
 					,e.ent_category1
 					,e.ent_name
-					,c.job
 			order by avg desc		
 					
 		]]>
-	
+
 	</select>
 	<select id="companyList6" resultType="map">
 		<![CDATA[
@@ -282,26 +355,22 @@
 				e.ent_no
 				,e.ent_category1
 				,e.ent_name
-				,c.job
 				,round(sum(review_satisfaction+review_welfare+review_promotion+review_executive)/(count(review_satisfaction)+count(review_welfare)+count(review_promotion)+count(r.review_executive)),1) as avg
 			from enterprise e
 			inner join review r
 			on (r.ent_no = e.ent_no)
-			inner join category c
-        	on (c.cate_no = e.ent_category1)
-        	where c.cate_no = 6
+        	where e.ent_category1 = '교육'
 			AND ROWNUM <=5
 			group by e.ent_no
 					,e.ent_category1
 					,e.ent_name
-					,c.job
 			order by avg desc		
 					
 		]]>
-	
+
 	</select>
 	<!--기업명 클릭시 -YS  -->
-	<select id="companyInfo" resultType="map">
+	<select id="companyInfo" parameterType="_int" resultType="map">
 		select 
 				e.ent_no
 				,e.ent_category1
@@ -312,10 +381,17 @@
 				,e.ent_email
 				,e.rep_name
 				,e.rep_phone
+				,r.review_satisfaction
+				,r.review_welfare
+				,r.review_promotion
+				,r.review_executive
+				,rec.rec_no
 				,round(sum(review_satisfaction+review_welfare+review_promotion+review_executive)/(count(review_satisfaction)+count(review_welfare)+count(review_promotion)+count(r.review_executive)),1) as avg
 			from enterprise e
 			inner join review r
 			on (r.ent_no = e.ent_no)
+			inner join recruitment rec
+			on (e.ent_no = rec.ent_no)
 			where e.ent_no = #{entNo}
 			group by e.ent_no
 					,e.ent_category1
@@ -326,5 +402,68 @@
 					,e.ent_email
 					,e.rep_name
 					,e.rep_phone
+					,r.review_satisfaction
+					,r.review_welfare
+					,r.review_promotion
+					,r.review_executive
+					,rec.rec_no
+	</select>
+	
+	
+	<select id="entDataC2" resultMap="mdc2Map">
+		SELECT CATE_NO, COUNT(*) AS
+		COUNT FROM RECRUITMENT JOIN CATEGORY2 ON REC_CATEGORY=CATE_NO2 GROUP
+		BY CATE_NO ORDER BY CATE_NO
+	</select>
+	<select id="payData" resultMap="pdMap">
+		SELECT REC_SALARY, COUNT(*) AS
+		COUNT FROM RECRUITMENT JOIN SUPPORT ON
+		RECRUITMENT.REC_NO=SUPPORT.REC_NO WHERE REC_SALARY!='회사내규에 따름' GROUP
+		BY REC_SALARY ORDER BY TO_NUMBER(REC_SALARY)
+	</select>
+	<select id="findAdByNo" resultMap="adMap">
+		SELECT * FROM RECRUITMENT
+		WHERE REC_NO=#{recNo}
+	</select>
+	<update id="updateApplyAd">
+		UPDATE RECRUITMENT SET
+		REC_TITLE= #{rec_title},
+		REC_CONTENTS= #{rec_contents},
+		REC_STARTDATE= #{rec_startdate},
+		REC_ENDDATE= #{rec_enddate},
+		REC_SALARY= #{rec_salary},
+		REC_INFO= #{rec_info},
+		REC_PREFER= #{rec_prefer},
+		REC_WELFARE= #{rec_welfare},
+		REC_QUALIFICATION= #{rec_qualification},
+		REC_PEPOLE= #{rec_people},
+		REC_CAREER= #{rec_career},
+		REC_ORDER= #{rec_order},
+		REC_TYPE= #{rec_type},
+		REC_OTHER= #{rec_other},
+		REC_CATEGORY= #{rec_category}
+		WHERE REC_NO= #{ent_no}
+	</update>
+
+	<select id="workerList" resultMap="workerMap">
+		SELECT
+		MEMBER.*, RES_NO, RES_NAME, RES_PHONE,
+		RES_GENDER, RES_BIRTH, RES_CAR, RES_CONTENT
+		FROM MEMBER RIGHT JOIN RESUME ON
+		MEMBER.MEM_NO=RESUME.MEM_NO
+	</select>
+	<select id="getMammoth" resultMap="mammothmap">
+		SELECT * FROM EDUCATION
+		JOIN AWARDS ON EDUCATION.RES_NO=AWARDS.RES_NO
+		JOIN LICENSE ON AWARDS.RES_NO=LICENSE.RES_NO
+		JOIN CAREER ON LICENSE.RES_NO=CAREER.RES_NO
+		JOIN MYSKILL ON CAREER.RES_NO=MYSKILL.RES_NO WHERE EDUCATION.RES_NO=#{resno}
+	</select>
+	
+	<select id="getApplicant" resultMap="appMap">
+		SELECT * FROM SUPPORT JOIN RESUME ON SUPPORT.MEM_NO=RESUME.MEM_NO WHERE REC_NO=#{recno}
+	</select>
+	<select id="selectSupportCount" resultType="_int">
+		select count(*) from support where rec_no = #{recno}
 	</select>
 </mapper>

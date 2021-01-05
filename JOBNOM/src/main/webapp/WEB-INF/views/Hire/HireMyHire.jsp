@@ -44,14 +44,11 @@
 </div>
 
 
-<script>
-	//모달창 만들구간
-</script>
-<!-- ====================== -->
 
 
-<section id="content">
-	<div class="a">
+<section id="content ">
+<div class="">
+	<div class="a ">
 		<div>
 			<div class="hireHome">
 				<a class="menus" class="menus"
@@ -150,6 +147,6 @@
 
 
 
-
+</div>
 </section>
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />

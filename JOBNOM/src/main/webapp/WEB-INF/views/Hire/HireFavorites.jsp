@@ -102,10 +102,20 @@
 				</c:if>
             <c:forEach items="${i }" var="i">
             <div class="myFavoritesList">
-                <div class="logoImage"></div>
+                <div class="">
+                <c:choose>
+		                        	<c:when test="${empty i.ent_logo }">
+		                				<img src="${path }/resources/image/Hire/job.png" style="width: 80px; height: 80px; ">
+		                        	</c:when>
+		                        	<c:otherwise>
+		                        		<img src="${path }/resources/enterprise/logo/${i.ent_no }/${i.ent_logo}" style="width: 80px; height: 80px; ">
+		                        	</c:otherwise>
+		                        
+		                        </c:choose>
+                </div>
                 <div class="myFavoritesListAll">
                     <div><c:out value="${i.rec_title }"></c:out></div>
-                    <div>(주) 카카오</div>
+                    <div><c:out value="${i.ent_name }"></c:out></div>
                     <div class="myFavoritesDetail">
                         <div class="myFavoritesDetail1">평점</div>
                         <div class="myFavoritesDetai2">기업리뷰</div>

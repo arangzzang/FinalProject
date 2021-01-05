@@ -6,7 +6,7 @@
 <c:set var="path" value="${pageContext.request.contextPath }" />
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 <link rel="stylesheet" href="../resources/css/Hire/HireHome.css" />
-<link rel="stylesheet" href="../resources/css/Hire/FindingMeDetail.css" />
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 
 <jsp:include page="/WEB-INF/views/common/header.jsp">
@@ -62,7 +62,7 @@
         </div>
     </div> 
 <div class="recommendation">지금 뜨는 공고 List</div>
-<p><c:out value="${totalData}"/>총 건의 게시물이 있습니다.</p>
+
     <div class="categoryAnnouncementAll">
         <div class="categoryAnnouncement">
             
@@ -73,7 +73,7 @@
 	                	
 	                <div class="announcementListSize">
 	            		<c:forEach items="${re }" var="d">
-		                    <div class="announcementListFlax">
+		                    <div class="announcementListFlax" >
 		                        <div class="Mylogo1">
 		                        
 		                        <c:choose>
@@ -89,7 +89,7 @@
 		                        
 		                        </div>
 		                        
-		                        <a href="${path }/Hire/announcementPage2.do?anoNum=${d.REC_CATEGORY}">
+		                        <a href="${path }/Hire/announcementPage2.do?anoNum=${d.REC_CATEGORY}" style="color: black">
 		                        <div class="TitleEndDate">
 		                        <div class="announcementTitleList"><c:out value="${d.REC_TITLE }"/></div>
 								<div>- 마감 일자 : <fmt:formatDate  value="${d.REC_ENDDATE }" pattern="yy.MM.dd" /></div>
@@ -111,82 +111,55 @@
 
     </div> 
     
-    <c:if test="${commonLogin != null}">
+      <c:choose>
+     <c:when test="${commonLogin != null && fitM[0].REC_NO !=null }">
                    
     
     <div class="findingMe"> 나를 찾는 기업들이 여기에</div>
  <!-- Swiper -->
 <div class="bb" style="height: 300px;" >
-<c:forEach items="${fitM }" var="fitM">
+
     <div class="swiper-container">
-        <div class="swiper-wrapper">
-        <div class="swiper-slide">${fitM.REC_TITLE }</div>
+   
+        <div class="swiper-wrapper" >
+         <c:forEach items="${fitM }" var="fitM">
+        <div class="swiper-slide" style="border: none">
+
+        <button  id="aaaa" name="aaaa" value="${fitM.REC_NO } "  style="width: 350px; height: 260px; border-radius: 12px;" >${fitM.REC_TITLE }</button>
+        <button  id="dddd" name="dddd" value="${fitM.REC_CATEGORY } "style="width: 350px; height: 260px; display: none;" ></button>
+
+</div>        
+         
+         	</c:forEach>
         </div>
         <!-- Add Pagination -->
         <div class="swiper-pagination"></div>
       	<!-- Add Arrows -->
 		<div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
-
+  
     </div>
-   
+  
+   <div class="findingMeDetailShow"></div> 
+   </div>
 
-    <div id="findingMeDetail" >
-        <div class="findingMeDetailX">
-            <button class="findingMeDetailCancel"><i class="far fa-window-close"></i></button>
-        </div>
-        <div class="findingMeDetail2">
-        <div class="findingMeDetailTitle">
-            <div class="findingMeDetailTitleLogo"></div>
-            <div class="findingMeDetailTitleAnnouncement">${fitM.REC_TITLE }</div>
-        </div>
-        <div class="findingMeDetailSummary">
-            <div class="findingMeDetailSummary1">
-                <div class="findingMeDetailSummaryLogo"></div>
-            <div class="findingMeDetailSummaryTitle">마감일</div><div><fmt:formatDate  value="${fitM.REC_ENDDATE }" pattern="yy.MM.dd" /></div>
-            </div>
-            <div class="findingMeDetailSummary2">
-                <div class="findingMeDetailSummaryLogo"></div>
-            <div class="findingMeDetailSummaryTitle">직무</div><div>${fitM.JOBS2 }</div>
-            </div>
-            <div class="findingMeDetailSummary2">
-                <div class="findingMeDetailSummaryLogo"></div>
-            <div class="findingMeDetailSummaryTitle">경력</div><div>${fitM.REC_CAREER } 년이상</div>
-            </div>
-    
-        </div>
-        
+</c:when>
+<c:otherwise>
+<br><br><br>
+  <button class="HireHome2" 
+		onclick="location.href='${path }/Hire/HireAnnouncement.do'" ></button>
 
-            
-        <div class="findingMeDetailMaintask">
-            <div class="findingMeDetailMaintaskAll">
-                <div class="findingMeDetailMaintaskAll1">경영기획 분석</div>
-                <div class="findingMeDetailMaintaskAll2">재무 회계 및 관리</div>
-                <div class="findingMeDetailMaintaskAll3">IR or M&A</div>
-            </div>
-    
-            <div class="findingMeDetailButton">
-                <button class="btn_annoDetail" onclick="location.href='${path }/Hire/annoHomeDetailMove.do?recNo=${fitM.REC_NO}'" >공고 상세보기</button>
-                <button id="favoritesBox" onclick="fn_toggle();"> 
-                    <img id="announcementFavorites" src="${path }/resources/image/Hire/pngwing.png" />
-                </button>
-            </div>
-            
-    
-        </div>
-    </div> 
-    </div>
+</c:otherwise>
+</c:choose>
 
-    	</c:forEach>
-</div>
-</c:if><br><br><br><br><br>
 
-<c:if test="${commonLogin == null}">
+
+<%-- <c:if test="${commonLogin == null}">
 	  <button class="HireHome2" 
 		onclick="location.href='${path }/Hire/HireAnnouncement.do'" ></button>
 
 </c:if>
-
+ --%>
    
         
 
@@ -250,45 +223,37 @@ var swiper = new Swiper('.swiper-container', {
     </script>
 
  
-<script>
+<!-- <script>
        //보이기
     $(document).ready(function(){
      $(".swiper-slide").click(function(){
-    $("#findingMeDetail").show();
+   	$(".findingMeDetail33").append($("#findingMeDetail"));
+   	
     $("section").css("height","1750");
     });
     });
-     </script>
-
-
-     <script>
-   //숨기기
-    $(document).ready(function(){
-     $(".findingMeDetailCancel").click(function(){
-    $("#findingMeDetail").hide();
-    $("section").css("height","1450");
- 
-    });
-    });
-
-
-     </script>
+     </script> -->
+ <script>
+ $(".swiper-slide").click(e=>{
+     var formData = $(e.target).val();
+    //var formData = $("button[name=aaaa]").val();
+     var formData2 = $(e.target).next().val();
      
-     
-
-
-<script>
-    var cnt=1;
-    function fn_toggle(){
-        var announcementFavorites =document.getElementById("announcementFavorites");
-        var fav =document.getElementById("fav");
-        if(cnt%2==1){
-            announcementFavorites.src="${path }/resources/image/Hire/pngwing.png";
-        
-        }else{
-            announcementFavorites.src="${path }/resources/image/Hire/pngwing2.png";
+     $.ajax({
+    	 url : "${path}/Hire/swiper.do", 
+         type : 'POST', 
+         dataType :'html',
+         data : {rec_no:formData,rec_category:formData2},
+         success :function(data){
+           $(".findingMeDetailShow").html(data);
         }
-        cnt++
+})
+    });
+                
+                </script> 
 
-    }
-</script> 
+   
+     
+     
+
+

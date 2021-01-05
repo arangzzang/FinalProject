@@ -7,6 +7,8 @@ import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.project.jobnom.enterprise.model.vo.Enterprise;
+
 @Repository
 public class SearchDaoImpl implements SearchDao {
 	
@@ -52,22 +54,38 @@ public class SearchDaoImpl implements SearchDao {
 		// TODO Auto-generated method stub
 		return session.selectList("search.ajaxReivewCateList",reivewCategory);
 	}
-	// 공고 검색 즐겨 찾기
+	
+	//기업 팔로잉
 	@Override
-	public int recFav(SqlSession session, Map param) {
+	public int entFollow(SqlSession session, Map param) {
 		// TODO Auto-generated method stub
-		return session.insert("search.recFav",param);
+		return session.insert("search.entFollow",param);
 	}
-	//공고 검색 즐겨찾기 빼기
+	
+	//기업 언팔로잉
 	@Override
-	public int recFavDelete(SqlSession session, Map param) {
+	public int entUnFollow(SqlSession session, Map param) {
 		// TODO Auto-generated method stub
-		return session.delete("search.recFav",param);
+		return session.delete("search.entUnFollow",param);
 	}
-	//즐겨찾기 리스트
+	
+	//기업 팔로잉 리스트 
 	@Override
-	public List<Map> selectFav(SqlSession session) {
+	public List<Map> entFollowCheck(SqlSession session) {
 		// TODO Auto-generated method stub
-		return session.selectList("search.selectFav");
+		return session.selectList("search.entFollowCheck");
+	}
+	
+	//검색창  자동완성1-1
+	@Override
+	public List<Enterprise> selectOneRecruitment(SqlSession session, String key) {
+		// TODO Auto-generated method stub
+		return session.selectList("search.selectOneRecruitment",key);
+	}
+	//검색창 자동 완성 1-2
+	@Override
+	public List<Enterprise> searchAuto2(SqlSession session, String key) {
+		// TODO Auto-generated method stub
+		return session.selectList("search.searchAuto2",key);
 	}
 }

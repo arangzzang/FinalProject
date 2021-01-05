@@ -46,16 +46,10 @@
            </div>
            <textarea class="form-control" rows="5" name="rec_contents" id="rec_contents" required></textarea>
         </div>
-      <div class="custom-file">
-         <input type="file" class="custom-file-input" name="rec_file1" id="rec_file1">
-         <label class="custom-file-label" for="customFile">회사 로고</label>
-      </div>
-      <br><br>
-      <div class="custom-file">
-         <input type="file" class="custom-file-input" name="rec_file2" id="rec_file2">
-         <label class="custom-file-label" for="customFile">Choose file</label>
-      </div>
-      <br><br>
+         <input type="hidden" class="custom-file-input" name="rec_file1" id="rec_file1">
+         <input type="hidden" class="custom-file-input" name="rec_file2" id="rec_file2">
+
+
       <div class="input-group mb-3 inline">
            <div class="input-group-prepend">
               <span class="input-group-text">시작일</span>
@@ -198,11 +192,12 @@
 </section>
 
 <script>
-// Add the following code if you want the name of the file appear on select
+/* // Add the following code if you want the name of the file appear on select
    $(".custom-file-input").on("change", function() {
      var fileName = $(this).val().split("\\").pop();
      $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
-   });
+   }); */
+   
    $("#salary_noinfo").change(function(){
       if(this.checked){
          $("#rec_salary").prop("disabled", true);         
@@ -212,6 +207,22 @@
       }
    });
    
+   $("#rec_enddate").change(function(){
+	   var eDate=$(this).val();
+	   var sDate=$("#rec_startdate").val();
+	   if(Date.parse(eDate) <= Date.parse(sDate)){
+	   alert("시작일 이후 날짜를 선택해 주세요");		
+	   $(this).val(null);
+	   }
+   });
+   $("#rec_startdate").change(function(){
+	   var sDate=$(this).val();
+	   var eDate=$("#rec_enddate").val();
+	   if(eDate != null && Date.parse(eDate) <= Date.parse(sDate)){
+	   alert("종료일 이전 날짜를 선택해 주세요");		
+	   $(this).val(null);
+	   }
+   });
    
    
 </script>

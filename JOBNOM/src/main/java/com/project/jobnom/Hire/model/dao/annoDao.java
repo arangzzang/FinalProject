@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.project.jobnom.Hire.model.vo.Interestedrcruitment;
 import com.project.jobnom.Hire.model.vo.Recruitment;
 
 public interface annoDao {
@@ -23,4 +24,5 @@ public interface annoDao {
 
 	List<Recruitment>  annoHomeDetailMove(SqlSession session,int recNo, int cPage, int numPerPage);
 
+	List<Interestedrcruitment> selectIn(SqlSession session, Map memNo);
 }

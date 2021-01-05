@@ -11,6 +11,7 @@ import com.project.jobnom.Hire.model.vo.Interestedrcruitment;
 import com.project.jobnom.Hire.model.vo.Recruitment;
 import com.project.jobnom.Hire.model.vo.Support;
 import com.project.jobnom.enterprise.model.vo.Enterprise;
+import com.project.jobnom.member.model.vo.Member;
 
 @Repository
 public class HireDaoImpl implements HireDao {
@@ -37,8 +38,8 @@ public class HireDaoImpl implements HireDao {
 	}
 
 	@Override
-	public List<Map>  selectRecruitmentList(SqlSession session,Map paramMap) {
-		return session.selectList("hire.selectRecruitmentList",paramMap);
+	public List<Map>  selectRecruitmentList(SqlSession session,String rec_no) {
+		return session.selectList("hire.selectRecruitmentList",rec_no);
 	}
 
 	@Override
@@ -120,9 +121,29 @@ public class HireDaoImpl implements HireDao {
 	public List<Enterprise> reviewSearch2(SqlSession session, String key) {
 		return session.selectList("hire.reviewSearch2",key);
 	}
-	
-	
 
+	@Override
+	public Enterprise reviewSearch3(SqlSession session,String key) {
+		return session.selectOne("hire.reviewSearch3",key);
+	}
+
+	@Override
+	public List<Map> mypageView(SqlSession session) {
+		return session.selectList("hire.mypageView");
+	}
+
+	@Override
+	public List<Recruitment> swiper(SqlSession session, String rec_no) {
+		return session.selectList("hire.swiper",rec_no);
+	}
+
+	@Override
+	public List<Member> membercate2(SqlSession session, String rec_category) {
+		return session.selectList("hire.membercate2",rec_category);
+	}
+	
+	
+	
 	
 	
 	

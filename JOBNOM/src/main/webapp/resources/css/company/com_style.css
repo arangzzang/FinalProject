@@ -537,3 +537,42 @@ body{
     padding: 0;
     text-align: center;
 }
+.gf_bar{
+	width: 155px;
+    height: 25px;
+    position: relative;
+    margin-left: -13px;
+}
+.gr_bar_gray{
+	background-color: #999;
+    position: absolute;
+    margin-right: -41px;
+    margin-left: 1px;
+    width: 154px;
+    height: 25px;
+}
+ .gf_bar div.gr_bar_green{
+	 background-color: #32aa46;   
+	 position:absolute; 
+	 height: 25px; 
+	 margin-left:1px;
+	 position:absolute;
+	 left:0;
+	 top:0;  
+}
+.gr_bar_img{
+    background-image: url(../../image/enterprice/gr_bar.png);
+    background-size: cover;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 155px;
+    height: 25px;
+}
+.avg{
+	margin-left: 102px;
+}
+.total_avg{
+	display: contents;
+	
+}
