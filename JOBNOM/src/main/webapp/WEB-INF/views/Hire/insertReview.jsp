@@ -412,39 +412,7 @@ $(".executiveStar").on("click",e=>{
 </script>
 <script>
 
-<<<<<<< HEAD
-=======
-//리뷰 등록하기
-$(".GradeboxSubmit").click(e=>{
-      var ent_no = $('input[name=ent_no]').val();
-      console.log(ent_no+'되는건가');
-      var review_title = $('input[name=review_title]').val();
-      var mem_no = $('input[name=mem_no]').val();
-      var review_contents = $('input[name=review_contents]').val();
-      var review_satisfaction = $('input[name=review_satisfaction]').val();
-      var review_welfare = $('input[name=review_welfare]').val();
-      var review_promotion = $('input[name=review_promotion]').val();
-      var review_executive = $('input[name=review_executive]').val();
-         $.ajax({
-               url:"${path}/Hire/insertReview2.do",
-               data:{
-                  ent_no:ent_no&
-                  review_title:review_title&
-                  mem_no:mem_no&
-                  review_contents:review_contents&
-                  review_satisfaction:review_satisfaction&
-                  review_welfare:review_welfare&
-                  review_promotion:review_promotion&
-                  review_executive:review_executive
-               },
-               type:"post",
-               success:data=>{
-                   $(".maininfo-parent").html("");
-                   $(".maininfo-parent").html(data);
-               }
-           });
-      });
->>>>>>> branch 'master' of https://github.com/arangzzang/FinalProject.git
+
 
 function fn_review(){
 	
@@ -481,7 +449,7 @@ $(document).ready(function(){
  <script>
 
 $("#reviewName").keyup(e=>{
-<<<<<<< HEAD
+
 	
 	$.ajax({
 		url:"${path}/Hire/reviewSearch.do",
@@ -530,38 +498,8 @@ $("#reviewName").keyup(e=>{
 })
 });
 </script> 
-=======
-   $.ajax({
-      url:"${path}/Hire/reviewSearch.do",
-      data:{"key":$(e.target).val()},
-      success:data => {
-         
-         $.ajax({
-            url:"${path}/Hire/reviewSearch2.do",
-            data:{"key":$(e.target).val()},
-            success:data => {
-               console.log(data); 
-               let keys=data.split(",");
-               $("#locationNumber").html("");
-               for(let i=0;i<keys.length;i++){
-                  $("#locationNumber").append($('input[name=ent_no]').val(keys[i]));
-                  
-               }
-               
-            }
-         })
-         console.log(data); 
-         let keys=data.split(",");
-         $("#locationData").html("");
-         for(let i=0;i<keys.length;i++){
-            $("#locationData").append($("<option>").html(keys[i]));
-            
-         }
-      }
-   });
-});
-</script>     
->>>>>>> branch 'master' of https://github.com/arangzzang/FinalProject.git
+
+
 <script>
 //리뷰 등록하기
 $(".GradeboxSubmit").click(e=>{
