@@ -6,6 +6,7 @@ import java.util.Map;
 import com.project.jobnom.member.model.vo.MemCategory;
 import com.project.jobnom.member.model.vo.MemCategory2;
 import com.project.jobnom.member.model.vo.Member;
+import com.project.jobnom.resume.model.vo.Resume;
 
 public interface MemberService {
 	
@@ -25,6 +26,6 @@ public interface MemberService {
 	int updatePw(Map mem);
 	//이력서페이지
 	Member myProfileView(int memNo);
-	//이력서 가기전 직종 값 뿌려줄 데이터
-	
+	//이력서 조회
+	Resume selectResume(int memNo);
 }

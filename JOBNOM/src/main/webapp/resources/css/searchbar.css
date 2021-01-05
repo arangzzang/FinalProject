@@ -76,9 +76,6 @@
 	.header_md{
 		z-index:1050 !important;
 	}
-	section,#content{
-		padding-top: 158px !important;
-	}
 	.jmkbtn{
 		background-color:#00c362;
 		color:#fff;

@@ -67,7 +67,18 @@
     <input type="hidden" class="mem_change_email2" value=""/>
 </section>
 
+${insertFlag}
 <script>
+	<c:if test="${updateFlag}">
+		$(function(){
+			$(".resumeBtn").click();
+		})
+	</c:if>
+	<c:if test="${insertFlag}">
+		$(function(){
+			$(".resumeBtn").click();
+		})
+	</c:if>
 	$(function (){
 		//email변경(인증하기)
 		$(".time").hide();
