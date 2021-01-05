@@ -180,21 +180,21 @@ public class companyController {
 	public ModelAndView comCheck(ModelAndView mv,@RequestParam(value="cPage",defaultValue="1") int cPage, 
 			@RequestParam(value="numPerpage",defaultValue="5") int numPerpage, Recruitment rec)  {
 		/* System.out.println("???"); */
-		System.out.println(rec.getRec_no());
-		List<Support> s = service.selectSupport(cPage,numPerpage, rec);
-		List<Resume> res = new ArrayList<Resume>();
-		for(Support l : s) {
-			System.out.println("회원번호:" + l.getMem_no());
-			res.add(service.selectResume(l.getMem_no()));
-		}
-		System.out.println("이력서 목록:" + res);
-		int totalData=service.selectCount();
+		System.out.println(rec);
 		
-		mv.addObject("s",s);
-		mv.addObject("res", res);
-		mv.addObject("pageBar",EnterprisePageBar.getPageBar(totalData,cPage,numPerpage,"com_check.do"));
-		mv.addObject("totalData",totalData);
-		mv.setViewName("/enterprise/ent_mypage/com_check");
+		
+		/*
+		 * System.out.println(rec.getRec_no()); List<Support> s =
+		 * service.selectSupport(cPage,numPerpage, rec); List<Resume> res = new
+		 * ArrayList<Resume>(); for(Support l : s) { System.out.println("회원번호:" +
+		 * l.getMem_no()); res.add(service.selectResume(l.getMem_no())); }
+		 * System.out.println("이력서 목록:" + res); int totalData=service.selectCount();
+		 * 
+		 * mv.addObject("s",s); mv.addObject("res", res);
+		 * mv.addObject("pageBar",EnterprisePageBar.getPageBar(totalData,cPage,
+		 * numPerpage,"com_check.do")); mv.addObject("totalData",totalData);
+		 */
+		 mv.setViewName("/enterprise/ent_mypage/com_check");
 		
 		return mv;
 	}
