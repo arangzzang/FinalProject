@@ -67,21 +67,23 @@
 		JOIN ENTERPRICE E ON (R.ENT_NO = E.ENT_NO)
 	</select>
 	
-	<select id="selectRecruitmentList" parameterType="map" resultType="java.util.HashMap">
+	<select id="selectRecruitmentList" parameterType="string" resultType="map">
 		         
-           SELECT DISTINCT E.*, ENT_NAME,T.MEM_NO,OPEN_CHECK,HIRE_NO, REP_NAME, REP_PHONE,ENT_LOGO
+                 SELECT DISTINCT E.REC_NO,E.ENT_NO, REC_TITLE,REC_OTHER, REC_CONTENTS, REC_STARTDATE, REC_ENDDATE, REC_INFO,REC_PREFER, REC_WELFARE, REC_QUALIFICATION, REC_PEPOLE, REC_CAREER, REC_ORDER,
+                 REC_TYPE, REC_CATEGORY,ENT_NAME,OPEN_CHECK, REP_NAME, REP_PHONE,ENT_LOGO, REPLACE(REC_SALARY,' ')  AS REC_SALARY
 			FROM RECRUITMENT E 
 			LEFT JOIN ENTERPRISE R ON (R.ENT_NO = E.ENT_NO)
            LEFT JOIN INTERESTEDRECRUITMENT T ON (T.REC_NO = E.REC_NO)
               LEFT JOIN SUPPORT S ON (S.REC_NO = E.REC_NO)
             LEFT JOIN MEMBER M ON (M.MEM_NO = S.MEM_NO)
 			WHERE E.REC_NO=#{rec_no}
+			
 
 	</select>
 	
 	<select id="selectReviewList" parameterType="string" resultType="java.util.HashMap">
 		SELECT  R.REC_NO,E.ENT_NO, R.REC_TITLE, ENT_NAME,REVIEW_TITLE,REVIEW_CONTENTS,REVIEW_SATISFACTION,
-		 REVIEW_WELFARE, REVIEW_PROMOTION , REVIEW_EXECUTIVE
+		 REVIEW_WELFARE, REVIEW_PROMOTION , REVIEW_EXECUTIVE,ENT_LOGO
 		FROM REVIEW E 
         JOIN RECRUITMENT R ON (E.ENT_NO = R.ENT_NO)
         JOIN ENTERPRISE S  ON (E.ENT_NO = S.ENT_NO)
@@ -106,11 +108,12 @@
 	</delete>
 	
 	<select id="HireMyHire" parameterType="string" resultType="com.project.jobnom.Hire.model.vo.Support">
-		  				SELECT S.*, ENT_NAME,REC_TITLE,REC_CONTENTS
+		  			SELECT S.*, ENT_NAME,REC_TITLE,REC_CONTENTS
                       FROM SUPPORT S
                        JOIN RECRUITMENT R ON(R.REC_NO = S.REC_NO)
                        JOIN ENTERPRISE E ON(E.ENT_NO = R.ENT_NO)
                       WHERE MEM_NO=#{memNo}
+                      ORDER BY APP_NO DESC
 	</select>
 	
 	<select id="selectSuppertCount" resultType="_int"  parameterType="string">
@@ -118,11 +121,12 @@
 	</select>
 	
 	<select id="HireFavorites" parameterType="string" resultType="com.project.jobnom.Hire.model.vo.Interestedrcruitment">
-		  			  SELECT T.*,REC_TITLE,E.ENT_NAME
+		  			  SELECT T.*,REC_TITLE,E.ENT_NAME, ENT_LOGO, E.ENT_NO
                       FROM INTERESTEDRECRUITMENT T
                     LEFT JOIN RECRUITMENT R ON (R.REC_NO = T.REC_NO) 
                        JOIN ENTERPRISE E ON (E.ENT_NO = R.ENT_NO)
                           WHERE MEM_NO=#{memNo}
+                          ORDER BY HIRE_NO DESC 
 	</select>
 	<select id="selectInterestedrcruitmentCount" resultType="_int" parameterType="string">
 		                       SELECT  COUNT(*) FROM INTERESTEDRECRUITMENT  WHERE MEM_NO=#{memNo}
@@ -155,13 +159,13 @@
 	</select>
 	
 	<select id="MemberFitList" resultType="map" parameterType="string">
-		SELECT DISTINCT R.*,M.MEM_NO,M.CATE_NO2, JOBS2
+			SELECT DISTINCT R.*,M.MEM_NO,M.CATE_NO2, JOBS2, OPEN_CHECK
                FROM RECRUITMENT R
+               LEFT JOIN INTERESTEDRECRUITMENT T ON(T.REC_NO=R.REC_NO)
                JOIN SUPPORT S ON(S.REC_NO=R.REC_NO) 
                JOIN MEMBER M ON(M.MEM_NO=S.MEM_NO)
                JOIN CATEGORY2 C ON(C.CATE_NO2 = M.CATE_NO2)
-               WHERE REC_CATEGORY=M.CATE_NO2
-               AND M.MEM_NO=#{memNo}
+               WHERE M.MEM_NO=#{memNo}
                
                
 	</select>
@@ -171,5 +175,30 @@
 	 	where ent_Name like '%'||#{key}||'%'
              
 	</select>
+	
+	<select id="reviewSearch3"  resultMap="entMap" parameterType="String">
+		select ent_Name from enterprise
+		where ent_Name=#{key}
+	</select>
+	
+	<select id="mypageView" resultType="map" >
+		SELECT ENT_NAME FROM ENTERPRISE
+	
+	</select>
+	<select id="swiper" resultType="com.project.jobnom.Hire.model.vo.Recruitment" parameterType="String">
+		 SELECT  REC_NO, ENT_NO, REC_TITLE, REC_CONTENTS, REC_ENDDATE,REC_INFO,REC_CAREER, REC_PEPOLE,REC_TYPE,  REPLACE(REC_SALARY,' ')  AS REC_SALARY
+		  FROM RECRUITMENT
+		WHERE REC_NO =#{rec_no}	
+		</select>
+	
+	<select id="membercate2" resultType="com.project.jobnom.Hire.model.vo.Recruitment" parameterType="String" >
+		    <!--  SELECT M.*, JOBS2
+                FROM MEMBER M
+                 JOIN CATEGORY2 R ON(R.CATE_NO2 = M.CATE_NO2)
+                 WHERE M.CATE_NO2=#{rec_category} -->
+                 SELECT JOBS2 FROM CATEGORY2 
+                 WHERE CATE_NO2=#{rec_category}
+	</select>
+	
 	
 </mapper> 

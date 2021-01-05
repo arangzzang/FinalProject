@@ -3,6 +3,7 @@ package com.project.jobnom.Hire.model.service;
 import java.util.List;
 import java.util.Map;
 
+import com.project.jobnom.Hire.model.vo.Interestedrcruitment;
 import com.project.jobnom.Hire.model.vo.Recruitment;
 
 public interface annoService {
@@ -15,6 +16,7 @@ public interface annoService {
 
 	List<Recruitment> annoHomeDetailMove(int recNo,int cPage, int numPerPage);
 
+	List<Interestedrcruitment> selectIn(Map memNo);
 
 
 }

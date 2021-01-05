@@ -26,8 +26,10 @@ import com.project.jobnom.Hire.model.service.annoService;
 import com.project.jobnom.Hire.model.vo.Interestedrcruitment;
 import com.project.jobnom.Hire.model.vo.Recruitment;
 import com.project.jobnom.Hire.model.vo.Support;
+import com.project.jobnom.common.model.vo.Login;
 import com.project.jobnom.common.pagebar.PageBarFactory;
 import com.project.jobnom.enterprise.model.vo.Enterprise;
+import com.project.jobnom.member.model.vo.Member;
 
 
 @Controller
@@ -145,6 +147,7 @@ public class HireController {
 		
 		return "Hire/insertReview";
 		
+		
 	}
 
 	@RequestMapping("/Hire/supportingCompany.do")
@@ -155,21 +158,36 @@ public class HireController {
 
 //공소 강세 페이지에서 상세 버튼
 	@RequestMapping("/Hire/anoDetail.do")
-	public ModelAndView anoDetail(ModelAndView mv, String rec_no, HttpServletRequest request) throws Exception {
+	public ModelAndView anoDetail(String memNo, HttpSession session,ModelAndView mv, String rec_no,HttpServletRequest request) throws Exception {
 		System.out.println("혹시");
+		/*
+		 * Login log=(Login)session.getAttribute("commonLogin");
+		 * System.out.println(log); log.getMemNo(); System.out.println("ddd"+log);
+		 */
+		System.out.println("nn"+memNo);
+		System.out.println("nn"+rec_no);
+		
 
-		Map<String, Object> paramMap = new HashMap<String, Object>();
-
-		String rec_no1 = request.getParameter("rec_no");
-		paramMap.put("rec_no", rec_no1);
-
-		List<Map> r = service.selectRecruitmentList(paramMap);
+		
+		List<Map> r = service.selectRecruitmentList(rec_no);
 		System.out.println("서비스 가기전" + rec_no);
 //		mv.addObject(service.selectRecruitmentList(rec_no));
 		mv.addObject("r", r);
 		System.out.println("로고"+r);
-		System.out.println(paramMap);
+		
 
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		
+		String rec_no1 = request.getParameter("rec_no");
+		paramMap.put("rec_no", rec_no1);
+		String memNo1 = request.getParameter("memNo");
+		paramMap.put("memNo", memNo1);
+		List<Interestedrcruitment> in=service2.selectIn(paramMap);
+		System.out.println("이것은"+in);
+		mv.addObject("in", in);
+		
+		System.out.println(paramMap);
+		
 		mv.setViewName("Hire/anoDetail");
 		return mv;
 	} 
@@ -181,7 +199,7 @@ public class HireController {
 		List<Map> r = service.selectReviewList(ent_no);
 		/* mv.addObject(service.selectReviewList(ent_no)); */
 		mv.addObject("r", r);
-		System.out.println(r);
+		System.out.println("리뷰"+r);
 		mv.setViewName("Hire/anoReview");
 		return mv;
 	}
@@ -372,12 +390,13 @@ public class HireController {
  
 	// 즐겨찾기 스크립트
 	@RequestMapping("/Hire/favorites.do")
-	public ModelAndView memberFavorites(ModelAndView mv, HttpServletRequest request, Model model, int memNo, int recNo,
+	public ModelAndView memberFavorites(ModelAndView mv, HttpServletRequest request, Model model, int memNo, int recNo,int anoNum,
 			@RequestParam(value = "cPage", defaultValue = "1") int cPage,
 			@RequestParam(value = "numPerpage", defaultValue = "10") int numPerpage) throws Exception {
 		System.out.println("나오렴");
 		System.out.println("나오니?" + memNo);
 		System.out.println("나오니?" + recNo);
+		System.out.println("anoNum?" + anoNum);
 
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 
@@ -389,14 +408,16 @@ public class HireController {
 		System.out.println(paramMap);
 
 		int result = service.recFavorites(paramMap);
-		List<Recruitment> anolist = service2.anoList(cPage, numPerpage);
+		
+		List<Recruitment> anolist = service2.anoList2(anoNum,cPage, numPerpage);
+		System.out.println("anolist리스트" + anolist);
 
 		int totalData = service2.selectCount(); /* 이거페이지바 */
 		System.out.println("공고페이지바" + totalData);
 		mv.addObject("pageBar", PageBarFactory.getPageBar2(totalData, cPage, numPerpage, "favorites.do"));
 
 		mv.addObject("anolist", anolist);
-		mv.setViewName("Hire/announcementPage2");
+		mv.setViewName("Hire/announcementPage");
 		return mv;
 	}
 
@@ -418,6 +439,8 @@ public class HireController {
 		System.out.println(csv);
 
 		return csv;
+		
+		/* return csv!=null?"true":"false"; */
 	}
 
 	@RequestMapping("/Hire/reviewSearch2.do")
@@ -439,7 +462,37 @@ public class HireController {
 
 		return csv2;
 	}
+	
+	@RequestMapping("/Hire/reviewSearch3.do")
+	@ResponseBody
+	public String streamAjax3(ModelAndView mv,String key) throws Exception {
 
+		System.out.println("되라");
+		Enterprise list = service.reviewSearch3(key);
+		System.out.println("세번쨰" + list);
+		
+
+		return list!=null?"false":"true";
+	}
+
+	@RequestMapping("/Hire/swiper.do")
+	public ModelAndView swiper( ModelAndView mv,String rec_no,String rec_category, HttpServletRequest request) throws Exception {
+		System.out.println("혹시");
+		System.out.println("??"+rec_no);
+		System.out.println("??"+rec_category);
+		List<Recruitment> r = service.swiper(rec_no);
+		System.out.println("로고"+r);
+		
+		
+		 List<Member> m = service.membercate2(rec_category);
+		mv.addObject("fitM",r);
+		mv.addObject("m",m);
+		System.out.println("ss"+m);
+		
+	
+		mv.setViewName("Hire/findingMeDetail");
+		return mv;
+	} 
 	
 
 

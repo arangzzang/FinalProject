@@ -35,7 +35,7 @@
                 </div>
             </div>
         </div>
-<section id="content">
+<section id="content" style="margin-top: -158px;  padding-top: 160px; ">
 <form id="" action="${path }/Hire/annCarrer.do" method="post" onsubmit="return fn_carrer();">
  <div class="annoCategory">
             <div class="dropdown">
@@ -386,8 +386,8 @@
 
 
                                 </div>
+                                	<div style="border-top: solid gray; "></div>
                                 <div class="contentButton">
-                                    <input class="contentButtonReset" type="submit" value="초기화" onclick="fn_return();">
                                      <input class="contentButtonApply3" type="submit" value="적용" onclick="fn_return();">
                                    <!--  <button class="contentButtonApply3" onclick="">적용</button> -->
                                 </div>
@@ -405,10 +405,10 @@
                 <div class="dropdown-contentCareer">
                     <input id="rangeStyle" type="range" min="0" max="10" step="1" value="" name="carNum" />
                     <div id="Year"></div>
+                    	<div style="border-top: solid gray; "></div>
                     <div class="contentButton">
-                       <!--  <button class="contentButtonReset2" onclick="">초기화</button>
-                        <button class="contentButtonApply3" onclick="">적용</button> -->
-                        <input class="contentButtonReset2" type="submit" value="초기화" onclick="fn_return();">
+                     
+                      
                         <input class="contentButtonApply3" type="submit" value="적용" onclick="fn_return();">
                     </div>
                 </div>
@@ -455,11 +455,9 @@
                             <label for="freelancer" class="checkboxContentShape"><span
                                     class="checkboxShapeSpan"></span>프리랜서</label>
                         </div>
-
+							<div style="border-top: solid gray; "></div>
                         <div class="contentButton">
-                       <!--      <button class="contentButtonReset3" onclick="">초기화</button>
-                            <button class="contentButtonApply3" onclick="">적용</button> -->
-                            <input class="contentButtonReset3" type="submit" value="초기화" onclick="fn_return();">
+        
                         <input class="contentButtonApply3" type="submit" value="적용" onclick="fn_return();">
                         </div>
                     </div>
@@ -472,43 +470,7 @@
 
  </form>
 
-<script>
- /*  function fn_carrer(){
-	
-	if ($('input[name=anoNum]').val()==0) {
-	
-		}else{
-			alert("선택해주세요");
-			   return false;
-		}
-	};   */
-/* 
-	  function fn_carrer(){
-          const userId=document.getElementsByName('anoNum');
-         
-          if(userId.value=0){
-              alert("4글자이상 입력하세요");
-              return false;
-          }else{
-              alert("띵띵"); 
-               
-          }
 
-         
-          
-      } */
-	  /* function fn_carrer(){
-			$(".contentButtonApply3").click(function () {
-				if ($('input[name=anoNum]').val()==0){
-					alert("선택해주세요");
-					   return false;
-					}
-			})
-			
-			}  */
-		
-
-</script>
 
 	<c:if test="${null == anolist[0].rec_no }">
 		<div style="text-align: center; font-size: 30px; color: green; ">
@@ -551,16 +513,10 @@
                         <a href="#">
                        
                             <div class="annoListTitleFlax">
-                            <button value="${a.rec_no }"  class="annoListTitleBox" >
-                            <input type="hidden" value="${a.rec_no }" class="annoListTitle" name="ent_no" ><c:out value="${a.rec_title }"/><br>
-                            <input type="hidden" class="annoListTitle" value="${a.rec_no }" name="ent_no"><c:out value="${a.ent_name }"/><br>
-                            <input type="hidden" class="annoListTitle" value="${a.rec_no }" >평균 평점 
-                            <input type="hidden" value="${commonLogin.memNo}" class="annoListTitle" name="mem_no" >
-                            
-                            </button>
-                            
-                                
-                                
+                            <button name="aaaa" value="${a.rec_no }"  class="annoListTitleBoxs" >${a.rec_title } </button>
+                            <button type="button" name="dddd" value="${commonLogin.memNo}" style="display: none;"></button>
+                            <%-- <input type="hidden" value="${a.rec_no }"><c:out value="${a.rec_title }"/><br>
+                            <input type="hidden" value="${a.rec_no }"><c:out value="${a.ent_name }"/><br> --%>
                             </div>
                         </a>
                         
@@ -600,20 +556,48 @@
                             </div> 
                         </div>
                         
-                      <button class="apply" onclick="location.href='${path }/Hire/apply.do?memNo=${commonLogin.memNo}&recNo=${anolist[0].rec_no}'" >지원하기</a>
-                       </button>
-                       <c:if test="${commonLogin !=null && commonLogin.memNo !=  anolist[0].mem_no }">
-                      
+                     <%--  <button class="apply" onclick="location.href='${path }/Hire/apply.do?memNo=${commonLogin.memNo}&recNo=${anolist[0].rec_no}'" >지원하기</a>
+                       </button> --%>
+                       
+                       <form action="${path }/Hire/apply.do" onsubmit="return fn_apply();" method="post" >
+                        <input type="hidden" name="memNo" value="${commonLogin.memNo}">
+                        <input type="hidden" name="recNo" value="${anolist[0].rec_no}">
+                        <input class="apply"  type="submit" value="지원하기">
+                        </form>
+                       
+        			 <%-- <c:forEach items="${in }" var="in">
+        			    
+                       <c:if test="${commonLogin !=null && commonLogin.memNo !=  in.mem_no && in.rec_no != anolist[0].rec_no }">
                         <button id="favoritesBox" onclick="fn_toggle();">
                             <img id="announcementFavorites" src="${path }/resources/image/Hire/pngwing.png" />
                         </button>
                       </c:if>
                       
-                       <c:if test="${anolist[0].open_check == 1  && commonLogin !=null && commonLogin.memNo ==  anolist[0].mem_no }">
+                       </c:forEach> 
+                       
+                      <c:forEach items="${in }" var="in">
+                      
+                       <c:if test="${anolist[0].open_check == 1  && commonLogin !=null && commonLogin.memNo ==  in.mem_no && in.rec_no == anolist[0].rec_no}">
                         <button id="favoritesBox" onclick="fn_toggle();">
                             <img id="announcementFavorites" src="${path }/resources/image/Hire/pngwing2.png" />
                         </button> 
                       </c:if>
+                     
+                      </c:forEach>
+                       --%>
+                      
+                 
+                     <c:if test="${commonLogin !=null && commonLogin.memNo !=  anolist[0].mem_no }">
+                      
+                        <button id="favoritesBox" onclick="fn_toggle();">
+                            <img id="announcementFavorites" src="${path }/resources/image/Hire/pngwing.png" />
+                        </button>
+                      </c:if>
+                       <c:if test="${anolist[0].open_check == 1  && commonLogin !=null && commonLogin.memNo ==  anolist[0].mem_no  }">
+                        <button id="favoritesBox" onclick="fn_toggle();">
+                            <img id="announcementFavorites" src="${path }/resources/image/Hire/pngwing2.png" />
+                        </button> 
+                      </c:if> 
            
     
 					</div>
@@ -668,8 +652,16 @@
                                 <div class="annoDetailInfoAll">
                                     <div class="annoDetailInfoLogo"></div>
                                     <div class="logoRight">연봉</div>
-                                      <div> ${anolist[0].rec_salary} 만원</div>
-                                </div>
+										  <c:set var="abc" value="${anolist[0].rec_salary}" />
+							                <c:choose>
+							                    <c:when test="${abc == '회사내규에따름'}"> 
+											        <c:out value="회사내규에따름"></c:out>
+											    </c:when>
+											<c:otherwise>
+											<fmt:formatNumber type="number" maxFractionDigits="3" value="${anolist[0].rec_salary}" /> 만원
+											</c:otherwise>
+											</c:choose>
+	                                </div>
                                
 
                             </div>
@@ -697,11 +689,8 @@
 
                                 <div>
                                     <div class="InformationList">[채용절차]</div>
-                                    <div class="recruitmentProcedure"><%-- ${r.rec_order} --%>
-                                        * 서류전형 → 1차 (기술 면접) → 2차 (경영진 면접) → 처우협의 → 입사<br>
-                                        - 면접관의 판단에 따라 전화면접(기술)이 추가될 수 있습니다.<br>
-                                        - 전형별 결과는 5일 이내에 안내드립니다.<br>
-                                        - 지원서류는 PDF 또는 Word 파일로 제출 부탁드립니다.<br>
+                                    <div class="recruitmentProcedure"> ${anolist[0].rec_order} 
+                                      
                                     </div>
                                 </div>
 
@@ -713,12 +702,7 @@
 
                                 <div>
                                     <div class="InformationList">[기타]</div>
-                                    <div class="otherThan">
-                                        - 근무형태 : 정규직 (수습기간 3개월 후 정규직 전환 면접)<br>
-                                        - 근무시간 : 주5일 (월~금)<br>
-                                        - 근무제도 : 자율출퇴근제도, 재택근무제도<br>
-                                        - 마이리얼트립 근무제도에 대한 팀원 인터뷰 : http://naver.me/5OFbzfeP<br>
-                                        - 근무지 : 서울시 서초구 강남대로 327 대륭서초타워 18층 마이리얼트립<br>
+                                    <div class="otherThan">${anolist[0].rec_other} 
                                     </div>
                                 </div>
                              
@@ -773,9 +757,9 @@
                         
                         </div>
                         </div>
-                <div class="test" style="margin-left: -107px;"></div>
-                <div class="test3" style="overflow: auto; " ></div> 
         </div>
+                <div class="test" style=" overflow: auto;  "></div>
+                <div class="test3" style="overflow: auto; " ></div> 
         </div>
         </c:if>
        
@@ -815,56 +799,6 @@
 
 
 
-<!-- 이거 스크롤 고정시키는거 -->
-<!-- <script>
-
-
-    $(function () {
-
-        var scrollOffset = $('#annoListAll').offset();
-
-        $(window).scroll(function () {
-            if ($(document).scrollTop() > scrollOffset.top) {
-
-                $('#annoListAll').addClass('scroll-fixed');
-                $('#annoListAll').css('padding-top', '100px');
-             
-
-            }
-            else {
-                $('#annoListAll').removeClass('scroll-fixed');
-                $('#annoListAll').css('padding-top', '0px');
-            }
-        });
-    });
-
-
-</script> -->
-
-
-<script>
-
-/*           $(function () {
-         
-             var scrollOffset = $('#contentDetailfinance').offset();
-         
-             $(window).scroll(function () {
-                 if ($(document).scrollTop() > scrollOffset.top) {
-         
-                     $('#contentDetailfinance').addClass('scroll-fixed');
-                     $('#contentDetailfinance').css('padding-top', '100px');
-                     $('#contentDetailfinance').css('padding-top', '0px');
-                     $('#contentDetailfinance').css('z-index', '99');
-         
-                 }
-                 else {
-                     $('#contentDetail').removeClass('scroll-fixed');
-                     $('#contentDetail').css('padding-top', '0px');
-                 }
-             }); 
-         }); */
-
-</script>
  
 <script>
     $(function () {
@@ -1009,25 +943,24 @@
                 <script>
                 /*  data:{ent_no:'${a.ent_no}'}, */
                 
-                    $(".annoListTitleBox").click((e) => {
+                    $(".annoListTitleFlax").click(e => {
                     var formData = $(e.target).val();
-                  /*   alert("첫번째");
-                     if(${commonLogin.memNo} != null){
-                    	alert("두번째");
-                    	let mem_no=${commonLogin.memNo};
-                    }else{
-                    	alert("세번째");
-                    let mem_no = null;
-                    }  */
+                    var formData2 = $(e.target).next().val();
+                    //var formData2 = ("button[name=dddd]").val();
                     $.ajax({
                          
                          url : "${path}/Hire/anoDetail.do", // 요기에
                          type : 'POST', 
                           dataType :'html',
-                         data : {rec_no:formData},
+                         data : {rec_no:formData,memNo:formData2},
                          success :function(data){
                            $(".test").html(data);
-                        }
+                           $(".test").css("height","1000px");
+                           $(".annoDetail").css("display","none");
+                       
+                           
+                         
+                         }
                })
                     });
                 
@@ -1089,12 +1022,12 @@
         if(${anolist[0].open_check==1 && commonLogin.memNo == anolist[0].mem_no })
          {
         	announcementFavorites.src="${path }/resources/image/Hire/pngwing.png";
-        	location.href="${path }/Hire/notFavorites.do?memNo=${commonLogin.memNo}&recNo=${anolist[0].rec_no}&openCheck=${anolist[0].open_check}";
+        	location.href="${path }/Hire/notFavorites.do?memNo=${commonLogin.memNo}&recNo=${anolist[0].rec_no}&openCheck=${anolist[0].open_check}&anoNum=${anolist[0].rec_category}";
         	alert("즐겨찾기 빼기 완료");
         }else
         {
             announcementFavorites.src="${path }/resources/image/Hire/pngwing2.png";
-           	location.href="${path }/Hire/favorites.do?memNo=${commonLogin.memNo}&recNo=${anolist[0].rec_no}";
+           	location.href="${path }/Hire/favorites.do?memNo=${commonLogin.memNo}&recNo=${anolist[0].rec_no}&anoNum=${anolist[0].rec_category}";
         	alert("즐겨찾기 완료");
         }
         cnt++
@@ -1115,14 +1048,24 @@
 		});
 		</script>
 		
-		<!-- 	<script>
-		$(".contentButtonApply3").click(function(){
-			if($('input[name=anoNum]').val()===null){
-      			alert("로그인 회원만 이용가능합니다");	
-      			 return false; 
-			}else{
-				alert("??");
-			}
-		    
-		});
-		</script> -->
+		 <script>
+                        function fn_apply(){
+                        	if($('input[name=memNo]').val()===""){
+                      			alert("로그인 회원만 이용가능합니다");	
+                      			 return false; 
+                			}else{
+                				alert("지원완료");
+                			}
+                        	
+                        }
+                        </script>
+                        
+                        <script>
+                         function(){
+                        if ($("input[name=anoNum]:checkbox" ).is( ":checked")){
+									alert("dd");
+								    
+								}
+                        };
+                        </script>
+                        

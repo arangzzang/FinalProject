@@ -5,7 +5,7 @@ import com.project.jobnom.enterprise.model.vo.Enterprise;
 public class EnterprisePageBar {
 	
 	
-		public static String getPageBar(int totalData,int cPage, int numPerpage, String uri) {
+		public static String getPageBar(int totalData,int recno,int cPage, int numPerpage, String uri) {
 		
 		String pageBar="";
 		
@@ -27,7 +27,7 @@ public class EnterprisePageBar {
 			pageBar+="</li>";
 		}
 		
-		while(!(pageNo>pageEnd||pageNo>totalData)) {
+		while(!(pageNo>pageEnd||pageNo>totalPage)) {
 			if(pageNo==cPage) {
 				pageBar+="<li class='page-item active'>";
 				pageBar+="<a class='page-link' href='#'>"+pageNo+"</a>";
@@ -81,7 +81,7 @@ public class EnterprisePageBar {
 				pageBar+="</li>";
 			}
 			
-			while(!(pageNo>pageEnd||pageNo>totalData)) {
+			while(!(pageNo>pageEnd||pageNo>totalPage)) {
 				if(pageNo==cPage) {
 					pageBar+="<li class='page-item active'>";
 					pageBar+="<a class='page-link' href='#'>"+pageNo+"</a>";
@@ -136,12 +136,12 @@ public class EnterprisePageBar {
 				pageBar+="</li>";
 			}
 			
-			while(!(pageNo>pageEnd||pageNo>totalData)) {
+			while(!(pageNo>pageEnd||pageNo>totalPage)) {
 				if(pageNo==cPage) {
 					pageBar+="<li class='page-item active'>";
 					pageBar+="<a class='page-link' href='#'>"+pageNo+"</a>";
 					pageBar+="</li>";
-				}else if(pageNo<=cPage){
+				}else {
 					pageBar+="<li class='page-item'>";
 					pageBar+="<a class='page-link' href='javascript:fn_paging("+(pageNo)+")'>"+pageNo+"</a>";
 					pageBar+="</li>";
@@ -190,7 +190,7 @@ public class EnterprisePageBar {
 				pageBar+="</li>";
 			}
 			
-			while(!(pageNo>pageEnd||pageNo>totalData)) {
+			while(!(pageNo>pageEnd||pageNo>totalPage)) {
 				if(pageNo==cPage) {
 					pageBar+="<li class='page-item active'>";
 					pageBar+="<a class='page-link' href='#'>"+pageNo+"</a>";
