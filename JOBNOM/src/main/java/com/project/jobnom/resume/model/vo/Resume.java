@@ -15,7 +15,7 @@ public class Resume {
 	private String resName;
 	private String resPhone;
 	private String resGender;
-	private Date resBirth;
+	private int resBirth;
 	private int resCar;
 	private String resContent;
 	private String resOpenCheck;

@@ -58,14 +58,13 @@
 	<update id="updatePw" parameterType="map">
 		update member set mem_pw=#{password1} where mem_no=#{memNo}
 	</update>
-	<!-- 이력서 -->
+	<!-- (이력서) 카테고리-->
 	<select id="selectCategory" parameterType="_int" resultMap="memMap">
 		select*from member
 			join category2 using(cate_no2)
 			join category using (cate_no)
 			where mem_no =#{memNo}
 	</select>
-		
 </mapper>
 
 

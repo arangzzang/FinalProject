@@ -40,23 +40,41 @@
 						<input type="hidden" value="이메일">
 						<div class="row">
 							<div class="col-md-6">
-								<input type="text" id="memName" class="input1" name="resName" placeholder="이름을 작성해주세요." required>
+								<c:choose>
+									<c:when test="${not empty res.resName }">
+										<input type="text" id="memName" class="input1" value="${res.resName }" name="resName" placeholder="이름을 작성해주세요." required>
+									</c:when>
+									<c:otherwise>
+										<input type="text" id="memName" class="input1" name="resName" placeholder="이름을 작성해주세요." required>
+									</c:otherwise>
+								</c:choose>
 							</div>
 							<div class="col-md-6">
-								<input type="text" id="memTel" class="input1" name="resPhone" placeholder="번호를 작성해주세요." required>
+								<c:choose>
+									<c:when test="${!empty res.resPhone }">
+										<input type="text" id="memTel" class="input1" value="${res.resPhone }" name="resPhone" placeholder="번호를 작성해주세요." required>
+									</c:when>
+									<c:otherwise>
+										<input type="text" id="memTel" class="input1" name="resPhone" placeholder="번호를 작성해주세요." required>
+									</c:otherwise>
+								</c:choose>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-md-6">
 								<span class="span1">성별</span>
 								<label for="memGender-M">남자</label>
-								<input type="checkbox" class="gender" name="resGender" onclick="genderCheck(this);" aria-required="false" id="memGender-M" >
+								<input type="checkbox" value="M" class="gender" ${res.resGender=='M'?"checked":"" } name="resGender" onclick="genderCheck(this);" aria-required="false" id="memGender-M" >
 								<label for="memGender-F">여자</label>
-								<input type="checkbox" class="gender" name="resGender" onclick="genderCheck(this);" aria-required="false" id="memGender-F" >
+								<input type="checkbox" value="F" class="gender" ${res.resGender=='F'?"checked":"" } name="resGender" onclick="genderCheck(this);" aria-required="false" id="memGender-F" >
 							</div>
 							<div class="col-md-6 b">
-								<span class="span1">출생연도</span>
-								<select class="yrselectdesc" name="resBirth"></select>
+<%-- 								<c:choose> --%>
+<%-- 									<c:when test="${!empty res.resBirth }"> --%>
+										<span class="span1">출생연도</span>
+										<select class="yrselectdesc" name="resBirth"></select>
+<%-- 									</c:when> --%>
+<%-- 								</c:choose> --%>
 							</div>
 						</div>
 						<div class="row">
@@ -102,7 +120,7 @@
 									<input type="text" class="form-control inp" name="resContent" id="skill" placeholder="(예시) 영업기획, 디지털마케팅,UI디자인(업무와 관련된 자격증 및 기술명 포함)" required>
 									
 									<ul class="keyword">
-										<li class="keys"><a class="values"></a></li>
+										
 									</ul>
 							
 								</div>
@@ -111,7 +129,14 @@
 						<div class="row">
 							<div class="col-12 col-md-12">
 								<label for="commented" class="span2">자기소개</label><br>
-								<textarea class="form-control inp bg_color" rows="5" id="commented" placeholder="경력,경험위추의 자기소개를 작성해주세요. 관심분야, 앞으로의 목표등의 내용도 좋습니다"></textarea>
+								<c:choose>
+									<c:when test="${!empty res.resContent }">
+										<textarea class="form-control inp bg_color" rows="5" id="commented" placeholder="경력,경험위추의 자기소개를 작성해주세요. 관심분야, 앞으로의 목표등의 내용도 좋습니다">${res.resContent}</textarea>
+									</c:when>
+									<c:otherwise>
+										<textarea class="form-control inp bg_color" rows="5" id="commented" placeholder="경력,경험위추의 자기소개를 작성해주세요. 관심분야, 앞으로의 목표등의 내용도 좋습니다"></textarea>
+									</c:otherwise>
+								</c:choose>
 							</div>
 						</div>
 					</div>
@@ -279,9 +304,9 @@
 						<div class="row">
 							<div class="offset-4 col-4">
 								<label for="yes">공개</label>
-								<input type="checkbox" name="resOpencheck" id="yes">
+								<input type="checkbox" onclick="openCheck(this);" class="resOpenCheck" value="yes" ${res.resOpenCheck=='yes'?"checked":""} aria-required="false" name="resOpenCheck" id="yes">
 								<label for="no">미공개</label>
-								<input type="checkbox" name="resOpencheck" id="no">
+								<input type="checkbox" onclick="openCheck(this);" class="resOpenCheck" value="no" ${res.resOpenCheck=='no'?"checked":""} aria-required="false" name="resOpenCheck" id="no">
 							</div>
 						</div>
 					</div>
@@ -289,24 +314,46 @@
 				<div class="submitTag">
 					<input type="submit" class="profileBtn" value="저장완료">
 				</div>
+				<input type="hidden" value="${mem.memNo }" name="memNo">
 			</form>
 			</div>
 	    </div>
 	</div>
 
 <script type="text/javascript">
+	$(".gender").click(e=>{
+		console.log($(".gender").val());
+		console.log(typeof $(".gender").val());
+	})
+	$(".resOpenCheck").click(e=>{
+		console.log($(".resOpenCheck").val());
+		console.log(typeof $(".resOpenCheck").val());
+	})
 	//업무 및 스킬 자동검색어 
 	$("#skill").keyup(e=>{
 		let skill=$("#skill").val()
+		
 		$.ajax({
 			url:"${path}/resume/mySkill",
 			data:{skill:skill},
 			success:data=>{
-				$.each(data,function(){
-					$(".values").html(data);
-				})
+				$(".keyword").html("");
+				
+				if(skill==""){
+					$(".keyword").html("");
+					$(".keyword").css("border","0");
+				}else{
+					$.each(data,function(i,v){
+						$(".keyword").append("<li class='keys' value="+v.skillNo+"><a class='values'>"+v.skillName+"</a></li>");
+						$(".keyword").css("border","1px solid");
+					})
+				}
 			}
 		})
+	})
+	$("#skill").blur(e=>{
+		$(".keyword").html("");
+		$(".keyword").css("border","0");
 	})
 	//year-picker
 	$(document).ready(function(e) {
@@ -342,10 +389,18 @@
 
 	//check선택시 다른 checkbox비활성화
 	function genderCheck(chk){
-		var gender = document.getElementsByClassName("aaa");
+		var gender = document.getElementsByClassName("gender");
 		for(var i=0; i<gender.length; i++){
 			if(gender[i] != chk){
 				gender[i].checked = false;
+			}
+		}
+	}
+	function openCheck(chk){
+		var open = document.getElementsByClassName("resOpenCheck");
+		for(var i=0; i<open.length; i++){
+			if(open[i] != chk){
+				open[i].checked = false;
 			}
 		}
 	}
@@ -390,7 +445,7 @@
 		edu+="<label for='ing'>재학중</label>";
 		edu+="<input type='checkbox' name='eduIng' id='ing'></div>";
 		edu+="<div class=' col-8 col-md-8'>";
-		edu+="<div><button type='button' onclick='remove();' class='float junk'><i>휴지통아이콘</i></button><input type='text' name='eduName' class='col-md-12 inp' placeholder='학교명을 입력해주세요'>";
+		edu+="<div><button type='button' onclick='remove(event);' class='float junk'><i>휴지통아이콘</i></button><input type='text' name='eduName' class='col-md-12 inp' placeholder='학교명을 입력해주세요'>";
 		//추후에 수정해야할 부분
 		edu+="<!-- <div><ul><li><a href=''></a></li><li><a href=''></a></li><li><a href=''></a></li><li><a href=''></a></li><li><a href=''></a></li><li><a href=''></a></li></ul></div>-->";
 		edu+="<input type='text' name='eduMajor' class='col-md-12 inp' placeholder='전공 및 학위'>";
@@ -454,11 +509,17 @@
 	$(".pofolBtn").click(e=>{
 		$(".pofol_parent").append(pofol);
 	})
-	
+	//이벤트로 생성후 요소삭제 
+	function remove(e){
+		let tresh=$(e.target).parents(".edu");
+		console.log($(e.target));
+		tresh.remove();
+	}
 	//요소 삭제(미완)
 	$(".junk").click(e=>{
-		let trash=$(e.target).val();
-		trash.detach();
+		let tresh=$(e.target).parents(".edu");
+		console.log($(e.target));
+		tresh.detach();
 	})
 		
 	//저장시 필수항목 확인 검사

@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import com.project.jobnom.member.model.vo.MemCategory;
 import com.project.jobnom.member.model.vo.MemCategory2;
 import com.project.jobnom.member.model.vo.Member;
+import com.project.jobnom.resume.model.vo.Resume;
 
 public interface MemberDao {
 	
@@ -27,6 +28,5 @@ public interface MemberDao {
 	int updatePw(Map mem, SqlSession session);
 	//이력서
 	Member myProfileView(int memNo, SqlSession session);
-	//이력서 가기전 직종 값 뿌려줄 데이터
-	
+	Resume selectResume(int memNo, SqlSession session);
 }

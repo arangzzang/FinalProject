@@ -1,11 +1,22 @@
 package com.project.jobnom.resume.model.service;
 
 import java.util.List;
+import java.util.Map;
 
+import com.project.jobnom.resume.model.vo.Resume;
 import com.project.jobnom.resume.model.vo.Skill;
 
 public interface ResumeService {
 	
 	//업무 및 스킬 자도검색어
 	List<Skill> mySkill(String skill);
+	//이력서 검색
+	Resume selectResume(int memNo);
+	//이력서
+	int insertResume(Resume res);
+	//이력서 수정
+	int updateResume(Resume res);
+	//카테고리수정
+	int categoryUpdate(Map resMap);
+	
 }

@@ -183,3 +183,16 @@
             z-index: 999;
             box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.08);
         }
+        .values{
+        	text-decoration:none;
+        	color: black;
+        }
+        .values:hover{
+        	text-decoration:none;
+        	color: black;
+        }
+        .keyword{
+        	list-style:none;
+			padding-left:11px;
+			margin:0;
+        }

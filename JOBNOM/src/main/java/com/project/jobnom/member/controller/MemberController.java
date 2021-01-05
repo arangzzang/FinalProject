@@ -24,6 +24,7 @@ import com.project.jobnom.member.model.service.MemberService;
 import com.project.jobnom.member.model.vo.MemCategory;
 import com.project.jobnom.member.model.vo.MemCategory2;
 import com.project.jobnom.member.model.vo.Member;
+import com.project.jobnom.resume.model.vo.Resume;
 
 @Controller
 public class MemberController {
@@ -102,9 +103,13 @@ public class MemberController {
 	
 	//마이페이지 화면전환
 	@RequestMapping("/member/myPage")
-	public String mypageView(int memNo, Model m) {
+	public String mypageView(int memNo, Model m, HttpSession session) {
 		
 		Member mem = service.mypageView(memNo);
+		System.out.println("test -> "+session.getAttribute("insertFlag"));
+		if(session.getAttribute("insertFlag")!=null) m.addAttribute("insertFlag", true);
+		if(session.getAttribute("updateFlag")!=null) m.addAttribute("updateFlag", true);
+		session.removeAttribute("insertFlag");
 		m.addAttribute("mem",mem);
 		return "member/mypage/mypageFirst";
 	}
@@ -150,9 +155,9 @@ public class MemberController {
 	public String myProfile (int memNo, Model m) throws IOException{
 		Member mem = service.myProfileView(memNo);
 		List<MemCategory> list = service.selectCategoryList();
-		System.out.println("회원 카테번호 : "+mem.getCateNo2());
 		List<MemCategory2> list2 = service.selectCategoryList2(mem.getCateNo());
-		System.out.println("카테 리스트 : "+list2);
+		Resume res = service.selectResume(memNo);
+		m.addAttribute("res",res);
 		m.addAttribute("cate3",list2);
 		m.addAttribute("cate",list);
 		m.addAttribute("mem",mem);

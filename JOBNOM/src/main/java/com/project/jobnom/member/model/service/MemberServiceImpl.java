@@ -11,6 +11,7 @@ import com.project.jobnom.member.model.dao.MemberDao;
 import com.project.jobnom.member.model.vo.MemCategory;
 import com.project.jobnom.member.model.vo.MemCategory2;
 import com.project.jobnom.member.model.vo.Member;
+import com.project.jobnom.resume.model.vo.Resume;
 
 @Service
 public class MemberServiceImpl implements MemberService {
@@ -62,6 +63,11 @@ public class MemberServiceImpl implements MemberService {
 		return dao.myProfileView(memNo, session);
 	}
 
+	@Override
+	public Resume selectResume(int memNo) {
+		return dao.selectResume(memNo, session);
+	}
+	
 	
 	
 	
