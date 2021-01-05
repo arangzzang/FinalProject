@@ -24,5 +24,5 @@ public interface annoDao {
 
 	List<Recruitment>  annoHomeDetailMove(SqlSession session,int recNo, int cPage, int numPerPage);
 
-	List<Interestedrcruitment> selectIn(SqlSession session, int memNo);
+	List<Interestedrcruitment> selectIn(SqlSession session, Map memNo);
 }

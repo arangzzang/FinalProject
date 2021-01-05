@@ -513,16 +513,10 @@
                         <a href="#">
                        
                             <div class="annoListTitleFlax">
-                            <button value="${a.rec_no }"  class="annoListTitleBox" >
-                            <input type="hidden" value="${a.rec_no }" class="annoListTitle" name="ent_no" ><c:out value="${a.rec_title }"/><br>
-                            <input type="hidden" class="annoListTitle" value="${a.rec_no }" name="ent_no"><c:out value="${a.ent_name }"/><br>
-                            <input type="hidden" class="annoListTitle" value="${a.rec_no }" >평균 평점 
-                            <input type="hidden" value="${commonLogin.memNo}" class="annoListTitle" name="mem_no" >
-                            
-                            </button>
-                            
-                                
-                                
+                            <button name="aaaa" value="${a.rec_no }"  class="annoListTitleBoxs" >${a.rec_title } </button>
+                            <button type="button" name="dddd" value="${commonLogin.memNo}" style="display: none;"></button>
+                            <%-- <input type="hidden" value="${a.rec_no }"><c:out value="${a.rec_title }"/><br>
+                            <input type="hidden" value="${a.rec_no }"><c:out value="${a.ent_name }"/><br> --%>
                             </div>
                         </a>
                         
@@ -571,22 +565,29 @@
                         <input class="apply"  type="submit" value="지원하기">
                         </form>
                        
-        			<%-- <c:forEach items="${in }" var="in">
-                       <c:if test="${commonLogin !=null && commonLogin.memNo !=  in.mem_no }">
-                      
+        			 <%-- <c:forEach items="${in }" var="in">
+        			    
+                       <c:if test="${commonLogin !=null && commonLogin.memNo !=  in.mem_no && in.rec_no != anolist[0].rec_no }">
                         <button id="favoritesBox" onclick="fn_toggle();">
                             <img id="announcementFavorites" src="${path }/resources/image/Hire/pngwing.png" />
                         </button>
                       </c:if>
-                      </c:forEach>
+                      
+                       </c:forEach> 
+                       
                       <c:forEach items="${in }" var="in">
+                      
                        <c:if test="${anolist[0].open_check == 1  && commonLogin !=null && commonLogin.memNo ==  in.mem_no && in.rec_no == anolist[0].rec_no}">
                         <button id="favoritesBox" onclick="fn_toggle();">
                             <img id="announcementFavorites" src="${path }/resources/image/Hire/pngwing2.png" />
                         </button> 
                       </c:if>
-                      </c:forEach> --%>
-                       <c:if test="${commonLogin !=null && commonLogin.memNo !=  anolist[0].mem_no }">
+                     
+                      </c:forEach>
+                       --%>
+                      
+                 
+                     <c:if test="${commonLogin !=null && commonLogin.memNo !=  anolist[0].mem_no }">
                       
                         <button id="favoritesBox" onclick="fn_toggle();">
                             <img id="announcementFavorites" src="${path }/resources/image/Hire/pngwing.png" />
@@ -596,7 +597,7 @@
                         <button id="favoritesBox" onclick="fn_toggle();">
                             <img id="announcementFavorites" src="${path }/resources/image/Hire/pngwing2.png" />
                         </button> 
-                      </c:if>
+                      </c:if> 
            
     
 					</div>
@@ -756,9 +757,9 @@
                         
                         </div>
                         </div>
-                <div class="test" style="margin-left: -107px; overflow: auto;"></div>
-                <div class="test3" style="overflow: auto; " ></div> 
         </div>
+                <div class="test" style=" overflow: auto;  "></div>
+                <div class="test3" style="overflow: auto; " ></div> 
         </div>
         </c:if>
        
@@ -942,26 +943,24 @@
                 <script>
                 /*  data:{ent_no:'${a.ent_no}'}, */
                 
-                    $(".annoListTitleBox").click((e) => {
+                    $(".annoListTitleFlax").click(e => {
                     var formData = $(e.target).val();
-                  /*   alert("첫번째");
-                     if(${commonLogin.memNo} != null){
-                    	alert("두번째");
-                    	let mem_no=${commonLogin.memNo};
-                    }else{
-                    	alert("세번째");
-                    let mem_no = null;
-                    }  */
+                    var formData2 = $(e.target).next().val();
+                    //var formData2 = ("button[name=dddd]").val();
                     $.ajax({
                          
                          url : "${path}/Hire/anoDetail.do", // 요기에
                          type : 'POST', 
                           dataType :'html',
-                         data : {rec_no:formData},
+                         data : {rec_no:formData,memNo:formData2},
                          success :function(data){
                            $(".test").html(data);
                            $(".test").css("height","1000px");
-                        }
+                           $(".annoDetail").css("display","none");
+                       
+                           
+                         
+                         }
                })
                     });
                 

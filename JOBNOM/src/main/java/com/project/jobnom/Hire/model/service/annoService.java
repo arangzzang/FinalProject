@@ -16,7 +16,7 @@ public interface annoService {
 
 	List<Recruitment> annoHomeDetailMove(int recNo,int cPage, int numPerPage);
 
-	List<Interestedrcruitment> selectIn(int memNo);
+	List<Interestedrcruitment> selectIn(Map memNo);
 
 
 }

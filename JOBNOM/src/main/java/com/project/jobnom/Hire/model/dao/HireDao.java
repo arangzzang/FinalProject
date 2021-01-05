@@ -25,7 +25,7 @@ public interface HireDao {
 	
 	List<Map> reviewStar(SqlSession session);
 	
-	List<Map>  selectRecruitmentList(SqlSession session, Map paramMap);
+	List<Map>  selectRecruitmentList(SqlSession session, String rec_no);
 	
 //	Review selectReviewList(SqlSession session, String ent_no);
 	

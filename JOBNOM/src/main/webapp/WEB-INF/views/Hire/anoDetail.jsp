@@ -7,9 +7,9 @@
 <link rel="stylesheet" href="../resources/css/Hire/announcementPage.css">
 <c:set var="path" value="${pageContext.request.contextPath }" />
 
-<section id="content" style="margin-top: -158px; padding-top: 160px; ">
+<section id="content" style=" z-index: 99; ">
 
-<div class="annoDetailAll" >
+<div class="annoDetailAll" style="margin-top: -100px;" >
                   
                     <div class="annoDetailTitle">
                         <div class="annoDetailNum">
@@ -47,13 +47,13 @@
                      
                       <%-- <button class="apply"  onclick="location.href='${path }/Hire/apply.do?memNo=${commonLogin.memNo}&recNo=${r[0].REC_NO}&entName=${r[0].ENT_NAME } ' " >지원하기
                        </button> --%>
-                       <c:if  test="${commonLogin !=null && commonLogin.memNo !=  r[0].MEM_NO }">
+                       <c:if  test="${r[0].OPEN_CHECK == 0 || r[0].OPEN_CHECK == null || in[0].mem_no==null  && commonLogin !=null && commonLogin.memNo !=  in[0].mem_no && in[0].rec_no != r[0].REC_NO }">
                         <button id="favoritesBox" onclick="fn_toggle();">
                             <img id="announcementFavorites2" src="${path }/resources/image/Hire/pngwing.png" />
                         </button>
                       </c:if>
                      
-                       <c:if test="${r[0].OPEN_CHECK == 1  && commonLogin !=null && commonLogin.memNo ==  r[0].MEM_NO }">
+                       <c:if test="${r[0].OPEN_CHECK == 1  && commonLogin !=null && in[0].rec_no == r[0].REC_NO && in[0].mem_no == commonLogin.memNo }">
                         <button id="favoritesBox" onclick="fn_toggle();">
                             <img id="announcementFavorites2" src="${path }/resources/image/Hire/pngwing2.png" />
                         </button>
@@ -64,14 +64,19 @@
 
                     <div class="detailedReviewInterview">
                        <a href="#">
-                         <button value="${r[0].REC_NO }" class="annoDetailListBoxs" >
-                            <input type="hidden" value="${r[0].REC_NO }" class="annoDetailListBox">상세
-                         </button>
+                       <div class="annoDetailListBoxs2">
+                         <button  id="aaaa" name="aaaa" value="${r[0].REC_NO }" style="width: 50px; height: 50px;"> 상세 </button>
+                         <button id="dddd" name="dddd" value="${commonLogin.memNo }" style="display: none;"></button>
+                            	
+                       
+                         </div>
                         </a>
                         <a href="#">
+                       
                         <button value="${r[0].ENT_NO }" class="clickReviewTotalBoxs" >
 	                       <input type="hidden" value="${r[0].ENT_NO }" class="clickReviewTotalBox">리뷰
                         </button>
+                        
                         </a>
                         <a href="#">
                          <button value="${r[0].ENT_NO }" class="interviewBoxs" >
@@ -85,7 +90,7 @@
                     
         </div> 
         
-<div class="annoDetailAllHeight">
+<div class="annoDetailAllHeight" >
       
 
 
@@ -197,66 +202,25 @@
                             <div class="InquiriesAddress">회사위치</div>
                             <div>서울 강남구 역삼동 123-345 8층 jobnomOffice </div>
 
-                           	 <!-- 카카오맵 -->
-                           	 <div id="map" style="width:500px;height:400px;"></div>
-								<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d192ba0bc9d9cf37cf920c7c1f62a2c8"></script>
-								<script>
-									var container = document.getElementById('map');
-									var options = {
-										center: new kakao.maps.LatLng(33.450701, 126.570667),
-										level: 3
-									};
-							
-									var map = new kakao.maps.Map(container, options);
-								</script>
-                           <script>
-                           var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
-                           var options = { //지도를 생성할 때 필요한 기본 옵션
-                           	center: new kakao.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
-                           	level: 3 //지도의 레벨(확대, 축소 정도)
-                           };
-
-                           var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
-                           </script>
-
+                           	
 
 
                            
                            
-                           
-                           <!--  <script>
-                                var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
-                                    var options = { //지도를 생성할 때 필요한 기본 옵션
-                                        center: new kakao.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
-                                        level: 3 //지도의 레벨(확대, 축소 정도)
-                                    };
-
-                                    var map = new daum.maps.Map(container, options);
-
-                                        function setCenter(lat, lng) {
-
-                                            map.setCenter(new daum.maps.LatLng(lat, lng));
-
-                                        }
-
-
-
-                           </script>  -->
-                           
-                         
+                        
                         </div>
                         
                         </div>
                         </div>
-                        <div class="test1"></div>
-                        
+                        <div class="test1" style="width: 1000px;"></div>
+                        <div class="test2" style="width: 1000px;"></div>
   
                 <!-- </span> -->
 
 
 
           
-            
+      
 </section>
 
 
@@ -274,6 +238,8 @@
                           dataType :'html',
                          data : {ent_no:formData},
                          success :function(data){
+                        	 $(".annoDetailInfoWidth").css("display","none");
+                        	 $(".test1").css("display","show");
                            $(".test1").html(data);
                         }
                })
@@ -296,17 +262,24 @@
              <script>
                 /*  data:{ent_no:'${a.ent_no}'}, */
                 
-                    $(".annoDetailListBoxs").click((e) => {
+                    $(".annoDetailListBoxs2").click((e) => {
                     var formData = $(e.target).val();
+                    var formData2 = $(e.target).next().val();
+                    
                     $.ajax({
                          
                          url : "${path}/Hire/anoDetail.do", 
                          type : 'POST', 
                           dataType :'html',
-                         data : {ent_no:formData},
+                         data : {rec_no:formData,memNo:formData2},
                          success :function(data){
-                           $(".test").html(data);
-                        }
+                        	 $(".test1").css("display","none");
+                        	 $(".annoDetailAll").css("display","none");
+                        	 $(".annoDetailAllHeight").css("display","none");
+                        	 $(".test").html(data);
+                        	 
+                         
+                         }
                })
                     });
                 
@@ -374,7 +347,7 @@
     function fn_toggle() {
     	
         var announcementFavorites2 = document.getElementById("announcementFavorites2");
-        if(${r[0].OPEN_CHECK==1 && commonLogin.memNo == r[0].MEM_NO})
+        if(${r[0].OPEN_CHECK==1 && commonLogin.memNo == in[0].mem_no})
          {
         	announcementFavorites2.src="${path }/resources/image/Hire/pngwing.png";
         	location.href="${path }/Hire/notFavorites.do?memNo=${commonLogin.memNo}&recNo=${r[0].REC_NO}&openCheck=${r[0].OPEN_CHECK}&anoNum=${r[0].REC_CATEGORY}";

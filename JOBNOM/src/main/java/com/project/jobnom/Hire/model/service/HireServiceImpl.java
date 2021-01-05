@@ -45,8 +45,8 @@ public class HireServiceImpl implements HireService {
 	}
 
 	@Override
-	public List<Map>  selectRecruitmentList(Map paramMap) {
-		return dao.selectRecruitmentList(session, paramMap);
+	public List<Map>  selectRecruitmentList(String rec_no) {
+		return dao.selectRecruitmentList(session, rec_no);
 	}
 
 	@Override 

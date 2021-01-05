@@ -21,7 +21,7 @@
 
         <c:forEach items="${r }" var="r">
              <!--리뷰클릭시 나오는 화면  -->
-         <div class="clickReview" style=" width: 555px; height:600px; padding: 20px; "> 
+         <div class="clickReview" style=" width: 555px; height:500px; padding: 20px; "> 
          	<div class="clickReviewTitleBox">
          	<div class="clickReviewTitleBoxFlax">
          		<div class="clickReviewName" style="width: 100px; margin-left: 10px">-이름 :<br> </div> <br>

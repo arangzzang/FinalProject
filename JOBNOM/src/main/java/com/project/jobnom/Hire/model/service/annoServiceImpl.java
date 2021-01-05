@@ -50,7 +50,7 @@ public class annoServiceImpl implements annoService {
 
 
 	@Override
-	public List<Interestedrcruitment> selectIn(int memNo) {
+	public List<Interestedrcruitment> selectIn(Map memNo) {
 		return dao.selectIn(session,memNo);
 	} 
 	

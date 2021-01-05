@@ -38,8 +38,8 @@ public class HireDaoImpl implements HireDao {
 	}
 
 	@Override
-	public List<Map>  selectRecruitmentList(SqlSession session,Map paramMap) {
-		return session.selectList("hire.selectRecruitmentList",paramMap);
+	public List<Map>  selectRecruitmentList(SqlSession session,String rec_no) {
+		return session.selectList("hire.selectRecruitmentList",rec_no);
 	}
 
 	@Override
