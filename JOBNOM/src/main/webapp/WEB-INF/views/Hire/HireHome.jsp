@@ -130,7 +130,7 @@
 
 </div>        
          
-         	</c:forEach>>
+         	</c:forEach>
         </div>
         <!-- Add Pagination -->
         <div class="swiper-pagination"></div>
