@@ -14,9 +14,12 @@ import com.project.jobnom.enterprise.model.dao.EnterpriseDao;
 import com.project.jobnom.enterprise.model.vo.ApplyAd;
 import com.project.jobnom.enterprise.model.vo.Banner;
 import com.project.jobnom.enterprise.model.vo.Category2;
-//github.com/arangzzang/FinalProject.git
 import com.project.jobnom.enterprise.model.vo.Enterprise;
+import com.project.jobnom.enterprise.model.vo.Mammoth;
+import com.project.jobnom.enterprise.model.vo.MemberDataC2;
+import com.project.jobnom.enterprise.model.vo.PayData;
 import com.project.jobnom.enterprise.model.vo.Support;
+import com.project.jobnom.enterprise.model.vo.Worker;
 import com.project.jobnom.resume.model.vo.Resume;
 
 @Service
@@ -73,9 +76,9 @@ public class EnterpriseServiceImpl implements EnterpriseService {
 	}
 	
 	@Override
-	public int selectRecruitmentCount() {
+	public int selectRecruitmentCount(Enterprise ent) {
 		// TODO Auto-generated method stub
-		return dao.selectRecruitmentCount(session);
+		return dao.selectRecruitmentCount(ent, session);
 	}
 	@Override
 	public Resume selectResume(int memNo) {
@@ -90,14 +93,26 @@ public class EnterpriseServiceImpl implements EnterpriseService {
 	}
 
 	@Override
-	public List<Review> selectReviewList() {
+	public List<Review> selectReviewList(int entNo,int cPage, int numPerpage) {
 		// TODO Auto-generated method stub
-		return dao.selectReviewList(session);
+		return dao.selectReviewList(session,entNo,cPage,numPerpage);
+	}
+	
+	@Override
+	public int selectReviewcount(int entNo) {
+		// TODO Auto-generated method stub
+		return dao.selectReviewcount(session,entNo);
 	}
 	@Override
-	public List<Recruitment> selectJoblist() {
+	public List<Recruitment> selectJoblist(Map param) {
 		// TODO Auto-generated method stub
-		return dao.selectJoblist(session);
+		return dao.selectJoblist(session,param);
+	}
+	
+	@Override
+	public int selectJobCount(int entNo) {
+		// TODO Auto-generated method stub
+		return dao.selectJobCount(session,entNo);
 	}
 	@Override
 	public List<Category2> getC2() {
@@ -114,9 +129,17 @@ public class EnterpriseServiceImpl implements EnterpriseService {
 	public Enterprise selectEnterprise(int entNo) {
 		return dao.selectEnterprise(entNo,session);
 	}
+	@Override
+	public List<MemberDataC2> memDataC2() {
+		// TODO Auto-generated method stub
+		return dao.memDataC2(session);
+	}
 	
-	
-	
+	@Override
+	public List<MemberDataC2> entDataC2() {
+		// TODO Auto-generated method stub
+		return dao.entDataC2(session);
+	}
 	//헤더 기업 버튼 클릭 -ys-
 	@Override
 	public List<Map> companyList() {
@@ -151,8 +174,34 @@ public class EnterpriseServiceImpl implements EnterpriseService {
 	
 	// 기업명 클릭시 이동
 	@Override
-	public List<Map> companyInfo(String entNo) {
+	public List<Map> companyInfo(int entNo) {
 		// TODO Auto-generated method stub
 		return dao.companyInfo(session,entNo);
 	}
+	@Override
+	public List<PayData> payData() {
+		// TODO Auto-generated method stub
+		return dao.payData(session);
+	}
+	@Override
+	public ApplyAd findAdByNo(String recNo) {
+		// TODO Auto-generated method stub
+		return dao.findAdByNo(session, recNo);
+	}
+	@Override
+	public int updateApplyAd(ApplyAd ad) {
+		// TODO Auto-generated method stub
+		return dao.updateApplyAd(session, ad);
+	}
+	@Override
+	public List<Worker> workerList() {
+		// TODO Auto-generated method stub
+		return dao.workerList(session);
+	}
+	@Override
+	public Mammoth getMammoth(int resno) {
+		// TODO Auto-generated method stub
+		return dao.getMammoth(session, resno);
+	}
+	
 }

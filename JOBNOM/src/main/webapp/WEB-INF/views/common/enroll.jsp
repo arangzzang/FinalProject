@@ -18,7 +18,7 @@
       </div>
       <div class="container">
          <div class="info">
-            <img src="" alt="">
+            <i class="fas fa-exclamation-triangle" style="font-size: 60px;"></i>
             <p><strong>jobnom</strong>은 회원님의 익명성을 보장하기 위해 어떠한 개인정보도 노출하지 않습니다.</p>
          </div>
       </div>
@@ -147,12 +147,12 @@
                         <label for="ent_catagory">1차 산업군</label>
                         <select class="form-control ent_catagory" id="ent_catagory" name="entCategory1" required>
                            <option>기타</option>
-                           <option>IT/웹/통신</option>
-                           <option>은행/금융업</option>
-                           <option>교육업</option>
-                           <option>마케팅/디자인</option>
-                           <option>의약/제약</option>
-                           <option>서비스업</option>
+                           <option>IT/인터넷</option>
+                           <option>금융/재무</option>
+                           <option>의약</option>
+                           <option>마케팅/시장조사</option>
+                           <option>의약</option>
+                           <option>서비스/고객지원</option>
                         </select>
                         <div class="e_result8"></div>
                      </div>
@@ -233,20 +233,20 @@
       //기업
       $(".ent_catagory").change(e=>{
          let jobs1 = $(e.target).val()
-         let cars1 = ["웹에이젼시","네트워크/통신/모바일","IT컨설팅","게임","기타IT/웹/통신"];
-         let cars2 = ["은행/금융/저축", "증권/보험/카드", "기타금융"];
-         let cars3 = ["학원/어학원", "초중고/대학","기타 교육업"];
-         let cars4 = ["신문/잡지/언론사","광고/홍보/전시","디자인/설계"];
-         let cars5 = ["의료","보건","기타의료"];
-         let cars6 = ["호텔/여행/항공","웨딩/이벤트","외식업/식음료","기타 서비스업","뷰티/미용"];
+         let cars1 = ["웹개발","시스템엔지니어","웹퍼블리셔","기획","네트워크/보안/운영","데이터분석"];
+         let cars2 = ["은행관련","세무/법무","경리/출납/수납","증권/투자분석가","보험계리사/손해사정인","자산운용가"];
+         let cars3 = ["교육기획/교재개발", "전문강사","초중고/특수교사","대학교수","교직원","입시/복습/학원강사"];
+         let cars4 = ["마케팅","브랜드마케팅","시장조사/분석","상품개발/기획/MD","온라인마케팅","CRM"];
+         let cars5 = ["의사","한의사","치과의사","약사/한약사","간호사","간호조무사"];
+         let cars6 = ["고객지원/CS","호텔/숙박관련","웨딩플래너/커플매니저","외식업/식음료","뷰티/미용","여행가이드"];
          let targets = document.getElementById("ent_catagory2")
 
-         if(jobs1 == "IT/웹/통신") var values = cars1;
-         else if (jobs1 == "은행/금융업") values = cars2;
-         else if (jobs1 == "교육업") values = cars3;
-         else if (jobs1 == "마케팅/디자인") values = cars4;
-         else if (jobs1 == "의약/제약") values = cars5;
-         else if (jobs1 == "서비스업") values = cars6;
+         if(jobs1 == "IT/인터넷") var values = cars1;
+         else if (jobs1 == "금융/재무") values = cars2;
+         else if (jobs1 == "의약") values = cars3;
+         else if (jobs1 == "서비스/고객지원") values = cars4;
+         else if (jobs1 == "의약") values = cars5;
+         else if (jobs1 == "서비스/고객지원") values = cars6;
          else if (jobs1 == "기타") return $("#ent_catagory2").find("option").remove().end().append("<option value='기타'>기타</option>");
 
          targets.options.length = 0;
@@ -700,9 +700,11 @@
          if(!hpRegExp.test(entPh)){
             $(".e_result7").html("휴대폰 번호가 올바르지 않습니다. 다시한번 확인하세요")
             return false;
+         }else if(entPh.length !=10||entPh.length !=11 || (entPh = (entPh+'').match(/\d{1}/g))){
+	       	$(".e_result7").html("");
          }else{
-            $(".e_result7").html("")
-            $("#rep_phone").replace(/\-/g,'');
+       	 	$(".e_result7").html("휴대폰 번호를 다시한번 확인하세요")
+        	return false 
          }
       });
       //사업자 번호 정규표현식

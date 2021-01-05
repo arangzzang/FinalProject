@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.project.jobnom.enterprise.model.vo.Enterprise;
 import com.project.jobnom.search.model.dao.SearchDao;
 
 
@@ -57,5 +58,39 @@ public class SearchServiceImpl implements SearchService {
 	public List<Map> ajaxReivewCateList(String reivewCategory) {
 		// TODO Auto-generated method stub
 		return dao.ajaxReivewCateList(session,reivewCategory);
+	}
+	
+	//기업 팔로잉
+	@Override
+	public int entFollow(Map param) {
+		// TODO Auto-generated method stub
+		return dao.entFollow(session,param);
+	}
+	
+	
+	//기업 언팔로잉
+	@Override
+	public int entUnFollow(Map param) {
+		// TODO Auto-generated method stub
+		return dao.entUnFollow(session,param);
+	}
+	
+	//기업 팔로잉 리스트
+	@Override
+	public List<Map> entFollowCheck() {
+		// TODO Auto-generated method stub
+		return dao.entFollowCheck(session);
+	}
+	//검색창 자동 완성1-1
+	@Override
+	public List<Enterprise> selectOneRecruitment(String key) {
+		// TODO Auto-generated method stub
+		return dao.selectOneRecruitment(session, key);
+	}
+	//검색창 자동 완성 1-2
+	@Override
+	public List<Enterprise> searchAuto2(String key) {
+		// TODO Auto-generated method stub
+		return dao.searchAuto2(session,key);
 	}
 }

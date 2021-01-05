@@ -393,3 +393,16 @@ padding-left:130px ;
     padding-right: 10px;
 }
 
+div#name-container{position:relative;padding:0px;}
+		p#name-container span.guide{
+			display:none;font-size:12px;right:10px;
+		}
+		p#name-container span.ok{color:green;}
+		p#name-container span.error{color:red;}
+		
+		
+.withcon{
+	padding-bottom: 50px
+}
+	
+}

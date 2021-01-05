@@ -10,8 +10,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class License {
-
+	//자격증 및 기타
 	private int licNo;
+	private int resNo;
 	private String licName;
 	private Date licTerm;
+	private String licContents;
 }

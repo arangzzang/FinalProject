@@ -10,18 +10,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Resume {
-	
+	//이력서
 	private int resNo;
 	private String resName;
+	private String resPhone;
 	private String resGender;
 	private Date resBirth;
-	private String resPhone;
+	private int resCar;
 	private String resContent;
 	private String resOpenCheck;
-	private int carNo;
-	private int eduNo;
-	private int awaNo;
-	private int licNo;
-	private int pofolNo;
 	private int memNo;
 }

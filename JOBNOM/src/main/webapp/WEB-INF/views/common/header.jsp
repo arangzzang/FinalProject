@@ -12,6 +12,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="${path }/resources/js/jquery-3.5.1.min.js"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"><!--Font Awesome-->
@@ -29,7 +30,7 @@
 
    <div id="container">
       <header>
-      	<div class="fixed-top">
+      	<div class="fixed-top" id="fix">
 	        <nav class="navbar navbar-expand-lg navbar-light headerContainerWrap"><!-- bg-light -->
 	            <a class="navbar-brand" href="${path }">
 	               <img src="" class="logo" >
@@ -55,13 +56,13 @@
 					<c:if test="${commonLogin !=null && commonLogin.type == 2 || commonLogin.type == 1}" >
 						<ul class="navbar-nav mr-auto ent_nav">
 							<li class="nav-item">
-								<a class="menus" href="">추세파악</a>
+								<a class="menus" href="${path }/com/charts">추세파악</a>
 							</li>
 							<li class="nav-item">
-								<a class="menus" href="">헤드헌팅</a>
+								<a class="menus" href="${path }/scout">헤드헌팅</a>
 							</li>
 							<li class="nav-item">
-								<a class="menus" href="">기업 알아보기</a>
+								<a class="menus" href="${path }/enterprise/companyList.do">기업 알아보기</a>
 							</li>
 						</ul>
 					</c:if>
@@ -158,11 +159,6 @@
 			if(memType==2){
 				$(".mem_nav").css("display","none")
 			}
-			//헤더높이만큼 사이즈 자르기
-			var head=$(".fixed-top").height();
-			console.log("헤더 높이 : "+ head)
-        	var offset = $("section").offset();
-            $('html, body').animate({scrollTop : offset-head}, 400);
 		});
 		//이메일, 비밀번호 정규표현식
 		function logincheck(){  

@@ -8,7 +8,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Portfolio {
-
+	//포트폴리오
 	private int popfolNo;
+	private int resNo;
 	private String pofolFile;
 }

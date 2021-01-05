@@ -20,11 +20,11 @@
                             <select name="parent_industry_id" id="ent_catagory1">
                                 <option name="entCate" value="ENT_CATEGORY1">1차산업군</option>
 								<option name="entCate" >IT/인터넷</option>
-								<option name="entCate">금융/재무</option>
-								<option name="entCate">의약</option>
-								<option name="entCate">서비스/고객지원</option>
-								<option name="entCate">마케팅/시장조사</option>
-								<option name="entCate">교육</option>
+								<option name="entCate" >금융/재무</option>
+								<option name="entCate" >의약</option>
+								<option name="entCate" >서비스/고객지원</option>
+								<option name="entCate" >마케팅/시장조사</option>
+								<option name="entCate" >교육</option>
 							</select>
                     </div>
                     
@@ -39,7 +39,7 @@
                     <div class="section_wrap">
                         <div class="section_group">
                             <!-- for문  -->
-                            <c:forEach items="${list}" var="list">
+                            <c:forEach items="${list}" var="list" varStatus="status">
                             <section class="company content_ty3">
                                 <div class="ty3_wrap">
                                     <div class="content_wrap">
@@ -50,20 +50,31 @@
                                             			<img src="https://jpassets.jobplanet.co.kr/assets/default_logo_share-12e4cb8f87fe87d4c2316feb4cb33f42d7f7584f2548350d6a42e47688a00bd0.png">
                                             		</c:when>
                                             		<c:otherwise>
-                                            			<img src="${list.ENT_LOGO }">
+                                            			<img src="${path }/resources/enterprise/logo/${list.ENT_NO}/${list.ENT_LOGO }">
                                             		</c:otherwise>
                                             	</c:choose>
                                             </a>
                                         </div>
                                         <dl class="content_col2_3 cominfo">
                                             <dt class="us_titb_13">
-                                                <a href="">${list.ENT_NAME }</a>
-                                                <button class="btn_heart1">
+                                                <a href="#" onclick="location.href = '${path }/enterprise/com_info.do?entNo=${list.ENT_NO}'">${list.ENT_NAME }</a>
+                                                <c:choose>
+                                                <c:when test="${not empty commonLogin && commonLogin.memNo ne  entFollow[status.index].MEM_NO && list.ENT_NO ne entFollow[status.index].ENT_NO  }">
+                                                <button class="btn_heart1" onclick="location.href='${path }/search/entFollow.do?memNo=${commonLogin.memNo}&entNo=${list.ENT_NO}'">
                                                     <i class="far fa-heart"></i>
                                                 </button>
-                                                <button class="btn_heart2">
+                                                </c:when>
+                                                <c:when test="${not empty commonLogin && commonLogin.memNo eq  entFollow[status.index].MEM_NO && list.ENT_NO eq entFollow[status.index].ENT_NO  }">
+                                                <button class="btn_heart2" onclick="location.href='${path }/search/entUnFollow.do?memNo=${commonLogin.memNo}&entNo=${list.ENT_NO}'">
                                                     <i class="fas fa-heart"></i>
                                                 </button>
+                                                </c:when>
+                                                <c:otherwise>
+                                             	<button class="btn_heart1" onclick="javascript:btn_heart3()">
+                                                    <i class="far fa-heart"></i>
+                                                </button>
+                                                </c:otherwise>
+                                                </c:choose>
                                             </dt>
                                             <dd>
                                                 <span class="us_txt_1">${list.ENT_CATEGORY1 }</span>
@@ -123,16 +134,11 @@
                             </script>
                             <script>
                             	/* <!-- 하트 눌렀을때 변환 스크립트 --> */
-                                $(function() {
-                                    $('.btn_heart1').click(function() {
-                                        $('.btn_heart1').hide();
-                                        $('.btn_heart2').show();
-                                    });
-                                    $('.btn_heart2').click(function() {
-                                        $('.btn_heart2').hide();
-                                        $('.btn_heart1').show();
-                                    });
-                                });
+                                function btn_heart3(){ 
+                            		alert('로그인 후 이용 가능 합니다.'); 
+                            		
+                            	}
+
                             	/* <!-- 하트 눌렀을때 변환 스크립트  끝--> */
                                 
                               /*   <!--평균평점 별점 스크립트  --> */

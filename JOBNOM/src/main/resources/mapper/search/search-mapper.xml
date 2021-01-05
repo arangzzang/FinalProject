@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="search">
+	
+	<resultMap type="ent" id="entMap">
+		<result column="ent_name" property="entName"/>
+		<result column="ent_no" property="entNo"/>
+		
+	</resultMap>
 
 	<!--기업 검색결과 조회  -->
 	<select id="selectSearchResult" resultType="map">
@@ -38,14 +44,21 @@
             ,rec.rec_qualification
             ,rec.rec_other
             ,rec.rec_career
+            ,rec.rec_no
+            ,e.ent_logo
+            ,fav.mem_no
+            ,fav.rec_no
             ,round(sum(review_satisfaction+review_welfare+review_promotion+review_executive)/(count(review_satisfaction)+count(review_welfare)+count(review_promotion)+count(r.review_executive)),1) as avg
          from enterprise e
          inner join review r
          on (r.ent_no = e.ent_no)
          inner join recruitment rec
          on (e.ent_no = rec.ent_no)
-         where lower(e.ent_name) 
+         inner join interestedrecruitment fav
+         on (rec.rec_no = fav.rec_no)
+         where lower(rec.rec_title) 
          like '%'||#{keyword}||'%' 
+         or lower(e.ent_name) like '%'||#{keyword}||'%'
          AND ROWNUM <=5
          group by e.ent_no
                ,e.ent_category1
@@ -58,6 +71,10 @@
                ,rec.rec_qualification
                ,rec.rec_other
                ,rec.rec_career
+               ,rec.rec_no
+           	   ,e.ent_logo
+           	   ,fav.mem_no
+            	,fav.rec_no
       ]]>
       </select>
       <!--기업 더보기 조회  -->
@@ -106,4 +123,41 @@
 			,e.ent_category2
 		order by avg desc
 	</select>
+	<!--기업 팔로잉  -->
+	<insert id="entFollow" parameterType="java.util.HashMap">
+		INSERT INTO ENTERPRISEFOLLOW VALUES(SEQ_FAV_NO.NEXTVAL,#{memNo},#{entNo})
+	
+	</insert>
+	<!--기업 팔로잉 리스트  -->
+	<select id="entFollowCheck" resultType="map">
+		select * 
+		from ENTERPRISEFOLLOW
+	
+	</select>
+	<!--기업 언팔로우  -->
+	<delete id="entUnFollow" >
+		DELETE ENTERPRISEFOLLOW
+        	WHERE mem_no=#{memNo}
+        	AND ent_no=#{entNo}
+	</delete>
+	
+	<!--검색창 자동 완성1-1  -->
+	<select id="selectOneRecruitment"  parameterType="string" resultMap="entMap">
+	 	
+	 	select ent_Name 
+	 	from enterprise
+	 	where lower(ent_Name)
+	 	like '%'||#{key}||'%'
+	
+	</select>
+	<!--검색창 자동 완성 1-2  -->
+	<select id="searchAuto2"  parameterType="string" resultMap="entMap">
+	 	
+	 	select ent_Name 
+	 	from enterprise
+	 	where lower(ent_Name)
+	 	like '%'||#{key}||'%'
+	
+	</select>
+	
 </mapper>

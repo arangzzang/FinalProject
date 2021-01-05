@@ -25,7 +25,6 @@ section{
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     margin: 0 auto;
-    min-height: 100%;
 }
 body{
     width: 100%;
@@ -214,7 +213,7 @@ body{
 }
 
 .company_info_more{
-    list-style: none;
+   list-style: none;
 }
 .info_item_more .item_subject {
     position: absolute;
@@ -223,7 +222,7 @@ body{
     color: #85878c;
 }
 .info_item_more>dd{
-    margin-left: 40px;
+    margin-left: 60px;
 }
 .review_title{
     width: 100%;

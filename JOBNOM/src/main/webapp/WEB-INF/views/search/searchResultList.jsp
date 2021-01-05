@@ -23,14 +23,9 @@
 				<!-- 검색 기업 없을시 -->
 				<c:if test="${empty list }">
 					<div class="no_company_card">
-						<h1 class="no_card_tit">
-							찾으시는 기업이 없나요?<br>근무경험이 있으시면, 첫 리뷰를 작성해주세요.
-						</h1>
-						<a
-							href="javascript:desktop_review_form_generator_v1({_fun: 'write@federated_search'});"
-							class="btn_rnd btn_rnd_green">
-							<span class="txt">기업리뷰작성</span>
-						</a>
+						<h2 class="no_card_tit">
+							찾으시는 기업이 없습니다
+						</h2>
 					</div>
 				</c:if>
 			</div>
@@ -39,8 +34,8 @@
 				<c:forEach items="${list }" var="list">
 					<div class="result_card ">
 						<span class="llogo"> 
-							<a href=""> 
-							<img src="${list.ENT_LOGO }" alt="">
+							<img src="${path }/resources/enterprise/logo/${list.ENT_NO}/${list.ENT_LOGO }" style="width: 40px; height: 40px; ">
+							<a href="#" onclick="location.href = '${path }/enterprise/com_info.do?entNo=${list.ENT_NO}'"> 
 							</a>
 						</span>
 						<a href="#" onclick="location.href = '${path }/enterprise/com_info.do?entNo=${list.ENT_NO}'" class="tit" >
@@ -55,6 +50,7 @@
 				</c:forEach>
 	</div>
 </div>
+
 <!-- 채용공고 검색결과 -->
 <div class="result_entry">
 	<div class="result_hd">
@@ -76,11 +72,11 @@
 				<div class="result_unit">
 					<div class="result_unit_con">
 						<span class="llogo"> 
-							<a href="#"> 로고사진 </a>
+							<a href="#"onclick="location.href = '${path }/enterprise/com_info.do?entNo=${list2.ENT_NO}'"> ${list2.ENT_LOGO } </a>
 						</span>
 						<div class="result_unit_info">
 							<div class="unit_head">
-								<a class="posting_name" href=""> ${list2.REC_TITLE } </a> 
+								<a class="posting_name" href="#"onclick="location.href = '${path }/Hire/annoHomeDetailMove.do?recNo=${list2.REC_NO}'"> ${list2.REC_TITLE } </a> 
 								<span class="d_day green">${list2.REC_TYPE }</span>
 							</div>
 							<div class="data_builtin">
@@ -94,7 +90,7 @@
 											<button class="btn_close">${list2.ENT_NAME }</button>
 										</p>
 										<ul class="detail_ul_layer">
-											<li><a href="#">기업정보</a></li>
+											<li><a href="#"onclick="location.href = '${path }/enterprise/com_info.do?entNo=${list2.ENT_NO}'">기업정보</a></li>
 											<li><a href="#">기업리뷰</a></li>
 											<li><a href="#">면접정보</a></li>
 										</ul>
@@ -117,13 +113,11 @@
 									<span class="tags">${list2.ENT_CATEGORY1 }</span> 
 									<span class="tags">${list2.REC_TYPE }</span>
 									<button class="btn_fold more">더보기</button>
-									<button class="btn_fold1 close" style="display: none;">
-										접기</button>
+									<button class="btn_fold1 close" style="display: none;"  >접기</button>
 								</div>
 							</div>
 							<!-- 더보기 클릭시 보여주기 -->
-							<div class="info_show_section ui_fold_area"
-								style="display: none;">
+							<div class="info_show_section ui_fold_area"style="display: none;">
 								<div class="posting_content">
 									<div class="posting_txt">
 										<h3 class="p_title">주요 업무 내용</h3>
@@ -132,56 +126,11 @@
 										<div class="p_article">${list2.REC_OTHER }</div>
 									</div>
 								</div>
-								<!-- 더보기 클릭시 보여주기 -->
-								<script>
-                                            $(function(){
-                                                $('.btn_fold.more').click(function(){
-                                                    $('.btn_fold.more').hide();
-                                                    $('.info_show_section').show();
-                                                    $('.close').show();
-                                                });
-
-                                                $('.close').click(function() {
-                                                    $('.btn_fold.more').show();
-                                                    $('.info_show_section').hide();
-                                                    $('.close').hide();
-                                                    
-                                                })
-                                            });
-                                        </script>
-								<!-- 더보기 클릭시 보여주기 끝 -->
-							</div>
-
-							<!-- 저장 버튼 -->
-							<div class="btn_save_set">
-								<button class="btn_round btn_save" id="btn_save">
-									<i class="far fa-bookmark"></i> 저장
-								</button>
-								<button class="btn_round btn_saved" id="btn_saved">
-									<i class="fas fa-bookmark"></i> 저장됨
-								</button>
-								<button class="btn_round btn_cancle" id="btn_cancle">
-									저장취소</button>
-								<!--저장버튼 클릭 이벤트  -->
-								<script>
-                                            $(function () {
-                                                $('#btn_save').click(function() {
-                                                    $('#btn_save').hide();
-                                                    $('#btn_saved').show();
-                                                });
-                                                $('#btn_saved').click(function() {
-                                                    $('#btn_saved').hide();
-                                                    $('#btn_save').show();
-                                                });
-                                    
-                                            });
-                                        </script>
-								<!--저장 버튼 클릭 이벤트 끝  -->
 							</div>
 						</div>
 					</div>
 				</div>
-			</c:forEach>
+				</c:forEach>
 		</div>
 	</div>
 </div>
@@ -192,10 +141,26 @@
 	 $('.btn_open').on('click', function() {
 	        	 $(this).parent().next().show();
 	     });
-	      $('.btn_close').on('click', function() {
-	             $(this).parent().next().hide();
+	 $('.btn_close').on('click', function() {
+	             $(this).parent().parent().hide();
 	         
 	     });
 </script>
 <!-- company_name 클릭시 이벤트 -->
+<!-- 더보기 클릭시 보여주기 -->
+<script>
+        $('.btn_fold.more').on('click',function(){
+        	 $(this).parent().parent().next().show();
+        	 $(this).hide();
+        	 $(this).next().show();
+        });
+
+        $('.close').on('click',function() {
+        	 $(this).parent().parent().next().hide();
+        	 $(this).hide();
+        	 $(this).prev().show();
+            
+        });
+</script>
+<!-- 더보기 클릭시 보여주기 끝 -->
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />

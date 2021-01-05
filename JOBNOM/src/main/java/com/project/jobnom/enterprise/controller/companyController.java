@@ -4,9 +4,11 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.collections.map.HashedMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -57,7 +59,7 @@ public class companyController {
 	//기업 메인 페이지
 
 	@RequestMapping("/enterprise/com_info.do")
-	public ModelAndView companyInfo(ModelAndView mv,@RequestParam String entNo) {
+	public ModelAndView companyInfo(ModelAndView mv,int entNo) {
 		System.out.println(entNo);
 		
 		mv.addObject("list",service.companyInfo(entNo));
@@ -67,29 +69,45 @@ public class companyController {
 	}
 
 	@RequestMapping("/enterprise/com_review.do")
-	public ModelAndView companyReview(ModelAndView mv) { 
-		List<Review> rev=service.selectReviewList();
+	public ModelAndView companyReview(ModelAndView mv,int entNo,@RequestParam(value="cPage",defaultValue="1")
+					int cPage,@RequestParam(value="numPerpage",defaultValue="5") int numPerpage) {
+		List<Review> rev=service.selectReviewList(entNo,cPage,numPerpage);
+		System.out.println("기업번호"+entNo);
+		int totalData = service.selectReviewcount(entNo);
 		
+		mv.addObject("list",service.companyInfo(entNo));
+		mv.addObject("totalData",totalData);
+		mv.addObject("pageBar",EnterprisePageBar.getPageBar3(totalData,entNo,cPage,numPerpage,"com_review.do"));
 		mv.addObject("rev",rev);
 		mv.setViewName("enterprise/com_review");
 		return mv;
 	}
 
 	@RequestMapping("/enterprise/com_interview.do")
-	public String companyInterview() {
-
-		return "enterprise/com_interview";
+	public ModelAndView companyInterview(ModelAndView mv,int entNo) {
+		mv.addObject("list",service.companyInfo(entNo));
+		mv.setViewName("enterprise/com_interview");
+		return mv;
 	}
 
 	@RequestMapping("/enterprise/com_job.do")
-	public ModelAndView companyJob(ModelAndView mv) {
+	public ModelAndView companyJob(ModelAndView mv,@RequestParam(value="cPage",defaultValue="1")
+	int cPage,@RequestParam(value="numPerpage",defaultValue="5") int numPerpage, int entNo, int recNo) {
 		List<Category2> c2 = service.getC2();
-		System.out.println("결과값 : "+c2);
+		System.out.println();
+		Map param = new HashedMap();
+		param.put("entNo", entNo);
+		param.put("recNo",recNo);
 		
-		
-		List<Recruitment> Rec= service.selectJoblist();
+		System.out.println("번호: " + recNo );
+		List<Recruitment> Rec= service.selectJoblist(param);
+		int totalData = service.selectJobCount(entNo);
+		 mv.addObject("totalData",totalData);
+		 mv.addObject("pageBar",EnterprisePageBar.getPageBar4(totalData, cPage, numPerpage, entNo, "com_job.do"));
+		 
 		mv.addObject("c2",c2);
 		mv.addObject("Rec",Rec);
+		mv.addObject("list",service.companyInfo(entNo));
 		mv.setViewName("enterprise/com_job");
 		return mv;
 	}
@@ -124,13 +142,13 @@ public class companyController {
 		session.setAttribute("Enterprise", ent);
 		System.out.println("sdds"+ent.getEntNo());
 		List<Recruitment> res = service.selectRecruitment(ent.getEntNo(),cPage,numPerpage); 
-		int totalData = service.selectRecruitmentCount();
+		int totalData = service.selectRecruitmentCount(ent);
 		
 		System.out.println(res);
 		System.out.println("공고 총갯수 : " + totalData);
 		System.out.println("페이지 위치 : " + cPage+"페이지 갯수" + numPerpage);
 		mv.addObject("res", res);
-		mv.addObject("pageBar",EnterprisePageBar.getPageBar2(totalData,cPage,numPerpage,ent.getEntNo(),"mypage.do"));
+		mv.addObject("pageBar",EnterprisePageBar.getPageBar2(totalData, ent.getEntNo(), cPage,numPerpage,"mypage.do"));
 		mv.addObject("totalData",totalData);
 		mv.setViewName("/enterprise/ent_mypage/com_mypage");
 		return mv;
@@ -185,30 +203,34 @@ public class companyController {
 	public ModelAndView entEditEnd(HttpSession session, SessionStatus ss, Model m, Enterprise ent, ModelAndView mv, 
 			@RequestParam(value = "Logo", required = false) CommonsMultipartFile Logo) {
 		Login log = (Login) session.getAttribute("commonLogin");
-		
-		
-		
-		String path = session.getServletContext().getRealPath("/resources/enterprise/logo/" + ent.getEntNo());
-		System.out.println(path);
-		String oldName = Logo.getOriginalFilename();
-
-		File dir = new File(path);
-		if (!dir.exists())
-			dir.mkdirs();
-		String ext = oldName.substring(oldName.lastIndexOf(".") + 1);
-		String newName = ent.getEntName() + "_logo." + ext;
-		ent.setEntLogo(newName);
-		try {
-			Logo.transferTo(new File(path + "/" + newName));
-		} catch (IOException e) {
-			e.printStackTrace();
+		System.out.println(Logo.getOriginalFilename());
+		if(Logo.getOriginalFilename().length() == 0) {
+			System.out.println("사진 업로드되지 않음");
+			Enterprise eps = (Enterprise) session.getAttribute("Enterprise");
+			ent.setEntLogo(eps.getEntLogo());
+		}else {
+			String path = session.getServletContext().getRealPath("/resources/enterprise/logo/" + ent.getEntNo());
+			System.out.println(path);
+			String oldName = Logo.getOriginalFilename();
+			
+			File dir = new File(path);
+			if (!dir.exists())
+				dir.mkdirs();
+			String ext = oldName.substring(oldName.lastIndexOf(".") + 1);
+			String newName = ent.getEntName() + "_logo." + ext;
+			ent.setEntLogo(newName);
+			try {
+				Logo.transferTo(new File(path + "/" + newName));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}			
 		}
-		
-		
 		
 		System.out.println("================");
 		System.out.println("pw:" + ent.getEntPw());
-		if (!log.getMemPw().equals(ent.getEntPw())) {
+		System.out.println("logPw:" + log.getMemPw());
+		//encoder.matches(password, user.getPassword());
+		if (!ent.getEntPw().equals(log.getMemPw())) {
 			ent.setEntPw(pwEncoder.encode(ent.getEntPw()));
 		}
 		System.out.println("비번 암호화 후:" + ent.getEntPw());
@@ -228,6 +250,10 @@ public class companyController {
 		mv.addObject("loc", loc);
 		mv.setViewName("common/msg");
 		// session commonlogin 새로운 회원값으로 대체
+		System.out.println("방금 들어간 비번:"+ent.getEntPw());
+		Login newLog = new Login(log.getType(), ent.getEntNo(), ent.getEntEmail(), ent.getEntPw());
+		session.removeAttribute("commonLogin");
+		session.setAttribute("commonLogin", newLog);
 		return mv;
 	}
 
@@ -256,9 +282,7 @@ public class companyController {
 	public ModelAndView membership(HttpSession session, Model m, ModelAndView mv) {
 		Login log = (Login) session.getAttribute("commonLogin");
 		Enterprise ent = service.findOneEnterprise(log);
-		System.out.println(ent);
 		session.setAttribute("Enterprise", ent);
-		System.out.println(ent);
 		mv.setViewName("enterprise/ent_mypage/membership");
 		return mv;
 	}

@@ -7,6 +7,8 @@ import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.project.jobnom.enterprise.model.vo.Enterprise;
+
 @Repository
 public class SearchDaoImpl implements SearchDao {
 	
@@ -51,5 +53,39 @@ public class SearchDaoImpl implements SearchDao {
 	public List<Map> ajaxReivewCateList(SqlSession session, String reivewCategory) {
 		// TODO Auto-generated method stub
 		return session.selectList("search.ajaxReivewCateList",reivewCategory);
+	}
+	
+	//기업 팔로잉
+	@Override
+	public int entFollow(SqlSession session, Map param) {
+		// TODO Auto-generated method stub
+		return session.insert("search.entFollow",param);
+	}
+	
+	//기업 언팔로잉
+	@Override
+	public int entUnFollow(SqlSession session, Map param) {
+		// TODO Auto-generated method stub
+		return session.delete("search.entUnFollow",param);
+	}
+	
+	//기업 팔로잉 리스트 
+	@Override
+	public List<Map> entFollowCheck(SqlSession session) {
+		// TODO Auto-generated method stub
+		return session.selectList("search.entFollowCheck");
+	}
+	
+	//검색창  자동완성1-1
+	@Override
+	public List<Enterprise> selectOneRecruitment(SqlSession session, String key) {
+		// TODO Auto-generated method stub
+		return session.selectList("search.selectOneRecruitment",key);
+	}
+	//검색창 자동 완성 1-2
+	@Override
+	public List<Enterprise> searchAuto2(SqlSession session, String key) {
+		// TODO Auto-generated method stub
+		return session.selectList("search.searchAuto2",key);
 	}
 }
