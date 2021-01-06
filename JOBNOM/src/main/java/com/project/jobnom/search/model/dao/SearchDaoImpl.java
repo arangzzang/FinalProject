@@ -101,4 +101,11 @@ public class SearchDaoImpl implements SearchDao {
 		// TODO Auto-generated method stub
 		return session.selectList("search.bannerList");
 	}
+	
+	//배너 삭제
+	@Override
+	public int deleteBanner(SqlSession session) {
+		// TODO Auto-generated method stub
+		return session.delete("search.deleteBanner");
+	}
 }

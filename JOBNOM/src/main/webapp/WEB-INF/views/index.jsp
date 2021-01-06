@@ -31,9 +31,9 @@
                         <input type="hidden" id="hid_clicked_ad_id" value="0">
                           <li class="grid_item swiper-slide mtp_w2">
                             <div class="item-content">
-                              <a class="jply_grid_masonry_card" href="#" >
+                              <a class="jply_grid_masonry_card" href="#" onclick="location.href = '${path }/enterprise/com_info.do?entNo=${rndList[0].ENT_NO}'" >
                                 <div class="img_thumb">
-                                  <img alt="이미지" src="${path }/resources/enterprise/logo/${rndList[0].ENT_NO}/${rndList[0].ENT_LOGO }" class="thumbs_img" style="background-image:url('https://jpassets.jobplanet.co.kr/production/uploads/cms/commercial/ad/today_pick_image_type_c/834/%EB%B0%B0%EB%84%88%EB%B3%B4%EB%93%9C_c%ED%83%80%EC%9E%85.png')">
+                                  <img src="${path }/resources/enterprise/banner/${rndList[0].ENT_NO}/${rndList[0].BANN_PATH }" class="thumbs_img" >
                                 </div>
                                 <div class="text_wrap">
                                   <div class="text_box">
@@ -46,9 +46,9 @@
                           </li>
                           <li class="grid_item swiper-slide mtp_h2">
                             <div class="item-content">
-                              <a class="jply_grid_masonry_card" href="#" >
+                              <a class="jply_grid_masonry_card" href="#" onclick="location.href = '${path }/enterprise/com_info.do?entNo=${rndList[1].ENT_NO}'" >
                                 <div class="img_thumb">
-                                  <img alt="이미지" src="${path }/resources/enterprise/logo/${rndList[1].ENT_NO}/${rndList[1].ENT_LOGO }" class="thumbs_img" >
+                                  <img src="${path }/resources/enterprise/banner/${rndList[1].ENT_NO}/${rndList[1].BANN_PATH }" class="thumbs_img" >
                                 </div>
                                 <div class="text_wrap">
                                   <div class="text_box">
@@ -61,9 +61,9 @@
                           </li>
                           <li class="grid_item swiper-slide mtp_w3 ">
                             <div class="item-content">
-                              <a class="jply_grid_masonry_card" href="#" >
+                              <a class="jply_grid_masonry_card" href="#" onclick="location.href = '${path }/enterprise/com_info.do?entNo=${rndList[2].ENT_NO}'" >
                                 <div class="img_thumb">
-                                  <img alt="이미지" src="#" style="background-image:url('https://jpassets.jobplanet.co.kr/production/uploads/cms/commercial/ad/today_pick_image_type_a/833/%EB%B0%B0%EB%84%88%EB%B3%B4%EB%93%9C_a%ED%83%80%EC%9E%85.png')">
+                                  <img src="${path }/resources/enterprise/banner/${rndList[2].ENT_NO}/${rndList[2].BANN_PATH }">
                                 </div>
                                 <div class="text_wrap">
                                   <div class="text_box">
@@ -76,9 +76,9 @@
                           </li>
                           <li class="grid_item swiper-slide mtp_w4 ">
                             <div class="item-content">
-                              <a class="jply_grid_masonry_card" href="#" >
+                              <a class="jply_grid_masonry_card" href="#" onclick="location.href = '${path }/enterprise/com_info.do?entNo=${rndList[3].ENT_NO}'" >
                                 <div class="img_thumb">
-                                  <img src="#" class="thumbs_img" style="background-image:url('https://jpassets.jobplanet.co.kr/production/uploads/cms/commercial/ad/today_pick_image_type_a/833/%EB%B0%B0%EB%84%88%EB%B3%B4%EB%93%9C_a%ED%83%80%EC%9E%85.png')">
+									<img src="${path }/resources/enterprise/logo/${rndList[3].ENT_NO}/${rndList[3].ENT_LOGO }">
                                 </div>
                                 <div class="text_wrap">
                                   <div class="text_box">
