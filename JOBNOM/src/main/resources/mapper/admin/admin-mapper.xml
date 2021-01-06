@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="admin">
+
+	<resultMap type="admem" id="memMap">
+		<result column="mem_no" property="mem_no" />
+		<result column="mem_email" property="mem_email" />
+		<result column="mem_check" property="mem_check" />
+		<result column="mem_membership" property="mem_membership" />
+		<result column="cate_no2" property="cate_no2" />
+		<result column="res_name" property="res_name" />
+		<result column="res_phone" property="res_phone" />
+		<result column="res_gender" property="res_gender" />
+		<result column="res_birth" property="res_birth" />
+		<result column="res_car" property="res_car" />
+	</resultMap>
+	<resultMap type="com.project.jobnom.enterprise.model.vo.ApplyAd" id="recMap">
+		<result column="ent_no" property="ent_no"/>
+		<result column="rec_title" property="rec_title"/>
+		<result column="rec_contents" property="rec_contents"/>
+		<result column="rec_startdate" property="rec_startdate"/>
+		<result column="rec_enddate" property="rec_enddate"/>
+		<result column="rec_salary" property="rec_salary"/>
+		<result column="rec_info" property="rec_info"/>
+		<result column="rec_prefer" property="rec_prefer"/>
+		<result column="rec_welfare" property="rec_welfare"/>
+		<result column="rec_qualification" property="rec_qualification"/>
+		<result column="rec_pepole" property="rec_people"/>
+		<result column="rec_career" property="rec_career"/>
+		<result column="rec_order" property="rec_order"/>
+		<result column="rec_type" property="rec_type"/>
+		<result column="rec_other" property="rec_other"/>
+		<result column="rec_category" property="rec_category"/>
+	</resultMap>	
+
+	<select id="memList" resultMap="memMap">
+		SELECT * FROM MEMBER LEFT JOIN
+		RESUME ON MEMBER.MEM_NO=RESUME.MEM_NO
+	</select>
+
+	<update id="grant">
+		UPDATE MEMBER SET MEM_MEMBERSHIP='멤버십회원' WHERE MEM_NO=#{memno}
+	</update>
+	
+	<update id="oust">
+		UPDATE MEMBER SET MEM_MEMBERSHIP='일반회원' WHERE MEM_NO=#{memno}
+	</update>
+
+	<delete id="memDelete">
+		DELETE FROM MEMBER WHERE MEM_NO=#{memno}
+	</delete>
+
+	<select id="revList" resultType="com.project.jobnom.Hire.model.vo.Review">
+		SELECT * FROM REVIEW R LEFT JOIN ENTERPRISE E ON R.ENT_NO=E.ENT_NO 
+		    LEFT JOIN RECRUITMENT REC ON E.ENT_NO=REC.ENT_NO
+		    LEFT JOIN MEMBER ON R.MEM_NO=MEMBER.MEM_NO
+	
+	</select>
+
+	<select id="adList" resultMap="recMap">
+		SELECT * FROM RECRUITMENT
+	</select>
+
+
+
+
+</mapper>

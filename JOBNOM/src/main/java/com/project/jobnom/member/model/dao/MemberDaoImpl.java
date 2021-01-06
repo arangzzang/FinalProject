@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.project.jobnom.member.model.vo.MemCategory;
 import com.project.jobnom.member.model.vo.MemCategory2;
 import com.project.jobnom.member.model.vo.Member;
+import com.project.jobnom.resume.model.vo.Resume;
 
 @Repository
 public class MemberDaoImpl implements MemberDao {
@@ -52,6 +53,11 @@ public class MemberDaoImpl implements MemberDao {
 		return session.selectOne("member.selectCategory",memNo);
 	}
 
+	@Override
+	public Resume selectResume(int memNo, SqlSession session) {
+		return session.selectOne("resume.selectResume",memNo);
+	}
+	
 	
 	
 	

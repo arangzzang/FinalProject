@@ -176,13 +176,7 @@
     font-size: 16px;
     padding-bottom: 20px;
 }
-.logoImage{
-    background-image: url("../../image/Hire/Kakao.png"); 
-    background-size: cover;
-    width: 100px;
-    height: 100px;
-   
-}
+
 .myFavoritesList{
     border-top: solid rgb(176, 174, 174);
     padding-top: 20px;

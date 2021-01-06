@@ -10,12 +10,16 @@ import org.springframework.stereotype.Repository;
 import com.project.jobnom.Hire.model.vo.Recruitment;
 import com.project.jobnom.Hire.model.vo.Review;
 import com.project.jobnom.common.model.vo.Login;
+import com.project.jobnom.enterprise.model.vo.Applicant;
 import com.project.jobnom.enterprise.model.vo.ApplyAd;
 import com.project.jobnom.enterprise.model.vo.Banner;
 import com.project.jobnom.enterprise.model.vo.Category2;
 import com.project.jobnom.enterprise.model.vo.Enterprise;
+import com.project.jobnom.enterprise.model.vo.Mammoth;
 import com.project.jobnom.enterprise.model.vo.MemberDataC2;
+import com.project.jobnom.enterprise.model.vo.PayData;
 import com.project.jobnom.enterprise.model.vo.Support;
+import com.project.jobnom.enterprise.model.vo.Worker;
 import com.project.jobnom.resume.model.vo.Resume;
 
 @Repository
@@ -89,9 +93,9 @@ public class EnterpriseDaoImpl implements EnterpriseDao {
 	
 
 	@Override
-	public int selectRecruitmentCount(SqlSession session) {
+	public int selectRecruitmentCount(Enterprise ent, SqlSession session) {
 		// TODO Auto-generated method stub
-		return session.selectOne("enterprise.selectRecruitmentCount");
+		return session.selectOne("enterprise.selectRecruitmentCount", ent);
 	}
 
 	@Override
@@ -147,22 +151,36 @@ public class EnterpriseDaoImpl implements EnterpriseDao {
 	
 	//기업명 클릭시 이동
 	@Override
-	public List<Map> companyInfo(SqlSession session, String entNo) {
+	public List<Map> companyInfo(SqlSession session, int entNo) {
 		// TODO Auto-generated method stub
 		return session.selectList("enterprise.companyInfo",entNo);
 	}
 
 
 	@Override
-	public List<Review> selectReviewList(SqlSession session) {
+	public List<Review> selectReviewList(SqlSession session,int entNo,int cPage, int numPerpage) {
 		// TODO Auto-generated method stub
-		return session.selectList("enterprise.selectReviewList");
+		return session.selectList("enterprise.selectReviewList",entNo,new RowBounds((cPage-1)*numPerpage,numPerpage));
+	}
+	
+
+	@Override
+	public int selectReviewcount(SqlSession session,int entNo) {
+		// TODO Auto-generated method stub
+		return session.selectOne("enterprise.selectReviewcount",entNo);
 	}
 
 	@Override
-	public List<Recruitment> selectJoblist(SqlSession session) {
+	public List<Recruitment> selectJoblist(SqlSession session,Map param) {
 		// TODO Auto-generated method stub
-		return session.selectList("enterprise.selectJoblist");
+		return session.selectList("enterprise.selectJoblist",param);
+	}
+	
+
+	@Override
+	public int selectJobCount(SqlSession session, int entNo) {
+		// TODO Auto-generated method stub
+		return session.selectOne("enterprise.selectJobCount",entNo);
 	}
 
 	@Override
@@ -175,6 +193,48 @@ public class EnterpriseDaoImpl implements EnterpriseDao {
 	public List<MemberDataC2> entDataC2(SqlSession session) {
 		// TODO Auto-generated method stub
 		return session.selectList("enterprise.entDataC2");
+	}
+
+	@Override
+	public List<PayData> payData(SqlSession session) {
+		// TODO Auto-generated method stub
+		return session.selectList("enterprise.payData");
+	}
+
+	@Override
+	public ApplyAd findAdByNo(SqlSession session, String recNo) {
+		// TODO Auto-generated method stub
+		return session.selectOne("enterprise.findAdByNo", recNo);
+	}
+
+	@Override
+	public int updateApplyAd(SqlSession session, ApplyAd ad) {
+		// TODO Auto-generated method stub
+		return session.update("enterprise.updateApplyAd", ad);
+	}
+
+	@Override
+	public List<Worker> workerList(SqlSession session) {
+		// TODO Auto-generated method stub
+		return session.selectList("enterprise.workerList");
+	}
+
+	@Override
+	public Mammoth getMammoth(SqlSession session, int resno) {
+		// TODO Auto-generated method stub
+		return session.selectOne("enterprise.getMammoth", resno);
+	}
+
+	@Override
+	public List<Applicant> getApplicant(SqlSession session,int recno,int cPage, int numPerpage) {
+		// TODO Auto-generated method stub
+		return session.selectList("enterprise.getApplicant", recno,new RowBounds((cPage-1)*numPerpage,numPerpage));
+	}
+
+	@Override
+	public int selectSupportCount(SqlSession session, int recno) {
+		// TODO Auto-generated method stub
+		return session.selectOne("enterprise.selectSupportCount", recno);
 	}
 	
 	

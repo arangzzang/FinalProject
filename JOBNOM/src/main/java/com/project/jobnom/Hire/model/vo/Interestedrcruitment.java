@@ -16,4 +16,6 @@ public class Interestedrcruitment {
 
 	private String rec_title;
 	private String ent_name;
+	private String ent_logo;
+	private String ent_no;
 }

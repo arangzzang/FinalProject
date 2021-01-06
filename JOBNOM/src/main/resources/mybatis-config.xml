@@ -24,8 +24,12 @@
 		<typeAlias type="com.project.jobnom.resume.model.vo.MySkill" alias="mySkill"/>
 
 		<typeAlias type="com.project.jobnom.enterprise.model.vo.MemberDataC2" alias="mdc2"/>
+		<typeAlias type="com.project.jobnom.enterprise.model.vo.PayData" alias="payData"/>
 		<typeAlias type="com.project.jobnom.Hire.model.vo.Review" alias="review"/>
 		<typeAlias type="com.project.jobnom.enterprise.model.vo.Category2" alias="cat2"/>
-
+		<typeAlias type="com.project.jobnom.enterprise.model.vo.Worker" alias="worker"/>
+		<typeAlias type="com.project.jobnom.enterprise.model.vo.Mammoth" alias="mammoth"/>
+		<typeAlias type="com.project.jobnom.enterprise.model.vo.Applicant" alias="applicant"/>
+		<typeAlias type="com.project.jobnom.admin.model.vo.Member" alias="admem"/>
 	</typeAliases>
 </configuration>

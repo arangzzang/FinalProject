@@ -7,8 +7,8 @@
 
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <jsp:include page="/WEB-INF/views/common/header.jsp">
-   <jsp:param name="title" value=" "/>
-</jsp:include><br><br><br><br><br>
+   <jsp:param name="title" value=""/>
+</jsp:include><br><br><br>
 <section id="content">
     
 
@@ -16,7 +16,9 @@
 	<div id="chartContainer" class="container" style="height: 370px; width: 100%;"></div>
 	<br><br>
 	<div id="chartContainer2" class="container" style="height: 370px; width: 100%;"></div> 
-	<br><br>   
+	<br><br><br><br>   
+	<div id="chartContainer3" class="container" style="height: 370px; width: 100%;"></div> 
+	<br><br>  
 		<c:set var="cNo1" value="${memDataC2[0].count }"/>
 		<c:set var="cNo2" value="${memDataC2[1].count }"/>
 		<c:set var="cNo3" value="${memDataC2[2].count }"/>
@@ -30,8 +32,10 @@
 		<c:set var="eNo4" value="${entDataC2[3].count }"/>
 		<c:set var="eNo5" value="${entDataC2[4].count }"/>	
 		<c:set var="eNo6" value="${entDataC2[5].count }"/>
-
 	
+	
+<%-- 	<c:out value="${payArr }"/> --%>
+	<br><br>
 </section>
 <script>
 	function applyAd(){
@@ -47,7 +51,7 @@
 		
 		var chart = new CanvasJS.Chart("chartContainer", {
 			animationEnabled: true,
-			theme: "light2", // "light1", "light2", "dark1", "dark2"
+			theme: "light2", // "light1", "light2", "dark1", "dark
 			title:{
 				text: "구직자 현황"
 			},
@@ -100,9 +104,30 @@
 				]
 			}]
 		});
+
+		var chart3 = new CanvasJS.Chart("chartContainer3", {
+			animationEnabled: true,
+			theme: "light2",
+			title:{
+				text: "연봉별 지원자 수"
+			},
+			data: data
+		});
+		
+		
 		chart.render();
 		chart2	.render();	
+		chart3.render();
+
 		}
+		console.log("${payArr}");
+		var data = [];
+		var dataSeries = { type: "line" };
+		var dataPoints = ${payArr};
+		
+		dataSeries.dataPoints = dataPoints;
+		data.push(dataSeries);    
+
 		function explodePie (e) {
 			if(typeof (e.dataSeries.dataPoints[e.dataPointIndex].exploded) === "undefined" || !e.dataSeries.dataPoints[e.dataPointIndex].exploded) {
 				e.dataSeries.dataPoints[e.dataPointIndex].exploded = true;

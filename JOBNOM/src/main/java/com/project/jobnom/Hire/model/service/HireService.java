@@ -7,6 +7,7 @@ import com.project.jobnom.Hire.model.vo.Interestedrcruitment;
 import com.project.jobnom.Hire.model.vo.Recruitment;
 import com.project.jobnom.Hire.model.vo.Support;
 import com.project.jobnom.enterprise.model.vo.Enterprise;
+import com.project.jobnom.member.model.vo.Member;
 
 public interface HireService {
 
@@ -24,7 +25,7 @@ public interface HireService {
 
 	List<Map> reviewStar();
 	
-	List<Map>  selectRecruitmentList(Map paramMap);
+	List<Map>  selectRecruitmentList(String rec_no);
 	
 	List<Map> selectReviewList(String ent_no);
 	
@@ -53,7 +54,11 @@ public interface HireService {
 	
 	List<Enterprise> reviewSearch2(String key);
 	
+	Enterprise reviewSearch3(String key);
 	
+	List<Map> mypageView();
 
-
+	List<Recruitment> swiper(String rec_no);
+	
+	List<Member> membercate2(String rec_category);
 }

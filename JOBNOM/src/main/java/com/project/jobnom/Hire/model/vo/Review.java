@@ -24,5 +24,6 @@ public class Review {
 	
 	private String rec_title;
 	private String ent_name;
+	private String mem_check;
 
 }

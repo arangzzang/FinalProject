@@ -23,10 +23,16 @@
 			<div class="col-sm-10"></div>
 			<div class="col-sm-2">
 				<button class="btn btn_1 btn-success my-2 my-sm-0 text-nowrap" 
-					style="margin:10px;" onclick="applyAd();">공고 올리기</button>
+					style="margin:10px; border:2px solid black;" onclick="applyAd();">공고 올리기</button>
 			</div>
 		</div>
 		<br>
+		
+		<form action="${path }/editAd" method="post" id="editAdForm">
+			<input type="hidden" name="recNo" id="recNo">
+		</form>
+		
+		
 		<table class="table" id="anno_list">
 			<thead>
 				<tr class="text-nowrap">
@@ -49,9 +55,9 @@
 	                    <td><input type="hidden" value="${r.rec_title}" name="rec_title" id="rec_title"><c:out value="${r.rec_title }"/></td>
 	                    <td><input type="hidden" value="${r.rec_startdate}" name="rec_startdate" id="rec_startdate"><fmt:formatDate value="${r.rec_startdate }" pattern="yyyy-MM-dd"/></td>
 	                    <td><input type="hidden" value="${r.rec_enddate}" name="rec_enddate" id="rec_enddate"><fmt:formatDate value="${r.rec_enddate }" pattern="yyyy-MM-dd"/></td>
-	                    <td><button type="button" class="btn btn">상세보기</button></td>
-	                    <td><button type="button" class="btn btn">수정</button></td>
-	                    <td><input type="submit" class="btn btn" value="조회"></td>
+	                    <td><button type="button" class="btn">상세보기</button></td>
+	                    <td><button type="button" class="btn" id="editAd">수정</button></td>
+	                    <td><input type="submit" class="btn" value="조회"></td>
 				</tr>
 				</form>
 					</c:forEach>
@@ -67,6 +73,11 @@
 	function applyAd(){
 		location.replace("${path }/com/applyAd.do");
 	}
+	$("#editAd").click(function(){
+		var recNo = $(this).closest("tr").find("td:eq(0)").text();
+		$("#recNo").val(recNo);
+		$("#editAdForm").submit();
+	});
 
 </script>	
 	
