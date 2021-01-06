@@ -9,7 +9,17 @@
     
  
    
-
+	.jp-quote{
+    display: inline-block;
+    height: 32px;
+    margin-bottom: 8px;
+    font-size: 32px;
+    color: #e5e6e9;
+	
+	}
+	.jp-quote:before {
+    content: "\e900";
+}
 
     /* 메인 페이지 전체 css */
     #contents_wrap_new {

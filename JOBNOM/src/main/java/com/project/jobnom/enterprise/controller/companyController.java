@@ -2,7 +2,6 @@ package com.project.jobnom.enterprise.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -24,13 +23,12 @@ import com.project.jobnom.Hire.model.vo.Recruitment;
 import com.project.jobnom.Hire.model.vo.Review;
 import com.project.jobnom.common.model.vo.Login;
 import com.project.jobnom.enterprise.model.service.EnterpriseService;
+import com.project.jobnom.enterprise.model.vo.Applicant;
 import com.project.jobnom.enterprise.model.vo.ApplyAd;
 import com.project.jobnom.enterprise.model.vo.Banner;
 import com.project.jobnom.enterprise.model.vo.Category2;
 import com.project.jobnom.enterprise.model.vo.Enterprise;
-import com.project.jobnom.enterprise.model.vo.Support;
 import com.project.jobnom.enterprise.page.EnterprisePageBar;
-import com.project.jobnom.resume.model.vo.Resume;
 
 
 @Controller
@@ -61,7 +59,6 @@ public class companyController {
 	@RequestMapping("/enterprise/com_info.do")
 	public ModelAndView companyInfo(ModelAndView mv,int entNo) {
 		System.out.println(entNo);
-		
 		mv.addObject("list",service.companyInfo(entNo));
 		System.out.println(mv.addObject("list",service.companyInfo(entNo)));
 		mv.setViewName("enterprise/com_info");
@@ -73,8 +70,8 @@ public class companyController {
 					int cPage,@RequestParam(value="numPerpage",defaultValue="5") int numPerpage) {
 		List<Review> rev=service.selectReviewList(entNo,cPage,numPerpage);
 		System.out.println("기업번호"+entNo);
+
 		int totalData = service.selectReviewcount(entNo);
-		
 		mv.addObject("list",service.companyInfo(entNo));
 		mv.addObject("totalData",totalData);
 		mv.addObject("pageBar",EnterprisePageBar.getPageBar3(totalData,entNo,cPage,numPerpage,"com_review.do"));
@@ -95,12 +92,12 @@ public class companyController {
 	int cPage,@RequestParam(value="numPerpage",defaultValue="5") int numPerpage, int entNo, int recNo) {
 		List<Category2> c2 = service.getC2();
 		System.out.println();
-		Map param = new HashedMap();
-		param.put("entNo", entNo);
-		param.put("recNo",recNo);
+		Map param1 = new HashedMap();
+		param1.put("entNo", entNo);
+		param1.put("recNo",recNo);
 		
 		System.out.println("번호: " + recNo );
-		List<Recruitment> Rec= service.selectJoblist(param);
+		List<Recruitment> Rec= service.selectJoblist(param1);
 		int totalData = service.selectJobCount(entNo);
 		 mv.addObject("totalData",totalData);
 		 mv.addObject("pageBar",EnterprisePageBar.getPageBar4(totalData, cPage, numPerpage, entNo, "com_job.do"));
@@ -179,21 +176,16 @@ public class companyController {
 	@RequestMapping("/com/com_check.do")
 	public ModelAndView comCheck(ModelAndView mv,@RequestParam(value="cPage",defaultValue="1") int cPage, 
 			@RequestParam(value="numPerpage",defaultValue="5") int numPerpage, Recruitment rec)  {
-		/* System.out.println("???"); */
-		System.out.println(rec.getRec_no());
-		List<Support> s = service.selectSupport(cPage,numPerpage, rec);
-		List<Resume> res = new ArrayList<Resume>();
-		for(Support l : s) {
-			System.out.println("회원번호:" + l.getMem_no());
-			res.add(service.selectResume(l.getMem_no()));
-		}
-		System.out.println("이력서 목록:" + res);
-		int totalData=service.selectCount();
+
+		List<Applicant> app = service.getApplicant(rec.getRec_no(),cPage,numPerpage);
+		System.out.println("나오내?"+app);
+		System.out.println("이건" + rec.getRec_no());
+		int totalData = service.selectSupportCount(rec.getRec_no());
 		
-		mv.addObject("s",s);
-		mv.addObject("res", res);
-		mv.addObject("pageBar",EnterprisePageBar.getPageBar(totalData,cPage,numPerpage,"com_check.do"));
+		
+		mv.addObject("pageBar",EnterprisePageBar.getPageBar(totalData, rec.getRec_no(), cPage,numPerpage,"com_check.do"));
 		mv.addObject("totalData",totalData);
+		mv.addObject("app",app);
 		mv.setViewName("/enterprise/ent_mypage/com_check");
 		
 		return mv;
@@ -319,7 +311,7 @@ public class companyController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		Banner ban = Banner.builder().ent_no(ent.getEntNo()).bann_title(bann_title).bann_path(path).build();
+		Banner ban = Banner.builder().ent_no(ent.getEntNo()).bann_title(bann_title).bann_path(newName).build();
 		int result = service.insertBanner(ban);
 		String msg = "";
 		String loc = "";

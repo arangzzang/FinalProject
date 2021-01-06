@@ -23,10 +23,19 @@
 						<div class="cmp_top_box">
 							<div class="compa_info">
 								<div class="compa_logo">
-									<a href="" class="logo_wrap"> <img
-										src="${path }/resources/enterprise/logo/${list[0].ENT_NO }/${list[0].ENT_LOGO}"
-										style="width: 104px; height: 104px;">
-									</a>
+									<c:choose>
+										<c:when test="${empty list[0].ENT_LOGO }">
+											<img
+												src="https://jpassets.jobplanet.co.kr/assets/default_logo_share-12e4cb8f87fe87d4c2316feb4cb33f42d7f7584f2548350d6a42e47688a00bd0.png"
+												style="width: 104px; height: 104px;">
+										</c:when>
+										<c:otherwise>
+											<a href="" class="logo_wrap"> <img
+												src="${path }/resources/enterprise/logo/${list[0].ENT_NO }/${list[0].ENT_LOGO}"
+												style="width: 104px; height: 104px;">
+											</a>
+										</c:otherwise>
+									</c:choose>
 								</div>
 								<div class="compa_info_box">
 									<div class="compa_name">
@@ -69,7 +78,7 @@
 					</ul>
 					<div class="follow_btn">
 						<button id="follow" class="btn btn">
-							<i id="heart" class="far fa-heart"></i>찜하기
+							<i id="heart" class="far fa-heart"></i>팔로우
 						</button>
 					</div>
 				</nav>
@@ -87,19 +96,19 @@
 					<div class="tool_box">
 						<i class="fas fa-tools"></i> <span><strong><c:out
 									value="${list[0].ENT_CATEGORY2 }" /></strong>
-						<p>분류</p></span>
+							<p>분류</p></span>
 					</div>
 					<div class="tool_box">
 						<i class="fas fa-building"></i> <span><strong>-</strong>
-						<p>규모</p>
+							<p>규모</p>
 					</div>
 					<div class="tool_box">
 						<i class="fas fa-users"></i> <span><strong>-</strong>
-						<p>사원수</p></span>
+							<p>사원수</p></span>
 					</div>
 					<div class="tool_box">
 						<i class="far fa-calendar"></i> <span><strong>-</strong>
-						<p>설립일</p></span>
+							<p>설립일</p></span>
 					</div>
 				</div>
 				<div class="company_info">
@@ -140,4 +149,12 @@
 		</div>
 	</div>
 </section>
+<script>
+function heart(){ 
+	alert('로그인 후 이용 가능 합니다.'); 
+	
+}
+</script>
+
+
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />

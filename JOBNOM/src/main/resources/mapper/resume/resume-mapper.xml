@@ -13,6 +13,9 @@
 		<result column="res_opencheck" property="resOpenCheck"/>
 		<result column="mem_no" property="memNo"/>
 	</resultMap>
+	<resultMap type="mem" id="memMap">
+		<result column="cate_no2" property="cateNo2"/>
+	</resultMap>
 	<!-- 나의스킬 -->
 	<resultMap type="mySkill" id="mySkillMap">
 		<result column="skill_no" property=""/>
@@ -58,8 +61,56 @@
 		<result column="res_no" property=""/>
 		<result column="pofol_file" property=""/>
 	</resultMap>
-	
+	<!-- 자동검색어 -->
 	<select id="mySkill" parameterType="string" resultMap="skillMap">
 		select * from skill where skill_name like '%'||#{skillName}||'%'
 	</select>
+	<!-- 이력서 만들기 -->
+	<insert id="insertResume">
+		insert into resume 
+					values(
+					seq_res_no.nextval,
+					#{resName},
+					#{resPhone},
+					#{resGender},
+					#{resBirth},
+					#{resCar},
+					#{resContent},
+					#{resOpenCheck},
+					#{memNo}
+					)
+	</insert>
+	<update id="categoryUpdate" parameterType="map">
+		update member set
+				cate_no2=#{cate2}
+		where mem_no=#{res.memNo}
+	</update>
+	<!-- 이력서 여부 -->
+	<select id="selectResume" parameterType="_int" resultMap="resMap">
+		select * from resume where mem_no = #{memNo}
+	</select>
+	<update id="updateResume" parameterType="res">
+		update resume set 
+					res_name=#{resName},
+					res_phone=#{resPhone},
+					res_gender=#{resGender},
+					res_birth=#{resBirth},
+					res_car=#{resCar},
+					res_content=#{resContent},
+					res_opencheck=#{resOpenCheck}
+		where mem_no=#{memNo}
+	</update>
 </mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+

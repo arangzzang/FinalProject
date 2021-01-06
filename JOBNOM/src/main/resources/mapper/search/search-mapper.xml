@@ -14,6 +14,7 @@
 			select 
 				e.ent_no
 				,e.ent_category1
+				,e.ent_logo
 				,e.ent_name
 				,round(sum(review_satisfaction+review_welfare+review_promotion+review_executive)/(count(review_satisfaction)+count(review_welfare)+count(review_promotion)+count(r.review_executive)),1) as avg
 			from enterprise e
@@ -25,6 +26,7 @@
 			group by e.ent_no
 					,e.ent_category1
 					,e.ent_name
+					,e.ent_logo
 					
 		]]>
 	</select>
@@ -115,7 +117,36 @@
 		FROM enterprise e
 		inner join review r
 		on (r.ent_no = e.ent_no)
-	    where e.ent_category1 = #{entCategory}
+		<where>
+			<if test="value != null">
+				e.ent_category1 = #{value}
+			</if>
+			<if test="value == null">
+				or 1=1
+			</if>
+		</where>
+	    
+		group by e.ent_no
+			,e.ent_name
+			,e.ent_logo
+			,e.ent_category1
+			,e.ent_category2
+		order by avg desc
+	</select>
+	
+	<!--기업 더보기 카테고리별 ajax   -->
+	<select id="ajaxCategoryList2" resultType="map" parameterType="hashmap">
+		SELECT
+			e.ent_no
+			,e.ent_name
+			,e.ent_logo
+			,e.ent_category1
+			,e.ent_category2
+			,cOUNT(*) OVER () count
+			,round(sum(review_satisfaction+review_welfare+review_promotion+review_executive)/(count(review_satisfaction)+count(review_welfare)+count(review_promotion)+count(r.review_executive)),1) as avg
+		FROM enterprise e
+		inner join review r
+		on (r.ent_no = e.ent_no)
 		group by e.ent_no
 			,e.ent_name
 			,e.ent_logo
@@ -160,4 +191,51 @@
 	
 	</select>
 	
+	<!--메인화면 리뷰 리스트  -->
+	<select id="indexReviewList" resultType="map">
+	<![CDATA[
+			select 
+				e.ent_no
+				,e.ent_category1
+				,e.ent_logo
+				,e.ent_name
+				,r.review_title
+				,r.RE_ENROLL_DATE
+				,round(sum(review_satisfaction+review_welfare+review_promotion+review_executive)/(count(review_satisfaction)+count(review_welfare)+count(review_promotion)+count(r.review_executive)),1) as avg
+			from enterprise e
+			inner join review r
+			on (r.ent_no = e.ent_no)
+			where ROWNUM <=5
+			group by e.ent_no
+					,e.ent_category1
+					,e.ent_name
+					,e.ent_logo
+					,r.review_title
+					,r.RE_ENROLL_DATE
+			order by r.RE_ENROLL_DATE desc
+					
+		]]>
+	
+	</select>
+	
+	<!--bannerList  -->
+	<select id="bannerList" resultType="map">
+	<![CDATA[
+		select *
+		from banner b
+		inner join enterprise e
+		on (b.ent_no = e.ent_no)
+		where ROWNUM <=7
+		order by UPLOADDATE desc
+			]]>
+	</select>
+	
+	<!--배너 삭제  -->
+	<delete id="deleteBanner">
+		<![CDATA[
+		DELETE banner
+		WHERE sysdate > (uploaddate +30)
+		
+		]]>
+	</delete>
 </mapper>
