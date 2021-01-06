@@ -102,27 +102,25 @@
 							<div class="col-md-12">
 								<div class="line">
 									<label for="career" class="span2">경력</label>
-									<select name="" id="career" name="resCar" class="input1" required>
+									<select id="career" name="resCar" class="input1" required>
 										<option value="">선택해주세요</option>
-										<option value="0">0</option>
-										<option value="1">1</option>
-										<option value="2">2</option>
-										<option value="3">3</option>
-										<option value="4">4</option>
-										<option value="5">5</option>
-										<option value="6">6</option>
-										<option value="7">7</option>
-										<option value="8">8</option>
-										<option value="9">9</option>
-										<option value="10">10년이상</option>
+										<option value="0" ${res.resCar==0?"selected":"" }>0</option>
+										<option value="1" ${res.resCar==1?"selected":"" }>1</option>
+										<option value="2" ${res.resCar==2?"selected":"" }>2</option>
+										<option value="3" ${res.resCar==3?"selected":"" }>3</option>
+										<option value="4" ${res.resCar==4?"selected":"" }>4</option>
+										<option value="5" ${res.resCar==5?"selected":"" }>5</option>
+										<option value="6" ${res.resCar==6?"selected":"" }>6</option>
+										<option value="7" ${res.resCar==7?"selected":"" }>7</option>
+										<option value="8" ${res.resCar==8?"selected":"" }>8</option>
+										<option value="9" ${res.resCar==9?"selected":"" }>9</option>
+										<option value="10" ${res.resCar==10?"selected":"" }>10년이상</option>
 									</select>
 									<label for="skill" class="span2">업무 및 스킬</label>
-									<input type="text" class="form-control inp" name="resContent" id="skill" placeholder="(예시) 영업기획, 디지털마케팅,UI디자인(업무와 관련된 자격증 및 기술명 포함)" required>
-									
+									<input type="text" class="form-control inp" name="skill" id="skill" placeholder="(예시) 영업기획, 디지털마케팅,UI디자인(업무와 관련된 자격증 및 기술명 포함)" required>
 									<ul class="keyword">
 										
 									</ul>
-							
 								</div>
 							</div>
 						</div>
@@ -131,10 +129,10 @@
 								<label for="commented" class="span2">자기소개</label><br>
 								<c:choose>
 									<c:when test="${!empty res.resContent }">
-										<textarea class="form-control inp bg_color" rows="5" id="commented" placeholder="경력,경험위추의 자기소개를 작성해주세요. 관심분야, 앞으로의 목표등의 내용도 좋습니다">${res.resContent}</textarea>
+										<textarea class="form-control inp bg_color" name="resContent" rows="5" id="commented" placeholder="경력,경험위추의 자기소개를 작성해주세요. 관심분야, 앞으로의 목표등의 내용도 좋습니다">${res.resContent}</textarea>
 									</c:when>
 									<c:otherwise>
-										<textarea class="form-control inp bg_color" rows="5" id="commented" placeholder="경력,경험위추의 자기소개를 작성해주세요. 관심분야, 앞으로의 목표등의 내용도 좋습니다"></textarea>
+										<textarea class="form-control inp bg_color" name="resContent" rows="5" id="commented" placeholder="경력,경험위추의 자기소개를 작성해주세요. 관심분야, 앞으로의 목표등의 내용도 좋습니다"></textarea>
 									</c:otherwise>
 								</c:choose>
 							</div>
@@ -368,6 +366,12 @@
 			console.log(typeof $(".yrselectdesc").val())
 			console.log(birth_index);
 		})
+		let user_birth="${res.resBirth}";
+		if(user_birth.val()!=""){
+			$(".yrselectdesc").val(user_birth);
+		}else {
+			return;
+		}
 	});
 
 	$(document).ready(function(){
@@ -409,6 +413,7 @@
 	$(function(){
 		$(".mem_category").change(e=>{
 			let job1=$(".mem_category option").index($(".mem_category option:selected"));
+			console.log(job1)
 			$.ajax({
 				url:"${path}/member/selectJob",
 				data:{cateNo:job1},

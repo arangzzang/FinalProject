@@ -33,7 +33,9 @@
 	</insert>
 	
 	<select id="selectCount" resultType="_int">
+	
 	 SELECT COUNT(*) FROM RECRUITMENT 
+
 	</select>
 
 	

@@ -44,4 +44,7 @@ public interface SearchDao {
 		
 	// bannerList
 		List<Map> bannerList(SqlSession session);
+	
+	// 배너 삭제
+		int deleteBanner(SqlSession session);
 }

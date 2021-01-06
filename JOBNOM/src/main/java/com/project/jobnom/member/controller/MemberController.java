@@ -48,6 +48,7 @@ public class MemberController {
 	@RequestMapping("/member/selectJob")
 	@ResponseBody
 	public List<MemCategory2> selectBjo(int cateNo, Model m) throws IOException{
+		System.out.println(cateNo);
 		List<MemCategory2> list2 = service.selectCategoryList2(cateNo);
 		m.addAttribute("cate2",list2);
 		return list2;
