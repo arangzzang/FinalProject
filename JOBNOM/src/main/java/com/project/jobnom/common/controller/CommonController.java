@@ -160,14 +160,18 @@ public class CommonController {
 		String loc="";
 		if(result>0) {
 			msg="좋은 직장 구하길 바래요~";
-			loc="/";
+			loc="/common/logout";
+			mv.addObject("msg",msg);
+			mv.addObject("loc",loc);
+			mv.setViewName("common/msg");
 		}else {
 			msg="잠시 후에 다시 시도 해주세요";
 			loc="/member/myPage?="+memNo;
+			mv.addObject("msg",msg);
+			mv.addObject("loc",loc);
+			mv.setViewName("common/msg");
 		}
-		mv.addObject("msg",msg);
-		mv.addObject("loc",loc);
-		mv.setViewName("common/msg");
+		
 		
 		return mv;
 	}
