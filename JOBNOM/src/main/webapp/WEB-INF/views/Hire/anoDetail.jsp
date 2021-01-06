@@ -223,13 +223,13 @@
       
 </section>
 <div id="popup" style="text-align: center;">
- <input class="popmenuInsertClose" type="button" value="닫기" > 
-	<div class="popupAll" style="text-align: center; padding-top: 300px;">
+ <input class="popmenuInsertClose" type="button" value="닫기" style="right: 20px; margin-top: 100px;"> 
+	<div class="popupAll" style="text-align: center; padding-top: 200px;">
 		<div id="popmenu">
 			<div style="color: white;">간편지원하기 클릭시 담당자 이메일로 내 이력서가 자동 발송됩니다.</div>
 			<br>
 			<div style="color: white;">간편지원하기를 원하실 경우 간편지원하기를 클릭해주세요.</div>
-			<div style="color: white;">네야릭서를 수정해야 한다고 내이력서 바로가기를 클릭해주세요.</div>
+			<div style="color: white;">내이력서를 수정해야 한다면 마이페이지를 클릭해주세요.</div>
 			<form action="${path }/Hire/apply.do" onsubmit="return fn_apply();"
 				method="post">
 
@@ -237,7 +237,7 @@
 				<input type="hidden" name="recNo" value="${r[0].REC_NO}"> <input
 					type="hidden" name="entName" value="${r[0].ENT_NAME }"> <input
 					class="apply" type="submit" onclick="fn_overlapApply();"
-					value="지원하기">
+					value="간편지원하기">
 					<input type="button" value="마이페이지" onclick="location.href='${path }/member/myPage?memNo=${commonLogin.memNo }'">
 			</form>
 		</div>
@@ -412,12 +412,13 @@
 $(document).ready(function(){
     $(".applyFirst").click(function(){
        $("#popup").fadeIn();
-       $(".headerContainerWrap").css("display","none");
+       $(".headerContainerWrap").css("display","hide");
        
     });
     $(".popmenuInsertClose").click(function(){
        $("#popup").fadeOut();
        $(".headerContainerWrap").css("display","show");
+       
     });
  });
 </script>  
