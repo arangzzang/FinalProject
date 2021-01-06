@@ -82,7 +82,7 @@
 	</insert>
 	<update id="categoryUpdate" parameterType="map">
 		update member set
-				res	cate_no2=#{cate2}
+				cate_no2=#{cate2}
 		where mem_no=#{res.memNo}
 	</update>
 	<!-- 이력서 여부 -->
