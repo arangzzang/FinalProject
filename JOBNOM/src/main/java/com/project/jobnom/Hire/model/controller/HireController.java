@@ -160,10 +160,6 @@ public class HireController {
 	@RequestMapping("/Hire/anoDetail.do")
 	public ModelAndView anoDetail(String memNo, HttpSession session,ModelAndView mv, String rec_no,HttpServletRequest request) throws Exception {
 		System.out.println("혹시");
-		/*
-		 * Login log=(Login)session.getAttribute("commonLogin");
-		 * System.out.println(log); log.getMemNo(); System.out.println("ddd"+log);
-		 */
 		System.out.println("nn"+memNo);
 		System.out.println("nn"+rec_no);
 		
@@ -175,7 +171,7 @@ public class HireController {
 		mv.addObject("r", r);
 		System.out.println("로고"+r);
 		
-
+		//즐겨찾기 테이블에서 공고 번호랑 멤버번호 가져와서 jsp에서 현제 로그인된 번호랑 비교하기위한 로직
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		
 		String rec_no1 = request.getParameter("rec_no");
@@ -186,6 +182,11 @@ public class HireController {
 		System.out.println("이것은"+in);
 		mv.addObject("in", in);
 		
+		//지원하기 했을때 이미지원한공고면 alert 띄워주기위한 로직
+		
+		List<Support> sp = service2.selectSupportApply(paramMap);
+		mv.addObject("sp", sp);
+		System.out.println("중복지원확인용"+sp);
 		System.out.println(paramMap);
 		
 		mv.setViewName("Hire/anoDetail");
@@ -375,7 +376,7 @@ public class HireController {
 		int result = service.notFavorites(paramMap);
 		System.out.println(result);
 		
-		//////////////////////////////////////////
+		
 		List<Recruitment> anolist = service2.anoList2(anoNum,cPage, numPerpage);
 
 		int totalData = service.selectCount(); /* 이거페이지바 */
@@ -413,7 +414,7 @@ public class HireController {
 		System.out.println("anolist리스트" + anolist);
 
 		int totalData = service2.selectCount(); /* 이거페이지바 */
-		System.out.println("공고페이지바" + totalData);
+		//System.out.println("공고페이지바" + totalData);
 		mv.addObject("pageBar", PageBarFactory.getPageBar2(totalData, cPage, numPerpage, "favorites.do"));
 
 		mv.addObject("anolist", anolist);

@@ -225,8 +225,17 @@
 		from banner b
 		inner join enterprise e
 		on (b.ent_no = e.ent_no)
-		where ROWNUM <=5
+		where ROWNUM <=7
 		order by UPLOADDATE desc
 			]]>
 	</select>
+	
+	<!--배너 삭제  -->
+	<delete id="deleteBanner">
+		<![CDATA[
+		DELETE banner
+		WHERE sysdate > (uploaddate +30)
+		
+		]]>
+	</delete>
 </mapper>

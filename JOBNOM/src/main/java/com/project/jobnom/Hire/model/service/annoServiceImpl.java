@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.project.jobnom.Hire.model.dao.annoDao;
 import com.project.jobnom.Hire.model.vo.Interestedrcruitment;
 import com.project.jobnom.Hire.model.vo.Recruitment;
+import com.project.jobnom.Hire.model.vo.Support;
 @Service
 public class annoServiceImpl implements annoService {
 
@@ -32,8 +33,8 @@ public class annoServiceImpl implements annoService {
 
 
 	@Override
-	public int selectCount() {
-		return dao.selectCount(session);
+	public int selectCount2(int anoNum) {
+		return dao.selectCount2(session, anoNum);
 	}
 
 
@@ -52,7 +53,27 @@ public class annoServiceImpl implements annoService {
 	@Override
 	public List<Interestedrcruitment> selectIn(Map memNo) {
 		return dao.selectIn(session,memNo);
+	}
+
+
+	@Override
+	public int selectCount() {
+		return dao.selectCount(session);
+	}
+
+
+	@Override
+	public int selectCount3(int recNo) {
+		return dao.selectCount3(session, recNo);
+	}
+
+
+	@Override
+	public List<Support> selectSupportApply(Map paramMap) {
+		return dao.selectSupportApply(session, paramMap);
 	} 
+	
+	
 	
 	
 	

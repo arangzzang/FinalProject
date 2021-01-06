@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 <c:set var="path" value="${pageContext.request.contextPath }" />
 
 <link rel="stylesheet" href="../resources/css/Hire/announcementPage.css" />
@@ -513,7 +514,9 @@
                         <a href="#">
                        
                             <div class="annoListTitleFlax">
-                            <button name="aaaa" value="${a.rec_no }"  class="annoListTitleBoxs" >${a.rec_title } </button>
+                            <button name="aaaa" value="${a.rec_no }"  class="annoListTitleBoxs" >${a.rec_title }<br>
+                            <c:out value="${a.ent_name }"/>
+                             </button>
                             <button type="button" name="dddd" value="${commonLogin.memNo}" style="display: none;"></button>
                             <%-- <input type="hidden" value="${a.rec_no }"><c:out value="${a.rec_title }"/><br>
                             <input type="hidden" value="${a.rec_no }"><c:out value="${a.ent_name }"/><br> --%>
@@ -530,233 +533,43 @@
             </div>
 
 
-            <div class="annoDetail">
-            <div class="annoDetailAll">
-                  
-                    <div class="annoDetailTitle">
-                        <div class="annoDetailNum">
-                            <div class="annoDetailLogeFlax">
-                                <div class="annoDetailLoge">
-                                 <c:choose>
-		                        	<c:when test="${empty anolist[0].ent_logo }">
-		                				<img src="${path }/resources/image/Hire/job.png" style="width: 50px; height: 50px; ">
-		                        	</c:when>
-		                        	<c:otherwise>
-		                        		<img src="${path }/resources/enterprise/logo/${anolist[0].ent_no }/${anolist[0].ent_logo}" style="width: 40px; height: 40px; ">
-		                        	</c:otherwise>
-		                        
-		                        </c:choose></div>
-                            </div>
-                            <div class="annoDetailTitleFlax">            
-                                <div class="annoDetailTitle1">${anolist[0].rec_title}</div> 
-                                 <a href="#">
-                                    <div class="annoDetailTitleFont">${anolist[0].ent_name }</div>
-                                </a>
-
-                            </div> 
-                        </div>
-                        
-                     <%--  <button class="apply" onclick="location.href='${path }/Hire/apply.do?memNo=${commonLogin.memNo}&recNo=${anolist[0].rec_no}'" >지원하기</a>
-                       </button> --%>
-                       
-                       <form action="${path }/Hire/apply.do" onsubmit="return fn_apply();" method="post" >
-                        <input type="hidden" name="memNo" value="${commonLogin.memNo}">
-                        <input type="hidden" name="recNo" value="${anolist[0].rec_no}">
-                        <input class="apply"  type="submit" value="지원하기">
-                        </form>
-                       
-        			 <%-- <c:forEach items="${in }" var="in">
-        			    
-                       <c:if test="${commonLogin !=null && commonLogin.memNo !=  in.mem_no && in.rec_no != anolist[0].rec_no }">
-                        <button id="favoritesBox" onclick="fn_toggle();">
-                            <img id="announcementFavorites" src="${path }/resources/image/Hire/pngwing.png" />
-                        </button>
-                      </c:if>
-                      
-                       </c:forEach> 
-                       
-                      <c:forEach items="${in }" var="in">
-                      
-                       <c:if test="${anolist[0].open_check == 1  && commonLogin !=null && commonLogin.memNo ==  in.mem_no && in.rec_no == anolist[0].rec_no}">
-                        <button id="favoritesBox" onclick="fn_toggle();">
-                            <img id="announcementFavorites" src="${path }/resources/image/Hire/pngwing2.png" />
-                        </button> 
-                      </c:if>
-                     
-                      </c:forEach>
-                       --%>
-                      
-                 
-                     <c:if test="${commonLogin !=null && commonLogin.memNo !=  anolist[0].mem_no }">
-                      
-                        <button id="favoritesBox" onclick="fn_toggle();">
-                            <img id="announcementFavorites" src="${path }/resources/image/Hire/pngwing.png" />
-                        </button>
-                      </c:if>
-                       <c:if test="${anolist[0].open_check == 1  && commonLogin !=null && commonLogin.memNo ==  anolist[0].mem_no  }">
-                        <button id="favoritesBox" onclick="fn_toggle();">
-                            <img id="announcementFavorites" src="${path }/resources/image/Hire/pngwing2.png" />
-                        </button> 
-                      </c:if> 
+            <div class="annoDetail" style=" border-radius:12px; background:#f6f7f4; height: 900px; width: 900px;">
+            
+            <div class="annoDetailFlax" style="display: flex; width: 100%; height: 100px" >
+	            <div class="annoEntTitle">
+	            	기업정보 한눈에 보기
+	            </div>
+	           
+            </div>
            
-    
-					</div>
-
-                    <div class="detailedReviewInterview">
-                       <a href="#">
-                         <button value="${anolist[0].rec_no }" class="annoDetailListBoxs" >
-                            <input type="hidden" value="${anolist[0].rec_no }" class="annoDetailListBox">상세
-                         </button>
-                        </a>
-                        <a href="#">
-                        <button value="${anolist[0].ent_no }" class="clickReviewTotalBoxs" >
-	                       <input type="hidden" value="${anolist[0].ent_no }" class="clickReviewTotalBox">리뷰
-                        </button>
-                        </a>
-                        <a href="#">
-                         <button value="${anolist[0].ent_no }" class="interviewBoxs" >
-                            <div class="interviewBox">면접</div>
-                         </button>
-                        </a>  
-                    </div> 
-  
-                    
-
-                    
-        </div>
-            <div class="annoDetailAllHeight" style=" overflow: auto; height: 800px;" >
-
-
-
-<div class="annoDetailInfoWidth">
-                        <div class="annoDetailInfoLeft">
-                            <div class="annoDetailInfo">
-                                <div class="annoDetailInfoAll">
-                                    <div class="annoDetailInfoLogo"></div>
-                                    <div class="logoRight">마감일</div>
-                                   <div><fmt:formatDate  value="${anolist[0].rec_enddate}" pattern="yy.MM.dd" /></div>
-                                </div>
-
-                                
-
-                                <div class="annoDetailInfoAll">
-                                    <div class="annoDetailInfoLogo"></div>
-                                    <div class="logoRight">경력</div>
-                                    <div> ${anolist[0].rec_career}  년</div>
-                                </div>
-                                <div class="annoDetailInfoAll">
-                                    <div class="annoDetailInfoLogo"></div>
-                                    <div class="logoRight">고용형태</div>
-                                     <div>${anolist[0].rec_type}</div>
-                                </div>
-                                <div class="annoDetailInfoAll">
-                                    <div class="annoDetailInfoLogo"></div>
-                                    <div class="logoRight">연봉</div>
-										  <c:set var="abc" value="${anolist[0].rec_salary}" />
-							                <c:choose>
-							                    <c:when test="${abc == '회사내규에따름'}"> 
-											        <c:out value="회사내규에따름"></c:out>
-											    </c:when>
-											<c:otherwise>
-											<fmt:formatNumber type="number" maxFractionDigits="3" value="${anolist[0].rec_salary}" /> 만원
-											</c:otherwise>
-											</c:choose>
-	                                </div>
-                               
-
-                            </div>
-
-                            <div class="tttt" >
-                                <div>
-                                    <div class="InformationList">[주요업무]</div>
-                                    <div class="mainTask"> ${anolist[0].rec_info}
-                                    </div>
-                                </div>
-
-                   
-                                <div>
-                                    <div class="InformationList">[자격요건]</div>
-                                    <div class="qualificationRequirements">
-                                		 ${anolist[0].rec_qualification} </div>
-                                </div>
-
-                                <div>
-                                    <div class="InformationList">[우대사항]</div>
-                                    <div class="preferentialTreatment">
- 										 ${anolist[0].rec_prefer} 
-                                        </div>
-                                </div>
-
-                                <div>
-                                    <div class="InformationList">[채용절차]</div>
-                                    <div class="recruitmentProcedure"> ${anolist[0].rec_order} 
-                                      
-                                    </div>
-                                </div>
-
-                                <div>
-                                    <div class="InformationList">[복리후생]</div>
-                                    <div class="welfareBenefits"> ${anolist[0].rec_welfare} 
-                                    </div>
-                                </div>
-
-                                <div>
-                                    <div class="InformationList">[기타]</div>
-                                    <div class="otherThan">${anolist[0].rec_other} 
-                                    </div>
-                                </div>
-                             
-                            </div>
-                        </div>
-                         <div class="annoDetailInfoRight" >
-                            <div style="font-size: 20px; font:bolder">문의처</div>
-                            <div class="Inquiries">
-                                <div class="managerName">담당자</div>
-                                <div class="managerName2"> ${anolist[0].rep_name} </div>
-                            </div>
-                            <div class="InquiriesInfo">
-                                <div class="Inquiries">
-                                    <div class="InquiriesHomePage">홈페이지</div>
-                                    <div class="InquiriesHomePage2"><a href="https://search.naver.com">www.naver.com</a></div>
-                                </div>
-                                <div class="Inquiries">
-                                    <div class="InquiriesPhone">연락처</div>
-                                    <div class="InquiriesPhone2"> ${anolist[0].rep_phone} </div>
-                                </div>
-                                <div class="Inquiries">
-                                    <div class="InquiriesEmail">이메일</div>
-                                    <div class="InquiriesEmail2"></div>
-                                </div>
-
-                            </div>
-                            <div class="InquiriesAddress">회사위치</div>
-                            <div>서울 강남구 역삼동 123-345 8층 jobnomOffice </div>
-
-                           	 <!-- 카카오맵 -->
-                          <!--   <div id="map" style="width:300px;height:300px; border:solid"></div>
-	 						<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a20465f19ee15158806da31ed0ea9984"></script>
-                            <script>
-                                var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
-                                    var options = { //지도를 생성할 때 필요한 기본 옵션
-                                        center: new kakao.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
-                                        level: 3 //지도의 레벨(확대, 축소 정도)
-                                    };
-
-                                    var map = new daum.maps.Map(container, options);
-
-                                        function setCenter(lat, lng) {
-
-                                            map.setCenter(new daum.maps.LatLng(lat, lng));
-
-                                        }
-
-
-
-                           </script>  -->
-                        </div>
-                        
-                        </div>
-                        </div>
+          <div class="swiper-container">
+         
+    <div class="swiper-wrapper">
+    	<c:forEach  items="${anolist }" var="a">
+      <div class="swiper-slide" style="display: flex;">
+      <c:choose>
+	<c:when test="${empty a.ent_logo }">
+	<img src="${path }/resources/image/Hire/job.png" style="width: 250px; height: 250px; " onclick="location.href='${path }/enterprise/com_info.do?entNo=${a.ent_no }'">
+	</c:when>
+	<c:otherwise>
+	<img src="${path }/resources/enterprise/logo/${a.ent_no }/${a.ent_logo}" style="width: 250px; height:250px; " onclick="location.href='${path }/enterprise/com_info.do?entNo=${a.ent_no }'">
+	</c:otherwise>	                        
+	</c:choose>	
+      </div>
+         </c:forEach>
+     
+    </div>
+    <!-- Add Pagination -->
+    <div class="swiper-pagination"></div>
+  </div>
+  <div style="width:800px;  margin: 0 auto; padding-top: 30px;">
+  <button style="border:none; ">
+    <img src="${path }/resources/image/Hire/ent.png" style="width: 800px; height: 300px; " onclick="location.href='${path }/Hire/HireHome.do?memNo=${commonLogin.memNo }'">
+  </button>
+  </div>
+         	
+         
+            
         </div>
                 <div class="test" style=" overflow: auto;  "></div>
                 <div class="test3" style="overflow: auto; " ></div> 
@@ -1068,4 +881,24 @@
 								}
                         };
                         </script>
+                        
+      <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script>
+    var swiper = new Swiper('.swiper-container', {
+      effect: 'coverflow',
+      grabCursor: true,
+      centeredSlides: true,
+      slidesPerView: 'auto',
+      coverflowEffect: {
+        rotate: 50,
+        stretch: 0,
+        depth: 100,
+        modifier: 1,
+        slideShadows: true,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+      },
+    });
+  </script>
                         

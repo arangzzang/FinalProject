@@ -58,10 +58,12 @@ public class annoController {
 		List<Recruitment> anolist = service.anoList2(anoNum,cPage, numPerpage);
 		
 		//List<Interestedrcruitment> in=service.selectIn(memNo);
-		int totalData = service.selectCount(); /* 이거페이지바 */
+		int totalData = service.selectCount2(anoNum); /* 이거페이지바 */
 		System.out.println("어떻게 나오는지 보까?"+anolist);
 		//System.out.println("어떻게 나오노"+in);
 		mv.addObject("pageBar", PageBarFactory.getPageBar6(totalData, cPage, numPerpage, anoNum,  "announcementPage2.do"));
+		
+		System.out.println("토탈데이트"+totalData);
 		mv.addObject("totalData", totalData);
 		mv.addObject("anolist", anolist);
 		//mv.addObject("in", in);
@@ -78,7 +80,7 @@ public class annoController {
 		System.out.println("이건 recNo :"+recNo);
 		List<Recruitment> anolist = service.annoHomeDetailMove(recNo,cPage, numPerpage);
 
-		int totalData = service.selectCount(); /* 이거페이지바 */
+		int totalData = service.selectCount3(recNo); /* 이거페이지바 */
 		System.out.println("어떻게 나오는지 보까?"+anolist);
 		mv.addObject("pageBar", PageBarFactory.getPageBar5(totalData, cPage, numPerpage,recNo, "annoHomeDetailMove.do"));
 		//mv.addObject("totalData", totalData);
@@ -95,12 +97,7 @@ public class annoController {
 	public ModelAndView annCarrer(HttpServletResponse response,ModelAndView mv, Model  m, HttpServletRequest request, @RequestParam(value = "cPage", defaultValue = "1") int cPage,
 			@RequestParam(value = "numPerpage", defaultValue = "10") int numPerpage, String anoNum, int carNum, String employType) throws Exception{
 		// 공고 리스트들 출력해주는곳
-		
-		
-	
-		
-		
-		
+
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		
 		if(anoNum !=null) {  
@@ -138,10 +135,12 @@ public class annoController {
 		          
 		List<Recruitment> anolist = service.annCarrer(paramMap,cPage, numPerpage);
 		System.out.println("오잉"+anolist);
+		////////////////////
 		int totalData = service.selectCount(); /* 이거페이지바 */
 		  
 		mv.addObject("pageBar", PageBarFactory.getPageBar2(totalData, cPage, numPerpage, "announcementPage.do"));
-		//mv.addObject("totalData", totalData);
+		//////////////////////
+		mv.addObject("totalData", totalData);
 		mv.addObject("anolist", anolist);
 		mv.setViewName("Hire/announcementPage");
     
