@@ -19,6 +19,7 @@ import com.project.jobnom.enterprise.model.vo.Enterprise;
 import com.project.jobnom.enterprise.model.vo.Mammoth;
 import com.project.jobnom.enterprise.model.vo.MemberDataC2;
 import com.project.jobnom.enterprise.model.vo.PayData;
+import com.project.jobnom.enterprise.model.vo.Score;
 import com.project.jobnom.enterprise.model.vo.Support;
 import com.project.jobnom.enterprise.model.vo.Worker;
 import com.project.jobnom.resume.model.vo.Resume;
@@ -213,6 +214,11 @@ public class EnterpriseServiceImpl implements EnterpriseService {
 	public int selectSupportCount(int recno) {
 		// TODO Auto-generated method stub
 		return dao.selectSupportCount(session,recno);
+	}
+	@Override
+	public Score scoreList(int entNo) {
+		// TODO Auto-generated method stub
+		return dao.scoreList(session,entNo);
 	}
 	
 	

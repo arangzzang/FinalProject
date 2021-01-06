@@ -91,10 +91,10 @@
 						전체통계리뷰(<span>${totalData }</span>)
 					</p></i>
 			</div>
-			<div class="review_bar">
-				<div class="review_bar_num">
-					<div id="barchart_values" style="padding: 30px;"></div>
-				</div>
+			<div>
+				<jsp:include page="/WEB-INF/views/enterprise/com_Reviewchart.jsp">
+					<jsp:param name="title" value="" />
+				</jsp:include>
 			</div>
 		</div>
 		<article class="review_select_con">
@@ -151,58 +151,16 @@
 				</div>
 			</article>
 		</c:forEach>
-			<c:if test="${empty rev}">
-				<article class="com_review_default">
-					<div class="com_de_box">
-						<div class="com_de_wrap">
-							<h4>등록된 리뷰가 없습니다.</h4>
-						</div>
+		<c:if test="${empty rev}">
+			<article class="com_review_default">
+				<div class="com_de_box">
+					<div class="com_de_wrap">
+						<h4>등록된 리뷰가 없습니다.</h4>
 					</div>
-				</article>
-			</c:if>
+				</div>
+			</article>
+		</c:if>
 		<div id="pageBar" style="margin-top: 20px;">${pageBar }</div>
 </section>
 
-<script type="text/javascript">
-	google.charts.load("current", {
-		packages : [ "corechart" ]
-	});
-	google.charts.setOnLoadCallback(drawChart);
-	function drawChart() {
-		var data = google.visualization.arrayToDataTable([ [ "", "평점", {
-			role : "style"
-		} ], [ "총 평점", 0, "#00c362" ], [ "사내만족도", 0, "#00c362" ],
-				[ "복지 및 급여", 0, "#00c362" ], [ "승진기회 및 가능성", 0, "#00c362" ],
-				[ "경영진", 0, "#00c362" ] ]);
-
-		var view = new google.visualization.DataView(data);
-		view.setColumns([ 0, 1, {
-			calc : "stringify",
-			sourceColumn : 1,
-			type : "string",
-			role : "annotation"
-		}, 2 ]);
-
-		var options = {
-			title : "",
-			width : 900,
-			height : 350,
-			bar : {
-				groupWidth : "30%"
-			},
-			legend : {
-				position : "none"
-			},
-			hAxis : {
-				minValue : 0,
-				maxValue : 5
-			}
-		};
-
-		var chart = new google.visualization.BarChart(document
-				.getElementById("barchart_values"));
-		chart.draw(view, options);
-
-	}
-</script>
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />

@@ -107,6 +107,12 @@
 		<result column="res_opencheck" property="resOpencheck"/>
 		<result column="support_day" property="supportDay"/>
 	</resultMap>
+	<resultMap type="score" id="scMap">
+		<result column="review_satisfaction" property="review_satisfaction"/>
+		<result column="review_welfare" property="review_welfare"/>
+		<result column="review_promotion" property="review_promotion"/>
+		<result column="review_executive" property="review_executive"/>
+	</resultMap>
 
 	<insert id="enrollEnter" parameterType="ent">
 		insert into enterprise
@@ -466,4 +472,12 @@
 	<select id="selectSupportCount" resultType="_int">
 		select count(*) from support where rec_no = #{recno}
 	</select>
+	<select id="scoreList" resultType="integer" parameterType="score">
+		select  
+				round(avg(review_satisfaction),1) a , round(avg(review_welfare),1) b ,
+		        round(avg(review_promotion),1) c , round(avg(review_executive),1) d
+		from review
+		where ent_no=#{entNo}
+	</select>
+	
 </mapper>

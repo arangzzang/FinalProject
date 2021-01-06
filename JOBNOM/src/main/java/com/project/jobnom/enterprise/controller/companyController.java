@@ -28,6 +28,7 @@ import com.project.jobnom.enterprise.model.vo.ApplyAd;
 import com.project.jobnom.enterprise.model.vo.Banner;
 import com.project.jobnom.enterprise.model.vo.Category2;
 import com.project.jobnom.enterprise.model.vo.Enterprise;
+import com.project.jobnom.enterprise.model.vo.Score;
 import com.project.jobnom.enterprise.page.EnterprisePageBar;
 
 
@@ -70,7 +71,9 @@ public class companyController {
 					int cPage,@RequestParam(value="numPerpage",defaultValue="5") int numPerpage) {
 		List<Review> rev=service.selectReviewList(entNo,cPage,numPerpage);
 		System.out.println("기업번호"+entNo);
-
+		Score scr = service.scoreList(entNo);
+		System.out.println("나옴?"+scr);
+		System.out.println("??" + service.scoreList(entNo));
 		int totalData = service.selectReviewcount(entNo);
 		mv.addObject("list",service.companyInfo(entNo));
 		mv.addObject("totalData",totalData);

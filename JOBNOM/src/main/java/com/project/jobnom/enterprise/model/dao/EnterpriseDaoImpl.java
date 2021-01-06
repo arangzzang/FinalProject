@@ -18,6 +18,7 @@ import com.project.jobnom.enterprise.model.vo.Enterprise;
 import com.project.jobnom.enterprise.model.vo.Mammoth;
 import com.project.jobnom.enterprise.model.vo.MemberDataC2;
 import com.project.jobnom.enterprise.model.vo.PayData;
+import com.project.jobnom.enterprise.model.vo.Score;
 import com.project.jobnom.enterprise.model.vo.Support;
 import com.project.jobnom.enterprise.model.vo.Worker;
 import com.project.jobnom.resume.model.vo.Resume;
@@ -236,7 +237,13 @@ public class EnterpriseDaoImpl implements EnterpriseDao {
 		// TODO Auto-generated method stub
 		return session.selectOne("enterprise.selectSupportCount", recno);
 	}
+
+	@Override
+	public Score scoreList(SqlSession session, int entNo) {
+		// TODO Auto-generated method stub
+		return session.selectOne("enterprise.scoreList",entNo);
+	}
 	
-	
+
 	
 }
