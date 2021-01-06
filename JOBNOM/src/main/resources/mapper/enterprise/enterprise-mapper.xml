@@ -470,7 +470,7 @@
 		SELECT * FROM SUPPORT JOIN RESUME ON SUPPORT.MEM_NO=RESUME.MEM_NO WHERE REC_NO=#{recno}
 	</select>
 	<select id="selectSupportCount" resultType="_int">
-		select count(*) from support where rec_no = #{recno}
+		select  count( DISTINCT mem_no) from support where rec_no=#{recno}
 	</select>
 	<select id="scoreList" resultType="integer" parameterType="score">
 		select  

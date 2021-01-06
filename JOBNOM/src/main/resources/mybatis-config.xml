@@ -32,5 +32,6 @@
 		<typeAlias type="com.project.jobnom.enterprise.model.vo.Applicant" alias="applicant"/>
 		<typeAlias type="com.project.jobnom.enterprise.model.vo.Score" alias="score"/>
 		
+		<typeAlias type="com.project.jobnom.admin.model.vo.Member" alias="admem"/>
 	</typeAliases>
 </configuration>
