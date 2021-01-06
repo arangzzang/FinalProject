@@ -109,4 +109,11 @@ public class SearchServiceImpl implements SearchService {
 		// TODO Auto-generated method stub
 		return dao.bannerList(session);
 	}
+	
+	//배너 삭제
+	@Override
+	public int deleteBanner() {
+		// TODO Auto-generated method stub
+		return dao.deleteBanner(session);
+	}
 }

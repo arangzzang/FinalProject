@@ -44,4 +44,7 @@ public interface SearchService {
 	
 	// bannerList
 	List<Map> bannerList();
+	
+	//배너 삭제
+	int deleteBanner();
 }
