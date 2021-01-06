@@ -53,12 +53,14 @@ public class SearchServiceImpl implements SearchService {
 		return dao.ajaxCategoryList(session, entCategory);
 	}
 	
+	
 	//기업 더보기 리뷰카테고리별 ajax
 	@Override
-	public List<Map> ajaxReivewCateList(String reivewCategory) {
+	public List<Map> ajaxCategoryList2(String entCategory) {
 		// TODO Auto-generated method stub
-		return dao.ajaxReivewCateList(session,reivewCategory);
+		return dao.ajaxCategoryList2(session,entCategory);
 	}
+	
 	
 	//기업 팔로잉
 	@Override
@@ -92,5 +94,19 @@ public class SearchServiceImpl implements SearchService {
 	public List<Enterprise> searchAuto2(String key) {
 		// TODO Auto-generated method stub
 		return dao.searchAuto2(session,key);
+	}
+	
+	//메인화면 리뷰 리스트
+	@Override
+	public List<Map> indexReviewList() {
+		// TODO Auto-generated method stub
+		return dao.indexReviewList(session);
+	}
+	
+	//bannerList
+	@Override
+	public List<Map> bannerList() {
+		// TODO Auto-generated method stub
+		return dao.bannerList(session);
 	}
 }

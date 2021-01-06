@@ -48,11 +48,10 @@ public class SearchDaoImpl implements SearchDao {
 		return session.selectList("search.ajaxCategoryList",entCategory);
 	}
 	
-	// 기업더보기 리뷰 카테고리별 ajax
 	@Override
-	public List<Map> ajaxReivewCateList(SqlSession session, String reivewCategory) {
+	public List<Map> ajaxCategoryList2(SqlSession session, String entCategory) {
 		// TODO Auto-generated method stub
-		return session.selectList("search.ajaxReivewCateList",reivewCategory);
+		return session.selectList("search.ajaxCategoryList2",entCategory);
 	}
 	
 	//기업 팔로잉
@@ -87,5 +86,19 @@ public class SearchDaoImpl implements SearchDao {
 	public List<Enterprise> searchAuto2(SqlSession session, String key) {
 		// TODO Auto-generated method stub
 		return session.selectList("search.searchAuto2",key);
+	}
+	
+	//메인화면 리뷰 리스트
+	@Override
+		public List<Map> indexReviewList(SqlSession session) {
+			// TODO Auto-generated method stub
+			return session.selectList("search.indexReviewList");
+		}
+	
+	//bannerList
+	@Override
+	public List<Map> bannerList(SqlSession session) {
+		// TODO Auto-generated method stub
+		return session.selectList("search.bannerList");
 	}
 }

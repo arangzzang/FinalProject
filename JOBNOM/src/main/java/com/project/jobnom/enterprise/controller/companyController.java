@@ -311,7 +311,7 @@ public class companyController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		Banner ban = Banner.builder().ent_no(ent.getEntNo()).bann_title(bann_title).bann_path(path).build();
+		Banner ban = Banner.builder().ent_no(ent.getEntNo()).bann_title(bann_title).bann_path(newName).build();
 		int result = service.insertBanner(ban);
 		String msg = "";
 		String loc = "";

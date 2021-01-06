@@ -30,5 +30,6 @@
 		<typeAlias type="com.project.jobnom.enterprise.model.vo.Worker" alias="worker"/>
 		<typeAlias type="com.project.jobnom.enterprise.model.vo.Mammoth" alias="mammoth"/>
 		<typeAlias type="com.project.jobnom.enterprise.model.vo.Applicant" alias="applicant"/>
+		<typeAlias type="com.project.jobnom.admin.model.vo.Member" alias="admem"/>
 	</typeAliases>
 </configuration>

@@ -134,7 +134,7 @@ public class EnterpriseController {
 		int result = service.updateApplyAd(ad);
 		if(result>0) {
 			msg="공고 수정 완료";
-			loc="com/mypage.do";
+			loc="/com/mypage.do";
 		}else {
 			msg="공고 수정 실패";
 			loc="/com/mypage.do";
