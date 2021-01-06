@@ -23,7 +23,7 @@
                             <div class="compa_info">
                             <div class="compa_logo">
                                 <a href="" class="logo_wrap" >
-                                <span class="logoimg"><img src="${list[0].ENT_LOGO }" alt="기업이미지"/></span>
+                                <span class="logoimg"><img src="${path }/resources/enterprise/logo/${list[0].ENT_NO}/${list[0].ENT_LOGO }" alt="기업이미지"/></span>
                                 </a>
                             </div>
                             <div class="compa_info_box">

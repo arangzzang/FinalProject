@@ -50,6 +50,7 @@ public class SearchController {
 		int totalData = service.selectCount(); /* 이거페이지바 */
 		
 		mv.addObject("entFollow",service.entFollowCheck()); // 기업 팔로잉
+		System.out.println("이거 값 나오나??????"+mv.addObject("entFollow",service.entFollowCheck()));
 		mv.addObject("pageBar", PageBarFactory.getPageBar(totalData, cPage, numPerpage, null,"searchResultMore.do"));
 		mv.addObject("totalData", totalData);
 		mv.addObject("list", list);
@@ -60,16 +61,35 @@ public class SearchController {
 	
 	//기업 더보기 화면 카테고리별 ajax
 	@RequestMapping("/ajaxCateList")
-	public ModelAndView ajaxCategoryList(ModelAndView mv, String entCategory) {
+	public ModelAndView ajaxCategoryList(ModelAndView mv, String entCategory,@RequestParam(value = "cPage", defaultValue = "1") int cPage,
+			@RequestParam(value = "numPerpage", defaultValue = "5") int numPerpage) {
 		
 		System.out.println("zzzzzzzzzzzzzzz"+ entCategory);
+		int totalData = service.selectCount();
+		mv.addObject("pageBar", PageBarFactory.getPageBar(totalData, cPage, numPerpage, null,"searchResultMore.do"));
+		mv.addObject("totalData", totalData);
 		
-		List<Map> list = service.ajaxCategoryList(entCategory);
-		System.out.println("카테고리별"+list);
-		mv.addObject("ajaxList",list);
-		mv.setViewName("search/ajax/ajaxCategoryList");
+		if(entCategory.equals("cate1")) {
+			System.out.println("여기로 넘어옴");
+			List<Map> firstCate = service.ajaxCategoryList2(entCategory);
+			System.out.println("카테고리별"+firstCate);
+			mv.addObject("ajaxList",firstCate);
+			mv.addObject("entFollow",service.entFollowCheck());
+			mv.setViewName("search/ajax/ajaxCategoryList");
+			
+		}else {
+			
+			List<Map> list = service.ajaxCategoryList(entCategory);
+			System.out.println("카테고리별"+list);
+			mv.addObject("entFollow",service.entFollowCheck());// 기업 팔로잉
+			mv.addObject("ajaxList",list);
+			mv.setViewName("search/ajax/ajaxCategoryList");
+		}
+		
 		return mv;
 	}
+	
+	
 	
 	//기업 팔로잉
 	@RequestMapping("/search/entFollow.do")

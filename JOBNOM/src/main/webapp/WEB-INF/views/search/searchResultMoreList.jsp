@@ -4,7 +4,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <c:set var= "path" value="${pageContext.request.contextPath }"/>
-
 <link rel="stylesheet" href="${path }/resources/css/search/searchResultMoreList.css"/>
 <jsp:include page="/WEB-INF/views/common/header.jsp">
 	<jsp:param name="title" value=" "/>
@@ -18,7 +17,7 @@
                     <!-- 필터 시작 -->
                     <div class="col1Wrap">
                             <select name="parent_industry_id" id="ent_catagory1">
-                                <option name="entCate" value="ENT_CATEGORY1">1차산업군</option>
+                                <option name="entCate" value="cate1">1차산업군</option>
 								<option name="entCate" >IT/인터넷</option>
 								<option name="entCate" >금융/재무</option>
 								<option name="entCate" >의약</option>
@@ -58,23 +57,23 @@
                                         <dl class="content_col2_3 cominfo">
                                             <dt class="us_titb_13">
                                                 <a href="#" onclick="location.href = '${path }/enterprise/com_info.do?entNo=${list.ENT_NO}'">${list.ENT_NAME }</a>
-                                                <c:choose>
-                                                <c:when test="${not empty commonLogin && commonLogin.memNo ne  entFollow[status.index].MEM_NO && list.ENT_NO ne entFollow[status.index].ENT_NO  }">
-                                                <button class="btn_heart1" onclick="location.href='${path }/search/entFollow.do?memNo=${commonLogin.memNo}&entNo=${list.ENT_NO}'">
+                                                <input type="hidden" value="${list.ENT_NO }">
+                                                <c:if test="${not empty commonLogin && list.ENT_NO ne entFollow[status.index].ENT_NO }">
+                                                <button class="btn_heart1" id="hart">
                                                     <i class="far fa-heart"></i>
                                                 </button>
-                                                </c:when>
-                                                <c:when test="${not empty commonLogin && commonLogin.memNo eq  entFollow[status.index].MEM_NO && list.ENT_NO eq entFollow[status.index].ENT_NO  }">
-                                                <button class="btn_heart2" onclick="location.href='${path }/search/entUnFollow.do?memNo=${commonLogin.memNo}&entNo=${list.ENT_NO}'">
+                                              	</c:if>
+                                              	<c:if test="${not empty commonLogin && list.ENT_NO eq entFollow[status.index].ENT_NO}">
+                                                <button class="btn_heart2" id="hart">
                                                     <i class="fas fa-heart"></i>
                                                 </button>
-                                                </c:when>
-                                                <c:otherwise>
-                                             	<button class="btn_heart1" onclick="javascript:btn_heart3()">
+                                                </c:if>
+                                                <input type="hidden" value="${list.ENT_NO }">
+                                                <c:if test="${empty commonLogin}">
+                                                <button class="btn_heart1" id="hart">
                                                     <i class="far fa-heart"></i>
                                                 </button>
-                                                </c:otherwise>
-                                                </c:choose>
+                                              	</c:if>
                                             </dt>
                                             <dd>
                                                 <span class="us_txt_1">${list.ENT_CATEGORY1 }</span>
@@ -113,39 +112,140 @@
 </div>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
-                            <script>
-                            /*카테고리 별 ajax  */
-                            	$('#ent_catagory1').change((e) =>{
-                            		var formData = $(e.target).val();
-                            		console.log(formData);
-                            		
-                            		$.ajax({
-                            			
-                            			url : "${path}/ajaxCateList",
-                            			type : 'POST',
-                            			data : {entCategory : formData},
-                            			success : function(data) {
-                            				 $(".listCompany").hide();
-                            				 $(".result").hide();
-                            				 $(".test").html(data);
-										}
-                            		})
-                            	});
-                            </script>
-                            <script>
-                            	/* <!-- 하트 눌렀을때 변환 스크립트 --> */
-                                function btn_heart3(){ 
-                            		alert('로그인 후 이용 가능 합니다.'); 
-                            		
-                            	}
+<script>
+                  /*카테고리 별 ajax  */
+                  	$('#ent_catagory1').change((e) =>{
+                  		var formData = $(e.target).val();
+                  		console.log(formData);
+                  		
+                  		$.ajax({
+                  			
+                  			url : "${path}/ajaxCateList",
+                  			type : 'POST',
+                  			data : {entCategory : formData},
+                  			success : function(data) {
+                  				 $(".listCompany").hide();
+                  				 $(".result").hide();
+                  				 $("#pageBar").hide();
+                  				 $(".test").html(data);
+                  				 let avg = parseFloat($('.gfvalue').text());
+   								let total = avg*20
+   								$('.star_score').css('width',total+'%');
+   								$('.btn_heart1').on('click',function() {
+   									
+   									if(result == 1){
+   										alert('로그인 후 이용 해 주세요');
+   									}else{
+   										let entNo = $(this).prev().val();
+   										let memNo = ${commonLogin.memNo}
+   										console.log('기업번호'+entNo);
+   										console.log('멤버 번호'+memNo);
+   										$.ajax({
+   											url:'${path}/search/entFollow.do',
+   											data:{entNo : entNo, memNo : memNo},
+   											success : function(data) {
+   												console.log(data);
+   												alert('기업 즐겨찾기에 추가 되었습니다.');
+   												location.reload();
+   												
+   											}
+   										});
+   										
+   									}
+   								})
+   								
+   								$('.btn_heart2').on('click',function() {
+   									
+   									if(result == 1){
+   										alert('로그인 후 이용 해 주세요');
+   										
+   									}else{
+   										let entNo = $(this).next().val();
+   										let memNo = ${commonLogin.memNo}
+   										console.log('기업번호'+entNo);
+   										console.log('멤버 번호'+memNo);
+   										$.ajax({
+   											url:'${path}/search/entUnFollow.do',
+   											data:{entNo : entNo, memNo : memNo},
+   											success : function(data) {
+   												console.log(data);
+   												alert('기업 즐겨찾기에 삭제 되었습니다.');
+   												location.reload(true);
+   												
+   											}
+   										});
+   									}
+   								});
+							}
+                  		})
+                  	});
+</script>
+<script>
+                        
+/*평균평점 별점 스크립트  */
+ 	
+let avg = parseFloat($('.gfvalue').text());
+let total = avg*20
+$('.star_score').css('width',total+'%');
+/*평균평점 별점 스크립트  */
+                    </script>
+<script>
+var result = 0;
 
-                            	/* <!-- 하트 눌렀을때 변환 스크립트  끝--> */
-                                
-                              /*   <!--평균평점 별점 스크립트  --> */
-						   	
-								let avg = parseFloat($('.gfvalue').text());
-								let total = avg*20
-								
-								$('.star_score').css('width',total+'%');
-								<!--평균평점 별점 스크립트  -->
-                            </script>
+if(${commonLogin == null}){
+	result = 1;
+};
+	$(document).ready(function() {
+		
+	
+		/*팔로잉  */
+	$('.btn_heart1').on('click',function() {
+		
+		if(result == 1){
+			alert('로그인 후 이용 해 주세요');
+			
+		}else{
+			let entNo = $(this).prev().val();
+			let memNo = ${commonLogin.memNo}
+			console.log('기업번호'+entNo);
+			console.log('멤버 번호'+memNo);
+			$.ajax({
+				url:'${path}/search/entFollow.do',
+				data:{entNo : entNo, memNo : memNo},
+				success : function(data) {
+					console.log(data);
+					alert('기업 즐겨찾기에 추가 되었습니다.');
+					location.reload(true);
+					
+				}
+			});
+		}
+	})
+	
+
+	$('.btn_heart2').on('click',function() {
+		
+		if(result == 1){
+			alert('로그인 후 이용 해 주세요');
+			
+		}else{
+			let entNo = $(this).next().val();
+			let memNo = ${commonLogin.memNo}
+			console.log('기업번호'+entNo);
+			console.log('멤버 번호'+memNo);
+			$.ajax({
+				url:'${path}/search/entUnFollow.do',
+				data:{entNo : entNo, memNo : memNo},
+				success : function(data) {
+					console.log(data);
+					alert('기업 즐겨찾기에 삭제 되었습니다.');
+					location.reload(true);
+					
+				}
+			});
+		}
+	});
+	
+	});
+
+</script>
