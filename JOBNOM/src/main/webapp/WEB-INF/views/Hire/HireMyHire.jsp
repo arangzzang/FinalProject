@@ -78,7 +78,7 @@
 				<div class="myHireListTag">
 					<a class="menus"
 						href="${path }/Hire/HireMyHire.do?memNo=${commonLogin.memNo}"
-						class="myHire1">입사지원 공고 </a>
+						class="myHire1"  style="width: 120px;">입사지원 공고 </a>
 					<c:if test="${commonLogin != null }">
 						<div class="count">${totalDataSu }개</div>
 						<br>
@@ -91,7 +91,7 @@
 				<div class="myHireListTag2">
 					<a class="menus"
 						href="${path }/Hire/HireFavorites.do?memNo=${commonLogin.memNo}"
-						class="myHire1" style="width: 117px;">즐겨찾기 채용 </a>
+						class="myHire1" style="width: 120px;">즐겨찾기 채용 </a>
 					<c:if test="${commonLogin != null }">
 					<div class="count">${totalDataIn }개</div>
 					</c:if>
@@ -117,24 +117,30 @@
 					data-target="#login">회원가입/로그인</button>
 			</c:if>
 			<table>
-				<tr class="myHyreSupportDetail">
-					<th class="myHyreSupportDetail1">회사명</th>
-					<th class="myHyreSupportDetail2">지원내용</th>
-					<th class="myHyreSupportDetail3">지원일/취소일</th>
+				<div class="myHyreSupportDetail">
+					<div class="myHyreSupportDetail1">회사명</div>
+					<div class="myHyreSupportDetail2">지원내용</div>
+					<div class="myHyreSupportDetail3">지원일/취소일</div>
 
-				</tr>
+				</div>
 				<%-- <c:if test="${commonLogin !=null && commonLogin ==null}"> --%>
 				<c:forEach items="${support}" var="s">
-					<tr class="myHyreSupportListAll">
-						<th class="myHyreSupportList1"><c:out value="${s.rec_title}" /></th>
-						<th class="myHyreSupportList2"><c:out
-								value="${s.rec_contents}" /></th>
-						<th class="myHyreSupportList3">지원일 : <fmt:formatDate
+				<a href="${path }/Hire/annoHomeDetailMove.do?recNo=${s.rec_no}" class="ss">
+					<div class="myHyreSupportListAll">
+						
+						<div class="myHyreSupportList1"><c:out value="${s.rec_title}" /></div>
+						
+						<div class="myHyreSupportList2"><c:out
+								value="${s.rec_contents}" /></div>
+						<div class="myHyreSupportList3">지원일 : <fmt:formatDate
 								value="${s.support_day}" pattern="yyyy.MM.dd" />
 
-						</th>
-					</tr>
-
+						</div>
+						
+						
+						
+					</div>
+					</a>
 				</c:forEach>
 			</table>
 

@@ -37,23 +37,23 @@
                             </div>
                         </div>
                         
-                        <form action="${path }/Hire/apply.do" onsubmit="return fn_apply();" method="post" >
-                        <input type="hidden" name="memNo" value="${commonLogin.memNo}">
-                        <input type="hidden" name="recNo" value="${r[0].REC_NO}">
-                        <input type="hidden" name="entName" value="${r[0].ENT_NAME }">
-                        <input class="apply"  type="submit" value="지원하기">
-                        </form>
+                      
+                        <button class="applyFirst"  onclick="fn_overlapApply();">간편 지원하기</button>
+                        
                        
                      
                       <%-- <button class="apply"  onclick="location.href='${path }/Hire/apply.do?memNo=${commonLogin.memNo}&recNo=${r[0].REC_NO}&entName=${r[0].ENT_NAME } ' " >지원하기
                        </button> --%>
-                       <c:if  test="${r[0].OPEN_CHECK == 0 || r[0].OPEN_CHECK == null || in[0].mem_no==null  && commonLogin !=null && commonLogin.memNo !=  in[0].mem_no && in[0].rec_no != r[0].REC_NO }">
+                       <c:if  test="${r[0].OPEN_CHECK eq 0 || empty r[0].OPEN_CHECK  && empty in[0].mem_no   && commonLogin  eq null || commonLogin.memNo ne  in[0].mem_no  && in[0].rec_no ne r[0].REC_NO }">
                         <button id="favoritesBox" onclick="fn_toggle();">
                             <img id="announcementFavorites2" src="${path }/resources/image/Hire/pngwing.png" />
                         </button>
                       </c:if>
+                      
+                      
+                      
                      
-                       <c:if test="${r[0].OPEN_CHECK == 1  && commonLogin !=null && in[0].rec_no == r[0].REC_NO && in[0].mem_no == commonLogin.memNo }">
+                       <c:if test="${r[0].OPEN_CHECK eq 1  && commonLogin  ne null && in[0].rec_no eq r[0].REC_NO && in[0].mem_no eq commonLogin.memNo }">
                         <button id="favoritesBox" onclick="fn_toggle();">
                             <img id="announcementFavorites2" src="${path }/resources/image/Hire/pngwing2.png" />
                         </button>
@@ -65,7 +65,7 @@
                     <div class="detailedReviewInterview">
                        <a href="#">
                        <div class="annoDetailListBoxs2">
-                         <button  id="aaaa" name="aaaa" value="${r[0].REC_NO }" style="width: 50px; height: 50px;"> 상세 </button>
+                         <button  id="aaaa" name="aaaa" value="${r[0].REC_NO }" style="width: 100px; height: 30px; background: white; border:none;"> 상세 </button>
                          <button id="dddd" name="dddd" value="${commonLogin.memNo }" style="display: none;"></button>
                             	
                        
@@ -222,11 +222,33 @@
           
       
 </section>
+<div id="popup" style="text-align: center;">
+ <input class="popmenuInsertClose" type="button" value="닫기" > 
+	<div class="popupAll" style="text-align: center; padding-top: 300px;">
+		<div id="popmenu">
+			<div style="color: white;">간편지원하기 클릭시 담당자 이메일로 내 이력서가 자동 발송됩니다.</div>
+			<br>
+			<div style="color: white;">간편지원하기를 원하실 경우 간편지원하기를 클릭해주세요.</div>
+			<div style="color: white;">네야릭서를 수정해야 한다고 내이력서 바로가기를 클릭해주세요.</div>
+			<form action="${path }/Hire/apply.do" onsubmit="return fn_apply();"
+				method="post">
+
+				<input type="hidden" name="memNo" value="${commonLogin.memNo}">
+				<input type="hidden" name="recNo" value="${r[0].REC_NO}"> <input
+					type="hidden" name="entName" value="${r[0].ENT_NAME }"> <input
+					class="apply" type="submit" onclick="fn_overlapApply();"
+					value="지원하기">
+					<input type="button" value="마이페이지" onclick="location.href='${path }/member/myPage?memNo=${commonLogin.memNo }'">
+			</form>
+		</div>
+
+	</div>
+</div>
 
 
-  		 
-             
-             <!-- 리뷰 클릭시 전환되는 에이작스 -->
+
+
+<!-- 리뷰 클릭시 전환되는 에이작스 -->
               <script>
                 
                     $(".clickReviewTotalBoxs").click((e) => {
@@ -364,17 +386,39 @@
 		  
 </script>
 
- <script>
+ 					<script>
                         function fn_apply(){
                         	if($('input[name=memNo]').val()===""){
                       			alert("로그인 회원만 이용가능합니다");	
                       			 return false; 
-                			}else{
-                				alert("지원완료");
                 			}
                         	
                         }
                         </script>
                         
+                        <script>
+                        function fn_apply() {
+                        	if(${sp[0].rec_no == r[0].REC_NO && commonLogin.memNo == sp[0].mem_no}){
+                           	alert("해당공고는 이미 지원한 공고입니다.");
+                           	return false;
+                           }else{
+                           	alert("공고에 지원이 완료되었습니다");
+                           }
+                       };
+                        </script>
+                        
 
+<script>
+$(document).ready(function(){
+    $(".applyFirst").click(function(){
+       $("#popup").fadeIn();
+       $(".headerContainerWrap").css("display","none");
+       
+    });
+    $(".popmenuInsertClose").click(function(){
+       $("#popup").fadeOut();
+       $(".headerContainerWrap").css("display","show");
+    });
+ });
+</script>  
 
