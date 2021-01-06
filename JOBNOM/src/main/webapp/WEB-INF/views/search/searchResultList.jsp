@@ -34,8 +34,8 @@
 				<c:forEach items="${list }" var="list">
 					<div class="result_card ">
 						<span class="llogo"> 
-							<img src="${path }/resources/enterprise/logo/${list.ENT_NO}/${list.ENT_LOGO }" style="width: 40px; height: 40px; ">
 							<a href="#" onclick="location.href = '${path }/enterprise/com_info.do?entNo=${list.ENT_NO}'"> 
+							<img src="${path }/resources/enterprise/logo/${list.ENT_NO}/${list.ENT_LOGO }">
 							</a>
 						</span>
 						<a href="#" onclick="location.href = '${path }/enterprise/com_info.do?entNo=${list.ENT_NO}'" class="tit" >
@@ -72,7 +72,9 @@
 				<div class="result_unit">
 					<div class="result_unit_con">
 						<span class="llogo"> 
-							<a href="#"onclick="location.href = '${path }/enterprise/com_info.do?entNo=${list2.ENT_NO}'"> ${list2.ENT_LOGO } </a>
+							<a href="#"onclick="location.href = '${path }/enterprise/com_info.do?entNo=${list2.ENT_NO}'">
+							<img src="${path }/resources/enterprise/logo/${list2.ENT_NO}/${list2.ENT_LOGO }">
+							</a>
 						</span>
 						<div class="result_unit_info">
 							<div class="unit_head">
