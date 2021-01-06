@@ -32,9 +32,6 @@
 <link rel="stylesheet" href="${path }/resources/css/footer.css" />
 </head>
 <body>
-	<c:if test="${not empty cookie.loginCheck}">
-		<c:set var="checked" value="checked" />
-	</c:if>
 
 	<div id="container">
 		<header>
@@ -142,8 +139,9 @@
 											class="form-control password" id="password"
 											placeholder="비밀번호를 입력해주세요." name="password" required>
 									</div>
-									<label> <input type="checkbox" name="loginCheck"
-										${checked }>E_mail저장하기
+									<label>
+										<input type="checkbox" name="loginCheck" ${not empty cookie.loginCheck?"checked":""}>
+										E_mail저장하기
 									</label>
 								</div>
 								<div class="modal-footer">

@@ -117,7 +117,7 @@
 										<option value="10" ${res.resCar==10?"selected":"" }>10년이상</option>
 									</select>
 									<label for="skill" class="span2">업무 및 스킬</label>
-									<input type="text" class="form-control inp" name="skill" id="skill" placeholder="(예시) 영업기획, 디지털마케팅,UI디자인(업무와 관련된 자격증 및 기술명 포함)" required>
+									<input type="text" class="form-control inp" name="skill"  id="skill" placeholder="(예시) 영업기획, 디지털마케팅,UI디자인(업무와 관련된 자격증 및 기술명 포함)" required>
 									<ul class="keyword">
 										
 									</ul>
