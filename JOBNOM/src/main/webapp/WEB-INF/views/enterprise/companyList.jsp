@@ -26,7 +26,7 @@
                         <dl class="gf_box2">
                             <dt title="회사명">
                                     <span class="txt_r">1</span>
-                                <a href="#" onclick="location.href = '${path }/enterprise/com_info.do?entNo=${list.ENT_NO}'">${list.ENT_NAME }</a>
+                                <a href="#" onclick="location.href = '${path }/openApi.do?entNo=${list.ENT_NO}&keyword=${list.ENT_NAME}'">${list.ENT_NAME }</a>
                             </dt>
                             <dd>
                                <div class="gf_bar">
@@ -59,7 +59,7 @@
                         <dl class="gf_box2">
                             <dt title="회사명">
                                     <span class="txt_r">1</span>
-                                <a href="#" onclick="location.href = '${path }/enterprise/com_info.do?entNo=${list2.ENT_NO}'">${list2.ENT_NAME }</a>
+                                <a href="#" onclick="location.href = '${path }/openApi.do?entNo=${list2.ENT_NO}&keyword=${list2.ENT_NAME}'">${list2.ENT_NAME }</a>
                             </dt>
                             <dd>
                                 <div class="gf_bar">
@@ -89,8 +89,8 @@
                     	<c:forEach items="${list3 }" var="list3">
                         <dl class="gf_box2">
                             <dt title="회사명">
-                                    <span class="txt_r">1</span>
-                                <a href="#" onclick="location.href = '${path }/enterprise/com_info.do?entNo=${list3.ENT_NO}'">${list3.ENT_NAME }</a>
+                                    <span class="txt_r"></span>
+                                <a href="#" onclick="location.href = '${path }/openApi.do?entNo=${list3.ENT_NO}&keyword=${list3.ENT_NAME}'">${list3.ENT_NAME }</a>
                             </dt>
                             <dd>
                                <div class="gf_bar">
@@ -121,7 +121,7 @@
                         <dl class="gf_box2">
                             <dt title="회사명">
                                     <span class="txt_r">1</span>
-                                <a href="#" onclick="location.href = '${path }/enterprise/com_info.do?entNo=${list4.ENT_NO}'">${list4.ENT_NAME }</a>
+                                <a href="#" onclick="location.href = '${path }/openApi.do?entNo=${list4.ENT_NO}&keyword=${list4.ENT_NAME}'">${list4.ENT_NAME }</a>
                             </dt>
                             <dd>
                               <div class="gf_bar">
@@ -152,7 +152,7 @@
                         <dl class="gf_box2">
                             <dt title="회사명">
                                     <span class="txt_r">1</span>
-                                <a href="#" onclick="location.href = '${path }/enterprise/com_info.do?entNo=${list5.ENT_NO}'">${list5.ENT_NAME }</a>
+                                <a href="#" onclick="location.href = '${path }/openApi.do?entNo=${list5.ENT_NO}&keyword=${list5.ENT_NAME}'">${list5.ENT_NAME }</a>
                             </dt>
                             <dd>
                                <div class="gf_bar">
