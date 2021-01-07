@@ -222,6 +222,7 @@
 		select * from review
 		join MEMBER using (mem_no)
 		where ent_no=#{entNo}
+        order by re_enroll_date desc
 	</select>
 	<select id="selectReviewcount" resultType="_int" >
 		SELECT COUNT(*) FROM REVIEW WHERE ENT_NO=#{entNo}
@@ -230,6 +231,8 @@
 	
 	<select id="selectJoblist" resultType="map" >
 		SELECT * FROM RECRUITMENT WHERE ENT_NO=#{entNo}
+		order by rec_enddate asc
+		
 	</select>
 	
 	<select id="selectJobCount" resultType="_int">
@@ -472,12 +475,12 @@
 	<select id="selectSupportCount" resultType="_int">
 		select  count( DISTINCT mem_no) from support where rec_no=#{recno}
 	</select>
-	<select id="scoreList" resultType="integer" parameterType="score">
+	<select id="scoreList" resultMap="scMap">
 		select  
 				round(avg(review_satisfaction),1) a , round(avg(review_welfare),1) b ,
 		        round(avg(review_promotion),1) c , round(avg(review_executive),1) d
 		from review
 		where ent_no=#{entNo}
-	</select>
+	</select> 
 	
 </mapper>

@@ -239,7 +239,7 @@
 		<article class="com_review_default">
 			<div class="com_de_box">
 				<div class="com_de_wrap">
-					<h4>등록된 리뷰가 없습니다.</h4>
+					<h4>등록된 면접후기가 없습니다.</h4>
 
 				</div>
 			</div>

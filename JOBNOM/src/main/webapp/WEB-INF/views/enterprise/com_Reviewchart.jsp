@@ -31,11 +31,10 @@ var chart = new CanvasJS.Chart("chartContainer", {
 		axisYType: "secondary",
 		color: "#00c362",
 		dataPoints: [
-			{ y: 7, label: "경영진" },
-			{ y: 9, label: "승진기회 및 가능성" },
-			{ y: 5, label: "복지 및 급여" },
-			{ y: 7, label: "사내 만족도" },
-			{ y: 3, label: "총 평점" },
+			{ y: 3.3, label: "경영진" },
+			{ y: 4.2, label: "승진기회 및 가능성" },
+			{ y: 3.5, label: "복지 및 급여" },
+			{ y: 2.7, label: "사내 만족도" }
 		]
 	}]
 });

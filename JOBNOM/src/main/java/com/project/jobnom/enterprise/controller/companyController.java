@@ -72,7 +72,7 @@ public class companyController {
 		List<Review> rev=service.selectReviewList(entNo,cPage,numPerpage);
 		System.out.println("기업번호"+entNo);
 		Score scr = service.scoreList(entNo);
-		System.out.println("나옴?"+scr);
+		System.out.println("리뷰" + scr);
 		System.out.println("??" + service.scoreList(entNo));
 		int totalData = service.selectReviewcount(entNo);
 		mv.addObject("list",service.companyInfo(entNo));
@@ -141,6 +141,7 @@ public class companyController {
 		Enterprise ent = service.findOneEnterprise(log);
 		session.setAttribute("Enterprise", ent);
 		System.out.println("sdds"+ent.getEntNo());
+		Map param1 = new HashedMap();
 		List<Recruitment> res = service.selectRecruitment(ent.getEntNo(),cPage,numPerpage); 
 		int totalData = service.selectRecruitmentCount(ent);
 		

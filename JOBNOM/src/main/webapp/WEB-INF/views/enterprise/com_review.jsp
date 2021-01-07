@@ -100,11 +100,6 @@
 		<article class="review_select_con">
 			<div class="review_select_box">
 				<div class="review_select">
-					<select class="select_cho">
-						<option>재직 상태</option>
-						<option>재직중</option>
-						<option>퇴사자</option>
-					</select>
 				</div>
 				<div class="total_review">
 					<span>${totalData }</span>개의 기업리뷰
