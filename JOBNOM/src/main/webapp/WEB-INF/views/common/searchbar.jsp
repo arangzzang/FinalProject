@@ -10,8 +10,7 @@
 <!-- 검색창 시작 -->
 <div class="searchbar_section" id="searchbar_section">
 	<div class="wrap">
-		<form id="search_form" action="${path }/searchResult.do" method="POST"
-			onsubmit="return true;">
+		 <form id="search_form" action="${path }/searchResult.do" onsubmit="return true;">
 			<div class="schbar_green">
 				<div class="schbar">
 					<i class="fas fa-search"></i> 
@@ -25,34 +24,11 @@
 					<button class="btn_schbar" id="btn">검색</button>
 				</div>
 			</div>
-		</form>
+	 	</form>
 	</div>
 </div>
 <!-- 검색창 끝 -->
-<!--OPEN API  -->
-<script>
-		/* $(document).ready(function () {
-				$('#btn').click(function() {
-					
-					$.ajax({
-						url :'${path }/api',
-						type : 'get',
-						data : {"wkpl_nm" : wkpl_nm},
-						dataType : 'json',
-						success: function(data) {
-							
-							
-						},
-						
-							error: function(XMLHttpRequest, textstatus, errorThrown) {
-								alert("Status" + textstatus); alert("Error" + errorThrown );
-							}
-						
-					});
-					
-				});
-			}); */
-</script>
+
 <script>
 
 $("#search_bar_search_query").keyup(e=>{
