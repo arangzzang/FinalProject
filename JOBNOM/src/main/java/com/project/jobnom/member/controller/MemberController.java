@@ -222,7 +222,7 @@ public class MemberController {
 		m.addAttribute("support",support);
 		m.addAttribute("totalDataSu",totalDataSu);
 		
-		m.addAttribute("pageBar", PageBarFactory.getPageBar3(totalDataSu, cPage, numPerpage, memNo, "supporting"));
+		m.addAttribute("pageBar", PageBarFactory.getPageBar7(totalDataSu, cPage, numPerpage, memNo, "supporting"));
 		
 		 return "/member/mypage/activityHistory/supportingCompany";
 	}

@@ -77,7 +77,7 @@
                        <div id="popup">
                            <div class="popupAll">
                                    <div id="popmenu">
-                                       <form id="popFrm" action="${path }/Hire/insertReview2.do" method="post"  onsubmit="return fn_review();">
+                                       <form id="popFrm" method="post"  onsubmit="return fn_review();">
                                        <div class="popmenuInsertAll">
                                            <div class="popmenuInsert">기업 리뷰 작성</div>
                                         <!--    <button class="popmenuInsertClose"><i class="far fa-window-close"></i></button> -->
@@ -203,6 +203,9 @@
                     </div><!-- class= a -->
                 </div>
             </div>
+            <c:forEach items="${mem }" var="m">
+            <input type="text" name="test6" id="test6" value="${m.ENT_NAME }">
+            </c:forEach>
         <!-- 이건 리뷰 작성하기 누르면 팝업 뜨게 하는거 -->
       <%--   <div class="ee"></div>
 <div class="ss" style="display: none"> 
@@ -326,12 +329,9 @@ $(".executiveStar").on("click",e=>{
 });
 </script>
 <script>
-
-
-
 function fn_review(){
-	
    if ($('input[name=review_name]').val()==="" ||
+		   /* $('input[name=review_name]').val() != $('input[name=test6]').val() || */
               $('input[name=review_title]').val()==="" ||
               $('textarea[name=review_contents]').val()==="" ||
           $('input[class=review_satisfaction]').val()==="" || 
@@ -344,6 +344,16 @@ function fn_review(){
 };
 
 </script>
+<!-- <script>
+function fn_review(){
+	var name = $('input[name=review_name]').val();
+	var name2 = $('input[name=test6]').val();
+	if(name != name2){
+		alert("해당기업이 존재하지 않습니다.");
+		   return false;
+	}
+	};
+</script> -->
 <script>
 $(document).ready(function(){
     $(".reviewBtnInsert").click(function(){

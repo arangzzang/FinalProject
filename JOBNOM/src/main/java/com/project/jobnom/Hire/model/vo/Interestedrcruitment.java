@@ -18,4 +18,5 @@ public class Interestedrcruitment {
 	private String ent_name;
 	private String ent_logo;
 	private String ent_no;
+	private int rec_category;
 }
