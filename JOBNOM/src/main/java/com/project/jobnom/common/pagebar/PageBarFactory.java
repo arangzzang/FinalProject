@@ -401,7 +401,23 @@ public static String getPageBar7(int totalDataSu, int cPage, int numPerpage, Str
 
 	pageBar += "</ul>";
 
+	pageBar += "<script>";
+	pageBar += "function fn_paging(cPage){";
+	pageBar += "$.ajax({";
+	pageBar += "url : '"+uri+"',";
+	pageBar += "type : 'POST',"; 
+	pageBar += "dataType :'html',";
+	pageBar += "data : {cPage:'+cPage+',memNo:'"+memNo+"'},";
+	pageBar += "  success :data{";
 	
+	pageBar += "$('.with-parent').html('')";
+	pageBar += "$('.with-parent').html(data)";
+	pageBar += "    }";
+	pageBar += "})";
+	pageBar += "}";
+
+	pageBar += "</script>";
+
 	return pageBar;
 }
 
