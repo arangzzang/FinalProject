@@ -30,9 +30,11 @@
         </nav>
 <!-- 공지사항 시작 -->
     <div id="contents_wrap">
+    			<c:if test="${not empty commonLogin && commonLogin.type == 1 }">
 	            <div class="write">
 	                <button onclick="location.href='${path}/footer/noticeWrite.do'" id="notice_btn"class="write_btn">글쓰기</button>
 	            </div>
+	            </c:if>
         <div id="contents" class="cont_col1">
         
             <div class="cont_wrap">
@@ -48,8 +50,10 @@
 		                            </div>
 		                            <div class="con notranslate">
 		                                <p>${n.NOTICE_CONTENTS }</p>
+		                                <c:if test="${not empty commonLogin && commonLogin.type == 1 }">
 			                            <input type="submit"  name="notice_btn" class="write_btn" value="수정하기">
 			                            <input type="text" style="display:none;" name="noticeNo" value="${n.NOTICE_NO}">
+		                            	</c:if>
 		                            </div>
 		                        </section>
 	                        </form>
