@@ -118,6 +118,8 @@
                     <div><c:out value="${i.ent_name }"></c:out></div>
                     <div class="myFavoritesDetail">
                         <div class="myFavoritesDetail1">평점</div>
+                       
+                       
                         
 
                     </div>
@@ -127,6 +129,23 @@
 
             </div>
             </a>
+             <button id="favoritesBox" onclick="fn_toggle();">
+						즐겨찾기 취소
+			</button>
+            <script>
+
+
+    function fn_toggle() {
+    	alert("sd");
+    	
+        if(${i.open_check eq 1 && commonLogin.memNo eq in.mem_no})
+         {
+        	location.href="${path }/Hire/notFavorites.do?memNo=${commonLogin.memNo}&recNo=${i.rec_no}&openCheck=${i.open_check}&anoNum=${i.rec_category}";
+        	alert("즐겨찾기 빼기 완료");
+        }
+    };
+		  
+</script>
                </c:forEach>
           <div id="pageBar">${pageBar }</div>
         </div>
@@ -147,3 +166,6 @@
         });
     });
 </script>
+
+
+		

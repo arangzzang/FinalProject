@@ -16,9 +16,9 @@
 	<jsp:param name="title" value=" "/>
 </jsp:include>
 
+<body onload = "showImage()">
+<section class="section" >
 
-<section class="section">
-  
     <div class="a">
         <div>
             <div class="hireHome">
@@ -117,15 +117,20 @@
     
     <div class="findingMe"> 나를 찾는 기업들이 여기에</div>
  <!-- Swiper -->
+ 
 <div class="bb" style="height: 300px;" >
 
     <div class="swiper-container">
    
         <div class="swiper-wrapper" >
          <c:forEach items="${fitM }" var="fitM">
-        <div class="swiper-slide" style="border: none">
+       
+        <div class="swiper-slide"  style="border: none">
 
-        <button  id="aaaa" name="aaaa" value="${fitM.REC_NO } "  style="width: 350px; height: 260px; border-radius: 12px;" >${fitM.REC_TITLE }</button>
+        <button id="aaaa" name="aaaa" value="${fitM.REC_NO } "  style="width: 350px; height: 260px; border-radius: 12px;   "  >
+        
+        <div style=" font-weight: bold;   font-size: 30px;">${fitM.REC_TITLE }</div>
+        </button>
         <button  id="dddd" name="dddd" value="${fitM.REC_CATEGORY } "style="width: 350px; height: 260px; display: none;" ></button>
 
 </div>        
@@ -166,7 +171,7 @@
 
 
 </section>
-
+</body>
 
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
@@ -254,6 +259,26 @@ var swiper = new Swiper('.swiper-container', {
 
    
      
-     
+  <!--    <script>
+   
+	
+	var imgArray = new Array();
+	imgArray[0] = "C:\git\FinalProject\JOBNOM\src\main\webapp\resources\image\Hire\check.png";
+	imgArray[1] = "C://git//FinalProject//JOBNOM//src//main//webapp//resources//image//Hire//job.png";
+	imgArray[2] = "C:/git/FinalProject/JOBNOM/src/main/webapp/resources/image/Hire/kakao.png";
+	imgArray[3] = "C:/git/FinalProject/JOBNOM/src/main/webapp/resources/image/Hire/ll.png"; 
+	
+	function showImage(){
+		var imgNum = Math.round(Math.random()*3);
+	
+		var objImg = document.getElementById("slide");
+		objImg.src = imgArray[imgNum];
+		for(int i=0; i<imgArray.size(); i++){
+			var aa = 
+		}
+	
+	}
+	
+</script> -->
 
 
