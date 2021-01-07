@@ -27,6 +27,7 @@ import com.project.jobnom.common.pagebar.PageBarFactory;
 import com.project.jobnom.enterprise.model.vo.Enterprise;
 import com.project.jobnom.openapi.model.vo.openApiVo;
 import com.project.jobnom.search.model.service.SearchService;
+import com.project.jobnom.search.page.SearchPageBar;
 
 @Controller
 public class SearchController {
@@ -103,7 +104,7 @@ public class SearchController {
 		
 		mv.addObject("entFollow",service.entFollowCheck()); // 기업 팔로잉
 		System.out.println("이거 값 나오나??????"+mv.addObject("entFollow",service.entFollowCheck()));
-		mv.addObject("pageBar", PageBarFactory.getPageBar(totalData, cPage, numPerpage, null,"searchResultMore.do"));
+		mv.addObject("pageBar", SearchPageBar.getPageBar(totalData, cPage, numPerpage, "searchResultMore.do"));
 		mv.addObject("totalData", totalData);
 		mv.addObject("list", list);
 		mv.setViewName("search/searchResultMoreList");

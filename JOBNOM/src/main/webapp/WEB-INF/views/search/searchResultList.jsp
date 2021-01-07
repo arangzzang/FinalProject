@@ -100,9 +100,18 @@
 								</div>
 								<!-- 평점 , 연봉 보여주기 -->
 								<div class="data_set">
-									<a class="rate" href="#"> <em>${list2.AVG }</em>
-									</a> <span class="bar_txt">|</span> <a class="salary" href="#">
-										급여 <em>${list2.REC_SALARY }</em>
+									<a class="rate" href="${path }/enterprise/com_review.do?entNo=${list2.ENT_NO}"> 
+										<em>${list2.AVG }</em>
+									</a> 
+									<span class="bar_txt">|</span> 
+									<a class="salary" href="#"onclick="location.href = '${path }/enterprise/com_info.do?entNo=${list2.ENT_NO}&seq=${api[status.index].seq }'">
+										<c:if test="${list2.REC_SALARY eq '회사내규에 따름'}">
+											<em>회사내규에 따름</em>
+										</c:if>
+										<c:if test="${list2.REC_SALARY ne '회사내규에 따름'}">
+											연봉 
+											<em><fmt:formatNumber value="${list2.REC_SALARY }"  pattern="#,###"/>원</em>
+										</c:if>
 									</a> <span class="bar_txt">|</span>
 								</div>
 							</div>

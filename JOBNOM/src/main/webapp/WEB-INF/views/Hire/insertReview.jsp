@@ -250,20 +250,16 @@
                 $(".maininfo-parent").html(data);
                
              
-
             }
         });
    });
    
   
   
-
-
                                         
             
             //https://aramk.tistory.com/35 keyUP 참고사이트
             //기업명 누르면 아래로 기업 리스트 뜨게 해줄떄 필요함
-
 //          이건 나중에 별클릭하고 확인눌리면 값이 DB에 저장되게 해줌꺼임
 //             $(".star").on("click",e=>{
 //                 let grade=$(e.target).attr("id");
@@ -275,7 +271,6 @@
    }
    
   
-
 </script>
 
 <script>
@@ -300,7 +295,6 @@ $('.executiveStar-box div').click(function(){
    $(this).parent().children("div").removeClass("on");
    $(this).addClass("on").prevAll("div").addClass("on");
 });
-
 //              $(".GradeboxSubmit").click(function(){
 //                  alert("제출완료");
 //              });
@@ -309,13 +303,11 @@ $(".companyStar").on("click",e=>{
    console.log(grade+"1번");
    $(".companyGrade").val(grade);
 });
-
 $(".blessedStar").on("click",e=>{
    let grade=$(e.target).attr("id");
    console.log(grade+"2번");
    $(".blessedGrade").val(grade);
 });
-
 $(".promotionStar").on("click",e=>{
    let grade=$(e.target).attr("id");
    console.log(grade+"3번");
@@ -356,7 +348,6 @@ function fn_review(){
       return true;}   
    
 };
-
 </script>
  <script>
 /* function fn_review(){
@@ -386,9 +377,7 @@ $(document).ready(function(){
 
  
  <script>
-
 $("#reviewName").keyup(e=>{
-
 	
 	$.ajax({
 		url:"${path}/Hire/reviewSearch.do",
@@ -429,7 +418,6 @@ $("#reviewName").keyup(e=>{
 			$("#locationData").html("");
 			   for(let i=0;i<keys.length;i++){
 		            $("#locationData").append($("<option>").html(keys[i]));
-
 		}
 	}
 		
@@ -465,8 +453,6 @@ $("#reviewName").keyup(e=>{
                }
            });
       }); */
-
-
 </script>
 
 <script>
@@ -491,7 +477,6 @@ $('.executiveStar-box div').click(function(){
    $(this).parent().children("div").removeClass("on");
    $(this).addClass("on").prevAll("div").addClass("on");
 });
-
 //              $(".GradeboxSubmit").click(function(){
 //                  alert("제출완료");
 //              });
@@ -500,13 +485,11 @@ $(".companyStar").on("click",e=>{
    console.log(grade+"1번");
    $(".companyGrade").val(grade);
 });
-
 $(".blessedStar").on("click",e=>{
    let grade=$(e.target).attr("id");
    console.log(grade+"2번");
    $(".blessedGrade").val(grade);
 });
-
 $(".promotionStar").on("click",e=>{
    let grade=$(e.target).attr("id");
    console.log(grade+"3번");

@@ -127,7 +127,7 @@ public class HireController {
 		
 		
 		
-		
+
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		String ent_no = request.getParameter("ent_no"); //기업번호
 		paramMap.put("ent_no", ent_no);
@@ -149,7 +149,9 @@ public class HireController {
 		int result = service.insertReview(paramMap);
 		System.out.println("========================================================");
 		
+
 		return "member/mypage/mypageFirst";
+
 		
 		
 	}
