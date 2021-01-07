@@ -74,8 +74,17 @@
 	</div>
 	  
 	 
-	  
-	  
+	  <script>
+	  function fn_paging(cPage){
+		$.ajax({
+			url:"${path}/member/supporting",
+			data:{cPage:cPage,memNo:${commonLogin.memNo}},
+			success:data => {
+				$('.maininfo-parent').html(data);
+			}
+		})
+		};
+	  </script>
 	  
 	  
 	  

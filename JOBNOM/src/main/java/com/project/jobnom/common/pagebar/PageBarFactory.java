@@ -417,6 +417,7 @@ public static String getPageBar7(int totalDataSu, int cPage, int numPerpage, Str
 	pageBar += "}";
 
 	pageBar += "</script>";
+
 	return pageBar;
 }
 
