@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.project.jobnom.resume.model.vo.Education;
 import com.project.jobnom.resume.model.vo.Resume;
 import com.project.jobnom.resume.model.vo.Skill;
 
@@ -35,6 +36,11 @@ public class ResumeDaoImpl implements ResumeDao {
 	@Override
 	public int categoryUpdate(Map resMap, SqlSession session) {
 		return session.update("resume.categoryUpdate", resMap);
+	}
+
+	@Override
+	public int insertEducation(Education edu, SqlSession session) {
+		return session.insert("resume.insertEducation",edu);
 	}
 	
 	

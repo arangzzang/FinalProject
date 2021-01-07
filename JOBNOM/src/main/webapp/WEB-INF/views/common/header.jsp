@@ -32,6 +32,9 @@
 <link rel="stylesheet" href="${path }/resources/css/footer.css" />
 </head>
 <body>
+<%-- 	<c:if test="${not empty cookie.loginCheck}"> --%>
+<%-- 		<c:set var="checked" value="checked" /> --%>
+<%-- 	</c:if> --%>
 
 	<div id="container">
 		<header>

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.project.jobnom.resume.model.dao.ResumeDao;
+import com.project.jobnom.resume.model.vo.Education;
 import com.project.jobnom.resume.model.vo.Resume;
 import com.project.jobnom.resume.model.vo.Skill;
 
@@ -41,6 +42,10 @@ public class ResumeServiceImpl implements ResumeService {
 	@Override
 	public int categoryUpdate(Map resMap) {
 		return dao.categoryUpdate(resMap,session);
+	}
+	@Override
+	public int insertEducation(Education edu) {
+		return dao.insertEducation(edu, session);
 	}
 	
 	

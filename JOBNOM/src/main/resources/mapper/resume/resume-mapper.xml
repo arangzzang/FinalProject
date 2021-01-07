@@ -66,18 +66,18 @@
 		select * from skill where skill_name like '%'||#{skillName}||'%'
 	</select>
 	<!-- 이력서 만들기 -->
-	<insert id="insertResume">
+	<insert id="insertResume" parameterType="res">
 		insert into resume 
 					values(
-					seq_res_no.nextval,
-					#{resName},
-					#{resPhone},
-					#{resGender},
-					#{resBirth},
-					#{resCar},
-					#{resContent},
-					#{resOpenCheck},
-					#{memNo}
+						seq_res_no.nextval,
+						#{resName},
+						#{resPhone},
+						#{resGender},
+						#{resBirth},
+						#{resCar},
+						#{resContent},
+						#{resOpenCheck},
+						#{memNo}
 					)
 	</insert>
 	<update id="categoryUpdate" parameterType="map">
@@ -100,6 +100,19 @@
 					res_opencheck=#{resOpenCheck}
 		where mem_no=#{memNo}
 	</update>
+	<insert id="insertEducation" parameterType="edu">
+		insert into education
+					values(
+						seq_edu_no.nextval,
+						#{resNo},
+						#{eduName},
+						#{eduMajor},
+						#{eduAttend},
+						#{eduTerm},
+						#{eduTermend},
+						#{eduContents}
+					)
+	</insert>
 </mapper>
 
 

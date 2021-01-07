@@ -91,8 +91,6 @@
 		$(".time").hide();
 		$(".email_check").hide();
 		$(".change_certification").hide();
-		
-		
 		$(".changeEmailBtn").click(e=>{
 			let re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 			let changeMail = document.getElementById("uname").value;

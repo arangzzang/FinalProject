@@ -1,5 +1,7 @@
 package com.project.jobnom.resume.controller;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.project.jobnom.resume.model.service.ResumeService;
+import com.project.jobnom.resume.model.vo.Education;
 import com.project.jobnom.resume.model.vo.Resume;
 import com.project.jobnom.resume.model.vo.Skill;
 
@@ -35,7 +38,7 @@ public class ResumeController {
 	}
 	//이력서
 	@RequestMapping("/resume/insertResume")
-	public ModelAndView insertResume(Resume res, int category2,String skill, ModelAndView mv,HttpSession session) {
+	public ModelAndView insertResume(Resume res, Education edu, int category2,String skill, ModelAndView mv,HttpSession session) {
 		int result=0;
 		Map resMap = new HashMap();
 		Resume selRes=service.selectResume(res.getMemNo());
@@ -44,6 +47,8 @@ public class ResumeController {
 		if(selRes==null) {
 			//없으면
 			result=service.insertResume(res);
+			
+			if(result>0) service.insertEducation(edu);
 			
 			resMap.put("res", res);
 			resMap.put("cate2", category2);
@@ -56,7 +61,12 @@ public class ResumeController {
 		}else {
 			//있으면
 			result=service.updateResume(res);
-			
+			System.out.println(edu.getEduTerm());
+//			Date eduTermend = edu.getEduTermend();
+			SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM");
+
+			if(result>0) service.insertEducation(edu);
+			System.out.println(edu);
 			resMap.put("res", res);
 			resMap.put("cate2", category2);
 			System.out.println(resMap);

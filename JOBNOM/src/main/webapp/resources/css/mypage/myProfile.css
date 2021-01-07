@@ -1,5 +1,7 @@
 @charset "UTF-8";
-	
+		.term{
+			width: 140px;
+		}
 		img{
             width: 100px;
             height: 100px;

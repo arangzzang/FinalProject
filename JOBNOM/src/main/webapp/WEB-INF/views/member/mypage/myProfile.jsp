@@ -16,6 +16,7 @@
 <link href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="${path }/resources/css/MonthPicker.css"/>
 <script src="${path}/resources/js/month/MonthPicker.js"></script>
+<!-- <script src="/front/js/jquery.mtz.monthPicker.js"></script> -->
 
 
 
@@ -69,12 +70,8 @@
 								<input type="checkbox" value="F" class="gender" ${res.resGender=='F'?"checked":"" } name="resGender" onclick="genderCheck(this);" aria-required="false" id="memGender-F" >
 							</div>
 							<div class="col-md-6 b">
-<%-- 								<c:choose> --%>
-<%-- 									<c:when test="${!empty res.resBirth }"> --%>
-										<span class="span1">출생연도</span>
-										<select class="yrselectdesc" name="resBirth"></select>
-<%-- 									</c:when> --%>
-<%-- 								</c:choose> --%>
+								<span class="span1">출생연도</span>
+								<select class="yrselectdesc" name="resBirth"></select>
 							</div>
 						</div>
 						<div class="row">
@@ -117,10 +114,10 @@
 										<option value="10" ${res.resCar==10?"selected":"" }>10년이상</option>
 									</select>
 									<label for="skill" class="span2">업무 및 스킬</label>
-									<input type="text" class="form-control inp" name="skill"  id="skill" placeholder="(예시) 영업기획, 디지털마케팅,UI디자인(업무와 관련된 자격증 및 기술명 포함)" required>
-									<ul class="keyword">
+									<input type="text" class="form-control inp" name="skill" list="keyword" id="skill" placeholder="(예시) 영업기획, 디지털마케팅,UI디자인(업무와 관련된 자격증 및 기술명 포함)" required>
+									<datalist id="keyword">
 										
-									</ul>
+									</datalist>	
 								</div>
 							</div>
 						</div>
@@ -145,20 +142,20 @@
 						<!-- 학력사항 -->
 						<div class="edu_parent">
 							<div class="row edu">
-								<div class="col-12 col-md-12 nth">
+								<div class="col-12 col-md-12 nth edu_doll" id="edu_doll">
 									<span class="span2 pd">학력사항</span>
 									<div id="element1">
 										<div class="col-4 col-md-4" id="element2">
 											<div class="dateElement">
-												<input type="text" class="edu_term inp" name="eduTerm" id='edu_term' placeholder="년/월">&nbsp;~&nbsp;
-												<input type="text" class="edu_termend inp" name="eduTermend" id='edu_termend' placeholder="년/월">
+												<input type="text" class="edu_term inp term" name="eduTerm" id='edu_term' placeholder="년/월">&nbsp;~&nbsp;
+												<input type="text" class="edu_termend inp term" name="eduTermend" id='edu_termend' placeholder="년/월">
 											</div>
 											<label for="goal">졸업</label>
-											<input type="checkbox" name="eduGoal" id="goal">
+											<input type="checkbox" name="eduAttend" class="edu_attend" onclick="eduCheck(this)" id="goal">
 											<label for="end">중퇴</label>
-											<input type="checkbox" name="eduEnd" id="end">
+											<input type="checkbox" name="eduAttend" class="edu_attend" onclick="eduCheck(this)" id="end">
 											<label for="ing">재학중</label>
-											<input type="checkbox" name="eduIng" id="ing">
+											<input type="checkbox" name="eduAttend" class="edu_attend" onclick="eduCheck(this)" id="ing">
 										</div>
 										<div class="col-8 col-md-8">
 											<div>
@@ -178,7 +175,7 @@
 												<input type="text" name="eduMajor" class="col-md-12 inp" placeholder="전공 및 학위">
 												<textarea name="eduContents"  cols="30" class="bg_color form-control col-md-12 inp" placeholder="학력사항 내용" rows="10"></textarea>
 											</div>
-											<button type="button" class="float junk"><i>휴지통아이콘</i></button>
+											<button type="button" onclick='remove(event);' class="float junk"><i>휴지통아이콘</i></button>
 										</div>
 									</div>
 								</div>
@@ -195,8 +192,8 @@
 									<div id="element1">
 										<div class="col-4 col-md-4">
 											<div class="dateElement">
-												<input type="text" class="awa_term inp" name='awaTerm' id='awa_term' placeholder="년/월">&nbsp;~&nbsp;
-												<input type="text" class="awa_termend inp" name='awaTermend' id='awa_termend' placeholder="년/월">
+												<input type="text" class="awa_term inp term" name='awaTerm' id='awa_term' placeholder="년/월">&nbsp;~&nbsp;
+												<input type="text" class="awa_termend inp term" name='awaTermend' id='awa_termend' placeholder="년/월">
 											</div>
 											<label for="prize">수상</label>
 											<input type="checkbox" name='awaYn' id="prize">
@@ -223,13 +220,13 @@
 									<div id="element1">
 										<div class="col-4 col-md-4">
 											<div class="dateElement">
-												<input type="text" class="car_term" name='carTerm' id='car_term' placeholder="년/월">&nbsp;~&nbsp;
-												<input type="text" class="car_termend" name='carTermend' id='car_termend' placeholder="년/월">
+												<input type="text" class="car_term term" name='carTerm' id='car_term' placeholder="년/월">&nbsp;~&nbsp;
+												<input type="text" class="car_termend term" name='carTermend' id='car_termend' placeholder="년/월">
 											</div>
 											<label for="Incumbent">재직중</label>
-											<input type="checkbox" name='carAttend' id="Incumbent">
+											<input type="checkbox" name='carAttend' class="car_attend" onclick="carCheck(this)" id="Incumbent">
 											<label for="Leaves">퇴사</label>
-											<input type="checkbox" name='carAttend' id="Leaves">
+											<input type="checkbox" name='carAttend' class="car_attend" onclick="carCheck(this)" id="Leaves">
 										</div>
 										<div class=" col-8 col-md-8">
 											<input type="text" name="carName" class="col-md-12 inp" placeholder="기업명">
@@ -335,20 +332,14 @@
 			url:"${path}/resume/mySkill",
 			data:{skill:skill},
 			success:data=>{
-				$(".keyword").html("");
-				
-				if(skill==""){
-					$(".keyword").html("");
-					$(".keyword").css("border","0");
-				}else{
-					$.each(data,function(i,v){
-						$(".keyword").append("<li class='keys' value="+v.skillNo+"><a class='values'>"+v.skillName+"</a></li>");
-						$(".keyword").css("border","1px solid");
-					})
-				}
+				$("#keyword").html("");
+				$.each(data,function(i,v){
+					$("#keyword").append("<option class='keys' value="+v.skillName+"></option>");
+					$("#keyword").css("border","1px solid");
+				});
 			}
-		})
-	})
+		});
+	});
 	$("#skill").blur(e=>{
 		$(".keyword").html("");
 		$(".keyword").css("border","0");
@@ -367,28 +358,26 @@
 			console.log(birth_index);
 		})
 		let user_birth="${res.resBirth}";
-		if(user_birth.val()!=""){
-			$(".yrselectdesc").val(user_birth);
-		}else {
-			return;
-		}
+		$(".yrselectdesc").val(user_birth);
 	});
-
+	//month-picker
 	$(document).ready(function(){
 		var option={
-				startYear:1940,
-				finalYear:2040,
-				selectedYear:2020,
-				Button: "<i class='far fa-calendar-alt calendar' style='cursor: pointer'></i>",
-				monthName:['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월']
+			IsRTL: true,
+			AltFormat: "yyyy-mm", 
+			year : "년",
+			backTo:"전년도",
+			pattern: 'yyyy-mm',
+			Button: "<i class='far fa-calendar-alt calendar' style='cursor: pointer'></i>",
+			months: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월']
 		};
 		$(".edu_term").MonthPicker(option);
-		$(".edu_term").bind('click',function(){
-			$(".edu_term").monthpicker('show');
-		});
-// 		$(".edu_term").monthpicker().bind('monthpicker-click-month',function(e,month){
-// 			alert("선택한월 :"+month)
-// 		})
+		$(".edu_termend").MonthPicker(option);
+		$(".awa_term").MonthPicker(option);
+		$(".awa_termend").MonthPicker(option);
+		$(".car_term").MonthPicker(option);
+		$(".car_termend").MonthPicker(option);
+		
 	});
 
 	//check선택시 다른 checkbox비활성화
@@ -397,6 +386,14 @@
 		for(var i=0; i<gender.length; i++){
 			if(gender[i] != chk){
 				gender[i].checked = false;
+			}
+		}
+	}
+	function eduCheck(chk){
+		var open = document.getElementsByClassName("edu_attend");
+		for(var i=0; i<open.length; i++){
+			if(open[i] != chk){
+				open[i].checked = false;
 			}
 		}
 	}
@@ -496,7 +493,7 @@
 	
 	//학력사항추가
 	$(".eduBtn").click(e=>{
-		$(".edu_parent").append(edu)
+		$("#edu_doll").clone().appendTo(".edu")
 	})
 	//활동및수상내역추가
 	$(".awaBtn").click(e=>{
@@ -515,14 +512,14 @@
 		$(".pofol_parent").append(pofol);
 	})
 	//이벤트로 생성후 요소삭제 
-	function remove(e){
-		let tresh=$(e.target).parents(".edu");
+	function remove(e){//onclick='remove(event);'
+		let tresh=$(e.target).parents("#edu_doll");
 		console.log($(e.target));
 		tresh.remove();
 	}
-	//요소 삭제(미완)
+	//요소 삭제
 	$(".junk").click(e=>{
-		let tresh=$(e.target).parents(".edu");
+		let tresh=$(e.target).parents(".edu_doll");
 		console.log($(e.target));
 		tresh.detach();
 	})
