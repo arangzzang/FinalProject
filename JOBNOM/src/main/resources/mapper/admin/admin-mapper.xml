@@ -32,6 +32,23 @@
 		<result column="rec_other" property="rec_other"/>
 		<result column="rec_category" property="rec_category"/>
 	</resultMap>	
+	<resultMap type="com.project.jobnom.Hire.model.vo.Review" id="revMap">
+		<result column="review_no" property="review_no"/>
+		<result column="rec_no" property="rec_no"/>
+		<result column="ent_no" property="ent_no"/>
+		<result column="mem_no" property="mem_no"/>
+		<result column="review_title" property="review_title"/>
+		<result column="review_contents" property="review_contents"/>
+		<result column="res_name" property="review_writer"/>
+		<result column="review_satisfaction" property="review_satisfaction"/>
+		<result column="review_welfare" property="review_welfare"/>
+		<result column="review_promotion" property="review_promotion"/>
+		<result column="review_executive" property="review_executive"/>
+		<result column="re_enroll_date" property="re_enroll_date"/>
+		<result column="rec_title" property="rec_title"/>
+		<result column="ent_name" property="ent_name"/>
+		<result column="mem_check" property="mem_check"/>
+	</resultMap>
 
 	<select id="memList" resultMap="memMap">
 		SELECT * FROM MEMBER LEFT JOIN
@@ -50,18 +67,32 @@
 		DELETE FROM MEMBER WHERE MEM_NO=#{memno}
 	</delete>
 
-	<select id="revList" resultType="com.project.jobnom.Hire.model.vo.Review">
+	<select id="revList" resultMap="revMap">
 		SELECT * FROM REVIEW R LEFT JOIN ENTERPRISE E ON R.ENT_NO=E.ENT_NO 
 		    LEFT JOIN RECRUITMENT REC ON E.ENT_NO=REC.ENT_NO
-		    LEFT JOIN MEMBER ON R.MEM_NO=MEMBER.MEM_NO
+		    LEFT JOIN RESUME ON R.MEM_NO=RESUME.MEM_NO ORDER BY RE_ENROLL_DATE
 	
 	</select>
 
-	<select id="adList" resultMap="recMap">
+	<select id="adList" resultType="com.project.jobnom.admin.model.vo.Recruitment">
 		SELECT * FROM RECRUITMENT
 	</select>
 
+	<update id="censor">
+		UPDATE REVIEW SET REVIEW_CONTENTS='부적절한 표현으로 인해 검열되었습니다', REVIEW_TITLE='부적절한 표현으로 인해 검열되었습니다' WHERE REVIEW_NO=#{revno}
+	</update>
 
+	<delete id="adDelete">
+		DELETE FROM RECRUITMENT WHERE REC_NO=#{recno}
+	</delete>
 
-
+	<select id="memNum" resultType="int">
+		SELECT MAX(ROWNUM) FROM MEMBER
+	</select>
+		<select id="revNum" resultType="int">
+		SELECT MAX(ROWNUM) FROM REVIEW
+	</select>
+		<select id="adNum" resultType="int">
+		SELECT MAX(ROWNUM) FROM RECRUITMENT
+	</select>
 </mapper>

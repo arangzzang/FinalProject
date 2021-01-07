@@ -6,10 +6,10 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.project.jobnom.admin.model.vo.Recruitment;
 import com.project.jobnom.Hire.model.vo.Review;
 import com.project.jobnom.admin.model.dao.AdminDao;
 import com.project.jobnom.admin.model.vo.Member;
-import com.project.jobnom.enterprise.model.vo.ApplyAd;
 
 @Service
 public class AdminServiceImpl implements AdminService{
@@ -20,9 +20,9 @@ public class AdminServiceImpl implements AdminService{
 	SqlSession session;
 	
 	@Override
-	public List<Member> memList() {
+	public List<Member> memList(int cPage, int numPerpage) {
 		// TODO Auto-generated method stub
-		return dao.memList(session);
+		return dao.memList(session, cPage, numPerpage);
 	}
 
 	@Override
@@ -44,15 +44,45 @@ public class AdminServiceImpl implements AdminService{
 	}
 
 	@Override
-	public List<Review> revList() {
+	public List<Review> revList(int cPage, int numPerpage) {
 		// TODO Auto-generated method stub
-		return dao.revList(session);
+		return dao.revList(session, cPage, numPerpage);
 	}
 
 	@Override
-	public List<ApplyAd> adList() {
+	public List<Recruitment> adList(int cPage, int numPerpage) {
 		// TODO Auto-generated method stub
-		return dao.adList(session);
+		return dao.adList(session, cPage, numPerpage);
+	}
+
+	@Override
+	public int censor(int revno) {
+		// TODO Auto-generated method stub
+		return dao.censor(session, revno);
+	}
+
+	@Override
+	public int adDelete(String recno) {
+		// TODO Auto-generated method stub
+		return dao.adDelete(session, recno);
+	}
+
+	@Override
+	public int memNum() {
+		// TODO Auto-generated method stub
+		return dao.memNum(session);
+	}
+
+	@Override
+	public int revNum() {
+		// TODO Auto-generated method stub
+		return dao.revNum(session);
+	}
+
+	@Override
+	public int adNum() {
+		// TODO Auto-generated method stub
+		return dao.adNum(session);
 	}
 	
 	

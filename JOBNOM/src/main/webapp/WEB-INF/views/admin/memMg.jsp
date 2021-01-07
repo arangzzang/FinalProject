@@ -10,6 +10,9 @@
 <jsp:include page="/WEB-INF/views/common/header.jsp">
 	<jsp:param name="title" value=" " />
 </jsp:include>
+<jsp:include page="/WEB-INF/views/admin/adminCommon.jsp">
+	<jsp:param name="title" value=""/>
+</jsp:include>
 	<div class="container">
 		<table class="table table-striped table-hover"  style="text-align:center;">
 			<thead>
@@ -63,7 +66,9 @@
 		<form action="${path }/memDelete" method="post" id="memDel">
 			<input type="text" style="display:none;" name="dummy"id="dummy">
 		</form>
-		
+		<div id="pageBar">
+		${pageBar }
+		</div>
 	</div>
 
 <script>
