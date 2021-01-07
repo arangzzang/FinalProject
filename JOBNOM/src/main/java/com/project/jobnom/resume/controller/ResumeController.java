@@ -35,7 +35,7 @@ public class ResumeController {
 	}
 	//이력서
 	@RequestMapping("/resume/insertResume")
-	public ModelAndView insertResume(Resume res, int category2, ModelAndView mv,HttpSession session) {
+	public ModelAndView insertResume(Resume res, int category2,String skill, ModelAndView mv,HttpSession session) {
 		int result=0;
 		Map resMap = new HashMap();
 		Resume selRes=service.selectResume(res.getMemNo());

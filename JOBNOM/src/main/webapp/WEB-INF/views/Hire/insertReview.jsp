@@ -77,103 +77,13 @@
                        <div id="popup">
                            <div class="popupAll">
                                    <div id="popmenu">
-                                       <form id="popFrm" action="${path }/Hire/insertReview2.do" method="post"  onsubmit="return fn_review();">
+                                       <form  id="popFrm" action="${path }/Hire/insertReview2.do" method="post">
                                        <div class="popmenuInsertAll">
                                            <div class="popmenuInsert">기업 리뷰 작성</div>
                                         <!--    <button class="popmenuInsertClose"><i class="far fa-window-close"></i></button> -->
                                        </div>
                                        <div class="popmenuDetail">
-<!--                                               입력하신 모든 정보는 익명으로 처리되니 걱정마세요.</div> -->
-<!--                                            <div class="popmenuEnterprise"> -->
-<!--                                                <div>기업명</div> -->
-<!--                                                <input class="popmenuEnterpriseName" id="reviewName" name="review_name" type="text" placeholder="기업명" list="locationData"> -->
-<!--                                               <datalist id="locationData"></datalist> -->
-<!--                                            </div> -->
-<!--                                            <div class="popmenuTital"> -->
-<!--                                                <div>제목</div> -->
-<!--                                                <input class="popmenuTitalName" type="text" name="review_title" placeholder="제목"> -->
-<!--                                            </div> -->
-<!--                                            <div class="popmenuContents"> -->
-<!--                                                <div>내용</div> -->
-<!--                                                <textarea class="popmenuContentsName"   name="review_contents" cols="47" rows="5" placeholder="내용" style="resize: none;"></textarea> -->
-<!--                                            </div> -->
-   
-<!--                                            <div class="companyGradebox">  -->
-<!--                                                <div class="companyStar-box"> -->
-<!--                                                    <div class="companyTitle">사내만족도 평점</div> -->
-<!--                                                    <div class="companyStar " id="1"></div> -->
-                           
-<!--                                                    <div class="companyStar " id="2"></div>  -->
-                           
-<!--                                                    <div class="companyStar " id="3"></div>  -->
-                           
-<!--                                                    <div class="companyStar " id="4"></div>  -->
-                           
-<!--                                                    <div class="companyStar " id="5"></div>  -->
-<!--                                                    <input type="hidden" name="review_satisfaction" class="companyGrade"> -->
-<!--                                                    <input type="hidden" name="memberNo" value=""> -->
-<!--                                                    나중에 스프링에서 value에 다가 로그인한 회원 번호 넣어주기 -->
-<!--                                                    나중에 스프링가서 name 이랑 class 이름 다 바꿔주자  -->
-<!--                                                </div> -->
-<!--                                            </div> -->
-                                                     
-<!--                                            <div class="blessedGradebox">  -->
-<!--                                                <div class="blessedStar-box"> -->
-<!--                                                    <div class="blessedTitle">복지 및 급여평점</div> -->
-<!--                                                    <div class="blessedStar " id="1"></div> -->
-                           
-<!--                                                    <div class="blessedStar " id="2"></div>  -->
-                           
-<!--                                                    <div class="blessedStar " id="3"></div>  -->
-                           
-<!--                                                    <div class="blessedStar " id="4"></div>  -->
-                           
-<!--                                                    <div class="blessedStar " id="5"></div>  -->
-<!--                                                    <input type="hidden" name="review_welfare" class="blessedGrade"> -->
-<!--                                                    <input type="hidden" name="memberNo" value=""> -->
-<!--                                                    나중에 스프링에서 value에 다가 로그인한 회원 번호 넣어주기 -->
-<!--                                                </div> -->
-<!--                                            </div> -->
-                                                     
-<!--                                            <div class="promotionGradebox">  -->
-<!--                                                <div class="promotionStar-box"> -->
-<!--                                                    <div class="promotionTitle">승진 기회 및 가능성 평점</div> -->
-<!--                                                    <div class="promotionStar " id="1"></div> -->
-                                                
-<!--                                                    <div class="promotionStar " id="2"></div>  -->
-                           
-<!--                                                    <div class="promotionStar " id="3"></div>  -->
-                           
-<!--                                                    <div class="promotionStar " id="4"></div>  -->
-                           
-<!--                                                    <div class="promotionStar " id="5"></div>  -->
-<!--                                                    <input type="hidden" name="review_promotion" class="promotionGrade"> -->
-<!--                                                    <input type="hidden" name="memberNo" value=""> -->
-<!--                                                    나중에 스프링에서 value에 다가 로그인한 회원 번호 넣어주기 -->
-<!--                                                </div> -->
-<!--                                            </div> -->
-<!--                                            <div class="executiveGradebox">  -->
-<!--                                                <div class="executiveStar-box"> -->
-<!--                                                    <div class="executiveTitle">경영진 평점</div> -->
-<!--                                                    <div class="executiveStar " id="1" ></div> -->
-                           
-<!--                                                    <div class="executiveStar " id="2"></div>  -->
-                           
-<!--                                                    <div class="executiveStar " id="3"></div>  -->
-                           
-<!--                                                    <div class="executiveStar " id="4"></div>  -->
-                           
-<!--                                                    <div class="executiveStar " id="5"></div>  -->
-<!--                                                    <input type="hidden" name="review_executive" class="executiveGrade"> -->
-<!--                                                    <input type="hidden" name="memberNo" value=""> -->
-<!--                                                    나중에 스프링에서 value에 다가 로그인한 회원 번호 넣어주기 -->
-<!--                                                </div> -->
-<!--                                            </div> -->
-<!--                                           <div class="submitByttonBox"> -->
-<!--                                                <input class="GradeboxSubmit" type="submit" value="제출하기" onclick="fn_return();"  >  -->
-<!--                                                 <input class="popmenuInsertClose" type="button" value="닫기" >  -->
-<!--                                           </div> -->
-<!--                                        </form> -->
+
                                               		입력하신 모든 정보는 익명으로 처리되니 걱정마세요.</div>
                                            <div class="popmenuEnterprise">
                                                <div>기업명</div>
@@ -191,7 +101,7 @@
                                        
                                            <div class="popmenuTital">
                                                <div>제목</div>
-                                               <input type="hidden" name="mem_no" value="${commonLogin.memNo}">
+                                               <input class="mem_no" type="hidden" name="mem_no" value="${commonLogin.memNo}">
                                                <input class="popmenuTitalName" type="text" name="review_title" placeholder="제목">
                                            </div>
                                            <div class="popmenuContents">
@@ -211,7 +121,7 @@
                                                    <div class="companyStar " id="4"></div> 
                            
                                                    <div class="companyStar " id="5"></div> 
-                                                   <input type="hidden" name="review_satisfaction" class="companyGrade">
+                                                   <input type="hidden"  name="review_satisfaction" class="companyGrade">
                                                    <input type="hidden" name="memberNo" value="">
                                                    <!-- 나중에 스프링에서 value에 다가 로그인한 회원 번호 넣어주기 -->
                                                    <!-- 나중에 스프링가서 name 이랑 class 이름 다 바꿔주자  -->
@@ -271,7 +181,7 @@
                                                </div>
                                            </div>
                                           <div class="submitByttonBox">
-                                               <input class="GradeboxSubmit" type="submit" value="제출하기" onclick="fn_return();"  > 
+                                               <input class="GradeboxSubmit" type="submit" value="제출하기" onclick="return fn_review();"  > 
                                                 <input class="popmenuInsertClose" type="button" value="닫기" > 
                                           </div>
                               </form> 
@@ -293,6 +203,9 @@
                     </div><!-- class= a -->
                 </div>
             </div>
+            <c:forEach items="${mem }" var="m">
+            <input type="hidden" name="test6" class="entNames" value="${m.ENT_NAME }">
+            </c:forEach>
         <!-- 이건 리뷰 작성하기 누르면 팝업 뜨게 하는거 -->
       <%--   <div class="ee"></div>
 <div class="ss" style="display: none"> 
@@ -337,20 +250,16 @@
                 $(".maininfo-parent").html(data);
                
              
-
             }
         });
    });
    
   
   
-
-
                                         
             
             //https://aramk.tistory.com/35 keyUP 참고사이트
             //기업명 누르면 아래로 기업 리스트 뜨게 해줄떄 필요함
-
 //          이건 나중에 별클릭하고 확인눌리면 값이 DB에 저장되게 해줌꺼임
 //             $(".star").on("click",e=>{
 //                 let grade=$(e.target).attr("id");
@@ -362,7 +271,6 @@
    }
    
   
-
 </script>
 
 <script>
@@ -387,7 +295,6 @@ $('.executiveStar-box div').click(function(){
    $(this).parent().children("div").removeClass("on");
    $(this).addClass("on").prevAll("div").addClass("on");
 });
-
 //              $(".GradeboxSubmit").click(function(){
 //                  alert("제출완료");
 //              });
@@ -396,13 +303,11 @@ $(".companyStar").on("click",e=>{
    console.log(grade+"1번");
    $(".companyGrade").val(grade);
 });
-
 $(".blessedStar").on("click",e=>{
    let grade=$(e.target).attr("id");
    console.log(grade+"2번");
    $(".blessedGrade").val(grade);
 });
-
 $(".promotionStar").on("click",e=>{
    let grade=$(e.target).attr("id");
    console.log(grade+"3번");
@@ -416,12 +321,21 @@ $(".executiveStar").on("click",e=>{
 });
 </script>
 <script>
-
-
-
+console.log($('.entNames'));
 function fn_review(){
-	
-   if ($('input[name=review_name]').val()==="" ||
+	var name = $('input[name=review_name]').val();
+	var flag=false;
+	$('.entNames').each((i,v)=>{
+		if($(v).val()==name){
+			flag=true;
+		}
+	})
+	if(flag==false){
+		alert("해당기업이 존재하지 않습니다.");
+		   return false;
+	}
+	else if ($('input[name=review_name]').val()==="" ||
+		  
               $('input[name=review_title]').val()==="" ||
               $('textarea[name=review_contents]').val()==="" ||
           $('input[class=review_satisfaction]').val()==="" || 
@@ -430,10 +344,21 @@ function fn_review(){
                 $('input[class=review_executive]').val()==="") {
       alert('필수 항목들을 입력해주세요!');  
       return false;
-      }
+      }else{
+      return true;}   
+   
 };
-
 </script>
+ <script>
+/* function fn_review(){
+	var name = $('input[name=review_name]').val();
+	var name2 = $('input[name=test6]').val();
+	if(name != name2){
+		alert("해당기업이 존재하지 않습니다.");
+		   return false;
+	}
+	}; */
+</script> 
 <script>
 $(document).ready(function(){
     $(".reviewBtnInsert").click(function(){
@@ -452,9 +377,7 @@ $(document).ready(function(){
 
  
  <script>
-
 $("#reviewName").keyup(e=>{
-
 	
 	$.ajax({
 		url:"${path}/Hire/reviewSearch.do",
@@ -495,7 +418,6 @@ $("#reviewName").keyup(e=>{
 			$("#locationData").html("");
 			   for(let i=0;i<keys.length;i++){
 		            $("#locationData").append($("<option>").html(keys[i]));
-
 		}
 	}
 		
@@ -507,12 +429,22 @@ $("#reviewName").keyup(e=>{
 
 <script>
 //리뷰 등록하기
-$(".GradeboxSubmit").click(e=>{
-      var queryString = $("form[name=popFrm]").serialize() ;
+/* $(".GradeboxSubmit").click(e=>{
+   
          $.ajax({
                url:"${path}/Hire/insertReview2.do",         
                data:
-                  queryString
+               {
+            	   ent_no:$("#locationNumber").val(),
+            	   review_title:$(".popmenuTitalName").val(),
+            	   mem_no:$(".mem_no").val(),
+            	   review_contents:$(".popmenuContentsName").val(),
+            	   review_satisfaction:$(".companyGrade").val(),
+            	   review_welfare:$(".blessedGrade").val(),
+            	   review_promotion:$(".promotionGrade").val(),
+            	   review_executive:$(".executiveGrade").val(),
+            	   
+               }
                ,
                type:"post",
                success:data=>{
@@ -520,9 +452,7 @@ $(".GradeboxSubmit").click(e=>{
                   $(".with-parent").html(data);
                }
            });
-      });
-
-
+      }); */
 </script>
 
 <script>
@@ -547,7 +477,6 @@ $('.executiveStar-box div').click(function(){
    $(this).parent().children("div").removeClass("on");
    $(this).addClass("on").prevAll("div").addClass("on");
 });
-
 //              $(".GradeboxSubmit").click(function(){
 //                  alert("제출완료");
 //              });
@@ -556,13 +485,11 @@ $(".companyStar").on("click",e=>{
    console.log(grade+"1번");
    $(".companyGrade").val(grade);
 });
-
 $(".blessedStar").on("click",e=>{
    let grade=$(e.target).attr("id");
    console.log(grade+"2번");
    $(".blessedGrade").val(grade);
 });
-
 $(".promotionStar").on("click",e=>{
    let grade=$(e.target).attr("id");
    console.log(grade+"3번");

@@ -48,6 +48,7 @@ public class MemberController {
 	@RequestMapping("/member/selectJob")
 	@ResponseBody
 	public List<MemCategory2> selectBjo(int cateNo, Model m) throws IOException{
+		System.out.println(cateNo);
 		List<MemCategory2> list2 = service.selectCategoryList2(cateNo);
 		m.addAttribute("cate2",list2);
 		return list2;
@@ -221,7 +222,7 @@ public class MemberController {
 		m.addAttribute("support",support);
 		m.addAttribute("totalDataSu",totalDataSu);
 		
-		m.addAttribute("pageBar", PageBarFactory.getPageBar3(totalDataSu, cPage, numPerpage, memNo, "supporting"));
+		m.addAttribute("pageBar", PageBarFactory.getPageBar7(totalDataSu, cPage, numPerpage, memNo, "supporting"));
 		
 		 return "/member/mypage/activityHistory/supportingCompany";
 	}

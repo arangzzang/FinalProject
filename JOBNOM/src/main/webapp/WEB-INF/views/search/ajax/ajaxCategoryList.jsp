@@ -15,7 +15,7 @@
                     <div class="section_wrap">
                         <div class="section_group">
                             <!-- for문  -->
-                            <c:forEach items="${ajaxList}" var="list">
+                            <c:forEach items="${ajaxList}" var="list" varStatus="status">
                             <section class="company content_ty3">
                                 <div class="ty3_wrap">
                                     <div class="content_wrap">
@@ -26,27 +26,37 @@
                                             			<img src="https://jpassets.jobplanet.co.kr/assets/default_logo_share-12e4cb8f87fe87d4c2316feb4cb33f42d7f7584f2548350d6a42e47688a00bd0.png">
                                             		</c:when>
                                             		<c:otherwise>
-                                            			<img src="${list.ENT_LOGO }">
+                                            			<img src="${path }/resources/enterprise/logo/${list.ENT_NO}/${list.ENT_LOGO }">
                                             		</c:otherwise>
                                             	</c:choose>
                                             </a>
                                         </div>
                                         <dl class="content_col2_3 cominfo">
                                             <dt class="us_titb_13">
-                                                <a href="">${list.ENT_NAME }</a>
-                                                <button class="btn_heart1">
+                                                <a href="#" onclick="location.href = '${path }/openApi.do?entNo=${list.ENT_NO}&keyword=${list.ENT_NAME}'">${list.ENT_NAME }</a>
+                                                <input type="hidden" value="${list.ENT_NO }">
+                                                <c:if test="${not empty commonLogin && list.ENT_NO ne entFollow[status.index].ENT_NO }">
+                                                <button class="btn_heart1" id="hart">
                                                     <i class="far fa-heart"></i>
                                                 </button>
-                                                <button class="btn_heart2">
+                                              	</c:if>
+                                              	<c:if test="${not empty commonLogin && list.ENT_NO eq entFollow[status.index].ENT_NO}">
+                                                <button class="btn_heart2" id="hart">
                                                     <i class="fas fa-heart"></i>
                                                 </button>
+                                                </c:if>
+                                                <input type="hidden" value="${list.ENT_NO }">
+                                                <c:if test="${empty commonLogin}">
+                                                <button class="btn_heart1" id="hart">
+                                                    <i class="far fa-heart"></i>
+                                                </button>
+                                              	</c:if>
                                             </dt>
                                             <dd>
                                                 <span class="us_txt_1">${list.ENT_CATEGORY1 }</span>
-                                                <span class="us_txt_1">${list.COUNT }</span>
                                             </dd>
                                             <dd class="row_end">
-                                                <a href="" class="us_txt_1">기업리뷰</a>
+                                                <a href="${path }/enterprise/com_review.do?entNo=${list.ENT_NO}" class="us_txt_1">기업리뷰</a>
                                                 <span class="vbar">|</span>
                                                 <a href="" class="us_txt_1">면접정보</a>
                                             </dd>
@@ -68,37 +78,4 @@
                         </div>
                     </div>
                 </article>
-                            <script>
-                            	<!-- 하트 눌렀을때 변환 스크립트 -->
-                               $(function() {
-                                	
-                                	$(document).on('click', '.tn_heart1', function() {
-                                		$('.btn_heart1').hide();
-                                        $('.btn_heart2').show();
-                            			
-                                	});
-                                	$(document).on('click', '.btn_heart2', function() {
-                                		$('.btn_heart1').hide();
-                                        $('.btn_heart2').show();
-                            			
-                                	});
-                                	
-                                  /*   $('.btn_heart1').click(function() {
-                                        $('.btn_heart1').hide();
-                                        $('.btn_heart2').show();
-                                    });
-                                    $('.btn_heart2').click(function() {
-                                        $('.btn_heart2').hide();
-                                        $('.btn_heart1').show();
-                                    }); */
-                               }); 
-                            	<!-- 하트 눌렀을때 변환 스크립트  끝-->
-                                
-                                <!--평균평점 별점 스크립트  -->
-						   	
-								let avg = parseFloat($('.gfvalue').text());
-								let total = avg*20
-								console.log(agv);
-								$('.star_score').css('width',total+'%');
-								<!--평균평점 별점 스크립트  -->
-                            </script>
+				 <div id="pageBar1">${pageBar }</div>

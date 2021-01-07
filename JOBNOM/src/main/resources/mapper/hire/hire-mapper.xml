@@ -33,7 +33,9 @@
 	</insert>
 	
 	<select id="selectCount" resultType="_int">
+	
 	 SELECT COUNT(*) FROM RECRUITMENT 
+
 	</select>
 
 	
@@ -121,7 +123,7 @@
 	</select>
 	
 	<select id="HireFavorites" parameterType="string" resultType="com.project.jobnom.Hire.model.vo.Interestedrcruitment">
-		  			  SELECT T.*,REC_TITLE,E.ENT_NAME, ENT_LOGO, E.ENT_NO
+		  			  SELECT T.*,REC_TITLE,E.ENT_NAME, ENT_LOGO, E.ENT_NO, REC_CATEGORY
                       FROM INTERESTEDRECRUITMENT T
                     LEFT JOIN RECRUITMENT R ON (R.REC_NO = T.REC_NO) 
                        JOIN ENTERPRISE E ON (E.ENT_NO = R.ENT_NO)

@@ -124,6 +124,10 @@ public class HireController {
 
 	@RequestMapping("/Hire/insertReview2.do")
 	public String insertReview2(HttpServletRequest request) throws Exception {
+		
+		
+		
+
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		String ent_no = request.getParameter("ent_no"); //기업번호
 		paramMap.put("ent_no", ent_no);
@@ -141,11 +145,13 @@ public class HireController {
 		paramMap.put("review_promotion", review_promotion);
 		String review_executive = request.getParameter("review_executive"); //경영진 평점
 		paramMap.put("review_executive", review_executive);
-		System.out.println(paramMap);
+		System.out.println("값들은 무엇"+paramMap);
 		int result = service.insertReview(paramMap);
+		System.out.println("========================================================");
 		
-		
-		return "Hire/insertReview";
+
+		return "member/mypage/mypageFirst";
+
 		
 		
 	}
@@ -160,10 +166,6 @@ public class HireController {
 	@RequestMapping("/Hire/anoDetail.do")
 	public ModelAndView anoDetail(String memNo, HttpSession session,ModelAndView mv, String rec_no,HttpServletRequest request) throws Exception {
 		System.out.println("혹시");
-		/*
-		 * Login log=(Login)session.getAttribute("commonLogin");
-		 * System.out.println(log); log.getMemNo(); System.out.println("ddd"+log);
-		 */
 		System.out.println("nn"+memNo);
 		System.out.println("nn"+rec_no);
 		
@@ -175,7 +177,7 @@ public class HireController {
 		mv.addObject("r", r);
 		System.out.println("로고"+r);
 		
-
+		//즐겨찾기 테이블에서 공고 번호랑 멤버번호 가져와서 jsp에서 현제 로그인된 번호랑 비교하기위한 로직
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		
 		String rec_no1 = request.getParameter("rec_no");
@@ -186,6 +188,11 @@ public class HireController {
 		System.out.println("이것은"+in);
 		mv.addObject("in", in);
 		
+		//지원하기 했을때 이미지원한공고면 alert 띄워주기위한 로직
+		
+		List<Support> sp = service2.selectSupportApply(paramMap);
+		mv.addObject("sp", sp);
+		System.out.println("중복지원확인용"+sp);
 		System.out.println(paramMap);
 		
 		mv.setViewName("Hire/anoDetail");
@@ -311,8 +318,8 @@ public class HireController {
 				    		+ "확인하세요 'http://www.moel.go.kr/index.do'";
 		    
 		    
-		    String filename = "C:\\git\\FinalProject\\JOBNOM\\src\\main\\webapp\\resources\\image\\Hire\\ll.png";                   // 파일 경로.
-		    String filename2 = "C:\\git\\FinalProject\\JOBNOM\\src\\main\\webapp\\resources\\image\\Hire\\ll.png";                   // 파일 경로.
+		    String filename = "C:\\git\\FinalProject\\JOBNOM\\src\\main\\webapp\\resources\\image\\Hire\\test22.docx";                   // 파일 경로.
+		    String filename2 = "C:\\git\\FinalProject\\JOBNOM\\src\\main\\webapp\\resources\\image\\Hire\\test22.docx";                   // 파일 경로.
 
 		    try {     
 		    //인사담당자용
@@ -335,11 +342,11 @@ public class HireController {
 		      
 		      // 파일첨부  
 		      FileSystemResource fsr = new FileSystemResource(filename);
-		      messageHelper.addAttachment("ll.png",fsr); 
+		      messageHelper.addAttachment("test22.docx",fsr); 
 		      System.out.println("????????===="+fsr);
 		   // 파일첨부  
 		      FileSystemResource fsr2 = new FileSystemResource(filename2);
-		      messageHelper2.addAttachment("ll.png",fsr2); 
+		      messageHelper2.addAttachment("test22.docx",fsr2); 
 		      System.out.println("????????===="+fsr2);
 		         
 		      mailSender.send(message);  
@@ -371,11 +378,12 @@ public class HireController {
 		paramMap.put("recNo", recNo1);
 		int openCheck1 = Integer.parseInt(request.getParameter("openCheck"));
 		paramMap.put("openCheck", openCheck1);
+		System.out.println("오잉오잉"+paramMap);
 
 		int result = service.notFavorites(paramMap);
 		System.out.println(result);
 		
-		//////////////////////////////////////////
+		
 		List<Recruitment> anolist = service2.anoList2(anoNum,cPage, numPerpage);
 
 		int totalData = service.selectCount(); /* 이거페이지바 */
@@ -390,9 +398,13 @@ public class HireController {
  
 	// 즐겨찾기 스크립트
 	@RequestMapping("/Hire/favorites.do")
-	public ModelAndView memberFavorites(ModelAndView mv, HttpServletRequest request, Model model, int memNo, int recNo,int anoNum,
+	public ModelAndView memberFavorites(HttpSession session,ModelAndView mv, HttpServletRequest request, Model model, int memNo, int recNo,int anoNum,
 			@RequestParam(value = "cPage", defaultValue = "1") int cPage,
 			@RequestParam(value = "numPerpage", defaultValue = "10") int numPerpage) throws Exception {
+		
+		
+		
+		
 		System.out.println("나오렴");
 		System.out.println("나오니?" + memNo);
 		System.out.println("나오니?" + recNo);
@@ -413,7 +425,7 @@ public class HireController {
 		System.out.println("anolist리스트" + anolist);
 
 		int totalData = service2.selectCount(); /* 이거페이지바 */
-		System.out.println("공고페이지바" + totalData);
+		//System.out.println("공고페이지바" + totalData);
 		mv.addObject("pageBar", PageBarFactory.getPageBar2(totalData, cPage, numPerpage, "favorites.do"));
 
 		mv.addObject("anolist", anolist);

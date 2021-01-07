@@ -21,9 +21,8 @@ public interface SearchService {
 	
 	// 기업 더보기 카테고리별 ajax 
 	List<Map> ajaxCategoryList(String entCategory);
+	List<Map> ajaxCategoryList2(String entCategory);
 	
-	// 기업 더보기 리뷰 카테고리별 ajax
-	List<Map> ajaxReivewCateList(String reivewCategory);
 
 	//기업 팔로잉
 	int entFollow(Map param);
@@ -39,4 +38,13 @@ public interface SearchService {
 	
 	//검색창 자동 완성1-2
 	List<Enterprise> searchAuto2(String key);
+	
+	//메인화면 리뷰 리스트
+	List<Map>indexReviewList();
+	
+	// bannerList
+	List<Map> bannerList();
+	
+	//배너 삭제
+	int deleteBanner();
 }
