@@ -30,7 +30,7 @@
 												style="width: 104px; height: 104px;">
 										</c:when>
 										<c:otherwise>
-											<a href="" class="logo_wrap"> <img
+											<a href="${path }/openApi.do?entNo=${list[0].ENT_NO}&keyword=${list[0].ENT_NAME}" class="logo_wrap"> <img
 												src="${path }/resources/enterprise/logo/${list[0].ENT_NO }/${list[0].ENT_LOGO}"
 												style="width: 104px; height: 104px;">
 											</a>
@@ -39,7 +39,7 @@
 								</div>
 								<div class="compa_info_box">
 									<div class="compa_name">
-										<a href=""><c:out value="${list[0].ENT_NAME }" /></a>
+										<a href="${path }/openApi.do?entNo=${list[0].ENT_NO}&keyword=${list[0].ENT_NAME}"><c:out value="${list[0].ENT_NAME }" /></a>
 									</div>
 									<div class="about_compa">
 										<div class="compa_rating">
@@ -64,7 +64,7 @@
 				<nav id="view_com">
 					<ul class="view_menu">
 						<li class="li_menu"><a
-							href="${path }/enterprise/com_info.do?entNo=${list[0].ENT_NO}"><h2>소개</h2></a>
+							href="${path }/openApi.do?entNo=${list[0].ENT_NO}&keyword=${list[0].ENT_NAME}"><h2>소개</h2></a>
 						</li>
 						<li class="li_menu"><a
 							href="${path }/enterprise/com_review.do?entNo=${list[0].ENT_NO}"><h2>리뷰</h2></a>
@@ -99,16 +99,40 @@
 							<p>분류</p></span>
 					</div>
 					<div class="tool_box">
-						<i class="fas fa-building"></i> <span><strong>-</strong>
-							<p>규모</p>
+						<i class="fas fa-building"></i> 
+						<span>
+						<c:if test="${not empty apiList }">
+						 <strong>${apiList[0].wkplRoadNmDtlAddr }</strong>
+						 </c:if>
+						 <c:if test="${empty apiList }">
+						 <strong>-</strong>
+						 </c:if>
+							<p>주소</p>
+						</span>
 					</div>
 					<div class="tool_box">
-						<i class="fas fa-users"></i> <span><strong>-</strong>
-							<p>사원수</p></span>
+						<i class="fas fa-users"></i>
+						 <span>
+						 <c:if test="${not empty apiList }">
+						 <strong>${apiList[0].jnngpCnt }명</strong>
+						 </c:if>
+						 <c:if test="${empty apiList }">
+						 <strong>-</strong>
+						 </c:if>
+						 <p>사원수</p>
+						</span>
 					</div>
 					<div class="tool_box">
-						<i class="far fa-calendar"></i> <span><strong>-</strong>
-							<p>설립일</p></span>
+						<i class="far fa-calendar"></i>
+						 <span>
+						 	<c:if test="${not empty apiList }">
+						 	<strong> ${apiList[0].adptDt }</strong>
+						 	</c:if>
+						 	<c:if test="${empty apiList }">
+						 	<strong>-</strong>
+							 </c:if>
+							<p>설립일</p>
+						</span>
 					</div>
 				</div>
 				<div class="company_info">
@@ -136,6 +160,30 @@
 							</li>
 							<li>
 								<dl class="info_item_more">
+								<c:if test="${not empty apiList }">
+									<dt class="item_subject">평균급여</dt>
+									<dd><fmt:formatNumber value="${(apiList[0].crrmmNtcAmt/apiList[0].jnngpCnt)/9*100}"  pattern="#,###"/>원 <span style="font-size: 6px;">(고용보험)</span> </dd>
+								</c:if>
+								<c:if test="${empty apiList }">
+									<dt class="item_subject">평균급여</dt>
+									<dd></dd>
+								</c:if>
+								</dl>
+							</li>
+							<li>
+								<dl class="info_item_more">
+								<c:if test="${not empty apiList }">
+									<dt class="item_subject">평균연봉</dt>
+									<dd><fmt:formatNumber value="${(apiList[0].crrmmNtcAmt/apiList[0].jnngpCnt)/9*100*12}"  pattern="#,###"/>원 <span style="font-size: 6px;">(고용보험)</span> </dd>
+								</c:if>
+								<c:if test="${empty apiList }">
+									<dt class="item_subject">평균연봉</dt>
+									<dd> </dd>
+								</c:if>
+								</dl>
+							</li>
+							<li>
+								<dl class="info_item_more">
 									<dt class="item_subject">웹사이트</dt>
 									<dd>
 										<a href="#"><c:out value="${list[0].ENT_SITE }" /></a>
@@ -155,6 +203,18 @@ function heart(){
 	
 }
 </script>
+<script type="text/javascript">
 
+/*당월 고지금액 / 가입자수 = 인당 고지 금액 */
+var money = parseFloat(${apiList[0].crrmmNtcAmt}/${apiList[0].jnngpCnt}); /* 인당 고지 금액 */
+	money.toFixed(2); 
+console.log("인당고지금액"+money);
+var monthSalary = (money/9*100);
+console.log("평균 월급"+monthSalary);
+var avgSal = (monthSalary*12);
+Math.ceil(avgSal);
+console.log("평균연봉" + avgSal);
+
+</script>
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />

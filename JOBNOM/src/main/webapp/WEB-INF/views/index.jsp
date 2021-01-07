@@ -135,7 +135,7 @@
 										</c:when>
 										</c:choose>                                      
                                       </div>
-                                      <a onclick="location.href = '${path }/enterprise/com_info.do?entNo=${list.ENT_NO}'">
+                                      <a onclick="location.href = '${path }/openApi.do?entNo=${list.ENT_NO}&keyword=${list.ENT_NAME}'">
                                       <span class="company_unit_text">${list.ENT_NAME }</span>
                                       </a>
                                     </a>
@@ -146,7 +146,9 @@
                                         <div class="top_box">
                                         <span class="jply_icon jp-quote"></span>
                                         <h3 class="title">
+                                        	<a href="${path }/enterprise/com_review.do?entNo=${list.ENT_NO}">
                                           	${list.REVIEW_TITLE }
+                                          	</a>
                                         </h3>
                                         </div>
                                         <div class="about_company">

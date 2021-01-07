@@ -46,17 +46,17 @@
                                             <a href="#" class="llogo">
                                             	<c:choose>
                                             		<c:when test="${empty list.ENT_LOGO }">
-                                            			<img src="https://jpassets.jobplanet.co.kr/assets/default_logo_share-12e4cb8f87fe87d4c2316feb4cb33f42d7f7584f2548350d6a42e47688a00bd0.png">
+                                           				<img src="https://jpassets.jobplanet.co.kr/assets/default_logo_share-12e4cb8f87fe87d4c2316feb4cb33f42d7f7584f2548350d6a42e47688a00bd0.png">
                                             		</c:when>
                                             		<c:otherwise>
-                                            			<img src="${path }/resources/enterprise/logo/${list.ENT_NO}/${list.ENT_LOGO }">
+                                           				<img src="${path }/resources/enterprise/logo/${list.ENT_NO}/${list.ENT_LOGO }" href="${path }/enterprise/com_review.do?entNo=${list.ENT_NO}">
                                             		</c:otherwise>
                                             	</c:choose>
                                             </a>
                                         </div>
                                         <dl class="content_col2_3 cominfo">
                                             <dt class="us_titb_13">
-                                                <a href="#" onclick="location.href = '${path }/enterprise/com_info.do?entNo=${list.ENT_NO}'">${list.ENT_NAME }</a>
+                                                <a href="#" onclick="location.href = '${path }/openApi.do?entNo=${list.ENT_NO}&keyword=${list.ENT_NAME}'">${list.ENT_NAME }</a>
                                                 <input type="hidden" value="${list.ENT_NO }">
                                                 <c:if test="${not empty commonLogin && list.ENT_NO ne entFollow[status.index].ENT_NO }">
                                                 <button class="btn_heart1" id="hart">
@@ -79,7 +79,7 @@
                                                 <span class="us_txt_1">${list.ENT_CATEGORY1 }</span>
                                             </dd>
                                             <dd class="row_end">
-                                                <a href="" class="us_txt_1">기업리뷰</a>
+                                                <a href="${path }/enterprise/com_review.do?entNo=${list.ENT_NO}" class="us_txt_1">기업리뷰</a>
                                                 <span class="vbar">|</span>
                                                 <a href="" class="us_txt_1">면접정보</a>
                                             </dd>
@@ -106,7 +106,7 @@
                 <!--ajax 태그  -->
                 <div class="test"></div>
             </div>
-                        <div id="pageBar">${pageBar }</div>
+           <div id="pageBar" style="margin-top: 20px;">${pageBar }</div>
         </div>
     </div>
 </div>

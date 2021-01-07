@@ -236,7 +236,7 @@
             url:"${path}/member/accountSettings",
             data:{memNo:<c:out value='${mem.memNo}'/>},
             type:"get",
-            async: false,
+            async: false, 
             success:data=>{
                 $(".maininfo-parent").html(data);
             }

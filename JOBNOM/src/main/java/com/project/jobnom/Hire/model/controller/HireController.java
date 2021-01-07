@@ -124,6 +124,10 @@ public class HireController {
 
 	@RequestMapping("/Hire/insertReview2.do")
 	public String insertReview2(HttpServletRequest request) throws Exception {
+		
+		
+		
+
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		String ent_no = request.getParameter("ent_no"); //기업번호
 		paramMap.put("ent_no", ent_no);
@@ -141,11 +145,13 @@ public class HireController {
 		paramMap.put("review_promotion", review_promotion);
 		String review_executive = request.getParameter("review_executive"); //경영진 평점
 		paramMap.put("review_executive", review_executive);
-		System.out.println(paramMap);
+		System.out.println("값들은 무엇"+paramMap);
 		int result = service.insertReview(paramMap);
+		System.out.println("========================================================");
 		
-		
-		return "Hire/insertReview";
+
+		return "member/mypage/mypageFirst";
+
 		
 		
 	}
@@ -312,8 +318,8 @@ public class HireController {
 				    		+ "확인하세요 'http://www.moel.go.kr/index.do'";
 		    
 		    
-		    String filename = "C:\\git\\FinalProject\\JOBNOM\\src\\main\\webapp\\resources\\image\\Hire\\ll.png";                   // 파일 경로.
-		    String filename2 = "C:\\git\\FinalProject\\JOBNOM\\src\\main\\webapp\\resources\\image\\Hire\\ll.png";                   // 파일 경로.
+		    String filename = "C:\\git\\FinalProject\\JOBNOM\\src\\main\\webapp\\resources\\image\\Hire\\test22.docx";                   // 파일 경로.
+		    String filename2 = "C:\\git\\FinalProject\\JOBNOM\\src\\main\\webapp\\resources\\image\\Hire\\test22.docx";                   // 파일 경로.
 
 		    try {     
 		    //인사담당자용
@@ -336,11 +342,11 @@ public class HireController {
 		      
 		      // 파일첨부  
 		      FileSystemResource fsr = new FileSystemResource(filename);
-		      messageHelper.addAttachment("ll.png",fsr); 
+		      messageHelper.addAttachment("test22.docx",fsr); 
 		      System.out.println("????????===="+fsr);
 		   // 파일첨부  
 		      FileSystemResource fsr2 = new FileSystemResource(filename2);
-		      messageHelper2.addAttachment("ll.png",fsr2); 
+		      messageHelper2.addAttachment("test22.docx",fsr2); 
 		      System.out.println("????????===="+fsr2);
 		         
 		      mailSender.send(message);  
@@ -372,6 +378,7 @@ public class HireController {
 		paramMap.put("recNo", recNo1);
 		int openCheck1 = Integer.parseInt(request.getParameter("openCheck"));
 		paramMap.put("openCheck", openCheck1);
+		System.out.println("오잉오잉"+paramMap);
 
 		int result = service.notFavorites(paramMap);
 		System.out.println(result);
@@ -391,9 +398,13 @@ public class HireController {
  
 	// 즐겨찾기 스크립트
 	@RequestMapping("/Hire/favorites.do")
-	public ModelAndView memberFavorites(ModelAndView mv, HttpServletRequest request, Model model, int memNo, int recNo,int anoNum,
+	public ModelAndView memberFavorites(HttpSession session,ModelAndView mv, HttpServletRequest request, Model model, int memNo, int recNo,int anoNum,
 			@RequestParam(value = "cPage", defaultValue = "1") int cPage,
 			@RequestParam(value = "numPerpage", defaultValue = "10") int numPerpage) throws Exception {
+		
+		
+		
+		
 		System.out.println("나오렴");
 		System.out.println("나오니?" + memNo);
 		System.out.println("나오니?" + recNo);
