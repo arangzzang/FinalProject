@@ -75,7 +75,6 @@
 	}
 	$(".editAd").click(function(){
 		var recNo = $(this).closest("tr").find("td:eq(0)").text();
-		alert(recNo);
 		$("#recNo").val(recNo);
 		$("#editAdForm").submit();
 	});
