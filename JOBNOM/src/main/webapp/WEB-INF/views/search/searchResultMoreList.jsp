@@ -106,7 +106,7 @@
                 <!--ajax 태그  -->
                 <div class="test"></div>
             </div>
-            <div id="pageBar">${pageBar }</div>
+           <div id="pageBar" style="margin-top: 20px;">${pageBar }</div>
         </div>
     </div>
 </div>

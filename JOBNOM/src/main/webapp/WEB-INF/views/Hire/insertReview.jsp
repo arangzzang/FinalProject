@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -466,64 +467,3 @@ $("#reviewName").keyup(e=>{
 
 </script>
 
-<script>
-////////////////////////여기서 부터 별클릭하는거/////////////////////////////////////
-//시내만족도평점
-$('.companyStar-box div').click(function(){
-     $(this).parent().children("div").removeClass("on");
-     $(this).addClass("on").prevAll("div").addClass("on");
-});
-//급여만족도 평점
-$('.blessedStar-box div').click(function(){
-     $(this).parent().children("div").removeClass("on");
-     $(this).addClass("on").prevAll("div").addClass("on");
-});
-//승진기회 및 가능성 평점
-$('.promotionStar-box div').click(function(){
-     $(this).parent().children("div").removeClass("on");
-     $(this).addClass("on").prevAll("div").addClass("on");
-});
- //경영진 평점
-$('.executiveStar-box div').click(function(){
-   $(this).parent().children("div").removeClass("on");
-   $(this).addClass("on").prevAll("div").addClass("on");
-});
-
-//              $(".GradeboxSubmit").click(function(){
-//                  alert("제출완료");
-//              });
-$(".companyStar").on("click",e=>{
-   let grade=$(e.target).attr("id");
-   console.log(grade+"1번");
-   $(".companyGrade").val(grade);
-});
-
-$(".blessedStar").on("click",e=>{
-   let grade=$(e.target).attr("id");
-   console.log(grade+"2번");
-   $(".blessedGrade").val(grade);
-});
-
-$(".promotionStar").on("click",e=>{
-   let grade=$(e.target).attr("id");
-   console.log(grade+"3번");
-   $(".promotionGrade").val(grade);
-});
-         
-$(".executiveStar").on("click",e=>{
-   let grade=$(e.target).attr("id");
-   console.log(grade+"경영진");
-   $(".executiveGrade").val(grade);
-});
-</script>
-  <script>
-	  function fn_paging(cPage){
-		$.ajax({
-			url:"${path}/member/insertReview.do",
-			data:{cPage:cPage,memNo:${commonLogin.memNo}},
-			success:data => {
-				$('.with-parent').html(data);
-			}
-		})
-		};
-	  </script>

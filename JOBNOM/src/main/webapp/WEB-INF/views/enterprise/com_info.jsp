@@ -126,10 +126,10 @@
 						<i class="far fa-calendar"></i>
 						 <span>
 						 	<c:if test="${not empty apiList }">
-						 	<strong>${apiList[0].adptDt }</strong>
+						 	<strong> ${apiList[0].adptDt }</strong>
 						 	</c:if>
 						 	<c:if test="${empty apiList }">
-						 	<strong>${apiList[0].jnngpCnt }</strong>
+						 	<strong>-</strong>
 							 </c:if>
 							<p>설립일</p>
 						</span>
@@ -156,6 +156,30 @@
 								<dl class="info_item_more">
 									<dt class="item_subject">담당자 E-Mail</dt>
 									<dd>${list[0].ENT_EMAIL }</dd>
+								</dl>
+							</li>
+							<li>
+								<dl class="info_item_more">
+								<c:if test="${not empty apiList }">
+									<dt class="item_subject">평균급여</dt>
+									<dd><fmt:formatNumber value="${(apiList[0].crrmmNtcAmt/apiList[0].jnngpCnt)/9*100}"  pattern="#,###"/>원 <span style="font-size: 6px;">(고용보험)</span> </dd>
+								</c:if>
+								<c:if test="${empty apiList }">
+									<dt class="item_subject">평균급여</dt>
+									<dd></dd>
+								</c:if>
+								</dl>
+							</li>
+							<li>
+								<dl class="info_item_more">
+								<c:if test="${not empty apiList }">
+									<dt class="item_subject">평균연봉</dt>
+									<dd><fmt:formatNumber value="${(apiList[0].crrmmNtcAmt/apiList[0].jnngpCnt)/9*100*12}"  pattern="#,###"/>원 <span style="font-size: 6px;">(고용보험)</span> </dd>
+								</c:if>
+								<c:if test="${empty apiList }">
+									<dt class="item_subject">평균연봉</dt>
+									<dd> </dd>
+								</c:if>
 								</dl>
 							</li>
 							<li>
