@@ -26,65 +26,38 @@
 			        <div class="col-md-8 col-sm-8 maincon withright" id="maincon">
 			            <div class="maininfo-parent one">
 			                <h2>팔로잉 기업</h2>
-			                <span>[count]개의 관심기업이 있습니다.</span>
+			                <span>${count }개의 관심기업이 있습니다.</span>
 			                <!-- 팔로잉한 기업이 있을 때 -->
-			                <div class="following_container row">
-			                    <a href="#" class="col-sm-2 col-md-2"><img src="" alt=""></a>
-			                    <dl class="col-sm-5 col-md-5">
-			                        <dt class="ent_name">기업명<i class="fa fa-heart"></i></dt>
-			                        <dd>[1차산업군] | 주소</dd>
-			                        <dd><a href="">[count]기업리뷰</a>|<a href="">[count]면접후기</a></dd>
-			                    </dl>
-			                    <dl class="col-sm-5 col-md-5">
-			                        <dt>총 만족도</dt>
-			                        <dd>
-			                                별평균 들어가야함.    
-			                            [count]
-			                        </dd>
-			                        <dd>[연봉 해두되고 안해두되고]</dd>
-			                    </dl>
-			                </div>
-			                <div class="following_container row">
-			                    <a href="#" class="col-sm-2 col-md-2"><img src="" alt=""></a>
-			                    <dl class="col-sm-5 col-md-5">
-			                        <dt class="ent_name">기업명<i class="fa fa-heart"></i></dt>
-			                        <dd>[1차산업군] | 주소</dd>
-			                        <dd><a href="">[count]기업리뷰</a>|<a href="">[count]면접후기</a></dd>
-			                    </dl>
-			                    <dl class="col-sm-5 col-md-5">
-			                        <dt>총 만족도</dt>
-			                        <dd>
-			                                별평균 들어가야함.    
-			                            [count]
-			                        </dd>
-			                        <dd>[연봉 해두되고 안해두되고]</dd>
-			                    </dl>
-			                </div>
-			                <div class="following_container row">
-			                    <a href="#" class="col-sm-2 col-md-2"><img src="" alt=""></a>
-			                    <dl class="col-sm-5 col-md-5">
-			                        <dt class="ent_name">기업명<i class="fa fa-heart"></i></dt>
-			                        <dd>[1차산업군] | 주소</dd>
-			                        <dd><a href="">[count]기업리뷰</a>|<a href="">[count]면접후기</a></dd>
-			                    </dl>
-			                    <dl class="col-sm-5 col-md-5">
-			                        <dt>총 만족도</dt>
-			                        <dd>
-			                                별평균 들어가야함.    
-			                            [count]
-			                        </dd>
-			                        <dd>[연봉 해두되고 안해두되고]</dd>
-			                    </dl>
-			                </div>
+			                <c:if test="${!empty list }">
+				                <c:forEach items="${list }" var="list">
+					                <div class="following_container row">
+					                    <a href="#" class="col-sm-2 col-md-2"><img src="" alt=""></a>
+					                    <dl class="col-sm-5 col-md-5">
+					                        <dt class="ent_name">${list.entName }<i class="fa fa-heart"></i></dt>
+					                        <dd>${list.entCategory1 } | 주소</dd>
+					                        <dd><a href="">${reviewCount }기업리뷰</a>|<a href="">[count]면접후기</a></dd>
+					                    </dl>
+					                    <dl class="col-sm-5 col-md-5">
+					                        <dt>총 만족도</dt>
+					                        <dd>별평균 들어가야함.[count]</dd>
+	<!-- 				                        <dd>[연봉 해두되고 안해두되고]</dd> -->
+					                    </dl>
+					                </div>
+				                </c:forEach>
+			                </c:if>
+			                <c:forEach   items="${reviewCount}" var="rc">
+	                           <div><c:out value="${rc}"/></div>
+	                        </c:forEach>
+                         <c:out value="${reviewCount}"/>
 			                <!-- 팔로잉한 기업이 없을 때 -->
-			                <!-- <c:if test=""> -->
-			                    <!-- <article class="following_null">
+			                <c:if test="${empty list }">
+			                    <article class="following_null">
 			                        <span class="following_icon"><i class="fa fa-heart"></i></span>
 			                        <p><strong>팔로잉한 기업이 없습니다.</strong><br><br>
 			                            관심있는 기업을 등록하셔서 기업들의 최신정보를 받아보세요.
 			                        </p>
-			                    </article> -->
-			                <!-- </c:if> -->
+			                    </article>
+			                </c:if>
 			            </div>
 			        </div>
 			    </div>

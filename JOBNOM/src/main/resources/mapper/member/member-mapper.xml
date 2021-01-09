@@ -18,6 +18,29 @@
 		<result column="cate_no2" property="cateNo2"/>
 		<result column="cate_no" property="cateNo"/>
 	</resultMap>
+	<resultMap type="ent" id="entMap">
+		<result column="ent_no" property="entNo" />
+		<result column="ent_email" property="entEmail" />
+		<result column="ent_pw" property="entPw" />
+		<result column="ent_name" property="entName" />
+		<result column="ent_business_no" property="entBusinessNo" />
+		<result column="ent_logo" property="entLogo" />
+		<result column="ent_category1" property="entCategory1" />
+		<result column="ent_category2" property="entCategory2" />
+		<result column="rep_name" property="repName" />
+		<result column="rep_phone" property="repPhone" />
+		<result column="type" property="type" />
+		<result column="ent_site" property="entSite" />
+		<result column="ent_membership" property="entMembership" />
+	</resultMap>
+	<resultMap type="skill" id="skillMap">
+		<result column="skill_no" property="skillNo"/>
+		<result column="skill_name" property="skillName"/>
+	</resultMap>
+	<resultMap type="mySkill" id="mySkillMap">
+		<result column="skill_no" property=""/>
+		<result column="res_no" property=""/>
+	</resultMap>
 	<!-- 로그인 -->
 	<select id="memberLogin" parameterType="string" resultMap="memMap">
 		select* from member where mem_email=#{memEmail}
@@ -64,6 +87,23 @@
 			join category2 using(cate_no2)
 			join category using (cate_no)
 			where mem_no =#{memNo}
+	</select>
+	<!-- 팔로잉한 기업 -->
+	<select id="selectEnterpriseFollowing" parameterType="_int" resultMap="entMap">
+		select DISTINCT * from ENTERPRISEFOLLOW
+		join enterprise using (ent_no)
+		where mem_no = #{memNo}
+	</select>
+	<!-- 팔로잉한 기업 갯수 -->
+	<select id="countEnterpriseFollowing" parameterType="_int" resultType="int">
+		select count(ent_no) from ENTERPRISEFOLLOW where mem_no=#{memNo}
+	</select>
+	<!-- 팔로잉한 기업의 리뷰 갯수 -->
+	<select id="reviewCount" parameterType="_int" resultType="int">
+		select count(*) from review where ent_no=#{entNo}
+	</select>
+	<select id="selectMySkill" parameterType="_int" resultMap="skillMap">
+		select * from myskill join skill using(skill_no) where res_no=#{resNo}
 	</select>
 </mapper>
 

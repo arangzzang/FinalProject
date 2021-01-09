@@ -3,6 +3,8 @@ package com.project.jobnom.Hire.model.dao;
 import java.util.List;
 import java.util.Map;
 
+import javax.mail.Session;
+
 import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
@@ -140,6 +142,16 @@ public class HireDaoImpl implements HireDao {
 	@Override
 	public List<Member> membercate2(SqlSession session, String rec_category) {
 		return session.selectList("hire.membercate2",rec_category);
+	}
+
+	@Override
+	public List<Map> mypageReview(SqlSession session, String memNo, int cPage, int numPerpage) {
+		return session.selectList("hire.mypageReview",memNo,new RowBounds((cPage-1)*numPerpage,numPerpage));
+	}
+
+	@Override
+	public int selectReviewCount(SqlSession session, String memNo) {
+		return session.selectOne("hire.selectReviewCount",memNo);
 	}
 	
 	

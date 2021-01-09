@@ -98,10 +98,10 @@
 							회원가입/로그인
 				</button>
 				</c:if>
-            <c:forEach items="${i }" var="i">
-         <a href="${path }/Hire/annoHomeDetailMove.do?recNo=${i.rec_no}" class="ss">
-            
-            <div class="myFavoritesList">
+            <c:forEach items="${i }" var="i" >
+            <div class="myFavoritesDetail">
+         <a class="menus" href="${path }/Hire/announcementPageFirst?recNo=${i.rec_no}&memNo=${commonLogin.memNo}&anoNum=${i.rec_category}" >
+            <div class="myFavoritesList" >
                 <div class="">
                 <c:choose>
 		                        	<c:when test="${empty i.ent_logo }">
@@ -114,38 +114,32 @@
 		                        </c:choose>
                 </div>
                 <div class="myFavoritesListAll">
-                    <div><c:out value="${i.rec_title }"></c:out></div>
-                    <div><c:out value="${i.ent_name }"></c:out></div>
-                    <div class="myFavoritesDetail">
-                        <div class="myFavoritesDetail1">평점</div>
-                       
-                       
-                        
+								<div>공고 제목 :
+									<c:out value="${i.rec_title }"></c:out>
+								</div>
 
-                    </div>
-                   
-                </div>
-             
-
-            </div>
-            </a>
-             <button id="favoritesBox" onclick="fn_toggle();">
-						즐겨찾기 취소
-			</button>
-            <script>
+								<div> 기업 이름 :
+									<c:out value="${i.ent_name }"></c:out>
+								</div>
 
 
-    function fn_toggle() {
-    	alert("sd");
-    	
-        if(${i.open_check eq 1 && commonLogin.memNo eq in.mem_no})
-         {
-        	location.href="${path }/Hire/notFavorites.do?memNo=${commonLogin.memNo}&recNo=${i.rec_no}&openCheck=${i.open_check}&anoNum=${i.rec_category}";
-        	alert("즐겨찾기 빼기 완료");
-        }
-    };
-		  
-</script>
+
+								<div class="myFavoritesDetail1">평점</div>
+
+
+							</div>
+							
+						</div>
+						 </a>
+						<button
+								onclick="location.href='${path }/Hire/notFavorites2.do?memNo=${commonLogin.memNo}&recNo=${i.rec_no }&openCheck=${i.open_check}'"
+								class="favoritDelete" value="${i.rec_no }">즐겨찾기 빼기</button>
+						</div>
+						
+           
+
+        
+         
                </c:forEach>
           <div id="pageBar">${pageBar }</div>
         </div>
@@ -158,6 +152,30 @@
 </section>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 
+<script>
+/* 
+	function fn_toggle() {
+
+    $(".fn_toggle").click(e=>{
+    	var num=$(e.target).val(); //공고번호
+    	var num2=$(e.target).next().val(); //openChek
+    	alert(num);
+    	alert(num2);
+    	  if($("input[name=onpenCheck]").val()== 1)
+          {
+    		 
+         	location.href="${path }/Hire/notFavorites2.do?memNo=${commonLogin.memNo}&recNo=num&openCheck=num2";
+         	alert("즐겨찾기 빼기 완료");
+         }
+         
+    })
+    	
+	};
+      
+ */
+    
+		  
+</script>
 
 <script>
     $(document).ready(function(){

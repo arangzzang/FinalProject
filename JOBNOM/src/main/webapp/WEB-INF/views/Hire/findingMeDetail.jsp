@@ -58,19 +58,8 @@
             </div>
     
             <div class="findingMeDetailButton">
-                <button class="btn_annoDetail" onclick="location.href='${path }/Hire/annoHomeDetailMove.do?recNo=${fitM[0].rec_no} '" >공고 상세보기</button>
-              <%--  <c:if test="${commonLogin !=null && commonLogin.memNo !=  fitM[0].mem_no }">
-                      
-                        <button id="favoritesBox" onclick="fn_toggle();">
-                            <img id="announcementFavorites2" src="${path }/resources/image/Hire/pngwing.png" />
-                        </button>
-                      </c:if>
-                     
-                       <c:if test="${fitM[0].open_check == 1  && commonLogin !=null && commonLogin.memNo ==  fitM[0].mem_no }">
-                        <button id="favoritesBox" onclick="fn_toggle();">
-                            <img id="announcementFavorites2" src="${path }/resources/image/Hire/pngwing2.png" />
-                        </button>
-                      </c:if> --%>
+                <button class="btn_annoDetail" onclick="location.href='${path }/Hire/announcementPageFirst?recNo=${fitM[0].rec_no}&anoNum=${fitM[0].rec_category }&memNo=${commonlogin.memNo } '" >공고 상세보기</button>
+            
             </div>
             
     

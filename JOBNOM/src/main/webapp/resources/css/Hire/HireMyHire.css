@@ -176,7 +176,7 @@
 .myHyreSupportView{
     margin-left: 30px;
     width: 80%;
-    height: 650px;
+    height: 900px;
     font-size: 30px;
     font: bold;
     padding: 10px;
@@ -216,7 +216,6 @@
 
 .myHyreSupportListAll{
     height: 80px;
-    padding-top: 20px;
     font-size: 16px;
     display: flex;
     border-bottom: solid rgb(176, 174, 174);

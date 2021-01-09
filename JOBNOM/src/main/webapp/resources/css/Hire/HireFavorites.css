@@ -168,7 +168,7 @@
     padding: 10px;
     margin-left: 30px;
     width: 75%;
-    height: 850px;
+    height: 900px;
     background-color: #f7fdfa;
 }
 .myFavoritesViewInfo{
@@ -178,11 +178,12 @@
 }
 
 .myFavoritesList{
-    border-top: solid rgb(176, 174, 174);
-    padding-top: 20px;
+  
     padding-bottom: 20px;
     font-size: 16px;
     display: flex;
+    width: 500px;
+
 
 }
 .myFavoritesListAll>div{
@@ -194,12 +195,42 @@
 }
 .myFavoritesDetail{
     display: flex;
+      border-top: solid rgb(176, 174, 174);
+    padding-top: 20px;
+    height: 150px;
+    width: 800px;
+
+
+
 }
-.myFavoritesDetai2{
+.myFavoritesDetai1{
     padding-left: 10px;
 }.myFavoritesDetai3{
     padding-left: 10px;
 }
 #pageBar{
 	padding-top: 12px;
+}
+
+
+.favoritDelete{
+	float:right;
+	border-radius: 12px;
+    right: 0;
+    top: 0;
+    background: #00c362;
+    color: #fff;
+    text-align: center;
+    width: 150px;
+    height: 30px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-right: 10px;
+    margin-left:100px;
+
+    margin-top:40px;
+    z-index: 99;
+
+
 }
