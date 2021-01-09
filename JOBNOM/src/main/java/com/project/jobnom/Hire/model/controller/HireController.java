@@ -26,9 +26,9 @@ import com.project.jobnom.Hire.model.service.annoService;
 import com.project.jobnom.Hire.model.vo.Interestedrcruitment;
 import com.project.jobnom.Hire.model.vo.Recruitment;
 import com.project.jobnom.Hire.model.vo.Support;
-import com.project.jobnom.common.model.vo.Login;
 import com.project.jobnom.common.pagebar.PageBarFactory;
 import com.project.jobnom.enterprise.model.vo.Enterprise;
+import com.project.jobnom.member.model.service.MemberService;
 import com.project.jobnom.member.model.vo.Member;
 
 
@@ -39,6 +39,9 @@ public class HireController {
 	
 	@Autowired
 	private HireService service;
+	
+	@Autowired
+	private MemberService mService;
 
 	@Autowired
 	private annoService service2;
@@ -123,7 +126,7 @@ public class HireController {
 	}
 
 	@RequestMapping("/Hire/insertReview2.do")
-	public String insertReview2(HttpServletRequest request) throws Exception {
+	public String insertReview2(HttpServletRequest request,Model m) throws Exception {
 		
 		
 		
@@ -148,6 +151,10 @@ public class HireController {
 		System.out.println("값들은 무엇"+paramMap);
 		int result = service.insertReview(paramMap);
 		System.out.println("========================================================");
+		
+		Member mem = mService.mypageView(Integer.parseInt(mem_no));
+		
+		m.addAttribute("mem",mem);
 		
 		return "member/mypage/mypageFirst";
 		
@@ -285,7 +292,7 @@ public class HireController {
 		
 		//////////////////////////////////////////
 		
-		
+		//파일 보내는곳
 		////////////////////////////////////
 		
 		
@@ -294,7 +301,7 @@ public class HireController {
 		    String setfrom = "dlscjfry2010@naver.com";         //인사담당자한테 발송되는 이메일
 		    String tomail = "dlscjfry2010@naver.com";    // 받는 사람 이메일
 		    String title = 
-		    		"JOBNOM을 통한 이력서가 도착했습니다 ";      // 제목
+		    		"JOBNOM을 통한 이력서가 마이페이지에서 확인하세요 도착했습니다 ";      // 제목
 		    String content = 
 		    		"안녕하세요."
 				    		+ "잡놉입니다"
@@ -315,9 +322,9 @@ public class HireController {
 				    		+ "대한 민국의 밝은 내일을 위해! 고용노동부에서의 취업 프로그램등을"
 				    		+ "확인하세요 'http://www.moel.go.kr/index.do'";
 		    
-		    
-		    String filename = "C:\\git\\FinalProject\\JOBNOM\\src\\main\\webapp\\resources\\image\\Hire\\test22.docx";                   // 파일 경로.
-		    String filename2 = "C:\\git\\FinalProject\\JOBNOM\\src\\main\\webapp\\resources\\image\\Hire\\test22.docx";                   // 파일 경로.
+		    //나중에 파일보내기할때
+		   // String filename = "C:\\git\\FinalProject\\JOBNOM\\src\\main\\webapp\\resources\\image\\Hire\\";                   // 파일 경로.
+		   // String filename2 = "C:\\git\\FinalProject\\JOBNOM\\src\\main\\webapp\\resources\\image\\Hire\\test22.docx";                   // 파일 경로.
 
 		    try {     
 		    //인사담당자용
@@ -339,18 +346,18 @@ public class HireController {
 		      messageHelper2.setText(content2);   // 메일 내용
 		      
 		      // 파일첨부  
-		      FileSystemResource fsr = new FileSystemResource(filename);
-		      messageHelper.addAttachment("test22.docx",fsr); 
-		      System.out.println("????????===="+fsr);
+		    //  FileSystemResource fsr = new FileSystemResource(filename);
+		    //  messageHelper.addAttachment("test22.docx",fsr); 
+		    //  System.out.println("????????===="+fsr);
 		   // 파일첨부  
-		      FileSystemResource fsr2 = new FileSystemResource(filename2);
-		      messageHelper2.addAttachment("test22.docx",fsr2); 
-		      System.out.println("????????===="+fsr2);
+		   //   FileSystemResource fsr2 = new FileSystemResource(filename2);
+		   //   messageHelper2.addAttachment("test22.docx",fsr2); 
+		   //   System.out.println("????????===="+fsr2);
 		         
 		      mailSender.send(message);  
 		      mailSender.send(message2); 
 		    } catch(Exception e){ 
-		      System.out.println("용녀용녀"+e);
+		     
 		    }
 		    
 		    mv.addObject("applyM",applyM);
@@ -384,12 +391,49 @@ public class HireController {
 		
 		List<Recruitment> anolist = service2.anoList2(anoNum,cPage, numPerpage);
 
+		
 		int totalData = service.selectCount(); /* 이거페이지바 */
 	
 		mv.addObject("pageBar", PageBarFactory.getPageBar2(totalData, cPage, numPerpage, "notFavorites.do"));
 		
 		mv.addObject("anolist", anolist);
 		mv.setViewName("Hire/announcementPage");
+		return mv;
+
+	}
+	//내즐겨찾기 페이지에서 즐겨찾기 뺴기
+	@RequestMapping("Hire/notFavorites2.do")
+	public ModelAndView deleteMember2(ModelAndView mv, @RequestParam(value = "cPage", defaultValue = "1") int cPage,
+			@RequestParam(value = "numPerpage", defaultValue = "10") int numPerpage, HttpServletRequest request, Model model, String memNo, int recNo, int openCheck)
+			throws Exception {
+		System.out.println("오지");
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+
+		int memNo1 = Integer.parseInt(request.getParameter("memNo"));
+		paramMap.put("memNo", memNo1);
+		int recNo1 = Integer.parseInt(request.getParameter("recNo"));
+		paramMap.put("recNo", recNo1);
+		int openCheck1 = Integer.parseInt(request.getParameter("openCheck"));
+		paramMap.put("openCheck", openCheck1);
+		System.out.println("오잉오잉"+paramMap);
+
+		int result = service.notFavorites(paramMap);
+		System.out.println(result);
+		
+		
+		
+		List<Interestedrcruitment> i = service.HireFavorites(memNo, cPage, numPerpage);
+		mv.addObject("i", i);
+		System.out.println(i);
+		int totalDataSu = service.selectSuppertCount(memNo); // 이건 지원한 공고 갯수
+		int totalDataIn = service.selectInterestedrcruitmentCount(memNo); // 이건 즐겨찾기 갯수
+		mv.addObject("totalDataSu", totalDataSu);
+		mv.addObject("totalDataIn", totalDataIn);
+		
+		
+		mv.addObject("pageBar", PageBarFactory.getPageBar4(totalDataIn, cPage, numPerpage,memNo, "HireFavorites.do"));
+	
+		mv.setViewName("Hire/HireFavorites");
 		return mv;
 
 	}
@@ -484,7 +528,7 @@ public class HireController {
 
 		return list!=null?"false":"true";
 	}
-
+	//스와이퍼 눌렀을때 정보 뜨게 하느느 에이작스 추천공고
 	@RequestMapping("/Hire/swiper.do")
 	public ModelAndView swiper( ModelAndView mv,String rec_no,String rec_category, HttpServletRequest request) throws Exception {
 		System.out.println("혹시");
@@ -504,6 +548,6 @@ public class HireController {
 		return mv;
 	} 
 	
-
+	
 
 }

@@ -42,9 +42,19 @@
                         
                        
                      
-                      <%-- <button class="apply"  onclick="location.href='${path }/Hire/apply.do?memNo=${commonLogin.memNo}&recNo=${r[0].REC_NO}&entName=${r[0].ENT_NAME } ' " >지원하기
-                       </button> --%>
-                       <c:if  test="${r[0].OPEN_CHECK eq 0 || empty r[0].OPEN_CHECK  && empty in[0].mem_no   && commonLogin  eq null || commonLogin.memNo ne  in[0].mem_no  && in[0].rec_no ne r[0].REC_NO }">
+                      
+                       <c:if  test="${  r[0].OPEN_CHECK eq 1  && empty in[0].mem_no   &&  commonLogin.memNo ne  in[0].mem_no  && in[0].rec_no ne r[0].REC_NO }">
+                        <button id="favoritesBox" onclick="fn_toggle();">
+                            <img id="announcementFavorites2" src="${path }/resources/image/Hire/pngwing.png" />
+                        </button>
+                      </c:if>
+                       
+                       <c:if  test="${  empty r[0].OPEN_CHECK  && empty in[0].mem_no   &&  commonLogin.memNo ne  in[0].mem_no  && in[0].rec_no ne r[0].REC_NO }">
+                        <button id="favoritesBox" onclick="fn_toggle();">
+                            <img id="announcementFavorites2" src="${path }/resources/image/Hire/pngwing.png" />
+                        </button>
+                      </c:if>
+                      <c:if  test="${empty commonLogin}">
                         <button id="favoritesBox" onclick="fn_toggle();">
                             <img id="announcementFavorites2" src="${path }/resources/image/Hire/pngwing.png" />
                         </button>
@@ -53,7 +63,7 @@
                       
                       
                      
-                       <c:if test="${r[0].OPEN_CHECK eq 1  && commonLogin  ne null && in[0].rec_no eq r[0].REC_NO && in[0].mem_no eq commonLogin.memNo }">
+                       <c:if test="${r[0].OPEN_CHECK eq 1  && in[0].rec_no eq r[0].REC_NO && in[0].mem_no eq commonLogin.memNo }">
                         <button id="favoritesBox" onclick="fn_toggle();">
                             <img id="announcementFavorites2" src="${path }/resources/image/Hire/pngwing2.png" />
                         </button>
@@ -187,7 +197,7 @@
                             <div class="InquiriesInfo">
                                 <div class="Inquiries">
                                     <div class="InquiriesHomePage">홈페이지</div>
-                                    <div class="InquiriesHomePage2"><a href="https://search.naver.com">www.naver.com</a></div>
+                                     <div style="width: 200px;" class="InquiriesHomePage2"><a href="https://search.naver.com">기업 홈페이지 바로 가기</a></div>
                                 </div>
                                 <div class="Inquiries">
                                     <div class="InquiriesPhone">연락처</div>
@@ -238,14 +248,26 @@
 					type="hidden" name="entName" value="${r[0].ENT_NAME }"> <input
 					class="apply" type="submit" onclick="fn_overlapApply();"
 					value="간편지원하기">
-					<input type="button" value="마이페이지" onclick="location.href='${path }/member/myPage?memNo=${commonLogin.memNo }'">
+					<input type="button" id="fn_mypage" value="마이페이지" onclick="fn_mypage();">
 			</form>
 		</div>
+		
 
 	</div>
 </div>
-
-
+<%--  function fn_mypage(){
+           	if($(commonLogin.memNo ==null )){
+         			alert("로그인후 이용가능합니다");	
+         			location.href="${path }/Hire/HireHome";
+   			}
+           	else{
+              	alert("마이페이지로 이동합니다.");
+              	location.href="${path }/member/myPage?memNo=${commonLogin.memNo }";
+              	 	
+             
+              }
+          };
+ --%>
 
 
 <!-- 리뷰 클릭시 전환되는 에이작스 -->
@@ -392,13 +414,7 @@
                       			alert("로그인 회원만 이용가능합니다");	
                       			 return false; 
                 			}
-                        	
-                        }
-                        </script>
-                        
-                        <script>
-                        function fn_apply() {
-                        	if(${sp[0].rec_no == r[0].REC_NO && commonLogin.memNo == sp[0].mem_no}){
+                        	else if(${sp[0].rec_no == r[0].REC_NO && commonLogin.memNo == sp[0].mem_no}){
                            	alert("해당공고는 이미 지원한 공고입니다.");
                            	return false;
                            }else{
@@ -422,4 +438,19 @@ $(document).ready(function(){
     });
  });
 </script>  
+<script>
+	
+			$("#fn_mypage").click(e=>{
+	           	if(${commonLogin.memNo ==null }){
+	         			alert("마이페이지 이동은 로그인후 이용가능합니다");	
+	         			location.href="${path }/Hire/HireHome.do?memNo";
+	   			}
+	           	else{
+	              	alert("마이페이지로 이동합니다.");
+	              	location.href="${path }/member/myPage?memNo=${commonLogin.memNo }";
+
+	              }
+	          });
+
+		</script>
 
