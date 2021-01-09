@@ -47,6 +47,11 @@ public class ResumeServiceImpl implements ResumeService {
 	public int insertEducation(Education edu) {
 		return dao.insertEducation(edu, session);
 	}
+	@Override
+	public int insertMySkill(int resNo, String skill) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
 	
 	

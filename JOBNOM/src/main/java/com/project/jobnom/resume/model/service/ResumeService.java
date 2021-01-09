@@ -16,6 +16,7 @@ public interface ResumeService {
 	//이력서
 	int insertResume(Resume res);
 	int insertEducation(Education edu);
+	int insertMySkill(int resNo, String skill);
 	//이력서 수정
 	int updateResume(Resume res);
 	//카테고리수정

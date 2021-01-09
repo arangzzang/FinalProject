@@ -42,6 +42,11 @@ public class ResumeDaoImpl implements ResumeDao {
 	public int insertEducation(Education edu, SqlSession session) {
 		return session.insert("resume.insertEducation",edu);
 	}
+
+	@Override
+	public int insertMySkill(int resNo, SqlSession session) {
+		return session.insert("resume.insertMySkill", resNo);
+	}
 	
 	
 	

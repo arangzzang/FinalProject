@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import com.project.jobnom.member.model.vo.MemCategory;
 import com.project.jobnom.member.model.vo.MemCategory2;
 import com.project.jobnom.member.model.vo.Member;
+import com.project.jobnom.resume.model.vo.MySkill;
 import com.project.jobnom.resume.model.vo.Resume;
 
 public interface MemberDao {
@@ -29,4 +30,12 @@ public interface MemberDao {
 	//이력서
 	Member myProfileView(int memNo, SqlSession session);
 	Resume selectResume(int memNo, SqlSession session);
+	//스킬 조회
+	List<MySkill> selectMySkill(int resNo, SqlSession session);
+	//팔로잉한 기업
+	List selectEnterpriseFollowing(int memNo, SqlSession session);
+	//팔로잉한 기업 갯수
+	int countEnterpriseFollowing(int memNo, SqlSession session);
+	//팔로잉한 기업의 리뷰 갯수
+	int reviewCount(int entNo,SqlSession session);
 }

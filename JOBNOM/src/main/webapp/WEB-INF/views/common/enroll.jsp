@@ -13,7 +13,7 @@
    <div class="container pt-5">
       <div class="container enrollMainH">
          <div class="row">
-            <img src="" alt="" class="offset-4 col-4">
+            <img src="${path }/resources/image/joblogo-removebg-preview.png" alt="" class="offset-4 col-4">
          </div>
       </div>
       <div class="container">

@@ -114,10 +114,11 @@
 										<option value="10" ${res.resCar==10?"selected":"" }>10년이상</option>
 									</select>
 									<label for="skill" class="span2">업무 및 스킬</label>
-									<input type="text" class="form-control inp" name="skill" list="keyword" id="skill" placeholder="(예시) 영업기획, 디지털마케팅,UI디자인(업무와 관련된 자격증 및 기술명 포함)" required>
-									<datalist id="keyword">
-										
-									</datalist>	
+									<input type="text" class="form-control inp" name="skill" list="keyword" id="skill" on placeholder="(예시) 영업기획, 디지털마케팅,UI디자인(업무와 관련된 자격증 및 기술명 포함)" required>
+									<datalist id="keyword"></datalist>	
+									<ul class="tag-list">
+									
+									</ul>
 								</div>
 							</div>
 						</div>
@@ -147,15 +148,15 @@
 									<div id="element1">
 										<div class="col-4 col-md-4" id="element2">
 											<div class="dateElement">
-												<input type="text" class="edu_term inp term" name="eduTerm" id='edu_term' placeholder="년/월">&nbsp;~&nbsp;
-												<input type="text" class="edu_termend inp term" name="eduTermend" id='edu_termend' placeholder="년/월">
+												<input type="text" class="edu_term inp term" name="eTerm" id='edu_term' placeholder="년/월">&nbsp;~&nbsp;
+												<input type="text" class="edu_termend inp term" name="eTermend" id='edu_termend' placeholder="년/월">
 											</div>
 											<label for="goal">졸업</label>
-											<input type="checkbox" name="eduAttend" class="edu_attend" onclick="eduCheck(this)" id="goal">
+											<input type="checkbox" value="졸업" name="eduAttend" class="edu_attend" onclick="eduCheck(this)" id="goal">
 											<label for="end">중퇴</label>
-											<input type="checkbox" name="eduAttend" class="edu_attend" onclick="eduCheck(this)" id="end">
+											<input type="checkbox" value="중퇴" name="eduAttend" class="edu_attend" onclick="eduCheck(this)" id="end">
 											<label for="ing">재학중</label>
-											<input type="checkbox" name="eduAttend" class="edu_attend" onclick="eduCheck(this)" id="ing">
+											<input type="checkbox" value="재학중" name="eduAttend" class="edu_attend" onclick="eduCheck(this)" id="ing">
 										</div>
 										<div class="col-8 col-md-8">
 											<div>
@@ -334,7 +335,7 @@
 			success:data=>{
 				$("#keyword").html("");
 				$.each(data,function(i,v){
-					$("#keyword").append("<option class='keys' value="+v.skillName+"></option>");
+					$("#keyword").append("<option name='key' class='key' data-value='"+v.skillNo+"'>"+v.skillName+"</option>");
 					$("#keyword").css("border","1px solid");
 				});
 			}
@@ -344,6 +345,24 @@
 		$(".keyword").html("");
 		$(".keyword").css("border","0");
 	})
+	//해시태그
+// 	const opts = document.getElementById('keyword').childNodes;
+// 	const skillInp = document.getElementById('skill');
+// 	let eventSource = null;
+// 	let value = '';
+	//input에 입력시 발생하는 이벤트
+// 	skillInp.addEventListener('keydown', (e) => {
+// 	  eventSource = e.key ? 'input' : 'list';
+// 	  console.log(eventSource)
+// 	});
+	//option click시 발생하는 이벤트
+// 	skillInp.addEventListener('input', (e) => {
+// 	  value = e.target.value;
+// 	  console.log(value)
+// 	  if (eventSource === 'list') {
+// 	    alert('CLICKED! ' + value);
+// 	  }
+// 	});
 	//year-picker
 	$(document).ready(function(e) {
 		$('.yrselectdesc').yearselect({
@@ -363,15 +382,21 @@
 	//month-picker
 	$(document).ready(function(){
 		var option={
-			IsRTL: true,
-			AltFormat: "yyyy-mm", 
-			year : "년",
-			backTo:"전년도",
-			pattern: 'yyyy-mm',
 			Button: "<i class='far fa-calendar-alt calendar' style='cursor: pointer'></i>",
-			months: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월']
-		};
-		$(".edu_term").MonthPicker(option);
+			MonthFormat : 'yy/mm',
+			StartYear: 2019,
+			yearSuffix:"연도",
+			i18n:{
+				year : "연도",
+				prevYear : "이전 연도",
+				nextYear:"다음 연도",
+				
+				backTo:"모든 연도",
+				pattern: 'yyyy-mm',
+				months: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월']
+			}
+		}
+		$(".edu_term").MonthPicker(option,'AltFormat');
 		$(".edu_termend").MonthPicker(option);
 		$(".awa_term").MonthPicker(option);
 		$(".awa_termend").MonthPicker(option);

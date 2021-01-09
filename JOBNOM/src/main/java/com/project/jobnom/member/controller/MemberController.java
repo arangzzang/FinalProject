@@ -20,10 +20,12 @@ import com.project.jobnom.Hire.model.service.HireService;
 import com.project.jobnom.Hire.model.vo.Support;
 import com.project.jobnom.common.model.vo.Login;
 import com.project.jobnom.common.pagebar.PageBarFactory;
+import com.project.jobnom.enterprise.model.vo.Enterprise;
 import com.project.jobnom.member.model.service.MemberService;
 import com.project.jobnom.member.model.vo.MemCategory;
 import com.project.jobnom.member.model.vo.MemCategory2;
 import com.project.jobnom.member.model.vo.Member;
+import com.project.jobnom.resume.model.vo.MySkill;
 import com.project.jobnom.resume.model.vo.Resume;
 
 @Controller
@@ -158,6 +160,9 @@ public class MemberController {
 		List<MemCategory> list = service.selectCategoryList();
 		List<MemCategory2> list2 = service.selectCategoryList2(mem.getCateNo());
 		Resume res = service.selectResume(memNo);
+//		List<MySkill> mind = service.selectMySkill(res.getResNo());
+		
+//		m.addAttribute("MySkill",mind);
 		m.addAttribute("res",res);
 		m.addAttribute("cate3",list2);
 		m.addAttribute("cate",list);
@@ -168,7 +173,23 @@ public class MemberController {
 	@RequestMapping("/member/followingEnt")
 	public String followingEnt (int memNo, Model m) throws IOException {
 		
+		int reviewCount=0;
+		int entNo=0;
+		Map reviewResult=new HashMap();
 		Member mem = service.mypageView(memNo);
+		List<Enterprise> list = service.selectEnterpriseFollowing(memNo);
+		int count = service.countEnterpriseFollowing(memNo);
+		for(int i=0;i<list.size();i++) {
+			entNo=list.get(i).getEntNo();
+			reviewCount = service.reviewCount(entNo);//Map으로 만들어줘서 다시 던져줘야함.
+			reviewResult.put(i,reviewCount);
+			System.out.println("뭐가 뜨려나 : "+reviewResult.get(i));
+			System.out.println("기업 번호 : "+entNo);
+			System.out.println("리뷰갯수 : "+reviewCount);
+		}
+		m.addAttribute("reviewCount",reviewResult);
+		m.addAttribute("count",count);
+		m.addAttribute("list",list);
 		m.addAttribute("mem",mem);
 		return "/member/mypage/interestinfo/followingEnt";
 	}

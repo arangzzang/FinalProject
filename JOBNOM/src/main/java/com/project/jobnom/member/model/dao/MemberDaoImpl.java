@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.project.jobnom.member.model.vo.MemCategory;
 import com.project.jobnom.member.model.vo.MemCategory2;
 import com.project.jobnom.member.model.vo.Member;
+import com.project.jobnom.resume.model.vo.MySkill;
 import com.project.jobnom.resume.model.vo.Resume;
 
 @Repository
@@ -56,6 +57,26 @@ public class MemberDaoImpl implements MemberDao {
 	@Override
 	public Resume selectResume(int memNo, SqlSession session) {
 		return session.selectOne("resume.selectResume",memNo);
+	}
+
+	@Override
+	public List selectEnterpriseFollowing(int memNo, SqlSession session) {
+		return session.selectList("member.selectEnterpriseFollowing", memNo);
+	}
+
+	@Override
+	public int countEnterpriseFollowing(int memNo, SqlSession session) {
+		return session.selectOne("member.countEnterpriseFollowing",memNo);
+	}
+
+	@Override
+	public int reviewCount(int entNo, SqlSession session) {
+		return session.selectOne("member.reviewCount",entNo);
+	}
+
+	@Override
+	public List<MySkill> selectMySkill(int resNo, SqlSession session) {
+		return session.selectList("member.selectMySkill",resNo);
 	}
 	
 	

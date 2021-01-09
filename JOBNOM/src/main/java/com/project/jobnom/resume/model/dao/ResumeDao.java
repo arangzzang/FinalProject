@@ -17,4 +17,5 @@ public interface ResumeDao {
 	int updateResume(Resume res, SqlSession session);
 	int insertEducation(Education edu, SqlSession session);
 	int categoryUpdate(Map resMap, SqlSession session);
+	int insertMySkill(int resNo, SqlSession session);
 }
