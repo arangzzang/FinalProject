@@ -2,10 +2,15 @@ package com.project.jobnom.enterprise.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.apache.commons.collections.map.HashedMap;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +23,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 import com.project.jobnom.Hire.model.vo.Recruitment;
 import com.project.jobnom.Hire.model.vo.Review;
@@ -30,6 +39,7 @@ import com.project.jobnom.enterprise.model.vo.Category2;
 import com.project.jobnom.enterprise.model.vo.Enterprise;
 import com.project.jobnom.enterprise.model.vo.Score;
 import com.project.jobnom.enterprise.page.EnterprisePageBar;
+import com.project.jobnom.openapi.model.vo.openApiVo;
 
 
 @Controller
@@ -58,27 +68,118 @@ public class companyController {
 	//기업 메인 페이지
 
 	@RequestMapping("/enterprise/com_info.do")
-	public ModelAndView companyInfo(ModelAndView mv,int entNo) {
+	public ModelAndView companyInfo(ModelAndView mv,int entNo, String seq) throws Exception {
+		
+		
+		
+		// open api
+		if(seq != null) {
+			
+			// DB에서 기업 번호로 기업 데이터 가져옴
+			System.out.println(entNo);
+			System.out.println(seq);
+			mv.addObject("list",service.companyInfo(entNo));
+			// DB에서 기업 번호로 기업 데이터 가져옴 끝
+			
+			seq = URLDecoder.decode(seq, "UTF-8"); // 디코딩 하기
+
+		// servicekey : 공공데이터 신청한 api 인증키
+		String servicekey = "ZE%2FyNNIkFe7TiKpeKRdbPC4WdjWNPX76FEeHfwGKdcTQMkXBnHJ8FbADGE9oIEcx%2B8ZCO8aTfD39YcSFyPgrpw%3D%3D";
+		String spec = "http://apis.data.go.kr/B552015/NpsBplcInfoInqireService/getDetailInfoSearch?"; // 공공데이터 포탈에서 받은 주소
+		spec += "seq=" + URLEncoder.encode(seq, "utf-8") // 시퀀스
+				+ "&serviceKey=" + servicekey; // 서비스 키
+
+		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+
+		DocumentBuilder builder = factory.newDocumentBuilder();
+
+		Document doc = builder.parse(spec);
+		doc.getDocumentElement().normalize();
+
+		Element root = doc.getDocumentElement();
+
+		NodeList nList = root.getElementsByTagName("item");
+		List<openApiVo> apiList = new ArrayList<>();
+		for(int i = 0; i<nList.getLength(); i++) {
+			Node item = nList.item(i);
+			NodeList cList = item.getChildNodes();
+			openApiVo o = new openApiVo();
+			
+			for(int k = 0; k<cList.getLength(); k++) {
+				Node items = cList.item(k);
+				String value = items.getNodeName();
+				if(value.equals("#text")) continue;
+				if(value.equals("wkplNm")) o.setWkplNm(items.getTextContent()); // 기업명
+				if(value.equals("wkplRoadNmDtlAddr")) o.setWkplRoadNmDtlAddr(items.getTextContent()); // 도로명 주소
+				if(value.equals("crrmmNtcAmt")) o.setCrrmmNtcAmt(items.getTextContent()); // 당월 고지 금액
+				if(value.equals("jnngpCnt")) o.setJnngpCnt(items.getTextContent()); // 가입자수
+				if(value.equals("adptDt")) o.setAdptDt(items.getTextContent()); // 사업장 등록일
+				
+			}
+			apiList.add(o);
+			mv.addObject("apiList",apiList);
+			mv.setViewName("enterprise/com_info");
+		}
+		
+		// open api 끝
+	}else {
+		
 		System.out.println(entNo);
 		mv.addObject("list",service.companyInfo(entNo));
-		System.out.println(mv.addObject("list",service.companyInfo(entNo)));
 		mv.setViewName("enterprise/com_info");
+		
+	}
+		
+		mv.addObject("followEnt",service.selectEntFollow());
+		mv.addObject("list",service.companyInfo(entNo));
+		
 		return mv;
 	}
+	
+	@RequestMapping("/enterprise/followEnt.do")
+	@ResponseBody
+	public void followEnt(int entNo, int memNo) {
+		Map param1 = new HashedMap();
+		param1.put("entNo",entNo);
+		param1.put("memNo",memNo);
+		
+		System.out.println("나오니? : " + param1);
+		
+		 int result = service.followEnt(param1);
+		 
+		 
+	}
+	
+	@RequestMapping("/enterprise/unfollowEnt.do")
+	@ResponseBody
+	public void unfollowEnt(int entNo,int memNo) {
+		Map param1 =new HashedMap();
+		param1.put("entNo",entNo);
+		param1.put("memNo",memNo);
+		
+		System.out.println("나오니? : " + param1);
+		
+		int result = service.unfollowEnt(param1);
+		
+}
 
 	@RequestMapping("/enterprise/com_review.do")
 	public ModelAndView companyReview(ModelAndView mv,int entNo,@RequestParam(value="cPage",defaultValue="1")
 					int cPage,@RequestParam(value="numPerpage",defaultValue="5") int numPerpage) {
 		List<Review> rev=service.selectReviewList(entNo,cPage,numPerpage);
 		System.out.println("기업번호"+entNo);
-		Score scr = service.scoreList(entNo);
-		System.out.println("리뷰" + scr);
+		/*
+		 * Score scr = service.scoreList(entNo); System.out.println("리뷰" + scr);
+		 */
+		System.out.println("이거 제발.. " + rev);
 		System.out.println("??" + service.scoreList(entNo));
+		System.out.println("나오닝??" + service.selectEntFollow());
 		int totalData = service.selectReviewcount(entNo);
 		mv.addObject("list",service.companyInfo(entNo));
 		mv.addObject("totalData",totalData);
 		mv.addObject("pageBar",EnterprisePageBar.getPageBar3(totalData,entNo,cPage,numPerpage,"com_review.do"));
 		mv.addObject("rev",rev);
+		mv.addObject("followEnt",service.selectEntFollow());
 		mv.setViewName("enterprise/com_review");
 		return mv;
 	}
@@ -87,6 +188,7 @@ public class companyController {
 	public ModelAndView companyInterview(ModelAndView mv,int entNo) {
 		mv.addObject("list",service.companyInfo(entNo));
 		mv.setViewName("enterprise/com_interview");
+		mv.addObject("followEnt",service.selectEntFollow());
 		return mv;
 	}
 
@@ -108,6 +210,7 @@ public class companyController {
 		mv.addObject("c2",c2);
 		mv.addObject("Rec",Rec);
 		mv.addObject("list",service.companyInfo(entNo));
+		mv.addObject("followEnt",service.selectEntFollow());
 		mv.setViewName("enterprise/com_job");
 		return mv;
 	}

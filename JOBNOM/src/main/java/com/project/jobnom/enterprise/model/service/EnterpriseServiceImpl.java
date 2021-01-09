@@ -220,6 +220,22 @@ public class EnterpriseServiceImpl implements EnterpriseService {
 		// TODO Auto-generated method stub
 		return dao.scoreList(session,entNo);
 	}
+	@Override
+	public int followEnt(Map param1) {
+		// TODO Auto-generated method stub
+		return dao.followEnt(session,param1);
+	}
+	@Override
+	public int unfollowEnt(Map param1) {
+		// TODO Auto-generated method stub
+		return dao.unfollowEnt(session,param1);
+	}
+	@Override
+	public List<Map> selectEntFollow() {
+		// TODO Auto-generated method stub
+		return dao.selectEntFollow(session);
+	}
+
 	
 	
 }

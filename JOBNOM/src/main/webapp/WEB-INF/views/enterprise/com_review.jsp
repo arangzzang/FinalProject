@@ -29,9 +29,9 @@
 												style="width: 104px; height: 104px;">
 										</c:when>
 										<c:otherwise>
-											<a href="" class="logo_wrap"> <img
+											<a href="" class="logo_wrap"> <%-- <img
 												src="${path }/resources/enterprise/logo/${list[0].ENT_NO }/${list[0].ENT_LOGO}"
-												style="width: 104px; height: 104px;">
+												style="width: 104px; height: 104px;"> --%>
 											</a>
 										</c:otherwise>
 									</c:choose>
@@ -63,7 +63,7 @@
 				<nav id="view_com">
 					<ul class="view_menu">
 						<li class="li_menu"><a
-							href="${path }/enterprise/com_info.do?entNo=${list[0].ENT_NO}"><h2>소개</h2></a>
+							href="${path }/openApi.do?entNo=${list[0].ENT_NO}&keyword=${list[0].ENT_NAME}"><h2>소개</h2></a>
 						</li>
 						<li class="li_menu"><a
 							href="${path }/enterprise/com_review.do?entNo=${list[0].ENT_NO}"><h2>리뷰</h2></a>
@@ -76,9 +76,28 @@
 						</li>
 					</ul>
 					<div class="follow_btn">
+					<%-- <c:if
+							test="${not fn:contains(followEnt.entNo,list[0].ENT_NO)}">
+							<button class="btn_heart1" id="follow">
+								<i class="far fa-heart" style="color: red;"></i>팔로우
+							</button>
+						</c:if>
+						<c:if 
+							test="${fn:contains(followEnt.entNo,list[0].ENT_NO)}">
+							<button class="btn_heart2" id="follow2">
+								<i class="fas fa-heart" style="color: red;"></i>팔로우 넵ㄴ
+							</button>
+						</c:if>
+						<c:if test="${empty commonLogin}">
+							<button class="btn_heart1" id="follow">
+								<i class="far fa-heart" style="color: red;"></i>팔로우
+							</button>
+						</c:if> --%>
+					<div class="follow_btn">
 						<button id="follow" class="btn btn">
-							<i id="heart" class="far fa-heart"></i>찜하기
+							<i id="heart" class="far fa-heart"></i>팔로우
 						</button>
+					</div>
 					</div>
 				</nav>
 			</div>
@@ -157,5 +176,61 @@
 		</c:if>
 		<div id="pageBar" style="margin-top: 20px;">${pageBar }</div>
 </section>
+<script>
+var result = 0;
+
+if(${commonLogin == null}){
+	result = 1;
+};
+$(document).ready(function() {
+
+	/*팔로잉  */
+$('.btn_heart1').on('click',function() {
+	
+	if(result == 1){
+		alert('로그인 후 이용 해 주세요');
+		
+	}else{
+		let entNo = ${list[0].ENT_NO}; 
+		let memNo = ${commonLogin.memNo};
+		$.ajax({
+			url:'${path}/enterprise/followEnt.do',
+			type:'POST',
+			data:{entNo : entNo, memNo : memNo},
+			success : function(data) {
+				console.log(data);
+				alert('기업을 팔로우 하셨습니다..');
+				location.reload(true);
+				
+			}
+		});
+	}
+});
+	
+
+	$('.btn_heart2').on('click',function() {
+		
+		if(result == 1){
+			alert('로그인 후 이용 해 주세요');
+			
+		}else{
+			let entNo = ${list[0].ENT_NO};
+			let memNo = ${commonLogin.memNo};
+			console.log(entNo);
+			$.ajax({
+				url:'${path}/enterprise/unfollowEnt.do',
+				type:'POST',
+				data:{entNo : entNo, memNo : memNo},
+				success : function(data) {
+					console.log(data);
+					alert('기업을 팔로우 취소하셨습니다.');
+					location.reload(true);
+					
+				}
+			});
+		}
+	});
+});
+</script>
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />

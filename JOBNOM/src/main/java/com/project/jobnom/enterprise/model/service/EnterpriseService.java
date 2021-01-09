@@ -95,4 +95,10 @@ public interface EnterpriseService {
 	int selectSupportCount(int recno);
 	
 	Score scoreList(int entNo);
+	//기업 팔로잉
+	int followEnt(Map param1);
+	//기업 언팔로잉
+	int unfollowEnt(Map param1);
+	//기업 팔로잉 리스트
+	List<Map> selectEntFollow();
 }

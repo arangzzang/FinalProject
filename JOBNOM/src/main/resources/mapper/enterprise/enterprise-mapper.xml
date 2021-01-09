@@ -221,7 +221,7 @@
 	<select id="selectReviewList" resultType="review" parameterType="_int">
 		select * from review
 		join MEMBER using (mem_no)
-		where ent_no=#{entNo}
+		where ent_no=#{entNo} 
         order by re_enroll_date desc
 	</select>
 	<select id="selectReviewcount" resultType="_int" >
@@ -482,5 +482,19 @@
 		from review
 		where ent_no=#{entNo}
 	</select> 
+
+	<insert id="followEnt" parameterType="java.util.HashMap">
+		INSERT INTO ENTERPRISEFOLLOW VALUES(SEQ_FAV_NO.NEXTVAL,#{memNo},#{entNo})
+	</insert>
+	
+	<delete id="unfollowEnt" parameterType="java.util.HashMap">
+		DELETE ENTERPRISEFOLLOW
+        	WHERE mem_no=#{memNo}
+        	AND ent_no=#{entNo}
+	</delete>
+	
+	<select id="selectEntFollow" resultType="map">
+		select * from ENTERPRISEFOLLOW
+	</select>
 	
 </mapper>

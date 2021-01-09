@@ -243,6 +243,25 @@ public class EnterpriseDaoImpl implements EnterpriseDao {
 		// TODO Auto-generated method stub
 		return session.selectOne("enterprise.scoreList",entNo);
 	}
+
+	@Override
+	public int followEnt(SqlSession session,Map param1) {
+		// TODO Auto-generated method stub
+		return session.insert("enterprise.followEnt",param1);
+	}
+
+	@Override
+	public int unfollowEnt(SqlSession session ,Map param1) {
+		// TODO Auto-generated method stub
+		return session.delete("enterprise.unfollowEnt",param1);
+	}
+
+	@Override
+	public List<Map> selectEntFollow(SqlSession session) {
+		// TODO Auto-generated method stub
+		return session.selectList("enterprise.selectEntFollow");
+	}
+	
 	
 
 	

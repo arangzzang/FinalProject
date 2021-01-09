@@ -57,7 +57,7 @@
 
 
                                     <div id="contentDetailfinance">
-                                        <div class="check_wrap">
+                                        <div class="check_wrap" >
                                             <input type="checkbox" id="bankClerk" name="anoNum" value="1">
                                             <label for="bankClerk" class="checkboxContentDetail" id="">
                                             <span class="checkboxContentSpan"></span>은행관련</label>
@@ -86,7 +86,7 @@
                                     </div>
                                     <!-- 인터넷 -->
                                     <div id="contentDetailIT"
-                                        style="overflow:scroll; width:450px; height:300px; padding:10px; display: none; ">
+                                        style="overflow:scroll; width:300px; height:300px; padding:10px; display: none; ">
                                         <div class="check_wrap">
                                             <input type="checkbox" id="QA" name="anoNum" value="6">
                                             <label for="QA" class="checkboxContentDetail" id=""><span
@@ -123,7 +123,7 @@
 
                                     <!-- 교육 -->
                                     <div id="contentDetailStudy"
-                                        style="overflow:scroll; width:450px; height:300px; padding:10px; display: none; ">
+                                        style="overflow:scroll; width:300px; height:300px; padding:10px; display: none; ">
                                         <div class="check_wrap">
                                             <input type="checkbox" id="educationPlanning" name="anoNum" value="12">
                                             <label for="educationPlanning" class="checkboxContentDetail" id=""><span
@@ -159,7 +159,7 @@
                                     </div>
                                     <!-- 마켓팅  -->
                                     <div id="contentDetailMarket"
-                                        style="overflow:scroll; width:450px; height:300px; padding:10px; display: none; ">
+                                        style="overflow:scroll; width:300px; height:300px; padding:10px; display: none; ">
                                         <div class="check_wrap">
                                             <input type="checkbox" id="strategyMarketing" name="anoNum" value="18">
                                             <label for="strategyMarketing" class="checkboxContentDetail" id=""><span
@@ -191,7 +191,7 @@
                                     </div>
                                     <!-- 의약 -->
                                     <div id="contentDetailMedicine"
-                                        style="overflow:scroll; width:450px; height:300px; padding:10px; display: none; ">
+                                        style="overflow:scroll; width:300px; height:300px; padding:10px; display: none; ">
                                         <div class="check_wrap">
                                             <input type="checkbox" id="doctore" name="anoNum" value="23">
                                             <label for="doctore" class="checkboxContentDetail" id=""><span
@@ -237,8 +237,8 @@
 
                                     </div>
                                     <!-- 서비스 -->
-                                    <div id="contentDetailService"여행숙박
-                                        style="overflow:scroll; width:450px; height:300px; padding:10px; display: none; ">
+                                    <div id="contentDetailService"
+                                        style="overflow:scroll; width:300px; height:300px; padding:10px; display: none; ">
                                         <div class="check_wrap">
                                             <input type="checkbox" id="customerSupport" name="anoNum" value="31">
                                             <label for="contentDetailService" class="checkboxContentDetail" id=""><span
@@ -718,40 +718,7 @@
            });
            });
              </script>
-             <!--  <script>
-                /*  data:{ent_no:'${a.ent_no}'}, */
-                
-                    $(".annoListTitle").click(e=>{
-                    var formData = $(e.target).next().val();
-                    $.ajax({
-                         
-                         url : "${path}/Hire/reviewAVG.do", // 요기에
-                         type : 'POST', 
-                         data : {ent_no:formData},
-                         cache: false
-                    }).done(function (fragment) {
-                       alertr(fragment);
-                         $("#list").replaceWith(fragment);
-
-
-                           
-                        }
-               
-                    
-                    });
-                
-                </script>   -->
-                
-               <%--  $("#searchBtn").click((e) => {//function(){}
-         $.ajax({
-            url:"<%=request.getContextPath()%>/jquery/nameSearch",
-            data:{"name":$("#name").val()},//서버에 전달할 데이터 자바스크립트 객체로 보냄{키:값,키:값,....}
-            dataType:"html",
-            success:function(data){
-               $("#result").html(data);
-            }
-         });
-      }); --%>
+            
                 
                 <script>
                 /*  data:{ent_no:'${a.ent_no}'}, */

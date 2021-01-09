@@ -62,7 +62,7 @@
 				<nav id="view_com">
 					<ul class="view_menu">
 						<li class="li_menu"><a
-							href="${path }/enterprise/com_info.do?entNo=${list[0].ENT_NO}"><h2>소개</h2></a>
+							href="${path }/openApi.do?entNo=${list[0].ENT_NO}&keyword=${list[0].ENT_NAME}"><h2>소개</h2></a>
 						</li>
 						<li class="li_menu"><a
 							href="${path }/enterprise/com_review.do?entNo=${list[0].ENT_NO}"><h2>리뷰</h2></a>
@@ -76,7 +76,7 @@
 					</ul>
 					<div class="follow_btn">
 						<button id="follow" class="btn btn">
-							<i id="heart" class="far fa-heart"></i>찜하기
+							<i id="heart" class="far fa-heart"></i>팔로우
 						</button>
 					</div>
 				</nav>

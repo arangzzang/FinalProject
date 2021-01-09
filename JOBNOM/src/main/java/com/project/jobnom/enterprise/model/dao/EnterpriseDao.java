@@ -92,4 +92,10 @@ public interface EnterpriseDao {
 	int selectSupportCount(SqlSession session, int recno);
 	
 	Score scoreList(SqlSession session, int entNo);
+	
+	int followEnt(SqlSession session, Map param1);
+	
+	int unfollowEnt(SqlSession session, Map param1);
+	
+	List<Map> selectEntFollow(SqlSession session);
 }
