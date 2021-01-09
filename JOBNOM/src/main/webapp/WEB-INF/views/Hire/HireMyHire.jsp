@@ -125,7 +125,7 @@
 				</div>
 				<%-- <c:if test="${commonLogin !=null && commonLogin ==null}"> --%>
 				<c:forEach items="${support}" var="s">
-				<a href="${path }/Hire/annoHomeDetailMove.do?recNo=${s.rec_no}" class="ss">
+				<a class="menus"  href="${path }/Hire/announcementPageFirst?recNo=${s.rec_no}&memNo=${commonLogin.memNo}&anoNum=${s.rec_category}" class="ss">
 					<div class="myHyreSupportListAll">
 						
 						<div class="myHyreSupportList1"><c:out value="${s.rec_title}" /></div>

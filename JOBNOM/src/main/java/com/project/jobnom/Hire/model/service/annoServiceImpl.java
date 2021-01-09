@@ -71,7 +71,16 @@ public class annoServiceImpl implements annoService {
 	@Override
 	public List<Support> selectSupportApply(Map paramMap) {
 		return dao.selectSupportApply(session, paramMap);
-	} 
+	}
+
+
+	@Override
+	public List<Recruitment> announcementPageFirst(Map paramMap) {
+		return dao.announcementPageFirst(session, paramMap);
+	}
+
+
+	
 	
 	
 	

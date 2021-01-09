@@ -20,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.project.jobnom.Hire.model.service.annoService;
 import com.project.jobnom.Hire.model.vo.Interestedrcruitment;
 import com.project.jobnom.Hire.model.vo.Recruitment;
+import com.project.jobnom.Hire.model.vo.Support;
 import com.project.jobnom.common.pagebar.PageBarFactory;
 
 
@@ -92,6 +93,7 @@ public class annoController {
 	}
 	
 	
+	
 	@RequestMapping("/Hire/annCarrer.do")
 	@ResponseBody
 	public ModelAndView annCarrer(HttpServletResponse response,ModelAndView mv, Model  m, HttpServletRequest request, @RequestParam(value = "cPage", defaultValue = "1") int cPage,
@@ -146,5 +148,35 @@ public class annoController {
     
 		return mv; 
  
+	}
+	
+	@RequestMapping("/Hire/announcementPageFirst")
+	public ModelAndView announcementPageFirst(HttpServletRequest request,ModelAndView mv, String anoNum, String recNo, String memNo) {
+		// 공고 리스트들 출력해주는곳
+		System.out.println("이건 anoNUm :"+anoNum);
+		System.out.println("이건 recNo :"+recNo);
+		System.out.println("이건 memNo :"+memNo);
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		String anoNum1 = request.getParameter("anoNum"); 
+		paramMap.put("anoNum", anoNum1);
+		String recNo1 = request.getParameter("recNo"); 
+		paramMap.put("rec_no", recNo1);
+		String memNo1 = request.getParameter("memNo");
+		paramMap.put("memNo", memNo1);
+		System.out.println("총"+paramMap);
+		List<Recruitment> anolist = service.announcementPageFirst(paramMap);
+		System.out.println("ㅎ"+anolist);
+		List<Interestedrcruitment> in=service.selectIn(paramMap);
+		System.out.println("이것은"+in);
+		mv.addObject("in", in);
+		
+		List<Support> sp = service.selectSupportApply(paramMap);
+		mv.addObject("sp", sp);
+	
+		mv.addObject("r", anolist);
+		mv.setViewName("Hire/annoFirst");
+ 
+		return mv;
+
 	}
 } 

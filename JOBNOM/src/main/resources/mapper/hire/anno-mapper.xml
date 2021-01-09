@@ -90,6 +90,27 @@
     SELECT * FROM SUPPORT
     WHERE MEM_NO= #{memNo} AND REC_NO=#{rec_no}
    </select>
-         
+   <select id="announcementPageFirst" parameterType="map" resultType="com.project.jobnom.Hire.model.vo.Recruitment">
+   SELECT DISTINCT E.REC_NO,E.ENT_NO, REC_TITLE,REC_OTHER, REC_CONTENTS, REC_STARTDATE, REC_ENDDATE, REC_INFO,REC_PREFER, REC_WELFARE, REC_QUALIFICATION, REC_PEPOLE, REC_CAREER, REC_ORDER,
+                 REC_TYPE, REC_CATEGORY,ENT_NAME,OPEN_CHECK, REP_NAME, REP_PHONE,ENT_LOGO, REPLACE(REC_SALARY,' ')  AS REC_SALARY
+			FROM RECRUITMENT E 
+          LEFT JOIN REVIEW S ON (S.ENT_NO = E.ENT_NO)
+             LEFT JOIN INTERESTEDRECRUITMENT T ON(T.REC_NO = E.REC_NO)
+         LEFT JOIN ENTERPRISE R ON (R.ENT_NO = E.ENT_NO)
+             LEFT JOIN SUPPORT U ON (U.REC_NO = E.REC_NO)
+              LEFT JOIN MEMBER M ON (M.MEM_NO = U.MEM_NO)
+              <if test="anoNum != null">
+            WHERE REC_CATEGORY=#{anoNum}
+            </if>
+              <if test="rec_no != null">
+            AND E.REC_NO=#{rec_no}
+            </if>
+           <!--   <if test="memNo != null">
+            AND M.MEM_NO=#{memNo}
+            </if>  -->
+          
+            ORDER BY REC_STARTDATE DESC
+   </select>
+
 </mapper>     
  

@@ -110,7 +110,7 @@
 	</delete>
 	
 	<select id="HireMyHire" parameterType="string" resultType="com.project.jobnom.Hire.model.vo.Support">
-		  			SELECT S.*, ENT_NAME,REC_TITLE,REC_CONTENTS
+		  			SELECT S.*, ENT_NAME,REC_TITLE,REC_CONTENTS, REC_CATEGORY
                       FROM SUPPORT S
                        JOIN RECRUITMENT R ON(R.REC_NO = S.REC_NO)
                        JOIN ENTERPRISE E ON(E.ENT_NO = R.ENT_NO)
@@ -188,7 +188,7 @@
 	
 	</select>
 	<select id="swiper" resultType="com.project.jobnom.Hire.model.vo.Recruitment" parameterType="String">
-		 SELECT  REC_NO, ENT_NO, REC_TITLE, REC_CONTENTS, REC_ENDDATE,REC_INFO,REC_CAREER, REC_PEPOLE,REC_TYPE,  REPLACE(REC_SALARY,' ')  AS REC_SALARY
+		 SELECT  REC_NO, ENT_NO, REC_TITLE, REC_CONTENTS, REC_ENDDATE,REC_INFO,REC_CAREER, REC_PEPOLE,REC_TYPE,REC_CATEGORY, REPLACE(REC_SALARY,' ')  AS REC_SALARY
 		  FROM RECRUITMENT
 		WHERE REC_NO =#{rec_no}	
 		</select>
@@ -201,6 +201,27 @@
                  SELECT JOBS2 FROM CATEGORY2 
                  WHERE CATE_NO2=#{rec_category}
 	</select>
+	
+	<select id="mypageReview" resultType="map" parameterType="string">
+	SELECT * FROM REVIEW WHERE MEM_NO=#{memNo}
+	</select>
+	
+	
+	<select id="selectReviewCount" parameterType="string" resultType="_int">
+		 SELECT COUNT(*) FROM REVIEW 
+		 WHERE MEM_NO = #{memNo} 
+	</select>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 </mapper> 

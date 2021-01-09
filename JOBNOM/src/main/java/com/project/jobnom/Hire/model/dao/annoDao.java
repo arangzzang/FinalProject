@@ -32,4 +32,11 @@ public interface annoDao {
 	int selectCount3(SqlSession session, int recNo);
 	
 	List<Support> selectSupportApply(SqlSession session, Map paramMap);
+
+	List<Recruitment>  announcementPageFirst(SqlSession session ,Map paramMap);
+
+
+
+
+
 }

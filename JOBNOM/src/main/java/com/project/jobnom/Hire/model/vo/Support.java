@@ -20,5 +20,6 @@ public class Support {
 	private String ent_name;
 	private String rec_contents;
 	private Date support_day;
+	private int rec_category;
 
 }
