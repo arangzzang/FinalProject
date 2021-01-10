@@ -143,6 +143,16 @@ public class HireServiceImpl implements HireService {
 		return dao.membercate2(session, rec_category);
 	}
 
+	@Override
+	public List<Map> mypageReview(String memNo, int cPage, int numPerpage) {
+		return dao.mypageReview(session, memNo, cPage, numPerpage);
+	}
+
+	@Override
+	public int selectReviewCount(String memNo) {
+		return dao.selectReviewCount(session, memNo);
+	}
+
 	
 	
 	

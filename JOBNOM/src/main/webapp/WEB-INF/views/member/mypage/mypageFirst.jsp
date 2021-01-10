@@ -56,7 +56,7 @@
                                     </div>
                                 </div>
                             </form>
-                            더 이상 job.nom을 이용하지 않는다면 <a href="${path }/common/userSecession?memNo=${mem.memNo}">회원탈퇴</a>
+                            더 이상 job.nom을 이용하지 않는다면 <a class="secession">회원탈퇴</a>
                         </div>
                     </div>
                 </div>
@@ -67,8 +67,8 @@
     <input type="hidden" class="mem_change_email2" value=""/>
 </section>
 
-${insertFlag}
 <script>
+	
 	<c:if test="${updateFlag}">
 		$(function(){
 			$(".resumeBtn").click();
@@ -79,13 +79,18 @@ ${insertFlag}
 			$(".resumeBtn").click();
 		})
 	</c:if>
+	$(".secession").click(e=>{
+		if(confirm("정말 탈퇴하시겠습니까? 탈퇴하시면 모든 정보가 지워집니다.")){
+			 location.href="${path }/common/userSecession?memNo=${mem.memNo}";
+		}else{
+			
+		}
+	});
 	$(function (){
 		//email변경(인증하기)
 		$(".time").hide();
 		$(".email_check").hide();
 		$(".change_certification").hide();
-		
-		
 		$(".changeEmailBtn").click(e=>{
 			let re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 			let changeMail = document.getElementById("uname").value;

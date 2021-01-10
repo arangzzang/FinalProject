@@ -79,10 +79,8 @@ public class SearchController {
 						if(value.equals("seq")) o.setSeq(items.getTextContent()); //  seq : 시퀀스
 						if(value.equals("wkplNm")) o.setWkplNm(items.getTextContent()); // wkplNm :  기업명
 						if(value.equals("wkplRoadNmDtlAddr")) o.setWkplRoadNmDtlAddr(items.getTextContent()); // wkplRoadNmDtlAddr : 도로명 주소
-						
 					}
 					apiList.add(o);
-					
 				}
 				mv.addObject("api",apiList);
 				mv.addObject("list",service.selectSearchResult(keyword));

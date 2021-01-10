@@ -20,10 +20,12 @@ import com.project.jobnom.Hire.model.service.HireService;
 import com.project.jobnom.Hire.model.vo.Support;
 import com.project.jobnom.common.model.vo.Login;
 import com.project.jobnom.common.pagebar.PageBarFactory;
+import com.project.jobnom.enterprise.model.vo.Enterprise;
 import com.project.jobnom.member.model.service.MemberService;
 import com.project.jobnom.member.model.vo.MemCategory;
 import com.project.jobnom.member.model.vo.MemCategory2;
 import com.project.jobnom.member.model.vo.Member;
+import com.project.jobnom.resume.model.vo.MySkill;
 import com.project.jobnom.resume.model.vo.Resume;
 
 @Controller
@@ -158,6 +160,9 @@ public class MemberController {
 		List<MemCategory> list = service.selectCategoryList();
 		List<MemCategory2> list2 = service.selectCategoryList2(mem.getCateNo());
 		Resume res = service.selectResume(memNo);
+//		List<MySkill> mind = service.selectMySkill(res.getResNo());
+		
+//		m.addAttribute("MySkill",mind);
 		m.addAttribute("res",res);
 		m.addAttribute("cate3",list2);
 		m.addAttribute("cate",list);
@@ -168,7 +173,23 @@ public class MemberController {
 	@RequestMapping("/member/followingEnt")
 	public String followingEnt (int memNo, Model m) throws IOException {
 		
+		int reviewCount=0;
+		int entNo=0;
+		Map reviewResult=new HashMap();
 		Member mem = service.mypageView(memNo);
+		List<Enterprise> list = service.selectEnterpriseFollowing(memNo);
+		int count = service.countEnterpriseFollowing(memNo);
+		for(int i=0;i<list.size();i++) {
+			entNo=list.get(i).getEntNo();
+			reviewCount = service.reviewCount(entNo);//Map으로 만들어줘서 다시 던져줘야함.
+			reviewResult.put(i,reviewCount);
+			System.out.println("뭐가 뜨려나 : "+reviewResult.get(i));
+			System.out.println("기업 번호 : "+entNo);
+			System.out.println("리뷰갯수 : "+reviewCount);
+		}
+		m.addAttribute("reviewCount",reviewResult);
+		m.addAttribute("count",count);
+		m.addAttribute("list",list);
 		m.addAttribute("mem",mem);
 		return "/member/mypage/interestinfo/followingEnt";
 	}
@@ -190,11 +211,28 @@ public class MemberController {
 	}
 	//리뷰작성하기 (Ajax)
 	@RequestMapping("/member/insertReview.do")
-	public String insertReview(int memNo, Model m)  throws IOException {
+	public String insertReview(String memNo, Model m,@RequestParam(value = "cPage", defaultValue = "1") int cPage,
+			@RequestParam(value = "numPerpage", defaultValue = "5") int numPerpage) throws IOException {
 		System.out.println("되고있나");
+		
+		//기업 이름만 가져오는곳
 		 List<Map> mem = HireService.mypageView();
+		 
+		 //리뷰정보 가져오기
+		 List<Map> review = HireService.mypageReview(memNo,cPage,numPerpage);
+		 
+		 //리뷰갯수 카운트
+		 int ReviewCount = HireService.selectReviewCount(memNo);
+		 
+		 m.addAttribute("ReviewCount",ReviewCount);
 		 m.addAttribute("mem",mem);
+		 m.addAttribute("review",review);
+		 
+		 m.addAttribute("pageBar", PageBarFactory.getPageBar8(ReviewCount, cPage, numPerpage, memNo, "insertReview.do"));
+			
 		 System.out.println("테스트 입니다"+mem);
+		 System.out.println("리뷰 테스트 입니다"+review);
+		 System.out.println("ReviewCount 입니다 : "+ReviewCount);
 		 return "Hire/insertReview";
 	}
 	//면접후기작성 (Ajax)
@@ -206,9 +244,27 @@ public class MemberController {
 	}
 	//리뷰 작성 (Ajax)
 	@RequestMapping("/member/reviewList")
-	public String reviewList(int memNo, Model m) throws IOException {
-		 Member mem = service.mypageView(memNo);
+	public String reviewList(String memNo, Model m,@RequestParam(value = "cPage", defaultValue = "1") int cPage,
+			@RequestParam(value = "numPerpage", defaultValue = "5") int numPerpage) throws IOException {
+
+		//기업 이름만 가져오는곳
+		 List<Map> mem = HireService.mypageView();
+		 
+		 //리뷰정보 가져오기
+		 List<Map> review = HireService.mypageReview(memNo, cPage, numPerpage);
+		 
+		 //리뷰갯수 카운트
+		 int totalDataSu = HireService.selectReviewCount(memNo); // 이건 지원한 공고 갯수
+		 
+		 m.addAttribute("totalDataSu",totalDataSu);
 		 m.addAttribute("mem",mem);
+		 m.addAttribute("review",review);
+		 
+		 m.addAttribute("pageBar", PageBarFactory.getPageBar7(totalDataSu, cPage, numPerpage, memNo, "insertReview.do"));
+			
+		 System.out.println("테스트 입니다"+mem);
+		 System.out.println("리뷰 테스트 입니다"+review);
+		 System.out.println("ReviewCount 입니다 : "+totalDataSu);
 		 return "/member/mypage/activityHistory/reviewList";
 	}
 	//입사지원 (Ajax)

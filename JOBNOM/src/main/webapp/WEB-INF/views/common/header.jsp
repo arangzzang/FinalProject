@@ -32,19 +32,16 @@
 <link rel="stylesheet" href="${path }/resources/css/footer.css" />
 </head>
 <body>
-	<c:if test="${not empty cookie.loginCheck}">
-		<c:set var="checked" value="checked" />
-	</c:if>
+<%-- 	<c:if test="${not empty cookie.loginCheck}"> --%>
+<%-- 		<c:set var="checked" value="checked" /> --%>
+<%-- 	</c:if> --%>
 
 	<div id="container">
 		<header>
 			<div class="fixed-top" id="fix">
-				<nav
-					class="navbar navbar-expand-lg navbar-light headerContainerWrap">
+				<nav class="navbar navbar-expand-lg navbar-light headerContainerWrap">
 					<!-- bg-light -->
-					<a class="navbar-brand" href="${path }"> <img src="${path }/resources/image/header/jobnomLogo.png"
-						class="logo">
-					</a>
+					<a class="navbar-brand" href="${path }"><img src="${path }/resources/image/joblogo-removebg-preview.png"class="logo"></a>
 					<button class="navbar-toggler" type="button" data-toggle="collapse"
 						data-target="#navbarNav" aria-controls="navbarNav"
 						aria-expanded="false" aria-label="Toggle navigation">
@@ -74,9 +71,7 @@
 						</c:if>
 						<c:if test="${commonLogin !=null && commonLogin.type == 1 }">
 							<ul class="navbar-nav mr-auto admin_nav">
-								<li class="nav-item"><a class="menus" href="">회원관리</a></li>
-								<li class="nav-item"><a class="menus" href="">댓글관리</a></li>
-								<li class="nav-item"><a class="menus" href="">공고관리</a></li>
+								<li class="nav-item"><strong>관리자님 환영합니다</strong></li>
 							</ul>
 						</c:if>
 						<c:if test="${commonLogin == null}">
@@ -103,7 +98,7 @@
 								onclick="location.replace('${path}/common/logout');">로그아웃</button>
 						</c:if>
 						<c:if test="${commonLogin !=null && commonLogin.type == 1 }">
-							<span><a href="${path }/adminHome"><i
+							<span><a href="${path }/memMg"><i
 									class="fas fa-glasses"></i></a></span>
 					&nbsp;
 					<button class="btn btn-outline-success my-4 my-sm-0" type="button"
@@ -142,8 +137,9 @@
 											class="form-control password" id="password"
 											placeholder="비밀번호를 입력해주세요." name="password" required>
 									</div>
-									<label> <input type="checkbox" name="loginCheck"
-										${checked }>E_mail저장하기
+									<label>
+										<input type="checkbox" name="loginCheck" ${not empty cookie.loginCheck?"checked":""}>
+										E_mail저장하기
 									</label>
 								</div>
 								<div class="modal-footer">
