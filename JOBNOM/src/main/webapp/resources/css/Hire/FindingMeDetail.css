@@ -1,4 +1,10 @@
 
+@font-face {
+    font-family: 'paybooc-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/paybooc-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 #findingMeDetail{
     margin-top: 30px;
     padding-top:20px ;
@@ -7,8 +13,8 @@
     position: relative;
     height: 330px;
     border-radius: 12px;
-    background-color: #f3f3f3;
-
+    background-image: url("../../image/Hire/back.png");
+    background-size:1200px 330px;
 
 }
 .findingMeDetailX{
@@ -19,6 +25,20 @@
 }
 .findingMeDetailCancel{
     border: none;
+    border-radius: 12px;
+    right: 0;
+    top: 0;
+    color: black;
+    text-align: center;
+    width: 250px;
+    height: 50px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-right: 10px;
+   margin-top: 40px;
+    margin-bottom: 20px;
+    margin-left: 10px;
 }
 .fa-window-close{
     font-size: 30px;
@@ -107,7 +127,8 @@
 }
 .findingMeDetailButton{
     display: flex;
-    padding-left: 150px;
+    margin-left: 100px;
+    widows: 500px;
 }
 .btn_annoDetail{
 
@@ -116,14 +137,14 @@
     background: #00c362;
     color: #fff;
     text-align: center;
-    width: 200px;
+    width: 230px;
     height: 50px;
     font-size: 14px;
     font-weight: bold;
     border-radius: 5px;
     margin-right: 10px;
     margin-top: 40px;
-    margin-left: 60px;
+    margin-left: 10px;
     }
 #announcementFavorites{
         width: 100%;

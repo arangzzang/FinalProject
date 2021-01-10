@@ -1,5 +1,10 @@
 
- 
+@font-face {
+    font-family: 'paybooc-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/paybooc-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 a:hover{
 
     color: green;
@@ -11,7 +16,7 @@ a{
   }
 /* 세션 */
   section{
-    
+
     width: 80%;
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -146,7 +151,6 @@ a{
     height: 130px;
     width: 70%;
     text-align: center;
-    border:solid;
     border-radius: 12px;
     display: flex;
 }
@@ -332,3 +336,4 @@ a{
 	background-size: cover;
 	width: 100%; height: 200px;
 }
+

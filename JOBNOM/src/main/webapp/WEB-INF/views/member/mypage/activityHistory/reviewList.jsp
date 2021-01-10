@@ -170,5 +170,27 @@ function fn_review(){
 };
 
 </script>
-       	</div>
-   	</div>
+ <script>
+	  function fn_paging(cPage){
+		$.ajax({
+			url:"${path}/member/reviewList",
+			data:{cPage:cPage,memNo:${commonLogin.memNo}},
+			success:data => {
+				$('.maininfo-parent').html(data);
+			}
+		})
+		};
+		
+	  </script>
+	  <script>
+ $(document).ready(function(){ 
+    $(".reviewBtnInsert").click(function(){
+       $("#popup").fadeIn();
+       $(".headerContainerWrap").css("display","none");
+       
+    });
+    $(".popmenuInsertClose").click(function(){
+       $("#popup").fadeOut();
+    });
+ }); 
+</script>  

@@ -17,7 +17,7 @@
                                 <div class="annoDetailLoge">
                                   <c:choose>
 		                        	<c:when test="${empty r[0].ENT_LOGO }">
-		                				<img src="${path }/resources/image/Hire/job.png" style="width: 50px; height: 50px; ">
+		                				<img src="${path }/resources/image/Hire/logo.png" style="width: 50px; height: 50px; ">
 		                        	</c:when>
 		                        	<c:otherwise>
 		                        		<img src="${path }/resources/enterprise/logo/${r[0].ENT_NO }/${r[0].ENT_LOGO}" style="width: 40px; height: 40px; ">
@@ -28,8 +28,8 @@
                             </div>
                             <div class="annoDetailTitleFlax">            
                                 <div id="annoDetailTitle1">${r[0].REC_TITLE }</div>
-                                
-                                 <a href="#">
+                             
+                                 <a href="${path }/enterprise/com_info.do?entNo=${r[0].ENT_NO }">
                                     <div class="annoDetailTitleFont" >${r[0].ENT_NAME }</div>
                                 </a>
                                
@@ -59,9 +59,7 @@
                             <img id="announcementFavorites2" src="${path }/resources/image/Hire/pngwing.png" />
                         </button>
                       </c:if>
-                      
-                      
-                      
+    
                      
                        <c:if test="${r[0].OPEN_CHECK eq 1  && in[0].rec_no eq r[0].REC_NO && in[0].mem_no eq commonLogin.memNo }">
                         <button id="favoritesBox" onclick="fn_toggle();">
@@ -135,7 +133,7 @@
 				        <c:out value="회사내규에따름"></c:out>
 				    </c:when>
 				<c:otherwise>
-				<fmt:formatNumber type="number" maxFractionDigits="3" value="${r[0].REC_SALARY}" /> 만원
+				￦<fmt:formatNumber type="number" maxFractionDigits="3" value="${r[0].REC_SALARY}" /> 원
 				</c:otherwise>
 				</c:choose>
                                 </div>
@@ -195,17 +193,17 @@
                                 <div class="managerName2">${r[0].REP_PHONE}</div>
                             </div>
                             <div class="InquiriesInfo">
-                                <div class="Inquiries">
+                               <!--  <div class="Inquiries">
                                     <div class="InquiriesHomePage">홈페이지</div>
                                      <div style="width: 200px;" class="InquiriesHomePage2"><a href="https://search.naver.com">기업 홈페이지 바로 가기</a></div>
-                                </div>
+                                </div> -->
                                 <div class="Inquiries">
                                     <div class="InquiriesPhone">연락처</div>
                                     <div class="InquiriesPhone2">${r[0].REP_PHONE}</div>
                                 </div>
                                 <div class="Inquiries">
                                     <div class="InquiriesEmail">이메일</div>
-                                    <div class="InquiriesEmail2"></div>
+                                    <div class="InquiriesEmail2">${r[0].ENT_EMAIL}</div>
                                 </div>
 
                             </div>
@@ -222,7 +220,7 @@
                         
                         </div>
                         </div>
-                        <div class="test1" style="width: 1000px;"></div>
+                        <div class="test1" style="width: 1000px; padding-left: -100px; "></div>
                         <div class="test2" style="width: 1000px;"></div>
   
                 <!-- </span> -->
@@ -255,19 +253,6 @@
 
 	</div>
 </div>
-<%--  function fn_mypage(){
-           	if($(commonLogin.memNo ==null )){
-         			alert("로그인후 이용가능합니다");	
-         			location.href="${path }/Hire/HireHome";
-   			}
-           	else{
-              	alert("마이페이지로 이동합니다.");
-              	location.href="${path }/member/myPage?memNo=${commonLogin.memNo }";
-              	 	
-             
-              }
-          };
- --%>
 
 
 <!-- 리뷰 클릭시 전환되는 에이작스 -->
@@ -284,6 +269,8 @@
                          success :function(data){
                         	 $(".annoDetailInfoWidth").css("display","none");
                         	 $(".test1").css("display","show");
+
+                        	
                            $(".test1").html(data);
                         }
                })
@@ -320,6 +307,7 @@
                         	 $(".test1").css("display","none");
                         	 $(".annoDetailAll").css("display","none");
                         	 $(".annoDetailAllHeight").css("display","none");
+                       
                         	 $(".test").html(data);
                         	 
                          

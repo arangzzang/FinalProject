@@ -65,4 +65,7 @@ public interface HireService {
 	List<Member> membercate2(String rec_category);
 	
 	int selectReviewCount(String memNo);
+	
+	List<Recruitment> recList();
+	List<Member> categoryAll(String memNo);
 }

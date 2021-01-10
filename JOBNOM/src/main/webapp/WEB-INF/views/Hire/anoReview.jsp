@@ -129,14 +129,5 @@
 			});
 </script>
                 
-               <!--  <script>
-
-              $(document).ready(function () {
-
-             $(".annoDetailListBoxs").click(function () {
-             /*  $(".clickReview").css("display", "none");  */
-             
-             });
-             });
-             </script> -->
+    
      

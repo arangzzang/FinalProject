@@ -17,7 +17,7 @@ figure.snip1132 {
   min-width: 220px;
   max-width: 310px;
   max-height: 220px;
-  width: 100%;
+  width: 350px;
 
   color: #ffffff;
   text-align: center;
@@ -591,8 +591,9 @@ figure.snip1132.hover img {
 
  </form>
 
- <div style=" width: 100%; height: 1200px; display: flex;padding-top: 100px; justify-content: btween;    ">
- <div class="" style=" width:40% ;  margin-right: 20px; font-style:inherit;">
+ <div style=" width: 100%; height: 1200px; display: flex;padding-top: 100px; justify-content: btween; ">
+ <div class="" style=" width:400px ;margin-left : 20px; 
+	 font-style:inherit; " >
  <div style=" font-size: 30px; font:bolder; color:green; padding-bottom: 30px;">정부 협력기관 바로가기</div>
   <figure class="snip1132">
         <img src="${path }/resources/image/Hire/a.jpg" alt="sample22" style=" border-radius: 12px; border: solid; border-color:gray; "/>
@@ -636,7 +637,7 @@ figure.snip1132.hover img {
 
  
   </div>
- <div >
+ <div class="annoDetailAllBox" style=" padding-left: 100px;" >
 <div class="annoDetailAll"  style=" width: 50%; " >
                   
                     <div class="annoDetailTitle">
@@ -645,7 +646,7 @@ figure.snip1132.hover img {
                                 <div class="annoDetailLoge">
                                   <c:choose>
 		                        	<c:when test="${empty r[0].ent_logo }">
-		                				<img src="${path }/resources/image/Hire/job.png" style="width: 50px; height: 50px; ">
+		                				<img src="${path }/resources/image/Hire/logo.png" style="width: 50px; height: 50px; ">
 		                        	</c:when>
 		                        	<c:otherwise>
 		                        		<img src="${path }/resources/enterprise/logo/${r[0].ent_no }/${r[0].ent_logo}" style="width: 40px; height: 40px; ">
@@ -657,7 +658,7 @@ figure.snip1132.hover img {
                             <div class="annoDetailTitleFlax">            
                                 <div id="annoDetailTitle1">${r[0].rec_title }</div>
                                 
-                                 <a href="#">
+                                <a href="${path }/enterprise/com_info.do?entNo=${r[0].ent_no }">
                                     <div class="annoDetailTitleFont" >${r[0].ent_name }</div>
                                 </a>
                                
@@ -755,7 +756,7 @@ figure.snip1132.hover img {
 				        <c:out value="회사내규에따름"></c:out>
 				    </c:when>
 				<c:otherwise>
-				<fmt:formatNumber type="number" maxFractionDigits="3" value="${r[0].rec_salary}" /> 만원
+				￦<fmt:formatNumber type="number" maxFractionDigits="3" value="${r[0].rec_salary}" /> 원
 				</c:otherwise>
 				</c:choose>
                                 </div>
@@ -812,17 +813,17 @@ figure.snip1132.hover img {
                                  <div class="managerName2">${r[0].rep_name}</div> 
                             </div>
                             <div class="InquiriesInfo">
-                                <div class="Inquiries">
+                                <!-- <div class="Inquiries">
                                     <div class="InquiriesHomePage">홈페이지</div>
                                     <div style="width: 200px;" class="InquiriesHomePage2"><a href="https://search.naver.com">기업 홈페이지 바로 가기</a></div>
-                                </div>
+                                </div> -->
                                 <div class="Inquiries">
                                     <div class="InquiriesPhone">연락처</div>
                                      <div class="InquiriesPhone2">${r[0].rep_phone}</div> 
                                 </div>
                                 <div class="Inquiries">
                                     <div class="InquiriesEmail">이메일</div>
-                                    <div class="InquiriesEmail2"></div>
+                                    <div class="InquiriesEmail2">${r[0].ent_email}</div>
                                 </div>
 
                             </div>
@@ -838,7 +839,7 @@ figure.snip1132.hover img {
                         </div>
                         
                         </div>
-                        <div class="test" style=" overflow: auto; "></div>
+                        <div class="test" style=" overflow: auto; padding-left: -200px; width: 600px;"></div>
  						 <div class="test1" style=" overflow: auto;"></div>
                       
                          </div>
@@ -891,6 +892,8 @@ figure.snip1132.hover img {
                          data : {ent_no:formData},
                          success :function(data){
                         	 $(".annoDetailInfoWidth").css("display","none");
+                        	 $(".annoDetailAllBox").css("padding-left","100px");
+                        	 
                         	 $(".test1").html(data);
                         }
                })
@@ -925,7 +928,10 @@ figure.snip1132.hover img {
                          success :function(data){
                         	 $(".test1").css("display","none");
                         	 $(".annoDetailAll").css("display","none");
-                        	 $(".test").css("width","900px");                	 
+                        	 $(".annoDetailInfoWidth").css("display","none");
+                        	 $(".test").css("width","900px"); 
+                        	 $(".snip1132").css("width","350px");
+                        	 
                         	 $(".test").html(data);
                         	 
                         /* 	 $(".annoDetailInfoWidth").css("display","none");

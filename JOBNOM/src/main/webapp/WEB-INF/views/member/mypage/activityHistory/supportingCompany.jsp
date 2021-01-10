@@ -59,7 +59,7 @@
 				</tr>
 				<%-- <c:if test="${commonLogin !=null && commonLogin ==null}"> --%>
 				<c:forEach items="${support}" var="s">
-					<tr class="myHyreSupportListAll" style="width: 720px; height: 48px ">
+					<tr class="myHyreSupportListAll" style="width: 720px; height: 70px ">
 						<th class="myHyreSupportList1"><c:out value="${s.rec_title}" /></th>
 						<th class="myHyreSupportList2"><c:out
 								value="${s.rec_contents}" /></th>
