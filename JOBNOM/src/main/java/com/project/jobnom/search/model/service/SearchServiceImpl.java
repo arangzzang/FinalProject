@@ -48,17 +48,17 @@ public class SearchServiceImpl implements SearchService {
 	
 	//기업 더보기 카테고리별 ajax
 	@Override
-	public List<Map> ajaxCategoryList(String entCategory) {
+	public List<Map> ajaxCategoryList(String entCategory,int cPage, int numPerPage) {
 		// TODO Auto-generated method stub
-		return dao.ajaxCategoryList(session, entCategory);
+		return dao.ajaxCategoryList(session, entCategory,cPage,numPerPage);
 	}
 	
 	
 	//기업 더보기 리뷰카테고리별 ajax
 	@Override
-	public List<Map> ajaxCategoryList2(String entCategory) {
+	public List<Map> ajaxCategoryList2(int cPage, int numPerPage) {
 		// TODO Auto-generated method stub
-		return dao.ajaxCategoryList2(session,entCategory);
+		return dao.ajaxCategoryList2(session,cPage,numPerPage);
 	}
 	
 	
@@ -115,5 +115,11 @@ public class SearchServiceImpl implements SearchService {
 	public int deleteBanner() {
 		// TODO Auto-generated method stub
 		return dao.deleteBanner(session);
+	}
+	
+	@Override
+	public int selectCountCate(String entCategory) {
+		// TODO Auto-generated method stub
+		return dao.selectCountCate(session,entCategory);
 	}
 }

@@ -33,7 +33,7 @@
                             <div class="item-content">
                               <a class="jply_grid_masonry_card" href="#" onclick="location.href = '${path }/enterprise/com_info.do?entNo=${rndList[0].ENT_NO}'" >
                                 <div class="img_thumb">
-                                  <img src="${path }/resources/enterprise/banner/${rndList[0].ENT_NO}/${rndList[0].BANN_PATH }" class="thumbs_img" >
+                                  <img src="${path }/resources/enterprise/banner/${rndList[0].ENT_NO}/${rndList[0].BANN_PATH }">
                                 </div>
                                 <div class="text_wrap">
                                   <div class="text_box">
@@ -48,9 +48,9 @@
                             <div class="item-content">
                               <a class="jply_grid_masonry_card" href="#" onclick="location.href = '${path }/enterprise/com_info.do?entNo=${rndList[1].ENT_NO}'" >
                                 <div class="img_thumb">
-                                  <img src="${path }/resources/enterprise/banner/${rndList[1].ENT_NO}/${rndList[1].BANN_PATH }" class="thumbs_img" >
+                                  <img src="${path }/resources/enterprise/banner/${rndList[1].ENT_NO}/${rndList[1].BANN_PATH }">
                                 </div>
-                                <div class="text_wrap">
+                                <div class="text_wrap" >
                                   <div class="text_box">
                                     <span class="sub_title" style="color: #fff;">${rndList[1].ENT_NAME }</span>
                                     <h3 class="title" style="color: #fff;">${rndList[1].BANN_TITLE }</h3>
@@ -78,7 +78,7 @@
                             <div class="item-content">
                               <a class="jply_grid_masonry_card" href="#" onclick="location.href = '${path }/enterprise/com_info.do?entNo=${rndList[3].ENT_NO}'" >
                                 <div class="img_thumb">
-									<img src="${path }/resources/enterprise/logo/${rndList[3].ENT_NO}/${rndList[3].ENT_LOGO }">
+									<img src="${path }/resources/enterprise/banner/${rndList[3].ENT_NO}/${rndList[3].BANN_PATH }">
                                 </div>
                                 <div class="text_wrap">
                                   <div class="text_box">
@@ -91,17 +91,6 @@
                           </li>
                       </ul>
                     <!-- 배너 div 끝 -->
-
-                    <!-- 기업페이지, 리뷰페이지 이동 div -->
-                    		<div>
-                            <a class="jp_content_banner_item jply_content_card" href="${path }/Hire/HireAnnouncement.do" >
-                              <h3 >더 많은 채용을 확인해 보세요!</h3>
-                            </a> 
-                            </div>
-                            <a class="jp_content_banner_item jply_content_card" href="#" src="#">
-                              <h3 >좀 더 자세한 리뷰가 궁금하다면?</h3>
-                            </a>      
-                    <!-- 기업페이지 , 리뷰페이지 이동 div 끝 -->
 
                     <!-- 리뷰 div -->
                     <div class="jbnd_top_ty1">
@@ -121,7 +110,7 @@
                                 <li class="grid_item col_6">
                                   <div class="company_unit">
                                     <a href="" class="company_unit_link" >
-                                      <div class="company_unit_thumb">
+                                      <div class="company_unit_thumb" >
                                       	<c:choose>
                                       	<c:when test="${empty list.ENT_LOGO }">
                                         <a onclick="location.href = '${path }/enterprise/com_info.do?entNo=${list.ENT_NO}'">
@@ -130,7 +119,7 @@
 										</c:when>
 										<c:when test="${not empty list.ENT_LOGO }">
 										<a onclick="location.href = '${path }/enterprise/com_info.do?entNo=${list.ENT_NO}'">
-										<img src="${path }/resources/enterprise/logo/${list.ENT_NO}/${list.ENT_LOGO }">
+										<img src="${path }/resources/enterprise/logo/${list.ENT_NO}/${list.ENT_LOGO }" >
 										</a>
 										</c:when>
 										</c:choose>                                      
@@ -157,7 +146,7 @@
                                             <span class="dot">·</span>
                                             <span class="info_item">전/현직</span>
                                             <span class="dot">·</span>
-                                            <span class="info_item">${list.RE_ENROLL_DATE}</span>
+                                            <span class="info_item"><fmt:formatDate value="${list.RE_ENROLL_DATE}" pattern="yyyy.MM.dd" /></span>
                                           </div>
                                         </div>
                                         <div class="company_star">

@@ -16,7 +16,7 @@ public class Education {
 	private String eduName;
 	private String eduMajor;
 	private String eduAttend;
-	private Date eduTerm;
+	private	Date eduTerm;
 	private Date eduTermend;
 	private String eduContents;
 }

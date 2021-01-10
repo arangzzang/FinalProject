@@ -18,8 +18,8 @@
 	</resultMap>
 	<!-- 나의스킬 -->
 	<resultMap type="mySkill" id="mySkillMap">
-		<result column="skill_no" property=""/>
-		<result column="res_no" property=""/>
+		<result column="skill_no" property="skillNo"/>
+		<result column="res_no" property="resNo"/>
 	</resultMap>
 	<!-- 업무 및 스킬 -->
 	<resultMap type="skill" id="skillMap">
@@ -66,18 +66,24 @@
 		select * from skill where skill_name like '%'||#{skillName}||'%'
 	</select>
 	<!-- 이력서 만들기 -->
-	<insert id="insertResume">
+	<insert id="insertResume" parameterType="res">
 		insert into resume 
 					values(
-					seq_res_no.nextval,
-					#{resName},
-					#{resPhone},
-					#{resGender},
-					#{resBirth},
-					#{resCar},
-					#{resContent},
-					#{resOpenCheck},
-					#{memNo}
+						seq_res_no.nextval,
+						#{resName},
+						#{resPhone},
+						#{resGender},
+						#{resBirth},
+						#{resCar},
+						#{resContent},
+						#{resOpenCheck},
+						#{memNo}
+					)
+	</insert>
+	<insert id="insertMySkill" parameterType="_int">
+		insert into myskill 
+					values(
+					
 					)
 	</insert>
 	<update id="categoryUpdate" parameterType="map">
@@ -100,6 +106,19 @@
 					res_opencheck=#{resOpenCheck}
 		where mem_no=#{memNo}
 	</update>
+	<insert id="insertEducation" parameterType="edu">
+		insert into education
+					values(
+						seq_edu_no.nextval,
+						#{resNo},
+						#{eduName},
+						#{eduMajor},
+						#{eduAttend},
+						to_char(to_date(#{eduTerm},'YYYYMM'),'YYYYMM'),
+						to_char(to_date(#{eduTermend},'YYYYMM'),'YYYYMM'),
+						#{eduContents}
+					)
+	</insert>
 </mapper>
 
 
