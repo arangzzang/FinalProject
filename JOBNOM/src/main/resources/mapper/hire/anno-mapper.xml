@@ -28,16 +28,16 @@
    </select>
    
    <select id="selectIn" parameterType="map" resultType="com.project.jobnom.Hire.model.vo.Interestedrcruitment">
-      SELECT DISTINCT * FROM INTERESTEDRECRUITMENT
- 			
- 			<where>
- 			<if test="memNo != null">
-               MEM_NO=#{memNo}
-             </if>
+      SELECT  * FROM INTERESTEDRECRUITMENT
+ 	
+				<if test="memNo != null">
+               WHERE MEM_NO=#{memNo}
+             </if> 
               <if test="rec_no != null"> 
-               AND REC_NO=#{rec_no}
+               AND  REC_NO=#{rec_no}
 				</if>
-   				</where>
+           
+   				
    </select>
    
    

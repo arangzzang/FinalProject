@@ -22,7 +22,7 @@ public interface annoService {
 
 	
 
-	List<Interestedrcruitment> selectIn(Map memNo);
+	List<Interestedrcruitment> selectIn(Map paramMap);
 	
 	List<Support> selectSupportApply(Map parMap);
 	

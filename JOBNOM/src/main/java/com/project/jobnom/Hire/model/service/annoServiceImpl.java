@@ -51,8 +51,8 @@ public class annoServiceImpl implements annoService {
 
 
 	@Override
-	public List<Interestedrcruitment> selectIn(Map memNo) {
-		return dao.selectIn(session,memNo);
+	public List<Interestedrcruitment> selectIn(Map paramMap) {
+		return dao.selectIn(session,paramMap);
 	}
 
 
