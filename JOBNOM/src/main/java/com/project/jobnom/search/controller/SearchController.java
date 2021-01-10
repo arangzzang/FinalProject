@@ -100,10 +100,9 @@ public class SearchController {
 			@RequestParam(value = "numPerpage", defaultValue = "5") int numPerpage) {
 		List<Map> list = service.searchResultMore(cPage,numPerpage);
 		System.out.println(list);
-		int totalData = service.selectCount(); /* 이거페이지바 */
+		int totalData = service.selectCount(); /* 이거페이징바 */
 		
 		mv.addObject("entFollow",service.entFollowCheck()); // 기업 팔로잉
-		System.out.println("이거 값 나오나??????"+mv.addObject("entFollow",service.entFollowCheck()));
 		mv.addObject("pageBar", SearchPageBar.getPageBar(totalData, cPage, numPerpage, "searchResultMore.do"));
 		mv.addObject("totalData", totalData);
 		mv.addObject("list", list);
@@ -117,20 +116,20 @@ public class SearchController {
 	public ModelAndView ajaxCategoryList(ModelAndView mv, String entCategory,@RequestParam(value = "cPage", defaultValue = "1") int cPage,
 			@RequestParam(value = "numPerpage", defaultValue = "5") int numPerpage) {
 		
-		System.out.println("zzzzzzzzzzzzzzz"+ entCategory);
-		int totalData = service.selectCount();
-		mv.addObject("pageBar", PageBarFactory.getPageBar(totalData, cPage, numPerpage, null,"searchResultMore.do"));
-		mv.addObject("totalData", totalData);
+		int totalDataSu = service.selectCountCate(entCategory);
+		System.out.println(totalDataSu);
+		mv.addObject("pageBar8", PageBarFactory.getPageBar8(totalDataSu, cPage, numPerpage, entCategory,"/ajaxCateList"));
+		mv.addObject("totalData", totalDataSu);
 		
 		if(entCategory.equals("cate1")) {
-			List<Map> firstCate = service.ajaxCategoryList2(entCategory);
+			List<Map> firstCate = service.ajaxCategoryList2(cPage, numPerpage);
 			mv.addObject("ajaxList",firstCate);
 			mv.addObject("entFollow",service.entFollowCheck());
 			mv.setViewName("search/ajax/ajaxCategoryList");
 			
 		}else {
 			
-			List<Map> list = service.ajaxCategoryList(entCategory);
+			List<Map> list = service.ajaxCategoryList(entCategory,cPage, numPerpage);
 			mv.addObject("entFollow",service.entFollowCheck());// 기업 팔로잉
 			mv.addObject("ajaxList",list);
 			mv.setViewName("search/ajax/ajaxCategoryList");
@@ -143,7 +142,8 @@ public class SearchController {
 	
 	//기업 팔로잉
 	@RequestMapping("/search/entFollow.do")
-	public ModelAndView entFollow(ModelAndView mv, String memNo,String entNo,@RequestParam(value = "cPage", defaultValue = "1") int cPage,
+	@ResponseBody
+	public void entFollow(ModelAndView mv, String memNo,String entNo,@RequestParam(value = "cPage", defaultValue = "1") int cPage,
 			@RequestParam(value = "numPerpage", defaultValue = "5") int numPerpage) {
 		// 기업 팔로잉
 		Map param = new HashedMap();
@@ -152,31 +152,13 @@ public class SearchController {
 		
 		int result = service.entFollow(param);
 		
-		// 기업 더보기, 페이징바
-		List<Map> list = service.searchResultMore(cPage,numPerpage);
-		System.out.println(list);
-		int totalData = service.selectCount();
-		
-		if(result> 0 ) {
-			//기업 팔로잉 리스트
-			mv.addObject("entFollow",service.entFollowCheck());
-			mv.setViewName("search/searchResultMoreList");
-			// 기업 더보기, 페이징바
-			mv.addObject("pageBar", PageBarFactory.getPageBar(totalData, cPage, numPerpage, null,"searchResultMore.do"));
-			mv.addObject("totalData", totalData);
-			mv.addObject("list", list);
-		}
-		
-		System.out.println(result);
-		System.out.println(mv.addObject("entFollow",service.entFollowCheck()));
-		
-		return mv;
 		
 	}
 	
 	//기업 언팔로잉
 	@RequestMapping("/search/entUnFollow.do")
-	public ModelAndView entUnFollow(ModelAndView mv,String memNo,String entNo,@RequestParam(value = "cPage", defaultValue = "1") int cPage,
+	@ResponseBody
+	public void entUnFollow(ModelAndView mv,String memNo,String entNo,@RequestParam(value = "cPage", defaultValue = "1") int cPage,
 			@RequestParam(value = "numPerpage", defaultValue = "5") int numPerpage ) {
 		
 		// 기업 언팔로잉
@@ -184,24 +166,8 @@ public class SearchController {
 		param.put("memNo", memNo);
 		param.put("entNo",entNo);
 		
-		int result = service.entUnFollow(param);
-		
-		// 기업 더보기, 페이징바
-				List<Map> list = service.searchResultMore(cPage,numPerpage);
-				System.out.println(list);
-				int totalData = service.selectCount();
-		if(result > 0) {
-			//기업 팔로잉 리스트
-			mv.addObject("entFollow",service.entFollowCheck());
-			mv.setViewName("search/searchResultMoreList");
-			// 기업 더보기, 페이징바
-			mv.addObject("pageBar", PageBarFactory.getPageBar(totalData, cPage, numPerpage, null,"searchResultMore.do"));
-			mv.addObject("totalData", totalData);
-			mv.addObject("list", list);
-			
-		}
-		return mv;
 	}
+	
 	//검색창 자동 완성
 	@RequestMapping("/search/searchAuto.do")
 	@ResponseBody
@@ -219,19 +185,6 @@ public class SearchController {
 		
 		return csv;
 	}
-	//검색창 자동 완성
-	@RequestMapping("/search/searchAuto2.do")
-	@ResponseBody
-	public String StreamAjax2(ModelAndView mv, String key) throws Exception{
-		
-		List<Enterprise> list = service.searchAuto2(key);
-		
-		String csv2 = "";
-		for(int i = 0; i<list.size(); i++) {
-			if(i != 0) csv2 += ",";
-			csv2 += list.get(i).getEntNo();
-		}
-		return csv2;
-	}
+
 }
 

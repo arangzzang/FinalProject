@@ -21,8 +21,8 @@ public interface SearchDao {
 		int selectCount(SqlSession session);
 		
 	// 기업 더보기 카테고리별 ajax
-		List<Map> ajaxCategoryList(SqlSession session, String entCategory);
-		List<Map> ajaxCategoryList2(SqlSession session, String entCategory);
+		List<Map> ajaxCategoryList(SqlSession session, String entCategory,int cPage, int numPerPage);
+		List<Map> ajaxCategoryList2(SqlSession session,int cPage, int numPerPage);
 	
 	// 기업 팔로잉
 		int entFollow(SqlSession session, Map param);
@@ -47,4 +47,6 @@ public interface SearchDao {
 	
 	// 배너 삭제
 		int deleteBanner(SqlSession session);
+		
+		int selectCountCate(SqlSession session, String entCategory);
 }

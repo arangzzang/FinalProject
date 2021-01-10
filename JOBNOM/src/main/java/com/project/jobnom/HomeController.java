@@ -45,7 +45,7 @@ public class HomeController {
 		List<Map> rndList = new ArrayList<Map>();
 		
 		// 배너 리스트 출력
-		banner = service.bannerList(); // 배너
+		banner = service.bannerList();
 		
 		// DB 배너 데이터 랜덤값 출력
 		Random random = new Random();
@@ -58,8 +58,6 @@ public class HomeController {
 		
 		//배너 자동 삭제
 		int result = service.deleteBanner();
-		
-		System.out.println(result);
 		
 		model.addAttribute("rndList",rndList); // 배너 랜덤 값
 		model.addAttribute("serverTime", formattedDate );

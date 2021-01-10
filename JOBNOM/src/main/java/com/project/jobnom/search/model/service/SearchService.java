@@ -19,9 +19,12 @@ public interface SearchService {
 	//기업 더보기 페이지바
 	int selectCount();
 	
+	//ajax 페이지바
+	int selectCountCate(String entCategory);
+	
 	// 기업 더보기 카테고리별 ajax 
-	List<Map> ajaxCategoryList(String entCategory);
-	List<Map> ajaxCategoryList2(String entCategory);
+	List<Map> ajaxCategoryList(String entCategoryint,int cPage, int numPerPage );
+	List<Map> ajaxCategoryList2(int cPage, int numPerPage);
 	
 
 	//기업 팔로잉

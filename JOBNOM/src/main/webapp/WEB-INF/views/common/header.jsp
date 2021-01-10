@@ -42,7 +42,7 @@
 				<nav
 					class="navbar navbar-expand-lg navbar-light headerContainerWrap">
 					<!-- bg-light -->
-					<a class="navbar-brand" href="${path }"> <img src=""
+					<a class="navbar-brand" href="${path }"> <img src="${path }/resources/image/header/jobnomLogo.png"
 						class="logo">
 					</a>
 					<button class="navbar-toggler" type="button" data-toggle="collapse"
