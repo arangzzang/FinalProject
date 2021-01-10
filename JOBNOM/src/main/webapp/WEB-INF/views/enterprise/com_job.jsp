@@ -74,11 +74,11 @@
 							href="${path }/enterprise/com_job.do?entNo=${list[0].ENT_NO}&recNo=${list[0].REC_NO}"><h2>채용</h2></a>
 						</li>
 					</ul>
-					<div class="follow_btn">
+					<!-- <div class="follow_btn">
 						<button id="follow" class="btn btn">
 							<i id="heart" class="far fa-heart"></i>팔로우
 						</button>
-					</div>
+					</div> -->
 				</nav>
 			</div>
 		</div>

@@ -74,9 +74,7 @@
 						</c:if>
 						<c:if test="${commonLogin !=null && commonLogin.type == 1 }">
 							<ul class="navbar-nav mr-auto admin_nav">
-								<li class="nav-item"><a class="menus" href="">회원관리</a></li>
-								<li class="nav-item"><a class="menus" href="">댓글관리</a></li>
-								<li class="nav-item"><a class="menus" href="">공고관리</a></li>
+								<li class="nav-item"><strong>관리자님 환영합니다</strong></li>
 							</ul>
 						</c:if>
 						<c:if test="${commonLogin == null}">
@@ -103,7 +101,7 @@
 								onclick="location.replace('${path}/common/logout');">로그아웃</button>
 						</c:if>
 						<c:if test="${commonLogin !=null && commonLogin.type == 1 }">
-							<span><a href="${path }/adminHome"><i
+							<span><a href="${path }/memMg"><i
 									class="fas fa-glasses"></i></a></span>
 					&nbsp;
 					<button class="btn btn-outline-success my-4 my-sm-0" type="button"

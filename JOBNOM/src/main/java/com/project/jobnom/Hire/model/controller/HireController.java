@@ -127,6 +127,7 @@ public class HireController {
 		
 		
 		
+
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		String ent_no = request.getParameter("ent_no"); //기업번호
 		paramMap.put("ent_no", ent_no);
@@ -146,9 +147,11 @@ public class HireController {
 		paramMap.put("review_executive", review_executive);
 		System.out.println("값들은 무엇"+paramMap);
 		int result = service.insertReview(paramMap);
+		System.out.println("========================================================");
 		
-		
-		return "mypageFirst";
+
+		return "member/mypage/mypageFirst";
+
 		
 		
 	}
@@ -395,9 +398,13 @@ public class HireController {
  
 	// 즐겨찾기 스크립트
 	@RequestMapping("/Hire/favorites.do")
-	public ModelAndView memberFavorites(ModelAndView mv, HttpServletRequest request, Model model, int memNo, int recNo,int anoNum,
+	public ModelAndView memberFavorites(HttpSession session,ModelAndView mv, HttpServletRequest request, Model model, int memNo, int recNo,int anoNum,
 			@RequestParam(value = "cPage", defaultValue = "1") int cPage,
 			@RequestParam(value = "numPerpage", defaultValue = "10") int numPerpage) throws Exception {
+		
+		
+		
+		
 		System.out.println("나오렴");
 		System.out.println("나오니?" + memNo);
 		System.out.println("나오니?" + recNo);

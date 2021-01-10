@@ -37,9 +37,10 @@ import com.project.jobnom.enterprise.model.vo.ApplyAd;
 import com.project.jobnom.enterprise.model.vo.Banner;
 import com.project.jobnom.enterprise.model.vo.Category2;
 import com.project.jobnom.enterprise.model.vo.Enterprise;
-import com.project.jobnom.enterprise.model.vo.Score;
+import com.project.jobnom.enterprise.model.vo.Mammoth;
 import com.project.jobnom.enterprise.page.EnterprisePageBar;
 import com.project.jobnom.openapi.model.vo.openApiVo;
+import com.project.jobnom.resume.model.vo.Resume;
 
 
 @Controller
@@ -288,8 +289,10 @@ public class companyController {
 		System.out.println("나오내?"+app);
 		System.out.println("이건" + rec.getRec_no());
 		int totalData = service.selectSupportCount(rec.getRec_no());
-		
-		
+		int resno = rec.getRec_no();
+		System.out.println("??? : " + resno);
+		mv.addObject("mam", service.getMammoth(resno));
+		System.out.println("????" +service.getMammoth(resno));
 		mv.addObject("pageBar",EnterprisePageBar.getPageBar(totalData, rec.getRec_no(), cPage,numPerpage,"com_check.do"));
 		mv.addObject("totalData",totalData);
 		mv.addObject("app",app);

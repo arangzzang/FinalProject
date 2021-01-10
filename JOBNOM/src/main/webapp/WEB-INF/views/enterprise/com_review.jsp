@@ -29,9 +29,9 @@
 												style="width: 104px; height: 104px;">
 										</c:when>
 										<c:otherwise>
-											<a href="" class="logo_wrap"> <%-- <img
+											<a href="" class="logo_wrap"><img
 												src="${path }/resources/enterprise/logo/${list[0].ENT_NO }/${list[0].ENT_LOGO}"
-												style="width: 104px; height: 104px;"> --%>
+												style="width: 104px; height: 104px;">
 											</a>
 										</c:otherwise>
 									</c:choose>
@@ -76,7 +76,7 @@
 						</li>
 					</ul>
 					<div class="follow_btn">
-					<%-- <c:if
+						<%-- <c:if
 							test="${not fn:contains(followEnt.entNo,list[0].ENT_NO)}">
 							<button class="btn_heart1" id="follow">
 								<i class="far fa-heart" style="color: red;"></i>팔로우
@@ -93,11 +93,11 @@
 								<i class="far fa-heart" style="color: red;"></i>팔로우
 							</button>
 						</c:if> --%>
-					<div class="follow_btn">
+						<!-- <div class="follow_btn">
 						<button id="follow" class="btn btn">
 							<i id="heart" class="far fa-heart"></i>팔로우
 						</button>
-					</div>
+					</div> -->
 					</div>
 				</nav>
 			</div>
@@ -118,8 +118,7 @@
 		</div>
 		<article class="review_select_con">
 			<div class="review_select_box">
-				<div class="review_select">
-				</div>
+				<div class="review_select"></div>
 				<div class="total_review">
 					<span>${totalData }</span>개의 기업리뷰
 				</div>
@@ -159,9 +158,6 @@
 							</dl>
 						</div>
 					</div>
-					<div class="btn_area">
-						<button id="report_btn" class="btn btn">신고하기</button>
-					</div>
 				</div>
 			</article>
 		</c:forEach>
@@ -176,61 +172,4 @@
 		</c:if>
 		<div id="pageBar" style="margin-top: 20px;">${pageBar }</div>
 </section>
-<script>
-var result = 0;
-
-if(${commonLogin == null}){
-	result = 1;
-};
-$(document).ready(function() {
-
-	/*팔로잉  */
-$('.btn_heart1').on('click',function() {
-	
-	if(result == 1){
-		alert('로그인 후 이용 해 주세요');
-		
-	}else{
-		let entNo = ${list[0].ENT_NO}; 
-		let memNo = ${commonLogin.memNo};
-		$.ajax({
-			url:'${path}/enterprise/followEnt.do',
-			type:'POST',
-			data:{entNo : entNo, memNo : memNo},
-			success : function(data) {
-				console.log(data);
-				alert('기업을 팔로우 하셨습니다..');
-				location.reload(true);
-				
-			}
-		});
-	}
-});
-	
-
-	$('.btn_heart2').on('click',function() {
-		
-		if(result == 1){
-			alert('로그인 후 이용 해 주세요');
-			
-		}else{
-			let entNo = ${list[0].ENT_NO};
-			let memNo = ${commonLogin.memNo};
-			console.log(entNo);
-			$.ajax({
-				url:'${path}/enterprise/unfollowEnt.do',
-				type:'POST',
-				data:{entNo : entNo, memNo : memNo},
-				success : function(data) {
-					console.log(data);
-					alert('기업을 팔로우 취소하셨습니다.');
-					location.reload(true);
-					
-				}
-			});
-		}
-	});
-});
-</script>
-
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />
