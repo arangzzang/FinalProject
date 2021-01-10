@@ -30,27 +30,12 @@
 <!-- 검색창 끝 -->
 
 <script>
-
+/*검색창 자동 완성  */
 $("#search_bar_search_query").keyup(e=>{
 	$.ajax({
 	      url:"${path}/search/searchAuto.do",
 	      data:{"key":$(e.target).val()},
 	      success:data => {
-	         
-	         $.ajax({
-	            url:"${path}/search/searchAuto2.do",
-	            data:{"key":$(e.target).val()},
-	            success:data => {
-	               console.log(data); 
-	               let keys=data.split(",");
-	               $("#locationNumber").html("");
-	               for(let i=0;i<keys.length;i++){
-	                  $("#locationNumber").append($('input[name=ent_no]').val(keys[i]));
-	                  
-	               }
-	               
-	            }
-	         })
 	         console.log(data); 
 	         let keys=data.split(",");
 	         $("#locationData").html("");

@@ -78,7 +78,7 @@
 						</span>
 						<div class="result_unit_info">
 							<div class="unit_head">
-								<a class="posting_name" href="#"onclick="location.href = '${path }/Hire/annoHomeDetailMove.do?recNo=${list2.REC_NO}'"> ${list2.REC_TITLE } </a> 
+								<a class="posting_name" href="#"onclick="location.href = '${path }/Hire/announcementPageFirst?recNo=${list2.REC_NO}&anoNum=${list2.REC_CATEGORY }'"> ${list2.REC_TITLE } </a> 
 								<span class="d_day green">${list2.REC_TYPE }</span>
 							</div>
 							<div class="data_builtin">

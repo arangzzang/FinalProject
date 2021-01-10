@@ -27,7 +27,6 @@
 					,e.ent_category1
 					,e.ent_name
 					,e.ent_logo
-					
 		]]>
 	</select>
 	
@@ -46,6 +45,7 @@
             ,rec.rec_qualification
             ,rec.rec_other
             ,rec.rec_career
+            ,rec.rec_category
             ,rec.rec_no
             ,e.ent_logo
             ,fav.mem_no
@@ -77,6 +77,7 @@
            	   ,e.ent_logo
            	   ,fav.mem_no
             	,fav.rec_no
+            	,rec.rec_category
       ]]>
       </select>
       <!--기업 더보기 조회  -->
@@ -226,7 +227,7 @@
 		inner join enterprise e
 		on (b.ent_no = e.ent_no)
 		where ROWNUM <=7
-		order by UPLOADDATE desc
+		order by UPLOADDATE asc
 			]]>
 	</select>
 	
@@ -238,4 +239,20 @@
 		
 		]]>
 	</delete>
+	
+	<!--ajax 카테고리  페이징바 -->
+	<select id="selectCountCate" resultType="_int">
+		select
+			count(*)
+		from enterprise
+		<where>
+			<if test="value != null">
+				ent_category1 = #{value}
+			</if>
+			<if test="value == null">
+				or 1=1
+			</if>
+		</where>
+	
+	</select>
 </mapper>

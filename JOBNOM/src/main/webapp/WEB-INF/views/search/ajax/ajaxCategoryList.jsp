@@ -78,4 +78,17 @@
                         </div>
                     </div>
                 </article>
-				 <div id="pageBar1">${pageBar }</div>
+				 <div id="pageBar1">${pageBar8 }</div>
+<script>
+	  function fn_paging(cPage){
+		  
+		$.ajax({
+			
+			url:"${path}/ajaxCateList",
+			data:{cPage:cPage,entCategory:${list.ENT_CATEGORY1 }},
+			success:data => {
+				$('.maininfo-parent').html(data);
+			}
+		})
+		};
+	  </script>
