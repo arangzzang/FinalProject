@@ -10,7 +10,7 @@
 
 <div id="findingMeDetail" id="content"  >
         <div class="findingMeDetailX">
-            <button class="findingMeDetailCancel"><i class="far fa-window-close"></i></button>
+          
         </div>
         <div class="findingMeDetail2">
         <div class="findingMeDetailTitle">
@@ -47,7 +47,7 @@
 				        <c:out value="회사내규에따름"></c:out>
 				    </c:when>
 				<c:otherwise>
-				<fmt:formatNumber type="number" maxFractionDigits="3" value="${fitM[0].rec_salary}" /> 만원
+				￦<fmt:formatNumber type="number" maxFractionDigits="3" value="${fitM[0].rec_salary}" /> 원
 				</c:otherwise>
 				</c:choose>
 
@@ -59,7 +59,7 @@
     
             <div class="findingMeDetailButton">
                 <button class="btn_annoDetail" onclick="location.href='${path }/Hire/announcementPageFirst?recNo=${fitM[0].rec_no}&anoNum=${fitM[0].rec_category }&memNo=${commonlogin.memNo } '" >공고 상세보기</button>
-            
+              <button class="findingMeDetailCancel">닫기</button>
             </div>
             
     
@@ -72,6 +72,8 @@
     $(document).ready(function(){
      $(".findingMeDetailCancel").click(function(){
     $("#findingMeDetail").hide();
+    $(".section").css("height","1400px");
+    $(".slidebannerAll").css("padding-top","-230px");
 
     });
     });

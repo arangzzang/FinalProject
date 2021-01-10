@@ -260,7 +260,7 @@ public class MemberController {
 		 m.addAttribute("mem",mem);
 		 m.addAttribute("review",review);
 		 
-		 m.addAttribute("pageBar", PageBarFactory.getPageBar7(totalDataSu, cPage, numPerpage, memNo, "insertReview.do"));
+		 m.addAttribute("pageBar", PageBarFactory.getPageBar7(totalDataSu, cPage, numPerpage, memNo, "reviewList.do"));
 			
 		 System.out.println("테스트 입니다"+mem);
 		 System.out.println("리뷰 테스트 입니다"+review);
@@ -270,7 +270,7 @@ public class MemberController {
 	//입사지원 (Ajax)
 	@RequestMapping("/member/supporting")
 	public String supportingCompany(String memNo, Model m,@RequestParam(value = "cPage", defaultValue = "1") int cPage,
-			@RequestParam(value = "numPerpage", defaultValue = "5") int numPerpage) throws IOException {
+			@RequestParam(value = "numPerpage", defaultValue = "4") int numPerpage) throws IOException {
 		
 		List<Support> support = HireService.HireMyHire(memNo, cPage, numPerpage); //지원한 공고 정보검색
 		int totalDataSu = HireService.selectSuppertCount(memNo); // 이건 지원한 공고 갯수

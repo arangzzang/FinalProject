@@ -3,6 +3,18 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<meta name="apple-mobile-web-app-title" content="CodePen">
+
+<link rel="shortcut icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" />
+
+<link rel="mask-icon" type="" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111" />
+<style>
+.slidebanner{position:relative;height:100px;width:100%;overflow:hidden; margin-top:200px;}
+.slidebanner .bannerbox{position:absolute;margin:0;padding:0;margin-left:40px;}
+.slidebanner li{float:left;list-style:none;margin-left:10px}
+.slidebanner li:first-child{margin:0}
+
+</style>
 <c:set var="path" value="${pageContext.request.contextPath }" />
 <link rel="stylesheet"
 	href="https://unpkg.com/swiper/swiper-bundle.min.css">
@@ -91,7 +103,7 @@
 
 										<c:choose>
 											<c:when test="${empty d.ENT_LOGO }">
-												<img src="${path }/resources/image/Hire/job.png"
+												<img src="${path }/resources/image/Hire/logo.png"
 													style="width: 50px; height: 50px;">
 											</c:when>
 											<c:otherwise>
@@ -135,7 +147,7 @@
 		</div>
 
 		<c:choose>
-			<c:when test="${commonLogin != null && fitM[0].REC_NO !=null }">
+			<c:when test="${commonLogin != null }">
 
 
 				<div class="findingMe">나를 찾는 기업들이 여기에</div>
@@ -146,21 +158,20 @@
 					<div class="swiper-container">
 
 						<div class="swiper-wrapper">
-							<c:forEach items="${fitM }" var="fitM">
-
-								<div class="swiper-slide" style="border: none">
-
-									<button id="aaaa" name="aaaa" value="${fitM.REC_NO } "
-										style="width: 350px; height: 260px; border-radius: 12px;">
-
-										<div
-											style="font-weight: bold; font-size: 23px; background: white; color: black; border-radius: 5px;">${fitM.REC_TITLE }</div>
-									</button>
-									<button id="dddd" name="dddd" value="${fitM.REC_CATEGORY } "
-										style="width: 350px; height: 260px; display: none;"></button>
-
-								</div>
-
+							<c:forEach items="${rec }" var="rec">
+								<c:forEach items="${categoryAll }" var="ca">
+									<c:if test="${rec.rec_category eq ca.cateNo2}">
+										<div class="swiper-slide" style="border: none">
+											<button id="aaaa" name="aaaa" value="${rec.rec_no } "
+												style="width: 350px; height: 260px; border-radius: 12px;">
+												<div
+													style="font-weight: bold; font-size: 23px; background: white; color: black; border-radius: 5px;">${rec.rec_title }</div>
+											</button>
+											<button id="dddd" name="dddd" value="${rec.rec_category } "
+												style="width: 350px; height: 260px; display: none;"></button>
+										</div>
+									</c:if>
+								</c:forEach>
 							</c:forEach>
 						</div>
 						<!-- Add Pagination -->
@@ -171,7 +182,7 @@
 
 					</div>
 
-					<div class="findingMeDetailShow"></div>
+					<div class="findingMeDetailShow" ></div>
 				</div>
 
 			</c:when>
@@ -187,12 +198,65 @@
 
 
 
-		<%-- <c:if test="${commonLogin == null}">
-	  <button class="HireHome2" 
-		onclick="location.href='${path }/Hire/HireAnnouncement.do'" ></button>
+<div  class="slidebannerAll" >
+  <div class="slidebanner">
+  <ul class="bannerbox">    
+    <li>
+     <a href="https://www.kead.or.kr" target="_blank">
+    <img src="${path }/resources/image/Hire/a.jpg" alt="dw"  style=" width: 150px; height: 60px;">
+    </a>
+    </li>
+    <li>
+     <a href="http://www.kcomwel.or.kr/kcomwel/main.jsp" target="_blank">
+    <img src="${path }/resources/image/Hire/b.jpg" alt="dw" style=" width: 150px; height: 60px;"/>
+    </a>
+    </li>
+    
+    <li>
+     <a href="http://www.hrdkorea.or.kr/" target="_blank">
+    <img src="${path }/resources/image/Hire/c.jpg" alt="dw" style=" width: 150px; height: 60px;"/>
+    </a>
+    </li>
+    <li>
+     <a href="http://www.moel.go.kr/index.do" target="_blank">
+    <img src="${path }/resources/image/Hire/d.jpg" alt="dw" style=" width: 150px; height: 60px;"/>
+    </a>
+    </li>
+    <li>
+     <a href="https://www.humanrights.go.kr/site/main/index001" target="_blank">
+    <img src="${path }/resources/image/Hire/e.jpg" alt="dw" style=" width: 150px; height: 60px;"/>
+    </a>
+    
+    </li>
+    <li>
+    <a href="https://www.workplus.go.kr/index.do" target="_blank">
+    <img src="${path }/resources/image/Hire/f.png" alt="dw" style=" width: 150px; height: 60px;"/>
+    </a>
+    </li>
+    <li>
+    <a href="https://www.mss.go.kr/site/smba/main.do" target="_blank">
+    <img src="${path }/resources/image/Hire/g.png" alt="dw" style=" width: 150px; height: 60px;"/>
+    </a>
+    </li>
+    <li>
+    <a href="http://www.hrd.go.kr/hrdp/ma/pmmao/indexNew.do" target="_blank">
+    <img src="${path }/resources/image/Hire/h.png" alt="dw" style=" width: 150px; height: 60px;"/>
+    </a>
+    </li>
+  </ul>                
+</div>
 
-</c:if>
- --%>
+
+
+
+    <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-157cd5b220a5c80d4ff8e0e70ac069bffd87a61252088146915e8726e5d9f147.js"></script>
+
+
+
+
+  
+
+</div>
 
 
 
@@ -256,16 +320,7 @@ var swiper = new Swiper('.swiper-container', {
     </script>
 
 
-<!-- <script>
-       //보이기
-    $(document).ready(function(){
-     $(".swiper-slide").click(function(){
-   	$(".findingMeDetail33").append($("#findingMeDetail"));
-   	
-    $("section").css("height","1750");
-    });
-    });
-     </script> -->
+
 <script>
  $(".swiper-slide").click(e=>{
      var formData = $(e.target).val();
@@ -279,6 +334,9 @@ var swiper = new Swiper('.swiper-container', {
          data : {rec_no:formData,rec_category:formData2},
          success :function(data){
            $(".findingMeDetailShow").html(data);
+           $(".section").css("height","1700px");
+           $(".slidebannerAll").css("padding-top","230px");
+        
         }
 })
     });
@@ -287,26 +345,39 @@ var swiper = new Swiper('.swiper-container', {
 
 
 
-<!--    <script>
-   
-	
-	var imgArray = new Array();
-	imgArray[0] = "C:\git\FinalProject\JOBNOM\src\main\webapp\resources\image\Hire\check.png";
-	imgArray[1] = "C://git//FinalProject//JOBNOM//src//main//webapp//resources//image//Hire//job.png";
-	imgArray[2] = "C:/git/FinalProject/JOBNOM/src/main/webapp/resources/image/Hire/kakao.png";
-	imgArray[3] = "C:/git/FinalProject/JOBNOM/src/main/webapp/resources/image/Hire/ll.png"; 
-	
-	function showImage(){
-		var imgNum = Math.round(Math.random()*3);
-	
-		var objImg = document.getElementById("slide");
-		objImg.src = imgArray[imgNum];
-		for(int i=0; i<imgArray.size(); i++){
-			var aa = 
-		}
-	
-	}
-	
-</script> -->
 
+
+	 
+
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+  <script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+      <script id="rendered-js" >
+timer();
+var current = 0;
+var $interval;
+
+function timer() {
+  var $interval = setInterval(function () {slide();}, 2000);
+}
+
+function slide() {
+  $(".bannerbox").animate({ left: "-=187px" }, 1000, function () {
+    $(this).css({ "left": 0 });
+    $(".bannerbox").append($(".bannerbox").children("li").eq(0));
+  });
+  current++;
+  if (current == 5) current = 0;
+}
+//# sourceURL=pen.js
+    </script>
 

@@ -70,5 +70,9 @@ public interface HireDao {
 	List<Map> mypageReview(SqlSession session, String memNo, int cPage, int numPerpage);
 
 	int selectReviewCount(SqlSession session, String memNo);
+	
+	List<Recruitment> recList(SqlSession session);
+	
+	List<Member> categoryAll(SqlSession session, String memNo);
 
 }

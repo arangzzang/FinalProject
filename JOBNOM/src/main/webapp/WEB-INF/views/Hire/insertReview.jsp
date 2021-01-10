@@ -57,7 +57,7 @@
                                          <th><c:out value="${r.REVIEW_TITLE }"/></th>
                                          <th><c:out value="${r.REVIEW_CONTENTS }"/></th>
                                          <th><fmt:formatDate  value="${r.RE_ENROLL_DATE }" pattern="yy.MM.dd" /></th>
-                                         <th><button type="button">삭제</button></th>
+                                         <th><button class="" type="button">삭제</button></th>
                                      </tr>
                                      </c:forEach>
                                    
@@ -367,16 +367,17 @@ function fn_review(){
 </script>
 
 <script>
-$(document).ready(function(){
+ $(document).ready(function(){ 
     $(".reviewBtnInsert").click(function(){
        $("#popup").fadeIn();
-       $(".headerContainerWrap").css("display","none");
+       $(".headerContainerWrap").css("display","hide");
        
     });
     $(".popmenuInsertClose").click(function(){
        $("#popup").fadeOut();
+       $(".headerContainerWrap").css("display","show");
     });
- });
+  }); 
 </script>   
 
 
@@ -466,4 +467,15 @@ $("#reviewName").keyup(e=>{
 
 
 </script>
+  <script>
+	  function fn_paging(cPage){
+		$.ajax({
+			url:"${path}/member/reviewList",
+			data:{cPage:cPage,memNo:${commonLogin.memNo}},
+			success:data => {
+				$('.maininfo-parent').html(data);
+			}
+		})
+		};
+	  </script>
 

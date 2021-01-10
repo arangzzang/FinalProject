@@ -28,14 +28,16 @@
    </select>
    
    <select id="selectIn" parameterType="map" resultType="com.project.jobnom.Hire.model.vo.Interestedrcruitment">
-      SELECT DISTINCT REC_NO, MEM_NO, OPEN_CHECK FROM INTERESTEDRECRUITMENT
+      SELECT DISTINCT * FROM INTERESTEDRECRUITMENT
+ 			
+ 			<where>
  			<if test="memNo != null">
-              WHERE MEM_NO=#{memNo}
+               MEM_NO=#{memNo}
              </if>
               <if test="rec_no != null"> 
                AND REC_NO=#{rec_no}
 				</if>
-   	
+   				</where>
    </select>
    
    
@@ -91,7 +93,7 @@
     WHERE MEM_NO= #{memNo} AND REC_NO=#{rec_no}
    </select>
    <select id="announcementPageFirst" parameterType="map" resultType="com.project.jobnom.Hire.model.vo.Recruitment">
-   SELECT DISTINCT E.REC_NO,E.ENT_NO, REC_TITLE,REC_OTHER, REC_CONTENTS, REC_STARTDATE, REC_ENDDATE, REC_INFO,REC_PREFER, REC_WELFARE, REC_QUALIFICATION, REC_PEPOLE, REC_CAREER, REC_ORDER,
+   SELECT DISTINCT E.REC_NO,E.ENT_NO,ENT_EMAIL, REC_TITLE,REC_OTHER, REC_CONTENTS, REC_STARTDATE, REC_ENDDATE, REC_INFO,REC_PREFER, REC_WELFARE, REC_QUALIFICATION, REC_PEPOLE, REC_CAREER, REC_ORDER,
                  REC_TYPE, REC_CATEGORY,ENT_NAME,OPEN_CHECK, REP_NAME, REP_PHONE,ENT_LOGO, REPLACE(REC_SALARY,' ')  AS REC_SALARY
 			FROM RECRUITMENT E 
           LEFT JOIN REVIEW S ON (S.ENT_NO = E.ENT_NO)

@@ -11,6 +11,7 @@ import com.project.jobnom.Hire.model.dao.HireDao;
 import com.project.jobnom.Hire.model.vo.Interestedrcruitment;
 import com.project.jobnom.Hire.model.vo.Recruitment;
 import com.project.jobnom.Hire.model.vo.Support;
+import com.project.jobnom.enterprise.model.vo.Category2;
 import com.project.jobnom.enterprise.model.vo.Enterprise;
 import com.project.jobnom.member.model.vo.Member;
 @Service
@@ -153,6 +154,18 @@ public class HireServiceImpl implements HireService {
 		return dao.selectReviewCount(session, memNo);
 	}
 
+	@Override
+	public List<Recruitment> recList() {
+		return dao.recList(session);
+	}
+
+	@Override
+	public List<Member> categoryAll(String memNo) {
+		return dao.categoryAll(session,memNo);
+	}
+
+	
+	
 	
 	
 	
