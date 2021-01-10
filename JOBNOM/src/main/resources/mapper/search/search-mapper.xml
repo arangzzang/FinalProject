@@ -45,6 +45,7 @@
             ,rec.rec_qualification
             ,rec.rec_other
             ,rec.rec_career
+            ,rec.rec_category
             ,rec.rec_no
             ,e.ent_logo
             ,fav.mem_no
@@ -76,6 +77,7 @@
            	   ,e.ent_logo
            	   ,fav.mem_no
             	,fav.rec_no
+            	,rec.rec_category
       ]]>
       </select>
       <!--기업 더보기 조회  -->

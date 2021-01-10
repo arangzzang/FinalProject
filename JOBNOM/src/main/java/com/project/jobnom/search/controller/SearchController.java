@@ -116,7 +116,7 @@ public class SearchController {
 		
 		int totalDataSu = service.selectCountCate(entCategory);
 		System.out.println(totalDataSu);
-		mv.addObject("pageBar8", PageBarFactory.getPageBar8(totalDataSu, cPage, numPerpage, entCategory,"/ajaxCateList"));
+		mv.addObject("pageBar8", PageBarFactory.getPageBar9(totalDataSu, cPage, numPerpage, entCategory,"/ajaxCateList"));
 		mv.addObject("totalData", totalDataSu);
 		
 		if(entCategory.equals("cate1")) {

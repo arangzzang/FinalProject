@@ -489,8 +489,9 @@ public static String getPageBar8(int ReviewCount, int cPage, int numPerpage, Str
 	pageBar += "</script>";
 
 	return pageBar;
+}
 
-public static String getPageBar8(int totalDataSu, int cPage, int numPerpage, String entCategory,String uri) {
+public static String getPageBar9(int totalDataSu, int cPage, int numPerpage, String entCategory,String uri) {
 	
 	String pageBar="";
 	
@@ -557,10 +558,10 @@ public static String getPageBar8(int totalDataSu, int cPage, int numPerpage, Str
 	return pageBar;
 }
 
+}
 
 
-}
-}
+
 
 
 
