@@ -57,12 +57,12 @@
                                             <dt class="us_titb_13">
                                                 <a href="#" onclick="location.href = '${path }/openApi.do?entNo=${list.ENT_NO}&keyword=${list.ENT_NAME}'">${list.ENT_NAME }</a>
                                                 <input type="hidden" value="${list.ENT_NO }">
-                                                <c:if test="${not fn:contains(entFollow[status.index].ENT_NO, list.ENT_NO)}">
+                                                <c:if test="${not empty commonLogin && not fn:contains(entFollow[status.index].ENT_NO, list.ENT_NO)}">
                                                 <button class="btn_heart1" id="hart">
                                                     <i class="far fa-heart"></i>
                                                 </button>
                                               	</c:if>
-                                              	 <c:if test="${fn:contains(entFollow[status.index].ENT_NO, list.ENT_NO)}">
+                                              	 <c:if test="${not empty commonLogin && fn:contains(entFollow[status.index].ENT_NO, list.ENT_NO)}">
                                                 <button class="btn_heart2" id="hart">
                                                     <i class="fas fa-heart"></i>
                                                 </button>
