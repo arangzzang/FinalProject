@@ -43,8 +43,8 @@ public class annoDaoImpl implements annoDao {
 	}
 
 	@Override
-	public List<Interestedrcruitment> selectIn(SqlSession session, Map memNo) {
-		return session.selectList("anno.selectIn",memNo);
+	public List<Interestedrcruitment> selectIn(SqlSession session, Map paramMap) {
+		return session.selectList("anno.selectIn",paramMap);
 	}
 
 	@Override

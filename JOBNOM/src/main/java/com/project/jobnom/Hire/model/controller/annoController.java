@@ -159,8 +159,8 @@ public class annoController {
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		String anoNum1 = request.getParameter("anoNum"); 
 		paramMap.put("anoNum", anoNum1);
-		String recNo1 = request.getParameter("recNo"); 
-		paramMap.put("rec_no", recNo1);
+		String rec_no = request.getParameter("recNo"); 
+		paramMap.put("rec_no", rec_no);
 		String memNo1 = request.getParameter("memNo");
 		paramMap.put("memNo", memNo1);
 		System.out.println("총"+paramMap);
