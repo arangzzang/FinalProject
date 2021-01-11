@@ -350,34 +350,26 @@ var swiper = new Swiper('.swiper-container', {
 	 
 
 
-  <script>
-  window.console = window.console || function(t) {};
-</script>
+ 
 
-  
-  
-  <script>
-  if (document.location.search.match(/type=embed/gi)) {
-    window.parent.postMessage("resize", "*");
-  }
-</script>
-      <script id="rendered-js" >
-timer();
-var current = 0;
-var $interval;
 
-function timer() {
-  var $interval = setInterval(function () {slide();}, 2000);
-}
+<script id="rendered-js">
+	timer();
+	var current = 0;
+	var $interval;
+	
+	function timer() {
+	  var $interval = setInterval(function () {slide();}, 2000);
+	}
+	
+	function slide() {
+	  $(".bannerbox").animate({ left: "-=187px" }, 1000, function () {
+	    $(this).css({ "left": 0 });
+	    $(".bannerbox").append($(".bannerbox").children("li").eq(0));
+	  });
+	  current++;
+	  if (current == 5) current = 0;
+	}
 
-function slide() {
-  $(".bannerbox").animate({ left: "-=187px" }, 1000, function () {
-    $(this).css({ "left": 0 });
-    $(".bannerbox").append($(".bannerbox").children("li").eq(0));
-  });
-  current++;
-  if (current == 5) current = 0;
-}
-//# sourceURL=pen.js
     </script>
 

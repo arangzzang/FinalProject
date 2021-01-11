@@ -3,7 +3,7 @@ package com.project.jobnom.Hire.model.dao;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSession;import org.springframework.jdbc.core.support.SqlLobValue;
 
 import com.project.jobnom.Hire.model.vo.Interestedrcruitment;
 import com.project.jobnom.Hire.model.vo.Recruitment;
@@ -75,4 +75,5 @@ public interface HireDao {
 	
 	List<Member> categoryAll(SqlSession session, String memNo);
 
+	List<Map> deleteReview(SqlSession session, String reviewNo);
 }
