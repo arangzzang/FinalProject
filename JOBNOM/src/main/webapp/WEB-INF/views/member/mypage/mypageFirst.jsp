@@ -12,7 +12,7 @@
 </jsp:include>
 <section id="content">
     <jsp:include page="/WEB-INF/views/member/mypage/mypageHeader.jsp">
-        <jsp:param name="mypageHeader" value=" "/>
+        <jsp:param name="title" value="3"/>
     </jsp:include>
     <div class="with-parent">
         <div class="with">

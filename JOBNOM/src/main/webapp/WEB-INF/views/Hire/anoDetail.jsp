@@ -243,7 +243,10 @@
 
 				<input type="hidden" name="memNo" value="${commonLogin.memNo}">
 				<input type="hidden" name="recNo" value="${r[0].REC_NO}"> <input
-					type="hidden" name="entName" value="${r[0].ENT_NAME }"> <input
+					type="hidden" name="entName" value="${r[0].ENT_NAME }">
+					<input type="hidden" name="mEmail" value="${m[0].memEmail}">
+					<input type="hidden" name="eEmail" value="${r[0].ENT_EMAIL}">
+					 <input
 					class="apply" type="submit" onclick="fn_overlapApply();"
 					value="간편지원하기">
 					<input type="button" id="fn_mypage" value="마이페이지" onclick="fn_mypage();">

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.project.jobnom.Hire.model.vo.Interestedrcruitment;
 import com.project.jobnom.Hire.model.vo.Recruitment;
 import com.project.jobnom.Hire.model.vo.Support;
+import com.project.jobnom.member.model.vo.Member;
 
 
 @Repository
@@ -67,6 +68,12 @@ public class annoDaoImpl implements annoDao {
 		return session.selectList("anno.announcementPageFirst",paramMap);
 	}
 
+	@Override
+	public List<Member> selectMemberEmail(SqlSession session, String memNo) {
+		return session.selectList("anno.selectMemberEmail",memNo);
+	}
+
+	
 	
 	
 	

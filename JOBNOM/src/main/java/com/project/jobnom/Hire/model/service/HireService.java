@@ -68,4 +68,6 @@ public interface HireService {
 	
 	List<Recruitment> recList();
 	List<Member> categoryAll(String memNo);
+	
+	List<Map> deleteReview(String reviewNo);
 }

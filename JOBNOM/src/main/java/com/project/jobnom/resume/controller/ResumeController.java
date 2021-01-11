@@ -38,10 +38,12 @@ public class ResumeController {
 	}
 	//이력서
 	@RequestMapping("/resume/insertResume")
-	public ModelAndView insertResume(Resume res,String eTerm,String eTermend, Education edu, int category2,String skill, ModelAndView mv,HttpSession session) throws ParseException {
+	public ModelAndView insertResume(Resume res, Education edu, int category2,String skill, ModelAndView mv,HttpSession session) throws ParseException {
 		int result=0;
 		Map resMap = new HashMap();
 		Resume selRes=service.selectResume(res.getMemNo());
+		edu.setEduTerm(edu.getEduTerm().replaceAll("/",""));
+		edu.setEduTermend(edu.getEduTermend().replaceAll("/",""));
 		//selectResume존재 여부 메소드 실행 
 		if(selRes==null) {
 			//없으면
@@ -68,17 +70,7 @@ public class ResumeController {
 			System.out.println(resMap);
 			if(result > 0) service.categoryUpdate(resMap);
 //			if(skill!=null) service.updateSkill();
-			eTerm += "/02";
-			System.out.println(eTerm);
-			Date eduDate =  Date.valueOf(eTerm);
-			edu.setEduTerm(eduDate);
-			System.out.println(edu.getEduTerm());
-			eTermend += "/02";
-			Date eduDateEnd = Date.valueOf(eTermend);
-			edu.setEduTermend(eduDateEnd);
-			
-			System.out.println(edu.getEduTermend());
-			System.out.println("김정민 체크포인트" + edu);
+			System.out.println(edu);
 			if(result>0) service.insertEducation(edu);
 			
 			mv.addObject("msg",result>0?"이력서가 저장되었어요~":"이력서가 저장되지 않았습니다. 다시 확인해 주세요.");

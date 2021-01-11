@@ -114,8 +114,8 @@
 						#{eduName},
 						#{eduMajor},
 						#{eduAttend},
-						to_char(to_date(#{eduTerm},'YYYYMM'),'YYYYMM'),
-						to_char(to_date(#{eduTermend},'YYYYMM'),'YYYYMM'),
+						to_date(#{eduTerm},'YYYYMM'),
+						to_date(#{eduTermend},'YYYYMM'),
 						#{eduContents}
 					)
 	</insert>

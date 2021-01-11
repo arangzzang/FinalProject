@@ -155,8 +155,8 @@
 												onclick="location.href='${path}/member/enrollMember'">회원가입</button>
 										</div>
 										<div class="col-md-7 offset-md-5">
-											<span class="psw"><a href="#">이메일 찾기</a></span>/ <span
-												class="psw"><a href="#">비밀 번호 찾기</a></span>
+<!-- 											<span class="psw"><a href="#">이메일 찾기</a></span>/ <span -->
+<!-- 												class="psw"><a href="#">비밀 번호 찾기</a></span> -->
 										</div>
 									</div>
 								</div>

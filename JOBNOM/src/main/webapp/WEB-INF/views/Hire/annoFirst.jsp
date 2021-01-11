@@ -865,7 +865,10 @@ figure.snip1132.hover img {
 				method="post">
 
 				<input type="hidden" name="memNo" value="${commonLogin.memNo}">
-				<input type="hidden" name="recNo" value="${r[0].rec_no}"> <input
+				<input type="hidden" name="recNo" value="${r[0].rec_no}">
+					<input type="hidden" name="mEmail" value="${m[0].memEmail}">
+					<input type="hidden" name="eEmail" value="${r[0].ent_email}">
+					 <input
 					type="hidden" name="entName" value="${r[0].ent_name }"> <input
 					class="apply" type="submit" onclick="fn_overlapApply();"
 					value="간편지원하기">
