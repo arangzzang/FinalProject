@@ -37,11 +37,9 @@ import com.project.jobnom.enterprise.model.vo.ApplyAd;
 import com.project.jobnom.enterprise.model.vo.Banner;
 import com.project.jobnom.enterprise.model.vo.Category2;
 import com.project.jobnom.enterprise.model.vo.Enterprise;
-import com.project.jobnom.enterprise.model.vo.Mammoth;
+import com.project.jobnom.enterprise.model.vo.Score;
 import com.project.jobnom.enterprise.page.EnterprisePageBar;
 import com.project.jobnom.openapi.model.vo.openApiVo;
-import com.project.jobnom.resume.model.vo.Resume;
-
 
 @Controller
 public class companyController {
@@ -50,168 +48,172 @@ public class companyController {
 	@Autowired
 	BCryptPasswordEncoder pwEncoder;
 
-	//헤더 기업 버튼 클릭시 
+	// 헤더 기업 버튼 클릭시
 	@RequestMapping("/enterprise/companyList.do")
 	public ModelAndView companyList(ModelAndView mv) {
-		
-		mv.addObject("list",service.companyList());
-		mv.addObject("list2",service.companyList2());
-		mv.addObject("list3",service.companyList3());
-		mv.addObject("list4",service.companyList4());
-		mv.addObject("list5",service.companyList5());
-		mv.addObject("list6",service.companyList6());
+
+		mv.addObject("list", service.companyList());
+		mv.addObject("list2", service.companyList2());
+		mv.addObject("list3", service.companyList3());
+		mv.addObject("list4", service.companyList4());
+		mv.addObject("list5", service.companyList5());
+		mv.addObject("list6", service.companyList6());
 		mv.setViewName("enterprise/companyList");
-		System.out.println(mv.addObject("list",service.companyList()));
-		
+		System.out.println(mv.addObject("list", service.companyList()));
+
 		return mv;
 	}
-	
-	//기업 메인 페이지
+
+	// 기업 메인 페이지
 
 	@RequestMapping("/enterprise/com_info.do")
-	public ModelAndView companyInfo(ModelAndView mv,int entNo, String seq) throws Exception {
-		
-		
-		
+	public ModelAndView companyInfo(ModelAndView mv, int entNo, String seq) throws Exception {
+
 		// open api
-		if(seq != null) {
-			
+		if (seq != null) {
+
 			// DB에서 기업 번호로 기업 데이터 가져옴
 			System.out.println(entNo);
 			System.out.println(seq);
-			mv.addObject("list",service.companyInfo(entNo));
+			mv.addObject("list", service.companyInfo(entNo));
 			// DB에서 기업 번호로 기업 데이터 가져옴 끝
-			
+
 			seq = URLDecoder.decode(seq, "UTF-8"); // 디코딩 하기
 
-		// servicekey : 공공데이터 신청한 api 인증키
-		String servicekey = "ZE%2FyNNIkFe7TiKpeKRdbPC4WdjWNPX76FEeHfwGKdcTQMkXBnHJ8FbADGE9oIEcx%2B8ZCO8aTfD39YcSFyPgrpw%3D%3D";
-		String spec = "http://apis.data.go.kr/B552015/NpsBplcInfoInqireService/getDetailInfoSearch?"; // 공공데이터 포탈에서 받은 주소
-		spec += "seq=" + URLEncoder.encode(seq, "utf-8") // 시퀀스
-				+ "&serviceKey=" + servicekey; // 서비스 키
+			// servicekey : 공공데이터 신청한 api 인증키
+			String servicekey = "ZE%2FyNNIkFe7TiKpeKRdbPC4WdjWNPX76FEeHfwGKdcTQMkXBnHJ8FbADGE9oIEcx%2B8ZCO8aTfD39YcSFyPgrpw%3D%3D";
+			String spec = "http://apis.data.go.kr/B552015/NpsBplcInfoInqireService/getDetailInfoSearch?"; // 공공데이터 포탈에서
+																											// 받은 주소
+			spec += "seq=" + URLEncoder.encode(seq, "utf-8") // 시퀀스
+					+ "&serviceKey=" + servicekey; // 서비스 키
 
-		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 
-		DocumentBuilder builder = factory.newDocumentBuilder();
+			DocumentBuilder builder = factory.newDocumentBuilder();
 
-		Document doc = builder.parse(spec);
-		doc.getDocumentElement().normalize();
+			Document doc = builder.parse(spec);
+			doc.getDocumentElement().normalize();
 
-		Element root = doc.getDocumentElement();
+			Element root = doc.getDocumentElement();
 
-		NodeList nList = root.getElementsByTagName("item");
-		List<openApiVo> apiList = new ArrayList<>();
-		for(int i = 0; i<nList.getLength(); i++) {
-			Node item = nList.item(i);
-			NodeList cList = item.getChildNodes();
-			openApiVo o = new openApiVo();
-			
-			for(int k = 0; k<cList.getLength(); k++) {
-				Node items = cList.item(k);
-				String value = items.getNodeName();
-				if(value.equals("#text")) continue;
-				if(value.equals("wkplNm")) o.setWkplNm(items.getTextContent()); // 기업명
-				if(value.equals("wkplRoadNmDtlAddr")) o.setWkplRoadNmDtlAddr(items.getTextContent()); // 도로명 주소
-				if(value.equals("crrmmNtcAmt")) o.setCrrmmNtcAmt(items.getTextContent()); // 당월 고지 금액
-				if(value.equals("jnngpCnt")) o.setJnngpCnt(items.getTextContent()); // 가입자수
-				if(value.equals("adptDt")) o.setAdptDt(items.getTextContent()); // 사업장 등록일
-				
+			NodeList nList = root.getElementsByTagName("item");
+			List<openApiVo> apiList = new ArrayList<>();
+			for (int i = 0; i < nList.getLength(); i++) {
+				Node item = nList.item(i);
+				NodeList cList = item.getChildNodes();
+				openApiVo o = new openApiVo();
+
+				for (int k = 0; k < cList.getLength(); k++) {
+					Node items = cList.item(k);
+					String value = items.getNodeName();
+					if (value.equals("#text"))
+						continue;
+					if (value.equals("wkplNm"))
+						o.setWkplNm(items.getTextContent()); // 기업명
+					if (value.equals("wkplRoadNmDtlAddr"))
+						o.setWkplRoadNmDtlAddr(items.getTextContent()); // 도로명 주소
+					if (value.equals("crrmmNtcAmt"))
+						o.setCrrmmNtcAmt(items.getTextContent()); // 당월 고지 금액
+					if (value.equals("jnngpCnt"))
+						o.setJnngpCnt(items.getTextContent()); // 가입자수
+					if (value.equals("adptDt"))
+						o.setAdptDt(items.getTextContent()); // 사업장 등록일
+
+				}
+				apiList.add(o);
+				mv.addObject("apiList", apiList);
+				mv.setViewName("enterprise/com_info");
 			}
-			apiList.add(o);
-			mv.addObject("apiList",apiList);
+
+			// open api 끝
+		} else {
+
+			System.out.println(entNo);
+			mv.addObject("list", service.companyInfo(entNo));
 			mv.setViewName("enterprise/com_info");
+
 		}
-		
-		// open api 끝
-	}else {
-		
-		System.out.println(entNo);
-		mv.addObject("list",service.companyInfo(entNo));
-		mv.setViewName("enterprise/com_info");
-		
-	}
-		
-		mv.addObject("followEnt",service.selectEntFollow());
-		mv.addObject("list",service.companyInfo(entNo));
-		
+
+		mv.addObject("followEnt", service.selectEntFollow());
+		mv.addObject("list", service.companyInfo(entNo));
+
 		return mv;
 	}
-	
+
 	@RequestMapping("/enterprise/followEnt.do")
 	@ResponseBody
 	public void followEnt(int entNo, int memNo) {
 		Map param1 = new HashedMap();
-		param1.put("entNo",entNo);
-		param1.put("memNo",memNo);
-		
+		param1.put("entNo", entNo);
+		param1.put("memNo", memNo);
+
 		System.out.println("나오니? : " + param1);
-		
-		 int result = service.followEnt(param1);
-		 
-		 
+
+		int result = service.followEnt(param1);
+
 	}
-	
+
 	@RequestMapping("/enterprise/unfollowEnt.do")
 	@ResponseBody
-	public void unfollowEnt(int entNo,int memNo) {
-		Map param1 =new HashedMap();
-		param1.put("entNo",entNo);
-		param1.put("memNo",memNo);
-		
+	public void unfollowEnt(int entNo, int memNo) {
+		Map param1 = new HashedMap();
+		param1.put("entNo", entNo);
+		param1.put("memNo", memNo);
+
 		System.out.println("나오니? : " + param1);
-		
+
 		int result = service.unfollowEnt(param1);
-		
-}
+
+	}
 
 	@RequestMapping("/enterprise/com_review.do")
-	public ModelAndView companyReview(ModelAndView mv,int entNo,@RequestParam(value="cPage",defaultValue="1")
-					int cPage,@RequestParam(value="numPerpage",defaultValue="5") int numPerpage) {
-		List<Review> rev=service.selectReviewList(entNo,cPage,numPerpage);
-		System.out.println("기업번호"+entNo);
-		/*
-		 * Score scr = service.scoreList(entNo); System.out.println("리뷰" + scr);
-		 */
+	public ModelAndView companyReview(ModelAndView mv, int entNo,
+			@RequestParam(value = "cPage", defaultValue = "1") int cPage,
+			@RequestParam(value = "numPerpage", defaultValue = "5") int numPerpage) {
+		List<Review> rev = service.selectReviewList(entNo, cPage, numPerpage);
+		System.out.println("기업번호" + entNo);
+		List<Score> src = service.scoreList(entNo);
 		System.out.println("이거 제발.. " + rev);
-		System.out.println("??" + service.scoreList(entNo));
 		System.out.println("나오닝??" + service.selectEntFollow());
 		int totalData = service.selectReviewcount(entNo);
-		mv.addObject("list",service.companyInfo(entNo));
-		mv.addObject("totalData",totalData);
-		mv.addObject("pageBar",EnterprisePageBar.getPageBar3(totalData,entNo,cPage,numPerpage,"com_review.do"));
-		mv.addObject("rev",rev);
-		mv.addObject("followEnt",service.selectEntFollow());
+		mv.addObject("list", service.companyInfo(entNo));
+		mv.addObject("totalData", totalData);
+		mv.addObject("pageBar", EnterprisePageBar.getPageBar3(totalData, entNo, cPage, numPerpage, "com_review.do"));
+		mv.addObject("src",src);
+		System.out.println("제발 나와주세요 제발 ... : "+src);
+		mv.addObject("rev", rev);
+		mv.addObject("followEnt", service.selectEntFollow());
 		mv.setViewName("enterprise/com_review");
 		return mv;
 	}
-
+		
 	@RequestMapping("/enterprise/com_interview.do")
-	public ModelAndView companyInterview(ModelAndView mv,int entNo) {
-		mv.addObject("list",service.companyInfo(entNo));
+	public ModelAndView companyInterview(ModelAndView mv, int entNo) {
+		mv.addObject("list", service.companyInfo(entNo));
 		mv.setViewName("enterprise/com_interview");
-		mv.addObject("followEnt",service.selectEntFollow());
+		mv.addObject("followEnt", service.selectEntFollow());
 		return mv;
 	}
 
 	@RequestMapping("/enterprise/com_job.do")
-	public ModelAndView companyJob(ModelAndView mv,@RequestParam(value="cPage",defaultValue="1")
-	int cPage,@RequestParam(value="numPerpage",defaultValue="5") int numPerpage, int entNo, int recNo) {
+	public ModelAndView companyJob(ModelAndView mv, @RequestParam(value = "cPage", defaultValue = "1") int cPage,
+			@RequestParam(value = "numPerpage", defaultValue = "5") int numPerpage, int entNo, int recNo) {
 		List<Category2> c2 = service.getC2();
 		System.out.println();
 		Map param1 = new HashedMap();
 		param1.put("entNo", entNo);
-		param1.put("recNo",recNo);
-		
-		System.out.println("번호: " + recNo );
-		List<Recruitment> Rec= service.selectJoblist(param1);
+		param1.put("recNo", recNo);
+
+		System.out.println("번호: " + recNo);
+		List<Recruitment> Rec = service.selectJoblist(param1);
 		int totalData = service.selectJobCount(entNo);
-		 mv.addObject("totalData",totalData);
-		 mv.addObject("pageBar",EnterprisePageBar.getPageBar4(totalData, cPage, numPerpage, entNo, "com_job.do"));
-		 
-		mv.addObject("c2",c2);
-		mv.addObject("Rec",Rec);
-		mv.addObject("list",service.companyInfo(entNo));
-		mv.addObject("followEnt",service.selectEntFollow());
+		mv.addObject("totalData", totalData);
+		mv.addObject("pageBar", EnterprisePageBar.getPageBar4(totalData, cPage, numPerpage, entNo, "com_job.do"));
+
+		mv.addObject("c2", c2);
+		mv.addObject("Rec", Rec);
+		mv.addObject("list", service.companyInfo(entNo));
+		mv.addObject("followEnt", service.selectEntFollow());
 		mv.setViewName("enterprise/com_job");
 		return mv;
 	}
@@ -239,22 +241,24 @@ public class companyController {
 	}
 
 	@RequestMapping("/com/mypage.do")
-	public ModelAndView comMypage(ModelAndView mv,@RequestParam(value="cPage",defaultValue="1")
-										int cPage,@RequestParam(value="numPerpage",defaultValue="5") int numPerpage, HttpSession session,String REC_NO) {
+	public ModelAndView comMypage(ModelAndView mv, @RequestParam(value = "cPage", defaultValue = "1") int cPage,
+			@RequestParam(value = "numPerpage", defaultValue = "5") int numPerpage, HttpSession session,
+			String REC_NO) {
 		Login log = (Login) session.getAttribute("commonLogin");
 		Enterprise ent = service.findOneEnterprise(log);
 		session.setAttribute("Enterprise", ent);
-		System.out.println("sdds"+ent.getEntNo());
+		System.out.println("sdds" + ent.getEntNo());
 		Map param1 = new HashedMap();
-		List<Recruitment> res = service.selectRecruitment(ent.getEntNo(),cPage,numPerpage); 
+		List<Recruitment> res = service.selectRecruitment(ent.getEntNo(), cPage, numPerpage);
 		int totalData = service.selectRecruitmentCount(ent);
-		
+
 		System.out.println(res);
 		System.out.println("공고 총갯수 : " + totalData);
-		System.out.println("페이지 위치 : " + cPage+"페이지 갯수" + numPerpage);
+		System.out.println("페이지 위치 : " + cPage + "페이지 갯수" + numPerpage);
 		mv.addObject("res", res);
-		mv.addObject("pageBar",EnterprisePageBar.getPageBar2(totalData, ent.getEntNo(), cPage,numPerpage,"mypage.do"));
-		mv.addObject("totalData",totalData);
+		mv.addObject("pageBar",
+				EnterprisePageBar.getPageBar2(totalData, ent.getEntNo(), cPage, numPerpage, "mypage.do"));
+		mv.addObject("totalData", totalData);
 		mv.setViewName("/enterprise/ent_mypage/com_mypage");
 		return mv;
 	}
@@ -281,36 +285,38 @@ public class companyController {
 		mv.setViewName("/enterprise/ent_mypage/ent_edit");
 		return mv;
 	}
-	@RequestMapping("/com/com_check.do")
-	public ModelAndView comCheck(ModelAndView mv,@RequestParam(value="cPage",defaultValue="1") int cPage, 
-			@RequestParam(value="numPerpage",defaultValue="5") int numPerpage, Recruitment rec)  {
 
-		List<Applicant> app = service.getApplicant(rec.getRec_no(),cPage,numPerpage);
-		System.out.println("나오내?"+app);
+	@RequestMapping("/com/com_check.do")
+	public ModelAndView comCheck(ModelAndView mv, @RequestParam(value = "cPage", defaultValue = "1") int cPage,
+			@RequestParam(value = "numPerpage", defaultValue = "5") int numPerpage, Recruitment rec) {
+
+		List<Applicant> app = service.getApplicant(rec.getRec_no(), cPage, numPerpage);
+		System.out.println("나오내?" + app);
 		int totalData = service.selectSupportCount(rec.getRec_no());
 		System.out.println(totalData);
-		mv.addObject("pageBar",EnterprisePageBar.getPageBar(totalData, rec.getRec_no(), cPage,numPerpage,"com_check.do"));
-		mv.addObject("totalData",totalData);
-		mv.addObject("app",app);
+		mv.addObject("pageBar",
+				EnterprisePageBar.getPageBar(totalData, rec.getRec_no(), cPage, numPerpage, "com_check.do"));
+		mv.addObject("totalData", totalData);
+		mv.addObject("app", app);
 		mv.setViewName("/enterprise/ent_mypage/com_check");
-		
+
 		return mv;
 	}
 
 	@RequestMapping("/com/ent_edit_end.do")
-	public ModelAndView entEditEnd(HttpSession session, SessionStatus ss, Model m, Enterprise ent, ModelAndView mv, 
+	public ModelAndView entEditEnd(HttpSession session, SessionStatus ss, Model m, Enterprise ent, ModelAndView mv,
 			@RequestParam(value = "Logo", required = false) CommonsMultipartFile Logo) {
 		Login log = (Login) session.getAttribute("commonLogin");
 		System.out.println(Logo.getOriginalFilename());
-		if(Logo.getOriginalFilename().length() == 0) {
+		if (Logo.getOriginalFilename().length() == 0) {
 			System.out.println("사진 업로드되지 않음");
 			Enterprise eps = (Enterprise) session.getAttribute("Enterprise");
 			ent.setEntLogo(eps.getEntLogo());
-		}else {
+		} else {
 			String path = session.getServletContext().getRealPath("/resources/enterprise/logo/" + ent.getEntNo());
 			System.out.println(path);
 			String oldName = Logo.getOriginalFilename();
-			
+
 			File dir = new File(path);
 			if (!dir.exists())
 				dir.mkdirs();
@@ -321,13 +327,13 @@ public class companyController {
 				Logo.transferTo(new File(path + "/" + newName));
 			} catch (IOException e) {
 				e.printStackTrace();
-			}			
+			}
 		}
-		
+
 		System.out.println("================");
 		System.out.println("pw:" + ent.getEntPw());
 		System.out.println("logPw:" + log.getMemPw());
-		//encoder.matches(password, user.getPassword());
+		// encoder.matches(password, user.getPassword());
 		if (!ent.getEntPw().equals(log.getMemPw())) {
 			ent.setEntPw(pwEncoder.encode(ent.getEntPw()));
 		}
@@ -348,7 +354,7 @@ public class companyController {
 		mv.addObject("loc", loc);
 		mv.setViewName("common/msg");
 		// session commonlogin 새로운 회원값으로 대체
-		System.out.println("방금 들어간 비번:"+ent.getEntPw());
+		System.out.println("방금 들어간 비번:" + ent.getEntPw());
 		Login newLog = new Login(log.getType(), ent.getEntNo(), ent.getEntEmail(), ent.getEntPw());
 		session.removeAttribute("commonLogin");
 		session.setAttribute("commonLogin", newLog);
@@ -447,13 +453,12 @@ public class companyController {
 		System.out.println("check password : " + pwc);
 		m.addAttribute("hello", "hi");
 
-		
 		String pw = service.findOneEnterprise(log).getEntPw();
 		System.out.println("old pw:" + pw);
-		if(pwEncoder.matches(pwc, pw)) {
+		if (pwEncoder.matches(pwc, pw)) {
 			System.out.println("password is correct");
 			result = "correct";
-		}else {
+		} else {
 			System.out.println("password is incorrect");
 			result = "incorrect";
 		}
