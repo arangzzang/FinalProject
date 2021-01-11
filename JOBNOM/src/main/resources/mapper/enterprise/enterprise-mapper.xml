@@ -476,11 +476,13 @@
 		select  NVL(max(rownum),0) from support left join resume on support.mem_no=resume.mem_no where rec_no=#{recno} and res_no!=0
 	</select>
 	<select id="scoreList" resultMap="scMap">
+
 		select  
-				round(avg(review_satisfaction),1) a , round(avg(review_welfare),1) b ,
-		        round(avg(review_promotion),1) c , round(avg(review_executive),1) d
+				round(avg(review_satisfaction),1) review_satisfaction , round(avg(review_welfare),1) review_welfare ,
+		        round(avg(review_promotion),1) review_promotion , round(avg(review_executive),1) review_executive
 		from review
 		where ent_no=#{entNo}
+
 	</select> 
 
 	<insert id="followEnt" parameterType="java.util.HashMap">
