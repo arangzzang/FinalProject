@@ -14,6 +14,7 @@ import com.project.jobnom.enterprise.model.vo.Enterprise;
 import com.project.jobnom.enterprise.model.vo.Mammoth;
 import com.project.jobnom.enterprise.model.vo.MemberDataC2;
 import com.project.jobnom.enterprise.model.vo.PayData;
+import com.project.jobnom.enterprise.model.vo.Score;
 import com.project.jobnom.enterprise.model.vo.Support;
 import com.project.jobnom.enterprise.model.vo.Worker;
 import com.project.jobnom.resume.model.vo.Resume;
@@ -92,4 +93,12 @@ public interface EnterpriseService {
 	List<Applicant> getApplicant(int recno, int cPage, int numPerpage);
 
 	int selectSupportCount(int recno);
+	
+	Score scoreList(int entNo);
+	//기업 팔로잉
+	int followEnt(Map param1);
+	//기업 언팔로잉
+	int unfollowEnt(Map param1);
+	//기업 팔로잉 리스트
+	List<Map> selectEntFollow();
 }

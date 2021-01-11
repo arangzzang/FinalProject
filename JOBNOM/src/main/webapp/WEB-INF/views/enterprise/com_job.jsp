@@ -74,11 +74,11 @@
 							href="${path }/enterprise/com_job.do?entNo=${list[0].ENT_NO}&recNo=${list[0].REC_NO}"><h2>채용</h2></a>
 						</li>
 					</ul>
-					<div class="follow_btn">
+					<!-- <div class="follow_btn">
 						<button id="follow" class="btn btn">
-							<i id="heart" class="far fa-heart"></i>찜하기
+							<i id="heart" class="far fa-heart"></i>팔로우
 						</button>
-					</div>
+					</div> -->
 				</nav>
 			</div>
 		</div>
@@ -94,7 +94,7 @@
 				<div class="job_item_wrap">
 					<a href="#" onclick="location.href = '${path }/Hire/annoHomeDetailMove.do?recNo=${Rec.REC_NO}'">
 						<span class="job_dday"><fmt:formatDate
-								value="${Rec.REC_ENDDATE }" pattern="yyyy.MM.dd" /></span>
+								value="${Rec.REC_ENDDATE }" pattern="yyyy-MM-dd" /></span>
 						<div class="info_box">
 							<h2 class="tit">
 								<c:out value="${Rec.REC_TITLE}" />

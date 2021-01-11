@@ -25,9 +25,7 @@
 	}
 	
 </style>
-<jsp:include page="/WEB-INF/views/common/header.jsp">
-   <jsp:param name="title" value=" "/>
-</jsp:include>
+
 <section id="content">
 <jsp:include page="/WEB-INF/views/enterprise/ent_mypage/ent_common.jsp">
    <jsp:param name="subheader" value=""/>

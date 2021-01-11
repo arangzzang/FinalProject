@@ -107,6 +107,12 @@
 		<result column="res_opencheck" property="resOpencheck"/>
 		<result column="support_day" property="supportDay"/>
 	</resultMap>
+	<resultMap type="score" id="scMap">
+		<result column="review_satisfaction" property="review_satisfaction"/>
+		<result column="review_welfare" property="review_welfare"/>
+		<result column="review_promotion" property="review_promotion"/>
+		<result column="review_executive" property="review_executive"/>
+	</resultMap>
 
 	<insert id="enrollEnter" parameterType="ent">
 		insert into enterprise
@@ -215,7 +221,8 @@
 	<select id="selectReviewList" resultType="review" parameterType="_int">
 		select * from review
 		join MEMBER using (mem_no)
-		where ent_no=#{entNo}
+		where ent_no=#{entNo} 
+        order by re_enroll_date desc
 	</select>
 	<select id="selectReviewcount" resultType="_int" >
 		SELECT COUNT(*) FROM REVIEW WHERE ENT_NO=#{entNo}
@@ -224,6 +231,8 @@
 	
 	<select id="selectJoblist" resultType="map" >
 		SELECT * FROM RECRUITMENT WHERE ENT_NO=#{entNo}
+		order by rec_enddate asc
+		
 	</select>
 	
 	<select id="selectJobCount" resultType="_int">
@@ -463,7 +472,29 @@
 	<select id="getApplicant" resultMap="appMap">
 		SELECT * FROM SUPPORT JOIN RESUME ON SUPPORT.MEM_NO=RESUME.MEM_NO WHERE REC_NO=#{recno}
 	</select>
-	<select id="selectSupportCount" resultType="_int">
-		select count(*) from support where rec_no = #{recno}
+	<select id="selectSupportCount" resultType="int">
+		select  NVL(max(rownum),0) from support left join resume on support.mem_no=resume.mem_no where rec_no=#{recno} and res_no!=0
 	</select>
+	<select id="scoreList" resultMap="scMap">
+		select  
+				round(avg(review_satisfaction),1) a , round(avg(review_welfare),1) b ,
+		        round(avg(review_promotion),1) c , round(avg(review_executive),1) d
+		from review
+		where ent_no=#{entNo}
+	</select> 
+
+	<insert id="followEnt" parameterType="java.util.HashMap">
+		INSERT INTO ENTERPRISEFOLLOW VALUES(SEQ_FAV_NO.NEXTVAL,#{memNo},#{entNo})
+	</insert>
+	
+	<delete id="unfollowEnt" parameterType="java.util.HashMap">
+		DELETE ENTERPRISEFOLLOW
+        	WHERE mem_no=#{memNo}
+        	AND ent_no=#{entNo}
+	</delete>
+	
+	<select id="selectEntFollow" resultType="map">
+		select * from ENTERPRISEFOLLOW
+	</select>
+	
 </mapper>

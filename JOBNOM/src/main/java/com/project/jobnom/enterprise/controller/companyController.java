@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import javax.mail.Session;
 import javax.servlet.http.HttpSession;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -18,11 +17,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -40,8 +37,10 @@ import com.project.jobnom.enterprise.model.vo.ApplyAd;
 import com.project.jobnom.enterprise.model.vo.Banner;
 import com.project.jobnom.enterprise.model.vo.Category2;
 import com.project.jobnom.enterprise.model.vo.Enterprise;
+import com.project.jobnom.enterprise.model.vo.Mammoth;
 import com.project.jobnom.enterprise.page.EnterprisePageBar;
 import com.project.jobnom.openapi.model.vo.openApiVo;
+import com.project.jobnom.resume.model.vo.Resume;
 
 
 @Controller
@@ -132,20 +131,56 @@ public class companyController {
 		
 	}
 		
+		mv.addObject("followEnt",service.selectEntFollow());
+		mv.addObject("list",service.companyInfo(entNo));
 		
 		return mv;
 	}
+	
+	@RequestMapping("/enterprise/followEnt.do")
+	@ResponseBody
+	public void followEnt(int entNo, int memNo) {
+		Map param1 = new HashedMap();
+		param1.put("entNo",entNo);
+		param1.put("memNo",memNo);
+		
+		System.out.println("나오니? : " + param1);
+		
+		 int result = service.followEnt(param1);
+		 
+		 
+	}
+	
+	@RequestMapping("/enterprise/unfollowEnt.do")
+	@ResponseBody
+	public void unfollowEnt(int entNo,int memNo) {
+		Map param1 =new HashedMap();
+		param1.put("entNo",entNo);
+		param1.put("memNo",memNo);
+		
+		System.out.println("나오니? : " + param1);
+		
+		int result = service.unfollowEnt(param1);
+		
+}
 
 	@RequestMapping("/enterprise/com_review.do")
 	public ModelAndView companyReview(ModelAndView mv,int entNo,@RequestParam(value="cPage",defaultValue="1")
 					int cPage,@RequestParam(value="numPerpage",defaultValue="5") int numPerpage) {
 		List<Review> rev=service.selectReviewList(entNo,cPage,numPerpage);
 		System.out.println("기업번호"+entNo);
+		/*
+		 * Score scr = service.scoreList(entNo); System.out.println("리뷰" + scr);
+		 */
+		System.out.println("이거 제발.. " + rev);
+		System.out.println("??" + service.scoreList(entNo));
+		System.out.println("나오닝??" + service.selectEntFollow());
 		int totalData = service.selectReviewcount(entNo);
 		mv.addObject("list",service.companyInfo(entNo));
 		mv.addObject("totalData",totalData);
 		mv.addObject("pageBar",EnterprisePageBar.getPageBar3(totalData,entNo,cPage,numPerpage,"com_review.do"));
 		mv.addObject("rev",rev);
+		mv.addObject("followEnt",service.selectEntFollow());
 		mv.setViewName("enterprise/com_review");
 		return mv;
 	}
@@ -154,6 +189,7 @@ public class companyController {
 	public ModelAndView companyInterview(ModelAndView mv,int entNo) {
 		mv.addObject("list",service.companyInfo(entNo));
 		mv.setViewName("enterprise/com_interview");
+		mv.addObject("followEnt",service.selectEntFollow());
 		return mv;
 	}
 
@@ -175,6 +211,7 @@ public class companyController {
 		mv.addObject("c2",c2);
 		mv.addObject("Rec",Rec);
 		mv.addObject("list",service.companyInfo(entNo));
+		mv.addObject("followEnt",service.selectEntFollow());
 		mv.setViewName("enterprise/com_job");
 		return mv;
 	}
@@ -208,6 +245,7 @@ public class companyController {
 		Enterprise ent = service.findOneEnterprise(log);
 		session.setAttribute("Enterprise", ent);
 		System.out.println("sdds"+ent.getEntNo());
+		Map param1 = new HashedMap();
 		List<Recruitment> res = service.selectRecruitment(ent.getEntNo(),cPage,numPerpage); 
 		int totalData = service.selectRecruitmentCount(ent);
 		
@@ -249,10 +287,8 @@ public class companyController {
 
 		List<Applicant> app = service.getApplicant(rec.getRec_no(),cPage,numPerpage);
 		System.out.println("나오내?"+app);
-		System.out.println("이건" + rec.getRec_no());
 		int totalData = service.selectSupportCount(rec.getRec_no());
-		
-		
+		System.out.println(totalData);
 		mv.addObject("pageBar",EnterprisePageBar.getPageBar(totalData, rec.getRec_no(), cPage,numPerpage,"com_check.do"));
 		mv.addObject("totalData",totalData);
 		mv.addObject("app",app);

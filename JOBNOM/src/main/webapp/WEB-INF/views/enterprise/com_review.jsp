@@ -29,7 +29,7 @@
 												style="width: 104px; height: 104px;">
 										</c:when>
 										<c:otherwise>
-											<a href="" class="logo_wrap"> <img
+											<a href="" class="logo_wrap"><img
 												src="${path }/resources/enterprise/logo/${list[0].ENT_NO }/${list[0].ENT_LOGO}"
 												style="width: 104px; height: 104px;">
 											</a>
@@ -76,9 +76,28 @@
 						</li>
 					</ul>
 					<div class="follow_btn">
+						<%-- <c:if
+							test="${not fn:contains(followEnt.entNo,list[0].ENT_NO)}">
+							<button class="btn_heart1" id="follow">
+								<i class="far fa-heart" style="color: red;"></i>팔로우
+							</button>
+						</c:if>
+						<c:if 
+							test="${fn:contains(followEnt.entNo,list[0].ENT_NO)}">
+							<button class="btn_heart2" id="follow2">
+								<i class="fas fa-heart" style="color: red;"></i>팔로우 넵ㄴ
+							</button>
+						</c:if>
+						<c:if test="${empty commonLogin}">
+							<button class="btn_heart1" id="follow">
+								<i class="far fa-heart" style="color: red;"></i>팔로우
+							</button>
+						</c:if> --%>
+						<!-- <div class="follow_btn">
 						<button id="follow" class="btn btn">
-							<i id="heart" class="far fa-heart"></i>찜하기
+							<i id="heart" class="far fa-heart"></i>팔로우
 						</button>
+					</div> -->
 					</div>
 				</nav>
 			</div>
@@ -91,21 +110,15 @@
 						전체통계리뷰(<span>${totalData }</span>)
 					</p></i>
 			</div>
-			<div class="review_bar">
-				<div class="review_bar_num">
-					<div id="barchart_values" style="padding: 30px;"></div>
-				</div>
+			<div>
+				<jsp:include page="/WEB-INF/views/enterprise/com_Reviewchart.jsp">
+					<jsp:param name="title" value="" />
+				</jsp:include>
 			</div>
 		</div>
 		<article class="review_select_con">
 			<div class="review_select_box">
-				<div class="review_select">
-					<select class="select_cho">
-						<option>재직 상태</option>
-						<option>재직중</option>
-						<option>퇴사자</option>
-					</select>
-				</div>
+				<div class="review_select"></div>
 				<div class="total_review">
 					<span>${totalData }</span>개의 기업리뷰
 				</div>
@@ -145,64 +158,18 @@
 							</dl>
 						</div>
 					</div>
-					<div class="btn_area">
-						<button id="report_btn" class="btn btn">신고하기</button>
-					</div>
 				</div>
 			</article>
 		</c:forEach>
-			<c:if test="${empty rev}">
-				<article class="com_review_default">
-					<div class="com_de_box">
-						<div class="com_de_wrap">
-							<h4>등록된 리뷰가 없습니다.</h4>
-						</div>
+		<c:if test="${empty rev}">
+			<article class="com_review_default">
+				<div class="com_de_box">
+					<div class="com_de_wrap">
+						<h4>등록된 리뷰가 없습니다.</h4>
 					</div>
-				</article>
-			</c:if>
+				</div>
+			</article>
+		</c:if>
 		<div id="pageBar" style="margin-top: 20px;">${pageBar }</div>
 </section>
-
-<script type="text/javascript">
-	google.charts.load("current", {
-		packages : [ "corechart" ]
-	});
-	google.charts.setOnLoadCallback(drawChart);
-	function drawChart() {
-		var data = google.visualization.arrayToDataTable([ [ "", "평점", {
-			role : "style"
-		} ], [ "총 평점", 0, "#00c362" ], [ "사내만족도", 0, "#00c362" ],
-				[ "복지 및 급여", 0, "#00c362" ], [ "승진기회 및 가능성", 0, "#00c362" ],
-				[ "경영진", 0, "#00c362" ] ]);
-
-		var view = new google.visualization.DataView(data);
-		view.setColumns([ 0, 1, {
-			calc : "stringify",
-			sourceColumn : 1,
-			type : "string",
-			role : "annotation"
-		}, 2 ]);
-
-		var options = {
-			title : "",
-			width : 900,
-			height : 350,
-			bar : {
-				groupWidth : "30%"
-			},
-			legend : {
-				position : "none"
-			},
-			hAxis : {
-				minValue : 0,
-				maxValue : 5
-			}
-		};
-
-		var chart = new google.visualization.BarChart(document
-				.getElementById("barchart_values"));
-		chart.draw(view, options);
-
-	}
-</script>
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />
