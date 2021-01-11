@@ -92,7 +92,7 @@
 		<div class="job_items">
 			<c:forEach items="${Rec }" var="Rec">
 				<div class="job_item_wrap">
-					<a href="#" onclick="location.href = '${path }/Hire/annoHomeDetailMove.do?recNo=${Rec.REC_NO}'">
+					<a href="#" onclick="location.href = '${path }/Hire/announcementPageFirst?recNo=${Rec.REC_NO}&anoNum=${Rec.REC_CATEGORY }&memNo=${commonLogin.memNo }'">
 						<span class="job_dday"><fmt:formatDate
 								value="${Rec.REC_ENDDATE }" pattern="yyyy-MM-dd" /></span>
 						<div class="info_box">
