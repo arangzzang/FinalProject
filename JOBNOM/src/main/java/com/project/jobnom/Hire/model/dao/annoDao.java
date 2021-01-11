@@ -25,11 +25,18 @@ public interface annoDao {
 
 	List<Recruitment>  annoHomeDetailMove(SqlSession session,int recNo, int cPage, int numPerPage);
 
-	List<Interestedrcruitment> selectIn(SqlSession session, Map memNo);
+	List<Interestedrcruitment> selectIn(SqlSession session, Map paramMap);
 	
 	int selectCount(SqlSession session);
 	
 	int selectCount3(SqlSession session, int recNo);
 	
 	List<Support> selectSupportApply(SqlSession session, Map paramMap);
+
+	List<Recruitment>  announcementPageFirst(SqlSession session ,Map paramMap);
+
+
+
+
+
 }

@@ -23,10 +23,7 @@
              <!--리뷰클릭시 나오는 화면  -->
          <div class="clickReview" style=" width: 555px; height:500px; padding: 20px; "> 
          	<div class="clickReviewTitleBox">
-         	<div class="clickReviewTitleBoxFlax">
-         		<div class="clickReviewName" style="width: 100px; margin-left: 10px">-이름 :<br> </div> <br>
-         	</div>
-         	<div>인하준</div> <br>
+         	
          	<div class="clickReviewTitleBoxFlax">
          		<div class="clickReviewPromotion" style="width: 100px; margin-left: 10px">-제목 :<br></div><br>
          	</div> 
@@ -132,14 +129,5 @@
 			});
 </script>
                 
-               <!--  <script>
-
-              $(document).ready(function () {
-
-             $(".annoDetailListBoxs").click(function () {
-             /*  $(".clickReview").css("display", "none");  */
-             
-             });
-             });
-             </script> -->
+    
      

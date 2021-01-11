@@ -287,12 +287,8 @@ public class companyController {
 
 		List<Applicant> app = service.getApplicant(rec.getRec_no(),cPage,numPerpage);
 		System.out.println("나오내?"+app);
-		System.out.println("이건" + rec.getRec_no());
 		int totalData = service.selectSupportCount(rec.getRec_no());
-		int resno = rec.getRec_no();
-		System.out.println("??? : " + resno);
-		mv.addObject("mam", service.getMammoth(resno));
-		System.out.println("????" +service.getMammoth(resno));
+		System.out.println(totalData);
 		mv.addObject("pageBar",EnterprisePageBar.getPageBar(totalData, rec.getRec_no(), cPage,numPerpage,"com_check.do"));
 		mv.addObject("totalData",totalData);
 		mv.addObject("app",app);

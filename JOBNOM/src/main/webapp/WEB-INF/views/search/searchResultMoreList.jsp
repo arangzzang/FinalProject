@@ -26,7 +26,6 @@
 								<option name="entCate" >교육</option>
 							</select>
                     </div>
-                    
                     <!-- 필터 끝 -->
                     <div class="result">
                         <span class="num"><c:out value="${list[1].COUNT }"/></span>
@@ -58,12 +57,12 @@
                                             <dt class="us_titb_13">
                                                 <a href="#" onclick="location.href = '${path }/openApi.do?entNo=${list.ENT_NO}&keyword=${list.ENT_NAME}'">${list.ENT_NAME }</a>
                                                 <input type="hidden" value="${list.ENT_NO }">
-                                                <c:if test="${not empty commonLogin && list.ENT_NO ne entFollow[status.index].ENT_NO }">
+                                                <c:if test="${not empty commonLogin && not fn:contains(entFollow[status.index].ENT_NO, list.ENT_NO)}">
                                                 <button class="btn_heart1" id="hart">
                                                     <i class="far fa-heart"></i>
                                                 </button>
                                               	</c:if>
-                                              	<c:if test="${not empty commonLogin && list.ENT_NO eq entFollow[status.index].ENT_NO}">
+                                              	 <c:if test="${not empty commonLogin && fn:contains(entFollow[status.index].ENT_NO, list.ENT_NO)}">
                                                 <button class="btn_heart2" id="hart">
                                                     <i class="fas fa-heart"></i>
                                                 </button>
@@ -99,14 +98,14 @@
                             
                             </c:forEach>
                             <!-- 반복 -->
-                            
                         </div>
                     </div>
                 </article>
                 <!--ajax 태그  -->
-                <div class="test"></div>
+                
             </div>
-           <div id="pageBar" style="margin-top: 20px;">${pageBar }</div>
+            <div class="test"></div>
+           <div id="pageBar">${pageBar }</div>
         </div>
     </div>
 </div>
@@ -124,8 +123,8 @@
                   			type : 'POST',
                   			data : {entCategory : formData},
                   			success : function(data) {
-                  				 $(".listCompany").hide();
-                  				 $(".result").hide();
+                  					$(".listCompany").hide();
+                  			 	 $(".result").hide();
                   				 $("#pageBar").hide();
                   				 $(".test").html(data);
                   				 let avg = parseFloat($('.gfvalue').text());
@@ -146,7 +145,7 @@
    											success : function(data) {
    												console.log(data);
    												alert('기업 즐겨찾기에 추가 되었습니다.');
-   												location.reload();
+   												location.reload(true);
    												
    											}
    										});
@@ -177,7 +176,7 @@
    									}
    								});
 							}
-                  		})
+                  		});
                   	});
 </script>
 <script>
@@ -188,7 +187,7 @@ let avg = parseFloat($('.gfvalue').text());
 let total = avg*20
 $('.star_score').css('width',total+'%');
 /*평균평점 별점 스크립트  */
-                    </script>
+</script>
 <script>
 var result = 0;
 
@@ -220,7 +219,7 @@ if(${commonLogin == null}){
 				}
 			});
 		}
-	})
+	});
 	
 
 	$('.btn_heart2').on('click',function() {

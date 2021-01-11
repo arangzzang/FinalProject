@@ -6,6 +6,7 @@ import java.util.Map;
 import com.project.jobnom.member.model.vo.MemCategory;
 import com.project.jobnom.member.model.vo.MemCategory2;
 import com.project.jobnom.member.model.vo.Member;
+import com.project.jobnom.resume.model.vo.MySkill;
 import com.project.jobnom.resume.model.vo.Resume;
 
 public interface MemberService {
@@ -28,4 +29,12 @@ public interface MemberService {
 	Member myProfileView(int memNo);
 	//이력서 조회
 	Resume selectResume(int memNo);
+	//스킬 조회
+	List<MySkill> selectMySkill(int resNo);
+	//팔로잉한 기업
+	List selectEnterpriseFollowing(int memNo);
+	//팔로잉한 기업 갯수
+	int countEnterpriseFollowing(int memNo);
+	//팔로잉한기업의 리뷰갯수
+	int reviewCount(int entNo);
 }

@@ -20,11 +20,14 @@ public interface annoService {
 
 	List<Recruitment> annoHomeDetailMove(int recNo,int cPage, int numPerPage);
 
-	List<Interestedrcruitment> selectIn(Map memNo);
+	
+
+	List<Interestedrcruitment> selectIn(Map paramMap);
 	
 	List<Support> selectSupportApply(Map parMap);
 	
 	int selectCount3(int recNo);
+	List<Recruitment> announcementPageFirst(Map paramMap);
 
 
 }

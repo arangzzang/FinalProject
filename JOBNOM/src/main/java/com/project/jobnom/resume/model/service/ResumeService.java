@@ -3,6 +3,7 @@ package com.project.jobnom.resume.model.service;
 import java.util.List;
 import java.util.Map;
 
+import com.project.jobnom.resume.model.vo.Education;
 import com.project.jobnom.resume.model.vo.Resume;
 import com.project.jobnom.resume.model.vo.Skill;
 
@@ -14,6 +15,8 @@ public interface ResumeService {
 	Resume selectResume(int memNo);
 	//이력서
 	int insertResume(Resume res);
+	int insertEducation(Education edu);
+	int insertMySkill(int resNo, String skill);
 	//이력서 수정
 	int updateResume(Resume res);
 	//카테고리수정

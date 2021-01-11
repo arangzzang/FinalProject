@@ -57,8 +57,15 @@ public interface HireService {
 	Enterprise reviewSearch3(String key);
 	
 	List<Map> mypageView();
+	
+	List<Map> mypageReview(String memNo, int cPage, int numPerpage);
 
 	List<Recruitment> swiper(String rec_no);
 	
 	List<Member> membercate2(String rec_category);
+	
+	int selectReviewCount(String memNo);
+	
+	List<Recruitment> recList();
+	List<Member> categoryAll(String memNo);
 }

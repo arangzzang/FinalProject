@@ -11,6 +11,7 @@ import com.project.jobnom.member.model.dao.MemberDao;
 import com.project.jobnom.member.model.vo.MemCategory;
 import com.project.jobnom.member.model.vo.MemCategory2;
 import com.project.jobnom.member.model.vo.Member;
+import com.project.jobnom.resume.model.vo.MySkill;
 import com.project.jobnom.resume.model.vo.Resume;
 
 @Service
@@ -66,6 +67,26 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public Resume selectResume(int memNo) {
 		return dao.selectResume(memNo, session);
+	}
+
+	@Override
+	public List selectEnterpriseFollowing(int entNo) {
+		return dao.selectEnterpriseFollowing(entNo,session);
+	}
+
+	@Override
+	public int countEnterpriseFollowing(int memNo) {
+		return dao.countEnterpriseFollowing(memNo,session);
+	}
+
+	@Override
+	public int reviewCount(int memNo) {
+		return dao.reviewCount(memNo,session);
+	}
+
+	@Override
+	public List<MySkill> selectMySkill(int resNo) {
+		return dao.selectMySkill(resNo,session);
 	}
 	
 	

@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -15,7 +16,7 @@
 		p#name-container span.ok{color:green;}
 		p#name-container span.error{color:red;}
 </style>
-            <div class="with-parent" style="padding-bottom: 50px;">
+            <div class="with-parent" style="padding-bottom: 50px; height: 900px;">
                 <div class="with" style="padding-bottom: 50px;">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
                    <span class="navbar-toggler-icon"></span>
@@ -41,29 +42,33 @@
                               <div class="maininfo-parent one">
                                   <h2 class="maintitle">내기업 리뷰</h2>
                                   <p class="list_count">0개의 면접후기를 작성하셨습니다.</p><!-- qqq -->
-                                 <table class="interview_table">
+                                 <table class="interview_table" style="height: 300px; ">
                                      <tr class="interview_th">
                                          <th>기업명</th>
-                                         <th>고용형태</th>
+                                         <th>제목</th>
+                                         <th>내용</th>
                                          <th>작성일</th>
-                                         <th>등록여부</th>
-                                         <th>수정/삭제</th>
+                                         <th>삭제</th>
                                      </tr>
                                      <!-- 결과값 있을 때 -->
-                                     <tr class="interview_td_notnull">
-                                         <td>카카오</td>
-                                         <td>합격/불합격/기다리는중</td>
-                                         <td>2020/12/20</td>
-                                         <td>승인</td>
-                                         <td><button type="button">수정</button>/<button type="button">삭제</button></td>
+                                     <c:forEach items="${review }" var="r">
+                                     <tr class="interview_td_notnull" style=" height: 20px ">
+                                         <th><c:out value="${r.REVIEW_TITLE }"/></th>
+                                         <th><c:out value="${r.REVIEW_TITLE }"/></th>
+                                         <th><c:out value="${r.REVIEW_CONTENTS }"/></th>
+                                         <th><fmt:formatDate  value="${r.RE_ENROLL_DATE }" pattern="yy.MM.dd" /></th>
+                                         <th><button class="" type="button">삭제</button></th>
                                      </tr>
+                                     </c:forEach>
+                                   
                                      <!-- 결과값 없을 때 -->
-                                     <c:if test="">
+                                     <%-- <c:if test="">
                                          <tr class="interview_td_null">
                                              <td colspan="5">작성한 면접후기가 없습니다</td>
                                          </tr>
-                                     </c:if>
+                                     </c:if> --%>
                                  </table>
+                                   <div id="pageBar">${pageBar }</div>
                                   <button class="reviewImgBtn" onclick="location.href='${path }/footer/notice.do'"></button>
                                   <div class="reviewBtn">
                                       <button class="reviewBtnInsert">기업 리뷰 작성하기</button>
@@ -250,16 +255,20 @@
                 $(".maininfo-parent").html(data);
                
              
+
             }
         });
    });
    
   
   
+
+
                                         
             
             //https://aramk.tistory.com/35 keyUP 참고사이트
             //기업명 누르면 아래로 기업 리스트 뜨게 해줄떄 필요함
+
 //          이건 나중에 별클릭하고 확인눌리면 값이 DB에 저장되게 해줌꺼임
 //             $(".star").on("click",e=>{
 //                 let grade=$(e.target).attr("id");
@@ -271,6 +280,7 @@
    }
    
   
+
 </script>
 
 <script>
@@ -295,6 +305,7 @@ $('.executiveStar-box div').click(function(){
    $(this).parent().children("div").removeClass("on");
    $(this).addClass("on").prevAll("div").addClass("on");
 });
+
 //              $(".GradeboxSubmit").click(function(){
 //                  alert("제출완료");
 //              });
@@ -303,11 +314,13 @@ $(".companyStar").on("click",e=>{
    console.log(grade+"1번");
    $(".companyGrade").val(grade);
 });
+
 $(".blessedStar").on("click",e=>{
    let grade=$(e.target).attr("id");
    console.log(grade+"2번");
    $(".blessedGrade").val(grade);
 });
+
 $(".promotionStar").on("click",e=>{
    let grade=$(e.target).attr("id");
    console.log(grade+"3번");
@@ -321,8 +334,9 @@ $(".executiveStar").on("click",e=>{
 });
 </script>
 <script>
-console.log($('.entNames'));
+
 function fn_review(){
+	var name='';
 	var name = $('input[name=review_name]').val();
 	var flag=false;
 	$('.entNames').each((i,v)=>{
@@ -335,41 +349,35 @@ function fn_review(){
 		   return false;
 	}
 	else if ($('input[name=review_name]').val()==="" ||
-		  
               $('input[name=review_title]').val()==="" ||
               $('textarea[name=review_contents]').val()==="" ||
-          $('input[class=review_satisfaction]').val()==="" || 
-               $('input[class=review_welfare]').val()==="" ||
-               $('input[class=review_promotion]').val()==="" ||
-                $('input[class=review_executive]').val()==="") {
+          $('input[name=review_satisfaction]').val()==="" || 
+               $('input[name=review_welfare]').val()==="" ||
+               $('input[name=review_promotion]').val()==="" ||
+                $('input[name=review_executive]').val()==="") {
       alert('필수 항목들을 입력해주세요!');  
       return false;
       }else{
-      return true;}   
+      alert("작성한 리뷰가 정상적으로 입력 되었습니다");
+      return true;
+      }   
    
 };
+
 </script>
- <script>
-/* function fn_review(){
-	var name = $('input[name=review_name]').val();
-	var name2 = $('input[name=test6]').val();
-	if(name != name2){
-		alert("해당기업이 존재하지 않습니다.");
-		   return false;
-	}
-	}; */
-</script> 
+
 <script>
-$(document).ready(function(){
+ $(document).ready(function(){ 
     $(".reviewBtnInsert").click(function(){
        $("#popup").fadeIn();
-       $(".headerContainerWrap").css("display","none");
+       $(".headerContainerWrap").css("display","hide");
        
     });
     $(".popmenuInsertClose").click(function(){
        $("#popup").fadeOut();
+       $(".headerContainerWrap").css("display","show");
     });
- });
+  }); 
 </script>   
 
 
@@ -377,7 +385,9 @@ $(document).ready(function(){
 
  
  <script>
+
 $("#reviewName").keyup(e=>{
+
 	
 	$.ajax({
 		url:"${path}/Hire/reviewSearch.do",
@@ -418,6 +428,7 @@ $("#reviewName").keyup(e=>{
 			$("#locationData").html("");
 			   for(let i=0;i<keys.length;i++){
 		            $("#locationData").append($("<option>").html(keys[i]));
+
 		}
 	}
 		
@@ -453,52 +464,18 @@ $("#reviewName").keyup(e=>{
                }
            });
       }); */
-</script>
 
-<script>
-////////////////////////여기서 부터 별클릭하는거/////////////////////////////////////
-//시내만족도평점
-$('.companyStar-box div').click(function(){
-     $(this).parent().children("div").removeClass("on");
-     $(this).addClass("on").prevAll("div").addClass("on");
-});
-//급여만족도 평점
-$('.blessedStar-box div').click(function(){
-     $(this).parent().children("div").removeClass("on");
-     $(this).addClass("on").prevAll("div").addClass("on");
-});
-//승진기회 및 가능성 평점
-$('.promotionStar-box div').click(function(){
-     $(this).parent().children("div").removeClass("on");
-     $(this).addClass("on").prevAll("div").addClass("on");
-});
- //경영진 평점
-$('.executiveStar-box div').click(function(){
-   $(this).parent().children("div").removeClass("on");
-   $(this).addClass("on").prevAll("div").addClass("on");
-});
-//              $(".GradeboxSubmit").click(function(){
-//                  alert("제출완료");
-//              });
-$(".companyStar").on("click",e=>{
-   let grade=$(e.target).attr("id");
-   console.log(grade+"1번");
-   $(".companyGrade").val(grade);
-});
-$(".blessedStar").on("click",e=>{
-   let grade=$(e.target).attr("id");
-   console.log(grade+"2번");
-   $(".blessedGrade").val(grade);
-});
-$(".promotionStar").on("click",e=>{
-   let grade=$(e.target).attr("id");
-   console.log(grade+"3번");
-   $(".promotionGrade").val(grade);
-});
-         
-$(".executiveStar").on("click",e=>{
-   let grade=$(e.target).attr("id");
-   console.log(grade+"경영진");
-   $(".executiveGrade").val(grade);
-});
+
 </script>
+  <script>
+	  function fn_paging(cPage){
+		$.ajax({
+			url:"${path}/member/reviewList",
+			data:{cPage:cPage,memNo:${commonLogin.memNo}},
+			success:data => {
+				$('.maininfo-parent').html(data);
+			}
+		})
+		};
+	  </script>
+

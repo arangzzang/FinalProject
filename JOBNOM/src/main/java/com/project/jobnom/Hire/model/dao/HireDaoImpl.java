@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.project.jobnom.Hire.model.vo.Interestedrcruitment;
 import com.project.jobnom.Hire.model.vo.Recruitment;
 import com.project.jobnom.Hire.model.vo.Support;
+import com.project.jobnom.enterprise.model.vo.Category2;
 import com.project.jobnom.enterprise.model.vo.Enterprise;
 import com.project.jobnom.member.model.vo.Member;
 
@@ -140,6 +141,26 @@ public class HireDaoImpl implements HireDao {
 	@Override
 	public List<Member> membercate2(SqlSession session, String rec_category) {
 		return session.selectList("hire.membercate2",rec_category);
+	}
+
+	@Override
+	public List<Map> mypageReview(SqlSession session, String memNo, int cPage, int numPerpage) {
+		return session.selectList("hire.mypageReview",memNo,new RowBounds((cPage-1)*numPerpage,numPerpage));
+	}
+
+	@Override
+	public int selectReviewCount(SqlSession session, String memNo) {
+		return session.selectOne("hire.selectReviewCount",memNo);
+	}
+
+	@Override
+	public List<Recruitment> recList(SqlSession session) {
+		return session.selectList("hire.recList");
+	}
+
+	@Override
+	public List<Member> categoryAll(SqlSession session, String memNo) {
+		return session.selectList("hire.categoryAll",memNo);
 	}
 	
 	

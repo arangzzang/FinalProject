@@ -32,19 +32,16 @@
 <link rel="stylesheet" href="${path }/resources/css/footer.css" />
 </head>
 <body>
-	<c:if test="${not empty cookie.loginCheck}">
-		<c:set var="checked" value="checked" />
-	</c:if>
+<%-- 	<c:if test="${not empty cookie.loginCheck}"> --%>
+<%-- 		<c:set var="checked" value="checked" /> --%>
+<%-- 	</c:if> --%>
 
 	<div id="container">
 		<header>
 			<div class="fixed-top" id="fix">
-				<nav
-					class="navbar navbar-expand-lg navbar-light headerContainerWrap">
+				<nav class="navbar navbar-expand-lg navbar-light headerContainerWrap">
 					<!-- bg-light -->
-					<a class="navbar-brand" href="${path }"> <img src=""
-						class="logo">
-					</a>
+					<a class="navbar-brand" href="${path }"><img src="${path }/resources/image/joblogo-removebg-preview.png"class="logo"></a>
 					<button class="navbar-toggler" type="button" data-toggle="collapse"
 						data-target="#navbarNav" aria-controls="navbarNav"
 						aria-expanded="false" aria-label="Toggle navigation">
@@ -140,8 +137,9 @@
 											class="form-control password" id="password"
 											placeholder="비밀번호를 입력해주세요." name="password" required>
 									</div>
-									<label> <input type="checkbox" name="loginCheck"
-										${checked }>E_mail저장하기
+									<label>
+										<input type="checkbox" name="loginCheck" ${not empty cookie.loginCheck?"checked":""}>
+										E_mail저장하기
 									</label>
 								</div>
 								<div class="modal-footer">

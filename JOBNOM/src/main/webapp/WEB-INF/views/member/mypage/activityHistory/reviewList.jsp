@@ -11,7 +11,7 @@
 	<div class="maininfo-parent one">
 		<h2 class="maintitle">내기업 리뷰</h2>
 		<p class="list_count">0개의 면접후기를 작성하셨습니다.</p><!-- qqq -->
-		<table class="interview_table">
+		<table class="interview_table" style="height: 300px;">
 			<tr class="interview_th">
 			    <th>기업명</th>
 			    <th>고용형태</th>
@@ -20,13 +20,15 @@
 			    <th>수정/삭제</th>
 			</tr>
 			<!-- 결과값 있을 때 -->
-			<tr class="interview_td_notnull">
-			    <td>카카오</td>
-			    <td>합격/불합격/기다리는중</td>
-			    <td>2020/12/20</td>
-			    <td>승인</td>
-			    <td><button type="button">수정</button>/<button type="button">삭제</button></td>
-			</tr>
+			  <c:forEach items="${review }" var="r">
+                                     <tr class="interview_td_notnull" style=" height: 20px;">
+                                         <th><c:out value="${r.REVIEW_TITLE }"/></th>
+                                         <th><c:out value="${r.REVIEW_TITLE }"/></th>
+                                         <th><c:out value="${r.REVIEW_CONTENTS }"/></th>
+                                         <th><fmt:formatDate  value="${r.RE_ENROLL_DATE }" pattern="yy.MM.dd" /></th>
+                                         <th><button type="button">삭제</button></th>
+                                     </tr>
+                                     </c:forEach>
 			<!-- 결과값 없을 때 -->
 			<c:if test="">
 			    <tr class="interview_td_null">
@@ -34,6 +36,7 @@
 			    </tr>
 			</c:if>
 		</table>
+		 <div id="pageBar">${pageBar }</div>
 	   <button class="reviewImgBtn"></button>
 	   <div class="reviewBtn">
 	       <button class="reviewBtnInsert">기업 리뷰 작성하기</button>
@@ -43,7 +46,7 @@
 	<div id="popup">
        <div class="popupAll">
             <div id="popmenu">
-                <form id="popFrm" action="${path }/Hire/insertReview2.do" method="post"  onsubmit="return fn_review();">
+                <form id="popFrm" action="${path }/Hire/insertReview2.do" method="post" >
                 <div class="popmenuInsertAll">
                     <div class="popmenuInsert">기업 리뷰 작성</div>
                  <!--    <button class="popmenuInsertClose"><i class="far fa-window-close"></i></button> -->
@@ -117,7 +120,7 @@
                         	</div>
                     	</div>
 	                	<div class="submitByttonBox">
-	                   		<input class="GradeboxSubmit" type="submit" value="제출하기" onclick="fn_return();"  > 
+	                   		<input class="GradeboxSubmit" type="submit" value="제출하기" onclick=" return fn_return();"  > 
 	                    	<input class="popmenuInsertClose" type="button" value="닫기" > 
 	                   </div>
                 </form>
@@ -134,5 +137,60 @@
                    5. 존재하지 않거나 명확하지 않는 기업명<br>
                	</div>
            	</div>
-       	</div>
-   	</div>
+           	<c:forEach items="${mem }" var="m">
+            <input type="hidden" name="test7" class="entNames2" value="${m.ENT_NAME }">
+            </c:forEach>
+           	<script>
+console.log($('.entNames2'));
+function fn_review(){
+	var name = $('input[name=review_name]').val();
+	var flag=false;
+	$('.entNames2').each((i,v)=>{
+		if($(v).val()==name){
+			flag=true;
+		}
+	})
+	if(flag==false){
+		alert("해당기업이 존재하지 않습니다.");
+		   return false;
+	}
+	else if ($('input[name=review_name]').val()==="" ||
+		  
+              $('input[name=review_title]').val()==="" ||
+              $('textarea[name=review_contents]').val()==="" ||
+          $('input[name=review_satisfaction]').val()==="" || 
+               $('input[name=review_welfare]').val()==="" ||
+               $('input[name=review_promotion]').val()==="" ||
+                $('input[name=review_executive]').val()==="") {
+      alert('필수 항목들을 입력해주세요!');  
+      return false;
+      }else{
+      return true;}   
+   
+};
+
+</script>
+ <script>
+	  function fn_paging(cPage){
+		$.ajax({
+			url:"${path}/member/reviewList",
+			data:{cPage:cPage,memNo:${commonLogin.memNo}},
+			success:data => {
+				$('.maininfo-parent').html(data);
+			}
+		})
+		};
+		
+	  </script>
+	  <script>
+ $(document).ready(function(){ 
+    $(".reviewBtnInsert").click(function(){
+       $("#popup").fadeIn();
+       $(".headerContainerWrap").css("display","none");
+       
+    });
+    $(".popmenuInsertClose").click(function(){
+       $("#popup").fadeOut();
+    });
+ }); 
+</script>  

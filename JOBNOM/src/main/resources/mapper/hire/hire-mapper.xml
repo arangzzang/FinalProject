@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="hire">
-	<!--  <resultMap type="recruitment" id="recruitmentMap">
-		<result column="REC_NO" property="rec_no"/>
-		<result column=ENT_NO property="ent_no"/>
-		<result column="REC_TITLE" property="rec_title"/>
-		<result column="REC_CONTENTS" property="rec_content"/>
-		<result column="REC_FILE1" property="rec_file1"/>
-		<result column="REC_FILE2" property="rec_file2"/>
-		<result column="REC_STARTDATE" property="rec_startdate"/>
-		<result column="REC_ENDDATE" property="rec_enddate"/>
-		<result column="REC_SALARY" property="rec_salary"/>
-		<result column="REC_INFO" property="rec_info"/>
-		<result column="REC_PREFER" property=rec_prefer/>
-		<result column="REC_WELFARE" property="rec_welfare"/>
-		<result column="REC_QUALIFICATION" property="rec_qualification"/>
-		<result column="REC_PEPOLE" property="rec_pepole"/>
-		<result column="RE_TYPE" property="rec_type"/>
+	<resultMap type="mem" id="memMap"><!-- resultMap의 id값과 select문의 resultMap키값 연결 -->
+		<result column="mem_no" property="memNo"/>
+		<result column="mem_email" property="memEmail"/>
+		<result column="mem_pw" property="memPw"/>
+		<result column="mem_manager_yn" property="memManagerYn"/>
+		<result column="mem_check" property="memCheck"/>
+		<result column="mem_membership" property="memMembership"/>
+		<result column="cate_no2" property="cateNo2"/>
+		<result column="cate_no" property="cateNo"/>
+	</resultMap>
+	<resultMap type="cate" id="cateMap">
+		<result column="cate_no" property="cateNo"/>
+	</resultMap>
+	<resultMap type="cat2" id="cat2Map">
+		<result column="cate_no2" property="cateNo2"/>
+		<result column="cate_no" property="cateNo"/>
+	</resultMap>
 	
-	</resultMap>  -->
 	<resultMap type="ent" id="entMap">
 		<result column="ent_name" property="entName"/>
 		<result column="ent_no" property="entNo"/>
@@ -71,7 +71,7 @@
 	
 	<select id="selectRecruitmentList" parameterType="string" resultType="map">
 		         
-                 SELECT DISTINCT E.REC_NO,E.ENT_NO, REC_TITLE,REC_OTHER, REC_CONTENTS, REC_STARTDATE, REC_ENDDATE, REC_INFO,REC_PREFER, REC_WELFARE, REC_QUALIFICATION, REC_PEPOLE, REC_CAREER, REC_ORDER,
+                 SELECT DISTINCT E.REC_NO,ENT_EMAIL,E.ENT_NO, REC_TITLE,REC_OTHER, REC_CONTENTS, REC_STARTDATE, REC_ENDDATE, REC_INFO,REC_PREFER, REC_WELFARE, REC_QUALIFICATION, REC_PEPOLE, REC_CAREER, REC_ORDER,
                  REC_TYPE, REC_CATEGORY,ENT_NAME,OPEN_CHECK, REP_NAME, REP_PHONE,ENT_LOGO, REPLACE(REC_SALARY,' ')  AS REC_SALARY
 			FROM RECRUITMENT E 
 			LEFT JOIN ENTERPRISE R ON (R.ENT_NO = E.ENT_NO)
@@ -84,12 +84,8 @@
 	</select>
 	
 	<select id="selectReviewList" parameterType="string" resultType="java.util.HashMap">
-		SELECT  R.REC_NO,E.ENT_NO, R.REC_TITLE, ENT_NAME,REVIEW_TITLE,REVIEW_CONTENTS,REVIEW_SATISFACTION,
-		 REVIEW_WELFARE, REVIEW_PROMOTION , REVIEW_EXECUTIVE,ENT_LOGO
-		FROM REVIEW E 
-        JOIN RECRUITMENT R ON (E.ENT_NO = R.ENT_NO)
-        JOIN ENTERPRISE S  ON (E.ENT_NO = S.ENT_NO)
-		WHERE E.ENT_NO=#{ent_no} 
+			SELECT * FROM REVIEW
+		WHERE ENT_NO=#{ent_no} 
 	</select>
 	
 	<insert id="insertMemberApply" parameterType="map" >
@@ -110,7 +106,7 @@
 	</delete>
 	
 	<select id="HireMyHire" parameterType="string" resultType="com.project.jobnom.Hire.model.vo.Support">
-		  			SELECT S.*, ENT_NAME,REC_TITLE,REC_CONTENTS
+		  			SELECT S.*, ENT_NAME,REC_TITLE,REC_CONTENTS, REC_CATEGORY
                       FROM SUPPORT S
                        JOIN RECRUITMENT R ON(R.REC_NO = S.REC_NO)
                        JOIN ENTERPRISE E ON(E.ENT_NO = R.ENT_NO)
@@ -188,12 +184,12 @@
 	
 	</select>
 	<select id="swiper" resultType="com.project.jobnom.Hire.model.vo.Recruitment" parameterType="String">
-		 SELECT  REC_NO, ENT_NO, REC_TITLE, REC_CONTENTS, REC_ENDDATE,REC_INFO,REC_CAREER, REC_PEPOLE,REC_TYPE,  REPLACE(REC_SALARY,' ')  AS REC_SALARY
+		 SELECT  REC_NO, ENT_NO, REC_TITLE, REC_CONTENTS, REC_ENDDATE,REC_INFO,REC_CAREER, REC_PEPOLE,REC_TYPE,REC_CATEGORY, REPLACE(REC_SALARY,' ')  AS REC_SALARY
 		  FROM RECRUITMENT
 		WHERE REC_NO =#{rec_no}	
 		</select>
 	
-	<select id="membercate2" resultType="com.project.jobnom.Hire.model.vo.Recruitment" parameterType="String" >
+	<select id="membercate2" resultType="com.project.jobnom.Hire.model.vo.Recruitment" parameterType="string" >
 		    <!--  SELECT M.*, JOBS2
                 FROM MEMBER M
                  JOIN CATEGORY2 R ON(R.CATE_NO2 = M.CATE_NO2)
@@ -201,6 +197,35 @@
                  SELECT JOBS2 FROM CATEGORY2 
                  WHERE CATE_NO2=#{rec_category}
 	</select>
+	
+	<select id="mypageReview" resultType="map" parameterType="string">
+	SELECT * FROM REVIEW WHERE MEM_NO=#{memNo}
+	</select>
+	
+	
+	<select id="selectReviewCount" parameterType="string" resultType="_int">
+		 SELECT COUNT(*) FROM REVIEW 
+		 WHERE MEM_NO = #{memNo} 
+	</select>
+	
+	
+	<select id="recList" resultType="com.project.jobnom.Hire.model.vo.Recruitment">
+	  SELECT * FROM RECRUITMENT
+	</select>
+	
+	<select id="categoryAll" parameterType="string" resultMap="memMap">
+	           SELECT M.*, C.* 
+               FROM MEMBER M
+               JOIN CATEGORY2 C ON(C.CATE_NO2 = M.CATE_NO2)
+               WHERE MEM_NO=#{memNo} 
+            
+	</select>
+	
+	
+	
+	
+	
+	
 	
 	
 </mapper> 

@@ -50,13 +50,13 @@
 			<c:forEach items="${res }" var="r">
 				<form action="${path}/com/com_check.do" method="post">
 				<tr>
-						<td><input type="hidden" value="${r.rec_no}" name="rec_no" id="rec_no"><c:out value="${r.rec_no}"/></td>
-	                    <td style="display: none;"><input type="hidden" value="${r.ent_no}" name="ent_no" id="ent_no"><c:out value="${r.ent_no }"/></td>
-	                    <td><input type="hidden" value="${r.rec_title}" name="rec_title" id="rec_title"><c:out value="${r.rec_title }"/></td>
-	                    <td><input type="hidden" value="${r.rec_startdate}" name="rec_startdate" id="rec_startdate"><fmt:formatDate value="${r.rec_startdate }" pattern="yyyy-MM-dd"/></td>
-	                    <td><input type="hidden" value="${r.rec_enddate}" name="rec_enddate" id="rec_enddate"><fmt:formatDate value="${r.rec_enddate }" pattern="yyyy-MM-dd"/></td>
-	                    <td><button type="button" class="btn" onclick="location.href = '${path }/Hire/annoHomeDetailMove.do?recNo=${r.rec_no}'">상세보기</button></td>
-	                    <td><button type="button" class="btn" id="editAd">수정</button></td>
+						<td><input type="hidden" value="${r.rec_no}" name="rec_no"><c:out value="${r.rec_no}"/></td>
+	                    <td style="display: none;"><input type="hidden" value="${r.ent_no}" name="ent_no"><c:out value="${r.ent_no }"/></td>
+	                    <td><input type="hidden" value="${r.rec_title}" name="rec_title"><c:out value="${r.rec_title }"/></td>
+	                    <td><input type="hidden" value="${r.rec_startdate}" name="rec_startdate"><fmt:formatDate value="${r.rec_startdate }" pattern="yyyy-MM-dd"/></td>
+	                    <td><input type="hidden" value="${r.rec_enddate}" name="rec_enddate"><fmt:formatDate value="${r.rec_enddate }" pattern="yyyy-MM-dd"/></td>
+	                    <td><button type="button" class="btn">상세보기</button></td>
+	                    <td><button type="button" class="btn editAd">수정</button></td>
 	                    <td><input type="submit" class="btn" value="조회"></td>
 				</tr>
 				</form>
@@ -73,7 +73,7 @@
 	function applyAd(){
 		location.replace("${path }/com/applyAd.do");
 	}
-	$("#editAd").click(function(){
+	$(".editAd").click(function(){
 		var recNo = $(this).closest("tr").find("td:eq(0)").text();
 		$("#recNo").val(recNo);
 		$("#editAdForm").submit();

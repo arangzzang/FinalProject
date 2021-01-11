@@ -500,7 +500,7 @@
                             <div class="annoListLoge2">
                             <c:choose>
 		                        	<c:when test="${empty a.ent_logo }">
-		                				<img src="${path }/resources/image/Hire/job.png" style="width: 50px; height: 50px; ">
+		                				<img src="${path }/resources/image/Hire/logo.png" style="width: 50px; height: 50px; ">
 		                        	</c:when>
 		                        	<c:otherwise>
 		                        		<img src="${path }/resources/enterprise/logo/${a.ent_no }/${a.ent_logo}" style="width: 40px; height: 40px; ">
@@ -549,7 +549,7 @@
       <div class="swiper-slide" style="display: flex;">
       <c:choose>
 	<c:when test="${empty a.ent_logo }">
-	<img src="${path }/resources/image/Hire/job.png" style="width: 250px; height: 250px; " onclick="location.href='${path }/enterprise/com_info.do?entNo=${a.ent_no }'">
+	<img src="${path }/resources/image/Hire/logo.png" style="width: 250px; height: 250px; " onclick="location.href='${path }/enterprise/com_info.do?entNo=${a.ent_no }'">
 	</c:when>
 	<c:otherwise>
 	<img src="${path }/resources/enterprise/logo/${a.ent_no }/${a.ent_logo}" style="width: 250px; height:250px; " onclick="location.href='${path }/enterprise/com_info.do?entNo=${a.ent_no }'">
@@ -795,7 +795,7 @@
 
 <script>
 
-    var cnt = 1;
+   
     function fn_toggle() {
     	
         var announcementFavorites = document.getElementById("announcementFavorites");
@@ -810,7 +810,7 @@
            	location.href="${path }/Hire/favorites.do?memNo=${commonLogin.memNo}&recNo=${anolist[0].rec_no}&anoNum=${anolist[0].rec_category}";
         	alert("즐겨찾기 완료");
         }
-        cnt++
+        
 
     };
 		  

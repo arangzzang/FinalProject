@@ -48,7 +48,7 @@ public class CommonController {
 		System.out.println(who);
 		if(who!=null) {
 			//아이디 기억하기
-			if(login.get("loginCheck") != null) {//login.get("remember").equals("on")는 무조건적인 true이기 때문에 checkbox가 check되있지 않으면 nullpoint에러 발생
+			if(login.get("loginCheck") != null) {
 				Cookie c = new Cookie("loginCheck",who.getMemEmail());
 				c.setMaxAge(60*60*24*7);
 				c.setPath("/jobnom");
@@ -160,14 +160,18 @@ public class CommonController {
 		String loc="";
 		if(result>0) {
 			msg="좋은 직장 구하길 바래요~";
-			loc="/";
+			loc="/common/logout";
+			mv.addObject("msg",msg);
+			mv.addObject("loc",loc);
+			mv.setViewName("common/msg");
 		}else {
 			msg="잠시 후에 다시 시도 해주세요";
 			loc="/member/myPage?="+memNo;
+			mv.addObject("msg",msg);
+			mv.addObject("loc",loc);
+			mv.setViewName("common/msg");
 		}
-		mv.addObject("msg",msg);
-		mv.addObject("loc",loc);
-		mv.setViewName("common/msg");
+		
 		
 		return mv;
 	}

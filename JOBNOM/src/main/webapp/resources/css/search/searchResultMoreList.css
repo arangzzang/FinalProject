@@ -39,6 +39,7 @@ a {
     border-bottom: none;
     clear: both;
     background: #fff;
+    margin-bottom: -151px;
 }
 .col1Wrap {
     width: 100%;
@@ -146,6 +147,7 @@ option {
 }
 .listCompany .section_wrap {
     border-top: none;
+    height: 778px;
 }
 .section_wrap {
     border: 1px solid #e8e9eb;
@@ -157,6 +159,7 @@ option {
     padding: 17px 0 18px 14px;
     border-top: 1px solid #e6e6e6;
     box-sizing: border-box;
+    margin-bottom: -157px;
 }
 .content_ty3 .ty3_wrap {
     width: 100%;

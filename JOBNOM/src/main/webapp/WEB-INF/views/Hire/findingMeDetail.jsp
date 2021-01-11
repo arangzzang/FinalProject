@@ -10,7 +10,7 @@
 
 <div id="findingMeDetail" id="content"  >
         <div class="findingMeDetailX">
-            <button class="findingMeDetailCancel"><i class="far fa-window-close"></i></button>
+          
         </div>
         <div class="findingMeDetail2">
         <div class="findingMeDetailTitle">
@@ -47,7 +47,7 @@
 				        <c:out value="회사내규에따름"></c:out>
 				    </c:when>
 				<c:otherwise>
-				<fmt:formatNumber type="number" maxFractionDigits="3" value="${fitM[0].rec_salary}" /> 만원
+				￦<fmt:formatNumber type="number" maxFractionDigits="3" value="${fitM[0].rec_salary}" /> 원
 				</c:otherwise>
 				</c:choose>
 
@@ -58,19 +58,8 @@
             </div>
     
             <div class="findingMeDetailButton">
-                <button class="btn_annoDetail" onclick="location.href='${path }/Hire/annoHomeDetailMove.do?recNo=${fitM[0].rec_no} '" >공고 상세보기</button>
-              <%--  <c:if test="${commonLogin !=null && commonLogin.memNo !=  fitM[0].mem_no }">
-                      
-                        <button id="favoritesBox" onclick="fn_toggle();">
-                            <img id="announcementFavorites2" src="${path }/resources/image/Hire/pngwing.png" />
-                        </button>
-                      </c:if>
-                     
-                       <c:if test="${fitM[0].open_check == 1  && commonLogin !=null && commonLogin.memNo ==  fitM[0].mem_no }">
-                        <button id="favoritesBox" onclick="fn_toggle();">
-                            <img id="announcementFavorites2" src="${path }/resources/image/Hire/pngwing2.png" />
-                        </button>
-                      </c:if> --%>
+                <button class="btn_annoDetail" onclick="location.href='${path }/Hire/announcementPageFirst?recNo=${fitM[0].rec_no}&anoNum=${fitM[0].rec_category }&memNo=${commonlogin.memNo } '" >공고 상세보기</button>
+              <button class="findingMeDetailCancel">닫기</button>
             </div>
             
     
@@ -83,6 +72,8 @@
     $(document).ready(function(){
      $(".findingMeDetailCancel").click(function(){
     $("#findingMeDetail").hide();
+    $(".section").css("height","1400px");
+    $(".slidebannerAll").css("padding-top","-230px");
 
     });
     });

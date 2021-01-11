@@ -11,6 +11,7 @@ import com.project.jobnom.Hire.model.dao.HireDao;
 import com.project.jobnom.Hire.model.vo.Interestedrcruitment;
 import com.project.jobnom.Hire.model.vo.Recruitment;
 import com.project.jobnom.Hire.model.vo.Support;
+import com.project.jobnom.enterprise.model.vo.Category2;
 import com.project.jobnom.enterprise.model.vo.Enterprise;
 import com.project.jobnom.member.model.vo.Member;
 @Service
@@ -143,6 +144,28 @@ public class HireServiceImpl implements HireService {
 		return dao.membercate2(session, rec_category);
 	}
 
+	@Override
+	public List<Map> mypageReview(String memNo, int cPage, int numPerpage) {
+		return dao.mypageReview(session, memNo, cPage, numPerpage);
+	}
+
+	@Override
+	public int selectReviewCount(String memNo) {
+		return dao.selectReviewCount(session, memNo);
+	}
+
+	@Override
+	public List<Recruitment> recList() {
+		return dao.recList(session);
+	}
+
+	@Override
+	public List<Member> categoryAll(String memNo) {
+		return dao.categoryAll(session,memNo);
+	}
+
+	
+	
 	
 	
 	

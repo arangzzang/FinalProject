@@ -43,15 +43,15 @@ public class SearchDaoImpl implements SearchDao {
 	
 	//기업더보기 카테고리멸 ajax
 	@Override
-	public List<Map> ajaxCategoryList(SqlSession session, String entCategory) {
+	public List<Map> ajaxCategoryList(SqlSession session, String entCategory,int cPage, int numPerPage) {
 		// TODO Auto-generated method stub
-		return session.selectList("search.ajaxCategoryList",entCategory);
+		return session.selectList("search.ajaxCategoryList",entCategory,new RowBounds((cPage-1)*numPerPage,numPerPage));
 	}
 	
 	@Override
-	public List<Map> ajaxCategoryList2(SqlSession session, String entCategory) {
+	public List<Map> ajaxCategoryList2(SqlSession session,int cPage, int numPerPage) {
 		// TODO Auto-generated method stub
-		return session.selectList("search.ajaxCategoryList2",entCategory);
+		return session.selectList("search.ajaxCategoryList2",null,new RowBounds((cPage-1)*numPerPage,numPerPage));
 	}
 	
 	//기업 팔로잉
@@ -107,5 +107,11 @@ public class SearchDaoImpl implements SearchDao {
 	public int deleteBanner(SqlSession session) {
 		// TODO Auto-generated method stub
 		return session.delete("search.deleteBanner");
+	}
+	
+	@Override
+	public int selectCountCate(SqlSession session, String entCategory) {
+		// TODO Auto-generated method stub
+		return session.selectOne("search.selectCountCate",entCategory);
 	}
 }

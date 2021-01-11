@@ -6,16 +6,12 @@
 <c:set var="path" value="$${pageContext.request.contextPath }" />
 <jsp:useBean id="now" class="java.util.Date" />
 <fmt:formatDate var="year" value="${now}" pattern="yyyy" />
-<jsp:include page="/WEB-INF/views/common/header.jsp">
-	<jsp:param name="title" value=" " />
-</jsp:include>
+<c:set var="path" value="${pageContext.request.contextPath }" />
 <section id="content">
 	<jsp:include page="/WEB-INF/views/enterprise/ent_mypage/ent_common.jsp">
 		<jsp:param name="subheader" value="" />
 	</jsp:include>
-	<jsp:include page="/WEB-INF/views/enterprise/ent_mypage/myCom_info.jsp">
-		<jsp:param name="myCom_info" value="" />
-	</jsp:include>
+
 	<div class="container">
 		<div class="check_container">
 			<div class="check_box">
@@ -61,7 +57,7 @@
 								<td><c:choose>
 										<c:when test="${app.resName != null }">
 											<button class="btn-success view" data-toggle="modal"
-												data-target="#myModal">이력서 열기</button>
+												data-target="#myModal" style="">이력서 열기</button>
 										</c:when>
 										<c:otherwise>
 										이력서가 없습니다
