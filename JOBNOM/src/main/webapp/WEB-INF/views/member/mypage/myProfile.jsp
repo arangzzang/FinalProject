@@ -148,8 +148,8 @@
 									<div id="element1">
 										<div class="col-4 col-md-4" id="element2">
 											<div class="dateElement">
-												<input type="text" class="edu_term inp term" name="eTerm" id='edu_term' placeholder="년/월">&nbsp;~&nbsp;
-												<input type="text" class="edu_termend inp term" name="eTermend" id='edu_termend' placeholder="년/월">
+												<input type="text" class="edu_term inp term" name="eduTerm" id='edu_term' placeholder="년/월">&nbsp;~&nbsp;
+												<input type="text" class="edu_termend inp term" name="eduTermend" id='edu_termend' placeholder="년/월">
 											</div>
 											<label for="goal">졸업</label>
 											<input type="checkbox" value="졸업" name="eduAttend" class="edu_attend" onclick="eduCheck(this)" id="goal">

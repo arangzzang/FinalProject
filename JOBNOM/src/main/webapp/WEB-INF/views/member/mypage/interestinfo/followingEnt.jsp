@@ -35,7 +35,7 @@
 					                    <dl class="col-sm-5 col-md-5">
 					                        <dt class="ent_name">${list.entName }<i class="fa fa-heart"></i></dt>
 					                        <dd>${list.entCategory1 } | 주소</dd>
-					                        <dd><a href="">${reviewCount }기업리뷰</a>|<a href="">[count]면접후기</a></dd>
+					                        <dd><a href="">${reviewCount.get(list.entNo)}기업리뷰</a>|<a href="">[count]면접후기</a></dd>
 					                    </dl>
 					                    <dl class="col-sm-5 col-md-5">
 					                        <dt>총 만족도</dt>
@@ -48,7 +48,7 @@
 			                <c:forEach   items="${reviewCount}" var="rc">
 	                           <div><c:out value="${rc}"/></div>
 	                        </c:forEach>
-                         <c:out value="${reviewCount}"/>
+<%--                          <c:out value="${reviewCount}"/> --%>
 			                <!-- 팔로잉한 기업이 없을 때 -->
 			                <c:if test="${empty list }">
 			                    <article class="following_null">

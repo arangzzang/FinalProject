@@ -19,6 +19,7 @@ import com.project.jobnom.enterprise.model.vo.Enterprise;
 import com.project.jobnom.enterprise.model.vo.Mammoth;
 import com.project.jobnom.enterprise.model.vo.MemberDataC2;
 import com.project.jobnom.enterprise.model.vo.PayData;
+import com.project.jobnom.enterprise.model.vo.Score;
 import com.project.jobnom.enterprise.model.vo.Support;
 import com.project.jobnom.enterprise.model.vo.Worker;
 import com.project.jobnom.resume.model.vo.Resume;
@@ -214,6 +215,27 @@ public class EnterpriseServiceImpl implements EnterpriseService {
 		// TODO Auto-generated method stub
 		return dao.selectSupportCount(session,recno);
 	}
+	@Override
+	public Score scoreList(int entNo) {
+		// TODO Auto-generated method stub
+		return dao.scoreList(session,entNo);
+	}
+	@Override
+	public int followEnt(Map param1) {
+		// TODO Auto-generated method stub
+		return dao.followEnt(session,param1);
+	}
+	@Override
+	public int unfollowEnt(Map param1) {
+		// TODO Auto-generated method stub
+		return dao.unfollowEnt(session,param1);
+	}
+	@Override
+	public List<Map> selectEntFollow() {
+		// TODO Auto-generated method stub
+		return dao.selectEntFollow(session);
+	}
+
 	
 	
 }

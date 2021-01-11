@@ -75,11 +75,6 @@
 							href="${path }/enterprise/com_job.do?entNo=${list[0].ENT_NO}&recNo=${list[0].REC_NO}"><h2>채용</h2></a>
 						</li>
 					</ul>
-					<div class="follow_btn">
-						<button id="follow" class="btn btn">
-							<i id="heart" class="far fa-heart"></i>찜하기
-						</button>
-					</div>
 				</nav>
 			</div>
 		</div>
@@ -102,7 +97,7 @@
 								<tbody class="inter_root_tb">
 									<tr class="inter_root_tr">
 										<th>온라인 지원</th>
-										<td>50%</td>
+										<td>0%</td>
 										<td class="empty"></td>
 										<th>직원추천</th>
 										<td>0%</td>
@@ -112,11 +107,11 @@
 										<td>0%</td>
 										<td class="empty"></td>
 										<th>공개채용</th>
-										<td>20%</td>
+										<td>0%</td>
 									</tr>
 									<tr class="inter_root_tr">
 										<th>학교 취업지원 센터</th>
-										<td>30%</td>
+										<td>0%</td>
 										<td class="empty"></td>
 										<th>기타</th>
 										<td>0%</td>
@@ -170,7 +165,7 @@
 					</select>
 				</div>
 				<div class="total_inter">
-					총<span>1</span>개 의 면접후기
+					총<span>0</span>개 의 면접후기
 				</div>
 			</div>
 		</article>
@@ -239,7 +234,7 @@
 		<article class="com_review_default">
 			<div class="com_de_box">
 				<div class="com_de_wrap">
-					<h4>등록된 리뷰가 없습니다.</h4>
+					<h4>등록된 면접후기가 없습니다.</h4>
 
 				</div>
 			</div>

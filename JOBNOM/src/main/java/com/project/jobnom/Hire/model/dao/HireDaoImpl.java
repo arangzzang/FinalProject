@@ -162,6 +162,12 @@ public class HireDaoImpl implements HireDao {
 	public List<Member> categoryAll(SqlSession session, String memNo) {
 		return session.selectList("hire.categoryAll",memNo);
 	}
+
+	@Override
+	public List<Map> deleteReview(SqlSession session, String reviewNo) {
+		return session.selectList("hire.deleteReview",reviewNo);
+	}
+	
 	
 	
 	

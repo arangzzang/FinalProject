@@ -221,6 +221,10 @@
             
 	</select>
 	
+	<select id="deleteReview" parameterType="string" resultType="map">
+		DELETE FROM REVIEW WHERE REVIEW_NO=#{reviewNo}
+	</select>
+	
 	
 	
 	

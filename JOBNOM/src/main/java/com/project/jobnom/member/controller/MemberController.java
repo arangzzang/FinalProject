@@ -182,8 +182,8 @@ public class MemberController {
 		for(int i=0;i<list.size();i++) {
 			entNo=list.get(i).getEntNo();
 			reviewCount = service.reviewCount(entNo);//Map으로 만들어줘서 다시 던져줘야함.
-			reviewResult.put(i,reviewCount);
-			System.out.println("뭐가 뜨려나 : "+reviewResult.get(i));
+			reviewResult.put(entNo,reviewCount);
+			System.out.println("뭐가 뜨려나 : "+reviewResult);
 			System.out.println("기업 번호 : "+entNo);
 			System.out.println("리뷰갯수 : "+reviewCount);
 		}

@@ -22,6 +22,7 @@ import com.project.jobnom.Hire.model.vo.Interestedrcruitment;
 import com.project.jobnom.Hire.model.vo.Recruitment;
 import com.project.jobnom.Hire.model.vo.Support;
 import com.project.jobnom.common.pagebar.PageBarFactory;
+import com.project.jobnom.member.model.vo.Member;
 
 
 @Controller
@@ -172,6 +173,10 @@ public class annoController {
 		
 		List<Support> sp = service.selectSupportApply(paramMap);
 		mv.addObject("sp", sp);
+		
+		List<Member> m = service.selectMemberEmail(memNo);
+		mv.addObject("m", m);
+		System.out.println("멤버이메일"+m);
 	
 		mv.addObject("r", anolist);
 		mv.setViewName("Hire/annoFirst");

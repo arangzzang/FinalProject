@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="anno">
+<resultMap type="mem" id="memMap"><!-- resultMap의 id값과 select문의 resultMap키값 연결 -->
+		<result column="mem_no" property="memNo"/>
+		<result column="mem_email" property="memEmail"/>
+		<result column="mem_pw" property="memPw"/>
+		<result column="mem_manager_yn" property="memManagerYn"/>
+		<result column="mem_check" property="memCheck"/>
+		<result column="mem_membership" property="memMembership"/>
+		<result column="cate_no2" property="cateNo2"/>
+		<result column="cate_no" property="cateNo"/>
+	</resultMap>
 <select id="anoList" resultType="com.project.jobnom.Hire.model.vo.Recruitment">
       SELECT DISTINCT E.REC_NO,E.ENT_NO, REC_TITLE, REC_CONTENTS,REC_OTHER, REC_STARTDATE, REC_ENDDATE, REC_INFO,REC_PREFER, REC_WELFARE, REC_QUALIFICATION, REC_PEPOLE, REC_CAREER, REC_ORDER,
                  REC_TYPE, REC_CATEGORY,ENT_NAME,T.MEM_NO,OPEN_CHECK, REP_NAME, REP_PHONE,ENT_LOGO, REPLACE(REC_SALARY,' ')  AS REC_SALARY
@@ -94,7 +104,7 @@
    </select>
    <select id="announcementPageFirst" parameterType="map" resultType="com.project.jobnom.Hire.model.vo.Recruitment">
    SELECT DISTINCT E.REC_NO,E.ENT_NO,ENT_EMAIL, REC_TITLE,REC_OTHER, REC_CONTENTS, REC_STARTDATE, REC_ENDDATE, REC_INFO,REC_PREFER, REC_WELFARE, REC_QUALIFICATION, REC_PEPOLE, REC_CAREER, REC_ORDER,
-                 REC_TYPE, REC_CATEGORY,ENT_NAME,OPEN_CHECK, REP_NAME, REP_PHONE,ENT_LOGO, REPLACE(REC_SALARY,' ')  AS REC_SALARY
+                 REC_TYPE, REC_CATEGORY,ENT_NAME,OPEN_CHECK,MEM_EMAIL, REP_NAME, REP_PHONE,ENT_LOGO, REPLACE(REC_SALARY,' ')  AS REC_SALARY
 			FROM RECRUITMENT E 
           LEFT JOIN REVIEW S ON (S.ENT_NO = E.ENT_NO)
              LEFT JOIN INTERESTEDRECRUITMENT T ON(T.REC_NO = E.REC_NO)
@@ -107,12 +117,15 @@
               <if test="rec_no != null">
             AND E.REC_NO=#{rec_no}
             </if>
-           <!--   <if test="memNo != null">
-            AND M.MEM_NO=#{memNo}
-            </if>  -->
+         
           
             ORDER BY REC_STARTDATE DESC
    </select>
+   
+   <select id="selectMemberEmail" resultMap="memMap" parameterType="string">
+   
+   SELECT * FROM MEMBER WHERE MEM_NO =#{memNo}
+   
+   </select>
 
 </mapper>     
- 
