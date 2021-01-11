@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import com.project.jobnom.Hire.model.vo.Interestedrcruitment;
 import com.project.jobnom.Hire.model.vo.Recruitment;
 import com.project.jobnom.Hire.model.vo.Support;
+import com.project.jobnom.member.model.vo.Member;
 
 public interface annoDao {
 
@@ -35,7 +36,7 @@ public interface annoDao {
 
 	List<Recruitment>  announcementPageFirst(SqlSession session ,Map paramMap);
 
-
+	List<Member> selectMemberEmail(SqlSession session, String memNo);
 
 
 

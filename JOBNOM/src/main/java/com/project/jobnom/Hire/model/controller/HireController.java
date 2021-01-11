@@ -1,5 +1,6 @@
 package com.project.jobnom.Hire.model.controller;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -210,7 +211,9 @@ public class HireController {
 		List<Interestedrcruitment> in=service2.selectIn(paramMap);
 		System.out.println("이것은"+in);
 		mv.addObject("in", in);
-		
+		List<Member> m = service2.selectMemberEmail(memNo);
+		mv.addObject("m", m);
+		System.out.println("멤버이메일"+m);
 		//지원하기 했을때 이미지원한공고면 alert 띄워주기위한 로직
 		
 		List<Support> sp = service2.selectSupportApply(paramMap);
@@ -238,9 +241,9 @@ public class HireController {
 
 	
 	@RequestMapping("/Hire/apply.do")
-	public ModelAndView memberApply(ModelAndView mv,HttpServletRequest request, ModelMap mo, HttpSession session,Model model, int memNo, int recNo, String entName)
+	public ModelAndView memberApply(ModelAndView mv,HttpServletRequest request, ModelMap mo, HttpSession session,Model model, int memNo, int recNo, String entName,String eEmail,String mEmail)
 			throws Exception {
-	
+	System.out.println("==========="+mEmail);
 
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 
@@ -308,8 +311,8 @@ public class HireController {
 		
 	
 		    
-		    String setfrom = "dlscjfry2010@naver.com";         //인사담당자한테 발송되는 이메일
-		    String tomail = "dlscjfry2010@naver.com";    // 받는 사람 이메일
+		    String setfrom = eEmail;         //인사담당자한테 발송되는 이메일
+		    String tomail = mEmail;    // 받는 사람 이메일
 		    String title = 
 		    		"JOBNOM을 통한 이력서가 마이페이지에서 확인하세요 도착했습니다 ";      // 제목
 		    String content = 
@@ -553,6 +556,31 @@ public class HireController {
 		mv.setViewName("Hire/findingMeDetail");
 		return mv;
 	} 
+	
+	//마이페이지에서 리뷰삭제하는 곳
+		@RequestMapping("/Hire/deleteReview.do")
+		public String deleteReview( Model m,String reviewNo,String memNo, HttpServletRequest request,@RequestParam(value = "cPage", defaultValue = "1") int cPage,
+				@RequestParam(value = "numPerpage", defaultValue = "5") int numPerpage) throws IOException {
+			System.out.println("??"+reviewNo);
+			 List<Map> mem = service.mypageView();
+			List<Map> review = service.deleteReview(reviewNo);
+			System.out.println("로고"+review);
+		
+			m.addAttribute("r",review);
+			 //리뷰갯수 카운트
+			 int ReviewCount = service.selectReviewCount(memNo);
+			 
+			 m.addAttribute("ReviewCount",ReviewCount);
+			 m.addAttribute("mem",mem);
+			 m.addAttribute("review",review);
+			 
+			 m.addAttribute("pageBar", PageBarFactory.getPageBar8(ReviewCount, cPage, numPerpage, memNo, "insertReview.do"));
+				
+			
+
+		 return "Hire/insertReview";
+			
+		} 
 	
 	
 

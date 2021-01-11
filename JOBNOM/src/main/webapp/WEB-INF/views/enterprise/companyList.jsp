@@ -58,7 +58,6 @@
                     <c:forEach items="${list2 }" var="list2">
                         <dl class="gf_box2">
                             <dt title="회사명">
-                                    <span class="txt_r">1</span>
                                 <a href="#" onclick="location.href = '${path }/openApi.do?entNo=${list2.ENT_NO}&keyword=${list2.ENT_NAME}'">${list2.ENT_NAME }</a>
                             </dt>
                             <dd>

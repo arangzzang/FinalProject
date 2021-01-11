@@ -11,6 +11,7 @@ import com.project.jobnom.Hire.model.dao.annoDao;
 import com.project.jobnom.Hire.model.vo.Interestedrcruitment;
 import com.project.jobnom.Hire.model.vo.Recruitment;
 import com.project.jobnom.Hire.model.vo.Support;
+import com.project.jobnom.member.model.vo.Member;
 @Service
 public class annoServiceImpl implements annoService {
 
@@ -77,6 +78,12 @@ public class annoServiceImpl implements annoService {
 	@Override
 	public List<Recruitment> announcementPageFirst(Map paramMap) {
 		return dao.announcementPageFirst(session, paramMap);
+	}
+
+
+	@Override
+	public List<Member> selectMemberEmail(String memNo) {
+		return dao.selectMemberEmail(session, memNo);
 	}
 
 

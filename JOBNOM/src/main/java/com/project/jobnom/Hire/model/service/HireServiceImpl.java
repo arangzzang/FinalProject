@@ -164,6 +164,11 @@ public class HireServiceImpl implements HireService {
 		return dao.categoryAll(session,memNo);
 	}
 
+	@Override
+	public List<Map> deleteReview(String reviewNo) {
+		return dao.deleteReview(session, reviewNo);
+	}
+
 	
 	
 	

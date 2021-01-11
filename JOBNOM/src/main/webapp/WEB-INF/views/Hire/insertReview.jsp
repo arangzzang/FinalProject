@@ -57,7 +57,8 @@
                                          <th><c:out value="${r.REVIEW_TITLE }"/></th>
                                          <th><c:out value="${r.REVIEW_CONTENTS }"/></th>
                                          <th><fmt:formatDate  value="${r.RE_ENROLL_DATE }" pattern="yy.MM.dd" /></th>
-                                         <th><button class="" type="button">삭제</button></th>
+                                         <th><button onclick="fn_reviewDelete()" id="reviewDelete" value="${r.REVIEW_NO }" type="button">삭제</button></th>
+                                       
                                      </tr>
                                      </c:forEach>
                                    
@@ -477,5 +478,18 @@ $("#reviewName").keyup(e=>{
 			}
 		})
 		};
+	  </script>
+	  
+	   <script>
+	   $("#reviewDelete").click(e=>{
+		$.ajax({
+			url:"${path}/Hire/deleteReview.do",
+			data:{"reviewNo":$(e.target).val(),memNo:${commonLogin.memNo}},
+			success:data => {
+				$('.with-parent').html(data);
+			}
+		})
+		
+	   });
 	  </script>
 

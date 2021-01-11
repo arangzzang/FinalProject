@@ -6,6 +6,7 @@ import java.util.Map;
 import com.project.jobnom.Hire.model.vo.Interestedrcruitment;
 import com.project.jobnom.Hire.model.vo.Recruitment;
 import com.project.jobnom.Hire.model.vo.Support;
+import com.project.jobnom.member.model.vo.Member;
 
 public interface annoService {
 
@@ -29,6 +30,6 @@ public interface annoService {
 	int selectCount3(int recNo);
 	List<Recruitment> announcementPageFirst(Map paramMap);
 
-
+	List<Member> selectMemberEmail(String memNo);
 }
 
