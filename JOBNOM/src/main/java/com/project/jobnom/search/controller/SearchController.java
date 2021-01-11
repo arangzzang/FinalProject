@@ -97,14 +97,14 @@ public class SearchController {
 	public ModelAndView searchResultMore(ModelAndView mv,@RequestParam(value = "cPage", defaultValue = "1") int cPage,
 			@RequestParam(value = "numPerpage", defaultValue = "5") int numPerpage) {
 		List<Map> list = service.searchResultMore(cPage,numPerpage);
-		System.out.println(list);
 		int totalData = service.selectCount(); /* 이거페이징바 */
-		
-		mv.addObject("entFollow",service.entFollowCheck()); // 기업 팔로잉
+		List entFollow = service.entFollowCheck();
+		mv.addObject("entFollow",entFollow); // 기업 팔로잉
 		mv.addObject("pageBar", SearchPageBar.getPageBar(totalData, cPage, numPerpage, "searchResultMore.do"));
 		mv.addObject("totalData", totalData);
 		mv.addObject("list", list);
 		mv.setViewName("search/searchResultMoreList");
+		System.out.println("ㅇ거 왜일"+service.entFollowCheck());
 		return mv;
 		
 	}
@@ -164,6 +164,7 @@ public class SearchController {
 		param.put("memNo", memNo);
 		param.put("entNo",entNo);
 		
+		int result = service.entUnFollow(param);
 	}
 	
 	//검색창 자동 완성

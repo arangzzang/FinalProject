@@ -162,9 +162,8 @@
 	</insert>
 	<!--기업 팔로잉 리스트  -->
 	<select id="entFollowCheck" resultType="map">
-		select * 
+		select ent_no
 		from ENTERPRISEFOLLOW
-	
 	</select>
 	<!--기업 언팔로우  -->
 	<delete id="entUnFollow" >
