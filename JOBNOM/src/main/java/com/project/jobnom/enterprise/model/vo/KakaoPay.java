@@ -40,9 +40,9 @@ public class KakaoPay {
         params.add("quantity", "1");
         params.add("total_amount", "1");
         params.add("tax_free_amount", "1");
-        params.add("approval_url", "http://localhost:9090/jobnom/kakaoPaySuccess");
-        params.add("cancel_url", "http://localhost:9090/jobnom/kakaoPayCancel");
-        params.add("fail_url", "http://localhost:9090/jobnom/kakaoPaySuccessFail");
+        params.add("approval_url", "http://rclass.iptime.org:9999/20PM_JOBNOM_Final/kakaoPaySuccess");
+        params.add("cancel_url", "http://rclass.iptime.org:9999/20PM_JOBNOM_Final/kakaoPayCancel");
+        params.add("fail_url", "http://rclass.iptime.org:9999/20PM_JOBNOM_Final/kakaoPaySuccessFail");
  
          HttpEntity<MultiValueMap<String, String>> body = new HttpEntity<MultiValueMap<String, String>>(params, headers);
  
