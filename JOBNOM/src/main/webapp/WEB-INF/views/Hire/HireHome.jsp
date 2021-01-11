@@ -128,8 +128,11 @@
 												- 마감 일자 :
 												<fmt:formatDate value="${d.REC_ENDDATE }" pattern="yy.MM.dd" />
 											</div>
+											<div style="padding-left: 50px;">연봉 ￦ ${d.REC_SALARY }</div>
+									<div style="padding-left: 50px;">고용형태 : ${d.REC_TYPE }</div>
+										
 										</div>
-
+										
 									</a>
 								</div>
 							</c:forEach>

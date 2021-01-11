@@ -516,6 +516,7 @@
                             <div class="annoListTitleFlax">
                             <button name="aaaa" value="${a.rec_no }"  class="annoListTitleBoxs" >${a.rec_title }<br>
                             <c:out value="${a.ent_name }"/>
+                             <div>평점 : <c:out value="${a.avg }"/></div>
                              </button>
                             <button type="button" name="dddd" value="${commonLogin.memNo}" style="display: none;"></button>
                             <%-- <input type="hidden" value="${a.rec_no }"><c:out value="${a.rec_title }"/><br>

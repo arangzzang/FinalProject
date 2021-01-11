@@ -46,5 +46,6 @@ public class Recruitment {
 	private String open_check;
 	private String jobs2;
 	private String ent_email;
+	private Double avg;
 
 }
