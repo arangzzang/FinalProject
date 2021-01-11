@@ -42,8 +42,8 @@ public class ResumeController {
 		int result=0;
 		Map resMap = new HashMap();
 		Resume selRes=service.selectResume(res.getMemNo());
-		edu.setEduTerm(edu.getEduTerm().replaceAll("/",""));
-		edu.setEduTermend(edu.getEduTermend().replaceAll("/",""));
+		//edu.setEduTerm(edu.getEduTerm().replaceAll("/","").trim());
+		//edu.setEduTermend(edu.getEduTermend().replaceAll("/","").trim());
 		//selectResume존재 여부 메소드 실행 
 		if(selRes==null) {
 			//없으면
@@ -71,6 +71,7 @@ public class ResumeController {
 			if(result > 0) service.categoryUpdate(resMap);
 //			if(skill!=null) service.updateSkill();
 			System.out.println(edu);
+			
 			if(result>0) service.insertEducation(edu);
 			
 			mv.addObject("msg",result>0?"이력서가 저장되었어요~":"이력서가 저장되지 않았습니다. 다시 확인해 주세요.");
