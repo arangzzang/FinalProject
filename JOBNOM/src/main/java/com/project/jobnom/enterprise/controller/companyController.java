@@ -240,7 +240,7 @@ public class companyController {
 
 	@RequestMapping("/com/mypage.do")
 	public ModelAndView comMypage(ModelAndView mv,@RequestParam(value="cPage",defaultValue="1")
-										int cPage,@RequestParam(value="numPerpage",defaultValue="5") int numPerpage, HttpSession session) {
+										int cPage,@RequestParam(value="numPerpage",defaultValue="5") int numPerpage, HttpSession session,String REC_NO) {
 		Login log = (Login) session.getAttribute("commonLogin");
 		Enterprise ent = service.findOneEnterprise(log);
 		session.setAttribute("Enterprise", ent);

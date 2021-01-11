@@ -36,7 +36,7 @@ public class AdminController {
 		List<Member> memList = service.memList(cPage, numPerpage);
 		System.out.println(memList);
 		int totalData=service.memNum();
-		mv.addObject("pageBar", PageBarFactory.getPageBar(totalData, cPage, numPerpage, "/jobnom/memMg"));
+		mv.addObject("pageBar", PageBarFactory.getPageBar(totalData, cPage, numPerpage, "/20PM_JOBNOM_Final/memMg"));
 		mv.addObject("memList", memList);
 		mv.setViewName("/admin/memMg");
 
@@ -51,7 +51,7 @@ public class AdminController {
 		int totalData=service.revNum();
 		System.out.println(revList);
 		mv.addObject("revList", revList);
-		mv.addObject("pageBar", PageBarFactory.getPageBar(totalData, cPage, numPerpage, "/jobnom/comMg"));
+		mv.addObject("pageBar", PageBarFactory.getPageBar(totalData, cPage, numPerpage, "/20PM_JOBNOM_Final/comMg"));
 		mv.setViewName("/admin/comMg");
 
 		return mv;
@@ -67,7 +67,7 @@ public class AdminController {
 		int totalData=service.adNum();
 		mv.addObject("c2", c2);
 		mv.addObject("adList", adList);
-		mv.addObject("pageBar", PageBarFactory.getPageBar(totalData, cPage, numPerpage, "/jobnom/adMg"));
+		mv.addObject("pageBar", PageBarFactory.getPageBar(totalData, cPage, numPerpage, "/20PM_JOBNOM_Final/adMg"));
 		mv.setViewName("/admin/adMg");
 
 		return mv;

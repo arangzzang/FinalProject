@@ -55,7 +55,7 @@
 	                    <td><input type="hidden" value="${r.rec_title}" name="rec_title"><c:out value="${r.rec_title }"/></td>
 	                    <td><input type="hidden" value="${r.rec_startdate}" name="rec_startdate"><fmt:formatDate value="${r.rec_startdate }" pattern="yyyy-MM-dd"/></td>
 	                    <td><input type="hidden" value="${r.rec_enddate}" name="rec_enddate"><fmt:formatDate value="${r.rec_enddate }" pattern="yyyy-MM-dd"/></td>
-	                    <td><button type="button" class="btn">상세보기</button></td>
+	                    <td><button type="button" class="btn" onclick="location.href = '${path }/Hire/announcementPageFirst?recNo=${r.rec_no}&anoNum=${r.rec_category}&memNo=${commonLogin.memNo }'" >상세보기</button></td>
 	                    <td><button type="button" class="btn editAd">수정</button></td>
 	                    <td><input type="submit" class="btn" value="조회"></td>
 				</tr>

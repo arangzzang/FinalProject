@@ -8,12 +8,12 @@
     <div class="memberinfo-parent ">
         <div class="jumbotron row memberinfo" id="memberinfo">
             <div class="col-md-3 col-offset-3">
-                <img src="" alt="">
+                <img src="${path }/resources/image/mypage.png" class="center" alt="">
             </div>
             <div class="col-md-6">
-                <p>조현</p>
-                <p>취준생</p>
-                <p>IT취업하고싶다</p>
+                <p></p>
+                <p>IT</p>
+                <p>웹개발</p>
             </div>
         </div>
     </div>
