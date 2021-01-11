@@ -93,12 +93,12 @@
 								<i class="fas fa-heart" style="color: red;"></i>팔로우
 							</button>
 						</c:if>
-						<input type="hidden" value="${list[0].ENT_NO }">
+						<%-- <input type="hidden" value="${list[0].ENT_NO }">
 						<c:if test="${empty commonLogin}">
 							<button class="btn_heart1" id="follow">
 								<i class="far fa-heart" style="color: red;"></i>팔로우
 							</button>
-						</c:if>
+						</c:if> --%>
 					</div>
 				</nav>
 			</div>

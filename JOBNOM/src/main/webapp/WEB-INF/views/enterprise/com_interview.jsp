@@ -97,7 +97,7 @@
 								<tbody class="inter_root_tb">
 									<tr class="inter_root_tr">
 										<th>온라인 지원</th>
-										<td>50%</td>
+										<td>0%</td>
 										<td class="empty"></td>
 										<th>직원추천</th>
 										<td>0%</td>
@@ -107,11 +107,11 @@
 										<td>0%</td>
 										<td class="empty"></td>
 										<th>공개채용</th>
-										<td>20%</td>
+										<td>0%</td>
 									</tr>
 									<tr class="inter_root_tr">
 										<th>학교 취업지원 센터</th>
-										<td>30%</td>
+										<td>0%</td>
 										<td class="empty"></td>
 										<th>기타</th>
 										<td>0%</td>
@@ -165,7 +165,7 @@
 					</select>
 				</div>
 				<div class="total_inter">
-					총<span>1</span>개 의 면접후기
+					총<span>0</span>개 의 면접후기
 				</div>
 			</div>
 		</article>
