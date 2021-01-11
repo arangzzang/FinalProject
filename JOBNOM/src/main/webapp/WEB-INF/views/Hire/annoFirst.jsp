@@ -659,8 +659,10 @@ figure.snip1132.hover img {
                                 <div id="annoDetailTitle1">${r[0].rec_title }</div>
                                 
                                 <a href="${path }/enterprise/com_info.do?entNo=${r[0].ent_no }">
-                                    <div class="annoDetailTitleFont" >${r[0].ent_name }</div>
+                                    <div class="annoDetailTitleFont" >${r[0].ent_name } [평점 : ${r[0].avg }]</div>
+                               
                                 </a>
+                             
                                
 							
                             </div>
@@ -671,8 +673,7 @@ figure.snip1132.hover img {
                         
                        
                      
-                      <%-- <button class="apply"  onclick="location.href='${path }/Hire/apply.do?memNo=${commonLogin.memNo}&recNo=${r[0].REC_NO}&entName=${r[0].ENT_NAME } ' " >지원하기
-                       </button> --%>
+                     
                        <c:if  test="${r[0].open_check eq 0 || empty r[0].open_check  && empty in[0].mem_no   && empty commonLogin   || commonLogin.memNo ne  in[0].mem_no  && in[0].rec_no ne r[0].rec_no }">
                         <button id="favoritesBox" onclick="fn_toggle();">
                             <img id="announcementFavorites2" src="${path }/resources/image/Hire/pngwing.png" />

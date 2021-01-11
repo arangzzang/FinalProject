@@ -60,7 +60,7 @@
         <div class="announcementTop">
             <div class="quest1">금융/제무
                 <div class="questListAll">
-                    <a  href="${path }/Hire/announcementPage.do">
+                    <a  href="${path }/Hire/announcementPage2.do?anoNum=1&memNo=${commonLogin.memNo}">
                     <div class="questListDetail">
                     <div class="questList">은행관련</div><div class="arrow">></div>
                     </div>
