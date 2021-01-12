@@ -80,10 +80,11 @@
 						#{memNo}
 					)
 	</insert>
-	<insert id="insertMySkill" parameterType="_int">
+	<insert id="insertMySkill" parameterType="map">
 		insert into myskill 
 					values(
-					
+						#{resNo},
+						#{skillNo}
 					)
 	</insert>
 	<update id="categoryUpdate" parameterType="map">
@@ -113,10 +114,10 @@
 						#{resNo},
 						#{eduName},
 						#{eduMajor},
-						#{eduAttend},
 						to_date(#{eduTerm},'YYYY/MM'),
 						to_date(#{eduTermend},'YYYY/MM'),
-						#{eduContents}
+						#{eduContents},
+						#{eduAttend}
 					)
 	</insert>
 </mapper>
