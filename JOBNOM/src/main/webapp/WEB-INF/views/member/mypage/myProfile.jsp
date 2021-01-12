@@ -114,7 +114,8 @@
 										<option value="10" ${res.resCar==10?"selected":"" }>10년이상</option>
 									</select>
 									<label for="skill" class="span2">업무 및 스킬</label>
-									<input type="text" class="form-control inp" name="skill" list="keyword" id="skill" on placeholder="(예시) 영업기획, 디지털마케팅,UI디자인(업무와 관련된 자격증 및 기술명 포함)" required>
+									<input type="text" class="form-control inp" list="keyword" id="skill" placeholder="(예시) 영업기획, 디지털마케팅,UI디자인(업무와 관련된 자격증 및 기술명 포함)" required>
+									<input type="hidden" name="skill">
 									<datalist id="keyword"></datalist>	
 									<ul class="tag-list">
 									
@@ -317,6 +318,19 @@
 	</div>
 
 <script type="text/javascript">
+	let checkskill;
+	$(function(){
+		$("#skill").change(e=>{
+			console.log(e.target.value);
+			console.log(checkskill);
+			for(let i=0;i<checkskill.length;i++){
+				if(e.target.value==checkskill[i].skillName){
+					$(e.target).next().val(checkskill[i].skillNo);
+					break;
+				}
+			}
+		})
+	})
 	$(".gender").click(e=>{
 		console.log($(".gender").val());
 		console.log(typeof $(".gender").val());
@@ -334,8 +348,9 @@
 			data:{skill:skill},
 			success:data=>{
 				$("#keyword").html("");
-				$.each(data,function(i,v){
-					$("#keyword").append("<option name='key' class='key' data-value='"+v.skillNo+"'>"+v.skillName+"</option>");
+				checkskill=data;
+				$.each(data,function(i,v){//
+					$("#keyword").append("<option name='key' class='key' value='"+v.skillName+"'>"+v.skillName+"</option>");
 					$("#keyword").css("border","1px solid");
 				});
 			}
