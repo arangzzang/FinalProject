@@ -215,10 +215,11 @@ public class EnterpriseServiceImpl implements EnterpriseService {
 		// TODO Auto-generated method stub
 		return dao.selectSupportCount(session,recno);
 	}
+	
 	@Override
-	public Score scoreList(int entNo) {
+	public List<Score> scoreList(int entNo) {
 		// TODO Auto-generated method stub
-		return dao.scoreList(session,entNo);
+		return dao.scoreList(session, entNo);
 	}
 	@Override
 	public int followEnt(Map param1) {

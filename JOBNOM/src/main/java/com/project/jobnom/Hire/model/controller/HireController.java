@@ -259,55 +259,7 @@ public class HireController {
 		List<Map> applyM= service.selectMemberApply(paramMap);
 
 		
-		
-		///////////////////////////////////////////////
-		
-//		// 메일 관련 정보
-//        String host = "smtp.naver.com";
-//        final String username = "dlscjfry2010";       //네이버 이메일 주소중 @ naver.com앞주소만 기재합니다.
-//        final String password = "Dsds2010##";   //네이버 이메일 비밀번호를 기재합니다.
-//        int port=465;
-//        
-//        // 메일 내용
-//        String recipient = "dlscjfry2010@naver.com";    //메일을 발송할 이메일 주소를 기재해 줍니다.
-//        String subject = "JOBNOM";
-//        String body = "해당공고로 지원이 완료 되었습니다";
-		/* String filename = "src/main/webapp/resources/image/Hire/Kakao.png"; */
-//        
-//        Properties props = System.getProperties();
-//         
-//         
-//        props.put("mail.smtp.host", host);
-//        props.put("mail.smtp.port", port);
-//        props.put("mail.smtp.auth", "true");
-//        props.put("mail.smtp.ssl.enable", "true");
-//        props.put("mail.smtp.ssl.trust", host);
-		/*
-		 * MimeMessage mimeMessage = mailSender.createMimeMessage(); MimeMessageHelper
-		 * messageHelper = new MimeMessageHelper(mimeMessage, true, "UTF-8");
-		 */
-//          
-//        Session session1 = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
-//            String un=username;
-//            String pw=password;
-//            protected PasswordAuthentication getPasswordAuthentication() {
-//                return new PasswordAuthentication(un, pw);
-//            }
-//        });
-//        session1.setDebug(true); 
-//        String mail = "JOBNOM";
-//          
-//        Message mimeMessage = new MimeMessage(session1);
-//        mimeMessage.setFrom(new InternetAddress("dlscjfry2010@naver.com"));
-//        mimeMessage.setRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
-//        mimeMessage.setSubject(subject);
-//        mimeMessage.setText(body);
-//        Transport.send(mimeMessage); 
-		
-		//////////////////////////////////////////
-		
-		//파일 보내는곳
-		////////////////////////////////////
+
 		
 	
 		    
@@ -318,7 +270,8 @@ public class HireController {
 		    String content = 
 		    		"안녕하세요."
 				    		+ "잡놉입니다"
-				    		+ "이력서를 확인하고 채용을 검토바랍니다";   // 내용
+		    				
+				    		+ "이력서를 확인하고  <Strong>채용</Strong>을 검토바랍니다";   // 내용
 		    String setfrom2 = "dlscjfry2010@naver.com";     //이건 지원한 회원한테 보내는 이메일    
 		    String tomail2 = "inhajun1995@gmail.com";    // 받는 사람 이메일
 		    String title2 = 
@@ -333,6 +286,28 @@ public class HireController {
 				    		+ "당신이 취업하는 그날까지 JOBNOM은 여러분을 응원합니다."
 				    		+ "대한 민국의 밝은 내일을 위해! 고용노동부에서의 취업 프로그램등을"
 				    		+ "확인하세요 'http://www.moel.go.kr/index.do'";
+		    String htmlContent = "당신의 임시 비밀번호는 <Strong>" + "pw" + "</Strong> 입니다. 사이트에 접속해서 로그인 후 비밀번호를 변경하세요.<br>";
+			/*
+			 * String setHtmlMsg=""; StringBuffer msg = new StringBuffer();
+			 * msg.append("<html>"); msg.append("<body>"); msg.
+			 * append("<a href='https://mvnrepository.com'><img src='https://mvnrepository.com/assets/images/392dffac024b9632664e6f2c0cac6fe5-logo.png' /></a>"
+			 * ); msg.append("<hr>"); msg.append("<h3>HTML 메일 테스트</h3>");
+			 * msg.append("<p>가입을 축하드립니다.</p>"); msg.append("<p>HTML 메일 테스트</p>");
+			 * msg.append("</body>"); msg.append("</html>");
+			 * content.setHtmlMsg(msg.toString());
+			 */
+			/*
+			 * MimeMessage message = mailSender.createMimeMessage(); try {
+			 * message.setSubject("[안내] 임시 비밀번호 발신 <관리자가 보낸메일>", "euc-kr"); String
+			 * htmlContent = "당신의 임시 비밀번호는 <Strong>" + pw +
+			 * "</Strong> 입니다. 사이트에 접속해서 로그인 후 비밀번호를 변경하세요.<br>"; htmlContent +=
+			 * "<a href='http://localhost:9999/index.choon' target='_blank'>홈으로 이동</a>";
+			 * message.setText(htmlContent, "euc-kr", "html"); message.setFrom(new
+			 * InternetAddress("")); message.addRecipient(RecipientType.TO, new
+			 * InternetAddress(email)); mailSender.send(message); } catch
+			 * (MessagingException e) { }
+			 */
+	
 		    
 		    //나중에 파일보내기할때
 		    String filename = "C:\\git\\FinalProject\\JOBNOM\\src\\main\\webapp\\resources\\image\\Hire\\resume.docx";                   // 파일 경로.
