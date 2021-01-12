@@ -239,9 +239,9 @@ public class EnterpriseDaoImpl implements EnterpriseDao {
 	}
 
 	@Override
-	public Score scoreList(SqlSession session, int entNo) {
+	public List<Score> scoreList(SqlSession session, int entNo) {
 		// TODO Auto-generated method stub
-		return session.selectOne("enterprise.scoreList",entNo);
+		return session.selectList("enterprise.scoreList",entNo);
 	}
 
 	@Override

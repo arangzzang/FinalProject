@@ -464,9 +464,9 @@
 	<select id="getMammoth" resultMap="mammothmap">
 		SELECT * FROM EDUCATION
 		LEFT JOIN AWARDS ON EDUCATION.RES_NO=AWARDS.RES_NO
-		LEFT JOIN LICENSE ON AWARDS.RES_NO=LICENSE.RES_NO
-		LEFT JOIN CAREER ON LICENSE.RES_NO=CAREER.RES_NO
-		LEFT JOIN MYSKILL ON CAREER.RES_NO=MYSKILL.RES_NO WHERE EDUCATION.RES_NO=#{resno}
+		LEFT JOIN LICENSE ON EDUCATION.RES_NO=LICENSE.RES_NO
+		LEFT JOIN CAREER ON EDUCATION.RES_NO=CAREER.RES_NO
+		LEFT JOIN MYSKILL ON EDUCATION.RES_NO=MYSKILL.RES_NO WHERE EDUCATION.RES_NO=#{resno}
 	</select>
 	
 	<select id="getApplicant" resultMap="appMap">
@@ -476,11 +476,13 @@
 		select  NVL(max(rownum),0) from support left join resume on support.mem_no=resume.mem_no where rec_no=#{recno} and res_no!=0
 	</select>
 	<select id="scoreList" resultMap="scMap">
+
 		select  
-				round(avg(review_satisfaction),1) a , round(avg(review_welfare),1) b ,
-		        round(avg(review_promotion),1) c , round(avg(review_executive),1) d
+				round(avg(review_satisfaction),1) review_satisfaction , round(avg(review_welfare),1) review_welfare ,
+		        round(avg(review_promotion),1) review_promotion , round(avg(review_executive),1) review_executive
 		from review
 		where ent_no=#{entNo}
+
 	</select> 
 
 	<insert id="followEnt" parameterType="java.util.HashMap">
